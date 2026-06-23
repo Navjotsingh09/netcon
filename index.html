@@ -10,12 +10,11 @@
   <link rel="stylesheet" href="css/animations.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       color: #353535;
       background: #fff;
-      overflow-x: hidden;
     }
     img { display: block; max-width: 100%; }
     picture { display: contents; } /* let <img> behave as direct child for flex/grid/position contexts */
@@ -93,8 +92,8 @@
 
     /* ===== NAVBAR ===== */
     .navbar {
-      /* Fluid: centres 1490px nav box; collapses to 24px min side-padding below ~1440px */
-      padding: 0 max(24px, calc((100% - 1490px) / 2));
+      /* Full-width background strip; inner box handles centering */
+      padding: 0 var(--px);
       position: relative;
       z-index: 10;
     }
@@ -108,6 +107,8 @@
       padding: 0 48px;
       height: 129px;  /* Fix 10: 83 → 129 — matches Figma box height */
       box-shadow: 0 4px 4px rgba(0,0,0,.05);
+      max-width: var(--max-w);
+      margin: 0 auto;
     }
     .navbar__logo img { height: 50px; width: auto; }
     .navbar__right {
@@ -166,8 +167,8 @@
     .mega-menu {
       position: absolute;
       top: 100%;
-      left: max(24px, calc((100% - 1490px) / 2));
-      right: max(24px, calc((100% - 1490px) / 2));
+      left: var(--px);
+      right: var(--px);
       background: #fff;
       border: 1px solid var(--gray-mid);
       border-top: 3px solid var(--blue);
@@ -1142,7 +1143,7 @@
     /* ===== NAV RESPONSIVE — breakpoints ===== */
     /* 1440px–1201px: compress box inner-padding + link gaps to prevent overflow */
     @media (max-width: 1440px) and (min-width: 1201px) {
-      .navbar__box  { padding: 0 32px; }
+      .navbar__box  { padding: 0 32px; max-width: var(--max-w); margin: 0 auto; }
       .navbar__links { gap: 14px; }
       .navbar__right { gap: 24px; }
       /* Testimonials: compress gap so card has enough room */
@@ -1185,8 +1186,8 @@
     @media (max-width: 768px) {
       :root { --px: 32px; }  /* cascade: all padded sections now use 32px */
       /* Nav: small v-padding on mobile */
-      .navbar { padding: 10px 20px; }
-      .navbar__box { height: 64px; }
+      .navbar { padding: 10px var(--px); }
+      .navbar__box { height: 64px; max-width: var(--max-w); margin: 0 auto; }
 
       /* Hero */
       .hero { padding: 16px var(--px) 40px; }
