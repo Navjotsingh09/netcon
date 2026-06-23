@@ -23,14 +23,41 @@
     button { cursor: pointer; border: none; outline: none; background: none; }
 
     :root {
-      --max-w: 1440px;   /* standard container max-width */
-      --px: 240px;        /* standard horizontal padding — overridden per breakpoint */
+      --max-w: 1440px;     /* inner content column cap */
+      --section-w: 1920px; /* full-bleed section background cap */
+      --px: 240px;         /* standard horizontal padding — overridden per breakpoint */
       --navy: #162470;
       --blue: #0982c5;
       --dark: #353535;
       --gray-bg: #EBEBEB;
       --gray-mid: #d9d9d9;
       --sub: #585151;
+    }
+
+    /* ===== SECTION WIDTH STANDARD =====
+       Full-bleed sections: background stretches to 1920px max, centred.
+       Inset card sections: content caps at 1440px.
+       At ≤1920px (all real-world screens) this has zero visual effect —
+       it only prevents runaway stretching on ultra-wide displays.
+    ===================================== */
+    .hero,
+    .main-services,
+    .why-choose,
+    .solutions-section,
+    .parallax-cards-wrapper,
+    .our-clients,
+    .testimonials,
+    .faq,
+    .contact-section,
+    .footer {
+      max-width: var(--section-w);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Inset card sections already have side margins — just cap their width */
+    .services-section,
+    .industries-section {
+      max-width: var(--max-w);
     }
 
     /* ===== UTILITIES ===== */
