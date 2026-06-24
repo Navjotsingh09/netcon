@@ -119,8 +119,12 @@
 
     /* ===== NAVBAR ===== */
     .navbar {
-      /* Full-width background strip; inner box handles centering */
-      padding: 0;
+      /* Follows section standard: 1920px max cap, var(--px) side padding.
+         .navbar__box then centres at max 1440px inside — same column as all sections. */
+      max-width: var(--section-w);
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 var(--px);
       position: relative;
       z-index: 10;
     }
@@ -194,8 +198,8 @@
     .mega-menu {
       position: absolute;
       top: 100%;
-      left: max(24px, calc((100% - 1440px) / 2));
-      right: max(24px, calc((100% - 1440px) / 2));
+      left: 0;
+      right: 0;
       background: #fff;
       border: 1px solid var(--gray-mid);
       border-top: 3px solid var(--blue);
@@ -1213,7 +1217,7 @@
     @media (max-width: 768px) {
       :root { --px: 32px; }  /* cascade: all padded sections now use 32px */
       /* Nav: small v-padding on mobile */
-      .navbar { padding: 10px 0; }
+      .navbar { padding: 10px var(--px); }
       .navbar__box { height: 64px; }
 
       /* Hero */
