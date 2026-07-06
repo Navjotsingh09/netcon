@@ -504,6 +504,14 @@
     var closeBtn = $id('a11y-close');
     var widget   = $id('a11y-widget');
 
+    if (widget) {
+      widget.style.position = 'fixed';
+      widget.style.top = '0';
+      widget.style.left = '0';
+      widget.style.width = '0';
+      widget.style.height = '0';
+    }
+
     function openPanel() {
       panel.classList.add('is-open');
       trigger.setAttribute('aria-expanded', 'true');

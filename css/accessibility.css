@@ -74,6 +74,11 @@ html {
 #a11y-widget {
   font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
   isolation: isolate;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
 }
 
 /* ── Backdrop overlay ──────────────────────────────────────────── */
