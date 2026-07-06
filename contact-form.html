@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Free Consultation | Network Consultancy</title>
+  <meta name="description" content="Contact Network Consultancy today for a free consultation. Fill in our quick form and a specialist will get back to you promptly.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/accessibility.css">
+  <style>
+    /* ─── Contact Form Page — Figma 698:45525 ───────────────── */
+    .ctf-section { padding: 80px var(--px); max-width: var(--section-w); margin: 0 auto; }
+    .ctf-inner   { max-width: 1440px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px; }
+    /* 2-col header: title left (541px), subtext right (fills rest) */
+    .ctf-header  { display: flex; gap: 41px; align-items: flex-start; }
+    .ctf-title   { font-family: 'Roboto Condensed', sans-serif; font-weight: 600; font-size: 42px; color: var(--navy); line-height: 1; flex: 0 0 541px; width: 541px; }
+    .ctf-sub     { font-family: 'Roboto Condensed', sans-serif; font-weight: 500; font-size: 24px; color: var(--navy); line-height: 30px; flex: 1; }
+    /* body: image + form, top-aligned */
+    .ctf-body    { display: flex; gap: 45px; align-items: flex-start; }
+    .ctf-image   { width: 521px; min-height: 755px; flex-shrink: 0; border-radius: 20px; overflow: hidden; }
+    .ctf-image img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 755px; }
+    .ctf-form-panel { background: #859aba; border-radius: 20px; padding: 59px 40px 51px 64px; flex: 1; display: flex; flex-direction: column; }
+    .ctf-form { display: flex; flex-direction: column; gap: 30px; width: 100%; }
+    .ctf-fields { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+    .ctf-row  { display: flex; gap: 26px; }
+    .ctf-row .ctf-field { flex: 1; min-width: 0; }
+    .ctf-field { display: flex; flex-direction: column; }
+    .ctf-field--full { width: 100%; }
+    .ctf-input, .ctf-select, .ctf-textarea {
+      background: #fff;
+      border: 0.2px solid #353535;
+      border-radius: 10px;
+      box-shadow: 0 4px 2px rgba(0,0,0,.1);
+      height: 68px;
+      padding: 0 23px;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: #353535;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .ctf-select { background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23353535' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 23px center; padding-right: 48px; }
+    .ctf-textarea { height: 138px; resize: vertical; padding: 21px 23px; line-height: 1.5; }
+    .ctf-label { font-family: 'Roboto Condensed', sans-serif; font-weight: 400; font-size: 20px; color: #353535; }
+    /* Service divider (shown between service sections) */
+    .ctf-divider { border: none; border-top: 1px solid rgba(255,255,255,.35); margin: 0; }
+    .ctf-service-block { display: flex; flex-direction: column; gap: 30px; }
+    .ctf-service-select-wrap { display: flex; flex-direction: column; gap: 16px; }
+    /* Add More Services */
+    .ctf-add-more { display: flex; gap: 30px; align-items: center; cursor: pointer; }
+    .ctf-add-more img { width: 24px; height: 24px; flex-shrink: 0; }
+    .ctf-add-more span { font-family: 'Roboto Condensed', sans-serif; font-weight: 400; font-size: 20px; color: #353535; }
+    .ctf-btn { background: #353535; color: #fff; border: 1px solid #353535; border-radius: 10px; padding: 12px 24px; font-family: 'Barlow', sans-serif; font-size: 20px; font-weight: 600; cursor: pointer; transition: background .2s; align-self: flex-start; }
+    .ctf-btn:hover { background: #1a1a1a; }
+    .ctf-sr-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
+    .form-success { display: none; margin-top: 12px; background: #d4edda; color: #155724; padding: 14px 18px; border-radius: 8px; font-family: 'Barlow', sans-serif; font-size: 15px; }
+    .form-error   { display: none; margin-top: 12px; background: #f8d7da; color: #721c24; padding: 14px 18px; border-radius: 8px; font-family: 'Barlow', sans-serif; font-size: 15px; }
+    /* Contact info strip */
+    .ctf-info { padding: 40px var(--px) 80px; max-width: var(--section-w); margin: 0 auto; }
+    .ctf-info-inner { display: flex; justify-content: space-between; align-items: flex-start; max-width: 1440px; margin: 0 auto; padding-top: 40px; }
+    .ctf-info-item { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+    .ctf-info-icon { width: 121px; height: 118px; flex-shrink: 0; }
+    .ctf-info-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .ctf-info-icon--email { background: #e0e0e0; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .ctf-info-icon--email img { width: 54px; height: 38px; object-fit: contain; }
+    .ctf-info-text { text-align: center; display: flex; flex-direction: column; gap: 11px; }
+    .ctf-info-label { font-family: 'Roboto Condensed', sans-serif; font-weight: 500; font-size: 32px; color: #060606; line-height: normal; }
+    .ctf-info-value { font-family: 'Roboto Condensed', sans-serif; font-weight: 400; font-size: 32px; color: #060606; line-height: normal; }
+    .ctf-info-value strong { font-weight: 500; }
+    .ctf-info-value a { color: inherit; text-decoration: none; }
+    .ctf-info-value a:hover { text-decoration: underline; }
+    @media (max-width: 1200px) {
+      .ctf-header { flex-direction: column; gap: 20px; }
+      .ctf-title  { flex: none; width: auto; font-size: 36px; }
+      .ctf-sub    { font-size: 20px; }
+      .ctf-image  { width: 380px; min-height: 560px; }
+      .ctf-image img { min-height: 560px; }
+      .ctf-info-label, .ctf-info-value { font-size: 26px; }
+    }
+    @media (max-width: 1024px) {
+      .ctf-body  { flex-direction: column; align-items: stretch; }
+      .ctf-image { width: 100%; min-height: 300px; max-height: 400px; }
+      .ctf-image img { min-height: 300px; max-height: 400px; }
+      .ctf-info-inner { flex-wrap: wrap; justify-content: center; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .ctf-row { flex-direction: column; gap: 16px; }
+      .ctf-form-panel { padding: 36px 24px 36px; }
+    }
+    @media (max-width: 480px) {
+      .ctf-title { font-size: 28px; }
+      .ctf-info-label, .ctf-info-value { font-size: 22px; }
+    }
+  </style>
+
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <nav class="navbar navbar--sticky" aria-label="Main navigation">
+    <div class="navbar__box">
+      <a href="/" class="navbar__logo" aria-label="Network Consultancy home">
+        <img src="/images/misc/logo.png" alt="Network Consultancy" width="150" height="44" loading="eager">
+      </a>
+      <div class="navbar__right">
+        <div class="navbar__links">
+          <a href="/about.html" class="nav-link">About</a>
+
+          <div class="has-mega">
+            <span class="nav-link">Services <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="mega-menu" role="region" aria-label="Services menu">
+              <div class="mega-inner mega-inner--services">
+                <div class="mega-featured">
+                  <picture><source srcset="/images/pages/servers.jpg" type="image/jpeg"><img src="/images/pages/servers.jpg" alt="Services" loading="lazy"></picture>
+                  <div class="mega-featured__body">
+                    <span class="mega-featured__label">Services Overview</span>
+                    <p class="mega-featured__title">Managed Network Services</p>
+                    <p class="mega-featured__desc">Expert-led, end-to-end IT network support for growing businesses.</p>
+                    <a href="/services/" class="mega-featured__link">View All Services &#8594;</a>
+                  </div>
+                </div>
+                <div class="mega-items">
+                  <a href="/services/network-consultancy.html" class="mega-item"><picture><source srcset="/images/services/service-1.webp" type="image/webp"><img src="/images/services/service-1.jpg" alt="" loading="lazy"></picture><span>Network Consultancy</span></a>
+                  <a href="/services/network-design-deployment.html" class="mega-item"><picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></picture><span>Network Design &amp; Deployment</span></a>
+                  <a href="/services/network-installations.html" class="mega-item"><picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></picture><span>Network Installations</span></a>
+                  <a href="/services/network-support.html" class="mega-item"><picture><source srcset="/images/services/service-4.webp" type="image/webp"><img src="/images/services/service-4.jpg" alt="" loading="lazy"></picture><span>Network Support</span></a>
+                  <a href="/services/managed-network-support.html" class="mega-item"><picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></picture><span>Managed Network Support</span></a>
+                  <a href="/services/managed-wireless-lan.html" class="mega-item"><picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></picture><span>Managed Wireless LAN</span></a>
+                  <a href="/services/firewall-network-security.html" class="mega-item"><picture><source srcset="/images/misc/why-choose-us.webp" type="image/webp"><img src="/images/misc/why-choose-us.jpg" alt="" loading="lazy"></picture><span>Firewall &amp; Network Security</span></a>
+                  <a href="/services/remote-access-vpn.html" class="mega-item"><picture><source srcset="/images/banners/scroll-banner-1.webp" type="image/webp"><img src="/images/banners/scroll-banner-1.jpg" alt="" loading="lazy"></picture><span>Remote Access &amp; VPN Solutions</span></a>
+                  <a href="/services/business-continuity.html" class="mega-item"><picture><source srcset="/images/banners/scroll-banner-2.webp" type="image/webp"><img src="/images/banners/scroll-banner-2.jpg" alt="" loading="lazy"></picture><span>Business Continuity &amp; Resilience</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="has-mega">
+            <span class="nav-link">Solutions <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="mega-menu" role="region" aria-label="Solutions menu">
+              <div class="mega-inner mega-inner--solutions">
+                <div class="mega-heading">
+                  <span class="mega-heading__title">IT Networking Solutions</span>
+                  <a href="/solutions/" class="mega-heading__all">View All Solutions &#8594;</a>
+                </div>
+                <div class="mega-cards">
+                  <a href="/solutions/network-health-check.html" class="mega-card"><picture><source srcset="/images/pages/network-abstract.jpg" type="image/jpeg"><img class="mega-card__img" src="/images/pages/network-abstract.jpg" alt="" loading="lazy"></picture><div class="mega-card__body"><p class="mega-card__title">Network Health Check</p><p class="mega-card__desc">A comprehensive review of your network to identify weaknesses and opportunities.</p><span class="mega-card__link">Learn More &#8594;</span></div></a>
+                  <a href="/solutions/ai-ready-infrastructure.html" class="mega-card"><picture><source srcset="/images/pages/technician.jpg" type="image/jpeg"><img class="mega-card__img" src="/images/pages/technician.jpg" alt="" loading="lazy"></picture><div class="mega-card__body"><p class="mega-card__title">AI-Ready Infrastructure</p><p class="mega-card__desc">Assess whether your infrastructure can support AI-driven business demands.</p><span class="mega-card__link">Learn More &#8594;</span></div></a>
+                  <a href="/solutions/cyber-security-review.html" class="mega-card"><picture><source srcset="/images/pages/cyber-security.jpg" type="image/jpeg"><img class="mega-card__img" src="/images/pages/cyber-security.jpg" alt="" loading="lazy"></picture><div class="mega-card__body"><p class="mega-card__title">Cyber Security Review</p><p class="mega-card__desc">Identify vulnerabilities and close security gaps with expert analysis.</p><span class="mega-card__link">Learn More &#8594;</span></div></a>
+                  <a href="/solutions/microsoft-365-network.html" class="mega-card"><picture><source srcset="/images/pages/professional.jpg" type="image/jpeg"><img class="mega-card__img" src="/images/pages/professional.jpg" alt="" loading="lazy"></picture><div class="mega-card__body"><p class="mega-card__title">Microsoft 365 &amp; Network</p><p class="mega-card__desc">Ensure seamless Microsoft 365 performance before you deploy.</p><span class="mega-card__link">Learn More &#8594;</span></div></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="has-mega">
+            <span class="nav-link">Industries <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="mega-menu" role="region" aria-label="Industries menu">
+              <div class="mega-inner mega-inner--industries">
+                <div class="mega-ind-grid">
+                  <a href="/industries/financial-services.html" class="mega-item"><picture><source srcset="/images/services/service-1.webp" type="image/webp"><img src="/images/services/service-1.jpg" alt="" loading="lazy"></picture><span>Financial Services</span></a>
+                  <a href="/industries/healthcare-clinics.html" class="mega-item"><picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></picture><span>Healthcare &amp; Clinics</span></a>
+                  <a href="/industries/legal-firms.html" class="mega-item"><picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></picture><span>Legal Firms</span></a>
+                  <a href="/industries/manufacturing.html" class="mega-item"><picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></picture><span>Manufacturing</span></a>
+                  <a href="/industries/multi-site-businesses.html" class="mega-item"><picture><source srcset="/images/services/service-4.webp" type="image/webp"><img src="/images/services/service-4.jpg" alt="" loading="lazy"></picture><span>Multi-Site Businesses</span></a>
+                  <a href="/industries/professional-services.html" class="mega-item"><picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></picture><span>Professional Services</span></a>
+                  <a href="/industries/recruitment-agencies.html" class="mega-item"><picture><source srcset="/images/misc/why-choose-us.webp" type="image/webp"><img src="/images/misc/why-choose-us.jpg" alt="" loading="lazy"></picture><span>Recruitment Agencies</span></a>
+                  <a href="/industries/internal-it-teams.html" class="mega-item"><picture><source srcset="/images/misc/it-networking.webp" type="image/webp"><img src="/images/misc/it-networking.jpg" alt="" loading="lazy"></picture><span>Internal IT Teams</span></a>
+                </div>
+                <div class="mega-featured">
+                  <picture><source srcset="/images/pages/industries.jpg" type="image/jpeg"><img src="/images/pages/industries.jpg" alt="Industries" loading="lazy"></picture>
+                  <div class="mega-featured__body">
+                    <span class="mega-featured__label">Industries We Serve</span>
+                    <p class="mega-featured__title">Tailored Networks for Every Sector</p>
+                    <p class="mega-featured__desc">From healthcare to finance, high-performance networks built for your industry.</p>
+                    <a href="/industries/" class="mega-featured__link">Explore All &#8594;</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="/resources/blog/" class="nav-link">Blogs</a>
+<a href="/case-studies/" class="nav-link">Case Studies</a>
+        </div>
+        <span class="nav-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="#353535" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="#353535" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <a href="/contact.html" class="btn-blue">Enquire Here</a>
+      </div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="nav-mobile" role="dialog" aria-modal="true" aria-label="Navigation">
+    <button class="nav-mobile__close" id="nav-mobile-close" aria-label="Close menu">&times;</button>
+    <div class="nav-mobile__brand"><img src="/images/misc/logo.png" alt="Network Consultancy" width="140" height="40" loading="lazy"></div>
+    <nav class="nav-mobile__links">
+      <a href="/about.html" class="nav-mobile__link">About</a>
+      <a href="/services/" class="nav-mobile__link">Services</a>
+      <a href="/solutions/" class="nav-mobile__link">Solutions</a>
+      <a href="/industries/" class="nav-mobile__link">Industries</a>
+      <a href="/resources/blog/" class="nav-mobile__link">Blogs</a>
+      <a href="/case-studies/" class="nav-mobile__link">Case Studies</a>
+      <a href="/contact.html" class="nav-mobile__link">Contact</a>
+    </nav>
+    <a href="/contact.html" class="btn-blue">Enquire Here</a>
+  </div>
+        <main id="main">
+
+  <section class="ctf-section" aria-labelledby="ctf-h">
+    <div class="ctf-inner animate-fade-up">
+      <div class="ctf-header">
+        <h1 class="ctf-title" id="ctf-h">Contact us today for a free consultation</h1>
+        <p class="ctf-sub">We pride ourselves on delivering a flexible engagement style in order to meet your requirements. Contact us for your free consultation.</p>
+      </div>
+
+      <div class="ctf-body">
+        <div class="ctf-image">
+          <img src="/images/pages/contact-form-photo.jpg" alt="Network Consultancy specialist ready to assist" loading="eager" width="521" height="755">
+        </div>
+
+        <div class="ctf-form-panel">
+          <form id="contact-form" class="ctf-form" method="post" action="https://formspree.io/f/REPLACE_FORMSPREE_ID" novalidate>
+            <div class="ctf-service-block" id="service-block-1">
+              <div class="ctf-fields">
+                <div class="ctf-row">
+                  <div class="ctf-field">
+                    <label class="ctf-sr-label" for="cf-fname">First Name</label>
+                    <input class="ctf-input" id="cf-fname" type="text" name="first_name" placeholder="Full Name" autocomplete="given-name">
+                  </div>
+                  <div class="ctf-field">
+                    <label class="ctf-sr-label" for="cf-lname">Last Name</label>
+                    <input class="ctf-input" id="cf-lname" type="text" name="last_name" placeholder="Full Name" autocomplete="family-name">
+                  </div>
+                </div>
+                <div class="ctf-row">
+                  <div class="ctf-field">
+                    <label class="ctf-sr-label" for="cf-phone">Phone Number</label>
+                    <input class="ctf-input" id="cf-phone" type="tel" name="phone" placeholder="Phone Number" autocomplete="tel">
+                  </div>
+                  <div class="ctf-field">
+                    <label class="ctf-sr-label" for="cf-company">Company Name</label>
+                    <input class="ctf-input" id="cf-company" type="text" name="company" placeholder="Company Name" autocomplete="organization">
+                  </div>
+                </div>
+                <div class="ctf-row">
+                  <div class="ctf-field">
+                    <label class="ctf-sr-label" for="cf-company2">Name of Company</label>
+                    <input class="ctf-input" id="cf-company2" type="text" name="company_full" placeholder="Name of Company" autocomplete="organization">
+                  </div>
+                  <div class="ctf-field">
+                    <label class="ctf-sr-label" for="cf-scale">Scale of Business</label>
+                    <select class="ctf-select" id="cf-scale" name="scale">
+                      <option value="">Scale of Business</option>
+                      <option>1&ndash;10 employees</option>
+                      <option>11&ndash;50 employees</option>
+                      <option>51&ndash;200 employees</option>
+                      <option>201&ndash;500 employees</option>
+                      <option>500+ employees</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="ctf-field ctf-field--full">
+                  <label class="ctf-sr-label" for="cf-message">Message</label>
+                  <textarea class="ctf-textarea" id="cf-message" name="message" placeholder="Message"></textarea>
+                </div>
+              </div>
+            </div>
+            <div id="ctf-extra-services"></div>
+            <div class="ctf-service-select-wrap">
+              <p class="ctf-label">Where did you hear about us?</p>
+              <div class="ctf-field ctf-field--full">
+                <label class="ctf-sr-label" for="cf-referral">Where did you hear about us?</label>
+                <select class="ctf-select" id="cf-referral" name="referral">
+                  <option value="">Select Here</option>
+                  <option>Google / Search</option>
+                  <option>LinkedIn</option>
+                  <option>Referral from a colleague</option>
+                  <option>Social Media</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="ctf-add-more" id="ctf-add-more-btn" role="button" tabindex="0" aria-label="Add another service enquiry">
+              <img src="/images/pages/contact-form-plus.svg" alt="" aria-hidden="true" width="24" height="24">
+              <span>Add More Services</span>
+            </div>
+
+            <button type="submit" class="ctf-btn">Enquire Here</button>
+
+            <div id="form-success" class="form-success" role="status" aria-live="polite">Thank you for your enquiry &mdash; we will be in touch shortly.</div>
+            <div id="form-error"   class="form-error"   role="alert"  aria-live="assertive">Something went wrong. Please try again or call +44 (0) 203 150 1401.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ctf-info" aria-label="Contact information">
+    <div class="ctf-info-inner">
+      <div class="ctf-info-item">
+        <div class="ctf-info-icon">
+          <img src="/images/pages/contact-form-phone.svg" alt="Phone" loading="lazy" width="121" height="118">
+        </div>
+        <div class="ctf-info-text">
+          <p class="ctf-info-label">Our Contact</p>
+          <p class="ctf-info-value"><a href="tel:+442031501401">+44 (0) 203 150 1401</a></p>
+        </div>
+      </div>
+      <div class="ctf-info-item">
+        <div class="ctf-info-icon">
+          <img src="/images/pages/contact-form-address.svg" alt="Address" loading="lazy" width="121" height="118">
+        </div>
+        <div class="ctf-info-text">
+          <p class="ctf-info-label">Our Address</p>
+          <p class="ctf-info-value"><strong>Birmingham</strong><br>Beech House, Greenfield Crescent<br>Edgbaston, B15 3BE</p>
+        </div>
+      </div>
+      <div class="ctf-info-item">
+        <div class="ctf-info-icon ctf-info-icon--email">
+          <img src="/images/pages/contact-form-email-icon.svg" alt="Email" loading="lazy" width="54" height="38">
+        </div>
+        <div class="ctf-info-text">
+          <p class="ctf-info-label">Web Address</p>
+          <p class="ctf-info-value"><a href="mailto:info@network-consultancy.com">info@network-consultancy.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+  <footer class="footer" role="contentinfo">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="/" aria-label="Network Consultancy home">
+          <img class="footer__logo" src="/images/misc/logo-white.png" alt="Network Consultancy" width="150" height="48" loading="lazy">
+        </a>
+        <p class="footer__tagline">Expert network consultancy providing secure, scalable infrastructure solutions for UK businesses.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook" target="_blank" rel="noopener" class="footer__social-link">
+            <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="52" height="39" rx="19.5" fill="rgba(255,255,255,0.12)"/>
+              <path d="M28.5 20H26.5V27H23.5V20H22V17.5H23.5V16C23.5 14.34 24.34 13 26.5 13H28.5V15.5H27.5C26.95 15.5 26.5 15.78 26.5 16.5V17.5H28.5L28.5 20Z" fill="white"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener" class="footer__social-link">
+            <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="52" height="39" rx="19.5" fill="rgba(255,255,255,0.12)"/>
+              <path d="M20 15.5C20 16.33 19.33 17 18.5 17C17.67 17 17 16.33 17 15.5C17 14.67 17.67 14 18.5 14C19.33 14 20 14.67 20 15.5ZM17 18.5H20V27H17V18.5ZM22 18.5H24.8V19.8H24.84C25.22 19.08 26.14 18.3 27.5 18.3C30.5 18.3 31 20.26 31 22.8V27H28V23.3C28 22.2 27.98 20.8 26.5 20.8C25 20.8 24.8 22 24.8 23.22V27H22V18.5Z" fill="white"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Twitter / X" target="_blank" rel="noopener" class="footer__social-link">
+            <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="52" height="39" rx="19.5" fill="rgba(255,255,255,0.12)"/>
+              <path d="M30.96 14H33.28L28.18 19.77L34.18 26.97H29.45L25.79 22.18L21.59 26.97H19.26L24.71 20.81L18.96 14H23.8L27.12 18.37L30.96 14ZM30.16 25.57H31.44L23.04 15.31H21.67L30.16 25.57Z" fill="white"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col">
+          <h4>Industries</h4>
+          <ul>
+            <li><a href="/industries/legal-firms.html">Legal Firms</a></li>
+            <li><a href="/industries/financial-services.html">Financial Services</a></li>
+            <li><a href="/industries/recruitment-agencies.html">Recruitment Agencies</a></li>
+            <li><a href="/industries/healthcare-clinics.html">Healthcare &amp; Clinics</a></li>
+            <li><a href="/industries/manufacturing.html">Manufacturing</a></li>
+            <li><a href="/industries/professional-services.html">Professional Services</a></li>
+            <li><a href="/industries/multi-site-businesses.html">Multi-Site Businesses</a></li>
+            <li><a href="/industries/internal-it-teams.html">Internal IT Teams / Co-Managed IT</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/services/managed-wireless-lan.html">Managed Wireless LAN</a></li>
+            <li><a href="/services/business-continuity.html">Business Continuity &amp; Network Resilience</a></li>
+            <li><a href="/services/network-installations.html">Network Installations</a></li>
+            <li><a href="/services/network-consultancy.html">Network Consultancy</a></li>
+            <li><a href="/services/network-support.html">Network Support</a></li>
+            <li><a href="/services/managed-network-support.html">Managed Network Support</a></li>
+            <li><a href="/services/network-design-deployment.html">Network Design &amp; Deployment</a></li>
+            <li><a href="/services/remote-access-vpn.html">Remote Access &amp; VPN Solutions</a></li>
+            <li><a href="/services/firewall-network-security.html">Firewall &amp; Network Security</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Solutions</h4>
+          <ul>
+            <li><a href="/solutions/network-health-check.html">Network Health Check</a></li>
+            <li><a href="/solutions/cyber-security-review.html">Cyber Security Review</a></li>
+            <li><a href="/solutions/microsoft-365-network.html">Microsoft 365 &amp; Network</a></li>
+            <li><a href="/solutions/ai-ready-infrastructure.html">AI-Ready Infrastructure Review</a></li>
+          </ul>
+          <h4 class="mt">Resources</h4>
+          <ul>
+            <li><a href="/resources/guides.html">Guides</a></li>
+            <li><a href="/case-studies/">Case Studies</a></li>
+            <li><a href="/resources/blog/">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="footer__divider">
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; 2025 Network Consultancy. All Rights Reserved.</p>
+      <div class="footer__bottom-links">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms-of-service.html">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/animations.js" defer></script>
+  <script src="/js/global.js" defer></script>
+  <script src="/js/accessibility.js" defer></script>
+  <script>
+    (function() {
+      var serviceCount = 1;
+
+      // Form submission
+      var form = document.getElementById('contact-form');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var btn = form.querySelector('.ctf-btn');
+          btn.disabled = true; btn.textContent = 'Sending...';
+          fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+            .then(function(r) {
+              if (r.ok) {
+                document.getElementById('form-success').style.display = 'block';
+                document.getElementById('form-error').style.display = 'none';
+                form.reset();
+              } else {
+                document.getElementById('form-error').style.display = 'block';
+                document.getElementById('form-success').style.display = 'none';
+              }
+            })
+            .catch(function() {
+              document.getElementById('form-error').style.display = 'block';
+              document.getElementById('form-success').style.display = 'none';
+            })
+            .finally(function() {
+              btn.disabled = false; btn.textContent = 'Enquire Here';
+            });
+        });
+      }
+
+      // Add More Services — inserts a second service block matching Figma 698:45525
+      var addBtn = document.getElementById('ctf-add-more-btn');
+      var container = document.getElementById('ctf-extra-services');
+      if (addBtn && container) {
+        function makeServiceBlock(n) {
+          var wrap = document.createElement('div');
+          wrap.className = 'ctf-service-block';
+          wrap.innerHTML =
+            '<hr class="ctf-divider">' +
+            '<div class="ctf-service-select-wrap">' +
+              '<p class="ctf-label">Select the service</p>' +
+              '<select class="ctf-select" name="service_' + n + '" aria-label="Select service ' + n + '">' +
+                '<option value="">Select Here</option>' +
+                '<option>General Inquiry</option>' +
+                '<option>Network Support</option>' +
+                '<option>Project Inquiry</option>' +
+                '<option>Network Health Check</option>' +
+                '<option>Network Assistance</option>' +
+                '<option>Technical Consultation</option>' +
+              '</select>' +
+            '</div>' +
+            '<div class="ctf-fields">' +
+              '<div class="ctf-row">' +
+                '<div class="ctf-field"><input class="ctf-input" type="text" name="fname_' + n + '" placeholder="Full Name" autocomplete="given-name"></div>' +
+                '<div class="ctf-field"><input class="ctf-input" type="text" name="lname_' + n + '" placeholder="Full Name" autocomplete="family-name"></div>' +
+              '</div>' +
+              '<div class="ctf-row">' +
+                '<div class="ctf-field"><input class="ctf-input" type="tel" name="phone_' + n + '" placeholder="Phone Number" autocomplete="tel"></div>' +
+                '<div class="ctf-field"><input class="ctf-input" type="text" name="company_' + n + '" placeholder="Company Name" autocomplete="organization"></div>' +
+              '</div>' +
+              '<div class="ctf-row">' +
+                '<div class="ctf-field"><input class="ctf-input" type="text" name="company_full_' + n + '" placeholder="Name Of Company" autocomplete="organization"></div>' +
+                '<div class="ctf-field">' +
+                  '<select class="ctf-select" name="scale_' + n + '" aria-label="Scale of business">' +
+                    '<option value="">Scale of Business</option>' +
+                    '<option>1–10 employees</option>' +
+                    '<option>11–50 employees</option>' +
+                    '<option>51–200 employees</option>' +
+                    '<option>201–500 employees</option>' +
+                    '<option>500+ employees</option>' +
+                  '</select>' +
+                '</div>' +
+              '</div>' +
+              '<div class="ctf-field ctf-field--full"><textarea class="ctf-textarea" name="message_' + n + '" placeholder="Message"></textarea></div>' +
+            '</div>';
+          return wrap;
+        }
+        addBtn.addEventListener('click', function() {
+          serviceCount++;
+          container.appendChild(makeServiceBlock(serviceCount));
+          container.lastElementChild.querySelector('select, input').focus();
+        });
+        addBtn.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); addBtn.click(); } });
+      }
+    })();
+  </script>
+</body>

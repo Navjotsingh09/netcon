@@ -1,0 +1,736 @@
+/* ================================================================
+   NETWORK CONSULTANCY — ACCESSIBILITY STYLES v2.0
+   WCAG 2.2 Level AA
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   1 · GLOBAL FOCUS STYLES (WCAG 2.4.7, 2.4.11)
+   ---------------------------------------------------------------- */
+
+:focus { outline: none; }
+
+:focus-visible {
+  outline: 3px solid #0982c5;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+html {
+  scroll-padding-top: 100px;
+}
+
+
+/* ----------------------------------------------------------------
+   2 · SKIP NAVIGATION LINK (WCAG 2.4.1)
+   ---------------------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  top: -120%;
+  left: 16px;
+  z-index: 10000;
+  background: #162470;
+  color: #ffffff;
+  padding: 12px 24px;
+  font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 0 0 10px 10px;
+  text-decoration: none;
+  border: 3px solid #ffffff;
+  transition: top 0.15s;
+  white-space: nowrap;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #0982c5;
+  outline-offset: 3px;
+}
+
+
+/* ----------------------------------------------------------------
+   3 · REDUCED MOTION  (WCAG 2.3.3)
+   ---------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:        0.001s !important;
+    animation-iteration-count: 1      !important;
+    transition-duration:       0.001s !important;
+    scroll-behavior:           auto   !important;
+  }
+}
+
+
+/* ================================================================
+   4 · ACCESSIBILITY WIDGET — OVERLAY & TRIGGER
+   ================================================================ */
+
+/* Widget root */
+#a11y-widget {
+  font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  isolation: isolate;
+}
+
+/* ── Backdrop overlay ──────────────────────────────────────────── */
+.a11y-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+  z-index: 9989;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.a11y-overlay.is-active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Trigger button ──────────────────────────────────────────────  */
+.a11y-trigger {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9990;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  border-radius: 50%;
+  background: #0982c5;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(9, 130, 197, 0.45), 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+  color: #fff;
+}
+
+.a11y-trigger:hover {
+  background: #162470;
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(22, 36, 112, 0.5), 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.a11y-trigger:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+  background: #162470;
+}
+
+.a11y-trigger svg {
+  display: block;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+/* Tooltip label */
+.a11y-trigger::after {
+  content: 'Accessibility';
+  position: absolute;
+  right: 64px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #162470;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.a11y-trigger:hover::after,
+.a11y-trigger:focus-visible::after {
+  opacity: 1;
+}
+
+/* Hide trigger tooltip when panel is open (avoids clutter) */
+#a11y-widget.panel-open .a11y-trigger::after {
+  display: none;
+}
+
+
+/* ================================================================
+   5 · ACCESSIBILITY PANEL — SIDE DRAWER
+   ================================================================ */
+
+.a11y-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9991;
+  width: 360px;
+  height: 100%;
+  height: 100dvh;
+  background: #ffffff;
+  box-shadow: -6px 0 40px rgba(0, 0, 0, 0.18), -1px 0 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Slide-in from right */
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.32, 0, 0.67, 1),
+              visibility 0.3s;
+}
+
+.a11y-panel.is-open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+
+/* ── Panel header ─────────────────────────────────────────────── */
+.a11y-panel__header {
+  background: #162470;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  gap: 12px;
+  flex-shrink: 0;
+  border-bottom: 2px solid rgba(9, 130, 197, 0.4);
+}
+
+.a11y-panel__header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.a11y-panel__title {
+  font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  margin: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.a11y-panel__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.a11y-header-btn {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  padding: 0;
+  transition: background 0.15s;
+}
+
+.a11y-header-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.a11y-header-btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+
+/* ── Panel body ───────────────────────────────────────────────── */
+.a11y-panel__body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px 16px 8px;
+}
+
+.a11y-panel__body::-webkit-scrollbar { width: 4px; }
+.a11y-panel__body::-webkit-scrollbar-track { background: #f0f0f0; }
+.a11y-panel__body::-webkit-scrollbar-thumb { background: #d9d9d9; border-radius: 2px; }
+
+
+/* ── Sections ─────────────────────────────────────────────────── */
+.a11y-section {
+  margin-bottom: 20px;
+}
+
+.a11y-section__label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #585151;
+  margin: 0 0 10px 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+
+/* ── Font size row ────────────────────────────────────────────── */
+.a11y-font-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: #f5f7fa;
+  border: 1px solid #e4e7ec;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.a11y-font-row__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #353535;
+}
+
+.a11y-font-row__controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.a11y-font-ctrl {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: #0982c5;
+  border: none;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, transform 0.12s;
+  padding: 0;
+}
+
+.a11y-font-ctrl:hover:not(:disabled) {
+  background: #162470;
+  transform: scale(1.1);
+}
+
+.a11y-font-ctrl:focus-visible {
+  outline: 2px solid #162470;
+  outline-offset: 2px;
+}
+
+.a11y-font-ctrl:disabled {
+  background: #d9d9d9;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.a11y-font-pct {
+  font-size: 14px;
+  font-weight: 700;
+  color: #162470;
+  min-width: 44px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+
+/* ── Option grid ──────────────────────────────────────────────── */
+.a11y-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.a11y-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.a11y-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 6px 10px;
+  background: #f5f7fa;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  min-height: 72px;
+  color: #353535;
+  line-height: 1;
+}
+
+.a11y-option:hover {
+  background: #e8f4fd;
+  border-color: #0982c5;
+}
+
+.a11y-option:focus-visible {
+  outline: 2px solid #0982c5;
+  outline-offset: 2px;
+}
+
+.a11y-option.is-active {
+  background: #162470;
+  border-color: #162470;
+  color: #ffffff;
+}
+
+.a11y-option.is-active svg {
+  stroke: #ffffff;
+  fill: #ffffff;
+}
+
+.a11y-option__label {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  color: inherit;
+  pointer-events: none;
+}
+
+/* Profile buttons — slightly larger */
+.a11y-profile-btn {
+  min-height: 80px;
+  padding: 14px 8px 12px;
+  gap: 8px;
+}
+
+.a11y-profile-btn .a11y-option__label {
+  font-size: 10px;
+}
+
+/* Text icon for Aa / B */
+.a11y-icon-text {
+  font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: inherit;
+  line-height: 1;
+  pointer-events: none;
+  display: block;
+}
+
+.a11y-icon-bold {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+
+/* ── Panel footer ─────────────────────────────────────────────── */
+.a11y-panel__footer {
+  padding: 12px 16px 16px;
+  border-top: 1px solid #EBEBEB;
+  flex-shrink: 0;
+}
+
+.a11y-reset-btn {
+  width: 100%;
+  padding: 11px 16px;
+  background: transparent;
+  border: 2px solid #d9d9d9;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #585151;
+  letter-spacing: 0.03em;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.a11y-reset-btn:hover {
+  border-color: #0982c5;
+  color: #0982c5;
+  background: #e8f4fd;
+}
+
+.a11y-reset-btn:focus-visible {
+  outline: 2px solid #0982c5;
+  outline-offset: 2px;
+}
+
+
+/* ── Reading Guide element ────────────────────────────────────── */
+#a11y-reading-guide-el {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 44px;
+  background: rgba(9, 130, 197, 0.10);
+  border-top: 2px solid rgba(9, 130, 197, 0.45);
+  border-bottom: 2px solid rgba(9, 130, 197, 0.45);
+  pointer-events: none;
+  z-index: 9985;
+  transform: translateY(-50%);
+  display: none;
+}
+
+body.a11y-reading-guide #a11y-reading-guide-el {
+  display: block;
+}
+
+
+/* ── Mobile ───────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .a11y-trigger {
+    bottom: 20px;
+    right: 16px;
+  }
+
+  .a11y-panel {
+    width: 100%;
+  }
+
+  .a11y-trigger::after {
+    display: none;
+  }
+}
+
+
+/* ================================================================
+   6 · ACCESSIBILITY MODE OVERRIDES
+   (Applied via body class by accessibility.js)
+   ================================================================ */
+
+/* ── 6.1 High Contrast ─────────────────────────────────────────── */
+body.a11y-high-contrast {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.a11y-high-contrast *:not(#a11y-widget):not(#a11y-widget *) {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+body.a11y-high-contrast a:not(#a11y-widget a),
+body.a11y-high-contrast a:not(#a11y-widget a):visited {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+
+body.a11y-high-contrast button:not(#a11y-widget button) {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+body.a11y-high-contrast img:not(#a11y-widget img) {
+  filter: grayscale(100%) contrast(120%);
+}
+
+body.a11y-high-contrast input,
+body.a11y-high-contrast textarea,
+body.a11y-high-contrast select {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+
+
+/* ── 6.2 Dark Contrast ─────────────────────────────────────────── */
+body.a11y-dark-contrast {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+}
+
+body.a11y-dark-contrast *:not(#a11y-widget):not(#a11y-widget *) {
+  background-color: transparent !important;
+  color: inherit !important;
+  border-color: #374151 !important;
+}
+
+body.a11y-dark-contrast header:not(#a11y-widget *),
+body.a11y-dark-contrast nav:not(#a11y-widget *),
+body.a11y-dark-contrast footer:not(#a11y-widget *),
+body.a11y-dark-contrast section:not(#a11y-widget *),
+body.a11y-dark-contrast main:not(#a11y-widget *) {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+}
+
+body.a11y-dark-contrast a:not(#a11y-widget a) {
+  color: #60a5fa !important;
+}
+
+body.a11y-dark-contrast img:not(#a11y-widget img) {
+  filter: brightness(0.85) !important;
+}
+
+
+/* ── 6.3 Light Contrast ────────────────────────────────────────── */
+body.a11y-light-contrast *:not(#a11y-widget):not(#a11y-widget *) {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #555555 !important;
+}
+
+body.a11y-light-contrast a:not(#a11y-widget a) {
+  color: #0044cc !important;
+}
+
+
+/* ── 6.4 Highlight Titles ──────────────────────────────────────── */
+body.a11y-highlight-titles h1:not(#a11y-widget *),
+body.a11y-highlight-titles h2:not(#a11y-widget *),
+body.a11y-highlight-titles h3:not(#a11y-widget *),
+body.a11y-highlight-titles h4:not(#a11y-widget *),
+body.a11y-highlight-titles h5:not(#a11y-widget *),
+body.a11y-highlight-titles h6:not(#a11y-widget *) {
+  outline: 2px dashed #0982c5 !important;
+  outline-offset: 4px !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  background-color: rgba(9, 130, 197, 0.08) !important;
+}
+
+
+/* ── 6.5 Highlight Links ───────────────────────────────────────── */
+body.a11y-highlight-links a:not(#a11y-widget a) {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  padding: 1px 4px !important;
+  border-radius: 3px !important;
+  outline: 1px solid #000 !important;
+}
+
+
+/* ── 6.6 Dyslexia-friendly font ────────────────────────────────── */
+body.a11y-dyslexia,
+body.a11y-dyslexia *:not(#a11y-widget):not(#a11y-widget *) {
+  font-family: 'Arial', 'Verdana', 'Helvetica', sans-serif !important;
+  letter-spacing: 0.06em !important;
+  word-spacing: 0.18em !important;
+  line-height: 1.7 !important;
+}
+
+body.a11y-dyslexia p,
+body.a11y-dyslexia li {
+  max-width: 70ch;
+}
+
+
+/* ── 6.7 Letter Spacing ────────────────────────────────────────── */
+body.a11y-letter-spacing p:not(#a11y-widget *),
+body.a11y-letter-spacing li:not(#a11y-widget *),
+body.a11y-letter-spacing span:not(#a11y-widget *),
+body.a11y-letter-spacing label:not(#a11y-widget *),
+body.a11y-letter-spacing a:not(#a11y-widget a),
+body.a11y-letter-spacing button:not(#a11y-widget button),
+body.a11y-letter-spacing td:not(#a11y-widget *),
+body.a11y-letter-spacing th:not(#a11y-widget *) {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.14em !important;
+}
+
+
+/* ── 6.8 Line Height ───────────────────────────────────────────── */
+body.a11y-line-height p:not(#a11y-widget *),
+body.a11y-line-height li:not(#a11y-widget *),
+body.a11y-line-height span:not(#a11y-widget *),
+body.a11y-line-height label:not(#a11y-widget *),
+body.a11y-line-height td:not(#a11y-widget *),
+body.a11y-line-height th:not(#a11y-widget *) {
+  line-height: 2.0 !important;
+}
+
+
+/* ── 6.9 Font Weight ───────────────────────────────────────────── */
+body.a11y-font-weight p:not(#a11y-widget *),
+body.a11y-font-weight li:not(#a11y-widget *),
+body.a11y-font-weight span:not(#a11y-widget *),
+body.a11y-font-weight label:not(#a11y-widget *),
+body.a11y-font-weight a:not(#a11y-widget a),
+body.a11y-font-weight td:not(#a11y-widget *),
+body.a11y-font-weight th:not(#a11y-widget *) {
+  font-weight: 700 !important;
+}
+
+
+/* ── 6.10 Text Alignment ───────────────────────────────────────── */
+body.a11y-align-left p:not(#a11y-widget *),
+body.a11y-align-left li:not(#a11y-widget *),
+body.a11y-align-left h1:not(#a11y-widget *),
+body.a11y-align-left h2:not(#a11y-widget *),
+body.a11y-align-left h3:not(#a11y-widget *),
+body.a11y-align-left h4:not(#a11y-widget *) {
+  text-align: left !important;
+}
+
+body.a11y-align-center p:not(#a11y-widget *),
+body.a11y-align-center li:not(#a11y-widget *),
+body.a11y-align-center h1:not(#a11y-widget *),
+body.a11y-align-center h2:not(#a11y-widget *),
+body.a11y-align-center h3:not(#a11y-widget *),
+body.a11y-align-center h4:not(#a11y-widget *) {
+  text-align: center !important;
+}
+
+body.a11y-align-right p:not(#a11y-widget *),
+body.a11y-align-right li:not(#a11y-widget *),
+body.a11y-align-right h1:not(#a11y-widget *),
+body.a11y-align-right h2:not(#a11y-widget *),
+body.a11y-align-right h3:not(#a11y-widget *),
+body.a11y-align-right h4:not(#a11y-widget *) {
+  text-align: right !important;
+}
+
+
+/* ── 6.11 Pause Animations ─────────────────────────────────────── */
+body.a11y-pause-animations *,
+body.a11y-pause-animations *::before,
+body.a11y-pause-animations *::after {
+  animation-duration:        0.001s !important;
+  animation-iteration-count: 1      !important;
+  transition-duration:       0.001s !important;
+  scroll-behavior:           auto   !important;
+}
+
+
+/* ── 6.12 Big Cursor ───────────────────────────────────────────── */
+body.a11y-big-cursor,
+body.a11y-big-cursor * {
+  cursor: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M8 4L8 34L13 29L17 38L21 36L17 27L25 27Z' fill='%23000000' stroke='%23ffffff' stroke-width='2'/%3E%3C/svg%3E") 8 4, auto !important;
+}

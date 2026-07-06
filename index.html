@@ -10,11 +10,12 @@
   <link rel="stylesheet" href="css/animations.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       color: #353535;
       background: #fff;
+      overflow-x: hidden;
     }
     img { display: block; max-width: 100%; }
     picture { display: contents; } /* let <img> behave as direct child for flex/grid/position contexts */
@@ -23,9 +24,9 @@
     button { cursor: pointer; border: none; outline: none; background: none; }
 
     :root {
-      --max-w: 1440px;     /* inner content column cap */
-      --section-w: 1920px; /* full-bleed section background cap */
-      --px: 240px;         /* standard horizontal padding — overridden per breakpoint */
+      --max-w: 1440px;   /* standard container max-width */
+      --section-w: 1920px;
+      --px: 240px;        /* standard horizontal padding — overridden per breakpoint */
       --navy: #162470;
       --blue: #0982c5;
       --dark: #353535;
@@ -34,39 +35,13 @@
       --sub: #585151;
     }
 
-    /* ===== SECTION WIDTH STANDARD =====
-       Full-bleed sections: background stretches to 1920px max, centred.
-       Inset card sections: content caps at 1440px.
-       At ≤1920px (all real-world screens) this has zero visual effect —
-       it only prevents runaway stretching on ultra-wide displays.
-    ===================================== */
-    .hero,
-    .main-services,
-    .why-choose,
-    .solutions-section,
-    .parallax-cards-wrapper,
-    .our-clients,
-    .testimonials,
-    .faq,
-    .contact-section,
-    .footer {
-      max-width: var(--section-w);
-      margin-left: auto;
-      margin-right: auto;
-    }
-    /* Inset card sections already have side margins — just cap their width */
-    .services-section,
-    .industries-section {
-      max-width: var(--max-w);
-    }
-
     /* ===== UTILITIES ===== */
     .section-title {
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 42px;
       font-weight: 600;
       color: var(--navy);
-      line-height: normal;  /* Figma: leading-[normal] */
+      line-height: 1;
     }
     .btn-blue {
       background: var(--blue);
@@ -119,14 +94,11 @@
 
     /* ===== NAVBAR ===== */
     .navbar {
-      /* Follows section standard: 1920px max cap, var(--px) side padding.
-         .navbar__box then centres at max 1440px inside — same column as all sections. */
       max-width: var(--section-w);
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto;
       padding: 0 var(--px);
       position: relative;
-      z-index: 10;
+      z-index: 100;
     }
     .navbar__box {
       display: flex;
@@ -136,9 +108,9 @@
       border: 1px solid var(--gray-mid);
       border-radius: 10px;
       padding: 0 48px;
-      height: 129px;  /* Fix 10: 83 → 129 — matches Figma box height */
+      height: 129px;
       box-shadow: 0 4px 4px rgba(0,0,0,.05);
-      max-width: var(--max-w);
+      max-width: 1440px;
       margin: 0 auto;
     }
     .navbar__logo img { height: 50px; width: auto; }
@@ -150,7 +122,7 @@
     .navbar__links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 40px;
     }
     .navbar__links .nav-link {
       font-family: 'Barlow', sans-serif;
@@ -163,15 +135,12 @@
       align-items: center;
       gap: 7px;
       position: relative;
-      padding: 6px 12px;
-      border-radius: 8px;
-      transition: background 0.2s ease, color 0.2s ease;
+      padding: 6px 0;
+      transition: color 0.2s ease;
     }
-    /* Active state — pill background + full-width accent bar */
     .navbar__links .nav-link.active {
       color: var(--navy);
       font-weight: 700;
-      background: rgba(22, 36, 112, 0.07);
     }
     .navbar__links .nav-link.active::after {
       content: '';
@@ -198,14 +167,10 @@
     .mega-menu {
       position: absolute;
       top: 100%;
-      left: 0;
-      right: 0;
+      left: 0; right: 0;
       background: #fff;
-      border: 1px solid var(--gray-mid);
       border-top: 3px solid var(--blue);
-      border-radius: 0 0 10px 10px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
-      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.13);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -221,8 +186,9 @@
       transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s 0s;
     }
     .mega-inner {
-      max-width: 100%;
-      padding: 28px 48px 32px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 32px var(--px);
     }
     /* Heading row used by Solutions + Resources */
     .mega-heading {
@@ -481,7 +447,7 @@
     }
 
     /* ===== HERO ===== */
-    .hero { padding: 36px var(--px) 60px; }
+    .hero { padding: 36px var(--px) 60px; max-width: 1920px; margin: 0 auto; }
     .hero__wrap {
       position: relative;
       height: 618px;
@@ -489,13 +455,9 @@
       overflow: hidden;
     }
     .hero__bg {
-      position: absolute;
-      top: -15%;        /* oversized to give parallax room without exposing edges */
-      left: 0; right: 0;
-      width: 100%;
-      height: 130%;     /* 30% larger than the hero so parallax motion has space */
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
-      will-change: transform;  /* hint GPU layer */
     }
     .hero__overlay {
       position: absolute; inset: 0;
@@ -512,7 +474,7 @@
     .hero__text { display: flex; flex-direction: column; gap: 24px; }
     .hero__title {
       font-family: 'Roboto Condensed', sans-serif;
-      font-size: 60px; font-weight: 600; line-height: normal;  /* Figma: leading-[normal] — not tight line-height:1 */
+      font-size: 60px; font-weight: 600; line-height: 1;
       color: #fff;
     }
     .hero__sub {
@@ -521,7 +483,7 @@
     }
 
     /* ===== MAIN SERVICES GRID ===== */
-    .main-services { padding: 60px var(--px); }
+    .main-services { padding: 60px var(--px); max-width: 1920px; margin: 0 auto; }
     .main-services__title { margin-bottom: 55px; }
     /* Two-row asymmetric grid: row1 350/471/592, row2 350/592/471 */
     .main-services__grid {
@@ -553,38 +515,28 @@
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,.3) 50%, rgba(0,0,0,.1) 100%);
     }
-    .svc-card__body {
-      position: absolute;
-      bottom: 29px; left: 29px; right: 29px;
-    }
     .svc-card__label {
+      position: absolute;
+      bottom: 70px; left: 29px;
       font-size: 24px; font-weight: 500; line-height: 1.25;
       color: #fff;
-      display: block;
+      transition: bottom .3s ease;
     }
     .svc-card__desc {
-      font-size: 14px; font-weight: 400; line-height: 1.6;
-      color: rgba(255,255,255,0.9);
+      position: absolute;
+      bottom: 24px; left: 29px; right: 29px;
+      font-size: 14px; font-weight: 400; line-height: 1.55;
+      color: rgba(255,255,255,.88);
       margin: 0;
-      max-height: 0;
-      overflow: hidden;
       opacity: 0;
-      transition: max-height .4s ease, opacity .35s ease, margin-top .35s ease;
+      transform: translateY(8px);
+      transition: opacity .3s ease, transform .3s ease;
     }
-    .svc-card:hover .svc-card__desc {
-      max-height: 160px;
-      opacity: 1;
-      margin-top: 10px;
-    }
-    .svc-card__grad {
-      transition: background .35s ease;
-    }
-    .svc-card:hover .svc-card__grad {
-      background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.15) 100%);
-    }
+    .svc-card:hover .svc-card__label { bottom: 120px; }
+    .svc-card:hover .svc-card__desc { opacity: 1; transform: translateY(0); }
 
     /* ===== VIDEO BANNER ===== */
-    .video-banner { padding: 0 var(--px) 20px; }
+    .video-banner { padding: 0 var(--px) 20px; max-width: 1920px; margin: 0 auto; }
     .video-banner__box {
       background: var(--dark);
       border-radius: 20px;
@@ -606,7 +558,11 @@
     }
 
     /* ===== SERVICES CARDS SECTION ===== */
-    .services-section { margin: 53px var(--px) 20px; }
+    .services-section {
+      width: calc(100% - (var(--px) * 2));
+      max-width: 1440px;
+      margin: 53px auto 20px;
+    }
     .services-section__inner {
       background: var(--gray-mid);
       border-radius: 20px;
@@ -642,51 +598,31 @@
       bottom: 0; left: 16px; right: 16px;
       background: #fff;
       border-radius: 9px 9px 0 0;
-      padding: 16px 20px 20px;
-      display: flex; flex-direction: column; align-items: center; gap: 0;
+      padding: 16px 20px;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      min-height: 80px;
     }
     .s-card__title {
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 24px; font-weight: 700;
       color: var(--dark); text-align: center;
-      transition: color 0.3s ease;
-    }
-    .s-card:hover .s-card__title { color: var(--navy); }
-    /* Reveal wrapper — desc + CTA hidden until hover */
-    .s-card__reveal {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      width: 100%;
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      margin-top: 0;
-      transition: max-height 0.4s cubic-bezier(0, 1, 0.5, 1),
-                  opacity 0.35s ease,
-                  margin-top 0.3s ease;
-    }
-    .s-card:hover .s-card__reveal {
-      max-height: 140px;
-      opacity: 1;
-      margin-top: 10px;
     }
     .s-card__desc {
       font-family: 'Roboto Condensed', sans-serif;
-      font-size: 16px; color: var(--sub); text-align: center; line-height: 1.4;
+      font-size: 16px; color: var(--dark); text-align: center;
     }
-    .s-card__reveal .btn-blue { width: 100%; justify-content: center; }
 
     /* ===== WHY CHOOSE US ===== */
     .why-choose {
       padding: 60px var(--px);
+      max-width: 1920px;
+      margin: 0 auto;
       background: linear-gradient(91deg, rgba(241,244,249,.5) 0%, rgba(173,217,243,.5) 15%, rgba(160,182,229,.5) 33%, rgba(8,173,252,.2) 49%, rgba(160,182,229,.5) 68%, rgba(173,217,243,.5) 83%, rgba(245,248,253,.5) 100%);
     }
     .why-choose__header { max-width: 912px; margin-bottom: 101px; }
     .why-choose__header h2 { margin-bottom: 16px; }
     .why-choose__header p {
-      font-size: 20px; color: var(--navy); font-weight: 400; line-height: 1.25;  /* Figma: leading-[1.25] */
+      font-size: 20px; color: var(--navy); font-weight: 400;
     }
     .why-choose__layout {
       display: grid;
@@ -698,7 +634,6 @@
     .why-choose__layout > picture { display: block; width: 400px; }
     .why-col { display: flex; flex-direction: column; }
     .why-point { padding: 57px 0; border-bottom: 1px solid rgba(22,36,112,.2); }  /* Fix 6: 36 → 57 */
-    .why-col .why-point:first-child { padding-top: 0; }  /* align first text item with image top */
     .why-point:last-child { border-bottom: none; }
     .why-point p { font-size: 24px; font-weight: 500; color: var(--navy); line-height: 1.25; }
     .why-img {
@@ -708,7 +643,7 @@
     }
 
     /* ===== SOLUTIONS SECTION ===== */
-    .solutions-section { padding: 60px var(--px); }
+    .solutions-section { padding: 60px var(--px); max-width: 1920px; margin: 0 auto; }
     .solutions-section__header { margin-bottom: 40px; }
     .solutions-main {
       position: relative;
@@ -782,7 +717,9 @@
 
     /* ===== INDUSTRIES SECTION ===== */
     .industries-section {
-      margin: 0 var(--px) 53px;  /* Fix 11: 60 → 53 */
+      width: calc(100% - (var(--px) * 2));
+      max-width: 1440px;
+      margin: 0 auto 53px;  /* Fix 11: 60 → 53 */
       background: var(--gray-mid);
       border-radius: 20px;
       padding: 45px 60px 60px;
@@ -797,27 +734,20 @@
     .scroll-banner-wrap {
       display: flex; justify-content: center;
       padding: 80px var(--px) 0;
+      max-width: 1920px;
+      margin: 0 auto;
     }
-    .scroll-banner-wrap + .scroll-banner-wrap { padding-top: 80px; padding-bottom: 80px; }
+    .scroll-banner-wrap + .scroll-banner-wrap { padding-top: 20px; padding-bottom: 80px; }
     .scroll-banner {
       position: relative;
       width: 100%;
-      max-width: 1420px;
+      max-width: 1440px;
       height: 914px;
-      border-radius: 30px;
-      overflow: hidden;
-      /* clip-path clips reliably even for will-change:transform children (unlike overflow:hidden alone) */
-      clip-path: inset(0 round 30px);
-      isolation: isolate;
+      border-radius: 30px; overflow: hidden;
     }
     .scroll-banner__bg {
-      position: absolute;
-      top: -15%;        /* oversized to give parallax room without exposing edges */
-      left: 0; right: 0;
-      width: 100%;
-      height: 130%;     /* 30% larger than the banner so parallax motion has space */
-      object-fit: cover;
-      will-change: transform;  /* hint GPU layer */
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
     }
     .scroll-banner__overlay {
       position: absolute; inset: 0;
@@ -835,8 +765,8 @@
     .scroll-banner-cta-abs {
       position: absolute;
       z-index: 3;
-      bottom: 112px;  /* button top≈742, bottom≈802; gap to dots(827)=25px, gap from last bullet(729)=13px */
-      left: 85px;     /* aligns with content text left edge */
+      top: 713px;   /* Figma: top-[793.53px] in 1074px wrapper, banner offset 80px = 713px in banner */
+      left: 85px;   /* aligns with content text left edge */
     }
     .scroll-banner__title {
       font-family: 'Roboto Condensed', sans-serif;
@@ -864,18 +794,21 @@
     /* ===== OUR CLIENTS ===== */
     .our-clients {
       padding: 60px var(--px);
+      min-height: 1305px;
+      max-width: 1920px;
+      margin: 0 auto;
       background: linear-gradient(91deg, rgba(241,244,249,.5) 0%, rgba(173,217,243,.5) 15%, rgba(160,182,229,.5) 33%, rgba(8,173,252,.2) 49%, rgba(160,182,229,.5) 68%, rgba(173,217,243,.5) 83%, rgba(245,248,253,.5) 100%);
     }
     .our-clients h2 { margin-bottom: 40px; }
     .clients-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      column-gap: 27px;
-      row-gap: 72px;
+      grid-template-columns: repeat(3, 360px);
+      column-gap: 27px;  /* Fix 12: 20 → 27 */
+      row-gap: 72px;     /* Fix 7: 20 → 72 */
     }
     .client-box {
       background: #fff;
-      height: 237px;
+      width: 360px; height: 237px;
       border-radius: 8px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
@@ -888,6 +821,8 @@
     /* ===== TESTIMONIALS ===== */
     .testimonials {
       padding: 80px var(--px);
+      max-width: 1920px;
+      margin: 0 auto;
       background: linear-gradient(91deg, rgba(241,244,249,.5) 0%, rgba(173,217,243,.5) 15%, rgba(160,182,229,.5) 33%, rgba(8,173,252,.2) 49%, rgba(160,182,229,.5) 68%, rgba(173,217,243,.5) 83%, rgba(245,248,253,.5) 100%);
     }
     .testimonials__layout {
@@ -920,7 +855,7 @@
       background: #fff;
       border: 0.2px solid var(--dark);
       border-radius: 20px;
-      padding: 71px 56px 68px 56px;
+      padding: 71px 225px 68px 56px;
       box-shadow: 0 4px 2px rgba(0,0,0,.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
@@ -953,7 +888,7 @@
     }
 
     /* ===== FAQ ===== */
-    .faq { background: #fff; padding: 80px var(--px); }
+    .faq { background: #fff; padding: 80px var(--px); max-width: 1920px; margin: 0 auto; }
     .faq h2 { margin-bottom: 40px; }
     .faq-list { display: flex; flex-direction: column; gap: 20px; }
     .faq-item { border-radius: 20px; overflow: hidden; transition: background 0.3s ease; }
@@ -998,7 +933,7 @@
     .faq-item.open .faq-answer { display: block; }
 
     /* ===== CONTACT ===== */
-    .contact-section { padding: 80px var(--px); }
+    .contact-section { padding: 80px var(--px); max-width: 1920px; margin: 0 auto; }
     .contact-layout {
       display: grid;
       grid-template-columns: 518px 1fr;
@@ -1079,7 +1014,7 @@
     }
 
     /* ===== FOOTER ===== */
-    .footer { background: var(--dark); padding: 59px 240px 60px; color: #fff; }
+    .footer { background: var(--dark); padding: 59px 240px 60px; color: #fff; max-width: 1920px; margin: 0 auto; }
     .footer__top { display: flex; gap: 102px; align-items: flex-start; margin-bottom: 40px; }
     .footer__brand {
       width: 405px; flex-shrink: 0;
@@ -1131,33 +1066,6 @@
       padding: 80px var(--px);
       display: flex; justify-content: center; align-items: flex-start;
     }
-
-    /* ===== PARALLAX STACKED BANNER CARDS ===== */
-    .parallax-cards-wrapper {
-      position: relative;
-      overflow: visible;
-    }
-    /* Card 1 — front layer */
-    .parallax-cards-wrapper > .scroll-banner-wrap:first-child {
-      position: relative;
-      z-index: 2;
-    }
-    /* Card 2 — behind layer, pulled up for initial overlap */
-    .parallax-cards-wrapper > .scroll-banner-wrap:last-child {
-      position: relative;
-      z-index: 1;
-      height: auto;         /* override fixed 1074px */
-      padding-top: 0;       /* overlap replaces the top gap */
-      margin-top: -100px;   /* 100px initial overlap */
-      box-shadow: 0 -8px 40px rgba(0,0,0,0.3);
-    }
-    /* Mobile: static 40px overlap, parallax disabled by JS */
-    @media (max-width: 767px) {
-      .parallax-cards-wrapper > .scroll-banner-wrap:last-child {
-        margin-top: -40px;
-      }
-    }
-
     .scroll-banner-cta-abs {
       /* top/left set in main rule above — no override needed here */
     }
@@ -1172,15 +1080,18 @@
     .hero-anim-3 { animation: heroFadeUp 0.6s ease-out 0.3s both; }
 
     /* ===== NAV RESPONSIVE — breakpoints ===== */
-    /* 1440px–1201px: compress box inner-padding + link gaps to prevent overflow */
-    @media (max-width: 1440px) and (min-width: 1201px) {
-      .navbar__box  { padding: 0 32px; }
-      .navbar__links { gap: 14px; }
-      .navbar__right { gap: 24px; }
-      /* Testimonials: compress gap so card has enough room */
-      .testimonials__layout { gap: 80px; }
-      .testimonials__left { width: 340px; }
+    @media (max-width: 1440px) {
+      .navbar__links { gap: 28px; }
+      .navbar__links .nav-link { font-size: 18px; }
+      .navbar__box .btn-blue { font-size: 18px; padding: 12px 20px; }
     }
+
+    @media (max-width: 1280px) {
+      .navbar__links { gap: 20px; }
+      .navbar__links .nav-link { font-size: 16px; }
+      .navbar__box .btn-blue { font-size: 16px; padding: 11px 18px; }
+    }
+
     /* ≤1200px: switch to hamburger (nav links no longer fit) */
     @media (max-width: 1200px) {
       .navbar__right { display: none; }
@@ -1196,10 +1107,6 @@
       .why-img { width: 320px; height: 440px; }
       .why-choose__layout { grid-template-columns: 1fr 320px 1fr; }
       .solutions-bottom { flex-wrap: wrap; }
-      /* Testimonials at 1280px */
-      .testimonials__layout { gap: 60px; }
-      .testimonials__left { width: 280px; }
-      .testimonials__left h2 { font-size: 56px; }
       /* Footer uses fixed padding — not in the standardised system */
       .footer { padding: 59px 120px 60px; }
     }
@@ -1216,9 +1123,6 @@
     /* ===== RESPONSIVE — 768px (Tablet) ===== */
     @media (max-width: 768px) {
       :root { --px: 32px; }  /* cascade: all padded sections now use 32px */
-      /* Nav: small v-padding on mobile */
-      .navbar { padding: 10px var(--px); }
-      .navbar__box { height: 64px; }
 
       /* Hero */
       .hero { padding: 16px var(--px) 40px; }
@@ -1297,6 +1201,7 @@
     /* ===== RESPONSIVE — 375px (Mobile) ===== */
     @media (max-width: 480px) {
       :root { --px: 20px; }  /* cascade: all padded sections now use 20px */
+      .navbar__box { padding: 0 20px; height: 64px; }
       /* Hero */
       .hero__title { font-size: 30px; }
       .hero__sub { font-size: 16px; }
@@ -1335,17 +1240,17 @@
 <body>
 
   <!-- ========= NAVIGATION ========= -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Main navigation">
     <div class="navbar__box">
-      <a href="#" class="navbar__logo">
-        <img src="https://www.figma.com/api/mcp/asset/ac4382a8-9d44-4239-9876-46ef13e9e743" alt="Network Consultancy" />
+      <a href="/" class="navbar__logo" aria-label="Network Consultancy home">
+        <img src="/images/misc/logo.png" alt="Network Consultancy" width="150" height="44" loading="eager" />
       </a>
       <div class="navbar__right">
         <div class="navbar__links">
-          <a href="#" class="nav-link active">About</a>
+          <a href="/about.html" class="nav-link">About</a>
           <!-- SERVICES MEGA MENU -->
           <div class="has-mega">
-            <span class="nav-link">Services <img class="nav-arrow" src="https://www.figma.com/api/mcp/asset/79b24ec6-3189-4a03-b1ee-e982831d6787" alt="" /></span>
+            <span class="nav-link">Services <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <div class="mega-menu">
               <div class="mega-inner mega-inner--services">
                 <div class="mega-featured">
@@ -1357,43 +1262,43 @@
                     <span class="mega-featured__label">Services Overview</span>
                     <h3 class="mega-featured__title">Managed Network Services</h3>
                     <p class="mega-featured__desc">Expert-led, end-to-end IT network support tailored for growing businesses.</p>
-                    <a href="#" class="mega-featured__link">View All Services &#8594;</a>
+                    <a href="/services/" class="mega-featured__link">View All Services &#8594;</a>
                   </div>
                 </div>
                 <div class="mega-items">
-                  <a href="#" class="mega-item">
+                  <a href="/services/network-consultancy.html" class="mega-item">
                     <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></picture>
                     <span>Network Consultancy</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/services/network-design-deployment.html" class="mega-item">
                     <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></picture>
                     <span>Network Design &amp; Deployment</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/services/network-installations.html" class="mega-item">
                     <picture><source srcset="/images/services/service-4.webp" type="image/webp"><img src="/images/services/service-4.jpg" alt="" loading="lazy"></picture>
                     <span>Network Installations</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/services/network-support.html" class="mega-item">
                     <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></picture>
                     <span>Network Support</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/services/managed-network-support.html" class="mega-item">
                     <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></picture>
                     <span>Managed Network Support</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/services/managed-wireless-lan.html" class="mega-item">
                     <picture><source srcset="/images/misc/it-networking.webp" type="image/webp"><img src="/images/misc/it-networking.jpg" alt="" loading="lazy"></picture>
                     <span>Managed Wireless LAN</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/services/firewall-network-security.html" class="mega-item">
                     <picture><source srcset="/images/misc/why-choose-us.webp" type="image/webp"><img src="/images/misc/why-choose-us.jpg" alt="" loading="lazy"></picture>
                     <span>Firewall &amp; Network Security</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/services/remote-access-vpn.html" class="mega-item">
                     <picture><source srcset="/images/banners/scroll-banner-1.webp" type="image/webp"><img src="/images/banners/scroll-banner-1.jpg" alt="" loading="lazy"></picture>
                     <span>Remote Access &amp; VPN Solutions</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/services/business-continuity.html" class="mega-item">
                     <picture><source srcset="/images/banners/scroll-banner-2.webp" type="image/webp"><img src="/images/banners/scroll-banner-2.jpg" alt="" loading="lazy"></picture>
                     <span>Business Continuity &amp; Resilience</span>
                   </a>
@@ -1404,15 +1309,15 @@
 
           <!-- SOLUTIONS MEGA MENU -->
           <div class="has-mega">
-            <span class="nav-link">Solutions <img class="nav-arrow" src="https://www.figma.com/api/mcp/asset/79b24ec6-3189-4a03-b1ee-e982831d6787" alt="" /></span>
+            <span class="nav-link">Solutions <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <div class="mega-menu">
               <div class="mega-inner mega-inner--solutions">
                 <div class="mega-heading">
                   <span class="mega-heading__title">IT Networking Solutions</span>
-                  <a href="#" class="mega-heading__all">View All Solutions &#8594;</a>
+                  <a href="/solutions/" class="mega-heading__all">View All Solutions &#8594;</a>
                 </div>
                 <div class="mega-cards">
-                  <a href="#" class="mega-card">
+                  <a href="/solutions/network-health-check.html" class="mega-card">
                     <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img class="mega-card__img" src="/images/services/service-1.jpg" alt="" loading="lazy"></picture>
                     <div class="mega-card__body">
                       <div class="mega-card__title">Network Health Check</div>
@@ -1420,7 +1325,7 @@
                       <span class="mega-card__link">Learn More &#8594;</span>
                     </div>
                   </a>
-                  <a href="#" class="mega-card">
+                  <a href="/solutions/ai-ready-infrastructure.html" class="mega-card">
                     <picture><source srcset="/images/misc/it-networking.webp" type="image/webp"><img class="mega-card__img" src="/images/misc/it-networking.jpg" alt="" loading="lazy"></picture>
                     <div class="mega-card__body">
                       <div class="mega-card__title">AI-Ready Infrastructure Review</div>
@@ -1428,7 +1333,7 @@
                       <span class="mega-card__link">Learn More &#8594;</span>
                     </div>
                   </a>
-                  <a href="#" class="mega-card">
+                  <a href="/solutions/cyber-security-review.html" class="mega-card">
                     <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img class="mega-card__img" src="/images/services/service-3.jpg" alt="" loading="lazy"></picture>
                     <div class="mega-card__body">
                       <div class="mega-card__title">Cyber Security Review</div>
@@ -1436,7 +1341,7 @@
                       <span class="mega-card__link">Learn More &#8594;</span>
                     </div>
                   </a>
-                  <a href="#" class="mega-card">
+                  <a href="/solutions/microsoft-365-network.html" class="mega-card">
                     <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img class="mega-card__img" src="/images/features/feature-1.jpg" alt="" loading="lazy"></picture>
                     <div class="mega-card__body">
                       <div class="mega-card__title">Microsoft 365 &amp; Network</div>
@@ -1451,39 +1356,39 @@
 
           <!-- INDUSTRIES MEGA MENU -->
           <div class="has-mega">
-            <span class="nav-link">Industries <img class="nav-arrow" src="https://www.figma.com/api/mcp/asset/79b24ec6-3189-4a03-b1ee-e982831d6787" alt="" /></span>
+            <span class="nav-link">Industries <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <div class="mega-menu">
               <div class="mega-inner mega-inner--industries">
                 <div class="mega-ind-grid">
-                  <a href="#" class="mega-item">
+                  <a href="/industries/financial-services.html" class="mega-item">
                     <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img src="/images/services/service-1.jpg" alt="" loading="lazy"></picture>
                     <span>Financial Services</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/industries/healthcare-clinics.html" class="mega-item">
                     <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></picture>
                     <span>Healthcare &amp; Clinics</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/industries/legal-firms.html" class="mega-item">
                     <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></picture>
                     <span>Legal Firms</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/industries/manufacturing.html" class="mega-item">
                     <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></picture>
                     <span>Manufacturing</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/industries/multi-site-businesses.html" class="mega-item">
                     <picture><source srcset="/images/services/service-4.webp" type="image/webp"><img src="/images/services/service-4.jpg" alt="" loading="lazy"></picture>
                     <span>Multi-Site Businesses</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/industries/professional-services.html" class="mega-item">
                     <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></picture>
                     <span>Professional Services</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/industries/recruitment-agencies.html" class="mega-item">
                     <picture><source srcset="/images/misc/why-choose-us.webp" type="image/webp"><img src="/images/misc/why-choose-us.jpg" alt="" loading="lazy"></picture>
                     <span>Recruitment Agencies</span>
                   </a>
-                  <a href="#" class="mega-item">
+                  <a href="/industries/internal-it-teams.html" class="mega-item">
                     <picture><source srcset="/images/misc/it-networking.webp" type="image/webp"><img src="/images/misc/it-networking.jpg" alt="" loading="lazy"></picture>
                     <span>Internal IT Teams</span>
                   </a>
@@ -1497,7 +1402,7 @@
                     <span class="mega-featured__label">Industries We Serve</span>
                     <h3 class="mega-featured__title">Tailored Networks for Every Sector</h3>
                     <p class="mega-featured__desc">From healthcare to finance, high-performance networks built for your industry.</p>
-                    <a href="#" class="mega-featured__link">Explore All Industries &#8594;</a>
+                    <a href="/industries/" class="mega-featured__link">Explore All Industries &#8594;</a>
                   </div>
                 </div>
               </div>
@@ -1505,47 +1410,8 @@
           </div>
 
           <!-- RESOURCES MEGA MENU -->
-          <div class="has-mega">
-            <span class="nav-link">Resources <img class="nav-arrow" src="https://www.figma.com/api/mcp/asset/79b24ec6-3189-4a03-b1ee-e982831d6787" alt="" /></span>
-            <div class="mega-menu">
-              <div class="mega-inner mega-inner--resources">
-                <div class="mega-heading">
-                  <span class="mega-heading__title">Resources</span>
-                  <a href="#" class="mega-heading__all">Browse All Resources &#8594;</a>
-                </div>
-                <div class="mega-res-cards">
-                  <a href="#" class="mega-res-card">
-                    <picture><source srcset="/images/banners/video-banner.webp" type="image/webp"><img class="mega-res-card__img" src="/images/banners/video-banner.jpg" alt="" loading="lazy"></picture>
-                    <div class="mega-res-card__body">
-                      <span class="mega-res-card__cat">Blog</span>
-                      <h3 class="mega-res-card__title">Expert Insights &amp; Industry News</h3>
-                      <p class="mega-res-card__desc">Stay up to date with the latest in network infrastructure, cybersecurity trends, and IT best practices.</p>
-                      <span class="mega-res-card__link">Browse Articles &#8594;</span>
-                    </div>
-                  </a>
-                  <a href="#" class="mega-res-card">
-                    <picture><source srcset="/images/banners/scroll-banner-1.webp" type="image/webp"><img class="mega-res-card__img" src="/images/banners/scroll-banner-1.jpg" alt="" loading="lazy"></picture>
-                    <div class="mega-res-card__body">
-                      <span class="mega-res-card__cat">Guides</span>
-                      <h3 class="mega-res-card__title">Step-by-Step Network Guides</h3>
-                      <p class="mega-res-card__desc">Practical, in-depth guides to help you plan, deploy, and manage enterprise-grade network infrastructure.</p>
-                      <span class="mega-res-card__link">Browse Guides &#8594;</span>
-                    </div>
-                  </a>
-                  <a href="#" class="mega-res-card">
-                    <picture><source srcset="/images/banners/scroll-banner-2.webp" type="image/webp"><img class="mega-res-card__img" src="/images/banners/scroll-banner-2.jpg" alt="" loading="lazy"></picture>
-                    <div class="mega-res-card__body">
-                      <span class="mega-res-card__cat">Downloads</span>
-                      <h3 class="mega-res-card__title">Templates, Specs &amp; Checklists</h3>
-                      <p class="mega-res-card__desc">Download ready-to-use network planning templates, technical specs, and compliance checklists.</p>
-                      <span class="mega-res-card__link">Browse Downloads &#8594;</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a href="#" class="nav-link">case studies</a>
+          <a href="/resources/blog/" class="nav-link">Blogs</a>
+<a href="/case-studies/" class="nav-link">Case Studies</a>
           <span class="nav-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="11" cy="11" r="8" stroke="#353535" stroke-width="2"/>
@@ -1553,7 +1419,7 @@
             </svg>
           </span>
         </div>
-        <button class="btn-blue hover-btn">Enquire Here</button>
+        <a href="/contact.html" class="btn-blue hover-btn">Enquire Here</a>
       </div>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -1564,17 +1430,18 @@
   <div class="nav-mobile" id="nav-mobile" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <button class="nav-mobile__close" id="nav-mobile-close" aria-label="Close menu">&times;</button>
     <div class="nav-mobile__brand">
-      <img src="https://www.figma.com/api/mcp/asset/ac4382a8-9d44-4239-9876-46ef13e9e743" alt="Network Consultancy" />
+      <img src="/images/misc/logo.png" alt="Network Consultancy" width="140" height="40" loading="lazy" />
     </div>
     <nav class="nav-mobile__links">
-      <a href="#" class="nav-mobile__link active">About</a>
-      <a href="#" class="nav-mobile__link">Services</a>
-      <a href="#" class="nav-mobile__link">Solutions</a>
-      <a href="#" class="nav-mobile__link">Industries</a>
-      <a href="#" class="nav-mobile__link">Resources</a>
-      <a href="#" class="nav-mobile__link">Case Studies</a>
+      <a href="/about.html" class="nav-mobile__link">About</a>
+      <a href="/services/" class="nav-mobile__link">Services</a>
+      <a href="/solutions/" class="nav-mobile__link">Solutions</a>
+      <a href="/industries/" class="nav-mobile__link">Industries</a>
+      <a href="/resources/blog/" class="nav-mobile__link">Blogs</a>
+      <a href="/case-studies/" class="nav-mobile__link">Case Studies</a>
+      <a href="/contact.html" class="nav-mobile__link">Contact</a>
     </nav>
-    <a href="#contact" class="btn-blue hover-btn" onclick="document.getElementById('nav-mobile').classList.remove('is-open');">Enquire Here</a>
+    <a href="/contact.html" class="btn-blue hover-btn" onclick="document.getElementById('nav-mobile').classList.remove('is-open');">Enquire Here</a>
   </div>
 
   <!-- ========= HERO ========= -->
@@ -1604,26 +1471,20 @@
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img src="/images/services/service-1.jpg" alt="Network Consultancy" width="471" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
-          <div class="svc-card__body">
-            <span class="svc-card__label">Network<br>Consultancy</span>
-            <p class="svc-card__desc">Successfully onboard new workers, survive internet outages, and connect multi-site offices. Our UK managed network consultancy services plan and guide your infrastructure for maximum performance.</p>
-          </div>
+          <span class="svc-card__label">Network<br>Consultancy</span>
+          <p class="svc-card__desc">Strategic guidance from assessment through implementation — networks built around your business goals.</p>
         </div>
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="Network Support" width="471" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
-          <div class="svc-card__body">
-            <span class="svc-card__label">Network<br>Support</span>
-            <p class="svc-card__desc">When a critical switch crashes or your Wi-Fi drops, our SLA-backed team stays ready to respond. We provide immediate emergency troubleshooting to keep your daily business operations running.</p>
-          </div>
+          <span class="svc-card__label">Network<br>Support</span>
+          <p class="svc-card__desc">Network support services designed to reduce downtime and improve performance across your infrastructure.</p>
         </div>
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/services/service-4.webp" type="image/webp"><img src="/images/services/service-4.jpg" alt="Managed Network Support" width="471" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
-          <div class="svc-card__body">
-            <span class="svc-card__label">Managed Network<br>Support</span>
-            <p class="svc-card__desc">Our fully managed service keeps you free from the complexities of chasing tech support and configuring hardware updates.</p>
-          </div>
+          <span class="svc-card__label">Managed Network<br>Support</span>
+          <p class="svc-card__desc">A fully managed service designed to reduce internal burden and keep your environment secure, stable and optimised.</p>
         </div>
       </div>
       <!-- Row 2: 350px / 592px / 471px (middle and right swap) -->
@@ -1631,26 +1492,20 @@
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="Network Design and Deployment" width="592" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
-          <div class="svc-card__body">
-            <span class="svc-card__label">Network Design<br>&amp; Deployment</span>
-            <p class="svc-card__desc">As a reliable network management company, we install your physical cabling over a weekend so your staff experiences zero working day disruptions.</p>
-          </div>
+          <span class="svc-card__label">Network Design<br>&amp; Deployment</span>
+          <p class="svc-card__desc">Expert consultancy for secure, high-performing, and scalable network architectures.</p>
         </div>
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="Firewall and Network Security" width="592" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
-          <div class="svc-card__body">
-            <span class="svc-card__label">Firewall &amp; Network Security</span>
-            <p class="svc-card__desc">We put a lock on your core network perimeter to prevent external threats from breaching your confidential client databases.</p>
-          </div>
+          <span class="svc-card__label">Firewall &amp; Network Security</span>
+          <p class="svc-card__desc">Smarter, more practical network protection that fits how your business actually works.</p>
         </div>
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="Business Continuity and Resilience" width="471" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
-          <div class="svc-card__body">
-            <span class="svc-card__label">Business Continuity<br>&amp; Resilience</span>
-            <p class="svc-card__desc">An automated backup connection always stays on to take over instantly if your primary fibre connection cuts out.</p>
-          </div>
+          <span class="svc-card__label">Business Continuity<br>&amp; Resilience</span>
+          <p class="svc-card__desc">Secure, resilient networks that keep critical business operations running — even in the face of disruptions.</p>
         </div>
       </div>
     </div>
@@ -1674,10 +1529,6 @@
           <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-1.jpg" alt="Network Consultancy" width="471" height="435" loading="lazy"></picture>
           <div class="s-card__body">
             <div class="s-card__title">1. Network Consultancy</div>
-            <div class="s-card__reveal">
-              <div class="s-card__desc">Expert guidance for designing and optimising your business network infrastructure.</div>
-              <button class="btn-blue hover-btn">Enquire Here</button>
-            </div>
           </div>
         </div>
 
@@ -1685,10 +1536,8 @@
           <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-1.jpg" alt="Network Advisory" width="592" height="435" loading="lazy"></picture>
           <div class="s-card__body">
             <div class="s-card__title">2. Network Advisory</div>
-            <div class="s-card__reveal">
-              <div class="s-card__desc">Using specialised planning and professional IT network consulting services.</div>
-              <button class="btn-blue hover-btn">Enquire Here</button>
-            </div>
+            <div class="s-card__desc">Using specialised planning and professional IT network consulting services</div>
+            <button class="btn-blue hover-btn" style="margin-top:8px;min-height:44px;">Enquire Here</button>
           </div>
         </div>
 
@@ -1696,10 +1545,8 @@
           <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-2.jpg" alt="Network Resilience and Business Continuity" width="592" height="435" loading="lazy"></picture>
           <div class="s-card__body">
             <div class="s-card__title">3. Network Resilience &amp; Business Continuity</div>
-            <div class="s-card__reveal">
-              <div class="s-card__desc">Using specialised planning and professional IT network consulting services.</div>
-              <button class="btn-blue hover-btn">Enquire Here</button>
-            </div>
+            <div class="s-card__desc">Using specialised planning and professional IT network consulting services</div>
+            <button class="btn-blue hover-btn" style="margin-top:8px;min-height:44px;">Enquire Here</button>
           </div>
         </div>
 
@@ -1780,10 +1627,6 @@
         <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-2.jpg" alt="Comprehensive Network Infrastructure Planning" width="471" height="435" loading="lazy"></picture>
         <div class="s-card__body">
           <div class="s-card__title">1. Comprehensive Network Infrastructure Planning</div>
-          <div class="s-card__reveal">
-            <div class="s-card__desc">Using specialised planning and professional IT network consulting services.</div>
-            <button class="btn-blue hover-btn">Enquire Here</button>
-          </div>
         </div>
       </div>
 
@@ -1791,10 +1634,8 @@
         <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-1.jpg" alt="Proactive Network Performance Monitoring" width="592" height="435" loading="lazy"></picture>
         <div class="s-card__body">
           <div class="s-card__title">2. Proactive Network Performance Monitoring</div>
-          <div class="s-card__reveal">
-            <div class="s-card__desc">Using specialised planning and professional IT network consulting services.</div>
-            <button class="btn-blue hover-btn">Enquire Here</button>
-          </div>
+          <div class="s-card__desc">Using specialised planning and professional IT network consulting services</div>
+          <button class="btn-blue hover-btn" style="margin-top:8px;min-height:44px;">Enquire Here</button>
         </div>
       </div>
 
@@ -1802,18 +1643,13 @@
         <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-3.jpg" alt="Advanced IT Security Protection" width="471" height="435" loading="lazy"></picture>
         <div class="s-card__body">
           <div class="s-card__title">3. Advanced IT Security Protection</div>
-          <div class="s-card__reveal">
-            <div class="s-card__desc">Using specialised planning and professional IT network consulting services.</div>
-            <button class="btn-blue hover-btn">Enquire Here</button>
-          </div>
+          <div class="s-card__desc">Using specialised planning and professional IT network consulting services</div>
+          <button class="btn-blue hover-btn" style="margin-top:8px;min-height:44px;">Enquire Here</button>
         </div>
       </div>
 
     </div>
   </section>
-
-  <!-- ========= PARALLAX STACKED BANNERS ========= -->
-  <div class="parallax-cards-wrapper">
 
   <!-- ========= MANAGED NETWORK SECURITY BANNER ========= -->
   <div class="scroll-banner-wrap">
@@ -1863,8 +1699,6 @@
     </div>
     <!-- CTA is now inside .scroll-banner__content —— removed from here -->
   </div>
-
-  </div><!-- /parallax-cards-wrapper -->
 
   <!-- ========= OUR CLIENTS ========= -->
   <section class="our-clients">
@@ -2068,18 +1902,18 @@
     <div class="footer__bottom">
       <p class="footer__copy">&copy; 2019 Lift Media. All Rights Reserved.</p>
       <div class="footer__bottom-links">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms &amp; Conditions</a>
-        <a href="#">Cookie Policy</a>
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms-of-service.html">Terms &amp; Conditions</a>
+        <a href="/cookie-policy.html">Cookie Policy</a>
+        <a href="/complaint-form.html">Complaint Form</a>
       </div>
     </div>
   </footer>
 
   <script src="js/animations.js" defer></script>
-  <script src="js/parallax.js" defer></script>
   <script>
     // ===== MEGA MENU =====
     (function() {
@@ -2088,15 +1922,7 @@
         var closeTimer;
         function openMenu() {
           clearTimeout(closeTimer);
-          // If another menu is already open, close it instantly (no crossfade)
-          triggers.forEach(function(t) {
-            if (t !== el && t.classList.contains('is-open')) {
-              var m = t.querySelector('.mega-menu');
-              if (m) { m.style.transition = 'none'; m.style.opacity = '0'; m.style.visibility = 'hidden'; m.style.transform = 'translateY(-6px)'; }
-              t.classList.remove('is-open');
-              requestAnimationFrame(function() { if (m) { m.style.transition = ''; m.style.opacity = ''; m.style.visibility = ''; m.style.transform = ''; } });
-            }
-          });
+          triggers.forEach(function(t) { if (t !== el) t.classList.remove('is-open'); });
           el.classList.add('is-open');
         }
         function scheduleClose() {
@@ -2193,64 +2019,6 @@
         closeMobileNav();
       }
     });
-
-    // ===== PARALLAX SCROLL BANNERS =====
-    (function initParallax() {
-      // Respect prefers-reduced-motion
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-      var banners  = Array.from(document.querySelectorAll('.scroll-banner'));
-      var heroBg   = document.querySelector('.hero__bg');
-      var heroWrap = heroBg ? heroBg.closest('.hero__wrap') : null;
-      if (!banners.length && !heroBg) return;
-
-      var ticking = false;
-
-      function applyParallax() {
-        var vpH = window.innerHeight;
-
-        // ── Hero parallax ──────────────────────────────────────────────────────
-        if (heroBg && heroWrap) {
-          var hRect = heroWrap.getBoundingClientRect();
-          if (hRect.bottom >= 0 && hRect.top <= vpH) {
-            // progress: 0 = hero entering from bottom, 1 = hero exiting at top
-            var hProgress = (vpH - hRect.top) / (vpH + heroWrap.offsetHeight);
-            // Shift bg at 30 % of the hero's height for visible depth
-            var hShift = (hProgress - 0.5) * heroWrap.offsetHeight * 0.3;
-            heroBg.style.transform = 'translateY(' + hShift.toFixed(1) + 'px)';
-          }
-        }
-
-        // ── Scroll-banner parallax ─────────────────────────────────────────────
-        banners.forEach(function(banner) {
-          var bg = banner.querySelector('.scroll-banner__bg');
-          if (!bg) return;
-
-          var rect = banner.getBoundingClientRect();
-          // Skip banners completely outside viewport
-          if (rect.bottom < 0 || rect.top > vpH) return;
-
-          // progress: 0 when top of banner hits bottom of viewport,
-          //            1 when bottom of banner leaves top of viewport
-          var progress = (vpH - rect.top) / (vpH + rect.height);
-          // Shift background at 20% of scroll speed to stay safely inside bounds
-          var shift = (progress - 0.5) * banner.offsetHeight * 0.2;
-          bg.style.transform = 'translateY(' + shift.toFixed(1) + 'px)';
-        });
-
-        ticking = false;
-      }
-
-      window.addEventListener('scroll', function() {
-        if (!ticking) {
-          requestAnimationFrame(applyParallax);
-          ticking = true;
-        }
-      }, { passive: true });
-
-      // Run once on load to set initial positions
-      applyParallax();
-    })();
   </script>
 
 </body>
