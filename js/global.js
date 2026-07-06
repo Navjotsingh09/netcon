@@ -1,9 +1,18 @@
 /**
  * Network Consultancy — Global JavaScript
- * Handles: mega menu, mobile nav, FAQ accordion, contact form
+ * Handles: scroll-aware navbar, mega menu, mobile nav drawer, FAQ accordion, contact form
  */
 (function () {
   'use strict';
+
+  /* ── Scroll-aware navbar ───────────────────────────────────── */
+  var stickyNav = document.querySelector('.navbar--sticky');
+  if (stickyNav) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 24) { stickyNav.classList.add('is-scrolled'); }
+      else { stickyNav.classList.remove('is-scrolled'); }
+    }, { passive: true });
+  }
 
   /* ── Mega Menu ─────────────────────────────────────────────── */
   var triggers = document.querySelectorAll('.has-mega');
@@ -50,21 +59,28 @@
     }
   });
 
-  /* ── Mobile Nav ────────────────────────────────────────────── */
+  /* ── Mobile Nav (slide-in drawer) ─────────────────────────── */
   var hb  = document.getElementById('nav-hamburger');
   var mn  = document.getElementById('nav-mobile');
   var mc  = document.getElementById('nav-mobile-close');
+
+  /* Inject backdrop once */
+  var backdrop = document.createElement('div');
+  backdrop.className = 'nav-backdrop';
+  document.body.appendChild(backdrop);
 
   function openNav() {
     var sbw = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = 'hidden';
     if (sbw > 0) document.body.style.paddingRight = sbw + 'px';
     if (mn) mn.classList.add('is-open');
+    backdrop.classList.add('is-open');
     if (hb) { hb.classList.add('open'); hb.setAttribute('aria-expanded', 'true'); }
     if (mc) setTimeout(function () { mc.focus(); }, 30);
   }
   function closeNav() {
     if (mn) mn.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
     if (hb) { hb.classList.remove('open'); hb.setAttribute('aria-expanded', 'false'); }
     document.body.style.overflow = '';
     document.body.style.paddingRight = '';
@@ -72,12 +88,12 @@
   }
   if (hb) hb.addEventListener('click', openNav);
   if (mc) mc.addEventListener('click', closeNav);
-  if (mn) mn.addEventListener('click', function (e) { if (e.target === mn) closeNav(); });
+  backdrop.addEventListener('click', closeNav);
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && mn && mn.classList.contains('is-open')) closeNav();
   });
   window.addEventListener('resize', function () {
-    if (window.innerWidth > 1200 && mn && mn.classList.contains('is-open')) closeNav();
+    if (window.innerWidth > 1024 && mn && mn.classList.contains('is-open')) closeNav();
   });
 
   /* ── FAQ Accordion ─────────────────────────────────────────── */

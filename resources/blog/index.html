@@ -25,8 +25,15 @@
       border-radius: 10px;
       overflow: hidden;
       position: relative;
-      min-height: 280px;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1440 / 626;
+      max-height: 626px;
       margin-bottom: 74px;
+    }
+    .blog-hero picture {
+      display: block;
+      height: 100%;
     }
     .blog-hero img {
       width: 100%;
@@ -332,7 +339,7 @@
         padding-top: 18px;
       }
       .blog-hero {
-        min-height: 240px;
+        max-height: none;
         margin-bottom: 56px;
       }
       .blog-hero__copy {
@@ -369,7 +376,7 @@
     }
     @media (max-width: 768px) {
       .blog-hero {
-        min-height: 190px;
+        aspect-ratio: 16 / 8;
       }
       .blog-hero__copy {
         top: 14px;
