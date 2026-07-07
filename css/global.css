@@ -128,7 +128,7 @@ main > div > [class*="-wrap"] {
 .nav-arrow { width:10px; height:5px; display:inline-block; flex-shrink:0; transition:transform .2s; }
 .has-mega.is-open .nav-arrow { transform:rotate(180deg); }
 
-.has-mega { position:relative; }
+.has-mega { position:static; }
 
 /* Mega menus */
 .mega-menu {
