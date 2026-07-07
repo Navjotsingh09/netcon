@@ -74,6 +74,12 @@
 
   var STAR_SVG = '<svg class="faq-icon" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M25 0L31.7523 18.2477L50 25L31.7523 31.7523L25 50L18.2477 31.7523L0 25L18.2477 18.2477L25 0Z" fill="white"/></svg>';
 
+  function revealAnimatedContent(container) {
+    container.querySelectorAll('.animate-fade-up, .animate-fade-in').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
+
   function renderTestimonials(container) {
     /* Build unique IDs so multiple sliders on one page don't clash */
     var uid  = 't' + (Date.now() % 100000);
@@ -123,6 +129,8 @@
       '  </div>',
       '</section>'
     ].join('\n');
+
+    revealAnimatedContent(container);
 
     /* Init slider */
     var track   = document.getElementById(tid);
@@ -183,6 +191,8 @@
       '  </div>',
       '</section>'
     ].join('\n');
+
+    revealAnimatedContent(container);
   }
 
   /* ── HTML escaping ─────────────────────────────────────────── */
