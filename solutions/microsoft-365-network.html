@@ -4,104 +4,240 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Microsoft 365 Readiness Assessment | Network Consultancy</title>
-  <meta name="description" content="Ensure your network, devices, and infrastructure are ready for seamless Microsoft 365 performance and smoother cloud adoption.">
+  <meta name="description" content="Identify the infrastructure issues that affect Microsoft 365 performance before deployment and plan a smoother rollout with expert network consultancy.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+  <style>
+    .sol-hero { padding:36px var(--px) 58px; max-width:var(--section-w); margin:0 auto; }
+    .sol-hero__wrap { position:relative; max-width:1440px; margin:0 auto; min-height:590px; border-radius:20px; overflow:hidden; }
+    .sol-hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .sol-hero__overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(17,27,58,.88) 0%,rgba(17,27,58,.74) 32%,rgba(17,27,58,.18) 62%,rgba(17,27,58,0) 78%); }
+    .sol-hero__content { position:relative; z-index:2; max-width:580px; padding:130px 0 0 58px; }
+    .sol-hero__breadcrumb { font-family:"Barlow",sans-serif; font-size:13px; color:rgba(255,255,255,.7); margin-bottom:16px; }
+    .sol-hero__breadcrumb a { color:rgba(255,255,255,.7); text-decoration:none; }
+    .sol-hero__breadcrumb a:hover { color:#fff; }
+    .sol-hero__title { font-family:"Roboto Condensed",sans-serif; font-size:56px; font-weight:600; color:#fff; line-height:1.04; margin-bottom:22px; }
+    .sol-hero__sub { font-family:"Barlow",sans-serif; font-size:18px; color:rgba(255,255,255,.92); line-height:1.55; margin-bottom:30px; }
+
+    .feature-band { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
+    .feature-band__inner { max-width:1440px; margin:0 auto; background:linear-gradient(91deg,rgba(241,244,249,.72) 0%,rgba(173,217,243,.58) 17%,rgba(160,182,229,.52) 35%,rgba(8,173,252,.18) 49%,rgba(160,182,229,.52) 68%,rgba(173,217,243,.55) 83%,rgba(245,248,253,.72) 100%); border-radius:20px; padding:44px 40px; }
+    .feature-band__inner h2 { font-family:"Roboto Condensed",sans-serif; font-size:40px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:36px; max-width:600px; }
+    .feature-band__grid { display:grid; grid-template-columns:1fr 300px 1fr; gap:36px; align-items:center; }
+    .feature-band__list { display:flex; flex-direction:column; gap:20px; }
+    .feature-band__item { display:flex; align-items:flex-start; gap:14px; }
+    .feature-band__dot { width:8px; height:8px; border-radius:50%; background:var(--blue); margin-top:6px; flex-shrink:0; }
+    .feature-band__item p { font-family:"Barlow",sans-serif; font-size:16px; color:#353535; line-height:1.6; margin:0; }
+    .feature-band__image img { width:100%; height:300px; object-fit:cover; border-radius:16px; display:block; }
+
+    .dark-banner { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
+    .dark-banner__wrap { position:relative; max-width:1440px; margin:0 auto; min-height:540px; border-radius:20px; overflow:hidden; }
+    .dark-banner__wrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .dark-banner__overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(17,27,58,.92) 0%,rgba(17,27,58,.76) 44%,rgba(17,27,58,.2) 72%,rgba(17,27,58,0) 88%); }
+    .dark-banner__content { position:relative; z-index:2; max-width:640px; padding:72px 0 0 56px; }
+    .dark-banner__content h2 { font-family:"Roboto Condensed",sans-serif; font-size:46px; font-weight:600; color:#fff; line-height:1.08; margin-bottom:22px; }
+    .dark-banner__content p { font-family:"Barlow",sans-serif; font-size:17px; color:rgba(255,255,255,.9); line-height:1.65; margin-bottom:14px; }
+
+    .split-info { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
+    .split-info__inner { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+    .split-info__text h2 { font-family:"Roboto Condensed",sans-serif; font-size:38px; font-weight:600; color:var(--navy); line-height:1.15; margin-bottom:18px; }
+    .split-info__text p { font-family:"Barlow",sans-serif; font-size:17px; color:var(--sub); line-height:1.65; margin-bottom:14px; }
+    .split-info__image img { width:100%; height:340px; object-fit:cover; border-radius:16px; display:block; }
+
+    .benefits { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
+    .benefits__inner { max-width:1440px; margin:0 auto; }
+    .benefits__inner h2 { font-family:"Roboto Condensed",sans-serif; font-size:40px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:14px; }
+    .benefits__intro { font-family:"Barlow",sans-serif; font-size:17px; color:var(--sub); line-height:1.65; max-width:860px; margin-bottom:36px; }
+    .benefits__grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .benefits__card { background:#f5f7fb; border-radius:16px; padding:28px 28px 24px; }
+    .benefits__card h3 { font-family:"Roboto Condensed",sans-serif; font-size:22px; font-weight:600; color:var(--navy); margin-bottom:10px; }
+    .benefits__card p { font-family:"Barlow",sans-serif; font-size:15px; color:var(--sub); line-height:1.6; }
+
+    .testi { padding:88px var(--px); max-width:var(--section-w); margin:0 auto; background:linear-gradient(91deg,rgba(241,244,249,.72) 0%,rgba(173,217,243,.58) 17%,rgba(160,182,229,.52) 35%,rgba(8,173,252,.18) 49%,rgba(160,182,229,.52) 68%,rgba(173,217,243,.55) 83%,rgba(245,248,253,.72) 100%); }
+    .testi__inner { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:320px 1fr; gap:70px; align-items:center; }
+    .testi__left h2 { font-family:"Roboto Condensed",sans-serif; font-size:60px; font-weight:600; color:var(--navy); line-height:1.02; }
+    .testi__nav { margin-top:84px; display:flex; flex-direction:column; gap:22px; align-items:flex-end; }
+    .testi__arrows { display:flex; gap:16px; }
+    .testi__arrow { width:58px; height:50px; border-radius:8px; border:1px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:24px; transition:background .2s; }
+    .testi__arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
+    .testi__bar { width:200px; height:10px; border-radius:10px; background:var(--gray-mid); overflow:hidden; }
+    .testi__bar-fill { height:100%; background:#4d4a4a; border-radius:10px; transition:width .35s ease; }
+    .testi__card { background:#fff; border-radius:20px; padding:44px 44px 40px; box-shadow:0 4px 12px rgba(0,0,0,.08); }
+    .testi__stars { color:#f0a31f; font-size:24px; letter-spacing:4px; margin-bottom:26px; }
+    .testi__quote { font-family:"Roboto Condensed",sans-serif; font-size:26px; font-weight:300; color:#222; line-height:1.44; margin-bottom:28px; }
+    .testi__meta { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; }
+    .testi__person { display:flex; align-items:center; gap:16px; }
+    .testi__avatar { width:52px; height:52px; border-radius:50%; background:var(--gray-mid); flex-shrink:0; }
+    .testi__name { font-family:"Roboto Condensed",sans-serif; font-size:16px; font-weight:600; }
+    .testi__role { font-family:"Barlow",sans-serif; font-size:13px; color:var(--sub); }
+    .testi__mark { font-family:Georgia,serif; font-size:76px; color:#111; line-height:1; }
+
+    .sol-cta-band { background:var(--blue); padding:80px 0; position:relative; overflow:hidden; }
+    .sol-cta-band__tags { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; gap:24px; padding:0 var(--px); pointer-events:none; }
+    .sol-cta-band__row { display:flex; gap:20px; flex-wrap:nowrap; }
+    .sol-cta-band__row span { background:#fff; color:var(--blue); opacity:.45; font-family:"Roboto Condensed",sans-serif; font-size:18px; font-weight:500; padding:12px 32px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
+    .sol-cta-band__card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:44px 66px; max-width:580px; margin:0 auto; text-align:center; box-shadow:0 4px 24px rgba(0,0,0,.12); }
+    .sol-cta-band__text { font-family:"Barlow",sans-serif; font-size:20px; font-weight:500; color:var(--sub); line-height:1.55; margin-bottom:28px; }
+
+    @media(max-width:1200px){ .sol-hero__title,.testi__left h2{font-size:46px;} .feature-band__grid,.split-info__inner,.testi__inner{display:block;} .testi__nav{align-items:flex-start;margin-top:24px;} .feature-band__inner h2{font-size:32px;} .benefits__grid{grid-template-columns:1fr 1fr;} }
+    @media(max-width:768px){ .sol-hero__wrap{min-height:460px;} .sol-hero__content{padding:74px 24px 0;} .sol-hero__title{font-size:34px;} .feature-band__inner{padding:28px 22px;} .sol-cta-band__card{padding:32px 28px;} .benefits__grid{grid-template-columns:1fr;} }
+    @media(max-width:480px){ .sol-hero__title{font-size:28px;} }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
   <main id="main">
-    <section class="page-hero" aria-label="Page hero">
-      <div class="page-hero__bg">
-        <picture>
-          <source srcset="/images/pages/professional.jpg" type="image/webp">
-          <img src="/images/pages/professional.jpg" alt="" loading="eager" width="1920" height="640">
-        </picture>
-        <div class="page-hero__overlay" aria-hidden="true"></div>
-      </div>
-      <div class="page-hero__content animate-fade-up">
-        <h1 class="page-hero__title">Microsoft 365 Readiness Assessment</h1>
-        <p class="page-hero__sub">Ensure your network, devices, and infrastructure are ready for seamless Microsoft 365 performance.</p>
-      </div>
-    </section>
 
-    <section class="section animate-fade-up" aria-labelledby="m365-features-h">
-      <div class="split split--3-2">
-        <div>
-          <span class="eyebrow">Assessment Features</span>
-          <h2 class="heading-xl" id="m365-features-h">Microsoft 365 readiness starts with a structured review</h2>
-          <div class="body-lg">
-            <p>A Microsoft 365 Readiness Assessment checks whether your current network, devices, security settings, and infrastructure can support Microsoft 365 smoothly before deployment.</p>
-            <p>That means identifying risks, compatibility issues, and performance bottlenecks early, so your rollout is planned properly and user disruption is minimised.</p>
-          </div>
-          <ul class="check-list">
-            <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Microsoft 365 cloud-based productivity review</span></li>
-            <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Compatibility checking across devices and systems</span></li>
-            <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Identification of risks, bottlenecks, and infrastructure gaps</span></li>
-          </ul>
-          <a href="/contact.html" class="btn-blue" style="margin-top:32px;">Book a Network Health Check</a>
+    <section class="sol-hero" aria-label="Microsoft 365 Readiness hero">
+      <div class="sol-hero__wrap">
+        <picture>
+          <source srcset="/images/pages/nc-hero-person.webp" type="image/webp">
+          <img class="sol-hero__bg" src="/images/pages/nc-hero-person.jpg" alt="" width="1440" height="590" loading="eager">
+        </picture>
+        <div class="sol-hero__overlay" aria-hidden="true"></div>
+        <div class="sol-hero__content animate-fade-up">
+          <nav class="sol-hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a> &rsaquo; <a href="/solutions/">Solutions</a> &rsaquo; <span>Microsoft 365 &amp; Network</span>
+          </nav>
+          <h1 class="sol-hero__title">Microsoft 365 Readiness Assessment</h1>
+          <p class="sol-hero__sub">Ensure Your Network, Devices, and Infrastructure Are Ready for Seamless Microsoft 365 Performance</p>
+          <a href="/contact.html" class="btn-blue">BOOK A NETWORK HEALTH CHECK</a>
         </div>
-        <picture>
-          <source srcset="/images/pages/professional.jpg" type="image/webp">
-          <img class="split__img split__img--tall" src="/images/pages/professional.jpg" alt="Microsoft 365 readiness assessment" width="600" height="480" loading="lazy">
-        </picture>
       </div>
     </section>
 
-    <section class="section section--dark-blue animate-fade-up" aria-labelledby="m365-benefits-h">
-      <div class="split">
-        <div>
-          <span class="eyebrow" style="color:rgba(255,255,255,.6);">Benefits</span>
-          <h2 class="heading-lg heading-lg--white" id="m365-benefits-h">Better planning, smoother adoption, stronger user experience</h2>
-          <div class="body-lg body-lg--white">
-            <p>A Microsoft 365 Readiness Assessment improves user experience and operational efficiency while reducing implementation risks. It helps prevent issues like poor call quality, application slowdowns, and rollout disruption.</p>
-            <p>The assessment also helps your team prioritise changes, optimise connectivity, improve security, and approach cloud adoption with clearer technical confidence.</p>
+    <section class="feature-band" aria-labelledby="m365-features-h">
+      <div class="feature-band__inner animate-fade-up">
+        <h2 id="m365-features-h">What's Included in the Microsoft 365 Readiness Assessment</h2>
+        <div class="feature-band__grid">
+          <div class="feature-band__list">
+            <div class="feature-band__item"><div class="feature-band__dot"></div><p>Evaluates whether your infrastructure can support Microsoft 365 production workloads reliably.</p></div>
+            <div class="feature-band__item"><div class="feature-band__dot"></div><p>Reviews network latency, routing paths, bandwidth allocation, and internet performance.</p></div>
+            <div class="feature-band__item"><div class="feature-band__dot"></div><p>Assesses whether existing endpoints can reliably support Microsoft 365 workloads across the business.</p></div>
           </div>
-          <a href="/contact.html" class="btn-blue" style="margin-top:28px;">Assess Microsoft 365 Readiness</a>
-        </div>
-        <picture>
-          <source srcset="/images/pages/managed-support.webp" type="image/webp">
-          <img class="split__img split__img--med" src="/images/pages/managed-support.jpg" alt="Microsoft 365 planning support" width="600" height="380" loading="lazy">
-        </picture>
-      </div>
-    </section>
-
-    <section class="testimonial-band" aria-label="Client testimonial">
-      <div class="testimonial-band__inner animate-fade-up">
-        <div class="testimonial-band__stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote class="testimonial-band__quote">&#8220;Before our Microsoft 365 launch, the readiness assessment identified several network issues. The suggestions ensured a seamless transition with minimal disruption across the company and significantly improved Teams performance.&#8221;</blockquote>
-        <cite class="testimonial-band__author">&#8212; <strong>IT Director</strong>, Logistics Ltd</cite>
-      </div>
-    </section>
-
-    <section class="section section--dark-blue animate-fade-up" aria-labelledby="m365-cta-h">
-      <div class="split split--3-2">
-        <div>
-          <span class="eyebrow" style="color:rgba(255,255,255,.6);">Cloud Readiness</span>
-          <h2 class="heading-lg heading-lg--white" id="m365-cta-h">Review bandwidth, endpoint reliability, and Microsoft 365 performance before deployment</h2>
-          <div class="body-lg body-lg--white">
-            <p>Use the assessment to uncover network and device issues early, improve resilience, and support secure, dependable Microsoft 365 adoption from day one.</p>
+          <div class="feature-band__image">
+            <picture>
+              <source srcset="/images/pages/nc-hero-person.webp" type="image/webp">
+              <img src="/images/pages/nc-hero-person.jpg" alt="Microsoft 365 assessment consultant" loading="lazy">
+            </picture>
           </div>
-          <a href="/contact.html" class="btn-blue" style="margin-top:28px;">Assess Microsoft 365 Readiness</a>
+          <div class="feature-band__list">
+            <div class="feature-band__item"><div class="feature-band__dot"></div><p>Validates connectivity for Microsoft Teams, Exchange Online, SharePoint, and OneDrive.</p></div>
+            <div class="feature-band__item"><div class="feature-band__dot"></div><p>Examines identity services, authentication policies, security controls, and compliance settings.</p></div>
+            <div class="feature-band__item"><div class="feature-band__dot"></div><p>Identifies technical risks before deployment and provides prioritised remediation recommendations.</p></div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section class="dark-banner" aria-labelledby="m365-banner-h">
+      <div class="dark-banner__wrap animate-fade-up">
         <picture>
-          <source srcset="/images/pages/results.jpg" type="image/webp">
-          <img class="split__img split__img--med" src="/images/pages/results.jpg" alt="Microsoft 365 readiness outcomes" width="600" height="380" loading="lazy">
+          <source srcset="/images/pages/nc-hero-person.webp" type="image/webp">
+          <img src="/images/pages/nc-hero-person.jpg" alt="" loading="lazy">
         </picture>
+        <div class="dark-banner__overlay"></div>
+        <div class="dark-banner__content">
+          <h2 id="m365-banner-h">Here's What a Thorough Office 365 Readiness Assessment Involves</h2>
+          <p>Network design, connectivity, bandwidth, latency, endpoint performance, and security controls are examined during an Office 365 Readiness Assessment.</p>
+          <p>Consultants assess traffic flows, routing, firewalls, configurations, and authentication methods. User behaviour and application usage are reviewed to identify issues before deployment causes disruption.</p>
+          <p>The evaluation provides reports with risk analysis, optimisation recommendations, and actionable steps for reliable Microsoft 365 operations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="split-info" aria-labelledby="m365-service-h">
+      <div class="split-info__inner animate-fade-up">
+        <div class="split-info__text">
+          <h2 id="m365-service-h">Our Office 365 Readiness Assessment Services</h2>
+          <p>Our Microsoft 365 Readiness Assessment service examines the infrastructure supporting your migration plans.</p>
+          <p>We assess network performance, endpoint capability, identity configuration, security controls, and internet connectivity before deployment.</p>
+          <p>The assessment highlights technical issues likely to affect Microsoft 365 workloads. Our consultants provide practical remediation guidance that improves service reliability, deployment confidence, and long-term operational performance.</p>
+        </div>
+        <div class="split-info__image">
+          <picture>
+            <source srcset="/images/pages/servers.webp" type="image/webp">
+            <img src="/images/pages/servers.jpg" alt="Office 365 readiness infrastructure review" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-labelledby="m365-benefits-h">
+      <div class="benefits__inner animate-fade-up">
+        <h2 id="m365-benefits-h">Benefits of a Microsoft 365 Readiness Assessment</h2>
+        <p class="benefits__intro">A Microsoft 365 Readiness Assessment enhances user experience and operational efficiency while reducing implementation risks. It enables better planning, helping teams prioritise changes, optimise connectivity, improve security, and ensure a smoother cloud adoption.</p>
+        <div class="benefits__grid">
+          <div class="benefits__card">
+            <h3>Reduced Deployment Risk</h3>
+            <p>Identify and resolve infrastructure issues before go-live to prevent disruptions like poor call quality and application failures.</p>
+          </div>
+          <div class="benefits__card">
+            <h3>Improved Performance</h3>
+            <p>Optimise bandwidth, routing, and endpoint readiness so Microsoft 365 applications perform reliably across all sites.</p>
+          </div>
+          <div class="benefits__card">
+            <h3>Stronger Security Posture</h3>
+            <p>Validate identity services, authentication policies, and compliance controls before users are exposed to cloud workloads.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testi" aria-label="Client testimonial">
+      <div class="testi__inner">
+        <div class="testi__left animate-fade-up">
+          <h2>What our<br>client says</h2>
+          <div class="testi__nav">
+            <div class="testi__arrows">
+              <button class="testi__arrow" id="m365-test-prev" aria-label="Previous testimonial">&#8592;</button>
+              <button class="testi__arrow" id="m365-test-next" aria-label="Next testimonial">&#8594;</button>
+            </div>
+            <div class="testi__bar"><div class="testi__bar-fill" id="m365-test-fill"></div></div>
+          </div>
+        </div>
+        <div class="testi__card animate-fade-up">
+          <div class="testi__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote class="testi__quote" id="m365-test-quote">Before our Microsoft 365 launch, the readiness assessment identified several network issues. The suggestions ensured a seamless transition with minimal disruption across the company and significantly improved Teams performance.</blockquote>
+          <div class="testi__meta">
+            <div class="testi__person">
+              <div class="testi__avatar"></div>
+              <div>
+                <div class="testi__name" id="m365-test-name">Head of Infrastructure</div>
+                <div class="testi__role" id="m365-test-role">NorthStar Tech, Birmingham</div>
+              </div>
+            </div>
+            <div class="testi__mark">99</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sol-cta-band" aria-label="Microsoft 365 CTA">
+      <div class="sol-cta-band__tags" aria-hidden="true">
+        <div class="sol-cta-band__row">
+          <span>Microsoft 365 &amp; Network</span><span>Network Health Check</span><span>Cyber Security Review</span><span>AI-Ready Infrastructure</span><span>Microsoft 365 &amp; Network</span><span>Network Health Check</span>
+        </div>
+        <div class="sol-cta-band__row">
+          <span>Network Health Check</span><span>Cyber Security Review</span><span>Microsoft 365 &amp; Network</span><span>AI-Ready Infrastructure</span><span>Network Health Check</span><span>Cyber Security Review</span>
+        </div>
+      </div>
+      <div class="sol-cta-band__card">
+        <p class="sol-cta-band__text">Book an IT infrastructure assessment to validate Microsoft 365 readiness, network performance, endpoint health, routing design, and security configuration before deployment.</p>
+        <a href="/contact.html" class="btn-dark">Assess Microsoft 365 Readiness</a>
       </div>
     </section>
 
     <script>
       window.PAGE_FAQ = [
-        { question: 'What is an assessment of Microsoft 365 readiness?', answer: 'It assesses how well your devices, network, and security settings support Microsoft 365 and identifies what needs to improve before rollout.', open: true },
-        { question: 'Why should companies do a readiness assessment before deployment?', answer: 'It helps prevent disruption, improves planning, and ensures your infrastructure can support Microsoft 365 performance and security requirements from the start.', open: false },
-        { question: 'What topics are covered in the evaluation?', answer: 'The evaluation covers network bandwidth, endpoint readiness, compatibility, security settings, and the key infrastructure factors that affect Microsoft 365 performance.', open: false }
+        { question: "What is an assessment of Microsoft 365 readiness?", answer: "It assesses how well your devices, network, and security settings support Microsoft 365. The review examines bandwidth, routing, identity services, authentication, and endpoint capability.", open: true },
+        { question: "Why should organisations complete a readiness assessment before deployment?", answer: "It helps reveal technical gaps early, reduces rollout disruption, and gives teams a clearer remediation plan before Microsoft 365 goes live.", open: false },
+        { question: "What topics are covered in the evaluation?", answer: "The assessment includes bandwidth, routing, identity services, authentication, endpoint capability, internet performance, and the security controls that affect Office 365 service delivery.", open: false }
       ];
     </script>
     <div data-cms="faq"></div>
@@ -109,13 +245,30 @@
     <div id="site-contact"></div>
     <script src="/js/contact.js"></script>
   </main>
+
   <div id="site-footer"></div>
   <script src="/js/cms.js"></script>
   <script src="/js/footer.js"></script>
+  <script>
+    (function () {
+      var testData = [
+        { quote:"Before our Microsoft 365 launch, the readiness assessment identified several network issues. The suggestions ensured a seamless transition with minimal disruption across the company and significantly improved Teams performance.", name:"Head of Infrastructure", role:"NorthStar Tech, Birmingham" },
+        { quote:"We knew Microsoft 365 would expose weaknesses in our environment. The assessment showed us exactly where bandwidth, endpoints, and identity needed work.", name:"Operations Manager", role:"Midlands Logistics" },
+        { quote:"Instead of deploying blind, we had a clear plan for the changes required to support Microsoft 365 smoothly and securely.", name:"IT Director", role:"Professional Services Firm, London" }
+      ];
+      var ti = 0;
+      var tq = document.getElementById("m365-test-quote");
+      var tn = document.getElementById("m365-test-name");
+      var tr = document.getElementById("m365-test-role");
+      var tf = document.getElementById("m365-test-fill");
+      function renderTest() { var d = testData[ti]; tq.textContent = d.quote; tn.textContent = d.name; tr.textContent = d.role; tf.style.width = (((ti + 1) / testData.length) * 100) + "%"; }
+      document.getElementById("m365-test-prev").addEventListener("click", function () { ti = (ti - 1 + testData.length) % testData.length; renderTest(); });
+      document.getElementById("m365-test-next").addEventListener("click", function () { ti = (ti + 1) % testData.length; renderTest(); });
+      renderTest();
+    }());
+  </script>
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
-  <script src="/js/search-index.js" defer></script>
-  <script src="/js/search.js" defer></script>
 </body>
 </html>

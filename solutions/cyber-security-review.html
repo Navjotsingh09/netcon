@@ -4,105 +4,209 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cyber Security Review | Network Consultancy</title>
-  <meta name="description" content="Structured cyber security review to identify vulnerabilities, evaluate risk, and strengthen your organisation's defences.">
+  <meta name="description" content="Identify IT vulnerabilities with a network-backed cyber security review that reveals risk before it becomes operational disruption.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+  <style>
+    .sol-hero { padding:36px var(--px) 58px; max-width:var(--section-w); margin:0 auto; }
+    .sol-hero__wrap { position:relative; max-width:1440px; margin:0 auto; min-height:590px; border-radius:20px; overflow:hidden; }
+    .sol-hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .sol-hero__overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(17,27,58,.88) 0%,rgba(17,27,58,.74) 32%,rgba(17,27,58,.18) 62%,rgba(17,27,58,0) 78%); }
+    .sol-hero__content { position:relative; z-index:2; max-width:650px; padding:126px 0 0 58px; }
+    .sol-hero__breadcrumb { font-family:"Barlow",sans-serif; font-size:13px; color:rgba(255,255,255,.7); margin-bottom:16px; }
+    .sol-hero__breadcrumb a { color:rgba(255,255,255,.7); text-decoration:none; }
+    .sol-hero__breadcrumb a:hover { color:#fff; }
+    .sol-hero__title { font-family:"Roboto Condensed",sans-serif; font-size:58px; font-weight:600; color:#fff; line-height:1.05; margin-bottom:22px; }
+    .sol-hero__sub { font-family:"Barlow",sans-serif; font-size:19px; color:rgba(255,255,255,.92); line-height:1.55; margin-bottom:30px; }
+
+    .audit { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
+    .audit__inner { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+    .audit__left h2 { font-family:"Roboto Condensed",sans-serif; font-size:42px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:10px; }
+    .audit__left p { font-family:"Barlow",sans-serif; font-size:17px; color:var(--sub); line-height:1.6; margin-bottom:24px; }
+    .audit__nav { display:flex; flex-direction:column; gap:20px; align-items:flex-start; }
+    .audit__arrows { display:flex; gap:14px; }
+    .audit__arrow { width:58px; height:48px; border-radius:8px; border:1px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:22px; transition:background .2s; }
+    .audit__arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
+    .audit__bar { width:190px; height:10px; border-radius:10px; background:var(--gray-mid); overflow:hidden; }
+    .audit__bar-fill { height:100%; background:#4d4a4a; border-radius:10px; transition:width .35s ease; }
+    .audit__card { background:#859aba; border-radius:20px; padding:36px 36px 30px; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:space-between; }
+    .audit__card p { font-family:"Roboto Condensed",sans-serif; font-size:26px; font-weight:400; line-height:1.38; }
+    .audit__count { font-family:"Roboto Condensed",sans-serif; font-size:36px; font-weight:600; margin-top:24px; }
+
+    .beyond { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
+    .beyond__inner { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+    .beyond__text h2 { font-family:"Roboto Condensed",sans-serif; font-size:38px; font-weight:600; color:var(--navy); line-height:1.15; margin-bottom:18px; }
+    .beyond__text p { font-family:"Barlow",sans-serif; font-size:17px; color:var(--sub); line-height:1.65; margin-bottom:14px; }
+    .beyond__image img { width:100%; height:340px; object-fit:cover; border-radius:16px; display:block; }
+
+    .split-info { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
+    .split-info__inner { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+    .split-info__text h2 { font-family:"Roboto Condensed",sans-serif; font-size:38px; font-weight:600; color:var(--navy); line-height:1.15; margin-bottom:18px; }
+    .split-info__text p { font-family:"Barlow",sans-serif; font-size:17px; color:var(--sub); line-height:1.65; margin-bottom:14px; }
+    .split-info__image img { width:100%; height:340px; object-fit:cover; border-radius:16px; display:block; }
+
+    .testi { padding:88px var(--px); max-width:var(--section-w); margin:0 auto; background:linear-gradient(91deg,rgba(241,244,249,.72) 0%,rgba(173,217,243,.58) 17%,rgba(160,182,229,.52) 35%,rgba(8,173,252,.18) 49%,rgba(160,182,229,.52) 68%,rgba(173,217,243,.55) 83%,rgba(245,248,253,.72) 100%); }
+    .testi__inner { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:320px 1fr; gap:70px; align-items:center; }
+    .testi__left h2 { font-family:"Roboto Condensed",sans-serif; font-size:60px; font-weight:600; color:var(--navy); line-height:1.02; }
+    .testi__nav { margin-top:84px; display:flex; flex-direction:column; gap:22px; align-items:flex-end; }
+    .testi__arrows { display:flex; gap:16px; }
+    .testi__arrow { width:58px; height:50px; border-radius:8px; border:1px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:24px; transition:background .2s; }
+    .testi__arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
+    .testi__bar { width:200px; height:10px; border-radius:10px; background:var(--gray-mid); overflow:hidden; }
+    .testi__bar-fill { height:100%; background:#4d4a4a; border-radius:10px; transition:width .35s ease; }
+    .testi__card { background:#fff; border-radius:20px; padding:44px 44px 40px; box-shadow:0 4px 12px rgba(0,0,0,.08); }
+    .testi__stars { color:#f0a31f; font-size:24px; letter-spacing:4px; margin-bottom:26px; }
+    .testi__quote { font-family:"Roboto Condensed",sans-serif; font-size:26px; font-weight:300; color:#222; line-height:1.44; margin-bottom:28px; }
+    .testi__meta { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; }
+    .testi__person { display:flex; align-items:center; gap:16px; }
+    .testi__avatar { width:52px; height:52px; border-radius:50%; background:var(--gray-mid); flex-shrink:0; }
+    .testi__name { font-family:"Roboto Condensed",sans-serif; font-size:16px; font-weight:600; }
+    .testi__role { font-family:"Barlow",sans-serif; font-size:13px; color:var(--sub); }
+    .testi__mark { font-family:Georgia,serif; font-size:76px; color:#111; line-height:1; }
+
+    .sol-cta-band { background:var(--blue); padding:80px 0; position:relative; overflow:hidden; }
+    .sol-cta-band__tags { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; gap:24px; padding:0 var(--px); pointer-events:none; }
+    .sol-cta-band__row { display:flex; gap:20px; flex-wrap:nowrap; }
+    .sol-cta-band__row span { background:#fff; color:var(--blue); opacity:.45; font-family:"Roboto Condensed",sans-serif; font-size:18px; font-weight:500; padding:12px 32px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
+    .sol-cta-band__card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:44px 66px; max-width:580px; margin:0 auto; text-align:center; box-shadow:0 4px 24px rgba(0,0,0,.12); }
+    .sol-cta-band__text { font-family:"Barlow",sans-serif; font-size:20px; font-weight:500; color:var(--sub); line-height:1.55; margin-bottom:28px; }
+
+    @media(max-width:1200px){ .sol-hero__title,.testi__left h2{font-size:46px;} .audit__inner,.beyond__inner,.split-info__inner,.testi__inner{display:block;} .testi__nav,.audit__nav{align-items:flex-start;margin-top:24px;} }
+    @media(max-width:768px){ .sol-hero__wrap{min-height:460px;} .sol-hero__content{padding:74px 24px 0;} .sol-hero__title{font-size:34px;} .sol-cta-band__card{padding:32px 28px;} }
+    @media(max-width:480px){ .sol-hero__title{font-size:28px;} }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
   <main id="main">
-    <section class="page-hero" aria-label="Page hero">
-      <div class="page-hero__bg">
-        <picture>
-          <source srcset="/images/pages/cyber-security.jpg" type="image/webp">
-          <img src="/images/pages/cyber-security.jpg" alt="" loading="eager" width="1920" height="640">
-        </picture>
-        <div class="page-hero__overlay" aria-hidden="true"></div>
-      </div>
-      <div class="page-hero__content animate-fade-up">
-        <h1 class="page-hero__title">Cyber Security Review: Strengthening Your Defences</h1>
-        <p class="page-hero__sub">Gain insights into your security posture with a comprehensive assessment.</p>
-      </div>
-    </section>
 
-    <section class="section animate-fade-up" aria-labelledby="csr-audit-h">
-      <div class="split split--3-2">
-        <div>
-          <span class="eyebrow">Cyber Security Audit and Review</span>
-          <h2 class="heading-xl" id="csr-audit-h">A structured assessment built to strengthen your security posture</h2>
-          <div class="body-lg">
-            <p>A cyber security review identifies vulnerabilities, evaluates risk exposure, and highlights the controls and improvements your organisation needs to operate more securely.</p>
-            <p>Our cyber risk assessment turns technical findings into clear priorities, so your team understands what matters most and what should happen next.</p>
-          </div>
-          <ul class="check-list">
-            <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Identify vulnerabilities across network, systems, and controls</span></li>
-            <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Evaluate operational and cyber risk exposure</span></li>
-            <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Prioritise practical remediation actions</span></li>
-            <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Create a clearer foundation for ongoing protection</span></li>
-          </ul>
-          <a href="/contact.html" class="btn-blue" style="margin-top:32px;">Book a Network Health Check</a>
-        </div>
+    <section class="sol-hero" aria-label="Cyber Security Review hero">
+      <div class="sol-hero__wrap">
         <picture>
-          <source srcset="/images/pages/cyber-security.jpg" type="image/webp">
-          <img class="split__img split__img--tall" src="/images/pages/cyber-security.jpg" alt="Cyber security review" width="600" height="480" loading="lazy">
+          <source srcset="/images/pages/nc-hero-person.webp" type="image/webp">
+          <img class="sol-hero__bg" src="/images/pages/nc-hero-person.jpg" alt="" width="1440" height="590" loading="eager">
         </picture>
-      </div>
-    </section>
-
-    <section class="section section--gray animate-fade-up" aria-labelledby="csr-beyond-h">
-      <div class="split split--2-3 split--reverse">
-        <picture>
-          <source srcset="/images/pages/managed-support.webp" type="image/webp">
-          <img class="split__img split__img--med" src="/images/pages/managed-support.jpg" alt="Security operations support" width="600" height="380" loading="lazy">
-        </picture>
-        <div>
-          <span class="eyebrow">Beyond the Cyber Review</span>
-          <h2 class="heading-lg" id="csr-beyond-h">A stronger security journey starts after the assessment</h2>
-          <div class="body-lg">
-            <p>Once vulnerabilities and risks are identified, organisations need a practical path forward. We help translate the review into hardening steps, policy improvements, security enhancements, and monitoring priorities that strengthen your environment over time.</p>
-            <p>That means the review is not just a report. It becomes the starting point for building more resilient network operations and better long-term protection.</p>
-          </div>
-          <a href="/contact.html" class="btn-blue" style="margin-top:28px;">Get In Touch</a>
+        <div class="sol-hero__overlay" aria-hidden="true"></div>
+        <div class="sol-hero__content animate-fade-up">
+          <nav class="sol-hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a> &rsaquo; <a href="/solutions/">Solutions</a> &rsaquo; <span>Cyber Security Review</span>
+          </nav>
+          <h1 class="sol-hero__title">Cyber Security Review: Strengthening Your Defences</h1>
+          <p class="sol-hero__sub">Gain insights into your security posture with a comprehensive assessment that identifies vulnerabilities, evaluates risks, and strengthens your overall security posture.</p>
+          <a href="/contact.html" class="btn-blue">BOOK A NETWORK HEALTH CHECK</a>
         </div>
       </div>
     </section>
 
-    <section class="testimonial-band" aria-label="Client testimonial">
-      <div class="testimonial-band__inner animate-fade-up">
-        <div class="testimonial-band__stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote class="testimonial-band__quote">&#8220;Our network vulnerabilities were made incredibly clear by the cyber security evaluation. The suggestions were doable, prioritised, and simple to put into practice.&#8221;</blockquote>
-        <cite class="testimonial-band__author">&#8212; <strong>James Turner</strong></cite>
+    <section class="audit" aria-labelledby="csr-audit-h">
+      <div class="audit__inner">
+        <div class="audit__left animate-fade-up">
+          <h2 id="csr-audit-h">Cyber Security Audit and Review</h2>
+          <p>Areas Covered During a Cyber Security Audit</p>
+          <div class="audit__nav">
+            <div class="audit__arrows">
+              <button class="audit__arrow" id="csr-prev" aria-label="Previous">&#8592;</button>
+              <button class="audit__arrow" id="csr-next" aria-label="Next">&#8594;</button>
+            </div>
+            <div class="audit__bar"><div class="audit__bar-fill" id="csr-fill"></div></div>
+          </div>
+        </div>
+        <div class="audit__card animate-fade-up">
+          <p id="csr-text">A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses.</p>
+          <div class="audit__count" id="csr-count">1 / 7</div>
+        </div>
       </div>
     </section>
 
-    <section class="section section--dark-blue animate-fade-up" aria-labelledby="csr-cta-h">
-      <div class="split split--3-2">
-        <div>
-          <span class="eyebrow" style="color:rgba(255,255,255,.6);">Strengthen Your Defences</span>
-          <h2 class="heading-lg heading-lg--white" id="csr-cta-h">Identify vulnerabilities and take action now for resilient security</h2>
-          <div class="body-lg body-lg--white">
-            <p>Use a structured cyber security review to understand your risks clearly, prioritise the right fixes, and build a stronger, more manageable security posture.</p>
-          </div>
-          <a href="/contact.html" class="btn-blue" style="margin-top:28px;">Book a Network Health Check</a>
+    <section class="beyond" aria-labelledby="csr-beyond-h">
+      <div class="beyond__inner animate-fade-up">
+        <div class="beyond__text">
+          <h2 id="csr-beyond-h">Beyond the Cyber Review</h2>
+          <p>A stronger security journey starts with a cyber security evaluation. After identifying risks and vulnerabilities, organisations must monitor threats and adapt to new attack techniques.</p>
+          <p>Our cyber risk assessment highlights areas needing attention and priority measures, laying the groundwork for protection. We also assist with network hardening, policy creation, security improvements, and ongoing monitoring.</p>
         </div>
-        <picture>
-          <source srcset="/images/pages/results.jpg" type="image/webp">
-          <img class="split__img split__img--med" src="/images/pages/results.jpg" alt="Cyber security improvement outcomes" width="600" height="380" loading="lazy">
-        </picture>
+        <div class="beyond__image">
+          <picture>
+            <source srcset="/images/pages/cyber-security.jpg" type="image/webp">
+            <img src="/images/pages/cyber-security.jpg" alt="Cyber security protection" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="split-info" aria-labelledby="csr-why-h">
+      <div class="split-info__inner animate-fade-up">
+        <div class="split-info__text">
+          <h2 id="csr-why-h">Why Choose Us</h2>
+          <p>Our cybersecurity review examines how your current security controls perform in day-to-day operations.</p>
+          <p>We identify security weaknesses that increase operational or compliance risk. Every cyber risk assessment reviews firewall configurations, network segmentation, user access, and infrastructure settings.</p>
+          <p>The findings explain which issues require immediate attention and which can be planned later. Recommendations are based on technical evidence and practical business impact.</p>
+          <p>Our team also provides ongoing cybersecurity consultancy whenever additional support is required.</p>
+        </div>
+        <div class="split-info__image">
+          <picture>
+            <source srcset="/images/pages/servers.webp" type="image/webp">
+            <img src="/images/pages/servers.jpg" alt="Security cabling and infrastructure" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="testi" aria-label="Client testimonial">
+      <div class="testi__inner">
+        <div class="testi__left animate-fade-up">
+          <h2>What our<br>client says</h2>
+          <div class="testi__nav">
+            <div class="testi__arrows">
+              <button class="testi__arrow" id="csr-test-prev" aria-label="Previous testimonial">&#8592;</button>
+              <button class="testi__arrow" id="csr-test-next" aria-label="Next testimonial">&#8594;</button>
+            </div>
+            <div class="testi__bar"><div class="testi__bar-fill" id="csr-test-fill"></div></div>
+          </div>
+        </div>
+        <div class="testi__card animate-fade-up">
+          <div class="testi__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote class="testi__quote" id="csr-test-quote">Our network vulnerabilities were made incredibly clear by the cyber security evaluation. The suggestions were doable, prioritised, and straightforward to put into practice.</blockquote>
+          <div class="testi__meta">
+            <div class="testi__person">
+              <div class="testi__avatar"></div>
+              <div>
+                <div class="testi__name" id="csr-test-name">James Turner</div>
+                <div class="testi__role" id="csr-test-role">IT Director, Manchester</div>
+              </div>
+            </div>
+            <div class="testi__mark">99</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sol-cta-band" aria-label="Cyber Security CTA">
+      <div class="sol-cta-band__tags" aria-hidden="true">
+        <div class="sol-cta-band__row">
+          <span>Cyber Security Review</span><span>Network Health Check</span><span>Microsoft 365 &amp; Network</span><span>AI-Ready Infrastructure</span><span>Cyber Security Review</span><span>Network Health Check</span>
+        </div>
+        <div class="sol-cta-band__row">
+          <span>Network Health Check</span><span>AI-Ready Infrastructure</span><span>Cyber Security Review</span><span>Microsoft 365 &amp; Network</span><span>Network Health Check</span><span>AI-Ready Infrastructure</span>
+        </div>
+      </div>
+      <div class="sol-cta-band__card">
+        <p class="sol-cta-band__text">Identify security weaknesses before they become operational risks. Speak with our cybersecurity consultants and schedule your cyber risk assessment today.</p>
+        <a href="/contact.html" class="btn-dark">Get a Security Assessment</a>
       </div>
     </section>
 
     <script>
       window.PAGE_FAQ = [
-        { question: 'What is a review of cyber security?', answer: 'A cyber security review is a structured assessment of your networks, procedures, and security controls to identify weaknesses and areas for improvement.', open: true },
-        { question: 'What is included in a cyber risk assessment?', answer: 'A cyber risk assessment examines infrastructure, access controls, vulnerabilities, operational exposure, and policy gaps, then prioritises the actions needed to reduce risk.', open: false },
-        { question: 'How frequently should a review of cyber security be carried out?', answer: 'It should be carried out regularly, especially before major changes, after incidents, or whenever your organisation needs a clear picture of its current security posture.', open: false }
+        { question: "What is a cyber security review?", answer: "A cybersecurity review assesses your company's networks, procedures, and security controls to identify weaknesses and areas for improvement.", open: true },
+        { question: "What is included in a cyber risk assessment?", answer: "A cyber risk assessment reviews security controls, firewall configurations, segmentation, user access, infrastructure settings, and the issues most likely to create operational or compliance risk.", open: false },
+        { question: "How frequently should a cyber security review be carried out?", answer: "It should be carried out regularly, especially after significant infrastructure changes, growth, or when your organisation needs updated evidence of its current security posture.", open: false }
       ];
     </script>
     <div data-cms="faq"></div>
@@ -110,13 +214,48 @@
     <div id="site-contact"></div>
     <script src="/js/contact.js"></script>
   </main>
+
   <div id="site-footer"></div>
   <script src="/js/cms.js"></script>
   <script src="/js/footer.js"></script>
+  <script>
+    (function () {
+      var slides = [
+        "A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses.",
+        "Firewall rules are reviewed to confirm that critical services are protected without leaving avoidable access gaps.",
+        "Segmentation and user access are checked to ensure threats cannot move freely across internal systems.",
+        "Infrastructure settings are inspected for inherited weaknesses that could create unnecessary exposure.",
+        "Security logging and visibility are assessed to determine whether threats can be identified quickly when they occur.",
+        "Compliance-sensitive controls are reviewed to see where policy and practice may not align with requirements.",
+        "Recommendations are prioritised according to business impact so remediation is clear, practical, and achievable."
+      ];
+      var si = 0;
+      var st = document.getElementById("csr-text");
+      var sc = document.getElementById("csr-count");
+      var sf = document.getElementById("csr-fill");
+      function renderSlide() { st.textContent = slides[si]; sc.textContent = (si + 1) + " / " + slides.length; sf.style.width = (((si + 1) / slides.length) * 100) + "%"; }
+      document.getElementById("csr-prev").addEventListener("click", function () { si = (si - 1 + slides.length) % slides.length; renderSlide(); });
+      document.getElementById("csr-next").addEventListener("click", function () { si = (si + 1) % slides.length; renderSlide(); });
+      renderSlide();
+
+      var testData = [
+        { quote:"Our network vulnerabilities were made incredibly clear by the cyber security evaluation. The suggestions were doable, prioritised, and straightforward to put into practice.", name:"James Turner", role:"IT Director, Manchester" },
+        { quote:"The review translated vague security concerns into a clear list of real operational risks. We knew exactly what needed to change first.", name:"Sarah Mills", role:"Operations Lead, Birmingham" },
+        { quote:"It gave us evidence-based guidance, not generic advice. The findings were actionable and directly tied to business impact.", name:"David Turner", role:"Infrastructure Manager, London" }
+      ];
+      var ti = 0;
+      var tq = document.getElementById("csr-test-quote");
+      var tn = document.getElementById("csr-test-name");
+      var tr = document.getElementById("csr-test-role");
+      var tf = document.getElementById("csr-test-fill");
+      function renderTest() { var d = testData[ti]; tq.textContent = d.quote; tn.textContent = d.name; tr.textContent = d.role; tf.style.width = (((ti + 1) / testData.length) * 100) + "%"; }
+      document.getElementById("csr-test-prev").addEventListener("click", function () { ti = (ti - 1 + testData.length) % testData.length; renderTest(); });
+      document.getElementById("csr-test-next").addEventListener("click", function () { ti = (ti + 1) % testData.length; renderTest(); });
+      renderTest();
+    }());
+  </script>
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
-  <script src="/js/search-index.js" defer></script>
-  <script src="/js/search.js" defer></script>
 </body>
 </html>
