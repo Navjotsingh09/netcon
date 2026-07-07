@@ -88,7 +88,7 @@
           <a href="/resources/blog/" class="nav-link">Blogs</a>
 <a href="/case-studies/" class="nav-link">Case Studies</a>
         </div>
-        <span class="nav-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <button type="button" class="nav-icon" data-search-trigger aria-label="Open site search"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
         <a href="/contact.html" class="btn-blue">Enquire Here</a>
       </div>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
