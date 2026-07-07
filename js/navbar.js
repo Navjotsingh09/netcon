@@ -14,7 +14,7 @@
           <a href="/about.html" class="nav-link">About</a>
 
           <div class="has-mega">
-            <span class="nav-link">Services <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <button type="button" class="nav-link nav-trigger" aria-haspopup="true" aria-expanded="false">Services <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
             <div class="mega-menu" role="region" aria-label="Services menu">
               <div class="mega-inner mega-inner--services">
                 <div class="mega-featured">
@@ -42,7 +42,7 @@
           </div>
 
           <div class="has-mega">
-            <span class="nav-link">Solutions <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <button type="button" class="nav-link nav-trigger" aria-haspopup="true" aria-expanded="false">Solutions <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
             <div class="mega-menu" role="region" aria-label="Solutions menu">
               <div class="mega-inner mega-inner--solutions">
                 <div class="mega-heading">
@@ -60,7 +60,7 @@
           </div>
 
           <div class="has-mega">
-            <span class="nav-link">Industries <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <button type="button" class="nav-link nav-trigger" aria-haspopup="true" aria-expanded="false">Industries <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
             <div class="mega-menu" role="region" aria-label="Industries menu">
               <div class="mega-inner mega-inner--industries">
                 <div class="mega-ind-grid">
@@ -88,7 +88,7 @@
           <a href="/resources/blog/" class="nav-link">Blogs</a>
 <a href="/case-studies/" class="nav-link">Case Studies</a>
         </div>
-        <span class="nav-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="#353535" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="#353535" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <span class="nav-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
         <a href="/contact.html" class="btn-blue">Enquire Here</a>
       </div>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
@@ -179,16 +179,5 @@
     if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('is-open')) closeNav();
   });
 
-  // ---- Mega-menu open on tap for touch (desktop uses :hover) ----
-  var megas = document.querySelectorAll('.has-mega');
-  Array.prototype.forEach.call(megas, function (m) {
-    var trigger = m.querySelector('.nav-link');
-    if (!trigger) return;
-    trigger.addEventListener('click', function (e) {
-      if (window.matchMedia('(hover: none)').matches) {
-        e.preventDefault();
-        m.classList.toggle('is-open');
-      }
-    });
-  });
+  // Mega-menu interactivity is handled centrally in js/global.js.
 })();

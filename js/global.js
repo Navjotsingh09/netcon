@@ -16,46 +16,87 @@
 
   /* ── Mega Menu ─────────────────────────────────────────────── */
   var triggers = document.querySelectorAll('.has-mega');
+  function setMenuOpen(el, isOpen) {
+    var trigger = el.querySelector('.nav-trigger, .nav-link');
+    el.classList.toggle('is-open', isOpen);
+    if (trigger && trigger.classList.contains('nav-trigger')) {
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+  }
+
+  function closeAllMenus(exceptEl) {
+    triggers.forEach(function (t) {
+      if (!exceptEl || t !== exceptEl) setMenuOpen(t, false);
+    });
+  }
+
   triggers.forEach(function (el) {
     var closeTimer;
+    var trigger = el.querySelector('.nav-trigger, .nav-link');
+
     function openMenu() {
       clearTimeout(closeTimer);
-      triggers.forEach(function (t) {
-        if (t !== el && t.classList.contains('is-open')) {
-          var m = t.querySelector('.mega-menu');
-          if (m) {
-            m.style.transition = 'none';
-            m.style.opacity = '0';
-            m.style.visibility = 'hidden';
-            m.style.transform = 'translateY(-8px)';
-          }
-          t.classList.remove('is-open');
-          requestAnimationFrame(function () {
-            if (m) { m.style.transition = ''; m.style.opacity = ''; m.style.visibility = ''; m.style.transform = ''; }
-          });
-        }
-      });
-      el.classList.add('is-open');
+      closeAllMenus(el);
+      setMenuOpen(el, true);
     }
+
     function scheduleClose() {
-      closeTimer = setTimeout(function () { el.classList.remove('is-open'); }, 160);
+      closeTimer = setTimeout(function () { setMenuOpen(el, false); }, 160);
     }
+
     el.addEventListener('mouseenter', openMenu);
     el.addEventListener('mouseleave', scheduleClose);
+
     var menu = el.querySelector('.mega-menu');
     if (menu) {
       menu.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
       menu.addEventListener('mouseleave', scheduleClose);
     }
+
+    if (trigger) {
+      trigger.addEventListener('click', function (e) {
+        if (window.matchMedia('(hover: hover)').matches) {
+          if (trigger.classList.contains('nav-trigger')) e.preventDefault();
+          if (el.classList.contains('is-open')) setMenuOpen(el, false);
+          else openMenu();
+        } else {
+          e.preventDefault();
+          if (el.classList.contains('is-open')) setMenuOpen(el, false);
+          else openMenu();
+        }
+      });
+
+      trigger.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (el.classList.contains('is-open')) setMenuOpen(el, false);
+          else openMenu();
+        }
+        if (e.key === 'Escape') {
+          setMenuOpen(el, false);
+          trigger.focus();
+        }
+      });
+    }
+
+    el.addEventListener('focusin', function () {
+      if (window.matchMedia('(hover: hover)').matches) openMenu();
+    });
+
+    el.addEventListener('focusout', function () {
+      setTimeout(function () {
+        if (!el.contains(document.activeElement)) setMenuOpen(el, false);
+      }, 0);
+    });
   });
   document.addEventListener('click', function (e) {
     if (!e.target.closest('.has-mega')) {
-      triggers.forEach(function (t) { t.classList.remove('is-open'); });
+      closeAllMenus();
     }
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
-      triggers.forEach(function (t) { t.classList.remove('is-open'); });
+      closeAllMenus();
     }
   });
 
