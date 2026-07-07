@@ -97,27 +97,31 @@
   });
 
   /* ── FAQ Accordion ─────────────────────────────────────────── */
-  document.querySelectorAll('.faq-header').forEach(function (header) {
-    header.addEventListener('click', function () {
-      var item = this.closest('.faq-item');
-      var wasOpen = item.classList.contains('open');
-      /* Close all */
-      document.querySelectorAll('.faq-item').forEach(function (i) {
-        i.classList.remove('open');
-        i.classList.add('closed');
-        i.querySelector('.faq-header').setAttribute('aria-expanded', 'false');
-        var d = i.querySelector('.faq-divider');
-        if (d) d.style.display = 'none';
-      });
-      /* Open clicked (if was closed) */
-      if (!wasOpen) {
-        item.classList.remove('closed');
-        item.classList.add('open');
-        this.setAttribute('aria-expanded', 'true');
-        var d = item.querySelector('.faq-divider');
-        if (d) d.style.display = '';
-      }
+  /* Event delegation: works for both static HTML and CMS-injected FAQs */
+  document.addEventListener('click', function (e) {
+    var header = e.target.closest('.faq-header');
+    if (!header) return;
+    var item = header.closest('.faq-item');
+    if (!item) return;
+    var wasOpen = item.classList.contains('open');
+    /* Close all FAQ items in the same list */
+    var list = item.closest('.faq-list') || document;
+    list.querySelectorAll('.faq-item').forEach(function (i) {
+      i.classList.remove('open');
+      i.classList.add('closed');
+      var h = i.querySelector('.faq-header');
+      if (h) h.setAttribute('aria-expanded', 'false');
+      var d = i.querySelector('.faq-divider');
+      if (d) d.style.display = 'none';
     });
+    /* Re-open if it was closed */
+    if (!wasOpen) {
+      item.classList.remove('closed');
+      item.classList.add('open');
+      header.setAttribute('aria-expanded', 'true');
+      var div = item.querySelector('.faq-divider');
+      if (div) div.style.display = '';
+    }
   });
 
   /* ── Contact Form ──────────────────────────────────────────── */

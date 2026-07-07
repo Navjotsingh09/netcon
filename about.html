@@ -29,30 +29,33 @@
   @media(max-width:768px){ .about-hero{padding:32px var(--px);} .about-hero__img-box{height:380px;} .about-hero__content{top:48px;left:32px;right:32px;} .about-hero__title{font-size:32px;} .about-hero__sub{font-size:18px;} }
   @media(max-width:480px){ .about-hero__img-box{height:300px;} .about-hero__title{font-size:26px;} .about-hero__content{gap:28px;} }
   /* ── Why Choose Us Slider ─────────────────────────────────── */
-  .about-why { padding:80px var(--px) 0; }
-  .about-why__title { margin-bottom:36px; }
-  .why-slider-wrap { max-width:1440px; margin:0 auto; }
-  .why-slides { position:relative; border-radius:20px; overflow:hidden; height:580px; }
-  .why-slide { display:none; position:absolute; inset:0; }
-  .why-slide.active { display:block; }
-  .why-slide__bg { position:absolute; inset:0; }
-  .why-slide__bg img { width:100%; height:100%; object-fit:cover; }
-  .why-slide__card { position:absolute; bottom:36px; left:36px; background:var(--gray-bg); border-radius:20px; padding:36px 48px; max-width:540px; }
-  .why-slide__heading { font-family:'Roboto Condensed',sans-serif; font-size:42px; font-weight:600; color:var(--navy); margin-bottom:18px; line-height:1.1; }
-  .why-slide__body { font-family:'Barlow',sans-serif; font-size:18px; font-weight:600; color:var(--sub); line-height:1.6; margin-bottom:28px; }
-  .why-slide__cta { border-radius:20px !important; }
-  .why-footer { display:flex; align-items:flex-start; justify-content:space-between; margin-top:28px; gap:32px; padding-bottom:80px; flex-wrap:wrap; }
-  .why-nav { display:flex; flex-direction:column; gap:20px; padding-top:8px; }
-  .why-arrows { display:flex; gap:16px; }
-  .why-arrow { width:64px; height:64px; border-radius:10px; border:1.5px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s,border-color .2s,color .2s; font-size:22px; font-family:'Barlow',sans-serif; }
-  .why-arrow:hover { background:var(--navy); border-color:var(--navy); color:#fff; }
-  .why-bar-wrap { height:16px; background:var(--gray-mid); border-radius:10px; width:240px; }
-  .why-bar { height:16px; background:var(--sub); border-radius:10px; transition:width .4s; }
-  .why-thumbs { display:flex; gap:24px; flex-wrap:wrap; }
-  .why-thumb { background:none; border:none; display:flex; flex-direction:column; gap:14px; cursor:pointer; width:200px; padding:0; text-align:left; }
-  .why-thumb img { width:100%; height:150px; object-fit:cover; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,.1); transition:box-shadow .2s,transform .2s; }
-  .why-thumb:hover img, .why-thumb.active img { box-shadow:0 6px 20px rgba(9,130,197,.25); transform:translateY(-2px); }
-  .why-thumb span { font-family:'Roboto Condensed',sans-serif; font-size:18px; color:var(--sub); }
+  /* ── Our Capabilities (IT Networking Solutions layout) ────── */
+  .about-capabilities { padding:40px var(--px); max-width:1920px; margin:0 auto; }
+  .about-capabilities__header { margin-bottom:40px; }
+  .about-capabilities__sub { font-family:'Barlow',sans-serif; font-size:20px; font-weight:500; color:var(--sub); margin-top:14px; max-width:700px; line-height:1.5; }
+  .btn-blue-lg { background:var(--blue); color:#fff; font-family:'Barlow',sans-serif; font-size:15px; font-weight:700; letter-spacing:.08em; padding:16px 40px; border-radius:9999px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s,transform .2s; text-decoration:none; border:none; }
+  .btn-blue-lg:hover { background:#0771a5; transform:scale(1.02); }
+  .btn-blue-lg:active { transform:scale(.98); transition:transform .1s; }
+  .solutions-main { position:relative; height:713px; border-radius:20px; overflow:hidden; margin-bottom:-90px; }
+  .solutions-main img { width:100%; height:100%; object-fit:cover; display:block; }
+  .solutions-main__overlay { position:absolute; inset:0; background:rgba(4,31,93,.2); }
+  .solutions-infobox { position:absolute; bottom:122px; left:65px; background:#EBEBEB; border-radius:20px; padding:31px 51px; max-width:640px; }
+  .solutions-infobox h3 { font-family:'Roboto Condensed',sans-serif; font-size:42px; font-weight:600; color:var(--navy); margin-bottom:18px; line-height:1; }
+  .solutions-infobox p { font-size:24px; font-weight:500; color:var(--sub); line-height:1.25; margin-bottom:24px; }
+  .solutions-bottom { display:flex; align-items:flex-end; gap:61px; position:relative; z-index:1; }
+  .solutions-nav { display:flex; flex-direction:column; gap:31px; align-items:flex-end; flex-shrink:0; padding-bottom:4px; }
+  .solutions-arrows { display:flex; gap:20px; }
+  .sol-arrow { background:none; border:none; padding:0; cursor:pointer; display:inline-flex; line-height:0; }
+  .sol-arrow svg rect { transition:fill .2s ease; }
+  .sol-arrow svg path { transition:stroke .2s ease; }
+  .sol-arrow:hover svg rect { fill:var(--blue); }
+  .sol-arrow:hover svg path { stroke:#fff; }
+  .solutions-progress { width:421px; height:16px; background:var(--gray-mid); border-radius:10px; overflow:hidden; }
+  .solutions-progress-fill { height:100%; background:var(--sub); border-radius:10px; transition:width .4s ease; }
+  .solutions-sub-cards { display:flex; gap:29px; flex:1; }
+  .sol-sub { display:flex; flex-direction:column; gap:27px; flex:1; }
+  .sol-sub img { width:100%; height:224px; object-fit:cover; border-radius:20px; box-shadow:0 4px 4px rgba(0,0,0,.1); }
+  .sol-sub p { font-family:'Roboto Condensed',sans-serif; font-size:20px; color:var(--sub); }
   /* ── Engineer Proficiency ──────────────────────────────────── */
   .eng-prof { padding:0 var(--px) 80px; }
   .eng-prof__card { position:relative; border-radius:30px; overflow:hidden; min-height:680px; display:flex; align-items:center; }
@@ -61,26 +64,29 @@
   .eng-prof__overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(20,26,40,.88) 46%,rgba(71,92,142,0) 88%); }
   .eng-prof__content { position:relative; z-index:2; padding:80px 85px; max-width:860px; }
   .eng-prof__title { font-family:'Roboto Condensed',sans-serif; font-size:60px; font-weight:600; color:#fff; line-height:1.05; margin-bottom:46px; }
-  .eng-prof__body { font-family:'Helvetica Neue','Helvetica',Arial,sans-serif; font-size:22px; font-weight:500; color:rgba(255,255,255,.9); line-height:1.6; letter-spacing:.03em; display:flex; flex-direction:column; gap:18px; margin-bottom:140px; }
-  .eng-prof__dots { display:flex; gap:16px; }
-  .eng-prof__dot { height:11px; border-radius:10px; background:rgba(255,255,255,.4); width:100px; display:block; }
+  .eng-prof__body { font-family:'Helvetica Neue','Helvetica',Arial,sans-serif; font-size:22px; font-weight:500; color:rgba(255,255,255,.9); line-height:1.6; letter-spacing:.03em; display:flex; flex-direction:column; gap:18px; margin-bottom:60px; transition:opacity .3s ease; }
+  .eng-prof__dots { display:flex; gap:16px; align-items:center; }
+  .eng-prof__dot { height:11px; border-radius:10px; background:rgba(255,255,255,.4); width:100px; display:block; border:none; padding:0; cursor:pointer; transition:background .3s; }
   .eng-prof__dot.active { background:var(--blue); }
-  @media(max-width:1440px){ .why-slides{height:520px;} .why-thumb{width:180px;} .why-thumb img{height:130px;} }
-  @media(max-width:1200px){ .why-slides{height:460px;} .why-slide__card{padding:28px 32px;} .why-slide__heading{font-size:34px;} .eng-prof__title{font-size:48px;} .eng-prof__content{padding:60px;} .eng-prof__body{font-size:19px;} }
-  @media(max-width:768px){ .why-slides{height:380px;} .why-slide__card{bottom:16px;left:16px;right:16px;padding:20px 24px;max-width:none;} .why-slide__heading{font-size:28px;} .why-footer{flex-direction:column;align-items:flex-start;} .why-thumbs{gap:16px;} .why-thumb{width:calc(50% - 8px);} .eng-prof__card{min-height:auto;} .eng-prof__title{font-size:36px;margin-bottom:28px;} .eng-prof__content{padding:40px 32px;} .eng-prof__body{font-size:17px;margin-bottom:60px;} }
-  @media(max-width:480px){ .why-slides{height:260px;} .why-slide__card{bottom:12px;left:12px;right:12px;} }
+  @media(max-width:1440px){ .solutions-infobox h3{font-size:34px;} }
+  @media(max-width:1200px){ .solutions-infobox{padding:24px 36px;} .solutions-infobox h3{font-size:28px;} .eng-prof__title{font-size:48px;} .eng-prof__content{padding:60px;} .eng-prof__body{font-size:19px;} }
+  @media(max-width:768px){ .solutions-main{height:400px;} .solutions-infobox{left:16px;right:16px;bottom:16px;max-width:none;} .solutions-infobox h3{font-size:22px;} .solutions-infobox p{font-size:18px;} .solutions-bottom{flex-direction:column;} .solutions-sub-cards{flex-direction:column;} .eng-prof__card{min-height:auto;} .eng-prof__title{font-size:36px;margin-bottom:28px;} .eng-prof__content{padding:40px 32px;} .eng-prof__body{font-size:17px;margin-bottom:60px;} }
+  @media(max-width:480px){ .solutions-main{height:300px;} }
   /* ── Hero CTA button ──────────────────────────────────────── */
   .btn-about-cta { display:inline-block; margin-top:32px; background:var(--blue); color:#fff; font-family:'Roboto Condensed',sans-serif; font-size:24px; font-weight:700; line-height:1; text-decoration:none; padding:16px 50px; border-radius:20px; letter-spacing:.01em; transition:background .2s; }
   .btn-about-cta:hover { background:#076fa8; }
   /* ── About Cards (Origin + How We Operate) ────────────────── */
-  .about-cards { background:var(--gray-bg); padding:80px var(--px); display:flex; flex-direction:column; gap:40px; }
-  .about-card { display:flex; border-radius:30px; overflow:hidden; min-height:580px; }
-  .about-card--blue { background:var(--blue); flex-direction:row; }
-  .about-card--white { background:#fff; flex-direction:row-reverse; }
-  .about-card__img { width:498px; flex-shrink:0; overflow:hidden; }
+  .about-cards { background:var(--gray-bg); padding:80px var(--px); display:flex; flex-direction:column; gap:84px; }
+  .about-card { position:relative; min-height:594px; }
+  .about-card--blue::before { content:''; position:absolute; top:0; bottom:0; left:17%; right:0; background:var(--blue); border-radius:30px; z-index:0; }
+  .about-card--white::before { content:''; position:absolute; top:0; bottom:0; left:0; right:17%; background:#fff; border-radius:30px; z-index:0; }
+  .about-card__img { position:absolute; top:47px; width:33%; height:500px; border-radius:20px; overflow:hidden; z-index:1; }
+  .about-card--blue .about-card__img { left:0; }
+  .about-card--white .about-card__img { right:0; }
   .about-card__img img { width:100%; height:100%; object-fit:cover; display:block; }
-  .about-card__text { flex:1; padding:80px 80px 80px 80px; display:flex; flex-direction:column; justify-content:center; gap:28px; }
-  .about-card--white .about-card__text { padding:80px 80px 80px 134px; }
+  .about-card__text { position:relative; z-index:1; display:flex; flex-direction:column; gap:28px; }
+  .about-card--blue .about-card__text { padding:80px 80px 80px 38%; }
+  .about-card--white .about-card__text { padding:80px 37% 80px 9%; }
   .about-card__title { font-family:'Roboto Condensed',sans-serif; font-size:42px; font-weight:600; line-height:1; color:#fff; margin:0; }
   .about-card--white .about-card__title { color:var(--dark); }
   .about-card__body { font-family:'Roboto Condensed',sans-serif; font-size:24px; font-weight:500; line-height:1.25; color:rgba(235,235,235,.9); margin:0; }
@@ -126,121 +132,33 @@
   .about-faq-item__answer { font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:500; color:#fff; line-height:1.4; padding:32px 56px 56px 127px; }
   /* ── Responsive ──────────────────────────────────────────── */
   @media(max-width:1440px){ .about-test-heading{font-size:56px;} .about-test-card{padding:56px 48px;} .about-test-quote{font-size:28px;} }
-  @media(max-width:1200px){ .about-card__img{width:380px;} .about-card__text{padding:60px;} .about-card--white .about-card__text{padding:60px;} .about-card__title{font-size:36px;} .about-card__body{font-size:20px;} .about-test-inner{gap:60px;} .about-test-left{width:320px;} .about-test-heading{font-size:48px;} .about-test-quote{font-size:24px;} .about-faq-item__text{font-size:27px;} .about-faq-item__answer{font-size:24px;padding:24px 48px 48px 100px;} }
-  @media(max-width:768px){ .about-cards{padding:40px var(--px);gap:24px;} .about-card{flex-direction:column;min-height:auto;} .about-card--white{flex-direction:column;} .about-card__img{width:100%;height:280px;} .about-card__text,.about-card--white .about-card__text{padding:40px 32px;} .about-card__title{font-size:30px;} .about-card__body{font-size:18px;} .about-test-inner{flex-direction:column;gap:40px;} .about-test-left{width:100%;min-height:auto;} .about-test-heading{font-size:40px;} .about-test-nav{margin-top:20px;} .about-test-quote{font-size:22px;} .about-faq-item__num{font-size:36px;} .about-faq-item__text{font-size:22px;} .about-faq-item__answer{font-size:20px;padding:20px 32px 40px 80px;} }
-  @media(max-width:480px){ .about-card__text,.about-card--white .about-card__text{padding:32px 20px;} .about-test-card{padding:40px 24px;} }
+  @media(max-width:1200px){ .about-card--blue .about-card__text{padding:60px 60px 60px 38%;} .about-card--white .about-card__text{padding:60px 37% 60px 9%;} .about-card__img{height:420px;} .about-card__title{font-size:36px;} .about-card__body{font-size:20px;} .about-test-inner{gap:60px;} .about-test-left{width:320px;} .about-test-heading{font-size:48px;} .about-test-quote{font-size:24px;} .about-faq-item__text{font-size:27px;} .about-faq-item__answer{font-size:24px;padding:24px 48px 48px 100px;} }
+  @media(max-width:768px){ .about-cards{padding:40px var(--px);gap:24px;} .about-card{display:flex;flex-direction:column;min-height:auto;overflow:hidden;border-radius:30px;} .about-card--blue{background:var(--blue);} .about-card--blue::before{display:none;} .about-card--white{background:#fff;} .about-card--white::before{display:none;} .about-card__img{position:static;width:100%;height:240px;border-radius:0;order:0;} .about-card--white .about-card__img{order:-1;} .about-card--blue .about-card__text,.about-card--white .about-card__text{padding:40px 32px;} .about-card__title{font-size:30px;} .about-card__body{font-size:18px;} .about-test-inner{flex-direction:column;gap:40px;} .about-test-left{width:100%;min-height:auto;} .about-test-heading{font-size:40px;} .about-test-nav{margin-top:20px;} .about-test-quote{font-size:22px;} .about-faq-item__num{font-size:36px;} .about-faq-item__text{font-size:22px;} .about-faq-item__answer{font-size:20px;padding:20px 32px 40px 80px;} }
+  @media(max-width:480px){ .about-test-card{padding:40px 24px;} }
+  /* ── Our Clients ──────────────────────────────────────────── */
+  .our-clients { padding:80px var(--px); max-width:1920px; margin:0 auto; background:linear-gradient(91deg,rgba(241,244,249,.5) 0%,rgba(173,217,243,.5) 15%,rgba(160,182,229,.5) 33%,rgba(8,173,252,.2) 49%,rgba(160,182,229,.5) 68%,rgba(173,217,243,.5) 83%,rgba(245,248,253,.5) 100%); }
+  .our-clients__inner { display:flex; align-items:flex-start; gap:80px; }
+  .our-clients__label { flex-shrink:0; width:200px; padding-top:10px; margin-bottom:0; }
+  .clients-grid { flex:1; display:grid; grid-template-columns:repeat(3,1fr); column-gap:27px; row-gap:40px; }
+  .client-box { background:#fff; width:100%; height:200px; border-radius:8px; display:flex; align-items:center; justify-content:center; transition:transform .3s,box-shadow .3s; cursor:pointer; }
+  .client-box:hover { transform:translateY(-4px) scale(1.01); box-shadow:0 12px 24px rgba(0,0,0,.12); }
+  .client-ph { display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .client-ph::before { content:''; display:block; width:40px; height:40px; border-radius:6px; background:var(--gray-mid); }
+  .client-ph::after  { content:''; display:block; width:88px; height:14px; border-radius:4px; background:var(--gray-mid); }
+  @media(max-width:768px){
+    .our-clients__inner { flex-direction:column; gap:24px; }
+    .our-clients__label { width:100%; padding-top:0; }
+    .clients-grid { grid-template-columns:repeat(2,1fr); row-gap:24px; }
+    .client-box { height:140px; }
+  }
+  @media(max-width:480px){ .clients-grid { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <nav class="navbar navbar--sticky" aria-label="Main navigation">
-    <div class="navbar__box">
-      <a href="/" class="navbar__logo" aria-label="Network Consultancy home">
-        <img src="/images/misc/logo.png" alt="Network Consultancy" width="150" height="44" loading="eager">
-      </a>
-      <div class="navbar__right">
-        <div class="navbar__links">
-          <a href="/about.html" class="nav-link active" aria-current="page">About</a>
-
-          <div class="has-mega">
-            <span class="nav-link">Services <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div class="mega-menu" role="region" aria-label="Services menu">
-              <div class="mega-inner mega-inner--services">
-                <div class="mega-featured">
-                  <picture><source srcset="/images/pages/servers.jpg" type="image/jpeg"><img src="/images/pages/servers.jpg" alt="Services" loading="lazy"></picture>
-                  <div class="mega-featured__body">
-                    <span class="mega-featured__label">Services Overview</span>
-                    <p class="mega-featured__title">Managed Network Services</p>
-                    <p class="mega-featured__desc">Expert-led, end-to-end IT network support for growing businesses.</p>
-                    <a href="/services/" class="mega-featured__link">View All Services &#8594;</a>
-                  </div>
-                </div>
-                <div class="mega-items">
-                  <a href="/services/network-consultancy.html" class="mega-item"><picture><source srcset="/images/services/service-1.webp" type="image/webp"><img src="/images/services/service-1.jpg" alt="" loading="lazy"></picture><span>Network Consultancy</span></a>
-                  <a href="/services/network-design-deployment.html" class="mega-item"><picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></picture><span>Network Design &amp; Deployment</span></a>
-                  <a href="/services/network-installations.html" class="mega-item"><picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></picture><span>Network Installations</span></a>
-                  <a href="/services/network-support.html" class="mega-item"><picture><source srcset="/images/services/service-4.webp" type="image/webp"><img src="/images/services/service-4.jpg" alt="" loading="lazy"></picture><span>Network Support</span></a>
-                  <a href="/services/managed-network-support.html" class="mega-item"><picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></picture><span>Managed Network Support</span></a>
-                  <a href="/services/managed-wireless-lan.html" class="mega-item"><picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></picture><span>Managed Wireless LAN</span></a>
-                  <a href="/services/firewall-network-security.html" class="mega-item"><picture><source srcset="/images/misc/why-choose-us.webp" type="image/webp"><img src="/images/misc/why-choose-us.jpg" alt="" loading="lazy"></picture><span>Firewall &amp; Network Security</span></a>
-                  <a href="/services/remote-access-vpn.html" class="mega-item"><picture><source srcset="/images/banners/scroll-banner-1.webp" type="image/webp"><img src="/images/banners/scroll-banner-1.jpg" alt="" loading="lazy"></picture><span>Remote Access &amp; VPN Solutions</span></a>
-                  <a href="/services/business-continuity.html" class="mega-item"><picture><source srcset="/images/banners/scroll-banner-2.webp" type="image/webp"><img src="/images/banners/scroll-banner-2.jpg" alt="" loading="lazy"></picture><span>Business Continuity &amp; Resilience</span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="has-mega">
-            <span class="nav-link">Solutions <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div class="mega-menu" role="region" aria-label="Solutions menu">
-              <div class="mega-inner mega-inner--solutions">
-                <div class="mega-heading">
-                  <span class="mega-heading__title">IT Networking Solutions</span>
-                  <a href="/solutions/" class="mega-heading__all">View All Solutions &#8594;</a>
-                </div>
-                <div class="mega-cards">
-                  <a href="/solutions/network-health-check.html" class="mega-card"><picture><source srcset="/images/pages/network-abstract.jpg" type="image/jpeg"><img class="mega-card__img" src="/images/pages/network-abstract.jpg" alt="" loading="lazy"></picture><div class="mega-card__body"><p class="mega-card__title">Network Health Check</p><p class="mega-card__desc">A comprehensive review of your network to identify weaknesses and opportunities.</p><span class="mega-card__link">Learn More &#8594;</span></div></a>
-                  <a href="/solutions/ai-ready-infrastructure.html" class="mega-card"><picture><source srcset="/images/pages/technician.jpg" type="image/jpeg"><img class="mega-card__img" src="/images/pages/technician.jpg" alt="" loading="lazy"></picture><div class="mega-card__body"><p class="mega-card__title">AI-Ready Infrastructure</p><p class="mega-card__desc">Assess whether your infrastructure can support AI-driven business demands.</p><span class="mega-card__link">Learn More &#8594;</span></div></a>
-                  <a href="/solutions/cyber-security-review.html" class="mega-card"><picture><source srcset="/images/pages/cyber-security.jpg" type="image/jpeg"><img class="mega-card__img" src="/images/pages/cyber-security.jpg" alt="" loading="lazy"></picture><div class="mega-card__body"><p class="mega-card__title">Cyber Security Review</p><p class="mega-card__desc">Identify vulnerabilities and close security gaps with expert analysis.</p><span class="mega-card__link">Learn More &#8594;</span></div></a>
-                  <a href="/solutions/microsoft-365-network.html" class="mega-card"><picture><source srcset="/images/pages/professional.jpg" type="image/jpeg"><img class="mega-card__img" src="/images/pages/professional.jpg" alt="" loading="lazy"></picture><div class="mega-card__body"><p class="mega-card__title">Microsoft 365 &amp; Network</p><p class="mega-card__desc">Ensure seamless Microsoft 365 performance before you deploy.</p><span class="mega-card__link">Learn More &#8594;</span></div></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="has-mega">
-            <span class="nav-link">Industries <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div class="mega-menu" role="region" aria-label="Industries menu">
-              <div class="mega-inner mega-inner--industries">
-                <div class="mega-ind-grid">
-                  <a href="/industries/financial-services.html" class="mega-item"><picture><source srcset="/images/services/service-1.webp" type="image/webp"><img src="/images/services/service-1.jpg" alt="" loading="lazy"></picture><span>Financial Services</span></a>
-                  <a href="/industries/healthcare-clinics.html" class="mega-item"><picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></picture><span>Healthcare &amp; Clinics</span></a>
-                  <a href="/industries/legal-firms.html" class="mega-item"><picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></picture><span>Legal Firms</span></a>
-                  <a href="/industries/manufacturing.html" class="mega-item"><picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></picture><span>Manufacturing</span></a>
-                  <a href="/industries/multi-site-businesses.html" class="mega-item"><picture><source srcset="/images/services/service-4.webp" type="image/webp"><img src="/images/services/service-4.jpg" alt="" loading="lazy"></picture><span>Multi-Site Businesses</span></a>
-                  <a href="/industries/professional-services.html" class="mega-item"><picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></picture><span>Professional Services</span></a>
-                  <a href="/industries/recruitment-agencies.html" class="mega-item"><picture><source srcset="/images/misc/why-choose-us.webp" type="image/webp"><img src="/images/misc/why-choose-us.jpg" alt="" loading="lazy"></picture><span>Recruitment Agencies</span></a>
-                  <a href="/industries/internal-it-teams.html" class="mega-item"><picture><source srcset="/images/misc/it-networking.webp" type="image/webp"><img src="/images/misc/it-networking.jpg" alt="" loading="lazy"></picture><span>Internal IT Teams</span></a>
-                </div>
-                <div class="mega-featured">
-                  <picture><source srcset="/images/pages/industries.jpg" type="image/jpeg"><img src="/images/pages/industries.jpg" alt="Industries" loading="lazy"></picture>
-                  <div class="mega-featured__body">
-                    <span class="mega-featured__label">Industries We Serve</span>
-                    <p class="mega-featured__title">Tailored Networks for Every Sector</p>
-                    <p class="mega-featured__desc">From healthcare to finance, high-performance networks built for your industry.</p>
-                    <a href="/industries/" class="mega-featured__link">Explore All &#8594;</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a href="/resources/blog/" class="nav-link">Blogs</a>
-<a href="/case-studies/" class="nav-link">Case Studies</a>
-        </div>
-        <span class="nav-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="#353535" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="#353535" stroke-width="2" stroke-linecap="round"/></svg></span>
-        <a href="/contact.html" class="btn-blue">Enquire Here</a>
-      </div>
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <div class="nav-mobile" id="nav-mobile" role="dialog" aria-modal="true" aria-label="Navigation">
-    <button class="nav-mobile__close" id="nav-mobile-close" aria-label="Close menu">&times;</button>
-    <div class="nav-mobile__brand"><img src="/images/misc/logo.png" alt="Network Consultancy" width="140" height="40" loading="lazy"></div>
-    <nav class="nav-mobile__links">
-      <a href="/about.html" class="nav-mobile__link  active">About</a>
-      <a href="/services/" class="nav-mobile__link">Services</a>
-      <a href="/solutions/" class="nav-mobile__link">Solutions</a>
-      <a href="/industries/" class="nav-mobile__link">Industries</a>
-      <a href="/resources/blog/" class="nav-mobile__link">Blogs</a>
-      <a href="/case-studies/" class="nav-mobile__link">Case Studies</a>
-      <a href="/contact.html" class="nav-mobile__link">Contact</a>
-    </nav>
-    <a href="/contact.html" class="btn-blue">Enquire Here</a>
-  </div>
+  <div id="site-navbar"></div>
+  <script src="/js/navbar.js"></script>
   <main id="main">
 
   <section class="about-hero" aria-label="Page hero">
@@ -263,64 +181,45 @@
     </div>
   </section>
 
-  <section class="about-why animate-fade-up" aria-labelledby="why-choose-h">
-    <h2 class="section-title about-why__title" id="why-choose-h">Our Capabilities</h2>
-    <div class="why-slider-wrap">
-      <div class="why-slides" id="why-slides">
-        <div class="why-slide active">
-          <div class="why-slide__bg">
-            <picture><source srcset="/images/pages/servers.webp" type="image/webp"><img src="/images/pages/servers.jpg" alt="Network Consultancy team with engineers in server room" loading="lazy"></picture>
-          </div>
-          <div class="why-slide__card">
-            <h3 class="why-slide__heading">Flexible Services</h3>
-            <p class="why-slide__body">Our network consultancy expertise helps businesses make confident operational and management decisions. We support in-house teams and deliver secure infrastructure via managed, on-site or remote projects.</p>
-            <a href="/contact.html" class="btn-blue why-slide__cta">Get To Know More</a>
-          </div>
+  <!-- ========= OUR CAPABILITIES ========= -->
+  <section class="about-capabilities">
+    <div class="about-capabilities__header">
+      <h2 class="section-title animate-fade-up">Our Capabilities</h2>
+    </div>
+    <div class="solutions-main">
+      <picture>
+        <source id="cap-hero-source" srcset="/images/pages/managed-support.webp" type="image/webp">
+        <img id="cap-hero-img" src="/images/pages/managed-support.jpg" alt="Proven Results" width="1440" height="713" loading="lazy">
+      </picture>
+      <div class="solutions-main__overlay"></div>
+      <div class="solutions-infobox animate-fade-up">
+        <h3 id="cap-hero-title">Proven Results</h3>
+        <p id="cap-hero-desc">We supply senior engineering support exactly when your project demands it. Whether you need remote troubleshooting billed by the hour to fix a routing issue or hands-on onsite engineers on a day rate to deploy new infrastructure, we integrate with your timeline.</p>
+        <a id="cap-hero-cta" href="/contact.html" class="btn-blue-lg hover-btn">Get To Know More</a>
+      </div>
+    </div>
+    <div class="solutions-bottom">
+      <div class="solutions-nav">
+        <div class="solutions-arrows">
+          <button class="sol-arrow" id="cap-prev" aria-label="Previous">
+            <svg width="97" height="76" viewBox="0 0 60 47" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="47" rx="6.18557" fill="#EBEBEB"/><path d="M20.4116 16.2271L11.1333 25.5054L20.4116 34.7838M11.1333 25.5054H48.8652" stroke="black" stroke-width="3.09278" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="sol-arrow" id="cap-next" aria-label="Next">
+            <svg width="97" height="76" viewBox="0 0 65 51" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="65" height="50.9278" rx="6.70103" fill="#EBEBEB"/><path d="M42.887 15.4124L52.939 25.4639L42.887 35.5154M52.939 25.4639H12.062" stroke="black" stroke-width="3.35052" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
-        <div class="why-slide">
-          <div class="why-slide__bg">
-            <picture><source srcset="/images/pages/managed-support.webp" type="image/webp"><img src="/images/pages/managed-support.jpg" alt="Expert network engineers at work" loading="lazy"></picture>
-          </div>
-          <div class="why-slide__card">
-            <h3 class="why-slide__heading">Expert Engineers</h3>
-            <p class="why-slide__body">Our certified engineers bring deep hands-on experience across network design, security, and managed support — ensuring every solution is delivered with precision and accountability.</p>
-            <a href="/services/" class="btn-blue why-slide__cta">View Our Services</a>
-          </div>
-        </div>
-        <div class="why-slide">
-          <div class="why-slide__bg">
-            <picture><source srcset="/images/pages/technician.webp" type="image/webp"><img src="/images/pages/technician.jpg" alt="Network technician at work" loading="lazy"></picture>
-          </div>
-          <div class="why-slide__card">
-            <h3 class="why-slide__heading">Proven Results</h3>
-            <p class="why-slide__body">From assessment through to deployment and managed support, we deliver measurable improvements to network performance, security posture, and operational reliability for UK businesses.</p>
-            <a href="/case-studies/" class="btn-blue why-slide__cta">View Case Studies</a>
-          </div>
+        <div class="solutions-progress">
+          <div class="solutions-progress-fill" id="cap-fill"></div>
         </div>
       </div>
-      <div class="why-footer">
-        <div class="why-nav">
-          <div class="why-arrows">
-            <button class="why-arrow" id="why-prev" aria-label="Previous slide">&#8592;</button>
-            <button class="why-arrow" id="why-next" aria-label="Next slide">&#8594;</button>
-          </div>
-          <div class="why-bar-wrap" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3">
-            <div class="why-bar" id="why-bar" style="width:33.33%"></div>
-          </div>
+      <div class="solutions-sub-cards" id="cap-thumbs">
+        <div class="sol-sub">
+          <picture><source srcset="/images/pages/servers.webp" type="image/webp"><img src="/images/pages/servers.jpg" alt="Cost-Effective Smartnet Alternatives" loading="lazy"></picture>
+          <p>Cost-Effective Smartnet Alternatives</p>
         </div>
-        <div class="why-thumbs" id="why-thumbs">
-          <button class="why-thumb active" data-slide="0" aria-label="Go to Flexible Services slide">
-            <picture><source srcset="/images/pages/servers.webp" type="image/webp"><img src="/images/pages/servers.jpg" alt="Flexible Services" loading="lazy"></picture>
-            <span>Flexible Services</span>
-          </button>
-          <button class="why-thumb" data-slide="1" aria-label="Go to Expert Engineers slide">
-            <picture><source srcset="/images/pages/managed-support.webp" type="image/webp"><img src="/images/pages/managed-support.jpg" alt="Expert Engineers" loading="lazy"></picture>
-            <span>Expert Engineers</span>
-          </button>
-          <button class="why-thumb" data-slide="2" aria-label="Go to Proven Results slide">
-            <picture><source srcset="/images/pages/technician.webp" type="image/webp"><img src="/images/pages/technician.jpg" alt="Proven Results" loading="lazy"></picture>
-            <span>Proven Results</span>
-          </button>
+        <div class="sol-sub">
+          <picture><source srcset="/images/pages/about-engineer.webp" type="image/webp"><img src="/images/pages/about-engineer.jpg" alt="Enterprise-Grade Expertise" loading="lazy"></picture>
+          <p>Enterprise-Grade Expertise</p>
         </div>
       </div>
     </div>
@@ -377,266 +276,85 @@
           <p>We believe strong engineering is necessary for achieving stronger results. Our team of Cisco-certified engineers has practical designing and deployment experience within the UK's top companies.</p>
           <p>We apply this enterprise-level discipline to your daily infrastructure, resolving complex routing issues, managing hardware upgrades, and securing your data perimeters.</p>
         </div>
-        <div class="eng-prof__dots" aria-hidden="true">
-          <span class="eng-prof__dot active"></span>
-          <span class="eng-prof__dot"></span>
-          <span class="eng-prof__dot"></span>
-        </div>
+        <div class="eng-prof__dots" role="tablist" aria-label="Slide navigation">
+            <button class="eng-prof__dot active" data-slide="0" aria-label="Our Engineers' Proficiency" role="tab" aria-selected="true"></button>
+            <button class="eng-prof__dot" data-slide="1" aria-label="Vendors' Experience" role="tab" aria-selected="false"></button>
+            <button class="eng-prof__dot" data-slide="2" aria-label="Relationship with Qcom" role="tab" aria-selected="false"></button>
+          </div>
       </div>
     </div>
   </section>
 
-  <section class="about-testimonial" aria-label="Client testimonial">
-    <div class="about-test-inner animate-fade-up">
-      <div class="about-test-left">
-        <h2 class="about-test-heading">What our<br>client says</h2>
-        <div class="about-test-nav">
-          <div class="about-test-arrows">
-            <button class="about-test-arrow" id="test-prev" aria-label="Previous testimonial">&#8592;</button>
-            <button class="about-test-arrow" id="test-next" aria-label="Next testimonial">&#8594;</button>
-          </div>
-          <div class="about-test-progress" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="1">
-            <div class="about-test-progress-fill"></div>
-          </div>
-        </div>
-      </div>
-      <div class="about-test-card">
-        <div class="about-test-stars" aria-label="5 stars">
-          <svg width="195" height="36" viewBox="0 0 195 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <g>
-              <path d="M18 3l3.6 7.4 8.1 1.2-5.9 5.7 1.4 8.1L18 21.5l-7.2 3.9 1.4-8.1-5.9-5.7 8.1-1.2z" fill="#F5A623"/>
-              <path d="M57 3l3.6 7.4 8.1 1.2-5.9 5.7 1.4 8.1L57 21.5l-7.2 3.9 1.4-8.1-5.9-5.7 8.1-1.2z" fill="#F5A623"/>
-              <path d="M96 3l3.6 7.4 8.1 1.2-5.9 5.7 1.4 8.1L96 21.5l-7.2 3.9 1.4-8.1-5.9-5.7 8.1-1.2z" fill="#F5A623"/>
-              <path d="M135 3l3.6 7.4 8.1 1.2-5.9 5.7 1.4 8.1L135 21.5l-7.2 3.9 1.4-8.1-5.9-5.7 8.1-1.2z" fill="#F5A623"/>
-              <path d="M174 3l3.6 7.4 8.1 1.2-5.9 5.7 1.4 8.1L174 21.5l-7.2 3.9 1.4-8.1-5.9-5.7 8.1-1.2z" fill="#F5A623"/>
-            </g>
-          </svg>
-        </div>
-        <blockquote class="about-test-quote">&#8220;The network consultancy services delivered by the team improved uptime across sites in London. Their network consultancy approach strengthened security and performance across hybrid systems. Highly recommended by CTO.&#8221;</blockquote>
-        <div class="about-test-author">
-          <div class="about-test-avatar">
-            <img src="/images/misc/testimonial-avatar.svg" alt="James Carter" width="82" height="82" loading="lazy">
-          </div>
-          <div>
-            <p class="about-test-name">James Carter</p>
-            <p class="about-test-role">IT Manager, TechLtd,<br>London</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="about-faq animate-fade-up" aria-labelledby="faq-about-h">
-    <div class="about-faq__inner">
-      <h2 class="about-faq__title" id="faq-about-h">FREQUENTLY ASKED QUESTIONS</h2>
-      <div class="about-faq__list">
+  <!-- ========= TESTIMONIALS (CMS) ========= -->
+  <div data-cms="testimonials"></div>
 
-        <div class="about-faq-item about-faq-item--open">
-          <button class="about-faq-item__header" aria-expanded="true" aria-controls="faq-ans-1">
-            <div class="about-faq-item__q">
-              <span class="about-faq-item__num">01</span>
-              <span class="about-faq-item__text">What does Network Consultancy specialise in?</span>
-            </div>
-            <svg class="about-faq-item__icon" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="25" cy="25" r="24" stroke="white" stroke-width="1.5"/><path d="M25 13v24M13 25h24" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-          </button>
-          <div class="about-faq-item__divider"></div>
-          <div class="about-faq-item__answer" id="faq-ans-1">We design, secure, and manage business-critical networks and IT infrastructure. This goes beyond standard desktop support. We focus on complex routing, firewalls, and active monitoring to ensure your data stays secure and your operations stay online.</div>
-        </div>
+  <!-- ========= FAQ (CMS) ========= -->
+  <div data-cms="faq"></div>
 
-        <div class="about-faq-item about-faq-item--closed">
-          <button class="about-faq-item__header" aria-expanded="false" aria-controls="faq-ans-2">
-            <div class="about-faq-item__q">
-              <span class="about-faq-item__num">02</span>
-              <span class="about-faq-item__text">Do you only work with Cisco-based environments?</span>
-            </div>
-            <svg class="about-faq-item__icon" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="25" cy="25" r="24" stroke="white" stroke-width="1.5"/><path d="M25 13v24M13 25h24" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-          </button>
-          <div class="about-faq-item__divider" hidden></div>
-          <div class="about-faq-item__answer" id="faq-ans-2" hidden>No — we work across a wide range of vendors and platforms. Our engineers have broad experience and will design solutions around your specific requirements and existing infrastructure.</div>
-        </div>
 
-        <div class="about-faq-item about-faq-item--closed">
-          <button class="about-faq-item__header" aria-expanded="false" aria-controls="faq-ans-3">
-            <div class="about-faq-item__q">
-              <span class="about-faq-item__num">03</span>
-              <span class="about-faq-item__text">Can you work alongside our internal IT team?</span>
-            </div>
-            <svg class="about-faq-item__icon" width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="25" cy="25" r="24" stroke="white" stroke-width="1.5"/><path d="M25 13v24M13 25h24" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-          </button>
-          <div class="about-faq-item__divider" hidden></div>
-          <div class="about-faq-item__answer" id="faq-ans-3" hidden>Absolutely. We frequently work as an extension of internal IT teams, providing specialist expertise, additional capacity, and strategic guidance while you retain full ownership of your infrastructure.</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="contact-section" id="contact" aria-labelledby="contact-heading">
-    <div class="contact-layout">
-      <div class="contact-info animate-fade-up">
-        <h2 class="contact-info__heading" id="contact-heading">Contact us today for a free consultation</h2>
-        <p class="contact-info__lead">We pride ourselves on delivering a flexible engagement style to meet your requirements. Contact us for your free consultation.</p>
-        <div class="contact-detail">
-          <div class="contact-detail__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-          </div>
-          <div>
-            <p class="contact-detail__label">Phone</p>
-            <p class="contact-detail__body"><a href="tel:+442031501401">+44 (0) 203 150 1401</a></p>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          </div>
-          <div>
-            <p class="contact-detail__label">Address</p>
-            <p class="contact-detail__body">Beech House, Greenfield Crescent<br>Edgbaston, Birmingham, B15 3BE</p>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </div>
-          <div>
-            <p class="contact-detail__label">Email</p>
-            <p class="contact-detail__body"><a href="mailto:info@network-consultancy.com">info@network-consultancy.com</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="contact-form-wrap animate-fade-up">
-        <form id="contact-form" method="post" action="https://formspree.io/f/REPLACE_FORMSPREE_ID" novalidate>
-          <div class="form-row">
-            <div class="form-group"><label for="cf-fname">First Name <span aria-hidden="true">*</span></label><input class="form-field" id="cf-fname" type="text" name="first_name" placeholder="First Name" autocomplete="given-name" required></div>
-            <div class="form-group"><label for="cf-lname">Last Name</label><input class="form-field" id="cf-lname" type="text" name="last_name" placeholder="Last Name" autocomplete="family-name"></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label for="cf-phone">Phone Number</label><input class="form-field" id="cf-phone" type="tel" name="phone" placeholder="Phone Number" autocomplete="tel"></div>
-            <div class="form-group"><label for="cf-company">Company Name</label><input class="form-field" id="cf-company" type="text" name="company" placeholder="Company Name" autocomplete="organization"></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label for="cf-help">I Need Help With</label><input class="form-field" id="cf-help" type="text" name="help" placeholder="e.g. Network Support, Security Review"></div>
-            <div class="form-group"><label for="cf-scale">Scale of Business</label><input class="form-field" id="cf-scale" type="text" name="scale" placeholder="e.g. 50 employees, 3 sites"></div>
-          </div>
-          <div class="form-group" style="margin-bottom:16px;"><label for="cf-message">Message <span aria-hidden="true">*</span></label><textarea class="form-textarea" id="cf-message" name="message" placeholder="Tell us about your network requirements..." required></textarea></div>
-          <div class="form-group" style="margin-bottom:24px;"><label for="cf-referral">Where Did You Hear About Us?</label><select class="form-select" id="cf-referral" name="referral"><option value="">Please select&hellip;</option><option>Google / Search</option><option>LinkedIn</option><option>Referral from a colleague</option><option>Social Media</option><option>Other</option></select></div>
-          <button type="submit" class="btn-dark" style="width:100%;justify-content:center;">Send Enquiry</button>
-          <div id="form-success" class="form-success" role="status" aria-live="polite">Thank you for your enquiry &mdash; we will be in touch shortly.</div>
-          <div id="form-error"   class="form-error"   role="alert"  aria-live="assertive">Something went wrong. Please try again or call us directly on +44 (0) 203 150 1401.</div>
-        </form>
-      </div>
-    </div>
-  </section>
+  <div id="site-contact"></div>
+  <script src="/js/contact.js"></script>
   </main>
-  <footer class="footer" role="contentinfo">
-    <div class="footer__top">
-      <div class="footer__brand">
-        <a href="/" aria-label="Network Consultancy home">
-          <img class="footer__logo" src="/images/misc/logo-white.png" alt="Network Consultancy" width="150" height="48" loading="lazy">
-        </a>
-        <p class="footer__tagline">Expert network consultancy providing secure, scalable infrastructure solutions for UK businesses.</p>
-        <div class="footer__social">
-          <a href="#" aria-label="Facebook" target="_blank" rel="noopener" class="footer__social-link">
-            <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="52" height="39" rx="19.5" fill="rgba(255,255,255,0.12)"/>
-              <path d="M28.5 20H26.5V27H23.5V20H22V17.5H23.5V16C23.5 14.34 24.34 13 26.5 13H28.5V15.5H27.5C26.95 15.5 26.5 15.78 26.5 16.5V17.5H28.5L28.5 20Z" fill="white"/>
-            </svg>
-          </a>
-          <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener" class="footer__social-link">
-            <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="52" height="39" rx="19.5" fill="rgba(255,255,255,0.12)"/>
-              <path d="M20 15.5C20 16.33 19.33 17 18.5 17C17.67 17 17 16.33 17 15.5C17 14.67 17.67 14 18.5 14C19.33 14 20 14.67 20 15.5ZM17 18.5H20V27H17V18.5ZM22 18.5H24.8V19.8H24.84C25.22 19.08 26.14 18.3 27.5 18.3C30.5 18.3 31 20.26 31 22.8V27H28V23.3C28 22.2 27.98 20.8 26.5 20.8C25 20.8 24.8 22 24.8 23.22V27H22V18.5Z" fill="white"/>
-            </svg>
-          </a>
-          <a href="#" aria-label="Twitter / X" target="_blank" rel="noopener" class="footer__social-link">
-            <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="52" height="39" rx="19.5" fill="rgba(255,255,255,0.12)"/>
-              <path d="M30.96 14H33.28L28.18 19.77L34.18 26.97H29.45L25.79 22.18L21.59 26.97H19.26L24.71 20.81L18.96 14H23.8L27.12 18.37L30.96 14ZM30.16 25.57H31.44L23.04 15.31H21.67L30.16 25.57Z" fill="white"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer__links">
-        <div class="footer__col">
-          <h4>Industries</h4>
-          <ul>
-            <li><a href="/industries/legal-firms.html">Legal Firms</a></li>
-            <li><a href="/industries/financial-services.html">Financial Services</a></li>
-            <li><a href="/industries/recruitment-agencies.html">Recruitment Agencies</a></li>
-            <li><a href="/industries/healthcare-clinics.html">Healthcare &amp; Clinics</a></li>
-            <li><a href="/industries/manufacturing.html">Manufacturing</a></li>
-            <li><a href="/industries/professional-services.html">Professional Services</a></li>
-            <li><a href="/industries/multi-site-businesses.html">Multi-Site Businesses</a></li>
-            <li><a href="/industries/internal-it-teams.html">Internal IT Teams / Co-Managed IT</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="/services/managed-wireless-lan.html">Managed Wireless LAN</a></li>
-            <li><a href="/services/business-continuity.html">Business Continuity &amp; Network Resilience</a></li>
-            <li><a href="/services/network-installations.html">Network Installations</a></li>
-            <li><a href="/services/network-consultancy.html">Network Consultancy</a></li>
-            <li><a href="/services/network-support.html">Network Support</a></li>
-            <li><a href="/services/managed-network-support.html">Managed Network Support</a></li>
-            <li><a href="/services/network-design-deployment.html">Network Design &amp; Deployment</a></li>
-            <li><a href="/services/remote-access-vpn.html">Remote Access &amp; VPN Solutions</a></li>
-            <li><a href="/services/firewall-network-security.html">Firewall &amp; Network Security</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Solutions</h4>
-          <ul>
-            <li><a href="/solutions/network-health-check.html">Network Health Check</a></li>
-            <li><a href="/solutions/cyber-security-review.html">Cyber Security Review</a></li>
-            <li><a href="/solutions/microsoft-365-network.html">Microsoft 365 &amp; Network</a></li>
-            <li><a href="/solutions/ai-ready-infrastructure.html">AI-Ready Infrastructure Review</a></li>
-          </ul>
-          <h4 class="mt">Resources</h4>
-          <ul>
-            <li><a href="/resources/guides.html">Guides</a></li>
-            <li><a href="/case-studies/">Case Studies</a></li>
-            <li><a href="/resources/blog/">Blog</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <hr class="footer__divider">
-    <div class="footer__bottom">
-      <p class="footer__copy">&copy; 2025 Network Consultancy. All Rights Reserved.</p>
-      <div class="footer__bottom-links">
-        <a href="/">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
-        <a href="/privacy-policy.html">Privacy Policy</a>
-        <a href="/terms-of-service.html">Terms &amp; Conditions</a>
-      </div>
-    </div>
-  </footer>
+
+  <div id="site-footer"></div>
+  <script src="/js/footer.js"></script>
 
   <script>
-  /* Why Choose Us carousel */
-  (function(){
-    var slides = document.querySelectorAll('.why-slide');
-    var thumbs = document.querySelectorAll('.why-thumb');
-    var bar = document.getElementById('why-bar');
-    var barWrap = document.querySelector('.why-bar-wrap');
-    var current = 0;
-    if(!slides.length) return;
-    function goTo(n){
-      slides[current].classList.remove('active');
-      thumbs[current].classList.remove('active');
-      current = (n + slides.length) % slides.length;
-      slides[current].classList.add('active');
-      thumbs[current].classList.add('active');
-      if(bar) bar.style.width = ((current+1)/slides.length*100)+'%';
-      if(barWrap) barWrap.setAttribute('aria-valuenow', current+1);
+  /* Our Capabilities — IT Networking Solutions identical slider */
+  (function () {
+    'use strict';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var capSlides = [
+      { srcset:'/images/pages/managed-support.webp', src:'/images/pages/managed-support.jpg', alt:'Proven Results',                      title:'Proven Results',                      desc:'We supply senior engineering support exactly when your project demands it. Whether you need remote troubleshooting billed by the hour to fix a routing issue or hands-on onsite engineers on a day rate to deploy new infrastructure, we integrate with your timeline.',                                                                                                                                                                     label:'Proven Results' },
+      { srcset:'/images/pages/servers.webp',         src:'/images/pages/servers.jpg',         alt:'Cost-Effective Smartnet Alternatives', title:'Cost-Effective Smartnet Alternatives', desc:'With Network Consultancy, you can maintain enterprise hardware reliability without paying premium manufacturer contract prices. We offer a direct alternative to traditional Cisco Smartnet agreements, delivering critical software updates and full on-site hardware replacements at competitive rates.',                                                                                                label:'Cost-Effective Smartnet Alternatives' },
+      { srcset:'/images/pages/about-engineer.webp',  src:'/images/pages/about-engineer.jpg',  alt:'Enterprise-Grade Expertise',           title:'Enterprise-Grade Expertise',           desc:'Our engineers are fully Cisco-certified with real-world experience across high-stakes sectors. Having designed and deployed complex architectures within FTSE 100 environments, we bring the same level of technical expertise to every client.',                                                                                                                                                 label:'Enterprise-Grade Expertise' }
+    ];
+    var total = capSlides.length, idx = 0, busy = false;
+    var section = document.querySelector('.about-capabilities');
+    if (!section) return;
+    var heroSource = section.querySelector('.solutions-main source');
+    var heroImg    = section.querySelector('.solutions-main img');
+    var heroH3     = section.querySelector('.solutions-infobox h3');
+    var heroP      = section.querySelector('.solutions-infobox p');
+    var thumbs     = Array.prototype.slice.call(section.querySelectorAll('.sol-sub'));
+    var fill       = section.querySelector('.solutions-progress-fill');
+    var prevBtn    = document.getElementById('cap-prev');
+    var nextBtn    = document.getElementById('cap-next');
+    heroImg.style.transition = 'opacity .32s ease';
+    heroH3.style.transition  = 'opacity .28s ease';
+    heroP.style.transition   = 'opacity .28s ease';
+    function setThumb(el, slide) {
+      var src = el.querySelector('source'), img = el.querySelector('img'), lbl = el.querySelector('p');
+      if (src) src.srcset = slide.srcset;
+      img.src = slide.src; img.alt = slide.alt; lbl.textContent = slide.label;
     }
-    var prev = document.getElementById('why-prev');
-    var next = document.getElementById('why-next');
-    if(prev) prev.addEventListener('click', function(){ goTo(current-1); });
-    if(next) next.addEventListener('click', function(){ goTo(current+1); });
-    thumbs.forEach(function(t,i){ t.addEventListener('click', function(){ goTo(i); }); });
-  })();
+    function updateProgress() { fill.style.width = Math.round((idx / (total - 1)) * 100) + '%'; }
+    function goTo(n) {
+      if (busy) return; busy = true;
+      idx = ((n % total) + total) % total;
+      heroImg.style.opacity = heroH3.style.opacity = heroP.style.opacity = '0';
+      setTimeout(function () {
+        var s = capSlides[idx];
+        if (heroSource) heroSource.srcset = s.srcset;
+        heroImg.src = s.src; heroImg.alt = s.alt;
+        heroH3.textContent = s.title; heroP.textContent = s.desc;
+        thumbs.forEach(function (t, i) { setThumb(t, capSlides[(idx + i + 1) % total]); });
+        updateProgress();
+        heroImg.style.opacity = heroH3.style.opacity = heroP.style.opacity = '1';
+        busy = false;
+      }, 300);
+    }
+    thumbs.forEach(function (thumb, i) {
+      thumb.style.cursor = 'pointer';
+      thumb.addEventListener('click', function () { goTo(idx + i + 1); });
+      thumb.querySelector('img').style.transition = 'opacity .2s, transform .2s';
+      thumb.addEventListener('mouseenter', function () { thumb.querySelector('img').style.opacity='0.8'; thumb.querySelector('img').style.transform='scale(1.03)'; });
+      thumb.addEventListener('mouseleave', function () { thumb.querySelector('img').style.opacity='1';   thumb.querySelector('img').style.transform='scale(1)'; });
+    });
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(idx - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(idx + 1); });
+    updateProgress();
+  }());
   /* FAQ accordion */
   (function(){
     var items = document.querySelectorAll('.about-faq-item');
@@ -662,9 +380,55 @@
       });
     });
   })();
+  /* Engineer Proficiency — 3-slide hero with crossfade */
+  (function () {
+    'use strict';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var engSlides = [
+      { title: "Our Engineers' Proficiency",
+        paras: ["We believe strong engineering is necessary for achieving stronger results. Our team of Cisco-certified engineers has practical designing and deployment experience within the UK's top companies.", "We apply this enterprise-level discipline to your daily infrastructure, resolving complex routing issues, managing hardware upgrades, and securing your data perimeters."] },
+      { title: "Vendors' Experience",
+        paras: ["We measure technical capability by business outcomes, not badge counts. Our engineers hold top-tier certifications and extensive operational experience in Cisco-led environments, specialising in core routing, switching, and firewall perimeters.", "Beyond Cisco infrastructure, we optimise your network for secure Microsoft 365 cloud integration. We handle hardware replacements, firmware updates, and help desks directly. This removes the burden of vendor management from your internal team entirely."] },
+      { title: "Relationship with Qcom",
+        paras: ["Network Consultancy is a trading brand of Qcom Ltd. For our clients, this relationship offers the future-proof strategic advantage: you get the agile, dedicated focus of a highly decorated network engineering squad combined with the deep technical resources, reliability, and cross-platform capabilities of a major technology group.", "Alongside our sister brand, VoIP Experts, we provide a unified infrastructure for your business's data, security, and communication architecture."] }
+    ];
+    var total = engSlides.length, idx = 0, busy = false;
+    var titleEl = document.querySelector('.eng-prof__title');
+    var bodyEl  = document.querySelector('.eng-prof__body');
+    var dots    = Array.prototype.slice.call(document.querySelectorAll('.eng-prof__dot'));
+    var prevBtn = document.getElementById('eng-prev');
+    var nextBtn = document.getElementById('eng-next');
+    if (!titleEl || !bodyEl) return;
+    titleEl.style.transition = 'opacity .3s ease';
+    bodyEl.style.transition  = 'opacity .3s ease';
+    function goTo(n) {
+      if (busy) return;
+      busy = true;
+      idx = ((n % total) + total) % total;
+      titleEl.style.opacity = bodyEl.style.opacity = '0';
+      setTimeout(function () {
+        var s = engSlides[idx];
+        titleEl.textContent = s.title;
+        bodyEl.innerHTML = s.paras.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+        dots.forEach(function (d, i) {
+          d.classList.toggle('active', i === idx);
+          d.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+        });
+        titleEl.style.opacity = bodyEl.style.opacity = '1';
+        busy = false;
+      }, 280);
+    }
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(idx - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(idx + 1); });
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { goTo(i); }); });
+  }());
   </script>
+  <script src="/js/cms.js" defer></script>
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
+
+  <script src="/js/search-index.js" defer></script>
+  <script src="/js/search.js" defer></script>
 </body>
 </html>

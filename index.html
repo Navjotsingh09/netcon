@@ -7,7 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/accessibility.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -20,6 +22,7 @@
       max-width: var(--section-w);
       margin-left: auto;
       margin-right: auto;
+      padding-top: 10px; /* breathing room above navbar */
     }
     img { display: block; max-width: 100%; }
     picture { display: contents; } /* let <img> behave as direct child for flex/grid/position contexts */
@@ -66,11 +69,12 @@
     .btn-blue-lg {
       background: var(--blue);
       color: #fff;
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: 24px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 15px;
       font-weight: 700;
-      padding: 16px 50px;
-      border-radius: 20px;
+      letter-spacing: 0.08em;
+      padding: 16px 40px;
+      border-radius: 9999px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -370,7 +374,7 @@
     }
 
     /* ===== HERO ===== */
-    .hero { padding: 36px var(--px) 60px; max-width: 1920px; margin: 0 auto; }
+    .hero { padding: 36px var(--px) 40px; max-width: 1920px; margin: 0 auto; }
     .hero__wrap {
       position: relative;
       height: 618px;
@@ -381,32 +385,35 @@
       position: absolute; inset: 0;
       width: 100%; height: 100%;
       object-fit: cover;
+      transform-origin: center;
+      animation: heroBgZoom 8s cubic-bezier(0.33, 1, 0.68, 1) both;
     }
     .hero__overlay {
       position: absolute; inset: 0;
-      background: rgba(4,31,93,.8);
-      opacity: .4;
+      /* Gradient: readable on the left where text lives, clear on the right to show the photo naturally */
+      background: linear-gradient(90deg, rgba(5,15,55,0.55) 0%, rgba(5,15,55,0.38) 40%, rgba(5,15,55,0.08) 70%, transparent 100%);
+      animation: heroOverlayIn 1.4s ease-out both;
     }
     .hero__content {
       position: relative; z-index: 2;
-      padding: 117px 145px 178px 75px;
-      max-width: 908px;
+      padding: 117px 0 178px 75px;
+      max-width: 900px;
       display: flex; flex-direction: column; gap: 51px;
-      align-items: flex-start; /* Fix 1: prevent hero CTA stretching full width */
+      align-items: flex-start;
     }
     .hero__text { display: flex; flex-direction: column; gap: 24px; }
     .hero__title {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: 60px; font-weight: 600; line-height: 1;
+      font-family: 'Barlow', sans-serif;
+      font-size: 52px; font-weight: 700; line-height: 1.1;
       color: #fff;
     }
     .hero__sub {
-      font-size: 24px; font-weight: 500; line-height: 30px;
-      color: #fff;
+      font-size: 18px; font-weight: 400; line-height: 1.6;
+      color: rgba(255,255,255,0.9);
     }
 
     /* ===== MAIN SERVICES GRID ===== */
-    .main-services { padding: 60px var(--px); max-width: 1920px; margin: 0 auto; }
+    .main-services { padding: 40px var(--px); max-width: 1920px; margin: 0 auto; }
     .main-services__title { margin-bottom: 55px; }
     /* Two-row asymmetric grid: row1 350/471/592, row2 350/592/471 */
     .main-services__grid {
@@ -438,44 +445,60 @@
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,.3) 50%, rgba(0,0,0,.1) 100%);
     }
-    .svc-card__label {
-      position: absolute;
-      bottom: 70px; left: 29px;
-      font-size: 24px; font-weight: 500; line-height: 1.25;
-      color: #fff;
-      transition: bottom .3s ease;
-    }
-    .svc-card__desc {
+    /* Label + desc grouped — consistent gap regardless of card width */
+    .svc-card__info {
       position: absolute;
       bottom: 24px; left: 29px; right: 29px;
+    }
+    .svc-card__label {
+      display: block;
+      font-size: 24px; font-weight: 500; line-height: 1.25;
+      color: #fff;
+      margin-bottom: 0;
+      transition: margin-bottom 0.3s ease;
+    }
+    .svc-card__desc {
       font-size: 14px; font-weight: 400; line-height: 1.55;
       color: rgba(255,255,255,.88);
       margin: 0;
+      overflow: hidden;
+      max-height: 0;
       opacity: 0;
-      transform: translateY(8px);
-      transition: opacity .3s ease, transform .3s ease;
+      transition: max-height 0.35s ease, opacity 0.3s ease;
     }
-    .svc-card:hover .svc-card__label { bottom: 120px; }
-    .svc-card:hover .svc-card__desc { opacity: 1; transform: translateY(0); }
+    .svc-card:hover .svc-card__label { margin-bottom: 10px; }
+    .svc-card:hover .svc-card__desc { max-height: 150px; opacity: 1; }
 
     /* ===== VIDEO BANNER ===== */
-    .video-banner { padding: 0 var(--px) 20px; max-width: 1920px; margin: 0 auto; }
+    .video-banner { padding: 40px var(--px); max-width: 1920px; margin: 0 auto; }
     .video-banner__box {
-      background: var(--dark);
+      background: #000;
       border-radius: 20px;
       height: 675px;
       display: flex; align-items: center; justify-content: center;
       position: relative;
       overflow: hidden;
     }
-    .video-banner__bg {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
+    /* Video element: slightly oversized to allow parallax travel without gaps */
+    .video-banner__video {
+      position: absolute;
+      width: 100%; height: 120%;
+      top: -10%;
       object-fit: cover;
-      opacity: 0.45;
+      will-change: transform;
+    }
+    /* Overlay: holds play icon, fades out once video starts */
+    .video-banner__overlay {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
     }
     .video-banner__icon {
       width: 176px; height: 176px;
+      display: block;
+      opacity: 0.85;
+    }
       display: block;
       cursor: pointer;
     }
@@ -484,7 +507,7 @@
     .services-section {
       width: calc(100% - (var(--px) * 2));
       max-width: 1440px;
-      margin: 53px auto 20px;
+      margin: 40px auto;
     }
     .services-section__inner {
       background: var(--gray-mid);
@@ -493,9 +516,7 @@
     }
     .services-section__title { margin-bottom: 40px; }
     .services-section__cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      /* layout driven by .sc-track */
     }
     .s-card {
       position: relative;
@@ -522,7 +543,8 @@
       background: #fff;
       border-radius: 9px 9px 0 0;
       padding: 16px 20px;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0;
       min-height: 80px;
     }
     .s-card__title {
@@ -530,16 +552,114 @@
       font-size: 24px; font-weight: 700;
       color: var(--dark); text-align: center;
     }
+    /* Desc and button hidden by default, revealed on hover */
     .s-card__desc {
       font-family: 'Roboto Condensed', sans-serif;
-      font-size: 16px; color: var(--dark); text-align: center;
+      font-size: 16px; color: var(--sub); text-align: center;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      margin: 0;
+      transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    }
+    .s-card__body .btn-blue {
+      overflow: hidden;
+      max-height: 0;
+      min-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      opacity: 0;
+      margin-top: 0;
+      width: 100%;
+      transition: max-height 0.35s ease 0.05s, opacity 0.3s ease 0.05s,
+                  margin-top 0.3s ease 0.05s, padding 0.3s ease 0.05s;
+    }
+    .s-card:hover .s-card__desc {
+      max-height: 80px;
+      opacity: 1;
+      margin-top: 8px;
+    }
+    .s-card:hover .s-card__body .btn-blue {
+      max-height: 60px;
+      min-height: 44px;
+      padding-top: 13px;
+      padding-bottom: 13px;
+      opacity: 1;
+      margin-top: 8px;
+    }
+
+    /* ===== CAROUSEL — shared: Services + Industries ===== */
+    .sc-viewport {
+      overflow: hidden;
+      width: 100%;
+    }
+    .sc-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.48s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+    .sc-track .s-card {
+      flex: 0 0 38%;
+      min-width: 0;
+      transition: filter 0.4s ease, opacity 0.4s ease,
+                  transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .sc-track .s-card.s-card--peek {
+      filter: blur(2px);
+      opacity: 0.6;
+    }
+    /* Controls bar: See All centred, nav group at right */
+    .sc-controls {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 32px;
+    }
+    .sc-see-all {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .sc-nav-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+    .sc-arrows { display: flex; gap: 40px; }
+    .sc-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: inline-flex;
+      line-height: 0;
+    }
+    .sc-btn svg rect { transition: fill 0.2s ease; }
+    .sc-btn svg path { transition: stroke 0.2s ease; }
+    .sc-btn:hover:not(:disabled) svg rect { fill: var(--blue); }
+    .sc-btn:hover:not(:disabled) svg path { stroke: #fff; }
+    .sc-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .sc-scrubber {
+      width: 180px; height: 16px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .sc-fill {
+      height: 100%;
+      background: var(--sub);
+      border-radius: 8px;
+      transition: width 0.48s ease;
+      width: 33%;
     }
 
     /* ===== WHY CHOOSE US ===== */
     .why-choose {
-      padding: 60px var(--px);
-      max-width: 1920px;
-      margin: 0 auto;
+      padding: 40px var(--px);
+      margin: 40px auto 0;
       background: linear-gradient(91deg, rgba(241,244,249,.5) 0%, rgba(173,217,243,.5) 15%, rgba(160,182,229,.5) 33%, rgba(8,173,252,.2) 49%, rgba(160,182,229,.5) 68%, rgba(173,217,243,.5) 83%, rgba(245,248,253,.5) 100%);
     }
     .why-choose__header { max-width: 912px; margin-bottom: 101px; }
@@ -566,12 +686,12 @@
     }
 
     /* ===== SOLUTIONS SECTION ===== */
-    .solutions-section { padding: 60px var(--px); max-width: 1920px; margin: 0 auto; }
+    .solutions-section { padding: 40px var(--px); max-width: 1920px; margin: 0 auto; }
     .solutions-section__header { margin-bottom: 40px; }
     .solutions-main {
       position: relative;
       height: 713px; border-radius: 20px; overflow: hidden;
-      margin-bottom: 40px;
+      margin-bottom: -90px;
     }
     .solutions-main img {
       width: 100%; height: 100%; object-fit: cover; display: block;
@@ -602,6 +722,8 @@
       display: flex;
       align-items: flex-end;
       gap: 61px;
+      position: relative;
+      z-index: 1;
     }
     .solutions-nav {
       display: flex; flex-direction: column; gap: 31px;
@@ -611,16 +733,25 @@
     }
     .solutions-arrows { display: flex; gap: 20px; }
     .sol-arrow {
-      width: 97px; height: 76px;
+      background: none;
+      border: none;
+      padding: 0;
       cursor: pointer;
+      display: inline-flex;
+      line-height: 0;
     }
+    .sol-arrow svg rect { transition: fill 0.2s ease; }
+    .sol-arrow svg path { transition: stroke 0.2s ease; }
+    .sol-arrow:hover svg rect { fill: var(--blue); }
+    .sol-arrow:hover svg path { stroke: #fff; }
     .solutions-progress {
       width: 421px; height: 16px;
       background: var(--gray-mid); border-radius: 10px; overflow: hidden;
     }
     .solutions-progress-fill {
-      width: 172px; height: 100%;
+      height: 100%;
       background: var(--sub); border-radius: 10px;
+      transition: width 0.4s ease;
     }
     .solutions-sub-cards {
       display: flex;
@@ -642,25 +773,56 @@
     .industries-section {
       width: calc(100% - (var(--px) * 2));
       max-width: 1440px;
-      margin: 0 auto 53px;  /* Fix 11: 60 → 53 */
+      margin: 40px auto;
       background: var(--gray-mid);
       border-radius: 20px;
       padding: 45px 60px 60px;
     }
     .industries-section__title { margin-bottom: 40px; }
     .industries-section__cards {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      /* layout driven by .sc-track */
     }
 
-    /* ===== SCROLL BANNERS ===== */
-    .scroll-banners { padding: 0; }
-    .scroll-banner-wrap {
-      display: flex; justify-content: center;
-      padding: 80px var(--px) 0;
+    /* ===== SCROLL BANNERS — sticky card flip ===== */
+    .banners-flip {
+      position: relative;
+      /* NOTE: no overflow:clip here — it would scope the sticky descendant and break pinning */
       max-width: 1920px;
       margin: 0 auto;
+      padding: 40px var(--px);
+      /* height set by JS = 2 × card height + 80px */
     }
-    .scroll-banner-wrap + .scroll-banner-wrap { padding-top: 20px; padding-bottom: 80px; }
+    /* Sticky stage: both cards share one sticky container */
+    .banners-flip__stage {
+      position: sticky;
+      top: 40px;
+    }
+    /* Card 1: on top, slides up on scroll */
+    .banners-flip__stage > .scroll-banner-wrap:first-child {
+      position: relative;
+      z-index: 2;
+      will-change: transform;
+      padding: 0; margin: 0;
+      display: flex; justify-content: center;
+    }
+    /* Card 1 bottom shadow — depth implies Card 2 physically beneath */
+    .banners-flip__stage > .scroll-banner-wrap:first-child .scroll-banner {
+      box-shadow: 0 40px 80px -10px rgba(0,0,0,0.5);
+    }
+    /* Card 2: absolutely positioned behind Card 1, starts scaled for deck effect */
+    .banners-flip__stage > .scroll-banner-wrap:last-child {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 1;
+      padding: 0; margin: 0;
+      display: flex; justify-content: center;
+    }
+    /* Card 2 starts at 94% scale + 40px down — bottom peek shows below Card 1 */
+    .scroll-banner-wrap--2 .scroll-banner {
+      transform: scale(0.94) translateY(40px);
+      transform-origin: bottom center;
+      will-change: transform;
+    }
     .scroll-banner {
       position: relative;
       width: 100%;
@@ -688,8 +850,12 @@
     .scroll-banner-cta-abs {
       position: absolute;
       z-index: 3;
-      top: 713px;   /* Figma: top-[793.53px] in 1074px wrapper, banner offset 80px = 713px in banner */
-      left: 85px;   /* aligns with content text left edge */
+      top: 713px;
+      left: 85px;
+      /* Override btn-blue-lg sizing so the long label fits comfortably */
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      padding: 13px 28px;
     }
     .scroll-banner__title {
       font-family: 'Roboto Condensed', sans-serif;
@@ -716,23 +882,37 @@
 
     /* ===== OUR CLIENTS ===== */
     .our-clients {
-      padding: 60px var(--px);
-      min-height: 1305px;
+      padding: 80px var(--px);
       max-width: 1920px;
       margin: 0 auto;
       background: linear-gradient(91deg, rgba(241,244,249,.5) 0%, rgba(173,217,243,.5) 15%, rgba(160,182,229,.5) 33%, rgba(8,173,252,.2) 49%, rgba(160,182,229,.5) 68%, rgba(173,217,243,.5) 83%, rgba(245,248,253,.5) 100%);
     }
-    .our-clients h2 { margin-bottom: 40px; }
+    /* Sidebar label left, logo grid right */
+    .our-clients__inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 80px;
+    }
+    .our-clients__label {
+      flex-shrink: 0;
+      width: 200px;
+      padding-top: 10px;
+      margin-bottom: 0;
+    }
     .clients-grid {
+      flex: 1;
       display: grid;
-      grid-template-columns: repeat(3, 360px);
-      column-gap: 27px;  /* Fix 12: 20 → 27 */
-      row-gap: 72px;     /* Fix 7: 20 → 72 */
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 27px;
+      row-gap: 40px;
     }
     .client-box {
       background: #fff;
-      width: 360px; height: 237px;
+      width: 100%; height: 200px;
       border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
     }
@@ -740,22 +920,24 @@
       transform: translateY(-4px) scale(1.01);
       box-shadow: 0 12px 24px rgba(0,0,0,0.12);
     }
+    .client-box img { max-width: 75%; max-height: 50px; width: auto; height: auto; object-fit: contain; opacity: 0.7; transition: opacity 0.2s ease; }
+    .client-box:hover img { opacity: 1; }
 
     /* ===== TESTIMONIALS ===== */
     .testimonials {
-      padding: 80px var(--px);
+      padding: 40px var(--px);
       max-width: 1920px;
       margin: 0 auto;
       background: linear-gradient(91deg, rgba(241,244,249,.5) 0%, rgba(173,217,243,.5) 15%, rgba(160,182,229,.5) 33%, rgba(8,173,252,.2) 49%, rgba(160,182,229,.5) 68%, rgba(173,217,243,.5) 83%, rgba(245,248,253,.5) 100%);
     }
     .testimonials__layout {
-      display: flex; gap: 166px; align-items: flex-start;  /* Fix 5: 80 → 166 */
+      display: flex; gap: 166px; align-items: flex-start;
     }
     .testimonials__left {
       width: 421px; flex-shrink: 0;
       display: flex; flex-direction: column;
       justify-content: space-between;
-      min-height: 603px;
+      min-height: 400px;
     }
     .testimonials__left h2 {
       font-family: 'Roboto Condensed', sans-serif;
@@ -764,31 +946,36 @@
     }
     .t-nav { display: flex; flex-direction: column; gap: 31px; align-items: flex-end; }
     .t-arrows { display: flex; gap: 20px; }
-    .t-arrow { width: 97px; height: 76px; cursor: pointer; }
+    .t-arrow { width: 97px; height: 76px; cursor: pointer; transition: opacity 0.2s; }
+    .t-arrow:hover { opacity: 0.7; }
     .t-progress {
       width: 100%; height: 16px;
       background: var(--gray-mid); border-radius: 10px; overflow: hidden;
     }
     .t-progress-fill {
-      width: 172px; height: 100%;
+      width: 20%; /* 1/5 — updated by JS */
+      height: 100%;
       background: var(--sub); border-radius: 10px;
+      transition: width 0.4s ease;
+    }
+    /* Slider wrapper */
+    .t-slider { flex: 1; overflow: hidden; border-radius: 20px; }
+    .t-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
     }
     .t-card {
-      flex: 1;
+      flex: 0 0 100%; min-width: 100%;
       background: #fff;
       border: 0.2px solid var(--dark);
       border-radius: 20px;
-      padding: 71px 225px 68px 56px;
+      padding: 71px 56px 68px 56px;
       box-shadow: 0 4px 2px rgba(0,0,0,.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
     }
-    .t-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 20px rgba(0,0,0,0.12);
-    }
-    .t-stars { margin-bottom: 51px; }
-    .t-stars img { height: 36px; }
+    /* 5-star rating */
+    .t-stars { display: flex; gap: 4px; margin-bottom: 51px; }
+    .t-star { font-size: 36px; color: #F59E0B; line-height: 1; }
     .t-quote {
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 32px; font-weight: 300;
@@ -799,6 +986,7 @@
     .t-avatar {
       width: 82px; height: 82px;
       border-radius: 50%; object-fit: cover; flex-shrink: 0;
+      background: var(--gray-mid);
     }
     .t-info { color: var(--sub); }
     .t-role {
@@ -811,7 +999,7 @@
     }
 
     /* ===== FAQ ===== */
-    .faq { background: #fff; padding: 80px var(--px); max-width: 1920px; margin: 0 auto; }
+    .faq { background: #fff; padding: 40px var(--px); max-width: 1920px; margin: 0 auto; }
     .faq h2 { margin-bottom: 40px; }
     .faq-list { display: flex; flex-direction: column; gap: 20px; }
     .faq-item { border-radius: 20px; overflow: hidden; transition: background 0.3s ease; }
@@ -838,8 +1026,7 @@
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 32px; font-weight: 500; color: #fff;
     }
-    .faq-icon { width: 50px; height: 50px; flex-shrink: 0; transition: transform 0.3s ease; }
-    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-icon { width: 50px; height: 50px; flex-shrink: 0; }
     .faq-divider { height: 1px; background: rgba(255,255,255,.2); margin: 0 56px; }
     .faq-answer {
       padding: 30px 56px 51px 127px;
@@ -855,86 +1042,6 @@
     }
     .faq-item.open .faq-answer { display: block; }
 
-    /* ===== CONTACT ===== */
-    .contact-section { padding: 80px var(--px); max-width: 1920px; margin: 0 auto; }
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 518px 1fr;
-      gap: 66px;
-    }
-    .contact-info {
-      background: var(--gray-bg);
-      border-radius: 20px;
-      padding: 59px 30px 159px 28px;  /* Fix 13: left 30 → 28 */
-      display: flex; flex-direction: column;
-    }
-    .contact-info h2 {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: 30px; font-weight: 600; color: var(--dark);
-      margin-bottom: 20px; line-height: 1.2;
-    }
-    .contact-info .lead {
-      font-size: 24px; color: #000; line-height: 1.5;
-      margin-bottom: 60px; flex: 1;
-    }
-    .contact-detail { display: flex; align-items: flex-start; gap: 48px; margin-bottom: 37px; }
-    .contact-detail:last-child { margin-bottom: 0; }
-    .contact-detail img { width: 32px; height: 30px; object-fit: contain; flex-shrink: 0; margin-top: 2px; }
-    .contact-detail span { font-size: 24px; color: #060606; line-height: 1.25; }
-    .contact-form {
-      background: var(--gray-bg);
-      border-radius: 20px;
-      padding: 59px 40px 51px 64px;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-bottom: 16px; }
-    .form-field {
-      background: #fff;
-      border: 0.2px solid var(--dark);
-      border-radius: 10px;
-      height: 68px; padding: 0 23px;
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: 20px; color: var(--dark);
-      box-shadow: 0 4px 2px rgba(0,0,0,.1);
-      outline: none; width: 100%;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-    }
-    .form-field:focus {
-      border-color: var(--blue);
-      box-shadow: 0 4px 8px rgba(9, 130, 197, 0.15);
-      background-color: #f9fbff;
-    }
-    .form-field::placeholder { color: var(--dark); opacity: .7; }
-    .form-textarea {
-      background: #fff;
-      border: 0.2px solid var(--dark);
-      border-radius: 10px;
-      height: 138px; padding: 21px 23px;
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: 20px; color: var(--dark);
-      box-shadow: 0 4px 4px rgba(0,0,0,.1);
-      outline: none; resize: vertical; width: 100%;
-      margin-bottom: 16px;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-    }
-    .form-textarea:focus {
-      border-color: var(--blue);
-      box-shadow: 0 4px 8px rgba(9, 130, 197, 0.15);
-      background-color: #f9fbff;
-    }
-    .form-textarea::placeholder { color: var(--dark); opacity: .7; }
-    .form-label {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: 20px; color: var(--dark);
-      display: block; margin-bottom: 8px;
-    }
-    .form-select-wrap {
-      background: #fff;
-      border: 0.2px solid var(--dark);
-      border-radius: 10px;
-      height: 68px;
-      box-shadow: 0 4px 4px rgba(0,0,0,.1);
-      margin-bottom: 24px;
-    }
 
     /* ===== FOOTER ===== */
     .footer { background: var(--dark); padding: 59px var(--px) 60px; color: #fff; max-width: 1920px; margin: 0 auto; }
@@ -943,7 +1050,7 @@
       width: 405px; flex-shrink: 0;
       display: flex; flex-direction: column; gap: 21px;
     }
-    .footer__logo { height: 54px; width: auto; }
+    .footer__logo { width: 212px; height: 54px; }
     .footer__tagline {
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 18px; line-height: 30px; opacity: .8;
@@ -961,6 +1068,9 @@
     .footer__social img { height: 39px; cursor: pointer; }
     .footer__social-link { display: inline-flex; align-items: center; cursor: pointer; }
     .footer__social-link svg { width: 52px; height: 39px; display: block; }
+    .footer__badges { display: flex; gap: 12px; align-items: center; }
+    .footer__badge-cyber { height: 70px; width: auto; }
+    .footer__badge-ukas { height: 54px; width: auto; background: #fff; padding: 4px 8px; border-radius: 4px; }
     .footer__links { display: flex; gap: 24px; flex: 1; }
     .footer__col { display: flex; flex-direction: column; gap: 0; }
     .footer__col h4 {
@@ -975,9 +1085,9 @@
     }
     .footer__col ul li:hover { opacity: 1; }
     .footer__divider { border: none; border-top: 1px solid rgba(255,255,255,.1); margin-bottom: 40px; }
-    .footer__bottom { display: flex; align-items: center; justify-content: space-between; }
-    .footer__copy { font-family: 'Roboto Condensed', sans-serif; font-size: 18px; line-height: 30px; }
-    .footer__bottom-links { display: flex; gap: 16px; }
+    .footer__bottom { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+    .footer__copy { font-family: 'Roboto Condensed', sans-serif; font-size: 16px; line-height: 26px; }
+    .footer__bottom-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
     .footer__bottom-links a {
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 18px; opacity: .8;
@@ -985,24 +1095,31 @@
     .footer__bottom-links a:hover { opacity: 1; }
 
     /* ===== SCROLL BANNER 2 — CTA ABSOLUTE POSITION ===== */
-    .scroll-banner-wrap--2 {
-      position: relative;
-      height: 1074px;
-      padding: 80px var(--px);
-      display: flex; justify-content: center; align-items: flex-start;
-    }
     .scroll-banner-cta-abs {
       /* top/left set in main rule above — no override needed here */
     }
+    /* CTA button inside scroll banner content: don't stretch full-width */
+    .scroll-banner--cta .scroll-banner__content {
+      align-items: flex-start;
+    }
 
     /* ===== HERO LOAD ANIMATIONS ===== */
+    @keyframes heroBgZoom {
+      from { transform: scale(1.06); }
+      to   { transform: scale(1); }
+    }
+    @keyframes heroOverlayIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
     @keyframes heroFadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .hero-anim-1 { animation: heroFadeUp 0.6s ease-out 0.1s both; }
-    .hero-anim-2 { animation: heroFadeUp 0.6s ease-out 0.2s both; }
-    .hero-anim-3 { animation: heroFadeUp 0.6s ease-out 0.3s both; }
+    /* Staggered entrance: BG zooms first, then text cascades in */
+    .hero-anim-1 { animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both; }
+    .hero-anim-2 { animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both; }
+    .hero-anim-3 { animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.65s both; }
 
     /* ===== NAV RESPONSIVE — breakpoints ===== */
     @media (max-width: 1440px) {
@@ -1023,7 +1140,7 @@
     @media (max-width: 1440px) {
       :root { --px: 120px; }  /* cascade: all sections automatically adjust */
       /* Hero content: specific internal padding adjustment */
-      .hero__content { padding: 100px 80px 140px 60px; }
+      .hero__content { padding: 100px 0 140px 60px; }
       /* Why choose: shrink center image */
       .why-img { width: 320px; height: 440px; }
       .why-choose__layout { grid-template-columns: 1fr 320px 1fr; }
@@ -1049,7 +1166,7 @@
       .hero { padding: 16px var(--px) 40px; }
       .hero__wrap { height: auto; min-height: 480px; }
       .hero__content { padding: 60px var(--px) 80px; max-width: 100%; }
-      .hero__title { font-size: 40px; }
+      .hero__title { font-size: 38px; }
       .hero__sub { font-size: 18px; }
 
       /* Main services: flatten rows into 2-col equal grid */
@@ -1057,9 +1174,9 @@
       .main-services__row { display: contents; }
       .svc-card { height: 300px; }
 
-      /* Services 3-card: single column, adjust inner padding */
+      /* Services carousel: adjust padding only */
       .services-section__inner { padding: 32px var(--px) 32px; }
-      .services-section__cards { grid-template-columns: 1fr; }
+      .sc-track .s-card { flex: 0 0 60%; }
 
       /* Why choose: stack vertically */
       .why-choose__layout { grid-template-columns: 1fr; }
@@ -1073,22 +1190,42 @@
       .solutions-bottom { flex-direction: column; }
       .solutions-sub-cards { flex-direction: column; }
 
-      /* Industries: single column */
-      .industries-section__cards { grid-template-columns: 1fr; }
+      /* Industries carousel */
 
-      /* Scroll banners */
-      .scroll-banner-wrap,
-      .scroll-banner-wrap--2 { padding: 40px var(--px); height: auto; }
+      /* Scroll banners: disable sticky flip on mobile, stack normally */
+      .banners-flip {
+        overflow: visible;
+        height: auto !important;
+        padding: 40px var(--px);
+      }
+      .banners-flip__stage {
+        position: relative;
+        top: auto;
+      }
+      .banners-flip__stage > .scroll-banner-wrap:first-child,
+      .banners-flip__stage > .scroll-banner-wrap:last-child {
+        position: relative !important;
+        top: auto;
+        z-index: auto;
+        transform: none !important;
+        will-change: auto;
+        margin-bottom: 20px;
+      }
+      .scroll-banner-wrap--2 .scroll-banner {
+        transform: none !important;
+        transform-origin: unset;
+      }
       .scroll-banner { height: auto; min-height: 600px; border-radius: 20px; }
       .scroll-banner__content { padding: 48px var(--px); gap: 40px; }
       .scroll-banner__title { font-size: 28px; }
       .scroll-banner__body { font-size: 18px; line-height: 26px; letter-spacing: 0; }
       .scroll-banner-cta-abs { top: auto; bottom: 24px; left: var(--px); }
 
-      /* Clients: 2 col */
+      /* Clients: 2-col, sidebar stacks above */
+      .our-clients__inner { flex-direction: column; gap: 24px; }
+      .our-clients__label { width: 100%; padding-top: 0; }
       .clients-grid { grid-template-columns: repeat(2, 1fr); row-gap: 24px; }
-      .client-box { width: auto; }
-      .our-clients { min-height: auto; }
+      .client-box { height: 140px; }
 
       /* Testimonials */
       .testimonials__layout { flex-direction: column; }
@@ -1105,11 +1242,6 @@
       .faq-answer { padding: 20px 24px 28px; font-size: 20px; }
       .faq-divider { margin: 0 24px; }
 
-      /* Contact: stack panels */
-      .contact-layout { grid-template-columns: 1fr; gap: 24px; }
-      .contact-info { padding: 40px var(--px) 60px; }
-      .contact-form { padding: 40px var(--px); }
-
       /* Footer */
       .footer { padding: 48px var(--px) 40px; }
       .footer__top { flex-direction: column; gap: 40px; }
@@ -1124,7 +1256,7 @@
       :root { --px: 20px; }  /* cascade: all padded sections now use 20px */
       .navbar__box { padding: 0 16px; height: 60px; }
       /* Hero */
-      .hero__title { font-size: 30px; }
+      .hero__title { font-size: 28px; }
       .hero__sub { font-size: 16px; }
       .btn-blue-lg { font-size: 16px; padding: 14px 24px; min-height: 44px; }
       .btn-blue { font-size: 16px; padding: 12px 18px; min-height: 44px; }
@@ -1144,13 +1276,12 @@
 
       /* Why col points */
       .why-point p { font-size: 16px; }
-
-      /* Form: single column */
-      .form-row { grid-template-columns: 1fr; }
     }
 
     /* ===== REDUCED MOTION ===== */
     @media (prefers-reduced-motion: reduce) {
+      .hero__bg { animation: none; }
+      .hero__overlay { animation: none; }
       .hero-anim-1, .hero-anim-2, .hero-anim-3 {
         animation: none;
         opacity: 1; transform: none;
@@ -1160,225 +1291,23 @@
 </head>
 <body>
 
-  <!-- ========= NAVIGATION ========= -->
-  <nav class="navbar navbar--sticky" aria-label="Main navigation">
-    <div class="navbar__box">
-      <a href="/" class="navbar__logo" aria-label="Network Consultancy home">
-        <img src="/images/misc/logo.png" alt="Network Consultancy" width="210" height="51" loading="eager" />
-      </a>
-      <div class="navbar__right">
-        <div class="navbar__links">
-          <a href="/about.html" class="nav-link">About</a>
-          <!-- SERVICES MEGA MENU -->
-          <div class="has-mega">
-            <span class="nav-link">Services <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div class="mega-menu">
-              <div class="mega-inner mega-inner--services">
-                <div class="mega-featured">
-                  <picture>
-                    <source srcset="/images/services/service-1.webp" type="image/webp">
-                    <img src="/images/services/service-1.jpg" alt="Managed Network Services" loading="lazy">
-                  </picture>
-                  <div class="mega-featured__body">
-                    <span class="mega-featured__label">Services Overview</span>
-                    <h3 class="mega-featured__title">Managed Network Services</h3>
-                    <p class="mega-featured__desc">Expert-led, end-to-end IT network support tailored for growing businesses.</p>
-                    <a href="/services/" class="mega-featured__link">View All Services &#8594;</a>
-                  </div>
-                </div>
-                <div class="mega-items">
-                  <a href="/services/network-consultancy.html" class="mega-item">
-                    <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></picture>
-                    <span>Network Consultancy</span>
-                  </a>
-                  <a href="/services/network-design-deployment.html" class="mega-item">
-                    <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></picture>
-                    <span>Network Design &amp; Deployment</span>
-                  </a>
-                  <a href="/services/network-installations.html" class="mega-item">
-                    <picture><source srcset="/images/services/service-4.webp" type="image/webp"><img src="/images/services/service-4.jpg" alt="" loading="lazy"></picture>
-                    <span>Network Installations</span>
-                  </a>
-                  <a href="/services/network-support.html" class="mega-item">
-                    <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></picture>
-                    <span>Network Support</span>
-                  </a>
-                  <a href="/services/managed-network-support.html" class="mega-item">
-                    <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></picture>
-                    <span>Managed Network Support</span>
-                  </a>
-                  <a href="/services/managed-wireless-lan.html" class="mega-item">
-                    <picture><source srcset="/images/misc/it-networking.webp" type="image/webp"><img src="/images/misc/it-networking.jpg" alt="" loading="lazy"></picture>
-                    <span>Managed Wireless LAN</span>
-                  </a>
-                  <a href="/services/firewall-network-security.html" class="mega-item">
-                    <picture><source srcset="/images/misc/why-choose-us.webp" type="image/webp"><img src="/images/misc/why-choose-us.jpg" alt="" loading="lazy"></picture>
-                    <span>Firewall &amp; Network Security</span>
-                  </a>
-                  <a href="/services/remote-access-vpn.html" class="mega-item">
-                    <picture><source srcset="/images/banners/scroll-banner-1.webp" type="image/webp"><img src="/images/banners/scroll-banner-1.jpg" alt="" loading="lazy"></picture>
-                    <span>Remote Access &amp; VPN Solutions</span>
-                  </a>
-                  <a href="/services/business-continuity.html" class="mega-item">
-                    <picture><source srcset="/images/banners/scroll-banner-2.webp" type="image/webp"><img src="/images/banners/scroll-banner-2.jpg" alt="" loading="lazy"></picture>
-                    <span>Business Continuity &amp; Resilience</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- SOLUTIONS MEGA MENU -->
-          <div class="has-mega">
-            <span class="nav-link">Solutions <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div class="mega-menu">
-              <div class="mega-inner mega-inner--solutions">
-                <div class="mega-heading">
-                  <span class="mega-heading__title">IT Networking Solutions</span>
-                  <a href="/solutions/" class="mega-heading__all">View All Solutions &#8594;</a>
-                </div>
-                <div class="mega-cards">
-                  <a href="/solutions/network-health-check.html" class="mega-card">
-                    <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img class="mega-card__img" src="/images/services/service-1.jpg" alt="" loading="lazy"></picture>
-                    <div class="mega-card__body">
-                      <div class="mega-card__title">Network Health Check</div>
-                      <p class="mega-card__desc">A free, comprehensive review of your existing network to identify weaknesses and opportunities.</p>
-                      <span class="mega-card__link">Learn More &#8594;</span>
-                    </div>
-                  </a>
-                  <a href="/solutions/ai-ready-infrastructure.html" class="mega-card">
-                    <picture><source srcset="/images/misc/it-networking.webp" type="image/webp"><img class="mega-card__img" src="/images/misc/it-networking.jpg" alt="" loading="lazy"></picture>
-                    <div class="mega-card__body">
-                      <div class="mega-card__title">AI-Ready Infrastructure Review</div>
-                      <p class="mega-card__desc">Assess whether your infrastructure is ready to support AI-driven business demands.</p>
-                      <span class="mega-card__link">Learn More &#8594;</span>
-                    </div>
-                  </a>
-                  <a href="/solutions/cyber-security-review.html" class="mega-card">
-                    <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img class="mega-card__img" src="/images/services/service-3.jpg" alt="" loading="lazy"></picture>
-                    <div class="mega-card__body">
-                      <div class="mega-card__title">Cyber Security Review</div>
-                      <p class="mega-card__desc">Identify vulnerabilities and close security gaps across your network with expert analysis.</p>
-                      <span class="mega-card__link">Learn More &#8594;</span>
-                    </div>
-                  </a>
-                  <a href="/solutions/microsoft-365-network.html" class="mega-card">
-                    <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img class="mega-card__img" src="/images/features/feature-1.jpg" alt="" loading="lazy"></picture>
-                    <div class="mega-card__body">
-                      <div class="mega-card__title">Microsoft 365 &amp; Network</div>
-                      <p class="mega-card__desc">Optimise your Microsoft 365 deployment with a network built for seamless performance.</p>
-                      <span class="mega-card__link">Learn More &#8594;</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- INDUSTRIES MEGA MENU -->
-          <div class="has-mega">
-            <span class="nav-link">Industries <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div class="mega-menu">
-              <div class="mega-inner mega-inner--industries">
-                <div class="mega-ind-grid">
-                  <a href="/industries/financial-services.html" class="mega-item">
-                    <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img src="/images/services/service-1.jpg" alt="" loading="lazy"></picture>
-                    <span>Financial Services</span>
-                  </a>
-                  <a href="/industries/healthcare-clinics.html" class="mega-item">
-                    <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></picture>
-                    <span>Healthcare &amp; Clinics</span>
-                  </a>
-                  <a href="/industries/legal-firms.html" class="mega-item">
-                    <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></picture>
-                    <span>Legal Firms</span>
-                  </a>
-                  <a href="/industries/manufacturing.html" class="mega-item">
-                    <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></picture>
-                    <span>Manufacturing</span>
-                  </a>
-                  <a href="/industries/multi-site-businesses.html" class="mega-item">
-                    <picture><source srcset="/images/services/service-4.webp" type="image/webp"><img src="/images/services/service-4.jpg" alt="" loading="lazy"></picture>
-                    <span>Multi-Site Businesses</span>
-                  </a>
-                  <a href="/industries/professional-services.html" class="mega-item">
-                    <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></picture>
-                    <span>Professional Services</span>
-                  </a>
-                  <a href="/industries/recruitment-agencies.html" class="mega-item">
-                    <picture><source srcset="/images/misc/why-choose-us.webp" type="image/webp"><img src="/images/misc/why-choose-us.jpg" alt="" loading="lazy"></picture>
-                    <span>Recruitment Agencies</span>
-                  </a>
-                  <a href="/industries/internal-it-teams.html" class="mega-item">
-                    <picture><source srcset="/images/misc/it-networking.webp" type="image/webp"><img src="/images/misc/it-networking.jpg" alt="" loading="lazy"></picture>
-                    <span>Internal IT Teams</span>
-                  </a>
-                </div>
-                <div class="mega-featured">
-                  <picture>
-                    <source srcset="/images/misc/it-networking.webp" type="image/webp">
-                    <img src="/images/misc/it-networking.jpg" alt="Industries We Serve" loading="lazy">
-                  </picture>
-                  <div class="mega-featured__body">
-                    <span class="mega-featured__label">Industries We Serve</span>
-                    <h3 class="mega-featured__title">Tailored Networks for Every Sector</h3>
-                    <p class="mega-featured__desc">From healthcare to finance, high-performance networks built for your industry.</p>
-                    <a href="/industries/" class="mega-featured__link">Explore All Industries &#8594;</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- RESOURCES MEGA MENU -->
-          <a href="/resources/blog/" class="nav-link">Blogs</a>
-<a href="/case-studies/" class="nav-link">Case Studies</a>
-          <span class="nav-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="11" cy="11" r="8" stroke="#353535" stroke-width="2"/>
-              <path d="m21 21-4.35-4.35" stroke="#353535" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </span>
-        </div>
-        <a href="/contact.html" class="btn-blue hover-btn">Enquire Here</a>
-      </div>
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-  <!-- Mobile nav overlay -->
-  <div class="nav-mobile" id="nav-mobile" role="dialog" aria-modal="true" aria-label="Navigation menu">
-    <button class="nav-mobile__close" id="nav-mobile-close" aria-label="Close menu">&times;</button>
-    <div class="nav-mobile__brand">
-      <img src="/images/misc/logo.png" alt="Network Consultancy" width="140" height="40" loading="lazy" />
-    </div>
-    <nav class="nav-mobile__links">
-      <a href="/about.html" class="nav-mobile__link">About</a>
-      <a href="/services/" class="nav-mobile__link">Services</a>
-      <a href="/solutions/" class="nav-mobile__link">Solutions</a>
-      <a href="/industries/" class="nav-mobile__link">Industries</a>
-      <a href="/resources/blog/" class="nav-mobile__link">Blogs</a>
-      <a href="/case-studies/" class="nav-mobile__link">Case Studies</a>
-      <a href="/contact.html" class="nav-mobile__link">Contact</a>
-    </nav>
-    <a href="/contact.html" class="btn-blue hover-btn" onclick="document.getElementById('nav-mobile').classList.remove('is-open');">Enquire Here</a>
-  </div>
+  <div id="site-navbar"></div>
+  <script src="/js/navbar.js"></script>
 
   <!-- ========= HERO ========= -->
   <section class="hero">
     <div class="hero__wrap">
       <picture>
-        <source srcset="/images/pages/about-hero.webp" type="image/webp">
-        <img class="hero__bg" src="/images/pages/about-hero.jpg" alt="" width="1920" height="618" loading="eager">
+        <source srcset="/images/hero/hero-bg.webp" type="image/webp">
+        <img class="hero__bg" src="/images/hero/hero-bg.jpg" alt="" width="1920" height="618" loading="eager">
       </picture>
       <div class="hero__overlay"></div>
       <div class="hero__content hero__content--anim">
         <div class="hero__text">
-          <h1 class="hero__title hero-anim-1">Secure and High-Performance Networks for Modern Businesses</h1>
-          <p class="hero__sub hero-anim-2">Network consultancy services built for security, scale, and measurable business outcomes.</p>
+          <h1 class="hero__title hero-anim-1">Secure and High-Performance<br>Networks for Modern Businesses</h1>
+          <p class="hero__sub hero-anim-2">We design, secure, and manage resilient networks to optimise performance, reduce risk, and modernise infrastructure for cloud and AI.</p>
         </div>
-        <a href="#contact" class="btn-blue-lg hover-btn hero-anim-3">Book a Network Health Check</a>
+        <a href="#contact" class="btn-blue-lg hover-btn hero-anim-3">BOOK A FREE NETWORK HEALTH CHECK</a>
       </div>
     </div>
   </section>
@@ -1392,20 +1321,26 @@
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img src="/images/services/service-1.jpg" alt="Network Consultancy" width="471" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
-          <span class="svc-card__label">Network<br>Consultancy</span>
-          <p class="svc-card__desc">Strategic guidance from assessment through implementation — networks built around your business goals.</p>
+          <div class="svc-card__info">
+            <span class="svc-card__label">Network<br>Consultancy</span>
+            <p class="svc-card__desc">Strategic guidance from assessment through implementation — networks built around your business goals.</p>
+          </div>
         </div>
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="Network Support" width="471" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
-          <span class="svc-card__label">Network<br>Support</span>
-          <p class="svc-card__desc">Network support services designed to reduce downtime and improve performance across your infrastructure.</p>
+          <div class="svc-card__info">
+            <span class="svc-card__label">Network<br>Support</span>
+            <p class="svc-card__desc">Network support services designed to reduce downtime and improve performance across your infrastructure.</p>
+          </div>
         </div>
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/services/service-4.webp" type="image/webp"><img src="/images/services/service-4.jpg" alt="Managed Network Support" width="471" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
-          <span class="svc-card__label">Managed Network<br>Support</span>
-          <p class="svc-card__desc">A fully managed service designed to reduce internal burden and keep your environment secure, stable and optimised.</p>
+          <div class="svc-card__info">
+            <span class="svc-card__label">Managed Network<br>Support</span>
+            <p class="svc-card__desc">A fully managed service designed to reduce internal burden and keep your environment secure, stable and optimised.</p>
+          </div>
         </div>
       </div>
       <!-- Row 2: 350px / 592px / 471px (middle and right swap) -->
@@ -1413,20 +1348,26 @@
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="Network Design and Deployment" width="592" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
-          <span class="svc-card__label">Network Design<br>&amp; Deployment</span>
-          <p class="svc-card__desc">Expert consultancy for secure, high-performing, and scalable network architectures.</p>
+          <div class="svc-card__info">
+            <span class="svc-card__label">Network Design<br>&amp; Deployment</span>
+            <p class="svc-card__desc">Expert consultancy for secure, high-performing, and scalable network architectures.</p>
+          </div>
         </div>
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="Firewall and Network Security" width="592" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
-          <span class="svc-card__label">Firewall &amp; Network Security</span>
-          <p class="svc-card__desc">Smarter, more practical network protection that fits how your business actually works.</p>
+          <div class="svc-card__info">
+            <span class="svc-card__label">Firewall &amp; Network Security</span>
+            <p class="svc-card__desc">Smarter, more practical network protection that fits how your business actually works.</p>
+          </div>
         </div>
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="Business Continuity and Resilience" width="471" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
-          <span class="svc-card__label">Business Continuity<br>&amp; Resilience</span>
-          <p class="svc-card__desc">Secure, resilient networks that keep critical business operations running — even in the face of disruptions.</p>
+          <div class="svc-card__info">
+            <span class="svc-card__label">Business Continuity<br>&amp; Resilience</span>
+            <p class="svc-card__desc">Secure, resilient networks that keep critical business operations running — even in the face of disruptions.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1434,43 +1375,168 @@
 
   <!-- ========= VIDEO BANNER ========= -->
   <div class="video-banner">
-    <div class="video-banner__box">
-      <picture><source srcset="/images/banners/video-banner.webp" type="image/webp"><img class="video-banner__bg" src="/images/banners/video-banner.jpg" alt="" width="1440" height="675" loading="lazy"></picture>
-      <img class="video-banner__icon animate-fade-in" src="/images/misc/icon-play.svg" alt="Play video" />
+    <div class="video-banner__box" id="video-banner">
+      <video class="video-banner__video" id="video-banner-vid"
+        muted loop playsinline preload="metadata">
+        <source src="/videos/home-video-banner.mp4" type="video/mp4">
+      </video>
+      <div class="video-banner__overlay" id="video-banner-overlay">
+        <img class="video-banner__icon" src="/images/misc/icon-play.svg" alt="" aria-hidden="true">
+      </div>
     </div>
   </div>
+  <script>
+    (function () {
+      'use strict';
+      var banner  = document.getElementById('video-banner');
+      var video   = document.getElementById('video-banner-vid');
+      var overlay = document.getElementById('video-banner-overlay');
+      if (!banner || !video) return;
+
+      /* Hide play icon once video actually starts playing */
+      video.addEventListener('play', function () {
+        if (overlay) overlay.style.opacity = '0';
+      }, { once: true });
+
+      /* Autoplay when 30% visible, pause when mostly off-screen */
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.intersectionRatio >= 0.3) {
+            video.play().catch(function () {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: [0, 0.3, 0.6, 1] });
+      io.observe(banner);
+
+      /* Parallax — disabled for users who prefer reduced motion */
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var ticking = false;
+      function applyParallax() {
+        var rect = banner.getBoundingClientRect();
+        var vpH  = window.innerHeight;
+        if (rect.bottom < 0 || rect.top > vpH) { ticking = false; return; }
+        /* progress: 0 = section just entered from bottom, 1 = section just left at top */
+        var progress = (vpH - rect.top) / (vpH + rect.height);
+        progress = Math.max(0, Math.min(1, progress));
+        /* Shift video ±60px — slower than page scroll creates depth illusion */
+        var shift = (progress - 0.5) * 120;
+        video.style.transform = 'translateY(' + shift.toFixed(1) + 'px)';
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { requestAnimationFrame(applyParallax); ticking = true; }
+      }, { passive: true });
+      window.addEventListener('resize', function () { requestAnimationFrame(applyParallax); });
+      applyParallax();
+    }());
+  </script>
 
   <!-- ========= SERVICES CARDS ========= -->
   <section class="services-section">
     <div class="services-section__inner">
       <h2 class="section-title services-section__title animate-fade-up">Services</h2>
-      <div class="services-section__cards stagger-children">
+      <div class="sc-viewport">
+        <div class="sc-track services-section__cards">
 
-        <div class="s-card hover-lift animate-fade-up">
-          <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-1.jpg" alt="Network Consultancy" width="471" height="435" loading="lazy"></picture>
-          <div class="s-card__body">
-            <div class="s-card__title">1. Network Consultancy</div>
+          <div class="s-card">
+            <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-1.jpg" alt="Network Consultancy" width="471" height="435" loading="lazy"></picture>
+            <div class="s-card__body">
+              <div class="s-card__title">1.&nbsp; Network Consultancy</div>
+              <div class="s-card__desc">Specialised planning and professional IT network consulting services.</div>
+              <a href="/services/network-consultancy.html" class="btn-blue hover-btn">Enquire Here</a>
+            </div>
           </div>
-        </div>
 
-        <div class="s-card hover-lift animate-fade-up">
-          <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-1.jpg" alt="Network Advisory" width="592" height="435" loading="lazy"></picture>
-          <div class="s-card__body">
-            <div class="s-card__title">2. Network Advisory</div>
-            <div class="s-card__desc">Using specialised planning and professional IT network consulting services</div>
-            <button class="btn-blue hover-btn" style="margin-top:8px;min-height:44px;">Enquire Here</button>
+          <div class="s-card">
+            <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-2.jpg" alt="Network Design and Deployment" width="592" height="435" loading="lazy"></picture>
+            <div class="s-card__body">
+              <div class="s-card__title">2.&nbsp; Network Design &amp; Deployment</div>
+              <div class="s-card__desc">End-to-end network architecture design and seamless deployment.</div>
+              <a href="/services/network-design-deployment.html" class="btn-blue hover-btn">Enquire Here</a>
+            </div>
           </div>
-        </div>
 
-        <div class="s-card hover-lift animate-fade-up">
-          <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-2.jpg" alt="Network Resilience and Business Continuity" width="592" height="435" loading="lazy"></picture>
-          <div class="s-card__body">
-            <div class="s-card__title">3. Network Resilience &amp; Business Continuity</div>
-            <div class="s-card__desc">Using specialised planning and professional IT network consulting services</div>
-            <button class="btn-blue hover-btn" style="margin-top:8px;min-height:44px;">Enquire Here</button>
+          <div class="s-card">
+            <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-2.jpg" alt="Network Installations" width="471" height="435" loading="lazy"></picture>
+            <div class="s-card__body">
+              <div class="s-card__title">3.&nbsp; Network Installations</div>
+              <div class="s-card__desc">Professional installation of cabling, switches, routers and access points.</div>
+              <a href="/services/network-installations.html" class="btn-blue hover-btn">Enquire Here</a>
+            </div>
           </div>
-        </div>
 
+          <div class="s-card">
+            <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-3.jpg" alt="Network Support" width="471" height="435" loading="lazy"></picture>
+            <div class="s-card__body">
+              <div class="s-card__title">4.&nbsp; Network Support</div>
+              <div class="s-card__desc">Responsive support keeping your network running at peak performance.</div>
+              <a href="/services/network-support.html" class="btn-blue hover-btn">Enquire Here</a>
+            </div>
+          </div>
+
+          <div class="s-card">
+            <picture><source srcset="/images/services/service-4.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-4.jpg" alt="Managed Network Support" width="471" height="435" loading="lazy"></picture>
+            <div class="s-card__body">
+              <div class="s-card__title">5.&nbsp; Managed Network Support</div>
+              <div class="s-card__desc">Fully managed proactive monitoring and maintenance of your network.</div>
+              <a href="/services/managed-network-support.html" class="btn-blue hover-btn">Enquire Here</a>
+            </div>
+          </div>
+
+          <div class="s-card">
+            <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-1.jpg" alt="Managed Wireless LAN" width="592" height="435" loading="lazy"></picture>
+            <div class="s-card__body">
+              <div class="s-card__title">6.&nbsp; Managed Wireless LAN</div>
+              <div class="s-card__desc">High-performance managed wireless networks with no coverage gaps.</div>
+              <a href="/services/managed-wireless-lan.html" class="btn-blue hover-btn">Enquire Here</a>
+            </div>
+          </div>
+
+          <div class="s-card">
+            <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-1.jpg" alt="Remote Access and VPN" width="471" height="435" loading="lazy"></picture>
+            <div class="s-card__body">
+              <div class="s-card__title">7.&nbsp; Remote Access &amp; VPN</div>
+              <div class="s-card__desc">Secure remote access and VPN solutions for your hybrid workforce.</div>
+              <a href="/services/remote-access-vpn.html" class="btn-blue hover-btn">Enquire Here</a>
+            </div>
+          </div>
+
+          <div class="s-card">
+            <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-2.jpg" alt="Firewall and Network Security" width="471" height="435" loading="lazy"></picture>
+            <div class="s-card__body">
+              <div class="s-card__title">8.&nbsp; Firewall &amp; Network Security</div>
+              <div class="s-card__desc">Enterprise-grade firewall management and network security solutions.</div>
+              <a href="/services/firewall-network-security.html" class="btn-blue hover-btn">Enquire Here</a>
+            </div>
+          </div>
+
+          <div class="s-card">
+            <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-3.jpg" alt="Business Continuity" width="471" height="435" loading="lazy"></picture>
+            <div class="s-card__body">
+              <div class="s-card__title">9.&nbsp; Business Continuity</div>
+              <div class="s-card__desc">Resilient network strategies keeping your business operational through disruptions.</div>
+              <a href="/services/business-continuity.html" class="btn-blue hover-btn">Enquire Here</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="sc-controls">
+        <a href="/services/" class="btn-blue hover-btn sc-see-all">See All</a>
+        <div class="sc-nav-group">
+          <div class="sc-arrows">
+            <button class="sc-btn sc-prev" aria-label="Previous">
+              <svg width="60" height="47" viewBox="0 0 60 47" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="47" rx="6.18557" fill="#EBEBEB"/><path d="M20.4116 16.2271L11.1333 25.5054L20.4116 34.7838M11.1333 25.5054H48.8652" stroke="black" stroke-width="3.09278" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="sc-btn sc-next" aria-label="Next">
+              <svg width="65" height="51" viewBox="0 0 65 51" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="65" height="50.9278" rx="6.70103" fill="#EBEBEB"/><path d="M42.887 15.4124L52.939 25.4639L42.887 35.5154M52.939 25.4639H12.062" stroke="black" stroke-width="3.35052" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="sc-scrubber"><div class="sc-fill"></div></div>
+        </div>
       </div>
     </div>
   </section>
@@ -1515,8 +1581,12 @@
     <div class="solutions-bottom">
       <div class="solutions-nav">
         <div class="solutions-arrows">
-          <img class="sol-arrow" src="/images/misc/icon-arrow-left.svg" alt="Previous" />
-          <img class="sol-arrow" src="/images/misc/icon-arrow-right.svg" alt="Next" />
+          <button class="sol-arrow" aria-label="Previous">
+            <svg width="97" height="76" viewBox="0 0 60 47" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="47" rx="6.18557" fill="#EBEBEB"/><path d="M20.4116 16.2271L11.1333 25.5054L20.4116 34.7838M11.1333 25.5054H48.8652" stroke="black" stroke-width="3.09278" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="sol-arrow" aria-label="Next">
+            <svg width="97" height="76" viewBox="0 0 65 51" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="65" height="50.9278" rx="6.70103" fill="#EBEBEB"/><path d="M42.887 15.4124L52.939 25.4639L42.887 35.5154M52.939 25.4639H12.062" stroke="black" stroke-width="3.35052" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
         <div class="solutions-progress">
           <div class="solutions-progress-fill"></div>
@@ -1539,317 +1609,450 @@
     </div>
   </section>
 
+  <script>
+  /* =============================================
+     IT Networking Solutions — promote-from-thumbnail slider
+     4 slides. Hero crossfades on nav; clicking a thumbnail
+     promotes it to hero. Loops in both directions.
+  ============================================= */
+  (function () {
+    'use strict';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var slides = [
+      { srcset: '/images/misc/it-networking.webp',  src: '/images/misc/it-networking.jpg',  alt: 'IT Networking Solutions',            title: 'Comprehensive Infrastructure Review',  desc: 'Evaluate existing network components to identify weaknesses, improve reliability, and support effective future business growth.',          label: 'Infrastructure Review' },
+      { srcset: '/images/services/service-2.webp',  src: '/images/services/service-2.jpg',  alt: 'Performance Bottleneck Detection',   title: 'Performance Bottleneck Detection',     desc: 'Identify and resolve network performance issues before they impact your business operations and productivity.',                             label: 'Performance Bottleneck Detection' },
+      { srcset: '/images/services/service-3.webp',  src: '/images/services/service-3.jpg',  alt: 'Security Risk Assessment',            title: 'Security Risk Assessment',             desc: 'Comprehensive audit of your network security posture to uncover vulnerabilities and strengthen your defences.',                             label: 'Security Risk Assessment' },
+      { srcset: '/images/features/feature-1.webp',  src: '/images/features/feature-1.jpg',  alt: 'Capacity Planning and Scalability',   title: 'Capacity Planning & Scalability',      desc: 'Ensure your network infrastructure scales seamlessly with business growth through expert capacity analysis and planning.',                  label: 'Capacity Planning and Scalability' }
+    ];
+
+    var total = slides.length;
+    var idx   = 0;
+    var busy  = false;
+
+    var section    = document.querySelector('.solutions-section');
+    if (!section) return;
+
+    var heroSource = section.querySelector('.solutions-main source');
+    var heroImg    = section.querySelector('.solutions-main img');
+    var heroH3     = section.querySelector('.solutions-infobox h3');
+    var heroP      = section.querySelector('.solutions-infobox p');
+    var thumbs     = Array.prototype.slice.call(section.querySelectorAll('.sol-sub'));
+    var fill       = section.querySelector('.solutions-progress-fill');
+    var prevBtn    = section.querySelectorAll('.sol-arrow')[0];
+    var nextBtn    = section.querySelectorAll('.sol-arrow')[1];
+
+    /* Smooth fade on hero elements */
+    heroImg.style.transition = 'opacity 0.32s ease';
+    heroH3.style.transition  = 'opacity 0.28s ease';
+    heroP.style.transition   = 'opacity 0.28s ease';
+
+    function setThumb(el, slide) {
+      var src = el.querySelector('source');
+      var img = el.querySelector('img');
+      var lbl = el.querySelector('p');
+      if (src) src.srcset = slide.srcset;
+      img.src = slide.src;
+      img.alt = slide.alt;
+      lbl.textContent = slide.label;
+    }
+
+    function updateProgress() {
+      fill.style.width = Math.round((idx / (total - 1)) * 100) + '%';
+    }
+
+    function goTo(n) {
+      if (busy) return;
+      busy = true;
+      idx = ((n % total) + total) % total;
+
+      /* Fade hero out */
+      heroImg.style.opacity = '0';
+      heroH3.style.opacity  = '0';
+      heroP.style.opacity   = '0';
+
+      setTimeout(function () {
+        var s = slides[idx];
+
+        /* Swap hero image + text */
+        if (heroSource) heroSource.srcset = s.srcset;
+        heroImg.src        = s.src;
+        heroImg.alt        = s.alt;
+        heroH3.textContent = s.title;
+        heroP.textContent  = s.desc;
+
+        /* Rotate thumbnails: show the other 3 slides in order */
+        thumbs.forEach(function (thumb, i) {
+          setThumb(thumb, slides[(idx + i + 1) % total]);
+        });
+
+        updateProgress();
+
+        /* Fade hero back in */
+        heroImg.style.opacity = '1';
+        heroH3.style.opacity  = '1';
+        heroP.style.opacity   = '1';
+
+        busy = false;
+      }, 300);
+    }
+
+    /* Clicking a thumbnail promotes it to hero */
+    thumbs.forEach(function (thumb, i) {
+      thumb.style.cursor = 'pointer';
+      thumb.addEventListener('click', function () { goTo(idx + i + 1); });
+      thumb.querySelector('img').style.transition = 'opacity 0.2s, transform 0.2s';
+      thumb.addEventListener('mouseenter', function () {
+        thumb.querySelector('img').style.opacity   = '0.8';
+        thumb.querySelector('img').style.transform = 'scale(1.03)';
+      });
+      thumb.addEventListener('mouseleave', function () {
+        thumb.querySelector('img').style.opacity   = '1';
+        thumb.querySelector('img').style.transform = 'scale(1)';
+      });
+    });
+
+    prevBtn.addEventListener('click', function () { goTo(idx - 1); });
+    nextBtn.addEventListener('click', function () { goTo(idx + 1); });
+
+    updateProgress();
+  }());
+  </script>
+
   <!-- ========= INDUSTRIES ========= -->
   <section class="industries-section">
     <h2 class="section-title industries-section__title animate-fade-up">INDUSTRIES</h2>
-    <div class="industries-section__cards stagger-children">
+    <div class="sc-viewport">
+      <div class="sc-track industries-section__cards">
 
-      <div class="s-card hover-lift animate-fade-up">
-        <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-2.jpg" alt="Comprehensive Network Infrastructure Planning" width="471" height="435" loading="lazy"></picture>
-        <div class="s-card__body">
-          <div class="s-card__title">1. Comprehensive Network Infrastructure Planning</div>
+        <div class="s-card">
+          <picture><source srcset="/images/services/service-4.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-4.jpg" alt="Financial Services" width="471" height="435" loading="lazy"></picture>
+          <div class="s-card__body">
+            <div class="s-card__title">1.&nbsp; Financial Services</div>
+            <div class="s-card__desc">Secure, compliant network infrastructure for financial institutions.</div>
+            <a href="/industries/financial-services.html" class="btn-blue hover-btn">Enquire Here</a>
+          </div>
         </div>
-      </div>
 
-      <div class="s-card hover-lift animate-fade-up">
-        <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-1.jpg" alt="Proactive Network Performance Monitoring" width="592" height="435" loading="lazy"></picture>
-        <div class="s-card__body">
-          <div class="s-card__title">2. Proactive Network Performance Monitoring</div>
-          <div class="s-card__desc">Using specialised planning and professional IT network consulting services</div>
-          <button class="btn-blue hover-btn" style="margin-top:8px;min-height:44px;">Enquire Here</button>
+        <div class="s-card">
+          <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-1.jpg" alt="Healthcare and Clinics" width="592" height="435" loading="lazy"></picture>
+          <div class="s-card__body">
+            <div class="s-card__title">2.&nbsp; Healthcare &amp; Clinics</div>
+            <div class="s-card__desc">Reliable, fast networks that support critical healthcare operations.</div>
+            <a href="/industries/healthcare-clinics.html" class="btn-blue hover-btn">Enquire Here</a>
+          </div>
         </div>
-      </div>
 
-      <div class="s-card hover-lift animate-fade-up">
-        <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-3.jpg" alt="Advanced IT Security Protection" width="471" height="435" loading="lazy"></picture>
-        <div class="s-card__body">
-          <div class="s-card__title">3. Advanced IT Security Protection</div>
-          <div class="s-card__desc">Using specialised planning and professional IT network consulting services</div>
-          <button class="btn-blue hover-btn" style="margin-top:8px;min-height:44px;">Enquire Here</button>
+        <div class="s-card">
+          <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-2.jpg" alt="Legal Firms" width="471" height="435" loading="lazy"></picture>
+          <div class="s-card__body">
+            <div class="s-card__title">3.&nbsp; Legal Firms</div>
+            <div class="s-card__desc">High-security networking for law firms handling sensitive client data.</div>
+            <a href="/industries/legal-firms.html" class="btn-blue hover-btn">Enquire Here</a>
+          </div>
         </div>
-      </div>
 
+        <div class="s-card">
+          <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-3.jpg" alt="Manufacturing" width="471" height="435" loading="lazy"></picture>
+          <div class="s-card__body">
+            <div class="s-card__title">4.&nbsp; Manufacturing</div>
+            <div class="s-card__desc">Robust network infrastructure connecting factory floors and operations.</div>
+            <a href="/industries/manufacturing.html" class="btn-blue hover-btn">Enquire Here</a>
+          </div>
+        </div>
+
+        <div class="s-card">
+          <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-2.jpg" alt="Multi-Site Businesses" width="592" height="435" loading="lazy"></picture>
+          <div class="s-card__body">
+            <div class="s-card__title">5.&nbsp; Multi-Site Businesses</div>
+            <div class="s-card__desc">Unified, consistent network performance across all your locations.</div>
+            <a href="/industries/multi-site-businesses.html" class="btn-blue hover-btn">Enquire Here</a>
+          </div>
+        </div>
+
+        <div class="s-card">
+          <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-1.jpg" alt="Professional Services" width="471" height="435" loading="lazy"></picture>
+          <div class="s-card__body">
+            <div class="s-card__title">6.&nbsp; Professional Services</div>
+            <div class="s-card__desc">Dependable connectivity for consultancies, agencies and professional firms.</div>
+            <a href="/industries/professional-services.html" class="btn-blue hover-btn">Enquire Here</a>
+          </div>
+        </div>
+
+        <div class="s-card">
+          <picture><source srcset="/images/services/service-4.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-4.jpg" alt="Recruitment Agencies" width="471" height="435" loading="lazy"></picture>
+          <div class="s-card__body">
+            <div class="s-card__title">7.&nbsp; Recruitment Agencies</div>
+            <div class="s-card__desc">Fast, cloud-ready networks keeping recruitment teams connected.</div>
+            <a href="/industries/recruitment-agencies.html" class="btn-blue hover-btn">Enquire Here</a>
+          </div>
+        </div>
+
+        <div class="s-card">
+          <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-1.jpg" alt="Internal IT Teams" width="592" height="435" loading="lazy"></picture>
+          <div class="s-card__body">
+            <div class="s-card__title">8.&nbsp; Internal IT Teams</div>
+            <div class="s-card__desc">Co-managed IT partnering with your in-house team for network excellence.</div>
+            <a href="/industries/internal-it-teams.html" class="btn-blue hover-btn">Enquire Here</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="sc-controls">
+      <a href="/industries/" class="btn-blue hover-btn sc-see-all">See All</a>
+      <div class="sc-nav-group">
+        <div class="sc-arrows">
+          <button class="sc-btn sc-prev" aria-label="Previous">
+            <svg width="60" height="47" viewBox="0 0 60 47" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="47" rx="6.18557" fill="#EBEBEB"/><path d="M20.4116 16.2271L11.1333 25.5054L20.4116 34.7838M11.1333 25.5054H48.8652" stroke="black" stroke-width="3.09278" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="sc-btn sc-next" aria-label="Next">
+            <svg width="65" height="51" viewBox="0 0 65 51" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="65" height="50.9278" rx="6.70103" fill="#EBEBEB"/><path d="M42.887 15.4124L52.939 25.4639L42.887 35.5154M52.939 25.4639H12.062" stroke="black" stroke-width="3.35052" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="sc-scrubber"><div class="sc-fill"></div></div>
+      </div>
     </div>
   </section>
 
-  <!-- ========= MANAGED NETWORK SECURITY BANNER ========= -->
-  <div class="scroll-banner-wrap">
-    <div class="scroll-banner">
-      <picture><source srcset="/images/banners/scroll-banner-1.webp" type="image/webp"><img class="scroll-banner__bg" src="/images/banners/scroll-banner-1.jpg" alt="" width="1420" height="914" loading="lazy"></picture>
-      <div class="scroll-banner__overlay"></div>
-      <div class="scroll-banner__content">
-        <h2 class="scroll-banner__title">MANAGED NETWORK SECURITY</h2>
-        <div class="scroll-banner__body">
-          <p>When it comes to enhancing your business's IT infrastructure, Network Consultancy Services provides a gateway to success. Our expertise in this realm covers not just network consultancy services but also extends to Managed Network Security and Managed Network Solutions.</p>
-          <ul>
-            <li>24/7 Firewall Administration and Intrusion Detection</li>
-            <li>Regular Software and Firmware Updates</li>
-            <li>AI-Driven Threat Intelligence &amp; Monitoring</li>
-            <li>Continuous Compliance of Regulations such as ISO 27001 or GDPR</li>
-          </ul>
-        </div>
-      </div>
-      <div class="scroll-dots">
-        <div class="dot active"></div>
-        <div class="dot inactive"></div>
-      </div>
-    </div>
-  </div>
+  <script>
+  /* =============================================
+     Peek carousel — Services + Industries
+     Shows 2 full cards + 1 peeking (blurred).
+     Position-aware: blur applied to whichever
+     card partially overflows the right edge.
+  ============================================= */
+  (function () {
+    'use strict';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  <!-- ========= NETWORK CONSULTANCY SERVICES BANNER ========= -->
-  <div class="scroll-banner-wrap scroll-banner-wrap--2">
-    <div class="scroll-banner scroll-banner--cta">
-      <picture><source srcset="/images/banners/scroll-banner-2.webp" type="image/webp"><img class="scroll-banner__bg" src="/images/banners/scroll-banner-2.jpg" alt="" width="1420" height="914" loading="lazy"></picture>
-      <div class="scroll-banner__overlay"></div>
-      <div class="scroll-banner__content">
-        <h2 class="scroll-banner__title">NETWORK CONSULTANCY SERVICES</h2>
-        <div class="scroll-banner__body">
-          <ul>
-            <li>Our <a href="https://network-consultancy.com/services/" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:underline;">Network Consultancy services</a> are for Clients who need assistance with a project or with resolving an issue. We can work remotely on a per-hour basis or onsite on a day rate basis.</li>
-            <li>Connect with our network consultant for specialised guidance and tailored solutions in Cisco network engineering and business network management.</li>
-            <li>Need a stronger, future-ready infrastructure with expert network consultancy? Discuss digital transformation initiatives, secure support services, or a thorough evaluation of your current network environment with our experts.</li>
-          </ul>
+    function initCarousel(section) {
+      var viewport = section.querySelector('.sc-viewport');
+      var track    = section.querySelector('.sc-track');
+      if (!viewport || !track) return;
+
+      var cards   = Array.prototype.slice.call(track.querySelectorAll('.s-card'));
+      if (!cards.length) return;
+
+      var prevBtn = section.querySelector('.sc-prev');
+      var nextBtn = section.querySelector('.sc-next');
+      var fill    = section.querySelector('.sc-fill');
+      var idx = 0;
+
+      function gap() {
+        var g = parseFloat(getComputedStyle(track).gap);
+        return isNaN(g) ? 24 : g;
+      }
+      function cardW()  { return cards[0].getBoundingClientRect().width; }
+      function vpW()    { return viewport.getBoundingClientRect().width; }
+      function maxIdx() {
+        var cw = cardW(), g = gap(), vw = vpW();
+        var visible = Math.floor((vw + g) / (cw + g));
+        return Math.max(0, cards.length - visible);
+      }
+
+      function updatePeek() {
+        var cw = cardW(), g = gap(), vw = vpW();
+        var offset = idx * (cw + g);
+        cards.forEach(function (card, i) {
+          var left  = i * (cw + g) - offset;
+          var right = left + cw;
+          /* peek: card straddles the right edge */
+          card.classList.toggle('s-card--peek', right > vw + 1 && left < vw - 1);
+        });
+      }
+
+      function render() {
+        var cw = cardW(), g = gap();
+        track.style.transform = 'translateX(' + (-idx * (cw + g)).toFixed(1) + 'px)';
+        updatePeek();
+        /* scrubber */
+        var max = maxIdx();
+        if (fill) fill.style.width = (max > 0 ? (idx / max) * 100 : 100) + '%';
+        /* buttons */
+        if (prevBtn) prevBtn.disabled = idx === 0;
+        if (nextBtn) nextBtn.disabled = idx >= maxIdx();
+      }
+
+      function goTo(n) {
+        idx = Math.max(0, Math.min(n, maxIdx()));
+        render();
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', function () { goTo(idx - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { goTo(idx + 1); });
+
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () { goTo(idx); }, 120);
+      });
+
+      render();
+    }
+
+    var sections = document.querySelectorAll('.services-section, .industries-section');
+    Array.prototype.forEach.call(sections, initCarousel);
+  }());
+  </script>
+
+  <!-- ========= MANAGED NETWORK SECURITY + NETWORK CONSULTANCY BANNERS (sticky flip) ========= -->
+  <div class="banners-flip" id="banners-flip">
+    <div class="banners-flip__stage">
+
+    <!-- CARD 1: front — slides up on scroll -->
+    <div class="scroll-banner-wrap">
+      <div class="scroll-banner">
+        <picture><source srcset="/images/banners/scroll-banner-1.webp" type="image/webp"><img class="scroll-banner__bg" src="/images/banners/scroll-banner-1.jpg" alt="" width="1420" height="914" loading="lazy"></picture>
+        <div class="scroll-banner__overlay"></div>
+        <div class="scroll-banner__content">
+          <h2 class="scroll-banner__title">MANAGED NETWORK SECURITY</h2>
+          <div class="scroll-banner__body">
+            <p>When it comes to enhancing your business's IT infrastructure, Network Consultancy Services provides a gateway to success. Our expertise in this realm covers not just network consultancy services but also extends to Managed Network Security and Managed Network Solutions.</p>
+            <ul>
+              <li>24/7 Firewall Administration and Intrusion Detection</li>
+              <li>Regular Software and Firmware Updates</li>
+              <li>AI-Driven Threat Intelligence &amp; Monitoring</li>
+              <li>Continuous Compliance of Regulations such as ISO 27001 or GDPR</li>
+            </ul>
+          </div>
         </div>
       </div>
-      <!-- CTA pinned to banner bottom, clear of body text -->
-      <a href="#contact" class="btn-blue-lg hover-btn scroll-banner-cta-abs">Schedule a Network Health Assessment</a>
-      <div class="scroll-dots">
-        <div class="dot inactive"></div>
-        <div class="dot active"></div>
+    </div>
+
+    <!-- CARD 2: back — revealed beneath Card 1 -->
+    <div class="scroll-banner-wrap scroll-banner-wrap--2">
+      <div class="scroll-banner scroll-banner--cta">
+        <picture><source srcset="/images/banners/scroll-banner-2.webp" type="image/webp"><img class="scroll-banner__bg" src="/images/banners/scroll-banner-2.jpg" alt="" width="1420" height="914" loading="lazy"></picture>
+        <div class="scroll-banner__overlay"></div>
+        <div class="scroll-banner__content">
+          <h2 class="scroll-banner__title">NETWORK CONSULTANCY SERVICES</h2>
+          <div class="scroll-banner__body">
+            <p>Our network consultants provide specialised guidance across your core setups:</p>
+            <ul>
+              <li><strong>Cisco Hardware Consultancy:</strong> We configure and deploy your physical routers and switches.</li>
+              <li><strong>Microsoft 365 Readiness:</strong> We audit your infrastructure to ensure secure cloud access.</li>
+              <li><strong>Managed Wireless LAN:</strong> We engineer high-performance wireless networks with no coverage gaps.</li>
+              <li><strong>Remote Access &amp; VPNs:</strong> We implement reliable connectivity for your hybrid team.</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn-blue-lg hover-btn">Schedule a Network Health Assessment</a>
+        </div>
       </div>
     </div>
-    <!-- CTA is now inside .scroll-banner__content —— removed from here -->
-  </div>
+
+    </div><!-- /.banners-flip__stage -->
+  </div><!-- /.banners-flip -->
+
+  <script>
+  /* =============================================
+     Sticky card deck — vanilla JS, no libraries
+     Card 1 slides up, Card 2 unfolds from behind.
+     Both share one sticky stage so they start stacked.
+  ============================================= */
+  (function () {
+    'use strict';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var wrapper  = document.getElementById('banners-flip');
+    var stage    = wrapper ? wrapper.querySelector('.banners-flip__stage') : null;
+    var card1    = stage  ? stage.querySelector('.scroll-banner-wrap:first-child') : null;
+    var card2Bgr = stage  ? stage.querySelector('.scroll-banner-wrap--2 .scroll-banner') : null;
+    if (!wrapper || !card1) return;
+
+    var isMobile = window.innerWidth <= 768;
+
+    function setup() {
+      isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        wrapper.style.height = '';
+        card1.style.transform = '';
+        if (card2Bgr) card2Bgr.style.transform = '';
+        return;
+      }
+      /* Container must be 2x card height so there's enough scroll distance */
+      var cardH = card1.querySelector('.scroll-banner').offsetHeight;
+      wrapper.style.height = (cardH * 2 + 80) + 'px';
+    }
+
+    function easeOut(t) {
+      /* cubic ease-out: fast start, graceful deceleration */
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    var ticking = false;
+    function update() {
+      if (isMobile) { ticking = false; return; }
+      var rect  = wrapper.getBoundingClientRect();
+      var cardH = card1.querySelector('.scroll-banner').offsetHeight;
+      /* Use full available scroll range so there is no dead zone at the bottom */
+      var scrollRange = Math.max(wrapper.clientHeight - cardH, cardH);
+      /* progress: 0 = cards stacked, 1 = Card 1 fully slid off */
+      var raw      = Math.max(0, Math.min(1, -rect.top / scrollRange));
+      var progress = easeOut(raw);
+      /* Card 1 slides up and away (110% so it fully clears the stage) */
+      card1.style.transform = 'translateY(' + (-progress * 110).toFixed(3) + '%)';
+      /* Card 2 grows from 0.94->1.0 and rises 40px into full position */
+      if (card2Bgr) {
+        var scl = (0.94 + 0.06 * progress).toFixed(4);
+        var ty  = (40 * (1 - progress)).toFixed(2);
+        card2Bgr.style.transform = 'scale(' + scl + ') translateY(' + ty + 'px)';
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+
+    window.addEventListener('resize', function () {
+      setup();
+      requestAnimationFrame(update);
+    });
+
+    setup();
+    update();
+  }());
+  </script>
 
   <!-- ========= OUR CLIENTS ========= -->
   <section class="our-clients">
-    <h2 class="section-title animate-fade-up">Our clients</h2>
-    <div class="clients-grid stagger-children">
-      <div class="client-box animate-fade-in"></div>
-      <div class="client-box animate-fade-in"></div>
-      <div class="client-box animate-fade-in"></div>
-      <div class="client-box animate-fade-in"></div>
-      <div class="client-box animate-fade-in"></div>
-      <div class="client-box animate-fade-in"></div>
-      <div class="client-box animate-fade-in"></div>
-      <div class="client-box animate-fade-in"></div>
-      <div class="client-box animate-fade-in"></div>
-      <div class="client-box animate-fade-in"></div>
-      <div class="client-box animate-fade-in"></div>
-      <div class="client-box animate-fade-in"></div>
-    </div>
-  </section>
-
-  <!-- ========= TESTIMONIALS ========= -->
-  <section class="testimonials">
-    <div class="testimonials__layout">
-      <div class="testimonials__left animate-fade-up">
-        <h2>What our<br>client says</h2>
-        <div class="t-nav">
-          <div class="t-arrows">
-            <img class="t-arrow" src="/images/misc/icon-arrow-left.svg" alt="Previous" />
-            <img class="t-arrow" src="/images/misc/icon-arrow-right.svg" alt="Next" />
-          </div>
-          <div class="t-progress">
-            <div class="t-progress-fill"></div>
-          </div>
-        </div>
-      </div>
-      <div class="t-card animate-fade-up">
-        <div class="t-stars">
-          <img src="/images/misc/stars.svg" alt="5 stars" />
-        </div>
-        <p class="t-quote">Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.</p>
-        <div class="t-author">
-          <img class="t-avatar" src="/images/misc/testimonial-avatar.svg" alt="Client avatar" />
-          <div class="t-info">
-            <div class="t-role">MANAGING DIRECTOR</div>
-            <div class="t-company">BROADCASTING COMPANY,<br>LONDON</div>
-          </div>
-        </div>
+    <div class="our-clients__inner">
+      <h2 class="our-clients__label section-title animate-fade-up">Our clients</h2>
+      <div class="clients-grid stagger-children">
+        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-01.svg" alt="Client logo" loading="lazy"></div>
+        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-02.svg" alt="Client logo" loading="lazy"></div>
+        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-03.svg" alt="Client logo" loading="lazy"></div>
+        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-04.svg" alt="Client logo" loading="lazy"></div>
+        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-05.svg" alt="Client logo" loading="lazy"></div>
+        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-06.svg" alt="Client logo" loading="lazy"></div>
+        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-07.svg" alt="Client logo" loading="lazy"></div>
+        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-08.svg" alt="Client logo" loading="lazy"></div>
+        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-09.svg" alt="Client logo" loading="lazy"></div>
+        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-10.svg" alt="Client logo" loading="lazy"></div>
+        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-11.svg" alt="Client logo" loading="lazy"></div>
+        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-12.svg" alt="Client logo" loading="lazy"></div>
       </div>
     </div>
   </section>
 
-  <!-- ========= FAQ ========= -->
-  <section class="faq">
-    <h2 class="section-title animate-fade-up">FREQUENTLY ASKED QUESTIONS</h2>
-    <div class="faq-list stagger-children">
+  <!-- ========= TESTIMONIALS (CMS) ========= -->
+  <div data-cms="testimonials"></div>
 
-      <div class="faq-item open animate-fade-up">
-        <div class="faq-header">
-          <div class="faq-header-left">
-            <span class="faq-num">01</span>
-            <span class="faq-q">Can network consultancy help reduce cybersecurity risks?</span>
-          </div>
-          <img class="faq-icon" src="/images/pages/contact-form-plus.svg" alt="" />
-        </div>
-        <div class="faq-divider"></div>
-        <div class="faq-answer">Yes. We do security audits to update out-of-date firewall configurations and block unauthorised device access before hackers can breach your data perimeter.</div>
-      </div>
+  <!-- ========= FAQ (CMS) ========= -->
+  <div data-cms="faq"></div>
 
-      <div class="faq-item closed animate-fade-up">
-        <div class="faq-header">
-          <div class="faq-header-left">
-            <span class="faq-num">02</span>
-            <span class="faq-q">Do you provide support for businesses with multiple locations?</span>
-          </div>
-          <img class="faq-icon" src="/images/pages/contact-form-plus.svg" alt="" />
-        </div>
-        <div class="faq-divider" style="display:none;"></div>
-        <div class="faq-answer">Yes, we provide comprehensive multi-site support to ensure seamless network connectivity and management across all your business locations.</div>
-      </div>
 
-      <div class="faq-item closed animate-fade-up">
-        <div class="faq-header">
-          <div class="faq-header-left">
-            <span class="faq-num">03</span>
-            <span class="faq-q">What makes Network Consultancy different from larger IT providers?</span>
-          </div>
-          <img class="faq-icon" src="/images/pages/contact-form-plus.svg" alt="" />
-        </div>
-        <div class="faq-divider" style="display:none;"></div>
-        <div class="faq-answer">We offer personalised, expert-led service with deep technical expertise and a commitment to understanding your business goals, delivering tailored solutions rather than one-size-fits-all approaches.</div>
-      </div>
 
-    </div>
-  </section>
+  <div id="site-contact"></div>
+  <script src="/js/contact.js"></script>
 
-  <!-- ========= CONTACT ========= -->
-  <section class="contact-section" id="contact">
-    <div class="contact-layout animate-fade-up">
-      <div class="contact-info">
-        <h2>Contact us today for a free consultation</h2>
-        <p class="lead">We pride ourselves on delivering a flexible engagement style in order to meet your requirements. Contact us for your free consultation.</p>
-        <div class="contact-detail">
-          <img src="/images/pages/contact-form-phone.svg" alt="Phone" />
-          <span>+44 (0) 203 150 1401</span>
-        </div>
-        <div class="contact-detail">
-          <img src="/images/pages/contact-form-address.svg" alt="Address" />
-          <span>Birmingham<br>Beech House, Greenfield Crescent<br>Edgbaston, B15 3BE</span>
-        </div>
-        <div class="contact-detail">
-          <img src="/images/pages/contact-form-email-icon.svg" alt="Email" />
-          <span>info@network-consultancy.com</span>
-        </div>
-      </div>
-      <form class="contact-form" action="#" method="post" onsubmit="return false;">
-        <div class="form-row">
-          <input class="form-field" type="text" name="first_name" placeholder="Full Name" autocomplete="given-name" />
-          <input class="form-field" type="text" name="last_name" placeholder="Last Name" autocomplete="family-name" />
-        </div>
-        <div class="form-row">
-          <input class="form-field" type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" />
-          <input class="form-field" type="text" name="company" placeholder="Company Name" autocomplete="organization" />
-        </div>
-        <div class="form-row">
-          <input class="form-field" type="text" name="help" placeholder="I Need help with" />
-          <input class="form-field" type="text" name="scale" placeholder="Scale of Business" />
-        </div>
-        <textarea class="form-textarea" name="message" placeholder="Message"></textarea>
-        <label class="form-label" for="referral">Where did you hear about us?</label>
-        <div class="form-select-wrap" id="referral"></div>
-        <button type="submit" class="btn-dark hover-btn">Enquire Here</button>
-      </form>
-    </div>
-  </section>
+  <div id="site-footer"></div>
+  <script src="/js/footer.js"></script>
 
-  <!-- ========= FOOTER ========= -->
-  <footer class="footer">
-    <div class="footer__top">
-      <div class="footer__brand">
-        <img class="footer__logo" src="/images/misc/logo-white.png" alt="Network Consultancy" />
-        <p class="footer__tagline">Expert network consultancy providing secure, scalable infrastructure solutions.</p>
-        <div class="footer__search">
-          <span>Search this site</span>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="11" cy="11" r="8" stroke="#353535" stroke-width="2"/>
-            <path d="m21 21-4.35-4.35" stroke="#353535" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="footer__social">
-          <a href="#" aria-label="Facebook" target="_blank" rel="noopener" class="footer__social-link">
-            <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="52" height="39" rx="19.5" fill="rgba(255,255,255,0.12)"/>
-              <path d="M28.5 20H26.5V27H23.5V20H22V17.5H23.5V16C23.5 14.34 24.34 13 26.5 13H28.5V15.5H27.5C26.95 15.5 26.5 15.78 26.5 16.5V17.5H28.5L28.5 20Z" fill="white"/>
-            </svg>
-          </a>
-          <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener" class="footer__social-link">
-            <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="52" height="39" rx="19.5" fill="rgba(255,255,255,0.12)"/>
-              <path d="M20 15.5C20 16.33 19.33 17 18.5 17C17.67 17 17 16.33 17 15.5C17 14.67 17.67 14 18.5 14C19.33 14 20 14.67 20 15.5ZM17 18.5H20V27H17V18.5ZM22 18.5H24.8V19.8H24.84C25.22 19.08 26.14 18.3 27.5 18.3C30.5 18.3 31 20.26 31 22.8V27H28V23.3C28 22.2 27.98 20.8 26.5 20.8C25 20.8 24.8 22 24.8 23.22V27H22V18.5Z" fill="white"/>
-            </svg>
-          </a>
-          <a href="#" aria-label="Twitter / X" target="_blank" rel="noopener" class="footer__social-link">
-            <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="52" height="39" rx="19.5" fill="rgba(255,255,255,0.12)"/>
-              <path d="M30.96 14H33.28L28.18 19.77L34.18 26.97H29.45L25.79 22.18L21.59 26.97H19.26L24.71 20.81L18.96 14H23.8L27.12 18.37L30.96 14ZM30.16 25.57H31.44L23.04 15.31H21.67L30.16 25.57Z" fill="white"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer__links">
-        <div class="footer__col">
-          <h4>Industries</h4>
-          <ul>
-            <li>Legal Firms</li>
-            <li>Financial Services</li>
-            <li>Recruitment Agencies</li>
-            <li>Healthcare &amp; Clinics</li>
-            <li>Manufacturing</li>
-            <li>Professional Services</li>
-            <li>Multi-Site Businesses</li>
-            <li>Internal IT Teams / Co-Managed IT</li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Services</h4>
-          <ul>
-            <li>Managed Wireless LAN</li>
-            <li>Business Continuity &amp; Network Resilience</li>
-            <li>Network Installations</li>
-            <li>Network Consultancy</li>
-            <li>Network Support</li>
-            <li>Managed Network Support</li>
-            <li>Network Design &amp; Deployment</li>
-            <li>Remote Access &amp; VPN Solutions</li>
-            <li>Firewall &amp; Network Security</li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Solutions</h4>
-          <ul>
-            <li>Network Health Check</li>
-            <li>Cyber Security Review</li>
-            <li>Microsoft 365 &amp; Network</li>
-            <li>AI-Ready Infrastructure Review</li>
-          </ul>
-          <h4 class="mt">Resources</h4>
-          <ul>
-            <li>Guides</li>
-            <li>Case Studies</li>
-            <li>Blog</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <hr class="footer__divider" />
-    <div class="footer__bottom">
-      <p class="footer__copy">&copy; 2025 Network Consultancy. All Rights Reserved.</p>
-      <div class="footer__bottom-links">
-        <a href="/">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
-        <a href="/privacy-policy.html">Privacy Policy</a>
-        <a href="/terms-of-service.html">Terms &amp; Conditions</a>
-        <a href="/cookie-policy.html">Cookie Policy</a>
-        <a href="/complaint-form.html">Complaint Form</a>
-      </div>
-    </div>
-  </footer>
-
+  <script src="/js/cms.js" defer></script>
   <script src="js/animations.js" defer></script>
+  <script src="js/accessibility.js" defer></script>
   <script>
     // ===== MEGA MENU =====
     (function() {
@@ -1964,5 +2167,8 @@
     });
   </script>
 
+
+  <script src="/js/search-index.js" defer></script>
+  <script src="/js/search.js" defer></script>
 </body>
 </html>

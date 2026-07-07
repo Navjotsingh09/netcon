@@ -3,361 +3,394 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Network Design & Deployment: Built for Performance and Growth | Network Consultancy</title>
-  <meta name="description" content="Expert network design and deployment — resilient, high-performance architectures built for modern organisations.">
+  <title>Network Design &amp; Deployment | Network Consultancy</title>
+  <meta name="description" content="Scalable network design and deployment — low-latency infrastructure, security hardware, and multi-site rollouts built for growing enterprises.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+  <style>
+  /* ===== Service detail — shared section styles (template) ===== */
+  /* 1920 section canvas + --px padding → 1440 content, matching home */
+  .sd-section { padding:80px var(--px); max-width:var(--section-w); margin:0 auto; }
+  .sd-wrap { max-width:var(--max-w); margin:0 auto; }
+  .sd-head { text-align:center; max-width:820px; margin:0 auto 48px; }
+  .sd-head h2 { font-family:'Roboto Condensed',sans-serif; font-size:42px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:16px; }
+  .sd-head p { font-family:'Barlow',sans-serif; font-size:20px; font-weight:500; color:var(--sub); line-height:1.5; }
+
+  /* Hero CTA */
+  .page-hero__cta-btn { display:inline-flex; align-items:center; margin-top:34px; background:var(--blue); color:#fff; font-family:'Roboto Condensed',sans-serif; font-size:20px; font-weight:700; letter-spacing:.02em; padding:16px 44px; border-radius:14px; transition:background .2s,transform .2s; }
+  .page-hero__cta-btn:hover { background:#0771a5; transform:scale(1.02); }
+
+  /* ===== Hero — rounded inset banner ===== */
+  .nc-hero-wrap { padding:32px var(--px) 0; }
+  .nc-hero { position:relative; max-width:1440px; margin:0 auto; border-radius:20px; overflow:hidden; min-height:560px; display:flex; align-items:center; background:#0d1b3e; }
+  .nc-hero__photo { position:absolute; right:0; top:0; height:100%; width:62%; object-fit:cover; object-position:center right; }
+  .nc-hero__grad { position:absolute; inset:0; background:linear-gradient(90deg,rgba(13,27,62,.85) 0%,rgba(13,27,62,.78) 22%,rgba(13,27,62,.55) 40%,rgba(13,27,62,.18) 58%,rgba(13,27,62,0) 72%); }
+  .nc-hero__content { position:relative; z-index:2; padding:56px 64px; max-width:730px; }
+  .nc-hero__content .breadcrumb { margin-bottom:22px; }
+  .nc-hero__content .breadcrumb a, .nc-hero__content .breadcrumb span { color:rgba(255,255,255,.75); }
+  .nc-hero__content .breadcrumb a:hover { color:#fff; }
+  .nc-hero__title { font-family:'Roboto Condensed',sans-serif; font-size:56px; font-weight:600; color:#fff; line-height:1.05; margin-bottom:20px; }
+  .nc-hero__sub { font-family:'Barlow',sans-serif; font-size:22px; font-weight:500; color:rgba(255,255,255,.9); line-height:1.4; max-width:520px; }
+  @media(max-width:768px){ .nc-hero__photo{width:100%;opacity:.4;} .nc-hero__title{font-size:34px;} .nc-hero__content{padding:40px 28px;} .nc-hero__sub{font-size:18px;} }
+
+  /* ===== Testimonials — What our client says ===== */
+  .tst { display:grid; grid-template-columns:1fr 1.35fr; gap:64px; align-items:center; }
+  .tst__left h2 { font-family:'Roboto Condensed',sans-serif; font-size:56px; font-weight:600; color:var(--navy); line-height:1.05; margin-bottom:48px; }
+  .tst__nav { display:flex; align-items:center; gap:24px; }
+  .tst__arrow { width:56px; height:56px; border-radius:12px; border:1.5px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:22px; color:var(--dark); transition:background .2s,color .2s,border-color .2s; }
+  .tst__arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
+  .tst__bar { flex:1; max-width:200px; height:14px; background:var(--gray-mid); border-radius:10px; overflow:hidden; }
+  .tst__bar-fill { height:100%; width:33%; background:var(--sub); border-radius:10px; transition:width .4s ease; }
+  .tst__card { background:#fff; border-radius:24px; padding:48px 52px; box-shadow:0 10px 40px rgba(22,36,112,.08); position:relative; }
+  .tst__stars { color:#f5a623; font-size:26px; letter-spacing:4px; margin-bottom:24px; }
+  .tst__quote { font-family:'Barlow',sans-serif; font-size:20px; font-weight:500; color:var(--dark); line-height:1.6; margin-bottom:32px; max-width:88%; transition:opacity .3s; }
+  .tst__person { display:flex; align-items:center; gap:16px; }
+  .tst__avatar { width:56px; height:56px; border-radius:50%; object-fit:cover; background:var(--gray-mid); flex-shrink:0; }
+  .tst__meta strong { display:block; font-family:'Roboto Condensed',sans-serif; font-size:20px; font-weight:600; color:var(--navy); }
+  .tst__meta span { font-family:'Barlow',sans-serif; font-size:15px; color:var(--sub); }
+  .tst__qmark { position:absolute; right:48px; bottom:36px; font-family:Georgia,serif; font-size:96px; color:var(--gray-mid); line-height:1; pointer-events:none; }
+  @media(max-width:900px){ .tst{grid-template-columns:1fr;gap:36px;} .tst__left h2{font-size:38px;margin-bottom:28px;} .tst__card{padding:32px 28px;} .tst__quote{max-width:100%;} }
+
+  /* ===== Key Solution Areas — tabs + image card ===== */
+  .ksa__card { display:flex; gap:36px; background:#fff; border:0.2px solid #353535; border-radius:30px; box-shadow:0 4px 4px rgba(0,0,0,.1); padding:40px; }
+  .ksa__tabs { flex:0 0 32%; display:flex; flex-direction:column; }
+  .ksa__tab { text-align:left; background:none; border:none; font-family:'Roboto Condensed',sans-serif; font-size:24px; font-weight:600; color:#585151; padding:26px 4px; cursor:pointer; border-top:1px solid var(--gray-mid); transition:color .2s; }
+  .ksa__tab:first-child { border-top:none; }
+  .ksa__tab.active { background:var(--blue); color:#fff; border-radius:20px; border-top:none; padding:26px 24px; margin:6px 0; }
+  .ksa__panel { flex:1; position:relative; border-radius:20px; overflow:hidden; min-height:600px; display:flex; align-items:flex-end; justify-content:center; padding:33px 29px; }
+  .ksa__panel > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .ksa__panel-card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:24px 29px; width:100%; }
+  .ksa__panel-card h3 { font-family:'Roboto Condensed',sans-serif; font-size:32px; font-weight:600; color:#585151; margin-bottom:14px; }
+  .ksa__panel-card p { font-family:'Roboto Condensed',sans-serif; font-size:20px; font-weight:500; color:#353535; line-height:1.25; }
+  @media(max-width:900px){ .ksa__card{flex-direction:column;} .ksa__tabs{flex-basis:auto;} .ksa__panel{min-height:420px;} .ksa__panel-card h3{font-size:24px;} }
+
+  /* ===== Who We Serve — two columns + centre image ===== */
+  .wws__grid { display:grid; grid-template-columns:1fr auto 1fr; gap:56px; align-items:center; }
+  .wws__col { display:flex; flex-direction:column; }
+  .wws__col--left { text-align:left; }
+  .wws__col--right { text-align:left; }
+  .wws__item { font-family:'Roboto Condensed',sans-serif; font-size:22px; font-weight:500; color:var(--navy); padding:26px 0; border-bottom:1px solid rgba(22,36,112,.18); }
+  .wws__item:last-child { border-bottom:none; }
+  .wws__media { display:flex; justify-content:center; }
+  .wws__img { width:400px; height:540px; object-fit:cover; border-radius:20px; display:block; }
+  @media(max-width:900px){ .wws__grid{grid-template-columns:1fr;} .wws__col--left,.wws__col--right{text-align:left;} .wws__img{width:100%;max-width:360px;height:340px;} .wws__media{order:-1;} .wws__item{font-size:18px;padding:18px 0;} }
+
+  /* ===== Business Impact — text + blue card slider ===== */
+  .biz { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .biz__left h2 { font-family:'Roboto Condensed',sans-serif; font-size:42px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:18px; }
+  .biz__left p { font-family:'Barlow',sans-serif; font-size:20px; color:var(--sub); line-height:1.5; margin-bottom:40px; }
+  .biz__nav { display:flex; align-items:center; gap:24px; }
+  .biz__arrow { width:56px; height:56px; border-radius:12px; border:1.5px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:22px; color:var(--dark); transition:background .2s,color .2s,border-color .2s; }
+  .biz__arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
+  .biz__bar { flex:1; max-width:240px; height:14px; background:var(--gray-mid); border-radius:10px; overflow:hidden; }
+  .biz__bar-fill { height:100%; width:16.6%; background:var(--sub); border-radius:10px; transition:width .4s ease; }
+  .biz__card { background:#859aba; border-radius:30px; padding:50px 43px 52px; min-height:360px; color:#fff; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 4px 2px rgba(0,0,0,.1); }
+  .biz__card h3 { font-family:'Roboto Condensed',sans-serif; font-size:42px; font-weight:600; line-height:1.05; margin-bottom:20px; transition:opacity .3s; }
+  .biz__card p { font-family:'Roboto Condensed',sans-serif; font-size:22px; font-weight:500; line-height:1.35; letter-spacing:.02em; color:rgba(255,255,255,.95); transition:opacity .3s; margin-bottom:28px; }
+  .biz__card .biz__num { font-family:'Roboto Condensed',sans-serif; font-size:42px; font-weight:600; }
+  @media(max-width:900px){ .biz{grid-template-columns:1fr;gap:40px;} }
+
+  /* ===== Common Problems — masonry image tile grid ===== */
+  .probs__masonry { display:flex; flex-direction:column; gap:16px; }
+  .probs__row { display:flex; gap:16px; }
+  .prob { position:relative; height:340px; border-radius:20px; overflow:hidden; flex-grow:1; flex-basis:0; min-width:0; }
+  .prob img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .prob__overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,.3) 50%, rgba(0,0,0,.1) 100%); }
+  .prob__label { position:absolute; z-index:2; left:34px; bottom:26px; font-family:'Roboto Condensed',sans-serif; font-size:22px; font-weight:500; color:#fff; letter-spacing:.03em; max-width:78%; line-height:1.25; }
+  @media(max-width:900px){ .probs__row{flex-wrap:wrap;} .prob{flex-basis:calc(50% - 8px);flex-grow:1;height:220px;} .prob__label{left:22px;bottom:20px;font-size:18px;} }
+  @media(max-width:560px){ .prob{flex-basis:100%;} }
+
+  /* ===== CTA band (shared with services landing) ===== */
+  .svc-cta-band { background:var(--blue); padding:80px 0; position:relative; overflow:hidden; }
+  .svc-cta-band__tags { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; gap:24px; padding:0 var(--px); pointer-events:none; }
+  .svc-cta-band__row { display:flex; gap:20px; flex-wrap:wrap; }
+  .svc-cta-band__row span { background:#fff; color:var(--blue); opacity:.5; font-family:'Roboto Condensed',sans-serif; font-size:18px; font-weight:500; padding:12px 32px; border-radius:20px; white-space:nowrap; }
+  .svc-cta-band__card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:46px 84px; max-width:660px; margin:0 auto; text-align:center; }
+  .svc-cta-band__text { font-family:'Helvetica Neue','Helvetica',Arial,sans-serif; font-size:22px; font-weight:500; color:var(--sub); line-height:1.55; margin-bottom:32px; }
+  .svc-cta-band__btn { display:inline-flex; align-items:center; justify-content:center; background:var(--navy); color:#fff; font-family:'Roboto Condensed',sans-serif; font-size:20px; font-weight:500; padding:16px 50px; border-radius:20px; transition:background .2s; }
+  .svc-cta-band__btn:hover { background:#0f1c5a; }
+  @media(max-width:768px){ .svc-cta-band__card{padding:32px 28px; margin:0 var(--px);} .svc-cta-band__text{font-size:18px;} }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <nav class="navbar navbar--sticky" aria-label="Main navigation">
-    <div class="navbar__box">
-      <a href="/" class="navbar__logo" aria-label="Network Consultancy home">
-        <img src="/images/misc/logo.png" alt="Network Consultancy" width="150" height="44" loading="eager">
-      </a>
-      <div class="navbar__right">
-        <div class="navbar__links">
-          <a href="/about.html" class="nav-link">About</a>
-
-          <div class="has-mega">
-            <span class="nav-link  active">Services <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div class="mega-menu" role="region" aria-label="Services menu">
-              <div class="mega-inner mega-inner--services">
-                <div class="mega-featured">
-                  <picture><source srcset="/images/pages/servers.jpg" type="image/jpeg"><img src="/images/pages/servers.jpg" alt="Services" loading="lazy"></picture>
-                  <div class="mega-featured__body">
-                    <span class="mega-featured__label">Services Overview</span>
-                    <p class="mega-featured__title">Managed Network Services</p>
-                    <p class="mega-featured__desc">Expert-led, end-to-end IT network support for growing businesses.</p>
-                    <a href="/services/" class="mega-featured__link">View All Services &#8594;</a>
-                  </div>
-                </div>
-                <div class="mega-items">
-                  <a href="/services/network-consultancy.html" class="mega-item"><picture><source srcset="/images/services/service-1.webp" type="image/webp"><img src="/images/services/service-1.jpg" alt="" loading="lazy"></picture><span>Network Consultancy</span></a>
-                  <a href="/services/network-design-deployment.html" class="mega-item"><picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></picture><span>Network Design &amp; Deployment</span></a>
-                  <a href="/services/network-installations.html" class="mega-item"><picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></picture><span>Network Installations</span></a>
-                  <a href="/services/network-support.html" class="mega-item"><picture><source srcset="/images/services/service-4.webp" type="image/webp"><img src="/images/services/service-4.jpg" alt="" loading="lazy"></picture><span>Network Support</span></a>
-                  <a href="/services/managed-network-support.html" class="mega-item"><picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></picture><span>Managed Network Support</span></a>
-                  <a href="/services/managed-wireless-lan.html" class="mega-item"><picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></picture><span>Managed Wireless LAN</span></a>
-                  <a href="/services/firewall-network-security.html" class="mega-item"><picture><source srcset="/images/misc/why-choose-us.webp" type="image/webp"><img src="/images/misc/why-choose-us.jpg" alt="" loading="lazy"></picture><span>Firewall &amp; Network Security</span></a>
-                  <a href="/services/remote-access-vpn.html" class="mega-item"><picture><source srcset="/images/banners/scroll-banner-1.webp" type="image/webp"><img src="/images/banners/scroll-banner-1.jpg" alt="" loading="lazy"></picture><span>Remote Access &amp; VPN Solutions</span></a>
-                  <a href="/services/business-continuity.html" class="mega-item"><picture><source srcset="/images/banners/scroll-banner-2.webp" type="image/webp"><img src="/images/banners/scroll-banner-2.jpg" alt="" loading="lazy"></picture><span>Business Continuity &amp; Resilience</span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="has-mega">
-            <span class="nav-link">Solutions <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div class="mega-menu" role="region" aria-label="Solutions menu">
-              <div class="mega-inner mega-inner--solutions">
-                <div class="mega-heading">
-                  <span class="mega-heading__title">IT Networking Solutions</span>
-                  <a href="/solutions/" class="mega-heading__all">View All Solutions &#8594;</a>
-                </div>
-                <div class="mega-cards">
-                  <a href="/solutions/network-health-check.html" class="mega-card"><picture><source srcset="/images/pages/network-abstract.jpg" type="image/jpeg"><img class="mega-card__img" src="/images/pages/network-abstract.jpg" alt="" loading="lazy"></picture><div class="mega-card__body"><p class="mega-card__title">Network Health Check</p><p class="mega-card__desc">A comprehensive review of your network to identify weaknesses and opportunities.</p><span class="mega-card__link">Learn More &#8594;</span></div></a>
-                  <a href="/solutions/ai-ready-infrastructure.html" class="mega-card"><picture><source srcset="/images/pages/technician.jpg" type="image/jpeg"><img class="mega-card__img" src="/images/pages/technician.jpg" alt="" loading="lazy"></picture><div class="mega-card__body"><p class="mega-card__title">AI-Ready Infrastructure</p><p class="mega-card__desc">Assess whether your infrastructure can support AI-driven business demands.</p><span class="mega-card__link">Learn More &#8594;</span></div></a>
-                  <a href="/solutions/cyber-security-review.html" class="mega-card"><picture><source srcset="/images/pages/cyber-security.jpg" type="image/jpeg"><img class="mega-card__img" src="/images/pages/cyber-security.jpg" alt="" loading="lazy"></picture><div class="mega-card__body"><p class="mega-card__title">Cyber Security Review</p><p class="mega-card__desc">Identify vulnerabilities and close security gaps with expert analysis.</p><span class="mega-card__link">Learn More &#8594;</span></div></a>
-                  <a href="/solutions/microsoft-365-network.html" class="mega-card"><picture><source srcset="/images/pages/professional.jpg" type="image/jpeg"><img class="mega-card__img" src="/images/pages/professional.jpg" alt="" loading="lazy"></picture><div class="mega-card__body"><p class="mega-card__title">Microsoft 365 &amp; Network</p><p class="mega-card__desc">Ensure seamless Microsoft 365 performance before you deploy.</p><span class="mega-card__link">Learn More &#8594;</span></div></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="has-mega">
-            <span class="nav-link">Industries <svg class="nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <div class="mega-menu" role="region" aria-label="Industries menu">
-              <div class="mega-inner mega-inner--industries">
-                <div class="mega-ind-grid">
-                  <a href="/industries/financial-services.html" class="mega-item"><picture><source srcset="/images/services/service-1.webp" type="image/webp"><img src="/images/services/service-1.jpg" alt="" loading="lazy"></picture><span>Financial Services</span></a>
-                  <a href="/industries/healthcare-clinics.html" class="mega-item"><picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></picture><span>Healthcare &amp; Clinics</span></a>
-                  <a href="/industries/legal-firms.html" class="mega-item"><picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></picture><span>Legal Firms</span></a>
-                  <a href="/industries/manufacturing.html" class="mega-item"><picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></picture><span>Manufacturing</span></a>
-                  <a href="/industries/multi-site-businesses.html" class="mega-item"><picture><source srcset="/images/services/service-4.webp" type="image/webp"><img src="/images/services/service-4.jpg" alt="" loading="lazy"></picture><span>Multi-Site Businesses</span></a>
-                  <a href="/industries/professional-services.html" class="mega-item"><picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></picture><span>Professional Services</span></a>
-                  <a href="/industries/recruitment-agencies.html" class="mega-item"><picture><source srcset="/images/misc/why-choose-us.webp" type="image/webp"><img src="/images/misc/why-choose-us.jpg" alt="" loading="lazy"></picture><span>Recruitment Agencies</span></a>
-                  <a href="/industries/internal-it-teams.html" class="mega-item"><picture><source srcset="/images/misc/it-networking.webp" type="image/webp"><img src="/images/misc/it-networking.jpg" alt="" loading="lazy"></picture><span>Internal IT Teams</span></a>
-                </div>
-                <div class="mega-featured">
-                  <picture><source srcset="/images/pages/industries.jpg" type="image/jpeg"><img src="/images/pages/industries.jpg" alt="Industries" loading="lazy"></picture>
-                  <div class="mega-featured__body">
-                    <span class="mega-featured__label">Industries We Serve</span>
-                    <p class="mega-featured__title">Tailored Networks for Every Sector</p>
-                    <p class="mega-featured__desc">From healthcare to finance, high-performance networks built for your industry.</p>
-                    <a href="/industries/" class="mega-featured__link">Explore All &#8594;</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a href="/resources/blog/" class="nav-link">Blogs</a>
-<a href="/case-studies/" class="nav-link">Case Studies</a>
-        </div>
-        <span class="nav-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="#353535" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="#353535" stroke-width="2" stroke-linecap="round"/></svg></span>
-        <a href="/contact.html" class="btn-blue">Enquire Here</a>
-      </div>
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <div class="nav-mobile" id="nav-mobile" role="dialog" aria-modal="true" aria-label="Navigation">
-    <button class="nav-mobile__close" id="nav-mobile-close" aria-label="Close menu">&times;</button>
-    <div class="nav-mobile__brand"><img src="/images/misc/logo.png" alt="Network Consultancy" width="140" height="40" loading="lazy"></div>
-    <nav class="nav-mobile__links">
-      <a href="/about.html" class="nav-mobile__link">About</a>
-      <a href="/services/" class="nav-mobile__link  active">Services</a>
-      <a href="/solutions/" class="nav-mobile__link">Solutions</a>
-      <a href="/industries/" class="nav-mobile__link">Industries</a>
-      <a href="/resources/blog/" class="nav-mobile__link">Blogs</a>
-      <a href="/case-studies/" class="nav-mobile__link">Case Studies</a>
-      <a href="/contact.html" class="nav-mobile__link">Contact</a>
-    </nav>
-    <a href="/contact.html" class="btn-blue">Enquire Here</a>
-  </div>
+  <div id="site-navbar"></div>
+  <script src="/js/navbar.js"></script>
   <main id="main">
 
-  <section class="page-hero" aria-label="Page hero">
-    <div class="page-hero__bg">
+  <!-- ===== HERO ===== -->
+  <section class="nc-hero-wrap" aria-label="Page hero">
+    <div class="nc-hero">
       <picture>
-        <source srcset="/images/pages/technician.jpg" type="image/webp">
-        <img src="/images/pages/technician.jpg" alt="" loading="eager" width="1920" height="640">
+        <source srcset="/images/pages/nc-hero-person.webp" type="image/webp">
+        <img class="nc-hero__photo" src="/images/pages/nc-hero-person.jpg" alt="Smiling network engineer" width="692" height="631">
       </picture>
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-    </div>
-    <div class="page-hero__content animate-fade-up">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep" aria-hidden="true">&#8250;</span><a href="/services/">Services</a><span class="bc-sep" aria-hidden="true">&#8250;</span><span>Network Design & Deployment: Built for Performance and Growth</span></nav>
-      <h1 class="page-hero__title">Network Design & Deployment: Built for Performance and Growth</h1>
-      <p class="page-hero__sub">Expert Network Consultancy for Secure, High-Performing, and Scalable Networks</p>
-    </div>
-  </section>
-  <section class="section animate-fade-up" aria-labelledby="svc-h">
-    <div class="split split--3-2">
-      <div>
-        <span class="eyebrow">Design & Build</span>
-        <h2 class="heading-xl" id="svc-h">Network Design & Infrastructure Solutions</h2>
-        <div class="body-lg"><p>Our network design services focus on building environments that support real-world performance, business continuity, cloud integration, and secure communication across all sites.</p><p>Our expertise integrates consulting, deployment, and ongoing support to deliver solutions that perform beyond installation. For each environment we support, we prioritise requirements and long-term operational performance above all else.</p></div>
-<ul class="check-list"><li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Customised designs and SLAs to suit your requirements</span></li><li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Full service from design through deployment and support</span></li><li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Peace of mind with tested, resilient infrastructure</span></li><li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Proactive approach to performance and security</span></li></ul>
-        <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;">
-          <a href="/contact.html" class="btn-blue">Book a Free Health Check</a>
-          <a href="/contact.html" class="btn-outline">Make a Support Request</a>
-        </div>
-      </div>
-      <picture>
-        <source srcset="/images/pages/technician.jpg" type="image/jpeg">
-        <img class="split__img split__img--tall" src="/images/pages/technician.jpg" alt="Network Design & Deployment: Built for Performance and Growth" width="600" height="480" loading="lazy">
-      </picture>
-    </div>
-  </section>
-  <section class="section section--gray animate-fade-up" aria-labelledby="svc-process">
-    <h2 class="section-title" id="svc-process" style="margin-bottom:12px;">Our Process</h2>
-    <p class="body-sm" style="margin-bottom:40px;max-width:700px;">We follow a structured, transparent process so you know exactly what to expect at every stage.</p>
-    <div class="steps"><div class="step"><div class="step__num">01</div><div class="step__title">Requirements Gathering</div><p class="step__desc">Understand your business objectives, infrastructure, and growth plans.</p></div><div class="step"><div class="step__num">02</div><div class="step__title">Network Design</div><p class="step__desc">Create a detailed architecture aligned with your requirements.</p></div><div class="step"><div class="step__num">03</div><div class="step__title">Infrastructure Planning</div><p class="step__desc">Plan procurement, cabling, hardware, and software requirements.</p></div><div class="step"><div class="step__num">04</div><div class="step__title">Deployment</div><p class="step__desc">Install and configure the network with minimal disruption.</p></div><div class="step"><div class="step__num">05</div><div class="step__title">Testing & Handover</div><p class="step__desc">Thoroughly test the solution and provide full documentation.</p></div></div>
-  </section>
-  <section class="section section--dark-blue animate-fade-up" aria-labelledby="svc-why">
-    <div class="split">
-      <div>
-        <span class="eyebrow" style="color:#fff;opacity:.7;">Why Network Consultancy</span>
-        <h2 class="heading-lg heading-lg--white" id="svc-why">The Right Partner for Your Network</h2>
-        <div class="body-lg body-lg--white"><p>To provide solutions that function beyond installation, our expertise integrates consulting, deployment, and ongoing support. We bring a practical, engineering-led approach ensuring your network infrastructure delivers the performance and reliability your business depends on.</p></div>
-        <a href="/contact.html" class="btn-blue" style="margin-top:32px;">Get In Touch</a>
-      </div>
-      <picture>
-        <source srcset="/images/pages/managed-support.jpg" type="image/jpeg">
-        <img class="split__img split__img--med" src="/images/pages/managed-support.jpg" alt="Network Consultancy engineers" width="600" height="380" loading="lazy">
-      </picture>
-    </div>
-  </section>
-
-  <section class="testimonial-band" aria-label="Client testimonial">
-    <div class="testimonial-band__inner animate-fade-up">
-      <div class="testimonial-band__stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <blockquote class="testimonial-band__quote">&#8220;Our network design produced very robust infrastructure. The implementation process enhanced our multi-site connectivity and uptime significantly.&#8221;</blockquote>
-      <cite class="testimonial-band__author">&#8212; <strong>IT Manager</strong>, Logistics Ltd</cite>
-    </div>
-  </section>
-  <section class="faq animate-fade-up" aria-labelledby="faq-h">
-    <h2 class="section-title faq__title" id="faq-h">Frequently Asked Questions</h2>
-    <div class="faq-list">
-      <div class="faq-item open">
-        <div class="faq-header" aria-expanded="true">
-          <div class="faq-header-left"><span class="faq-num">01</span><span class="faq-q">How do you design a future-ready network?</span></div>
-          <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <div class="faq-divider"></div>
-        <div class="faq-answer">We design with scalability, redundancy, and cloud integration in mind, considering your growth trajectory, emerging technologies, and changing working patterns.</div>
-      </div>
-      <div class="faq-item closed">
-        <div class="faq-header" aria-expanded="false">
-          <div class="faq-header-left"><span class="faq-num">02</span><span class="faq-q">How can network design improve cybersecurity?</span></div>
-          <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <div class="faq-divider" style="display:none"></div>
-        <div class="faq-answer">Good network design incorporates security by default — including proper segmentation, access control, and monitoring architecture — reducing your attack surface significantly.</div>
-      </div>
-      <div class="faq-item closed">
-        <div class="faq-header" aria-expanded="false">
-          <div class="faq-header-left"><span class="faq-num">03</span><span class="faq-q">What is included in network deployment?</span></div>
-          <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <div class="faq-divider" style="display:none"></div>
-        <div class="faq-answer">Deployment covers installation and configuration of all network hardware, software, cabling, and testing to ensure the finished solution performs as designed.</div>
+      <div class="nc-hero__grad" aria-hidden="true"></div>
+      <div class="nc-hero__content animate-fade-up">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep" aria-hidden="true">&#8250;</span><a href="/services/">Services</a><span class="bc-sep" aria-hidden="true">&#8250;</span><span>Network Design &amp; Deployment</span></nav>
+        <h1 class="nc-hero__title">Scalable Network Design &amp; Deployment for Growing Enterprise Operations</h1>
+        <p class="nc-hero__sub">Expertly configured installation of low-latency network infrastructure and security hardware.</p>
+        <a href="#contact" class="page-hero__cta-btn">BOOK A NETWORK HEALTH CHECK</a>
       </div>
     </div>
   </section>
 
-  <section class="contact-section" id="contact" aria-labelledby="contact-heading">
-    <div class="contact-layout">
-      <div class="contact-info animate-fade-up">
-        <h2 class="contact-info__heading" id="contact-heading">Contact us today for a free consultation</h2>
-        <p class="contact-info__lead">We pride ourselves on delivering a flexible engagement style to meet your requirements. Contact us for your free consultation.</p>
-        <div class="contact-detail">
-          <div class="contact-detail__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-          </div>
-          <div>
-            <p class="contact-detail__label">Phone</p>
-            <p class="contact-detail__body"><a href="tel:+442031501401">+44 (0) 203 150 1401</a></p>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          </div>
-          <div>
-            <p class="contact-detail__label">Address</p>
-            <p class="contact-detail__body">Beech House, Greenfield Crescent<br>Edgbaston, Birmingham, B15 3BE</p>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </div>
-          <div>
-            <p class="contact-detail__label">Email</p>
-            <p class="contact-detail__body"><a href="mailto:info@network-consultancy.com">info@network-consultancy.com</a></p>
-          </div>
-        </div>
+  <!-- ===== KEY SOLUTION AREAS (tabs) ===== -->
+  <section class="sd-section" aria-labelledby="ksa-h">
+    <div class="sd-wrap">
+      <div class="sd-head" style="text-align:left;margin-left:0;">
+        <h2 id="ksa-h">Network Design &amp; Infrastructure Solutions</h2>
+        <p>Building networking architectures for businesses that are ready to meet modern security challenges and deploy AI-driven technology.</p>
       </div>
-      <div class="contact-form-wrap animate-fade-up">
-        <form id="contact-form" method="post" action="https://formspree.io/f/REPLACE_FORMSPREE_ID" novalidate>
-          <div class="form-row">
-            <div class="form-group"><label for="cf-fname">First Name <span aria-hidden="true">*</span></label><input class="form-field" id="cf-fname" type="text" name="first_name" placeholder="First Name" autocomplete="given-name" required></div>
-            <div class="form-group"><label for="cf-lname">Last Name</label><input class="form-field" id="cf-lname" type="text" name="last_name" placeholder="Last Name" autocomplete="family-name"></div>
+      <div class="ksa__card" id="ksa">
+        <div class="ksa__tabs" role="tablist">
+          <button class="ksa__tab active" role="tab" aria-selected="true">Infrastructure Planning and Lifecycle Management</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Scalable Architecture Design</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Hybrid Connectivity and Cloud Gateways</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Multi-Site Deployment Support</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Managed Deployment Services</button>
+        </div>
+        <div class="ksa__panel">
+          <img id="ksa-img" src="/images/pages/nc-hero-person.jpg" alt="Network engineer">
+          <div class="ksa__panel-card">
+            <h3 id="ksa-title">Infrastructure Planning and Lifecycle Management</h3>
+            <p id="ksa-desc">Auditing your office layout enables engineers to map where new routers and cables should go. We replace ageing switches before old software causes sudden connection drops.</p>
           </div>
-          <div class="form-row">
-            <div class="form-group"><label for="cf-phone">Phone Number</label><input class="form-field" id="cf-phone" type="tel" name="phone" placeholder="Phone Number" autocomplete="tel"></div>
-            <div class="form-group"><label for="cf-company">Company Name</label><input class="form-field" id="cf-company" type="text" name="company" placeholder="Company Name" autocomplete="organization"></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label for="cf-help">I Need Help With</label><input class="form-field" id="cf-help" type="text" name="help" placeholder="e.g. Network Support, Security Review"></div>
-            <div class="form-group"><label for="cf-scale">Scale of Business</label><input class="form-field" id="cf-scale" type="text" name="scale" placeholder="e.g. 50 employees, 3 sites"></div>
-          </div>
-          <div class="form-group" style="margin-bottom:16px;"><label for="cf-message">Message <span aria-hidden="true">*</span></label><textarea class="form-textarea" id="cf-message" name="message" placeholder="Tell us about your network requirements..." required></textarea></div>
-          <div class="form-group" style="margin-bottom:24px;"><label for="cf-referral">Where Did You Hear About Us?</label><select class="form-select" id="cf-referral" name="referral"><option value="">Please select&hellip;</option><option>Google / Search</option><option>LinkedIn</option><option>Referral from a colleague</option><option>Social Media</option><option>Other</option></select></div>
-          <button type="submit" class="btn-dark" style="width:100%;justify-content:center;">Send Enquiry</button>
-          <div id="form-success" class="form-success" role="status" aria-live="polite">Thank you for your enquiry &mdash; we will be in touch shortly.</div>
-          <div id="form-error"   class="form-error"   role="alert"  aria-live="assertive">Something went wrong. Please try again or call us directly on +44 (0) 203 150 1401.</div>
-        </form>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ===== WHO WE SERVE ===== -->
+  <section class="sd-section" style="background:linear-gradient(91deg,rgba(241,244,249,.5) 0%,rgba(173,217,243,.5) 15%,rgba(160,182,229,.5) 33%,rgba(8,173,252,.2) 49%,rgba(160,182,229,.5) 68%,rgba(173,217,243,.5) 83%,rgba(245,248,253,.5) 100%);" aria-labelledby="wws-h">
+    <div class="sd-wrap">
+      <div class="sd-head" style="text-align:left;margin-left:0;">
+        <h2 id="wws-h">Who We Serve</h2>
+        <p>We design our services for organisations that are transforming and need completely stable, secure connectivity to protect daily operations.</p>
+      </div>
+      <div class="wws__grid">
+        <div class="wws__col wws__col--left">
+          <div class="wws__item">Small and medium-sized businesses</div>
+          <div class="wws__item">Multi-site organisations</div>
+          <div class="wws__item">Professional service firms</div>
+          <div class="wws__item">Retail organisations</div>
+        </div>
+        <div class="wws__media">
+          <picture><source srcset="/images/pages/nc-wws-person.webp" type="image/webp"><img class="wws__img" src="/images/pages/nc-wws-person.jpg" alt="Network engineer" loading="lazy"></picture>
+        </div>
+        <div class="wws__col wws__col--right">
+          <div class="wws__item">Healthcare providers</div>
+          <div class="wws__item">Educational institutions</div>
+          <div class="wws__item">Manufacturing businesses</div>
+          <div class="wws__item">Remote and hybrid workforces</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BUSINESS IMPACT (slider) ===== -->
+  <section class="sd-section" aria-labelledby="biz-h">
+    <div class="sd-wrap">
+      <div class="biz" id="biz">
+        <div class="biz__left">
+          <h2 id="biz-h">Find Out the Business Value of our Network Design &amp; Deployment</h2>
+          <p>Network Consultancy removes the constant IT headaches that slow productivity in growing businesses. When your office network is set up right from the start, your team can work without interruption, saving you from lost sales, wasted staff hours, and expensive emergency bills.</p>
+          <div class="biz__nav">
+            <button class="biz__arrow" id="biz-prev" aria-label="Previous">&#8592;</button>
+            <button class="biz__arrow" id="biz-next" aria-label="Next">&#8594;</button>
+            <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
+          </div>
+        </div>
+        <div class="biz__card">
+          <div>
+            <h3 id="biz-title">Multi-Vendor Flexibility</h3>
+            <p id="biz-desc">We build custom packages and flexible SLAs. You can mix and match different hardware brands, as we support far more than just Cisco solutions.</p>
+          </div>
+          <div class="biz__num" id="biz-count">1/6</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMMON PROBLEMS SOLVED ===== -->
+  <section class="sd-section" aria-labelledby="probs-h">
+    <div class="sd-wrap">
+      <div class="sd-head" style="text-align:left;margin-left:0;">
+        <h2 id="probs-h">Common Problems Solved with Managed Wireless LAN</h2>
+        <p>Unreliable Wi-Fi directly impacts workplace productivity and data security. A managed wireless LAN eliminates these technical blind spots, protecting your operational output.</p>
+      </div>
+      <div class="probs__masonry">
+        <div class="probs__row">
+          <div class="prob" style="flex-grow:832"><img src="/images/services/service-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Dropped video calls</div></div>
+          <div class="prob" style="flex-grow:588"><img src="/images/features/feature-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Wi-Fi dead zones</div></div>
+        </div>
+        <div class="probs__row">
+          <div class="prob" style="flex-grow:349"><img src="/images/services/service-3.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Network congestion slowdowns</div></div>
+          <div class="prob" style="flex-grow:469"><img src="/images/services/service-4.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Insecure visitor access</div></div>
+          <div class="prob" style="flex-grow:596"><img src="/images/features/feature-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Disconnected warehouse scanners</div></div>
+        </div>
+        <div class="probs__row">
+          <div class="prob" style="flex-grow:580"><img src="/images/services/service-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Undetected network glitches</div></div>
+          <div class="prob" style="flex-grow:835"><img src="/images/banners/scroll-banner-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Inconsistent multi-site security</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="sd-section" style="background:linear-gradient(91deg,rgba(241,244,249,.5) 0%,rgba(173,217,243,.5) 15%,rgba(160,182,229,.5) 33%,rgba(8,173,252,.2) 49%,rgba(160,182,229,.5) 68%,rgba(173,217,243,.5) 83%,rgba(245,248,253,.5) 100%);" aria-labelledby="tst-h">
+    <div class="sd-wrap">
+      <div class="tst" id="tst">
+        <div class="tst__left">
+          <h2 id="tst-h">What our<br>client says</h2>
+          <div class="tst__nav">
+            <button class="tst__arrow" id="tst-prev" aria-label="Previous testimonial">&#8592;</button>
+            <button class="tst__arrow" id="tst-next" aria-label="Next testimonial">&#8594;</button>
+            <div class="tst__bar"><div class="tst__bar-fill" id="tst-fill"></div></div>
+          </div>
+        </div>
+        <div class="tst__card">
+          <div class="tst__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="tst__quote" id="tst-quote">NetCon&rsquo;s network design services produced a very robust infrastructure. The implementation process enhanced our logistics operations&rsquo; multi-site connectivity and uptime.</p>
+          <div class="tst__person">
+            <div class="tst__avatar" aria-hidden="true"></div>
+            <div class="tst__meta"><strong id="tst-name">James Thornton</strong><span id="tst-role">IT Manager, Logistics Ltd, Manchester</span></div>
+          </div>
+          <div class="tst__qmark" aria-hidden="true">&rdquo;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BAND ===== -->
+  <section class="svc-cta-band" aria-label="Network design and deployment CTA">
+    <div class="svc-cta-band__tags" aria-hidden="true">
+      <div class="svc-cta-band__row">
+        <span>Network Consultancy</span><span>Network Support</span><span>Managed Network Support</span><span>Managed Wireless LAN</span><span>Network Installations</span>
+      </div>
+      <div class="svc-cta-band__row">
+        <span>Network Design &amp; Deployment</span><span>Firewall &amp; Network Security</span><span>Remote Access &amp; VPN</span><span>Business Continuity</span>
+      </div>
+    </div>
+    <div class="svc-cta-band__card">
+      <p class="svc-cta-band__text">Eliminate unexpected downtime before it costs you money. Our prompt response secures your connections and keeps your team online, free from disruptions.</p>
+      <a href="#contact" class="svc-cta-band__btn">Make a Network Designing Request</a>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (CMS with page-specific items) ===== -->
+  <script>
+  window.PAGE_FAQ = [
+    { question:'What are network design services, and how do they benefit my business?', answer:'It is the planning phase before you buy hardware or run cables. It ensures your equipment matches your office layout. This upfront blueprint prevents immediate system crashes and saves you from paying double contractor fees to fix bad wiring.', open:true },
+    { question:'How do you design a future-ready network?', answer:'We design with headroom built in — scalable switching, structured cabling, and modular wireless — so your network can absorb new users, sites, and applications without a costly rebuild later.', open:false },
+    { question:'How can network design improve cybersecurity?', answer:'A well-designed network segments critical systems, controls access at every layer, and removes the weak points attackers exploit, giving you a stronger security posture from the ground up.', open:false }
+  ];
+  </script>
+  <div data-cms="faq"></div>
+
+  <div id="site-contact"></div>
+  <script src="/js/contact.js"></script>
   </main>
-  <footer class="footer" role="contentinfo">
-    <div class="footer__top">
-      <div class="footer__brand">
-        <a href="/" aria-label="Network Consultancy home">
-          <img class="footer__logo" src="/images/misc/logo-white.png" alt="Network Consultancy" width="150" height="48" loading="lazy">
-        </a>
-        <p class="footer__tagline">Expert network consultancy providing secure, scalable infrastructure solutions for UK businesses.</p>
-        <div class="footer__social">
-          <a href="#" aria-label="Facebook" target="_blank" rel="noopener" class="footer__social-link">
-            <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="52" height="39" rx="19.5" fill="rgba(255,255,255,0.12)"/>
-              <path d="M28.5 20H26.5V27H23.5V20H22V17.5H23.5V16C23.5 14.34 24.34 13 26.5 13H28.5V15.5H27.5C26.95 15.5 26.5 15.78 26.5 16.5V17.5H28.5L28.5 20Z" fill="white"/>
-            </svg>
-          </a>
-          <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener" class="footer__social-link">
-            <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="52" height="39" rx="19.5" fill="rgba(255,255,255,0.12)"/>
-              <path d="M20 15.5C20 16.33 19.33 17 18.5 17C17.67 17 17 16.33 17 15.5C17 14.67 17.67 14 18.5 14C19.33 14 20 14.67 20 15.5ZM17 18.5H20V27H17V18.5ZM22 18.5H24.8V19.8H24.84C25.22 19.08 26.14 18.3 27.5 18.3C30.5 18.3 31 20.26 31 22.8V27H28V23.3C28 22.2 27.98 20.8 26.5 20.8C25 20.8 24.8 22 24.8 23.22V27H22V18.5Z" fill="white"/>
-            </svg>
-          </a>
-          <a href="#" aria-label="Twitter / X" target="_blank" rel="noopener" class="footer__social-link">
-            <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="52" height="39" rx="19.5" fill="rgba(255,255,255,0.12)"/>
-              <path d="M30.96 14H33.28L28.18 19.77L34.18 26.97H29.45L25.79 22.18L21.59 26.97H19.26L24.71 20.81L18.96 14H23.8L27.12 18.37L30.96 14ZM30.16 25.57H31.44L23.04 15.31H21.67L30.16 25.57Z" fill="white"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer__links">
-        <div class="footer__col">
-          <h4>Industries</h4>
-          <ul>
-            <li><a href="/industries/legal-firms.html">Legal Firms</a></li>
-            <li><a href="/industries/financial-services.html">Financial Services</a></li>
-            <li><a href="/industries/recruitment-agencies.html">Recruitment Agencies</a></li>
-            <li><a href="/industries/healthcare-clinics.html">Healthcare &amp; Clinics</a></li>
-            <li><a href="/industries/manufacturing.html">Manufacturing</a></li>
-            <li><a href="/industries/professional-services.html">Professional Services</a></li>
-            <li><a href="/industries/multi-site-businesses.html">Multi-Site Businesses</a></li>
-            <li><a href="/industries/internal-it-teams.html">Internal IT Teams / Co-Managed IT</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="/services/managed-wireless-lan.html">Managed Wireless LAN</a></li>
-            <li><a href="/services/business-continuity.html">Business Continuity &amp; Network Resilience</a></li>
-            <li><a href="/services/network-installations.html">Network Installations</a></li>
-            <li><a href="/services/network-consultancy.html">Network Consultancy</a></li>
-            <li><a href="/services/network-support.html">Network Support</a></li>
-            <li><a href="/services/managed-network-support.html">Managed Network Support</a></li>
-            <li><a href="/services/network-design-deployment.html">Network Design &amp; Deployment</a></li>
-            <li><a href="/services/remote-access-vpn.html">Remote Access &amp; VPN Solutions</a></li>
-            <li><a href="/services/firewall-network-security.html">Firewall &amp; Network Security</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Solutions</h4>
-          <ul>
-            <li><a href="/solutions/network-health-check.html">Network Health Check</a></li>
-            <li><a href="/solutions/cyber-security-review.html">Cyber Security Review</a></li>
-            <li><a href="/solutions/microsoft-365-network.html">Microsoft 365 &amp; Network</a></li>
-            <li><a href="/solutions/ai-ready-infrastructure.html">AI-Ready Infrastructure Review</a></li>
-          </ul>
-          <h4 class="mt">Resources</h4>
-          <ul>
-            <li><a href="/resources/guides.html">Guides</a></li>
-            <li><a href="/case-studies/">Case Studies</a></li>
-            <li><a href="/resources/blog/">Blog</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <hr class="footer__divider">
-    <div class="footer__bottom">
-      <p class="footer__copy">&copy; 2025 Network Consultancy. All Rights Reserved.</p>
-      <div class="footer__bottom-links">
-        <a href="/">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
-        <a href="/privacy-policy.html">Privacy Policy</a>
-        <a href="/terms-of-service.html">Terms &amp; Conditions</a>
-      </div>
-    </div>
-  </footer>
 
+  <div id="site-footer"></div>
+  <script src="/js/footer.js"></script>
+
+  <script>
+  /* Key Solution Areas — tab switcher */
+  (function () {
+    var ksa = document.getElementById('ksa');
+    if (!ksa) return;
+    var tabs = Array.prototype.slice.call(ksa.querySelectorAll('.ksa__tab'));
+    var img = document.getElementById('ksa-img');
+    var title = document.getElementById('ksa-title');
+    var desc = document.getElementById('ksa-desc');
+    var data = [
+      { img:'/images/pages/nc-hero-person.jpg', title:'Infrastructure Planning and Lifecycle Management', desc:'Auditing your office layout enables engineers to map where new routers and cables should go. We replace ageing switches before old software causes sudden connection drops.' },
+      { img:'/images/features/feature-1.jpg', title:'Scalable Architecture Design', desc:'We design network architectures that grow with your business, using modular switching and routing that scales cleanly as you add users, sites, and applications.' },
+      { img:'/images/services/service-2.jpg', title:'Hybrid Connectivity and Cloud Gateways', desc:'We connect your on-site network to cloud and hybrid platforms with secure gateways, giving your teams fast, reliable access to the tools they rely on.' },
+      { img:'/images/features/feature-2.jpg', title:'Multi-Site Deployment Support', desc:'We plan and coordinate rollouts across every location, keeping configuration, security, and performance consistent from head office to branch.' },
+      { img:'/images/services/service-3.jpg', title:'Managed Deployment Services', desc:'We handle the full deployment lifecycle — from procurement and configuration to installation and testing — so your network goes live without disruption.' }
+    ];
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+        tab.classList.add('active'); tab.setAttribute('aria-selected','true');
+        var d = data[i];
+        img.style.opacity = '0';
+        setTimeout(function () { img.src = d.img; img.style.opacity = '1'; }, 150);
+        title.textContent = d.title; desc.textContent = d.desc;
+      });
+    });
+    img.style.transition = 'opacity .3s ease';
+  })();
+
+  /* Business Impact — card slider */
+  (function () {
+    var biz = document.getElementById('biz');
+    if (!biz) return;
+    var slides = [
+      { title:'Multi-Vendor Flexibility', desc:'We build custom packages and flexible SLAs. You can mix and match different hardware brands, as we support far more than just Cisco solutions.' },
+      { title:'Structured Cabling Design', desc:'We plan clean, standards-based cabling that keeps your network fast, tidy, and easy to maintain as your office grows.' },
+      { title:'Core Switching and Routing', desc:'We build a resilient core with the right switching and routing to move traffic quickly and reliably across your business.' },
+      { title:'Scalable Wireless Rollout', desc:'We roll out enterprise wireless with full coverage and capacity, so every corner of your workplace stays connected.' },
+      { title:'Network Security Hardening', desc:'We build security into the design from day one — segmentation, firewalls, and access controls that protect your data.' },
+      { title:'Documentation and Handover', desc:'We hand over clear documentation and diagrams so your team always knows exactly how your network is built.' }
+    ];
+    var i = 0, total = slides.length;
+    var title = document.getElementById('biz-title');
+    var desc = document.getElementById('biz-desc');
+    var count = document.getElementById('biz-count');
+    var fill = document.getElementById('biz-fill');
+    function render() {
+      title.style.opacity = '0'; desc.style.opacity = '0';
+      setTimeout(function () {
+        title.textContent = slides[i].title; desc.textContent = slides[i].desc;
+        count.textContent = (i + 1) + '/' + total;
+        fill.style.width = ((i + 1) / total * 100) + '%';
+        title.style.opacity = '1'; desc.style.opacity = '1';
+      }, 200);
+    }
+    document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
+    document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+  })();
+
+  /* Testimonials — slider */
+  (function () {
+    var tst = document.getElementById('tst');
+    if (!tst) return;
+    var items = [
+      { quote:'NetCon\u2019s network design services produced a very robust infrastructure. The implementation process enhanced our logistics operations\u2019 multi-site connectivity and uptime.', name:'James Thornton', role:'IT Manager, Logistics Ltd, Manchester' },
+      { quote:'They mapped our entire multi-site setup and delivered a network that scales with us. Rollout was smooth and downtime was minimal throughout.', name:'Operations Director', role:'Retail Group, Midlands' },
+      { quote:'The design phase caught problems we did not even know we had. Our new infrastructure is faster, tidier, and far easier to manage.', name:'Head of IT', role:'Professional Services Firm, London' }
+    ];
+    var i = 0, total = items.length;
+    var quote = document.getElementById('tst-quote');
+    var name = document.getElementById('tst-name');
+    var role = document.getElementById('tst-role');
+    var fill = document.getElementById('tst-fill');
+    function render() {
+      quote.style.opacity = '0';
+      setTimeout(function () {
+        quote.textContent = items[i].quote; name.textContent = items[i].name; role.textContent = items[i].role;
+        fill.style.width = ((i + 1) / total * 100) + '%';
+        quote.style.opacity = '1';
+      }, 200);
+    }
+    document.getElementById('tst-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
+    document.getElementById('tst-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+  })();
+  </script>
+
+  <script src="/js/cms.js"></script>
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
+  <script src="/js/search-index.js" defer></script>
+  <script src="/js/search.js" defer></script>
 </body>
 </html>
