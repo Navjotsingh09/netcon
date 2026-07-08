@@ -259,7 +259,12 @@
       track.className = 'nc-service-track';
 
       var base = labels.length ? labels.slice() : allServices.slice(0, 3);
-      var doubled = base.concat(base);
+      var sequence = [];
+      var targetItems = 12;
+      for (var i = 0; i < targetItems; i++) {
+        sequence.push(base[i % base.length]);
+      }
+      var doubled = sequence.concat(sequence);
       doubled.forEach(function (label) {
         var chip = document.createElement('span');
         chip.className = 'nc-service-chip';
