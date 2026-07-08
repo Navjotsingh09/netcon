@@ -237,6 +237,26 @@ All source designs are in:
 
 ## 7 · Build Rules & Guardrails
 
+### Change Isolation (Hard Guardrail)
+- Homepage contract files are: `index.html`, `css/global.css`, `js/parallax.js`, `js/animations.js`, `js/global.js`.
+- If the user requests work on non-home pages, do **not** edit homepage contract files unless the user explicitly says to.
+- Before every commit, run `git diff --name-only` and verify touched files are only in the requested scope.
+- If an unrelated contract file appears in diff, stop and remove it from scope before committing.
+
+### Component Ownership (No Overlap)
+- Home-only components must keep `home-`/existing home class namespace and must not be reused for inner pages.
+- Case studies floating pills must stay under `nc-service-*` + `cs-*`/`csd-*` selectors only.
+- Do not apply generic selectors that can style multiple page families unintentionally.
+- Any new shared CSS/JS must be additive and feature-scoped; never replace existing blocks wholesale.
+
+### Mandatory Homepage Smoke Check (Before Push)
+- Verify these are present and unchanged unless explicitly requested:
+  - `index.html` includes `/css/animations.css`
+  - `index.html` includes `/js/animations.js` and `/js/parallax.js`
+  - Home footer social icons are image/icon links (not placeholder text badges)
+  - Home sticky flip banners (`banners-flip`) and video banner blocks exist
+- If any of the above fails after a non-home task, revert the accidental change before commit.
+
 ### Code Quality
 - Plain HTML/CSS/JS only — no frameworks, no npm, no build steps
 - Each page is a self-contained `.html` file with inline `<style>` for page-specific CSS
