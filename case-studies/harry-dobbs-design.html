@@ -3,14 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harry Dobbs Design Case Study | Network Consultancy</title>
-  <meta name="description" content="How Network Consultancy delivered firewall security, wireless LAN, and network modernisation for Harry Dobbs Design.">
+  <title>Harry Dobbs Design - Network &amp; Security Infrastructure Support | Network Consultancy</title>
+  <meta name="description" content="Harry Dobbs Design case study covering network modernisation, firewall and security refresh, and resilient infrastructure support.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+  <style>
+    .csd-page { max-width: var(--section-w); margin: 0 auto; padding: 28px var(--px) 0; }
+    .csd-top { max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 36px; align-items: start; }
+    .csd-title { margin: 24px 0 20px; color: #4c4c4c; font-family: 'Roboto Condensed', sans-serif; font-size: 63px; font-weight: 600; line-height: 1.06; max-width: 960px; }
+    .csd-intro { margin: 0 0 18px; color: #585151; font-family: 'Roboto Condensed', sans-serif; font-size: 31px; font-weight: 400; line-height: 1.25; max-width: 960px; }
+    .csd-hero-image { margin: 24px 0 36px; border-radius: 10px; overflow: hidden; }
+    .csd-hero-image img { width: 100%; height: auto; display: block; }
+    .csd-section-title { margin: 0 0 16px; color: #4c4c4c; font-family: 'Roboto Condensed', sans-serif; font-size: 51px; font-weight: 600; line-height: 1.1; }
+    .csd-copy p { margin: 0 0 16px; color: #585151; font-family: 'Roboto Condensed', sans-serif; font-size: 31px; font-weight: 400; line-height: 1.25; }
+    .csd-copy ul { margin: 0 0 20px; padding-left: 24px; }
+    .csd-copy li { margin: 0 0 12px; color: #585151; font-family: 'Roboto Condensed', sans-serif; font-size: 31px; font-weight: 400; line-height: 1.25; }
+    .csd-latest { background: #ebebeb; border-radius: 24px; padding: 28px 20px 24px; position: sticky; top: 118px; }
+    .csd-latest h2 { margin: 0 0 18px; color: #353535; font-family: 'Roboto Condensed', sans-serif; font-size: 42px; font-weight: 600; line-height: 1.1; }
+    .csd-latest-item { display: grid; grid-template-columns: 68px 1fr; gap: 12px; text-decoration: none; margin-bottom: 12px; }
+    .csd-latest-thumb { height: 50px; border: 1px solid #353535; border-radius: 8px; background: #d9d9d9; }
+    .csd-latest-item span { color: #353535; font-family: 'Roboto Condensed', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.2; }
+    .csd-latest-more { margin-top: 14px; display: inline-block; color: #353535; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; }
+    .csd-cta-band { margin-top: 42px; background: #0982c5; padding: 52px var(--px); }
+    .csd-cta-inner { max-width: 1440px; margin: 0 auto; position: relative; min-height: 200px; display: flex; align-items: center; justify-content: center; }
+    .csd-pill-list { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
+    .csd-pill-col { display: flex; flex-direction: column; gap: 26px; }
+    .csd-pill { background: rgba(255,255,255,.45); color: #0982c5; border-radius: 16px; min-width: 140px; text-align: center; padding: 7px 18px; font-family: 'Roboto Condensed', sans-serif; font-size: 16px; font-weight: 500; }
+    .csd-cta-card { width: min(100%, 760px); background: #ebebeb; border-radius: 20px; padding: 34px 40px; text-align: center; position: relative; z-index: 1; }
+    .csd-cta-card h3 { margin: 0 0 12px; color: #353535; font-family: 'Roboto Condensed', sans-serif; font-size: 33px; font-weight: 500; line-height: 1.2; }
+    .csd-cta-card p { margin: 0 0 18px; color: #353535; font-family: 'Roboto Condensed', sans-serif; font-size: 30px; font-weight: 400; line-height: 1.2; }
+    .csd-cta-card a { display: inline-block; background: #162470; color: #fff; border-radius: 15px; padding: 11px 24px; font-family: 'Roboto Condensed', sans-serif; font-size: 24px; font-weight: 600; text-decoration: none; }
+    .csd-faq { max-width: 1440px; margin: 0 auto; padding: 64px 0 88px; }
+    .csd-faq h2 { margin: 0 0 28px; color: #162470; font-family: 'Roboto Condensed', sans-serif; font-size: 47px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; }
+    .csd-faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .csd-faq-item { border-radius: 12px; overflow: hidden; }
+    .csd-faq-item summary { list-style: none; cursor: pointer; background: #859aba; color: #fff; display: flex; align-items: center; gap: 18px; padding: 28px 32px; font-family: 'Roboto Condensed', sans-serif; font-size: 34px; font-weight: 500; line-height: 1.2; }
+    .csd-faq-item summary::-webkit-details-marker { display: none; }
+    .csd-faq-number { font-size: 52px; font-weight: 400; min-width: 54px; }
+    .csd-faq-q { font-size: 35px; font-weight: 400; flex: 1; }
+    .csd-faq-star { font-size: 34px; }
+    .csd-faq-item[open] summary { background: #162470; }
+    .csd-faq-answer { background: #162470; color: #fff; padding: 0 32px 28px 104px; font-family: 'Roboto Condensed', sans-serif; font-size: 37px; font-weight: 500; line-height: 1.2; }
+    @media (max-width: 1200px) {
+      .csd-top { grid-template-columns: 1fr; }
+      .csd-latest { position: static; max-width: 520px; }
+      .csd-title { font-size: 46px; }
+      .csd-intro, .csd-copy p, .csd-copy li { font-size: 24px; }
+      .csd-section-title { font-size: 38px; }
+      .csd-cta-card h3 { font-size: 28px; }
+      .csd-cta-card p { font-size: 24px; }
+      .csd-faq h2 { font-size: 36px; }
+      .csd-faq-item summary { font-size: 26px; }
+      .csd-faq-q { font-size: 26px; }
+      .csd-faq-answer { font-size: 24px; padding: 0 20px 22px 20px; }
+      .csd-pill-list { display: none; }
+    }
+    @media (max-width: 768px) {
+      .csd-page { padding-top: 12px; }
+      .csd-title { font-size: 38px; }
+      .csd-intro, .csd-copy p, .csd-copy li { font-size: 20px; }
+      .csd-section-title { font-size: 32px; }
+      .csd-cta-card { padding: 24px 20px; }
+      .csd-cta-card h3 { font-size: 24px; }
+      .csd-cta-card p { font-size: 20px; }
+      .csd-cta-card a { font-size: 20px; }
+      .csd-faq h2 { font-size: 30px; }
+      .csd-faq-item summary { padding: 20px; }
+      .csd-faq-number { font-size: 34px; min-width: 38px; }
+      .csd-faq-q { font-size: 21px; }
+      .csd-faq-star { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -18,56 +85,112 @@
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
   <main id="main">
+    <div class="csd-page">
+      <section class="csd-top animate-fade-up" aria-labelledby="case-study-heading">
+        <div>
+          <h1 class="csd-title" id="case-study-heading">Harry Dobbs Design - Network &amp; Security Infrastructure Support</h1>
+          <p class="csd-intro">Harry Dobbs Design operates in a creative environment where reliable connectivity and secure systems are critical to daily operations.</p>
+          <p class="csd-intro">This case study highlights how Network Consultancy addressed its connectivity and security challenges.</p>
+          <div class="csd-hero-image">
+            <picture>
+              <source srcset="/images/pages/case-studies-hero.webp" type="image/webp">
+              <img src="/images/pages/case-studies-hero.jpg" alt="Harry Dobbs Design case study" width="1080" height="540" loading="eager">
+            </picture>
+          </div>
+          <div class="csd-copy">
+            <h2 class="csd-section-title">Overview</h2>
+            <p>Harry Dobbs Design is an award-winning London-based architecture, urban design, and product design practice, delivering innovative projects for clients across the UK and internationally.</p>
+            <p>The business relies on secure, high-performance IT systems to support collaboration, project delivery, and the protection of valuable design data.</p>
+            <p>Network Consultancy partnered with Harry Dobbs Design to modernise and support its network and security infrastructure, ensuring employees have reliable connectivity, enhanced security, and a resilient platform for future growth.</p>
 
-  <section class="page-hero" aria-label="Page hero">
-    <div class="page-hero__bg">
-      <picture>
-        <source srcset="/images/pages/network-abstract.jpg" type="image/webp">
-        <img src="/images/pages/network-abstract.jpg" alt="" loading="eager" width="1920" height="640">
-      </picture>
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-    </div>
-    <div class="page-hero__content animate-fade-up">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep" aria-hidden="true">&#8250;</span><a href="/case-studies/">Case Studies</a><span class="bc-sep" aria-hidden="true">&#8250;</span><span>Harry Dobbs Design</span></nav>
-      <h1 class="page-hero__title">Harry Dobbs Design</h1>
-      <p class="page-hero__sub">Firewall security, wireless LAN upgrade, and network modernisation for a creative design agency.</p>
-    </div>
-  </section>
-  <section class="section animate-fade-up" aria-labelledby="cs-overview">
-    <div class="split split--3-2">
-      <div>
-        <span class="eyebrow">Project Overview</span>
-        <h2 class="heading-xl" id="cs-overview">Harry Dobbs Design</h2>
-        <div class="body-lg"><p>Harry Dobbs Design is a creative agency requiring reliable, secure network infrastructure to support their design operations and growing team. They needed to modernise their network, improve wireless coverage, and strengthen their security posture.</p></div>
-        <h3 class="heading-md" style="margin-top:36px;margin-bottom:16px;">Services Delivered</h3>
-        <ul class="check-list"><li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Firewall and security improvements</span></li><li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Managed wireless LAN</span></li><li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Network upgrade</span></li><li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Backup and storage</span></li></ul>
-      </div>
-      <picture>
-        <source srcset="/images/pages/network-abstract.jpg" type="image/jpeg">
-        <img class="split__img split__img--tall" src="/images/pages/network-abstract.jpg" alt="Harry Dobbs Design" width="600" height="480" loading="lazy">
-      </picture>
-    </div>
-  </section>
-  <section class="section section--gray animate-fade-up">
-    <div class="split">
-      <div aria-labelledby="cs-challenge">
-        <h2 class="heading-lg" id="cs-challenge">The Challenge</h2>
-        <div class="body-lg"><p>The agency&rsquo;s existing network infrastructure was aging and unable to reliably support their growing team. Wireless coverage was inconsistent, security controls were outdated, and the network was not designed to handle the bandwidth demands of modern creative workloads.</p></div>
-      </div>
-      <div aria-labelledby="cs-solution">
-        <h2 class="heading-lg" id="cs-solution">The Solution</h2>
-        <div class="body-lg"><p>Network Consultancy delivered a comprehensive network modernisation programme including firewall and security improvements, a new managed wireless LAN, network upgrade, and backup and storage enhancements — providing a modern, reliable, and secure infrastructure.</p></div>
-      </div>
-    </div>
-  </section>
-  <section class="section section--dark-blue animate-fade-up" aria-labelledby="cs-results">
-    <h2 class="heading-xl heading-xl--white" id="cs-results" style="margin-bottom:24px;">Results</h2>
-    <div class="body-lg body-lg--white"><p>The improvements resulted in reliable, consistent wireless coverage throughout the office, significantly strengthened security, and a network infrastructure capable of supporting the agency&rsquo;s creative workloads and future growth.</p></div>
-    <a href="/case-studies/" class="btn-blue" style="margin-top:36px;">View All Case Studies</a>
-  </section>
+            <h2 class="csd-section-title">Challenge</h2>
+            <p>As the business evolved, elements of the existing network and security infrastructure had reached the end of their useful lifecycle.</p>
+            <p>Connectivity performance, wireless coverage, data protection, and system resilience required improvement to support the demands of a modern design practice.</p>
+            <p>The organisation needed a secure and reliable infrastructure that would protect business-critical data, improve user experience, and provide a foundation capable of supporting future business requirements without ongoing infrastructure concerns.</p>
 
-  <div id="site-contact"></div>
-  <script src="/js/contact.js"></script>
+            <h2 class="csd-section-title">Solution</h2>
+            <p>Network Consultancy designed and implemented a comprehensive infrastructure refresh focused on security, resilience, and performance.</p>
+            <p>A high-availability firewall solution was introduced to strengthen perimeter security and remove single points of failure. The wireless network was upgraded with centrally managed access points, providing consistent coverage and improved connectivity throughout the office environment.</p>
+            <p>We also modernised the organisation's storage and backup systems, ensuring critical project data is securely protected and recoverable in the event of an outage or system failure.</p>
+            <p>By consolidating management and monitoring capabilities, the overall infrastructure became easier to administer and maintain.</p>
+
+            <h2 class="csd-section-title">Result</h2>
+            <ul>
+              <li>Enhanced security through a resilient firewall platform.</li>
+              <li>Improved protection of business-critical project and client data.</li>
+              <li>Consistent and reliable wireless connectivity across the workplace.</li>
+              <li>Reduced operational risk through the replacement of ageing infrastructure.</li>
+              <li>Improved business continuity and data recovery capabilities.</li>
+              <li>A scalable and dependable IT platform that supports ongoing business growth.</li>
+              <li>Simplified infrastructure management and monitoring.</li>
+            </ul>
+
+            <h2 class="csd-section-title">Services Delivered</h2>
+            <ul>
+              <li>Network Infrastructure Modernisation</li>
+              <li>Firewall and Network Security</li>
+              <li>Wireless Network Enhancement</li>
+              <li>Backup and Data Protection Solutions</li>
+              <li>Storage Infrastructure Upgrade</li>
+              <li>Business Continuity Improvement</li>
+              <li>Ongoing Network Support and Consultancy</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="csd-latest" aria-label="Latest case studies">
+          <h2>Latest Case Studies</h2>
+          <a class="csd-latest-item" href="/case-studies/antal-international/">
+            <span class="csd-latest-thumb" aria-hidden="true"></span>
+            <span>Antal International - Global SASE Transformation</span>
+          </a>
+          <a class="csd-latest-item" href="/case-studies/auriga-networks/">
+            <span class="csd-latest-thumb" aria-hidden="true"></span>
+            <span>Auriga Networks - Managed Network Support and Infrastructure Development</span>
+          </a>
+          <a class="csd-latest-item" href="/case-studies/nta-core-network-upgrade/">
+            <span class="csd-latest-thumb" aria-hidden="true"></span>
+            <span>NTA - Core Network Support and Managed Services Partnership</span>
+          </a>
+          <a class="csd-latest-more" href="/case-studies/">See More</a>
+        </aside>
+      </section>
+    </div>
+
+    <section class="csd-cta-band" aria-label="Call to action">
+      <div class="csd-cta-inner">
+        <div class="csd-pill-list" aria-hidden="true">
+          <div class="csd-pill-col"><span class="csd-pill">service 6</span><span class="csd-pill">service 4</span></div>
+          <div class="csd-pill-col"><span class="csd-pill">service 5</span><span class="csd-pill">service 2</span></div>
+          <div class="csd-pill-col"><span class="csd-pill">service 1</span><span class="csd-pill">service 3</span></div>
+        </div>
+        <div class="csd-cta-card">
+          <h3>Improve your network security and infrastructure.</h3>
+          <p>Get in touch to discuss what's putting your current systems at risk and what a centrally managed environment would look like for your organisation.</p>
+          <a href="/contact/">Book Your Network Assessment</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="csd-page">
+      <section class="csd-faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Frequently Asked Questions</h2>
+        <div class="csd-faq-list">
+          <details class="csd-faq-item" open>
+            <summary><span class="csd-faq-number">01</span><span class="csd-faq-q">Why is upgrading the network and security infrastructure important?</span><span class="csd-faq-star" aria-hidden="true">✦</span></summary>
+            <div class="csd-faq-answer">Outdated systems increase risk and limit performance. Upgrading them closes the security gaps and capacity limits that come with ageing infrastructure.</div>
+          </details>
+          <details class="csd-faq-item">
+            <summary><span class="csd-faq-number">02</span><span class="csd-faq-q">What benefits does centralised network management provide?</span><span class="csd-faq-star" aria-hidden="true">✦</span></summary>
+            <div class="csd-faq-answer">Centralised management improves visibility, accelerates troubleshooting, and keeps policy enforcement consistent across all network locations.</div>
+          </details>
+          <details class="csd-faq-item">
+            <summary><span class="csd-faq-number">03</span><span class="csd-faq-q">Can infrastructure upgrades support business growth?</span><span class="csd-faq-star" aria-hidden="true">✦</span></summary>
+            <div class="csd-faq-answer">Yes. A modern network foundation scales with new users, sites, and applications while maintaining performance and resilience.</div>
+          </details>
+        </div>
+      </section>
+    </section>
   </main>
 
   <div id="site-footer"></div>

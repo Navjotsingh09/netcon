@@ -3,14 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senate Computers Case Study | Network Consultancy</title>
-  <meta name="description" content="How Network Consultancy delivered managed network support and infrastructure improvements for Senate Computers.">
+  <title>Senate Computers - Secure Multi-Site Network &amp; Connectivity Solution | Network Consultancy</title>
+  <meta name="description" content="Senate Computers case study focused on secure multi-site networking, VPN integration, and unified connectivity between office locations.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+  <style>
+    .csd-page { max-width: var(--section-w); margin: 0 auto; padding: 28px var(--px) 0; }
+    .csd-top { max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 36px; align-items: start; }
+    .csd-title { margin: 24px 0 20px; color: #4c4c4c; font-family: 'Roboto Condensed', sans-serif; font-size: 63px; font-weight: 600; line-height: 1.06; max-width: 960px; }
+    .csd-intro { margin: 0 0 18px; color: #585151; font-family: 'Roboto Condensed', sans-serif; font-size: 31px; font-weight: 400; line-height: 1.25; max-width: 960px; }
+    .csd-hero-image { margin: 24px 0 36px; border-radius: 10px; overflow: hidden; }
+    .csd-hero-image img { width: 100%; height: auto; display: block; }
+    .csd-section-title { margin: 0 0 16px; color: #4c4c4c; font-family: 'Roboto Condensed', sans-serif; font-size: 51px; font-weight: 600; line-height: 1.1; }
+    .csd-copy p { margin: 0 0 16px; color: #585151; font-family: 'Roboto Condensed', sans-serif; font-size: 31px; font-weight: 400; line-height: 1.25; }
+    .csd-copy ul { margin: 0 0 20px; padding-left: 24px; }
+    .csd-copy li { margin: 0 0 12px; color: #585151; font-family: 'Roboto Condensed', sans-serif; font-size: 31px; font-weight: 400; line-height: 1.25; }
+    .csd-latest { background: #ebebeb; border-radius: 24px; padding: 28px 20px 24px; position: sticky; top: 118px; }
+    .csd-latest h2 { margin: 0 0 18px; color: #353535; font-family: 'Roboto Condensed', sans-serif; font-size: 42px; font-weight: 600; line-height: 1.1; }
+    .csd-latest-item { display: grid; grid-template-columns: 68px 1fr; gap: 12px; text-decoration: none; margin-bottom: 12px; }
+    .csd-latest-thumb { height: 50px; border: 1px solid #353535; border-radius: 8px; background: #d9d9d9; }
+    .csd-latest-item span { color: #353535; font-family: 'Roboto Condensed', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.2; }
+    .csd-latest-more { margin-top: 14px; display: inline-block; color: #353535; font-family: 'Roboto Condensed', sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; }
+    .csd-faq { max-width: 1440px; margin: 0 auto; padding: 64px 0 88px; }
+    .csd-faq h2 { margin: 0 0 28px; color: #162470; font-family: 'Roboto Condensed', sans-serif; font-size: 47px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; }
+    .csd-faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .csd-faq-item { border-radius: 12px; overflow: hidden; }
+    .csd-faq-item summary { list-style: none; cursor: pointer; background: #859aba; color: #fff; display: flex; align-items: center; gap: 18px; padding: 28px 32px; font-family: 'Roboto Condensed', sans-serif; font-size: 34px; font-weight: 500; line-height: 1.2; }
+    .csd-faq-item summary::-webkit-details-marker { display: none; }
+    .csd-faq-number { font-size: 52px; font-weight: 400; min-width: 54px; }
+    .csd-faq-q { font-size: 35px; font-weight: 400; flex: 1; }
+    .csd-faq-star { font-size: 34px; }
+    .csd-faq-item[open] summary { background: #162470; }
+    .csd-faq-answer { background: #162470; color: #fff; padding: 0 32px 28px 104px; font-family: 'Roboto Condensed', sans-serif; font-size: 37px; font-weight: 500; line-height: 1.2; }
+    @media (max-width: 1200px) {
+      .csd-top { grid-template-columns: 1fr; }
+      .csd-latest { position: static; max-width: 520px; }
+      .csd-title { font-size: 46px; }
+      .csd-intro, .csd-copy p, .csd-copy li { font-size: 24px; }
+      .csd-section-title { font-size: 38px; }
+      .csd-faq h2 { font-size: 36px; }
+      .csd-faq-item summary { font-size: 26px; }
+      .csd-faq-q { font-size: 26px; }
+      .csd-faq-answer { font-size: 24px; padding: 0 20px 22px 20px; }
+    }
+    @media (max-width: 768px) {
+      .csd-page { padding-top: 12px; }
+      .csd-title { font-size: 38px; }
+      .csd-intro, .csd-copy p, .csd-copy li { font-size: 20px; }
+      .csd-section-title { font-size: 32px; }
+      .csd-faq h2 { font-size: 30px; }
+      .csd-faq-item summary { padding: 20px; }
+      .csd-faq-number { font-size: 34px; min-width: 38px; }
+      .csd-faq-q { font-size: 21px; }
+      .csd-faq-star { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -18,56 +69,96 @@
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
   <main id="main">
+    <div class="csd-page">
+      <section class="csd-top animate-fade-up" aria-labelledby="case-study-heading">
+        <div>
+          <h1 class="csd-title" id="case-study-heading">Senate Computers - Secure Multi-Site Network &amp; Connectivity Solution</h1>
+          <p class="csd-intro">Senate Computers is a growing IT firm with multiple office locations.</p>
+          <p class="csd-intro">As their business grew, they found it harder to keep their branches securely connected and decided to upgrade their network security.</p>
+          <div class="csd-hero-image">
+            <picture>
+              <source srcset="/images/pages/case-studies-hero.webp" type="image/webp">
+              <img src="/images/pages/case-studies-hero.jpg" alt="Senate Computers case study" width="1080" height="540" loading="eager">
+            </picture>
+          </div>
+          <div class="csd-copy">
+            <h2 class="csd-section-title">Overview</h2>
+            <p>Senate Computers is a growing IT services provider that delivers technical support, network maintenance, and managed IT services to business customers across multiple locations.</p>
+            <p>As the business expanded, the need for secure communication, seamless collaboration between offices, and a resilient network infrastructure became increasingly important.</p>
+            <p>Network Consultancy partnered with Senate Computers to create a secure, connected environment capable of supporting both current operations and future growth.</p>
 
-  <section class="page-hero" aria-label="Page hero">
-    <div class="page-hero__bg">
-      <picture>
-        <source srcset="/images/pages/team-office.jpg" type="image/webp">
-        <img src="/images/pages/team-office.jpg" alt="" loading="eager" width="1920" height="640">
-      </picture>
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-    </div>
-    <div class="page-hero__content animate-fade-up">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep" aria-hidden="true">&#8250;</span><a href="/case-studies/">Case Studies</a><span class="bc-sep" aria-hidden="true">&#8250;</span><span>Senate Computers</span></nav>
-      <h1 class="page-hero__title">Senate Computers</h1>
-      <p class="page-hero__sub">Managed network support and ongoing infrastructure improvements for a technology reseller.</p>
-    </div>
-  </section>
-  <section class="section animate-fade-up" aria-labelledby="cs-overview">
-    <div class="split split--3-2">
-      <div>
-        <span class="eyebrow">Project Overview</span>
-        <h2 class="heading-xl" id="cs-overview">Senate Computers</h2>
-        <div class="body-lg"><p>Senate Computers, a technology reseller, required reliable managed network support and ongoing infrastructure improvements to maintain the performance and security of their operations.</p></div>
-        <h3 class="heading-md" style="margin-top:36px;margin-bottom:16px;">Services Delivered</h3>
-        <ul class="check-list"><li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Managed network support</span></li><li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Infrastructure improvements</span></li><li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Security enhancements</span></li></ul>
-      </div>
-      <picture>
-        <source srcset="/images/pages/team-office.jpg" type="image/jpeg">
-        <img class="split__img split__img--tall" src="/images/pages/team-office.jpg" alt="Senate Computers" width="600" height="480" loading="lazy">
-      </picture>
-    </div>
-  </section>
-  <section class="section section--gray animate-fade-up">
-    <div class="split">
-      <div aria-labelledby="cs-challenge">
-        <h2 class="heading-lg" id="cs-challenge">The Challenge</h2>
-        <div class="body-lg"><p>Senate Computers needed a trusted network partner to provide responsive managed support while delivering targeted infrastructure improvements to address performance and security issues.</p></div>
-      </div>
-      <div aria-labelledby="cs-solution">
-        <h2 class="heading-lg" id="cs-solution">The Solution</h2>
-        <div class="body-lg"><p>Network Consultancy provided ongoing managed network support with a programme of planned infrastructure improvements, ensuring Senate Computers benefited from both reactive issue resolution and proactive infrastructure development.</p></div>
-      </div>
-    </div>
-  </section>
-  <section class="section section--dark-blue animate-fade-up" aria-labelledby="cs-results">
-    <h2 class="heading-xl heading-xl--white" id="cs-results" style="margin-bottom:24px;">Results</h2>
-    <div class="body-lg body-lg--white"><p>The partnership delivered improved network reliability, enhanced security controls, and a more proactive approach to infrastructure management. <!-- NOTE: Full case study content to be confirmed with client --></p></div>
-    <a href="/case-studies/" class="btn-blue" style="margin-top:36px;">View All Case Studies</a>
-  </section>
+            <h2 class="csd-section-title">Challenge</h2>
+            <p>With multiple office locations operating independently, secure communication and resource sharing between sites were becoming increasingly complex. Employees required reliable access to business applications and shared data regardless of location, while maintaining high levels of security.</p>
+            <p>The existing infrastructure also lacked the foundation required to support a fully integrated communications platform and centralised access to corporate resources.</p>
+            <p>The business needed a secure, scalable networking solution that would improve collaboration and support future digital initiatives.</p>
 
-  <div id="site-contact"></div>
-  <script src="/js/contact.js"></script>
+            <h2 class="csd-section-title">Solution</h2>
+            <p>Network Consultancy designed and implemented a secure multi-site networking solution that connected all office locations into a single, managed environment.</p>
+            <p>Enterprise-grade firewalls were deployed to strengthen network security and protect business-critical systems. Secure IPSec VPN tunnels were established between locations, enabling encrypted communication and seamless access to shared resources across the organisation.</p>
+            <p>With a resilient network foundation in place, a unified VoIP telephone system was successfully integrated across all sites, improving communication and enabling greater operational efficiency throughout the business.</p>
+
+            <h2 class="csd-section-title">Result</h2>
+            <ul>
+              <li>Secure connectivity established between all office locations.</li>
+              <li>Improved collaboration through seamless access to shared business resources.</li>
+              <li>Secure remote access to internal systems and applications.</li>
+              <li>Enhanced network security and protection of corporate data.</li>
+              <li>Reliable voice and data communications across all sites.</li>
+              <li>Increased flexibility to support future technology and business initiatives.</li>
+              <li>A scalable infrastructure capable of supporting continued business growth.</li>
+            </ul>
+
+            <h2 class="csd-section-title">Services Delivered</h2>
+            <ul>
+              <li>Multi-Site Network Design and Implementation</li>
+              <li>Enterprise Firewall and Security Solutions</li>
+              <li>IPSec VPN Deployment</li>
+              <li>Secure Site to Site Connectivity</li>
+              <li>VoIP System Integration</li>
+              <li>Remote Access Solutions</li>
+              <li>Ongoing Network Support and Consultancy</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="csd-latest" aria-label="Latest case studies">
+          <h2>Latest Case Studies</h2>
+          <a class="csd-latest-item" href="/case-studies/antal-international/">
+            <span class="csd-latest-thumb" aria-hidden="true"></span>
+            <span>Antal International - Global SASE Transformation</span>
+          </a>
+          <a class="csd-latest-item" href="/case-studies/auriga-networks/">
+            <span class="csd-latest-thumb" aria-hidden="true"></span>
+            <span>Auriga Networks - Managed Network Support and Infrastructure Development</span>
+          </a>
+          <a class="csd-latest-item" href="/case-studies/nta-core-network-upgrade/">
+            <span class="csd-latest-thumb" aria-hidden="true"></span>
+            <span>NTA - Core Network Support and Managed Services Partnership</span>
+          </a>
+          <a class="csd-latest-more" href="/case-studies/">See More</a>
+        </aside>
+      </section>
+    </div>
+
+    <section class="csd-page">
+      <section class="csd-faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Frequently Asked Questions</h2>
+        <div class="csd-faq-list">
+          <details class="csd-faq-item" open>
+            <summary><span class="csd-faq-number">01</span><span class="csd-faq-q">Why is upgrading the multi-site security infrastructure important?</span><span class="csd-faq-star" aria-hidden="true">✦</span></summary>
+            <div class="csd-faq-answer">Isolated networks limit data sharing and increase security risks. Upgrading to unified firewalls closes these gaps, enabling separate locations to share resources safely within a single network.</div>
+          </details>
+          <details class="csd-faq-item">
+            <summary><span class="csd-faq-number">02</span><span class="csd-faq-q">Does integrating voice and data services provide any benefits?</span><span class="csd-faq-star" aria-hidden="true">✦</span></summary>
+            <div class="csd-faq-answer">Yes. Integrated voice and data services reduce complexity, improve communication quality, and streamline operations across all offices.</div>
+          </details>
+          <details class="csd-faq-item">
+            <summary><span class="csd-faq-number">03</span><span class="csd-faq-q">Can this infrastructure support future expansion?</span><span class="csd-faq-star" aria-hidden="true">✦</span></summary>
+            <div class="csd-faq-answer">A scalable multi-site architecture supports new branches, users, and workloads while maintaining secure and reliable connectivity.</div>
+          </details>
+        </div>
+      </section>
+    </section>
   </main>
 
   <div id="site-footer"></div>
