@@ -1446,7 +1446,7 @@
   <div class="video-banner">
     <div class="video-banner__box" id="video-banner">
       <video class="video-banner__video" id="video-banner-vid"
-        muted loop playsinline preload="metadata">
+        autoplay muted loop playsinline preload="auto">
         <source src="/videos/home-video-banner.mp4" type="video/mp4">
       </video>
       <div class="video-banner__overlay" id="video-banner-overlay">
@@ -1463,9 +1463,15 @@
       if (!banner || !video) return;
 
       /* Hide play icon once video actually starts playing */
-      video.addEventListener('play', function () {
-        if (overlay) overlay.style.opacity = '0';
-      }, { once: true });
+      function hideOverlay() { if (overlay) overlay.style.opacity = '0'; }
+      video.addEventListener('play', hideOverlay);
+      video.addEventListener('playing', hideOverlay);
+      /* If autoplay already kicked in before listeners attached */
+      if (!video.paused) hideOverlay();
+
+      /* Kick off autoplay immediately (muted autoplay is allowed everywhere) */
+      var kickoff = video.play();
+      if (kickoff && typeof kickoff.catch === 'function') { kickoff.catch(function () {}); }
 
       /* Autoplay when 30% visible, pause when mostly off-screen */
       var io = new IntersectionObserver(function (entries) {
