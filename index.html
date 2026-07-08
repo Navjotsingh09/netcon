@@ -479,26 +479,35 @@
       position: relative;
       overflow: hidden;
     }
-    /* Video element: slightly oversized to allow parallax travel without gaps */
+    /* Video element fills the box; native controls appear on hover */
     .video-banner__video {
       position: absolute;
-      width: 100%; height: 120%;
-      top: -10%;
+      inset: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
-      will-change: transform;
     }
-    /* Overlay: holds play icon, fades out once video starts */
+    /* Overlay: clickable play button shown while paused, hidden while playing */
     .video-banner__overlay {
       position: absolute; inset: 0;
       display: flex; align-items: center; justify-content: center;
+      background: rgba(0, 0, 0, 0.15);
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .video-banner__box.is-playing .video-banner__overlay {
+      opacity: 0;
+      visibility: hidden;
       pointer-events: none;
-      transition: opacity 0.6s ease;
     }
     .video-banner__icon {
       width: 176px; height: 176px;
       display: block;
-      opacity: 0.85;
+      opacity: 0.9;
+      transition: transform 0.2s ease;
     }
+    .video-banner__overlay:hover .video-banner__icon { transform: scale(1.06); }
+    .video-banner__overlay:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
 
     /* ===== SERVICES CARDS SECTION ===== */
     .services-section {
@@ -1446,66 +1455,49 @@
   <div class="video-banner">
     <div class="video-banner__box" id="video-banner">
       <video class="video-banner__video" id="video-banner-vid"
-        autoplay muted loop playsinline preload="auto">
+        loop playsinline preload="metadata">
         <source src="/videos/home-video-banner.mp4" type="video/mp4">
       </video>
-      <div class="video-banner__overlay" id="video-banner-overlay">
+      <button class="video-banner__overlay" id="video-banner-overlay" type="button" aria-label="Play video">
         <img class="video-banner__icon" src="/images/misc/icon-play.svg" alt="" aria-hidden="true">
-      </div>
+      </button>
     </div>
   </div>
   <script>
     (function () {
       'use strict';
-      var banner  = document.getElementById('video-banner');
+      var box     = document.getElementById('video-banner');
       var video   = document.getElementById('video-banner-vid');
       var overlay = document.getElementById('video-banner-overlay');
-      if (!banner || !video) return;
+      if (!box || !video) return;
 
-      /* Hide play icon once video actually starts playing */
-      function hideOverlay() { if (overlay) overlay.style.opacity = '0'; }
-      video.addEventListener('play', hideOverlay);
-      video.addEventListener('playing', hideOverlay);
-      /* If autoplay already kicked in before listeners attached */
-      if (!video.paused) hideOverlay();
-
-      /* Kick off autoplay immediately (muted autoplay is allowed everywhere) */
-      var kickoff = video.play();
-      if (kickoff && typeof kickoff.catch === 'function') { kickoff.catch(function () {}); }
-
-      /* Autoplay when 30% visible, pause when mostly off-screen */
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.intersectionRatio >= 0.3) {
-            video.play().catch(function () {});
-          } else {
-            video.pause();
-          }
-        });
-      }, { threshold: [0, 0.3, 0.6, 1] });
-      io.observe(banner);
-
-      /* Parallax — disabled for users who prefer reduced motion */
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-      var ticking = false;
-      function applyParallax() {
-        var rect = banner.getBoundingClientRect();
-        var vpH  = window.innerHeight;
-        if (rect.bottom < 0 || rect.top > vpH) { ticking = false; return; }
-        /* progress: 0 = section just entered from bottom, 1 = section just left at top */
-        var progress = (vpH - rect.top) / (vpH + rect.height);
-        progress = Math.max(0, Math.min(1, progress));
-        /* Shift video ±60px — slower than page scroll creates depth illusion */
-        var shift = (progress - 0.5) * 120;
-        video.style.transform = 'translateY(' + shift.toFixed(1) + 'px)';
-        ticking = false;
+      /* Sync the paused/playing state on the box (controls the play overlay) */
+      function syncState() {
+        box.classList.toggle('is-playing', !video.paused && !video.ended);
       }
-      window.addEventListener('scroll', function () {
-        if (!ticking) { requestAnimationFrame(applyParallax); ticking = true; }
-      }, { passive: true });
-      window.addEventListener('resize', function () { requestAnimationFrame(applyParallax); });
-      applyParallax();
+      video.addEventListener('play', syncState);
+      video.addEventListener('playing', syncState);
+      video.addEventListener('pause', syncState);
+      video.addEventListener('ended', syncState);
+      syncState();
+
+      /* Play overlay button — starts playback on click */
+      if (overlay) {
+        overlay.addEventListener('click', function () {
+          var p = video.play();
+          if (p && typeof p.catch === 'function') { p.catch(function () {}); }
+        });
+      }
+
+      /* Show native controls on hover / keyboard focus, hide otherwise */
+      function showControls() { video.setAttribute('controls', 'controls'); }
+      function hideControls() {
+        if (document.activeElement !== video) { video.removeAttribute('controls'); }
+      }
+      box.addEventListener('mouseenter', showControls);
+      box.addEventListener('mouseleave', hideControls);
+      video.addEventListener('focus', showControls);
+      video.addEventListener('blur', hideControls);
     }());
   </script>
 
