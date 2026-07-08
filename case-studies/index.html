@@ -86,19 +86,20 @@
       font-weight: 700;
     }
 
-    .cs-grid-wrap { padding: 0 var(--px) 69px; }
+    .cs-grid-wrap { padding: 0 0 69px; }
     .cs-grid {
-      max-width: var(--max-w);
+      max-width: 1432px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3, 456px);
+      justify-content: center;
       gap: 32px;
     }
     .cs-card {
       background: #ebebeb;
       border-radius: 25px;
       overflow: hidden;
-      padding: 20px 20px 28px;
+      padding: 16px 23px 23px 16px;
       display: flex;
       flex-direction: column;
       min-height: 0;
@@ -109,7 +110,7 @@
       border-radius: 25px;
       overflow: hidden;
       background: #141a28;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
       position: relative;
     }
     .cs-card-media::after { content: ''; position: absolute; inset: 0; background: rgba(20,26,40,.4); }
@@ -117,7 +118,7 @@
     .cs-card h3 { margin: 0 0 14px; color: #585151; font-family: 'Roboto Condensed', sans-serif; font-size: 25px; font-weight: 700; line-height: 1.25; }
     .cs-card p { margin: 0 0 auto; color: #585151; font-family: 'Roboto Condensed', sans-serif; font-size: 22px; font-weight: 400; line-height: 1.25; }
     .cs-card .cs-read-tiny {
-      margin-top: 20px;
+      margin-top: 16px;
       align-self: flex-start;
       background: #0982c5;
       color: #fff;
@@ -229,7 +230,7 @@
     @media (max-width: 1200px) {
       .cs-hero-title { font-size: 48px; }
       .cs-feature-inner { grid-template-columns: 1fr; }
-      .cs-grid { grid-template-columns: 1fr 1fr; }
+      .cs-grid { max-width: var(--max-w); grid-template-columns: repeat(2, minmax(0, 1fr)); justify-content: stretch; }
       .cs-contact-inner { grid-template-columns: 1fr; }
       .cs-contact-card { width: 100%; }
     }
