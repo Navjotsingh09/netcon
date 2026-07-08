@@ -2,9 +2,10 @@
   'use strict';
 
   var index = Array.isArray(window.SEARCH_INDEX) ? window.SEARCH_INDEX : [];
-  var maxResults = 8;
+  var maxResults = 5;
   var activeClass = 'search-open';
   var activeAudience = 'non-technical';
+  var showAllResults = false;
 
   var audienceLabels = {
     'non-technical': 'I\'m new to IT',
@@ -64,45 +65,52 @@
     style.textContent = [
       '#site-search-modal { position: fixed; inset: 0; z-index: 1400; display: none; }',
       '#site-search-modal.is-open { display: block; }',
-      '#site-search-modal .search-overlay { position: absolute; inset: 0; background: rgba(6,18,56,.62); backdrop-filter: blur(5px); }',
-      '#site-search-modal .search-shell { position: relative; width: min(980px, calc(100% - 32px)); margin: 56px auto 0; background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%); border-radius: 18px; border: 1px solid rgba(9,130,197,.25); box-shadow: 0 28px 56px rgba(6,16,54,.34); overflow: hidden; max-height: calc(100vh - 96px); display: flex; flex-direction: column; }',
-      '#site-search-modal .search-topbar { background: linear-gradient(135deg, #162470 0%, #0f2f7f 55%, #0982c5 100%); padding: 14px 16px; color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 16px; }',
-      '#site-search-modal .search-topbar-title { font: 600 16px/1.3 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; letter-spacing: .02em; }',
-      '#site-search-modal .search-topbar-sub { font: 400 12px/1.35 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; opacity: .84; }',
-      '#site-search-modal .search-head { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid #dce5f0; background: #fff; }',
-      '#site-search-modal .search-input { flex: 1; border: 0; outline: 0; font: 600 16px/1.4 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #353535; }',
-      '#site-search-modal .search-close { border: 0; background: #edf3fb; border-radius: 9px; width: 36px; height: 36px; cursor: pointer; font-size: 20px; line-height: 1; color: #162470; }',
-      '#site-search-modal .search-body { overflow: auto; padding: 14px 16px 18px; }',
+      '#site-search-modal .search-overlay { position: absolute; inset: 0; background: radial-gradient(circle at 20% 15%, rgba(9,130,197,.36), rgba(22,36,112,.72) 40%, rgba(8,16,48,.84)); backdrop-filter: blur(6px); }',
+      '#site-search-modal .search-shell { position: relative; width: min(1080px, calc(100% - 28px)); margin: 34px auto 0; background: #f7faff; border-radius: 20px; border: 1px solid rgba(9,130,197,.24); box-shadow: 0 30px 70px rgba(7,19,57,.45); overflow: hidden; max-height: calc(100vh - 68px); display: flex; flex-direction: column; }',
+      '#site-search-modal .search-topbar { background: linear-gradient(135deg, #162470 0%, #0d3e8e 56%, #0982c5 100%); padding: 16px 18px; color: #fff; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }',
+      '#site-search-modal .search-topbar-title { font: 700 19px/1.2 Roboto Condensed, Helvetica Neue, Helvetica, Arial, sans-serif; letter-spacing: .01em; }',
+      '#site-search-modal .search-topbar-sub { margin-top: 3px; font: 500 13px/1.35 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; opacity: .9; max-width: 680px; }',
+      '#site-search-modal .search-close { border: 0; background: rgba(255,255,255,.16); color: #fff; border-radius: 10px; width: 36px; height: 36px; cursor: pointer; font-size: 20px; line-height: 1; flex-shrink: 0; }',
+      '#site-search-modal .search-head { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid #d7e2ef; background: #fff; }',
+      '#site-search-modal .search-input { flex: 1; border: 0; outline: 0; font: 600 16px/1.45 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #1f2f43; }',
+      '#site-search-modal .search-body { overflow: auto; padding: 16px; display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 16px; }',
+      '#site-search-modal .search-side { background: #fff; border: 1px solid #dce7f4; border-radius: 14px; padding: 14px; }',
+      '#site-search-modal .search-side-title { margin: 0 0 8px; font: 700 12px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: .08em; color: #325675; }',
       '#site-search-modal .search-audience { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }',
-      '#site-search-modal .search-audience-btn { border: 1px solid #c9d9ea; background: #fff; color: #164070; border-radius: 999px; padding: 7px 12px; font: 600 12px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; cursor: pointer; }',
-      '#site-search-modal .search-audience-btn.is-active { background: #e6f2ff; border-color: #0982c5; color: #0d2b7a; }',
-      '#site-search-modal .search-prompts { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }',
-      '#site-search-modal .search-prompt { border: 1px solid #d4e1ee; background: #f8fbff; color: #26435f; border-radius: 10px; padding: 8px 10px; font: 500 12px/1.3 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; cursor: pointer; }',
-      '#site-search-modal .search-insight { border: 1px solid #c8ddf2; background: linear-gradient(120deg, rgba(9,130,197,.08), rgba(22,36,112,.07)); border-radius: 12px; padding: 12px; margin-bottom: 12px; }',
-      '#site-search-modal .search-insight-kicker { font: 700 11px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: .08em; color: #0f3c6f; margin-bottom: 6px; }',
-      '#site-search-modal .search-insight-title { font: 700 15px/1.3 Roboto Condensed, Helvetica Neue, Helvetica, Arial, sans-serif; color: #162470; margin-bottom: 5px; }',
-      '#site-search-modal .search-insight-text { font: 500 13px/1.45 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #334d66; }',
-      '#site-search-modal .search-results-title { font: 700 12px/1.3 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: .08em; color: #2d4f71; margin: 0 0 8px; }',
-      '#site-search-modal .search-results { max-height: min(40vh, 380px); overflow: auto; padding-right: 2px; }',
-      '#site-search-modal .search-hit { display: block; text-decoration: none; color: #162470; border-radius: 12px; padding: 10px 12px; border: 1px solid #d9e5f2; background: #fff; margin-bottom: 8px; }',
-      '#site-search-modal .search-hit:hover { background: rgba(9,130,197,.06); border-color: rgba(9,130,197,.16); }',
-      '#site-search-modal .search-hit-title { font: 700 15px/1.35 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; }',
-      '#site-search-modal .search-hit-meta { display: flex; gap: 6px; flex-wrap: wrap; margin: 5px 0; }',
-      '#site-search-modal .search-badge { border-radius: 999px; background: #ebf4ff; color: #1f4f79; padding: 2px 8px; font: 600 11px/1.3 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; }',
-      '#site-search-modal .search-hit-url { margin-top: 2px; font: 500 12px/1.35 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #585151; }',
-      '#site-search-modal .search-empty { padding: 14px 12px; color: #585151; font: 500 14px/1.4 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; border: 1px dashed #d2dfec; border-radius: 10px; background: #fff; }',
-      '#site-search-modal .search-support { margin-top: 12px; border: 1px solid #d8e5f2; background: #fff; border-radius: 12px; padding: 12px; }',
-      '#site-search-modal .search-support-title { font: 700 14px/1.3 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #162470; margin-bottom: 8px; }',
-      '#site-search-modal .search-support-text { font: 500 12px/1.45 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #51667a; margin-bottom: 8px; }',
+      '#site-search-modal .search-audience-btn { border: 1px solid #c7d8ea; background: #fff; color: #1c4f78; border-radius: 999px; padding: 8px 12px; font: 700 12px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; cursor: pointer; }',
+      '#site-search-modal .search-audience-btn.is-active { background: #dff0ff; border-color: #0982c5; color: #0b3f73; }',
+      '#site-search-modal .search-prompts { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }',
+      '#site-search-modal .search-prompt { border: 1px solid #d5e3f1; background: #f8fbff; color: #23425f; border-radius: 10px; padding: 8px 10px; font: 600 12px/1.3 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; cursor: pointer; text-align: left; }',
+      '#site-search-modal .search-main { min-width: 0; display: flex; flex-direction: column; gap: 12px; }',
+      '#site-search-modal .search-insight { border: 1px solid #bfdbf7; background: linear-gradient(125deg, rgba(9,130,197,.08), rgba(22,36,112,.07)); border-radius: 14px; padding: 14px; }',
+      '#site-search-modal .search-insight-kicker { font: 700 11px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: .09em; color: #0e4f85; margin-bottom: 6px; }',
+      '#site-search-modal .search-insight-title { font: 700 18px/1.25 Roboto Condensed, Helvetica Neue, Helvetica, Arial, sans-serif; color: #102e74; margin-bottom: 6px; }',
+      '#site-search-modal .search-insight-text { font: 500 14px/1.5 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #2f4a65; }',
+      '#site-search-modal .search-results-wrap { background: #fff; border: 1px solid #dce7f4; border-radius: 14px; padding: 12px; }',
+      '#site-search-modal .search-results-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }',
+      '#site-search-modal .search-results-title { margin: 0; font: 700 12px/1.3 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: .08em; color: #2d4f71; }',
+      '#site-search-modal .search-see-all { border: 1px solid #c4d9f0; background: #f3f8ff; color: #1a4d79; border-radius: 999px; padding: 5px 10px; font: 700 11px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; cursor: pointer; }',
+      '#site-search-modal .search-results { max-height: min(45vh, 420px); overflow: auto; padding-right: 2px; }',
+      '#site-search-modal .search-hit { display: block; text-decoration: none; color: #162470; border-radius: 12px; padding: 12px; border: 1px solid #d9e5f2; background: #fff; margin-bottom: 8px; transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease; }',
+      '#site-search-modal .search-hit:hover { transform: translateY(-1px); border-color: #8fc1ec; box-shadow: 0 10px 18px rgba(17,62,111,.12); }',
+      '#site-search-modal .search-hit-title { font: 700 16px/1.35 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; }',
+      '#site-search-modal .search-hit-meta { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0; }',
+      '#site-search-modal .search-badge { border-radius: 999px; background: #eaf4ff; color: #1f4f79; padding: 3px 9px; font: 700 11px/1.25 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; }',
+      '#site-search-modal .search-hit-url { margin-top: 3px; font: 500 12px/1.35 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #5a6f83; }',
+      '#site-search-modal .search-empty { padding: 14px 12px; color: #4b5f73; font: 500 14px/1.45 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; border: 1px dashed #c9d9ea; border-radius: 10px; background: #fdfefe; }',
+      '#site-search-modal .search-support { border: 1px solid #d6e4f3; background: #fff; border-radius: 12px; padding: 12px; }',
+      '#site-search-modal .search-support-title { font: 700 15px/1.3 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #162470; margin-bottom: 8px; }',
+      '#site-search-modal .search-support-text { font: 500 13px/1.45 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #4d6479; margin-bottom: 8px; }',
       '#site-search-modal .search-support-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }',
-      '#site-search-modal .search-support-link { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; border-radius: 10px; padding: 8px 10px; font: 600 12px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; }',
+      '#site-search-modal .search-support-link { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; border-radius: 10px; padding: 9px 11px; font: 700 12px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; }',
       '#site-search-modal .search-support-link.primary { background: #0982c5; color: #fff; }',
       '#site-search-modal .search-support-link.secondary { background: #edf5ff; color: #124b86; border: 1px solid #c7def3; }',
-      '#site-search-modal .search-help-input { width: 100%; border: 1px solid #cfe0f0; border-radius: 9px; padding: 9px 10px; font: 500 13px/1.3 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #2f435a; }',
+      '#site-search-modal .search-help-input { width: 100%; border: 1px solid #cfe0f0; border-radius: 10px; padding: 10px 11px; font: 500 13px/1.35 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #2f435a; }',
       '#site-search-modal .search-help-row { margin-top: 8px; display: flex; justify-content: flex-end; }',
-      '#site-search-modal .search-help-send { border: 0; border-radius: 8px; padding: 8px 10px; font: 600 12px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #fff; background: #162470; cursor: pointer; }',
+      '#site-search-modal .search-help-send { border: 0; border-radius: 8px; padding: 9px 12px; font: 700 12px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #fff; background: #162470; cursor: pointer; }',
       '#site-search-modal .search-footnote { margin-top: 8px; font: 500 11px/1.4 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #6a7f93; }',
-      '@media (max-width: 768px) { #site-search-modal .search-shell { width: calc(100% - 16px); margin-top: 16px; max-height: calc(100vh - 24px); } #site-search-modal .search-body { padding: 12px; } #site-search-modal .search-prompts { flex-direction: column; } #site-search-modal .search-support-actions { flex-direction: column; } #site-search-modal .search-support-link { width: 100%; } }',
+      '@media (max-width: 960px) { #site-search-modal .search-body { grid-template-columns: 1fr; } #site-search-modal .search-shell { margin-top: 18px; max-height: calc(100vh - 28px); } }',
+      '@media (max-width: 640px) { #site-search-modal .search-shell { width: calc(100% - 12px); border-radius: 14px; } #site-search-modal .search-topbar { padding: 12px; } #site-search-modal .search-topbar-title { font-size: 16px; } #site-search-modal .search-topbar-sub { font-size: 12px; } #site-search-modal .search-head { padding: 10px 12px; } #site-search-modal .search-body { padding: 12px; gap: 10px; } #site-search-modal .search-prompts { flex-direction: column; } #site-search-modal .search-support-actions { flex-direction: column; } #site-search-modal .search-support-link { width: 100%; } }',
       'body.' + activeClass + ' { overflow: hidden; }'
     ].join('');
     document.head.appendChild(style);
@@ -117,26 +125,26 @@
       '<div class="search-shell">',
       '  <div class="search-topbar">',
       '    <div>',
-      '      <div class="search-topbar-title">Network Consultancy Smart Search</div>',
-      '      <div class="search-topbar-sub">Ask in plain English or technical language. We tailor results to your role.</div>',
+      '      <div class="search-topbar-title">Smart Search Assistant</div>',
+      '      <div class="search-topbar-sub">Ask in plain English or technical language. We\'ll guide you to the right service, solution, or support path.</div>',
       '    </div>',
+      '    <button type="button" class="search-close" aria-label="Close search" data-search-close="1">&times;</button>',
       '  </div>',
       '  <div class="search-head">',
       '    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="#585151" stroke-width="2"></circle><path d="m21 21-4.35-4.35" stroke="#585151" stroke-width="2" stroke-linecap="round"></path></svg>',
       '    <input class="search-input" type="search" placeholder="Ask a question about your network, security, Wi-Fi, VPN, Microsoft 365, or support..." aria-label="Ask a question">',
-      '    <button type="button" class="search-close" aria-label="Close search" data-search-close="1">&times;</button>',
       '  </div>',
       '  <div class="search-body">',
-      '    <div class="search-audience" role="group" aria-label="Choose user type">',
-      '      <button type="button" class="search-audience-btn is-active" data-audience="non-technical">I\'m new to IT</button>',
-      '      <button type="button" class="search-audience-btn" data-audience="manager">I manage IT/business</button>',
-      '      <button type="button" class="search-audience-btn" data-audience="technical">I\'m technical</button>',
-      '    </div>',
-      '    <div class="search-prompts" data-search-prompts></div>',
-      '    <div class="search-insight" data-search-insight aria-live="polite"></div>',
-      '    <p class="search-results-title">Best Matches</p>',
-      '    <div class="search-results" aria-live="polite"></div>',
-      '    <div class="search-support">',
+      '    <aside class="search-side">',
+      '      <p class="search-side-title">Choose your profile</p>',
+      '      <div class="search-audience" role="group" aria-label="Choose user type">',
+      '        <button type="button" class="search-audience-btn is-active" data-audience="non-technical">I\'m new to IT</button>',
+      '        <button type="button" class="search-audience-btn" data-audience="manager">I manage IT/business</button>',
+      '        <button type="button" class="search-audience-btn" data-audience="technical">I\'m technical</button>',
+      '      </div>',
+      '      <p class="search-side-title">Try asking</p>',
+      '      <div class="search-prompts" data-search-prompts></div>',
+      '      <div class="search-support">',
       '      <div class="search-support-title">Didn\'t find what you need?</div>',
       '      <div class="search-support-text">Tell us your exact challenge and we\'ll route you to the right specialist.</div>',
       '      <div class="search-support-actions">',
@@ -146,6 +154,18 @@
       '      <input class="search-help-input" type="text" placeholder="Example: Our remote users are getting frequent VPN disconnects" aria-label="Describe what you could not find">',
       '      <div class="search-help-row"><button type="button" class="search-help-send">Send to support</button></div>',
       '      <div class="search-footnote">AI-guided suggestions are based on our service catalogue and website content.</div>',
+      '      </div>',
+      '    </aside>',
+      '    <section class="search-main">',
+      '      <div class="search-insight" data-search-insight aria-live="polite"></div>',
+      '      <div class="search-results-wrap">',
+      '        <div class="search-results-head">',
+      '          <p class="search-results-title">Best Matches</p>',
+      '          <button type="button" class="search-see-all" data-search-see-all>See all</button>',
+      '        </div>',
+      '        <div class="search-results" aria-live="polite"></div>',
+      '      </div>',
+      '    </section>',
       '    </div>',
       '  </div>',
       '</div>'
@@ -278,8 +298,18 @@
       })
       .filter(function (x) { return x.score > 0; })
       .sort(function (a, b) { return b.score - a.score; })
-      .slice(0, maxResults)
       .map(function (x) { return x.item; });
+
+    var capped = showAllResults ? scored : scored.slice(0, maxResults);
+    var seeAllBtn = q('#site-search-modal [data-search-see-all]');
+    if (seeAllBtn) {
+      if (scored.length > maxResults) {
+        seeAllBtn.style.display = '';
+        seeAllBtn.textContent = showAllResults ? 'Show less' : ('See all (' + scored.length + ')');
+      } else {
+        seeAllBtn.style.display = 'none';
+      }
+    }
 
     var insight = buildInsight(intent, activeAudience, query, scored[0]);
     if (insightEl) {
@@ -297,12 +327,12 @@
       emailLink.setAttribute('href', 'mailto:info@network-consultancy.com?subject=' + encodeURIComponent('Support Request') + '&body=' + encodeURIComponent('User profile: ' + audienceLabels[activeAudience] + '\n\nQuestion: ' + (query || 'No query provided')));
     }
 
-    if (!scored.length) {
+    if (!capped.length) {
       resultsEl.innerHTML = '<div class="search-empty">No exact page match found yet. Try a simpler phrase, switch profile, or send your question to support below.</div>';
       return;
     }
 
-    resultsEl.innerHTML = scored.map(function (item) {
+    resultsEl.innerHTML = capped.map(function (item) {
       var badges = [];
       if (item.category) badges.push('<span class="search-badge">' + escHtml(item.category) + '</span>');
       if (item.intents && item.intents[0]) badges.push('<span class="search-badge">' + escHtml(item.intents[0]) + '</span>');
@@ -332,6 +362,7 @@
     qa('#site-search-modal .search-audience-btn').forEach(function (btn) {
       btn.classList.toggle('is-active', btn.getAttribute('data-audience') === audience);
     });
+    showAllResults = false;
     renderPromptChips();
     var input = q('#site-search-modal .search-input');
     renderResults(tokenized(input ? input.value : ''));
@@ -345,6 +376,7 @@
 
     modal.classList.add('is-open');
     document.body.classList.add(activeClass);
+    showAllResults = false;
     input.value = prefill || '';
     renderPromptChips();
     renderResults(tokenized(input.value));
@@ -385,7 +417,17 @@
       var prompt = promptBtn.getAttribute('data-search-prompt') || '';
       var input = q('#site-search-modal .search-input');
       if (input) input.value = prompt;
+      showAllResults = false;
       renderResults(tokenized(prompt));
+      return;
+    }
+
+    var seeAllBtn = e.target.closest('#site-search-modal [data-search-see-all]');
+    if (seeAllBtn) {
+      e.preventDefault();
+      showAllResults = !showAllResults;
+      var currentInput = q('#site-search-modal .search-input');
+      renderResults(tokenized(currentInput ? currentInput.value : ''));
       return;
     }
 
@@ -402,6 +444,7 @@
 
   document.addEventListener('input', function (e) {
     if (e.target && e.target.matches('#site-search-modal .search-input')) {
+      showAllResults = false;
       renderResults(tokenized(e.target.value));
     }
   });
