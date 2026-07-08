@@ -65,42 +65,42 @@
     style.textContent = [
       '#site-search-modal { position: fixed; inset: 0; z-index: 1400; display: none; }',
       '#site-search-modal.is-open { display: block; }',
-      '#site-search-modal .search-overlay { position: absolute; inset: 0; background: radial-gradient(circle at 20% 15%, rgba(9,130,197,.36), rgba(22,36,112,.72) 40%, rgba(8,16,48,.84)); backdrop-filter: blur(6px); }',
-      '#site-search-modal .search-shell { position: relative; width: min(1080px, calc(100% - 28px)); margin: 34px auto 0; background: #f7faff; border-radius: 20px; border: 1px solid rgba(9,130,197,.24); box-shadow: 0 30px 70px rgba(7,19,57,.45); overflow: hidden; max-height: calc(100vh - 68px); display: flex; flex-direction: column; }',
-      '#site-search-modal .search-topbar { background: linear-gradient(135deg, #162470 0%, #0d3e8e 56%, #0982c5 100%); padding: 16px 18px; color: #fff; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }',
-      '#site-search-modal .search-topbar-title { font: 700 19px/1.2 Roboto Condensed, Helvetica Neue, Helvetica, Arial, sans-serif; letter-spacing: .01em; }',
-      '#site-search-modal .search-topbar-sub { margin-top: 3px; font: 500 13px/1.35 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; opacity: .9; max-width: 680px; }',
+      '#site-search-modal .search-overlay { position: absolute; inset: 0; background: rgba(8,16,48,.58); backdrop-filter: blur(4px); }',
+      '#site-search-modal .search-shell { position: relative; width: min(980px, calc(100% - 24px)); margin: 34px auto 0; background: #fff; border-radius: 16px; border: 1px solid #d6e2ef; box-shadow: 0 16px 36px rgba(10,22,54,.22); overflow: hidden; max-height: calc(100vh - 68px); display: flex; flex-direction: column; }',
+      '#site-search-modal .search-topbar { background: #162470; padding: 14px 16px; color: #fff; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }',
+      '#site-search-modal .search-topbar-title { font: 700 17px/1.2 Roboto Condensed, Helvetica Neue, Helvetica, Arial, sans-serif; letter-spacing: .01em; }',
+      '#site-search-modal .search-topbar-sub { margin-top: 2px; font: 500 12px/1.35 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; opacity: .9; max-width: 620px; }',
       '#site-search-modal .search-close { border: 0; background: rgba(255,255,255,.16); color: #fff; border-radius: 10px; width: 36px; height: 36px; cursor: pointer; font-size: 20px; line-height: 1; flex-shrink: 0; }',
       '#site-search-modal .search-head { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid #d7e2ef; background: #fff; }',
       '#site-search-modal .search-input { flex: 1; border: 0; outline: 0; font: 600 16px/1.45 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #1f2f43; }',
-      '#site-search-modal .search-body { overflow: auto; padding: 16px; display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 16px; }',
-      '#site-search-modal .search-side { background: #fff; border: 1px solid #dce7f4; border-radius: 14px; padding: 14px; }',
+      '#site-search-modal .search-body { overflow: auto; padding: 14px; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 14px; }',
+      '#site-search-modal .search-side { background: #fff; border: 1px solid #dde7f2; border-radius: 12px; padding: 12px; }',
       '#site-search-modal .search-side-title { margin: 0 0 8px; font: 700 12px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: .08em; color: #325675; }',
       '#site-search-modal .search-audience { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }',
       '#site-search-modal .search-audience-btn { border: 1px solid #c7d8ea; background: #fff; color: #1c4f78; border-radius: 999px; padding: 8px 12px; font: 700 12px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; cursor: pointer; }',
       '#site-search-modal .search-audience-btn.is-active { background: #dff0ff; border-color: #0982c5; color: #0b3f73; }',
       '#site-search-modal .search-prompts { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }',
       '#site-search-modal .search-prompt { border: 1px solid #d5e3f1; background: #f8fbff; color: #23425f; border-radius: 10px; padding: 8px 10px; font: 600 12px/1.3 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; cursor: pointer; text-align: left; }',
-      '#site-search-modal .search-main { min-width: 0; display: flex; flex-direction: column; gap: 12px; }',
-      '#site-search-modal .search-insight { border: 1px solid #bfdbf7; background: linear-gradient(125deg, rgba(9,130,197,.08), rgba(22,36,112,.07)); border-radius: 14px; padding: 14px; }',
+      '#site-search-modal .search-main { min-width: 0; display: flex; flex-direction: column; gap: 10px; }',
+      '#site-search-modal .search-insight { border: 1px solid #d8e5f2; background: #f7fbff; border-radius: 12px; padding: 12px; }',
       '#site-search-modal .search-insight-kicker { font: 700 11px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: .09em; color: #0e4f85; margin-bottom: 6px; }',
-      '#site-search-modal .search-insight-title { font: 700 18px/1.25 Roboto Condensed, Helvetica Neue, Helvetica, Arial, sans-serif; color: #102e74; margin-bottom: 6px; }',
-      '#site-search-modal .search-insight-text { font: 500 14px/1.5 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #2f4a65; }',
-      '#site-search-modal .search-results-wrap { background: #fff; border: 1px solid #dce7f4; border-radius: 14px; padding: 12px; }',
+      '#site-search-modal .search-insight-title { font: 700 16px/1.25 Roboto Condensed, Helvetica Neue, Helvetica, Arial, sans-serif; color: #102e74; margin-bottom: 5px; }',
+      '#site-search-modal .search-insight-text { font: 500 13px/1.45 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #2f4a65; }',
+      '#site-search-modal .search-results-wrap { background: #fff; border: 1px solid #dce7f4; border-radius: 12px; padding: 10px; }',
       '#site-search-modal .search-results-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }',
       '#site-search-modal .search-results-title { margin: 0; font: 700 12px/1.3 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: .08em; color: #2d4f71; }',
       '#site-search-modal .search-see-all { border: 1px solid #c4d9f0; background: #f3f8ff; color: #1a4d79; border-radius: 999px; padding: 5px 10px; font: 700 11px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; cursor: pointer; }',
       '#site-search-modal .search-results { max-height: min(45vh, 420px); overflow: auto; padding-right: 2px; }',
-      '#site-search-modal .search-hit { display: block; text-decoration: none; color: #162470; border-radius: 12px; padding: 12px; border: 1px solid #d9e5f2; background: #fff; margin-bottom: 8px; transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease; }',
-      '#site-search-modal .search-hit:hover { transform: translateY(-1px); border-color: #8fc1ec; box-shadow: 0 10px 18px rgba(17,62,111,.12); }',
-      '#site-search-modal .search-hit-title { font: 700 16px/1.35 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; }',
+      '#site-search-modal .search-hit { display: block; text-decoration: none; color: #162470; border-radius: 10px; padding: 10px; border: 1px solid #dbe6f2; background: #fff; margin-bottom: 8px; transition: border-color .14s ease, background .14s ease; }',
+      '#site-search-modal .search-hit:hover { border-color: #9ec9ee; background: #f8fbff; }',
+      '#site-search-modal .search-hit-title { font: 700 15px/1.35 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; }',
       '#site-search-modal .search-hit-meta { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0; }',
       '#site-search-modal .search-badge { border-radius: 999px; background: #eaf4ff; color: #1f4f79; padding: 3px 9px; font: 700 11px/1.25 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; }',
-      '#site-search-modal .search-hit-url { margin-top: 3px; font: 500 12px/1.35 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #5a6f83; }',
+      '#site-search-modal .search-hit-url { margin-top: 2px; font: 500 12px/1.35 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #5a6f83; }',
       '#site-search-modal .search-empty { padding: 14px 12px; color: #4b5f73; font: 500 14px/1.45 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; border: 1px dashed #c9d9ea; border-radius: 10px; background: #fdfefe; }',
       '#site-search-modal .search-support { border: 1px solid #d6e4f3; background: #fff; border-radius: 12px; padding: 12px; }',
-      '#site-search-modal .search-support-title { font: 700 15px/1.3 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #162470; margin-bottom: 8px; }',
-      '#site-search-modal .search-support-text { font: 500 13px/1.45 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #4d6479; margin-bottom: 8px; }',
+      '#site-search-modal .search-support-title { font: 700 14px/1.3 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #162470; margin-bottom: 7px; }',
+      '#site-search-modal .search-support-text { font: 500 12px/1.45 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; color: #4d6479; margin-bottom: 8px; }',
       '#site-search-modal .search-support-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }',
       '#site-search-modal .search-support-link { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; border-radius: 10px; padding: 9px 11px; font: 700 12px/1.2 Barlow, Helvetica Neue, Helvetica, Arial, sans-serif; }',
       '#site-search-modal .search-support-link.primary { background: #0982c5; color: #fff; }',
@@ -125,8 +125,8 @@
       '<div class="search-shell">',
       '  <div class="search-topbar">',
       '    <div>',
-      '      <div class="search-topbar-title">Smart Search Assistant</div>',
-      '      <div class="search-topbar-sub">Ask in plain English or technical language. We\'ll guide you to the right service, solution, or support path.</div>',
+      '      <div class="search-topbar-title">Search</div>',
+      '      <div class="search-topbar-sub">Tell us what you need, we\'ll point you to the best page quickly.</div>',
       '    </div>',
       '    <button type="button" class="search-close" aria-label="Close search" data-search-close="1">&times;</button>',
       '  </div>',
@@ -146,14 +146,14 @@
       '      <div class="search-prompts" data-search-prompts></div>',
       '      <div class="search-support">',
       '      <div class="search-support-title">Didn\'t find what you need?</div>',
-      '      <div class="search-support-text">Tell us your exact challenge and we\'ll route you to the right specialist.</div>',
+      '      <div class="search-support-text">Still stuck? Send your issue and our team will help.</div>',
       '      <div class="search-support-actions">',
       '        <a class="search-support-link primary" href="/contact.html" data-search-contact>Book Network Assessment</a>',
       '        <a class="search-support-link secondary" href="mailto:info@network-consultancy.com?subject=Support%20Request" data-search-email>Email Support Team</a>',
       '      </div>',
       '      <input class="search-help-input" type="text" placeholder="Example: Our remote users are getting frequent VPN disconnects" aria-label="Describe what you could not find">',
       '      <div class="search-help-row"><button type="button" class="search-help-send">Send to support</button></div>',
-      '      <div class="search-footnote">AI-guided suggestions are based on our service catalogue and website content.</div>',
+      '      <div class="search-footnote">Suggestions are based on our service pages.</div>',
       '      </div>',
       '    </aside>',
       '    <section class="search-main">',
@@ -208,38 +208,35 @@
     var text = 'Start with the top matches below, then book a consultation if you need tailored advice.';
 
     if (!hasQuery) {
-      return {
-        title: 'Describe your challenge in your own words',
-        text: 'You can ask simple or technical questions. We\'ll prioritize the right services, solutions, and pages for your role.'
-      };
+      return { title: 'Start with your question', text: 'Use plain words. We\'ll show the most relevant pages first.' };
     }
 
     if (intent === 'troubleshoot') {
-      title = 'This looks like a live performance/support issue';
-      text = 'Prioritize rapid diagnosis and stabilization. Check Network Support and Network Health Check first, then escalate for guided remediation.';
+      title = 'Performance or support issue';
+      text = 'Start with Network Support, then use Network Health Check if the issue repeats.';
     } else if (intent === 'security') {
-      title = 'Security-focused request detected';
-      text = 'Review Firewall & Network Security and Cyber Security Review. These services target risk reduction and practical hardening actions.';
+      title = 'Security-related request';
+      text = 'Start with Firewall & Network Security or Cyber Security Review.';
     } else if (intent === 'ai') {
-      title = 'AI readiness question detected';
-      text = 'Begin with AI-Ready Infrastructure and validate bandwidth, segmentation, and resilience before production AI rollouts.';
+      title = 'AI readiness request';
+      text = 'Begin with AI-Ready Infrastructure to assess network and operations readiness.';
     } else if (intent === 'risk') {
-      title = 'Business-risk and investment context detected';
-      text = 'Prioritize solutions with measurable uptime and risk impact. Case studies can help compare expected outcomes.';
+      title = 'Business and risk context';
+      text = 'Use solution pages and case studies to evaluate impact and next steps.';
     } else if (intent === 'support') {
-      title = 'Operational support path detected';
-      text = 'Managed Network Support and Network Support are likely starting points, depending on whether you need proactive or reactive help.';
+      title = 'Support path';
+      text = 'Compare Network Support and Managed Network Support based on urgency and coverage.';
     } else if (intent === 'contact') {
-      title = 'Direct expert contact requested';
-      text = 'Use the support actions below to route your question directly to our team and receive a tailored response.';
+      title = 'Contact request';
+      text = 'Use the support actions below and we will route you to the right specialist.';
     }
 
     if (audience === 'non-technical') {
-      text = text + ' We\'ll keep recommendations plain-language and action-focused.';
+      text = text + ' We keep this simple and practical.';
     } else if (audience === 'manager') {
-      text = text + ' Results are weighted toward business outcomes, continuity, and risk.';
+      text = text + ' Results prioritize business outcomes and risk.';
     } else {
-      text = text + ' Results are weighted toward implementation depth and technical relevance.';
+      text = text + ' Results prioritize technical implementation detail.';
     }
 
     if (topResult && topResult.title) {
@@ -328,19 +325,18 @@
     }
 
     if (!capped.length) {
-      resultsEl.innerHTML = '<div class="search-empty">No exact page match found yet. Try a simpler phrase, switch profile, or send your question to support below.</div>';
+      resultsEl.innerHTML = '<div class="search-empty">No clear match yet. Try a shorter question or contact support below.</div>';
       return;
     }
 
     resultsEl.innerHTML = capped.map(function (item) {
       var badges = [];
       if (item.category) badges.push('<span class="search-badge">' + escHtml(item.category) + '</span>');
-      if (item.intents && item.intents[0]) badges.push('<span class="search-badge">' + escHtml(item.intents[0]) + '</span>');
+      if (item.intents && item.intents[0] && showAllResults) badges.push('<span class="search-badge">' + escHtml(item.intents[0]) + '</span>');
       return [
         '<a class="search-hit" href="' + escHtml(item.url) + '">',
         '  <div class="search-hit-title">' + escHtml(item.title) + '</div>',
         badges.length ? '  <div class="search-hit-meta">' + badges.join('') + '</div>' : '',
-        item.summary ? '  <div class="search-insight-text">' + escHtml(item.summary) + '</div>' : '',
         '  <div class="search-hit-url">' + escHtml(item.url) + '</div>',
         '</a>'
       ].join('');
