@@ -46,7 +46,8 @@
         </div>
       </div>
       <div class="contact-form-wrap animate-fade-up">
-        <form id="contact-form" method="post" action="https://formspree.io/f/REPLACE_FORMSPREE_ID" novalidate>
+        <form id="contact-form" method="post" action="https://api.web3forms.com/submit" novalidate>
+          <input type="hidden" name="access_key" value="fbcd4bae-c2e9-4e0c-9bf1-9576bef8625b">
           <div class="form-row">
             <div class="form-group"><label for="cf-fname">First Name <span aria-hidden="true">*</span></label><input class="form-field" id="cf-fname" type="text" name="first_name" placeholder="First Name" autocomplete="given-name" required></div>
             <div class="form-group"><label for="cf-lname">Last Name</label><input class="form-field" id="cf-lname" type="text" name="last_name" placeholder="Last Name" autocomplete="family-name"></div>
@@ -61,6 +62,14 @@
           </div>
           <div class="form-group" style="margin-bottom:16px;"><label for="cf-message">Message <span aria-hidden="true">*</span></label><textarea class="form-textarea" id="cf-message" name="message" placeholder="Tell us about your network requirements..." required></textarea></div>
           <div class="form-group" style="margin-bottom:24px;"><label for="cf-referral">Where Did You Hear About Us?</label><select class="form-select" id="cf-referral" name="referral"><option value="">Please select&hellip;</option><option>Google / Search</option><option>LinkedIn</option><option>Referral from a colleague</option><option>Social Media</option><option>Other</option></select></div>
+          <!-- Source tracking fields (hidden) -->
+          <input type="hidden" name="source_page" id="cf-source-page">
+          <input type="hidden" name="source_family" id="cf-source-family">
+          <input type="hidden" name="source_cta" id="cf-source-cta">
+          <input type="hidden" name="inquiry_type" id="cf-inquiry-type">
+          <input type="hidden" name="lead_status" id="cf-lead-status">
+          <input type="hidden" name="action_required" id="cf-action-required">
+          <input type="hidden" name="routing_team" id="cf-routing-team">
           <div class="form-consents" role="group" aria-label="Consent options">
             <div class="form-consent">
               <input id="cf-consent-privacy" type="checkbox" name="consent_privacy" value="yes" required>
@@ -79,14 +88,14 @@
     </div>
   </section>`;
 
-  // ---- Form submit (AJAX to Formspree, graceful fallback) ----
+  // ---- Form submit (AJAX to Web3Forms, graceful fallback) ----
   var form = document.getElementById('contact-form');
   if (!form) return;
   var ok  = document.getElementById('form-success');
   var err = document.getElementById('form-error');
   form.addEventListener('submit', function (e) {
     if (window.__netconGlobalFormHandler) return;
-    if (!form.action || form.action.indexOf('REPLACE_FORMSPREE_ID') !== -1) return; // let it no-op until wired
+    if (!form.action) return;
     e.preventDefault();
     if (err && !err.dataset.defaultMessage) err.dataset.defaultMessage = err.textContent;
     var requiredConsents = form.querySelectorAll('input[type="checkbox"][required]');

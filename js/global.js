@@ -213,6 +213,18 @@
 
       if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
 
+      // Populate source tracking fields if tracking is available
+      if (window.NetConSource && typeof window.NetConSource.toObject === 'function') {
+        var sourceData = window.NetConSource.toObject();
+        document.getElementById('cf-source-page').value = sourceData.source_page;
+        document.getElementById('cf-source-family').value = sourceData.source_family;
+        document.getElementById('cf-source-cta').value = sourceData.source_cta;
+        document.getElementById('cf-inquiry-type').value = sourceData.inquiry_type;
+        document.getElementById('cf-lead-status').value = sourceData.lead_status;
+        document.getElementById('cf-action-required').value = sourceData.action_required;
+        document.getElementById('cf-routing-team').value = sourceData.routing_team;
+      }
+
       fetch(form.action, {
         method: 'POST',
         body: new FormData(form),

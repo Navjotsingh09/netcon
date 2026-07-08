@@ -4,3 +4,9 @@ videos/home video
 figma_sections
 nc-content-extracted.md
 NetCon-Accessibility-Widget-Explainer.pdf
+.venv
+Figma design files
+*.zip
+*.7z
+add-*.py
+batch-*.py
