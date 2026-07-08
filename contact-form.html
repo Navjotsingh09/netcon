@@ -42,8 +42,8 @@
       font-size: 20px;
       color: #353535;
       width: 100%;
-      appearance: none;
       -webkit-appearance: none;
+      appearance: none;
     }
     .ctf-select { background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23353535' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 23px center; padding-right: 48px; }
     .ctf-textarea { height: 138px; resize: vertical; padding: 21px 23px; line-height: 1.5; }
@@ -107,140 +107,9 @@
   <script src="/js/navbar.js"></script>
         <main id="main">
 
-  <section class="ctf-section" aria-labelledby="ctf-h">
-    <div class="ctf-inner animate-fade-up">
-      <div class="ctf-header">
-        <h1 class="ctf-title" id="ctf-h">Contact us today for a free consultation</h1>
-        <p class="ctf-sub">We pride ourselves on delivering a flexible engagement style in order to meet your requirements. Contact us for your free consultation.</p>
-      </div>
-
-      <div class="ctf-body">
-        <div class="ctf-image">
-          <img src="/images/pages/contact-form-photo.jpg" alt="Network Consultancy specialist ready to assist" loading="eager" width="521" height="755">
-        </div>
-
-        <div class="ctf-form-panel">
-          <form id="contact-form" class="ctf-form" method="post" action="https://formspree.io/f/REPLACE_FORMSPREE_ID" novalidate>
-            <div class="ctf-service-block" id="service-block-1">
-              <div class="ctf-fields">
-                <div class="ctf-row">
-                  <div class="ctf-field">
-                    <label class="ctf-sr-label" for="cf-fname">First Name</label>
-                    <input class="ctf-input" id="cf-fname" type="text" name="first_name" placeholder="Full Name" autocomplete="given-name">
-                  </div>
-                  <div class="ctf-field">
-                    <label class="ctf-sr-label" for="cf-lname">Last Name</label>
-                    <input class="ctf-input" id="cf-lname" type="text" name="last_name" placeholder="Full Name" autocomplete="family-name">
-                  </div>
-                </div>
-                <div class="ctf-row">
-                  <div class="ctf-field">
-                    <label class="ctf-sr-label" for="cf-phone">Phone Number</label>
-                    <input class="ctf-input" id="cf-phone" type="tel" name="phone" placeholder="Phone Number" autocomplete="tel">
-                  </div>
-                  <div class="ctf-field">
-                    <label class="ctf-sr-label" for="cf-company">Company Name</label>
-                    <input class="ctf-input" id="cf-company" type="text" name="company" placeholder="Company Name" autocomplete="organization">
-                  </div>
-                </div>
-                <div class="ctf-row">
-                  <div class="ctf-field">
-                    <label class="ctf-sr-label" for="cf-company2">Name of Company</label>
-                    <input class="ctf-input" id="cf-company2" type="text" name="company_full" placeholder="Name of Company" autocomplete="organization">
-                  </div>
-                  <div class="ctf-field">
-                    <label class="ctf-sr-label" for="cf-scale">Scale of Business</label>
-                    <select class="ctf-select" id="cf-scale" name="scale">
-                      <option value="">Scale of Business</option>
-                      <option>1&ndash;10 employees</option>
-                      <option>11&ndash;50 employees</option>
-                      <option>51&ndash;200 employees</option>
-                      <option>201&ndash;500 employees</option>
-                      <option>500+ employees</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="ctf-field ctf-field--full">
-                  <label class="ctf-sr-label" for="cf-message">Message</label>
-                  <textarea class="ctf-textarea" id="cf-message" name="message" placeholder="Message"></textarea>
-                </div>
-              </div>
-            </div>
-            <div id="ctf-extra-services"></div>
-            <div class="ctf-service-select-wrap">
-              <p class="ctf-label">Where did you hear about us?</p>
-              <div class="ctf-field ctf-field--full">
-                <label class="ctf-sr-label" for="cf-referral">Where did you hear about us?</label>
-                <select class="ctf-select" id="cf-referral" name="referral">
-                  <option value="">Select Here</option>
-                  <option>Google / Search</option>
-                  <option>LinkedIn</option>
-                  <option>Referral from a colleague</option>
-                  <option>Social Media</option>
-                  <option>Other</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-consents" role="group" aria-label="Consent options">
-              <div class="form-consent">
-                <input id="cf-consent-privacy" type="checkbox" name="consent_privacy" value="yes" required>
-                <label for="cf-consent-privacy">By submitting this form, you agree to our processing of your corporate details in accordance with our <a href="/privacy-policy.html">Privacy Policy</a>.</label>
-              </div>
-              <div class="form-consent">
-                <input id="cf-consent-marketing" type="checkbox" name="consent_marketing" value="yes">
-                <label for="cf-consent-marketing">I want to receive B2B network insights and marketing emails.</label>
-              </div>
-            </div>
-
-            <div class="ctf-add-more" id="ctf-add-more-btn" role="button" tabindex="0" aria-label="Add another service enquiry">
-              <img src="/images/pages/contact-form-plus.svg" alt="" aria-hidden="true" width="24" height="24">
-              <span>Add More Services</span>
-            </div>
-
-            <button type="submit" class="ctf-btn">Enquire Here</button>
-
-            <div id="form-success" class="form-success" role="status" aria-live="polite">Thank you for your enquiry &mdash; we will be in touch shortly.</div>
-            <div id="form-error"   class="form-error"   role="alert"  aria-live="assertive">Something went wrong. Please try again or call +44 (0) 203 150 1401.</div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ctf-info" aria-label="Contact information">
-    <div class="ctf-info-inner">
-      <div class="ctf-info-item">
-        <div class="ctf-info-icon">
-          <img src="/images/pages/contact-form-phone.svg" alt="Phone" loading="lazy" width="121" height="118">
-        </div>
-        <div class="ctf-info-text">
-          <p class="ctf-info-label">Our Contact</p>
-          <p class="ctf-info-value"><a href="tel:+442031501401">+44 (0) 203 150 1401</a></p>
-        </div>
-      </div>
-      <div class="ctf-info-item">
-        <div class="ctf-info-icon">
-          <img src="/images/pages/contact-form-address.svg" alt="Address" loading="lazy" width="121" height="118">
-        </div>
-        <div class="ctf-info-text">
-          <p class="ctf-info-label">Our Address</p>
-          <p class="ctf-info-value"><strong>Birmingham</strong><br>Beech House, Greenfield Crescent<br>Edgbaston, B15 3BE</p>
-        </div>
-      </div>
-      <div class="ctf-info-item">
-        <div class="ctf-info-icon ctf-info-icon--email">
-          <img src="/images/pages/contact-form-email-icon.svg" alt="Email" loading="lazy" width="54" height="38">
-        </div>
-        <div class="ctf-info-text">
-          <p class="ctf-info-label">Web Address</p>
-          <p class="ctf-info-value"><a href="mailto:info@network-consultancy.com">info@network-consultancy.com</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   </main>
+  <div id="site-contact"></div>
+  <script src="/js/contact.js"></script>
 
   <div id="site-footer"></div>
   <script src="/js/footer.js"></script>
@@ -248,94 +117,6 @@
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
-  <script>
-    (function() {
-      var serviceCount = 1;
-
-      // Form submission
-      var form = document.getElementById('contact-form');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          var btn = form.querySelector('.ctf-btn');
-          btn.disabled = true; btn.textContent = 'Sending...';
-          fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-            .then(function(r) {
-              if (r.ok) {
-                document.getElementById('form-success').style.display = 'block';
-                document.getElementById('form-error').style.display = 'none';
-                form.reset();
-              } else {
-                document.getElementById('form-error').style.display = 'block';
-                document.getElementById('form-success').style.display = 'none';
-              }
-            })
-            .catch(function() {
-              document.getElementById('form-error').style.display = 'block';
-              document.getElementById('form-success').style.display = 'none';
-            })
-            .finally(function() {
-              btn.disabled = false; btn.textContent = 'Enquire Here';
-            });
-        });
-      }
-
-      // Add More Services — inserts a second service block matching Figma 698:45525
-      var addBtn = document.getElementById('ctf-add-more-btn');
-      var container = document.getElementById('ctf-extra-services');
-      if (addBtn && container) {
-        function makeServiceBlock(n) {
-          var wrap = document.createElement('div');
-          wrap.className = 'ctf-service-block';
-          wrap.innerHTML =
-            '<hr class="ctf-divider">' +
-            '<div class="ctf-service-select-wrap">' +
-              '<p class="ctf-label">Select the service</p>' +
-              '<select class="ctf-select" name="service_' + n + '" aria-label="Select service ' + n + '">' +
-                '<option value="">Select Here</option>' +
-                '<option>General Inquiry</option>' +
-                '<option>Network Support</option>' +
-                '<option>Project Inquiry</option>' +
-                '<option>Network Health Check</option>' +
-                '<option>Network Assistance</option>' +
-                '<option>Technical Consultation</option>' +
-              '</select>' +
-            '</div>' +
-            '<div class="ctf-fields">' +
-              '<div class="ctf-row">' +
-                '<div class="ctf-field"><input class="ctf-input" type="text" name="fname_' + n + '" placeholder="Full Name" autocomplete="given-name"></div>' +
-                '<div class="ctf-field"><input class="ctf-input" type="text" name="lname_' + n + '" placeholder="Full Name" autocomplete="family-name"></div>' +
-              '</div>' +
-              '<div class="ctf-row">' +
-                '<div class="ctf-field"><input class="ctf-input" type="tel" name="phone_' + n + '" placeholder="Phone Number" autocomplete="tel"></div>' +
-                '<div class="ctf-field"><input class="ctf-input" type="text" name="company_' + n + '" placeholder="Company Name" autocomplete="organization"></div>' +
-              '</div>' +
-              '<div class="ctf-row">' +
-                '<div class="ctf-field"><input class="ctf-input" type="text" name="company_full_' + n + '" placeholder="Name Of Company" autocomplete="organization"></div>' +
-                '<div class="ctf-field">' +
-                  '<select class="ctf-select" name="scale_' + n + '" aria-label="Scale of business">' +
-                    '<option value="">Scale of Business</option>' +
-                    '<option>1–10 employees</option>' +
-                    '<option>11–50 employees</option>' +
-                    '<option>51–200 employees</option>' +
-                    '<option>201–500 employees</option>' +
-                    '<option>500+ employees</option>' +
-                  '</select>' +
-                '</div>' +
-              '</div>' +
-              '<div class="ctf-field ctf-field--full"><textarea class="ctf-textarea" name="message_' + n + '" placeholder="Message"></textarea></div>' +
-            '</div>';
-          return wrap;
-        }
-        addBtn.addEventListener('click', function() {
-          serviceCount++;
-          container.appendChild(makeServiceBlock(serviceCount));
-          container.lastElementChild.querySelector('select, input').focus();
-        });
-        addBtn.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); addBtn.click(); } });
-      }
-    })();
-  </script>
 
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
