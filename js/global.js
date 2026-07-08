@@ -260,7 +260,7 @@
 
       var base = labels.length ? labels.slice() : allServices.slice(0, 3);
       var sequence = [];
-      var targetItems = 12;
+      var targetItems = 18;
       for (var i = 0; i < targetItems; i++) {
         sequence.push(base[i % base.length]);
       }
