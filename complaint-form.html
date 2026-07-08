@@ -187,6 +187,16 @@
             <div class="ctf-field"><label class="ctf-sr-label" for="cf-message">Message</label><textarea class="ctf-textarea" id="cf-message" name="message" placeholder="Message"></textarea></div>
             <p class="ctf-label">Where did you here about us?</p>
             <div class="ctf-field"><label class="ctf-sr-label" for="cf-referral">Where did you hear about us?</label><select class="ctf-select" id="cf-referral" name="referral"><option value="">Select Here</option><option>Google / Search</option><option>LinkedIn</option><option>Referral from a colleague</option><option>Social Media</option><option>Other</option></select></div>
+            <div class="form-consents" role="group" aria-label="Consent options">
+              <div class="form-consent">
+                <input id="cf-consent-privacy" type="checkbox" name="consent_privacy" value="yes" required>
+                <label for="cf-consent-privacy">By submitting this form, you agree to our processing of your corporate details in accordance with our <a href="/privacy-policy.html">Privacy Policy</a>.</label>
+              </div>
+              <div class="form-consent">
+                <input id="cf-consent-marketing" type="checkbox" name="consent_marketing" value="yes">
+                <label for="cf-consent-marketing">I want to receive B2B network insights and marketing emails.</label>
+              </div>
+            </div>
             <button type="submit" class="ctf-btn">Enquire Here</button>
             <div id="form-success" class="form-success" role="status" aria-live="polite">Thank you for your enquiry &mdash; we will be in touch shortly.</div>
             <div id="form-error" class="form-error" role="alert" aria-live="assertive">Something went wrong. Please try again or call +44 (0) 203 150 1401.</div>

@@ -169,12 +169,49 @@
   var form    = document.getElementById('contact-form');
   var success = document.getElementById('form-success');
   var error   = document.getElementById('form-error');
+  window.__netconGlobalFormHandler = true;
 
   if (form) {
+    if (!form.querySelector('input[name="consent_privacy"]')) {
+      var submit = form.querySelector('[type="submit"]');
+      if (submit) {
+        var consentBlock = document.createElement('div');
+        consentBlock.className = 'form-consents';
+        consentBlock.setAttribute('role', 'group');
+        consentBlock.setAttribute('aria-label', 'Consent options');
+        consentBlock.innerHTML = '' +
+          '<div class="form-consent">' +
+            '<input id="cf-consent-privacy" type="checkbox" name="consent_privacy" value="yes" required>' +
+            '<label for="cf-consent-privacy">By submitting this form, you agree to our processing of your corporate details in accordance with our <a href="/privacy-policy.html">Privacy Policy</a>.</label>' +
+          '</div>' +
+          '<div class="form-consent">' +
+            '<input id="cf-consent-marketing" type="checkbox" name="consent_marketing" value="yes">' +
+            '<label for="cf-consent-marketing">I want to receive B2B network insights and marketing emails.</label>' +
+          '</div>';
+        submit.insertAdjacentElement('beforebegin', consentBlock);
+      }
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var btn = form.querySelector('[type="submit"]');
-      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+      if (btn && !btn.dataset.originalText) btn.dataset.originalText = btn.textContent;
+      if (error && !error.dataset.defaultMessage) error.dataset.defaultMessage = error.textContent;
+
+      var requiredConsents = form.querySelectorAll('input[type="checkbox"][required]');
+      for (var i = 0; i < requiredConsents.length; i++) {
+        if (!requiredConsents[i].checked) {
+          if (error) {
+            error.textContent = 'Please confirm the required consent before submitting the form.';
+            error.style.display = 'block';
+          }
+          if (success) success.style.display = 'none';
+          requiredConsents[i].focus();
+          return;
+        }
+      }
+
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
 
       fetch(form.action, {
         method: 'POST',
@@ -186,6 +223,7 @@
             form.reset();
             if (success) success.style.display = 'block';
             if (error)   error.style.display   = 'none';
+            if (error && error.dataset.defaultMessage) error.textContent = error.dataset.defaultMessage;
             if (success) success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           } else {
             throw new Error('Server error');
@@ -193,10 +231,11 @@
         })
         .catch(function () {
           if (error)   error.style.display   = 'block';
+          if (error && error.dataset.defaultMessage) error.textContent = error.dataset.defaultMessage;
           if (success) success.style.display = 'none';
         })
         .finally(function () {
-          if (btn) { btn.disabled = false; btn.textContent = 'Send Enquiry'; }
+          if (btn) { btn.disabled = false; btn.textContent = btn.dataset.originalText || 'Send Enquiry'; }
         });
     });
   }

@@ -51,6 +51,8 @@ button { cursor: pointer; border: none; outline: none; background: none; }
 .btn-dark:hover { background:#1a1a1a; transform:translateY(-1px); }
 .btn-outline { background:transparent; color:var(--navy); font-family:'Barlow',sans-serif; font-size:18px; font-weight:600; padding:13px 27px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; gap:8px; cursor:pointer; transition:background .2s,color .2s; min-height:48px; border:2px solid var(--navy); }
 .btn-outline:hover { background:var(--navy); color:#fff; }
+.sc-see-all:hover,
+.sc-see-all:focus-visible { transform:translateX(-50%) !important; }
 
 /* ── Layout Guardrails (1920/1440) ─────────────────────────── */
 /* Keep top-level content on a 1920 canvas for legacy page-specific sections. */
@@ -732,6 +734,8 @@ main > div > [class*="-wrap"] {
 }
 @media (max-width:480px) {
   :root { --px:20px; }
+  .sc-see-all:hover,
+  .sc-see-all:focus-visible { transform:none !important; }
   .page-hero__title { font-size:28px; }
   .heading-xl { font-size:28px; }
   .section-title { font-size:26px; }

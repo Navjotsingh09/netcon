@@ -61,6 +61,16 @@
           </div>
           <div class="form-group" style="margin-bottom:16px;"><label for="cf-message">Message <span aria-hidden="true">*</span></label><textarea class="form-textarea" id="cf-message" name="message" placeholder="Tell us about your network requirements..." required></textarea></div>
           <div class="form-group" style="margin-bottom:24px;"><label for="cf-referral">Where Did You Hear About Us?</label><select class="form-select" id="cf-referral" name="referral"><option value="">Please select&hellip;</option><option>Google / Search</option><option>LinkedIn</option><option>Referral from a colleague</option><option>Social Media</option><option>Other</option></select></div>
+          <div class="form-consents" role="group" aria-label="Consent options">
+            <div class="form-consent">
+              <input id="cf-consent-privacy" type="checkbox" name="consent_privacy" value="yes" required>
+              <label for="cf-consent-privacy">By submitting this form, you agree to our processing of your corporate details in accordance with our <a href="/privacy-policy.html">Privacy Policy</a>.</label>
+            </div>
+            <div class="form-consent">
+              <input id="cf-consent-marketing" type="checkbox" name="consent_marketing" value="yes">
+              <label for="cf-consent-marketing">I want to receive B2B network insights and marketing emails.</label>
+            </div>
+          </div>
           <button type="submit" class="btn-dark" style="width:100%;justify-content:center;">Send Enquiry</button>
           <div id="form-success" class="form-success" role="status" aria-live="polite">Thank you for your enquiry &mdash; we will be in touch shortly.</div>
           <div id="form-error"   class="form-error"   role="alert"  aria-live="assertive">Something went wrong. Please try again or call us directly on +44 (0) 203 150 1401.</div>
@@ -75,15 +85,40 @@
   var ok  = document.getElementById('form-success');
   var err = document.getElementById('form-error');
   form.addEventListener('submit', function (e) {
+    if (window.__netconGlobalFormHandler) return;
     if (!form.action || form.action.indexOf('REPLACE_FORMSPREE_ID') !== -1) return; // let it no-op until wired
     e.preventDefault();
+    if (err && !err.dataset.defaultMessage) err.dataset.defaultMessage = err.textContent;
+    var requiredConsents = form.querySelectorAll('input[type="checkbox"][required]');
+    for (var i = 0; i < requiredConsents.length; i++) {
+      if (!requiredConsents[i].checked) {
+        if (ok) ok.style.display = 'none';
+        if (err) {
+          err.textContent = 'Please confirm the required consent before submitting the form.';
+          err.style.display = 'block';
+        }
+        requiredConsents[i].focus();
+        return;
+      }
+    }
     if (ok) ok.style.display = 'none';
-    if (err) err.style.display = 'none';
+    if (err) {
+      err.style.display = 'none';
+      if (err.dataset.defaultMessage) err.textContent = err.dataset.defaultMessage;
+    }
     fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
       .then(function (r) {
         if (r.ok) { form.reset(); if (ok) ok.style.display = 'block'; }
-        else if (err) err.style.display = 'block';
+        else if (err) {
+          if (err.dataset.defaultMessage) err.textContent = err.dataset.defaultMessage;
+          err.style.display = 'block';
+        }
       })
-      .catch(function () { if (err) err.style.display = 'block'; });
+      .catch(function () {
+        if (err) {
+          if (err.dataset.defaultMessage) err.textContent = err.dataset.defaultMessage;
+          err.style.display = 'block';
+        }
+      });
   });
 })();
