@@ -9,6 +9,7 @@
   // Map page paths to default inquiry types for pages without explicit CTAs
   var pageDefaults = {
     '/': { family: 'home', page: 'home', cta: 'shared_footer_form' },
+    '/index.html': { family: 'home', page: 'home', cta: 'shared_footer_form' },
     '/about.html': { family: 'about', page: 'about', cta: 'shared_footer_form' },
     '/contact.html': { family: 'contact', page: 'contact', cta: 'contact_page_direct' },
     '/contact-form.html': { family: 'contact', page: 'contact_form', cta: 'contact_form' },

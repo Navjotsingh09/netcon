@@ -93,6 +93,19 @@
   if (!form) return;
   var ok  = document.getElementById('form-success');
   var err = document.getElementById('form-error');
+
+  function populateSourceFields() {
+    if (!window.NetConSource || typeof window.NetConSource.toObject !== 'function') return;
+    var sourceData = window.NetConSource.toObject();
+    document.getElementById('cf-source-page').value = sourceData.source_page;
+    document.getElementById('cf-source-family').value = sourceData.source_family;
+    document.getElementById('cf-source-cta').value = sourceData.source_cta;
+    document.getElementById('cf-inquiry-type').value = sourceData.inquiry_type;
+    document.getElementById('cf-lead-status').value = sourceData.lead_status;
+    document.getElementById('cf-action-required').value = sourceData.action_required;
+    document.getElementById('cf-routing-team').value = sourceData.routing_team;
+  }
+
   form.addEventListener('submit', function (e) {
     if (window.__netconGlobalFormHandler) return;
     if (!form.action) return;
@@ -115,6 +128,7 @@
       err.style.display = 'none';
       if (err.dataset.defaultMessage) err.textContent = err.dataset.defaultMessage;
     }
+    populateSourceFields();
     fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
       .then(function (r) {
         if (r.ok) { form.reset(); if (ok) ok.style.display = 'block'; }
