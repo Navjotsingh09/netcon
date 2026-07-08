@@ -3,14 +3,239 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Business Continuity Planning: How Your Network Affects Recovery Time | Network Consultancy</title>
-  <meta name="description" content="Your network infrastructure plays a critical role in how quickly your business recovers from disruption.">
+  <title>Leveraging cloud networking tor business cmciency | Network Consultancy</title>
+  <meta name="description" content="Explore the Benefits of Cloud Networking: Increased Flexibility, Cost Savings, and">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+  <style>
+    .blog-detail {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 0 var(--px) 0;
+    }
+    .blog-detail__frame {
+      max-width: 1440px;
+      margin: 0 auto;
+      border: 1px solid #8d8d8d;
+      padding: 43px 40px 86px;
+      background: #fff;
+    }
+    .blog-detail__grid {
+      display: grid;
+      grid-template-columns: 817px 467px;
+      gap: 76px;
+      align-items: start;
+    }
+    .blog-main__hero {
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 50px;
+      min-height: 653px;
+      background: #a5a8b0;
+    }
+    .blog-main__hero picture,
+    .blog-main__hero img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 653px;
+      object-fit: cover;
+    }
+    .blog-main__meta {
+      font-family: 'Barlow', sans-serif;
+      font-size: 28px;
+      color: #666;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .blog-main h1 {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 56px;
+      line-height: 1.18;
+      color: #3e3e3e;
+      margin-bottom: 26px;
+    }
+    .blog-main p {
+      font-family: 'Barlow', sans-serif;
+      font-size: 24px;
+      line-height: 1.75;
+      color: #575757;
+      margin-bottom: 28px;
+    }
+    .blog-main h2 {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 50px;
+      color: #3d3d3d;
+      margin: 42px 0 20px;
+      line-height: 1.18;
+    }
+
+    .blog-side__card,
+    .blog-side__categories {
+      background: #ebebeb;
+      border-radius: 24px;
+      padding: 26px 24px;
+    }
+    .blog-side__card {
+      margin-bottom: 16px;
+    }
+    .blog-side h3 {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 48px;
+      line-height: 1;
+      color: #4f4f4f;
+      margin-bottom: 22px;
+    }
+    .latest-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+      align-items: start;
+    }
+    .latest-item__thumb {
+      width: 80px;
+      height: 71px;
+      border-radius: 8px;
+      background: #d1d1d1;
+      border: 1px solid #1c1c1c;
+    }
+    .latest-item p {
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      line-height: 1.35;
+      color: #5d5d5d;
+      margin-bottom: 4px;
+    }
+    .latest-item time {
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      color: #666;
+    }
+    .blog-side__more {
+      font-family: 'Barlow', sans-serif;
+      font-size: 20px;
+      color: #666;
+      margin-top: 12px;
+      display: inline-block;
+    }
+    .cat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 10px;
+    }
+    .cat-list a {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 32px;
+      color: #616161;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+    }
+    .cat-list a.active {
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .cat-list a.active::before {
+      content: '\203A';
+      color: var(--navy);
+      font-size: 32px;
+      line-height: 1;
+    }
+    .faq-divider--hidden {
+      display: none;
+    }
+    .form-group--mb16 {
+      margin-bottom: 16px;
+    }
+    .form-group--mb24 {
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 1600px) {
+      .blog-main h1,
+      .blog-side h3 {
+        font-size: 40px;
+      }
+      .blog-main h2,
+      .cat-list a {
+        font-size: 34px;
+      }
+      .blog-main p,
+      .blog-main__meta {
+        font-size: 18px;
+      }
+      .blog-detail__grid {
+        grid-template-columns: 1fr 360px;
+      }
+      .blog-main__hero,
+      .blog-main__hero picture,
+      .blog-main__hero img {
+        min-height: 480px;
+      }
+    }
+    @media (max-width: 1200px) {
+      .blog-detail {
+        padding-top: 20px;
+      }
+      .blog-detail__frame {
+        padding: 24px 20px 36px;
+      }
+      .blog-detail__grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .blog-main__hero,
+      .blog-main__hero picture,
+      .blog-main__hero img {
+        min-height: 340px;
+        border-radius: 16px;
+      }
+      .blog-main h1,
+      .blog-side h3,
+      .blog-main h2 {
+        font-size: 32px;
+      }
+      .cat-list a {
+        font-size: 24px;
+      }
+    }
+    @media (max-width: 768px) {
+      .blog-main__hero,
+      .blog-main__hero picture,
+      .blog-main__hero img {
+        min-height: 220px;
+      }
+      .blog-main__meta,
+      .blog-main p {
+        font-size: 16px;
+      }
+      .blog-main h1,
+      .blog-main h2,
+      .blog-side h3 {
+        font-size: 26px;
+      }
+      .latest-item {
+        grid-template-columns: 64px 1fr;
+      }
+      .latest-item__thumb {
+        width: 64px;
+        height: 56px;
+        border-width: 1px;
+      }
+      .cat-list a {
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -18,38 +243,118 @@
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
   <main id="main">
+    <section class="blog-detail" aria-label="Blog detail page">
+      <div class="blog-detail__frame animate-fade-up">
+        <div class="blog-detail__grid">
+          <article class="blog-main">
+            <div class="blog-main__hero" aria-hidden="true"></div>
 
-  <section class="page-hero" aria-label="Page hero">
-    <div class="page-hero__bg">
-      <picture>
-        <source srcset="/images/pages/unique/resources-blog-post-08-resources.jpg" type="image/webp">
-        <img src="/images/pages/unique/resources-blog-post-08-resources.jpg" alt="" loading="eager" width="1920" height="640">
-      </picture>
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-    </div>
-    <div class="page-hero__content animate-fade-up">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep" aria-hidden="true">&#8250;</span><a href="/resources/">Resources</a><span class="bc-sep" aria-hidden="true">&#8250;</span><a href="/resources/blog/">Blog</a><span class="bc-sep" aria-hidden="true">&#8250;</span><span>Business Continuity Planning: How Your Network Affects Recovery Time</span></nav>
-      <h1 class="page-hero__title">Business Continuity Planning: How Your Network Affects Recovery Time</h1>
-      <p class="page-hero__sub">Your network infrastructure plays a critical role in how quickly your business recovers from disruption.</p>
-    </div>
-  </section>
-  <article class="prose" aria-label="Blog article">
-    <p class="meta">Published: 27 Apr 2025 &mdash; Category: Continuity &mdash; <a href="/resources/blog/">Back to all articles</a></p>
-    <p>Your network infrastructure plays a critical role in how quickly your business recovers from disruption.</p>
-    <h2>Why this topic matters</h2>
-    <p>Business Continuity Planning: How Your Network Affects Recovery Time is not only a technical consideration. It directly affects service availability, security posture, user experience, and the ability for teams to work effectively across offices, sites, and remote locations. Organisations that treat network decisions as a business priority are usually better positioned to reduce disruption and support growth.</p>
-    <h2>Common challenges businesses face</h2>
-    <p>Many teams operate with inherited infrastructure, limited visibility, and unclear ownership across systems. This often leads to reactive troubleshooting, inconsistent policy enforcement, and avoidable downtime. A structured approach helps identify weak points earlier and creates clearer priorities for remediation and long-term planning.</p>
-    <h2>Practical actions you can take</h2>
-    <p>Start with a baseline review of current architecture, traffic patterns, and operational dependencies. Then define measurable objectives around performance, resilience, and security. Finally, implement staged improvements with validation checkpoints so each change can be tested, documented, and aligned with business outcomes.</p>
-    <h2>How Network Consultancy can help</h2>
-    <p>Our consultants support organisations through assessment, design, implementation, and ongoing optimisation. Whether you need targeted advice or broader transformation support, we focus on practical recommendations that improve reliability, reduce risk, and help your teams make confident technology decisions.</p>
-    <p style="margin-top:40px;padding-top:24px;border-top:1px solid #EBEBEB;"><a href="/resources/blog/" style="font-family:'Barlow',sans-serif;font-weight:600;color:#0982c5;">&#8592; Back to all articles</a></p>
-  </article>
+            <p class="blog-main__meta"><span>10/12/2026</span><span>Category: Industry</span></p>
+            <h1>Leveraging cloud networking tor business cmciency</h1>
+            <p>Explore the Benefits of Cloud Networking: Increased Flexibility, Cost Savings, and</p>
+            <p>efficient, secure, and cost-effective</p>
+            <p>This blon hichlinhts the key henefits of cloud networking and how it can imnrove business efficience security and</p>
+            <p>collaboration. Through strategic implementation, businesses can transform their operations 10 become more</p>
+            <p>Cloud networking provides various advantages that can help organisations streamline their operations ano</p>
+            <p>Key Benents of Cloud Networking</p>
+            <p>lInin tachnniany calitiane artor hucindecoe the dovinitivin enslo thoir l intricinialro arrerainnin thair nonde</p>
+            <h2>1. Flexibility and Scalability:</h2>
+            <p>%. Cost savings</p>
+            <p>By implementing cloud technoloov, businesses can sionificantly reduce the costs associated with hardware</p>
+            <h2>3. Improved Security:</h2>
+            <p>mptly identified and addres</p>
+            <h2>4. Remote Working solutions</h2>
+            <h2>5. Business Network Solutions</h2>
+            <p>How Cloud Networking Drives Innovation and efficiency</p>
+            <p>can quickly test new ideas and strategies without a major capital investmen</p>
+            <p>he dr support did maltellance services i cloud vetworking</p>
+            <p>Cloud security solutions: Protecting your Business in the Digital Age</p>
+            <p>loss. With advanced encryption, access control mechanisms, and continuous monitoring, cloud security provides a</p>
+            <p>IT Infrastructure Management Services: Ensuring Smooth Operations</p>
+            <p>aro running emanthly and</p>
+            <p>Preparing for the Future: The Power of Cloud Networking</p>
+            <p>services, the cloud offers numerous benefits that can help businesses thrive in an increasingly digital world</p>
+            <p>hallenges of the digital ag</p>
+            <p>• services to cloud security</p>
+
+</article>
+
+          <aside class="blog-side" aria-label="Sidebar">
+            <div class="blog-side__card">
+              <h3>Latest Blog</h3>
+
+              <article class="latest-item">
+                <div class="latest-item__thumb" aria-hidden="true"></div>
+                <div>
+                  <p>We replaced the entire core network equipment across three data centres for a VoIP provider and ISP.</p>
+                  <time datetime="2026-12-10">10/12/2026</time>
+                </div>
+              </article>
+              <article class="latest-item">
+                <div class="latest-item__thumb" aria-hidden="true"></div>
+                <div>
+                  <p>We replaced the entire core network equipment across three data centres for a VoIP provider and ISP.</p>
+                  <time datetime="2026-12-10">10/12/2026</time>
+                </div>
+              </article>
+              <article class="latest-item">
+                <div class="latest-item__thumb" aria-hidden="true"></div>
+                <div>
+                  <p>We replaced the entire core network equipment across three data centres for a VoIP provider and ISP.</p>
+                  <time datetime="2026-12-10">10/12/2026</time>
+                </div>
+              </article>
+
+              <a class="blog-side__more" href="/resources/blog/">See More</a>
+            </div>
+
+            <div class="blog-side__categories">
+              <h3>Blog Category</h3>
+              <nav class="cat-list" aria-label="Blog categories">
+                <a href="/industries/" class="active">INDUSTRIES</a>
+                <a href="/services/">SERVICES</a>
+                <a href="/solutions/">SOLUTIONS</a>
+              </nav>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq animate-fade-up" aria-labelledby="faq-h">
+      <h2 class="section-title faq__title" id="faq-h">FREQUENTLY ASKED QUESTIONS</h2>
+      <div class="faq-list">
+        <div class="faq-item open">
+          <div class="faq-header">
+            <div class="faq-header-left"><span class="faq-num">01</span><span class="faq-q">What topics does your blog cover?</span></div>
+            <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="faq-divider"></div>
+          <div class="faq-answer">Our blog covers network infrastructure, cybersecurity, cloud connectivity, remote access, system resilience, and ongoing IT support, focusing on practical and real-world business challenges.</div>
+        </div>
+        <div class="faq-item closed">
+          <div class="faq-header">
+            <div class="faq-header-left"><span class="faq-num">02</span><span class="faq-q">Who is this blog for?</span></div>
+            <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="faq-divider faq-divider--hidden"></div>
+          <div class="faq-answer">This blog is for business leaders, operations teams, and IT decision makers looking for clearer guidance on secure, scalable, and reliable network environments.</div>
+        </div>
+        <div class="faq-item closed">
+          <div class="faq-header">
+            <div class="faq-header-left"><span class="faq-num">03</span><span class="faq-q">How can these insights help my business?</span></div>
+            <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="faq-divider faq-divider--hidden"></div>
+          <div class="faq-answer">These insights help you benchmark your current environment, identify risk areas earlier, and plan practical improvements that align technology decisions to business outcomes.</div>
+        </div>
+      </div>
+    </section>
+
+    <div id="site-contact"></div>
+    <script src="/js/form-source-tracking.js"></script>
+    <script src="/js/contact.js"></script>
   </main>
-  <div id="site-contact"></div>
-  <script src="/js/form-source-tracking.js"></script>
-  <script src="/js/contact.js"></script>
 
   <div id="site-footer"></div>
   <script src="/js/footer.js"></script>
