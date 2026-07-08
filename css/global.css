@@ -586,9 +586,23 @@ main > div > [class*="-wrap"] {
 .cta-band__btns { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
 
 /* ── CASE STUDY FLOATING SERVICES ───────────────────────────── */
-.nc-service-floater { display:flex; flex-direction:column; gap:18px; margin-top:34px; overflow:hidden; position:relative; z-index:0; }
+.nc-service-floater {
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:18px;
+  overflow:hidden;
+  z-index:0;
+  pointer-events:none;
+}
+.cs-blue-inner,
+.csd-cta-inner { position:relative; overflow:hidden; }
 .cs-blue-inner .nc-service-floater,
 .csd-cta-inner .nc-service-floater { width:100%; }
+.cs-center-panel,
+.csd-cta-card { position:relative; z-index:2; }
 .nc-service-lane { overflow:hidden; animation:nc-float-bob-a 4.8s ease-in-out infinite; }
 .nc-service-lane.is-reverse { animation-name:nc-float-bob-b; }
 .nc-service-track { display:flex; width:max-content; gap:18px; animation:nc-float-left 28s linear infinite; will-change:transform; }
@@ -676,7 +690,7 @@ main > div > [class*="-wrap"] {
   .contact-options { grid-template-columns:1fr; }
   .blog-grid { grid-template-columns:1fr; }
   .res-grid { grid-template-columns:1fr; }
-  .nc-service-floater { margin-top:24px; gap:14px; }
+  .nc-service-floater { gap:14px; }
   .nc-service-lane:nth-child(2) { padding-left:18px; }
   .nc-service-chip { font-size:18px; min-width:124px; padding:10px 22px; }
   .faq-header { padding:28px 24px; }

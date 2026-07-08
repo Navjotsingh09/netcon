@@ -302,7 +302,7 @@
       floater.appendChild(createLane(laneOne, false));
       floater.appendChild(createLane(laneTwo, true));
 
-      card.insertAdjacentElement('afterend', floater);
+      container.appendChild(floater);
     });
   }
 
