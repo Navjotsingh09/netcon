@@ -762,6 +762,10 @@
       max-width: 1920px;
       margin: 0 auto;
     }
+    .parallax-cards-wrapper {
+      position: relative;
+      display: block;
+    }
     .scroll-banner-wrap + .scroll-banner-wrap { padding-top: 20px; padding-bottom: 80px; }
     .scroll-banner {
       position: relative;
@@ -788,11 +792,20 @@
       justify-content: center; gap: 46px;  /* Figma: gap-[46px] between title and body */
     }
     .scroll-banner-cta-abs {
-      position: absolute;
+      position: static;
       z-index: 3;
-      top: 713px;   /* Figma: top-[793.53px] in 1074px wrapper, banner offset 80px = 713px in banner */
-      left: 85px;   /* aligns with content text left edge */
+      align-self: flex-start;
+      margin-top: 8px;
     }
+    .btn-blue--card {
+      margin-top: 8px;
+      min-height: 44px;
+    }
+    .scroll-banner__link {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .faq-divider.is-hidden { display: none; }
     .scroll-banner__title {
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 42px; font-weight: 600; color: #fff;
@@ -1060,7 +1073,22 @@
       font-size: 18px; color: var(--dark); opacity: .8;
     }
     .footer__social { display: flex; gap: 20px; align-items: center; }
-    .footer__social img { height: 39px; cursor: pointer; }
+    .footer__social-badge {
+      width: 39px;
+      height: 39px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.22);
+      color: #fff;
+      font-family: 'Barlow', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
     .footer__links { display: flex; gap: 24px; flex: 1; }
     .footer__col { display: flex; flex-direction: column; gap: 0; }
     .footer__col h4 {
@@ -1091,10 +1119,6 @@
       padding: 80px var(--px);
       display: flex; justify-content: center; align-items: flex-start;
     }
-    .scroll-banner-cta-abs {
-      /* top/left set in main rule above — no override needed here */
-    }
-
     /* ===== HERO LOAD ANIMATIONS ===== */
     @keyframes heroFadeUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -1191,16 +1215,15 @@
       .scroll-banner__content { padding: 48px var(--px); gap: 40px; }
       .scroll-banner__title { font-size: 28px; }
       .scroll-banner__body { font-size: 18px; line-height: 26px; letter-spacing: 0; }
-      .scroll-banner-cta-abs { top: auto; bottom: 24px; left: var(--px); }
 
       /* Clients: 2 col */
       .clients-grid { grid-template-columns: repeat(2, 1fr); row-gap: 24px; }
       .client-box { width: auto; }
-      .our-clients { min-height: auto; }
+      .our-clients { min-height: 0; }
 
       /* Testimonials */
       .testimonials__layout { flex-direction: column; }
-      .testimonials__left { width: 100%; min-height: auto; flex-direction: row; align-items: center; justify-content: space-between; }
+      .testimonials__left { width: 100%; min-height: 0; flex-direction: row; align-items: center; justify-content: space-between; }
       .testimonials__left h2 { font-size: 48px; }
       .t-card { padding: 40px; }
       .t-quote { font-size: 22px; }
@@ -1486,7 +1509,7 @@
           <h1 class="hero__title hero-anim-1">HIGH-PERFORMANCE, SECURE NETWORKS FOR THRIVING SME's</h1>
           <p class="hero__sub hero-anim-2">Free Setup / No Activation Charges for a Limited Time Only</p>
         </div>
-        <a href="#contact" class="btn-blue-lg hover-btn hero-anim-3">BOOK A NETWORK HEALTH CHECK</a>
+        <a href="#contact" class="btn-blue-lg hover-btn hero-anim-3">BOOK A FREE NETWORK HEALTH CHECK</a>
       </div>
     </div>
   </section>
@@ -1502,7 +1525,7 @@
           <div class="svc-card__grad"></div>
           <span class="svc-card__label">Network<br>Consultancy</span>
           <p class="svc-card__desc">Strategic guidance from assessment through implementation — networks built around your business goals.</p>
-        </div>
+            <button class="btn-blue hover-btn card-cta-btn">Enquire Here</button>
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/unique/index-service-2.webp" type="image/webp"><img src="/images/unique/index-service-2.jpg" alt="Network Support" width="471" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
@@ -1514,7 +1537,7 @@
           <div class="svc-card__grad"></div>
           <span class="svc-card__label">Managed Network<br>Support</span>
           <p class="svc-card__desc">A fully managed service designed to reduce internal burden and keep your environment secure, stable and optimised.</p>
-        </div>
+            <button class="btn-blue hover-btn card-cta-btn">Enquire Here</button>
       </div>
       <!-- Row 2: 350px / 592px / 471px (middle and right swap) -->
       <div class="main-services__row main-services__row--2 stagger-children">
@@ -1523,7 +1546,7 @@
           <div class="svc-card__grad"></div>
           <span class="svc-card__label">Network Design<br>&amp; Deployment</span>
           <p class="svc-card__desc">Expert consultancy for secure, high-performing, and scalable network architectures.</p>
-        </div>
+            <button class="btn-blue hover-btn card-cta-btn">Enquire Here</button>
         <div class="svc-card hover-lift animate-fade-up">
           <picture><source srcset="/images/unique/index-service-3.webp" type="image/webp"><img src="/images/unique/index-service-3.jpg" alt="Firewall and Network Security" width="592" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
@@ -1535,7 +1558,7 @@
           <div class="svc-card__grad"></div>
           <span class="svc-card__label">Business Continuity<br>&amp; Resilience</span>
           <p class="svc-card__desc">Secure, resilient networks that keep critical business operations running — even in the face of disruptions.</p>
-        </div>
+            <button class="btn-blue hover-btn card-cta-btn">Enquire Here</button>
       </div>
     </div>
   </section>
@@ -1544,7 +1567,7 @@
   <div class="video-banner">
     <div class="video-banner__box">
       <picture><source srcset="/images/banners/video-banner.webp" type="image/webp"><img class="video-banner__bg" src="/images/banners/video-banner.jpg" alt="" width="1440" height="675" loading="lazy"></picture>
-      <img class="video-banner__icon animate-fade-in" src="https://www.figma.com/api/mcp/asset/a885a462-752f-4923-b092-f517766f69b1" alt="Play video" />
+      <img class="video-banner__icon animate-fade-in" src="/images/misc/icon-play.svg" alt="Play video" />
     </div>
   </div>
 
@@ -1566,7 +1589,7 @@
           <div class="s-card__body">
             <div class="s-card__title">2. Network Advisory</div>
             <div class="s-card__desc">Using specialised planning and professional IT network consulting services</div>
-            <button class="btn-blue hover-btn" style="margin-top:8px;min-height:44px;">Enquire Here</button>
+            <button class="btn-blue hover-btn btn-blue--card">Enquire Here</button>
           </div>
         </div>
 
@@ -1575,7 +1598,7 @@
           <div class="s-card__body">
             <div class="s-card__title">3. Network Resilience &amp; Business Continuity</div>
             <div class="s-card__desc">Using specialised planning and professional IT network consulting services</div>
-            <button class="btn-blue hover-btn" style="margin-top:8px;min-height:44px;">Enquire Here</button>
+            <button class="btn-blue hover-btn btn-blue--card">Enquire Here</button>
           </div>
         </div>
 
@@ -1623,8 +1646,8 @@
     <div class="solutions-bottom">
       <div class="solutions-nav">
         <div class="solutions-arrows">
-          <img class="sol-arrow" src="https://www.figma.com/api/mcp/asset/f79d5799-88d4-40e6-9c22-86cadd58d924" alt="Previous" />
-          <img class="sol-arrow" src="https://www.figma.com/api/mcp/asset/6f271d22-9da7-4647-831e-1ad4dc23922a" alt="Next" />
+          <img class="sol-arrow" src="/images/misc/icon-arrow-left.svg" alt="Previous" />
+          <img class="sol-arrow" src="/images/misc/icon-arrow-right.svg" alt="Next" />
         </div>
         <div class="solutions-progress">
           <div class="solutions-progress-fill"></div>
@@ -1664,7 +1687,7 @@
         <div class="s-card__body">
           <div class="s-card__title">2. Proactive Network Performance Monitoring</div>
           <div class="s-card__desc">Using specialised planning and professional IT network consulting services</div>
-          <button class="btn-blue hover-btn" style="margin-top:8px;min-height:44px;">Enquire Here</button>
+            <button class="btn-blue hover-btn btn-blue--card">Enquire Here</button>
         </div>
       </div>
 
@@ -1673,7 +1696,7 @@
         <div class="s-card__body">
           <div class="s-card__title">3. Advanced IT Security Protection</div>
           <div class="s-card__desc">Using specialised planning and professional IT network consulting services</div>
-          <button class="btn-blue hover-btn" style="margin-top:8px;min-height:44px;">Enquire Here</button>
+          <button class="btn-blue hover-btn btn-blue--card">Enquire Here</button>
         </div>
       </div>
 
@@ -1681,52 +1704,53 @@
   </section>
 
   <!-- ========= MANAGED NETWORK SECURITY BANNER ========= -->
-  <div class="scroll-banner-wrap">
-    <div class="scroll-banner">
-      <picture><source srcset="/images/banners/scroll-banner-1.webp" type="image/webp"><img class="scroll-banner__bg" src="/images/banners/scroll-banner-1.jpg" alt="" width="1420" height="914" loading="lazy"></picture>
-      <div class="scroll-banner__overlay"></div>
-      <div class="scroll-banner__content">
-        <h2 class="scroll-banner__title">MANAGED NETWORK SECURITY</h2>
-        <div class="scroll-banner__body">
-          <p>When it comes to enhancing your business's IT infrastructure, Network Consultancy Services provides a gateway to success. Our expertise in this realm covers not just network consultancy services but also extends to Managed Network Security and Managed Network Solutions.</p>
-          <ul>
-            <li>24/7 Firewall Administration and Intrusion Detection</li>
-            <li>Regular Software and Firmware Updates</li>
-            <li>AI-Driven Threat Intelligence &amp; Monitoring</li>
-            <li>Continuous Compliance of Regulations such as ISO 27001 or GDPR</li>
-          </ul>
+  <div class="parallax-cards-wrapper">
+    <div class="scroll-banner-wrap">
+      <div class="scroll-banner">
+        <picture><source srcset="/images/banners/scroll-banner-1.webp" type="image/webp"><img class="scroll-banner__bg" src="/images/banners/scroll-banner-1.jpg" alt="" width="1420" height="914" loading="lazy"></picture>
+        <div class="scroll-banner__overlay"></div>
+        <div class="scroll-banner__content">
+          <h2 class="scroll-banner__title">MANAGED NETWORK SECURITY</h2>
+          <div class="scroll-banner__body">
+            <p>When it comes to enhancing your business's IT infrastructure, Network Consultancy Services provides a gateway to success. Our expertise in this realm covers not just network consultancy services but also extends to Managed Network Security and Managed Network Solutions.</p>
+            <ul>
+              <li>24/7 Firewall Administration and Intrusion Detection</li>
+              <li>Regular Software and Firmware Updates</li>
+              <li>AI-Driven Threat Intelligence &amp; Monitoring</li>
+              <li>Continuous Compliance of Regulations such as ISO 27001 or GDPR</li>
+            </ul>
+          </div>
+        </div>
+        <div class="scroll-dots">
+          <div class="dot active"></div>
+          <div class="dot inactive"></div>
         </div>
       </div>
-      <div class="scroll-dots">
-        <div class="dot active"></div>
-        <div class="dot inactive"></div>
-      </div>
     </div>
-  </div>
 
   <!-- ========= NETWORK CONSULTANCY SERVICES BANNER ========= -->
-  <div class="scroll-banner-wrap scroll-banner-wrap--2">
-    <div class="scroll-banner scroll-banner--cta">
-      <picture><source srcset="/images/banners/scroll-banner-2.webp" type="image/webp"><img class="scroll-banner__bg" src="/images/unique/index-scroll-banner-2.jpg" alt="" width="1420" height="914" loading="lazy"></picture>
-      <div class="scroll-banner__overlay"></div>
-      <div class="scroll-banner__content">
-        <h2 class="scroll-banner__title">NETWORK CONSULTANCY SERVICES</h2>
-        <div class="scroll-banner__body">
-          <ul>
-            <li>Our <a href="https://network-consultancy.com/services/" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:underline;">Network Consultancy services</a> are for Clients who need assistance with a project or with resolving an issue. We can work remotely on a per-hour basis or onsite on a day rate basis.</li>
-            <li>Connect with our network consultant for specialised guidance and tailored solutions in Cisco network engineering and business network management.</li>
-            <li>Need a stronger, future-ready infrastructure with expert network consultancy? Discuss digital transformation initiatives, secure support services, or a thorough evaluation of your current network environment with our experts.</li>
-          </ul>
+    <div class="scroll-banner-wrap scroll-banner-wrap--2">
+      <div class="scroll-banner scroll-banner--cta">
+        <picture><source srcset="/images/banners/scroll-banner-2.webp" type="image/webp"><img class="scroll-banner__bg" src="/images/unique/index-scroll-banner-2.jpg" alt="" width="1420" height="914" loading="lazy"></picture>
+        <div class="scroll-banner__overlay"></div>
+        <div class="scroll-banner__content">
+          <h2 class="scroll-banner__title">NETWORK CONSULTANCY SERVICES</h2>
+          <div class="scroll-banner__body">
+            <ul>
+              <li>Our <a href="https://network-consultancy.com/services/" target="_blank" rel="noopener noreferrer" class="scroll-banner__link">Network Consultancy services</a> are for Clients who need assistance with a project or with resolving an issue. We can work remotely on a per-hour basis or onsite on a day rate basis.</li>
+              <li>Connect with our network consultant for specialised guidance and tailored solutions in Cisco network engineering and business network management.</li>
+              <li>Need a stronger, future-ready infrastructure with expert network consultancy? Discuss digital transformation initiatives, secure support services, or a thorough evaluation of your current network environment with our experts.</li>
+            </ul>
+          </div>
+        </div>
+        <!-- CTA pinned to banner bottom, clear of body text -->
+        <a href="#contact" class="btn-blue-lg hover-btn scroll-banner-cta-abs">Schedule a Network Health Assessment</a>
+        <div class="scroll-dots">
+          <div class="dot inactive"></div>
+          <div class="dot active"></div>
         </div>
       </div>
-      <!-- CTA pinned to banner bottom, clear of body text -->
-      <a href="#contact" class="btn-blue-lg hover-btn scroll-banner-cta-abs">Schedule a Network Health Assessment</a>
-      <div class="scroll-dots">
-        <div class="dot inactive"></div>
-        <div class="dot active"></div>
-      </div>
     </div>
-    <!-- CTA is now inside .scroll-banner__content —— removed from here -->
   </div>
 
   <!-- ========= OUR CLIENTS ========= -->
@@ -1755,8 +1779,8 @@
         <h2>What our<br>client says</h2>
         <div class="t-nav">
           <div class="t-arrows">
-            <img class="t-arrow" src="https://www.figma.com/api/mcp/asset/f79d5799-88d4-40e6-9c22-86cadd58d924" alt="Previous" />
-            <img class="t-arrow" src="https://www.figma.com/api/mcp/asset/6f271d22-9da7-4647-831e-1ad4dc23922a" alt="Next" />
+            <img class="t-arrow" src="/images/misc/icon-arrow-left.svg" alt="Previous" />
+            <img class="t-arrow" src="/images/misc/icon-arrow-right.svg" alt="Next" />
           </div>
           <div class="t-progress">
             <div class="t-progress-fill"></div>
@@ -1765,11 +1789,11 @@
       </div>
       <div class="t-card animate-fade-up">
         <div class="t-stars">
-          <img src="https://www.figma.com/api/mcp/asset/18cf701f-93f7-4e7d-ac3b-8454e52bc4d6" alt="5 stars" />
+          <img src="/images/misc/stars.svg" alt="5 stars" />
         </div>
         <p class="t-quote">Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.</p>
         <div class="t-author">
-          <img class="t-avatar" src="https://www.figma.com/api/mcp/asset/0baaab1f-2595-46db-8256-649e8eadaf19" alt="Client avatar" />
+          <img class="t-avatar" src="/images/misc/testimonial-avatar.svg" alt="Client avatar" />
           <div class="t-info">
             <div class="t-role">MANAGING DIRECTOR</div>
             <div class="t-company">BROADCASTING COMPANY,<br>LONDON</div>
@@ -1790,7 +1814,7 @@
             <span class="faq-num">01</span>
             <span class="faq-q">Can network consultancy help reduce cybersecurity risks?</span>
           </div>
-          <img class="faq-icon" src="https://www.figma.com/api/mcp/asset/c071ee55-c3d3-421b-9bd8-82091dd81447" alt="" />
+          <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="faq-divider"></div>
         <div class="faq-answer">Yes. We do security audits to update out-of-date firewall configurations and block unauthorised device access before hackers can breach your data perimeter.</div>
@@ -1802,9 +1826,9 @@
             <span class="faq-num">02</span>
             <span class="faq-q">Do you provide support for businesses with multiple locations?</span>
           </div>
-          <img class="faq-icon" src="https://www.figma.com/api/mcp/asset/c071ee55-c3d3-421b-9bd8-82091dd81447" alt="" />
+          <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
-        <div class="faq-divider" style="display:none;"></div>
+        <div class="faq-divider is-hidden"></div>
         <div class="faq-answer">Yes, we provide comprehensive multi-site support to ensure seamless network connectivity and management across all your business locations.</div>
       </div>
 
@@ -1814,9 +1838,9 @@
             <span class="faq-num">03</span>
             <span class="faq-q">What makes Network Consultancy different from larger IT providers?</span>
           </div>
-          <img class="faq-icon" src="https://www.figma.com/api/mcp/asset/c071ee55-c3d3-421b-9bd8-82091dd81447" alt="" />
+          <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
-        <div class="faq-divider" style="display:none;"></div>
+        <div class="faq-divider is-hidden"></div>
         <div class="faq-answer">We offer personalised, expert-led service with deep technical expertise and a commitment to understanding your business goals, delivering tailored solutions rather than one-size-fits-all approaches.</div>
       </div>
 
@@ -1830,15 +1854,15 @@
         <h2>Contact us today for a free consultation</h2>
         <p class="lead">We pride ourselves on delivering a flexible engagement style in order to meet your requirements. Contact us for your free consultation.</p>
         <div class="contact-detail">
-          <img src="https://www.figma.com/api/mcp/asset/bb0e1ebb-8395-4277-a3d1-46f2244067ce" alt="Phone" />
+          <img src="/images/pages/contact-phone-icon.svg" alt="Phone" />
           <span>+44 (0) 203 150 1401</span>
         </div>
         <div class="contact-detail">
-          <img src="https://www.figma.com/api/mcp/asset/12d9df2f-b61c-4d7c-a887-e8c9ef722fa7" alt="Address" />
+          <img src="/images/pages/contact-address-icon.svg" alt="Address" />
           <span>Birmingham<br>Beech House, Greenfield Crescent<br>Edgbaston, B15 3BE</span>
         </div>
         <div class="contact-detail">
-          <img src="https://www.figma.com/api/mcp/asset/3630074c-3bcb-40f7-a4d4-3a31a40248a8" alt="Email" />
+          <img src="/images/pages/contact-email-icon.svg" alt="Email" />
           <span>info@network-consultancy.com</span>
         </div>
       </div>
@@ -1867,7 +1891,7 @@
   <footer class="footer">
     <div class="footer__top">
       <div class="footer__brand">
-        <img class="footer__logo" src="https://www.figma.com/api/mcp/asset/fe65bcc4-3d31-445c-852c-5889183a39f8" alt="Network Consultancy" />
+        <img class="footer__logo" src="/images/misc/logo.png" alt="Network Consultancy" />
         <p class="footer__tagline">Expert network consultancy providing secure, scalable infrastructure solutions.</p>
         <div class="footer__search">
           <span>Search this site</span>
@@ -1877,9 +1901,9 @@
           </svg>
         </div>
         <div class="footer__social">
-          <img src="https://www.figma.com/api/mcp/asset/f36c0fc5-9ecd-47ee-b611-7d22be941ab8" alt="Facebook" />
-          <img src="https://www.figma.com/api/mcp/asset/cee47446-6909-4d5e-9aae-870949ace43c" alt="LinkedIn" />
-          <img src="https://www.figma.com/api/mcp/asset/258c8726-a07d-4067-aa0a-1a66a7cbe2d0" alt="Twitter / X" />
+          <span class="footer__social-badge" aria-label="Facebook">f</span>
+          <span class="footer__social-badge" aria-label="LinkedIn">in</span>
+          <span class="footer__social-badge" aria-label="X">x</span>
         </div>
       </div>
       <div class="footer__links">
@@ -1942,6 +1966,7 @@
     </div>
   </footer>
 
+  <script src="js/parallax.js" defer></script>
   <script src="js/animations.js" defer></script>
   <script>
     // ===== MEGA MENU =====

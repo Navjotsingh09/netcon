@@ -56,6 +56,30 @@
     targets.forEach(function (el) {
       observer.observe(el);
     });
+
+    // Guardrail: if the observer misses an element due to layout or script order,
+    // fall back to a cheap viewport check on scroll/resize so content never stays hidden.
+    var rafId = null;
+    function revealInViewFallback() {
+      rafId = null;
+      var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      targets.forEach(function (el) {
+        if (el.classList.contains('is-visible')) return;
+        var rect = el.getBoundingClientRect();
+        if (rect.top < viewportHeight * 0.9 && rect.bottom > 0) {
+          el.classList.add('is-visible');
+        }
+      });
+    }
+    function scheduleFallback() {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(revealInViewFallback);
+    }
+
+    window.addEventListener('scroll', scheduleFallback, { passive: true });
+    window.addEventListener('resize', scheduleFallback);
+    window.addEventListener('load', scheduleFallback);
+    scheduleFallback();
   }
 
   // Run after the DOM is fully parsed
