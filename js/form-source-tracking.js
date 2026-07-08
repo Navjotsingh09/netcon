@@ -110,17 +110,41 @@
     init: function () {
       var path = window.location.pathname;
       var matched = false;
+      var candidates = [path];
+
+      if (path !== '/' && path.charAt(path.length - 1) !== '/' && path.indexOf('.html') === -1) {
+        candidates.push(path + '.html');
+      }
+
+      if (path !== '/' && path.charAt(path.length - 1) !== '/') {
+        candidates.push(path + '/');
+      }
 
       // Try exact match first
-      if (pageDefaults[path]) {
-        this.setFromDefaults(pageDefaults[path]);
-        matched = true;
-      } else {
+      for (var candidateIndex = 0; candidateIndex < candidates.length; candidateIndex++) {
+        if (pageDefaults[candidates[candidateIndex]]) {
+          this.setFromDefaults(pageDefaults[candidates[candidateIndex]]);
+          matched = true;
+          break;
+        }
+      }
+
+      if (!matched) {
         // Try path prefix matches
         for (var pagePath in pageDefaults) {
-          if (path.indexOf(pagePath) === 0) {
-            this.setFromDefaults(pageDefaults[pagePath]);
-            matched = true;
+          if (pagePath === '/') {
+            continue;
+          }
+
+          for (var prefixIndex = 0; prefixIndex < candidates.length; prefixIndex++) {
+            if (candidates[prefixIndex].indexOf(pagePath) === 0) {
+              this.setFromDefaults(pageDefaults[pagePath]);
+              matched = true;
+              break;
+            }
+          }
+
+          if (matched) {
             break;
           }
         }
