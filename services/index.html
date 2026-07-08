@@ -98,8 +98,8 @@
   <section class="svcs-hero" aria-label="Services hero">
     <div class="svcs-hero__wrap">
       <picture>
-        <source srcset="/images/pages/about-hero.webp" type="image/webp">
-        <img src="/images/pages/about-hero.jpg" alt="" class="svcs-hero__bg" width="1920" height="618" loading="eager">
+        <source srcset="/images/pages/unique/services-index-about-hero.webp" type="image/webp">
+        <img src="/images/pages/unique/services-index-about-hero.jpg" alt="" class="svcs-hero__bg" width="1920" height="618" loading="eager">
       </picture>
       <div class="svcs-hero__overlay" aria-hidden="true"></div>
       <div class="svcs-hero__content">
@@ -117,8 +117,8 @@
     <h2 class="section-title services-section__title" id="svc-listing-h">Services We Offer</h2>
     <div class="solutions-main">
       <picture>
-        <source id="svc-hero-source" srcset="/images/services/service-1.webp" type="image/webp">
-        <img id="svc-hero-img" src="/images/services/service-1.jpg" alt="Network Consultancy" width="1440" height="600" loading="lazy">
+        <source id="svc-hero-source" srcset="/images/unique/services-index-service-1.webp" type="image/webp">
+        <img id="svc-hero-img" src="/images/unique/services-index-service-1.jpg" alt="Network Consultancy" width="1440" height="600" loading="lazy">
       </picture>
       <div class="solutions-main__overlay"></div>
       <div class="solutions-infobox">
@@ -141,15 +141,15 @@
       </div>
       <div class="solutions-sub-cards" id="svc-thumbs">
         <div class="sol-sub">
-          <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="Network Advisory" loading="lazy"></picture>
+          <picture><source srcset="/images/unique/services-index-feature-2.webp" type="image/webp"><img src="/images/unique/services-index-feature-2.jpg" alt="Network Advisory" loading="lazy"></picture>
           <p>Network Advisory</p>
         </div>
         <div class="sol-sub">
-          <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="Network Assistance" loading="lazy"></picture>
+          <picture><source srcset="/images/unique/services-index-service-3.webp" type="image/webp"><img src="/images/unique/services-index-service-3.jpg" alt="Network Assistance" loading="lazy"></picture>
           <p>Network Assistance</p>
         </div>
         <div class="sol-sub">
-          <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="Design and Implementation of Networks" loading="lazy"></picture>
+          <picture><source srcset="/images/unique/services-index-service-2.webp" type="image/webp"><img src="/images/unique/services-index-service-2.jpg" alt="Design and Implementation of Networks" loading="lazy"></picture>
           <p>Design and Implementation of Networks</p>
         </div>
       </div>
@@ -209,10 +209,10 @@
     'use strict';
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var slides = [
-      { srcset:'/images/services/service-1.webp', src:'/images/services/service-1.jpg', alt:'Network Consultancy',        title:'Network Consultancy',        desc:'We design and deploy reliable infrastructure for sustainable enterprise growth. Our IT network consulting services assess, develop, and secure your business environment to prevent data breaches and costly downtime.', ctaHref:'/services/network-consultancy.html',       label:'Network Consultancy' },
-      { srcset:'/images/features/feature-2.webp', src:'/images/features/feature-2.jpg', alt:'Network Advisory',           title:'Network Advisory',           desc:'Strategic guidance on network architecture, technology selection, and roadmaps aligned to your business goals — so every investment moves you forward.',                                                                    ctaHref:'/services/network-design-deployment.html', label:'Network Advisory' },
-      { srcset:'/images/services/service-3.webp', src:'/images/services/service-3.jpg', alt:'Network Assistance',         title:'Network Assistance',         desc:'Responsive, hands-on support and troubleshooting that keeps your network secure and performing at its best, whenever you need us.',                                                                                        ctaHref:'/services/network-support.html',           label:'Network Assistance' },
-      { srcset:'/images/services/service-2.webp', src:'/images/services/service-2.jpg', alt:'Design and Implementation of Networks', title:'Design & Implementation of Networks', desc:'End-to-end design and deployment of resilient, scalable network infrastructure tailored to your environment and future growth.',                                                        ctaHref:'/services/network-installations.html',     label:'Design and Implementation of Networks' }
+      { srcset:'/images/unique/services-index-service-1.webp', src:'/images/unique/services-index-service-1.jpg', alt:'Network Consultancy',        title:'Network Consultancy',        desc:'We design and deploy reliable infrastructure for sustainable enterprise growth. Our IT network consulting services assess, develop, and secure your business environment to prevent data breaches and costly downtime.', ctaHref:'/services/network-consultancy.html',       label:'Network Consultancy' },
+      { srcset:'/images/unique/services-index-feature-2.webp', src:'/images/unique/services-index-feature-2.jpg', alt:'Network Advisory',           title:'Network Advisory',           desc:'Strategic guidance on network architecture, technology selection, and roadmaps aligned to your business goals — so every investment moves you forward.',                                                                    ctaHref:'/services/network-design-deployment.html', label:'Network Advisory' },
+      { srcset:'/images/unique/services-index-service-3.webp', src:'/images/unique/services-index-service-3.jpg', alt:'Network Assistance',         title:'Network Assistance',         desc:'Responsive, hands-on support and troubleshooting that keeps your network secure and performing at its best, whenever you need us.',                                                                                        ctaHref:'/services/network-support.html',           label:'Network Assistance' },
+      { srcset:'/images/unique/services-index-service-2.webp', src:'/images/unique/services-index-service-2.jpg', alt:'Design and Implementation of Networks', title:'Design & Implementation of Networks', desc:'End-to-end design and deployment of resilient, scalable network infrastructure tailored to your environment and future growth.',                                                        ctaHref:'/services/network-installations.html',     label:'Design and Implementation of Networks' }
     ];
     var total = slides.length, idx = 0, busy = false;
     var section = document.querySelector('.services-section');
