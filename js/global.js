@@ -240,4 +240,72 @@
     });
   }
 
+  /* ── Case Study Floating Services ─────────────────────────── */
+  function setupCaseStudyFloatingServices() {
+    var ctaSections = document.querySelectorAll('.cs-blue-cta, .csd-cta-band');
+    if (!ctaSections.length) return;
+
+    var allServices = ['service 1', 'service 2', 'service 3', 'service 4', 'service 5', 'service 6'];
+
+    function normalizeServiceName(value) {
+      return (value || '').toLowerCase().replace(/-/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+
+    function createLane(labels, isReverse) {
+      var lane = document.createElement('div');
+      lane.className = 'nc-service-lane' + (isReverse ? ' is-reverse' : '');
+
+      var track = document.createElement('div');
+      track.className = 'nc-service-track';
+
+      var base = labels.length ? labels.slice() : allServices.slice(0, 3);
+      var doubled = base.concat(base);
+      doubled.forEach(function (label) {
+        var chip = document.createElement('span');
+        chip.className = 'nc-service-chip';
+        chip.textContent = label;
+        track.appendChild(chip);
+      });
+
+      lane.appendChild(track);
+      return lane;
+    }
+
+    ctaSections.forEach(function (section) {
+      if (section.querySelector('.nc-service-floater')) return;
+
+      var currentService = normalizeServiceName(section.getAttribute('data-current-service'));
+      var services = allServices.filter(function (s) { return s !== currentService; });
+      if (services.length < 4) services = allServices.slice();
+
+      var laneOne = services.filter(function (_item, index) { return index % 2 === 0; });
+      var laneTwo = services.filter(function (_item, index) { return index % 2 !== 0; });
+
+      if (!laneOne.length || !laneTwo.length) {
+        laneOne = allServices.slice(0, 3);
+        laneTwo = allServices.slice(3, 6);
+      }
+
+      var container = section.querySelector('.cs-blue-inner, .csd-cta-inner');
+      var card = section.querySelector('.cs-center-panel, .csd-cta-card');
+      if (!container || !card) return;
+
+      var oldMainRows = section.querySelector('.cs-tag-rows');
+      if (oldMainRows) oldMainRows.setAttribute('hidden', 'hidden');
+      var oldDetailRows = section.querySelector('.csd-pill-list');
+      if (oldDetailRows) oldDetailRows.setAttribute('hidden', 'hidden');
+
+      var floater = document.createElement('div');
+      floater.className = 'nc-service-floater';
+      floater.setAttribute('aria-hidden', 'true');
+
+      floater.appendChild(createLane(laneOne, false));
+      floater.appendChild(createLane(laneTwo, true));
+
+      container.insertBefore(floater, card);
+    });
+  }
+
+  setupCaseStudyFloatingServices();
+
 })();
