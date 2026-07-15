@@ -14,18 +14,19 @@
   <style>
     .csd-page { max-width: var(--section-w); margin: 0 auto; padding: 28px var(--px) 0; }
     .csd-top { max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 36px; align-items: start; }
-    .csd-title { margin: 24px 0 20px; color: #4c4c4c; font-family: 'Google Sans Flex', sans-serif; font-size: 63px; font-weight: 600; line-height: 1.06; max-width: 960px; }
+    .csd-title { margin: 24px 0 20px; color: #353535; font-family: 'Google Sans Flex', sans-serif; font-size: 63px; font-weight: 600; line-height: 1.06; max-width: 960px; }
     .csd-intro { margin: 0 0 18px; color: #585151; font-family: 'Google Sans Flex', sans-serif; font-size: 18px; font-weight: 400; line-height: 1.25; max-width: 960px; }
     .csd-hero-image { margin: 24px 0 36px; border-radius: 10px; overflow: hidden; }
     .csd-hero-image img { width: 100%; height: auto; display: block; }
-    .csd-section-title { margin: 0 0 16px; color: #4c4c4c; font-family: 'Google Sans Flex', sans-serif; font-size: 48px; font-weight: 600; line-height: 1.1; }
+    .csd-section-title { margin: 0 0 16px; color: #0982c5; font-family: 'Google Sans Flex', sans-serif; font-size: 48px; font-weight: 600; line-height: 1.1; }
     .csd-copy p { margin: 0 0 16px; color: #585151; font-family: 'Google Sans Flex', sans-serif; font-size: 18px; font-weight: 400; line-height: 1.25; }
     .csd-copy ul { margin: 0 0 20px; padding-left: 24px; }
     .csd-copy li { margin: 0 0 12px; color: #585151; font-family: 'Google Sans Flex', sans-serif; font-size: 18px; font-weight: 400; line-height: 1.25; }
     .csd-latest { background: #ebebeb; border-radius: 24px; padding: 28px 20px 24px; position: sticky; top: 118px; }
     .csd-latest h2 { margin: 0 0 18px; color: #353535; font-family: 'Google Sans Flex', sans-serif; font-size: 42px; font-weight: 600; line-height: 1.1; }
     .csd-latest-item { display: grid; grid-template-columns: 68px 1fr; gap: 12px; text-decoration: none; margin-bottom: 12px; }
-    .csd-latest-thumb { height: 50px; border: 1px solid #353535; border-radius: 8px; background: #d9d9d9; }
+    .csd-latest-thumb { height: 50px; border: 1px solid #353535; border-radius: 8px; background: #d9d9d9; overflow: hidden; display: block; }
+    .csd-latest-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .csd-latest-item span { color: #353535; font-family: 'Google Sans Flex', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.2; }
     .csd-latest-more { margin-top: 14px; display: inline-flex; align-items: center; min-height: 44px; color: #353535; font-family: 'Google Sans Flex', sans-serif; font-size: 14px; font-weight: 500; text-decoration: none; }
     .csd-cta-band { margin-top: 42px; background: #0982c5; padding: 52px var(--px); }
@@ -37,17 +38,6 @@
     .csd-cta-card h3 { margin: 0 0 12px; color: #353535; font-family: 'Google Sans Flex', sans-serif; font-size: 33px; font-weight: 500; line-height: 1.2; }
     .csd-cta-card p { margin: 0 0 18px; color: #353535; font-family: 'Google Sans Flex', sans-serif; font-size: 18px; font-weight: 400; line-height: 1.2; }
     .csd-cta-card a { display: inline-block; background: #0982C5; color: #fff; border-radius: 15px; padding: 11px 24px; font-family: 'Google Sans Flex', sans-serif; font-size: 24px; font-weight: 600; text-decoration: none; }
-    .csd-faq { max-width: 1440px; margin: 0 auto; padding: 64px 0 88px; }
-    .csd-faq h2 { margin: 0 0 28px; color: #0982C5; font-family: 'Google Sans Flex', sans-serif; font-size: 48px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; }
-    .csd-faq-list { display: flex; flex-direction: column; gap: 12px; }
-    .csd-faq-item { border-radius: 12px; overflow: hidden; }
-    .csd-faq-item summary { list-style: none; cursor: pointer; background: #859aba; color: #fff; display: flex; align-items: center; gap: 18px; padding: 28px 32px; font-family: 'Google Sans Flex', sans-serif; font-size: 34px; font-weight: 500; line-height: 1.2; }
-    .csd-faq-item summary::-webkit-details-marker { display: none; }
-    .csd-faq-number { font-size: 52px; font-weight: 400; min-width: 54px; }
-    .csd-faq-q { font-size: 35px; font-weight: 400; flex: 1; }
-    .csd-faq-star { font-size: 34px; }
-    .csd-faq-item[open] summary { background: #0982C5; }
-    .csd-faq-answer { background: #0982C5; color: #fff; padding: 0 32px 28px 104px; font-family: 'Google Sans Flex', sans-serif; font-size: 37px; font-weight: 500; line-height: 1.2; }
     @media (max-width: 1200px) {
       .csd-top { grid-template-columns: 1fr; }
       .csd-latest { position: static; max-width: 520px; }
@@ -56,10 +46,6 @@
       .csd-section-title { font-size: 38px; }
       .csd-cta-card h3 { font-size: 28px; }
       .csd-cta-card p { font-size: 18px; }
-      .csd-faq h2 { font-size: 36px; }
-      .csd-faq-item summary { font-size: 26px; }
-      .csd-faq-q { font-size: 26px; }
-      .csd-faq-answer { font-size: 24px; padding: 0 20px 22px 20px; }
       .csd-pill-list { display: none; }
     }
     @media (max-width: 768px) {
@@ -71,11 +57,6 @@
       .csd-cta-card h3 { font-size: 24px; }
       .csd-cta-card p { font-size: 16px; }
       .csd-cta-card a { font-size: 20px; }
-      .csd-faq h2 { font-size: 30px; }
-      .csd-faq-item summary { padding: 20px; }
-      .csd-faq-number { font-size: 34px; min-width: 38px; }
-      .csd-faq-q { font-size: 21px; }
-      .csd-faq-star { font-size: 24px; }
     }
   </style>
 </head>
@@ -140,16 +121,16 @@
 
         <aside class="csd-latest" aria-label="Latest case studies">
           <h2>Latest Case Studies</h2>
-          <a class="csd-latest-item" href="/case-studies/antal-international/">
-            <span class="csd-latest-thumb" aria-hidden="true"></span>
+          <a class="csd-latest-item" href="/case-studies/antal-international.html">
+            <span class="csd-latest-thumb" aria-hidden="true"><img src="/images/pages/unique/case-studies-antal-international-case-study-detail-hero.jpg" alt="" loading="lazy"></span>
             <span>Antal International - Global SASE Transformation</span>
           </a>
-          <a class="csd-latest-item" href="/case-studies/auriga-networks/">
-            <span class="csd-latest-thumb" aria-hidden="true"></span>
+          <a class="csd-latest-item" href="/case-studies/auriga-networks.html">
+            <span class="csd-latest-thumb" aria-hidden="true"><img src="/images/pages/unique/case-studies-auriga-networks-case-study-detail-hero.jpg" alt="" loading="lazy"></span>
             <span>Auriga Networks - Managed Network Support and Infrastructure Development</span>
           </a>
-          <a class="csd-latest-item" href="/case-studies/nta-core-network-upgrade/">
-            <span class="csd-latest-thumb" aria-hidden="true"></span>
+          <a class="csd-latest-item" href="/case-studies/nta-core-network-upgrade.html">
+            <span class="csd-latest-thumb" aria-hidden="true"><img src="/images/pages/unique/case-studies-nta-core-network-upgrade-case-study-detail-hero.jpg" alt="" loading="lazy"></span>
             <span>NTA - Core Network Support and Managed Services Partnership</span>
           </a>
           <a class="csd-latest-more" href="/case-studies/">See More</a>
@@ -167,29 +148,25 @@
         <div class="csd-cta-card">
           <h3>Improve your network security and infrastructure.</h3>
           <p>Get in touch to discuss what's putting your current systems at risk and what a centrally managed environment would look like for your organisation.</p>
-          <a href="/contact/" data-source-cta="case_study_detail_assessment">Book Your Network Assessment</a>
+          <a href="/contact.html" data-source-cta="case_study_detail_assessment">Book Your Network Assessment</a>
         </div>
       </div>
     </section>
 
-    <section class="csd-page">
-      <section class="csd-faq" aria-labelledby="faq-title">
-        <h2 id="faq-title">Frequently Asked Questions</h2>
-        <div class="csd-faq-list">
-          <details class="csd-faq-item" open>
-            <summary><span class="csd-faq-number">01</span><span class="csd-faq-q">Why is upgrading the network and security infrastructure important?</span><span class="csd-faq-star" aria-hidden="true">✦</span></summary>
-            <div class="csd-faq-answer">Outdated systems increase risk and limit performance. Upgrading them closes the security gaps and capacity limits that come with ageing infrastructure.</div>
-          </details>
-          <details class="csd-faq-item">
-            <summary><span class="csd-faq-number">02</span><span class="csd-faq-q">What benefits does centralised network management provide?</span><span class="csd-faq-star" aria-hidden="true">✦</span></summary>
-            <div class="csd-faq-answer">Centralised management improves visibility, accelerates troubleshooting, and keeps policy enforcement consistent across all network locations.</div>
-          </details>
-          <details class="csd-faq-item">
-            <summary><span class="csd-faq-number">03</span><span class="csd-faq-q">Can infrastructure upgrades support business growth?</span><span class="csd-faq-star" aria-hidden="true">✦</span></summary>
-            <div class="csd-faq-answer">Yes. A modern network foundation scales with new users, sites, and applications while maintaining performance and resilience.</div>
-          </details>
-        </div>
-      </section>
+    <section class="nd-faq section-shell animate-fade-up" aria-labelledby="faq-title">
+      <div class="nd-faq__left">
+        <h2 class="section-title" id="faq-title">Frequently Asked Questions</h2>
+        <p>Still have questions? Get connected to our support team.</p>
+        <a href="/contact.html" class="nd-faq__cta">Contact us</a>
+      </div>
+      <div class="nd-faq__right">
+        <button class="nd-faq__item is-open"><span>Why is upgrading the network and security infrastructure important?</span><strong>−</strong></button>
+        <div class="nd-faq__panel">Outdated systems increase risk and limit performance. Upgrading them closes the security gaps and capacity limits that come with ageing infrastructure.</div>
+        <button class="nd-faq__item"><span>What benefits does centralised network management provide?</span><strong>+</strong></button>
+        <div class="nd-faq__panel" hidden>Centralised management improves visibility, accelerates troubleshooting, and keeps policy enforcement consistent across all network locations.</div>
+        <button class="nd-faq__item"><span>Can infrastructure upgrades support business growth?</span><strong>+</strong></button>
+        <div class="nd-faq__panel" hidden>Yes. A modern network foundation scales with new users, sites, and applications while maintaining performance and resilience.</div>
+      </div>
     </section>
   </main>
   <div id="site-contact"></div>
