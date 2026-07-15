@@ -1391,7 +1391,12 @@
       }
       .mab-cap__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
       .mab-cap__top h3 { font-size: 19px; font-weight: 700; line-height: 1.25; margin: 0; color: #fff; max-width: 26ch; }
-      .mab-cap__arrow { font-size: 30px; line-height: 1; color: #fff; flex-shrink: 0; }
+      .mab-cap__arrow { font-size: 30px; line-height: 1; color: #fff; flex-shrink: 0; display: inline-block; transition: transform 0.25s ease; }
+      .mab-cap { display: block; color: #fff; text-decoration: none; transition: transform 0.2s ease; }
+      .mab-cap:hover .mab-cap__arrow,
+      .mab-cap:focus-visible .mab-cap__arrow,
+      .mab-cap:active .mab-cap__arrow { transform: rotate(45deg); }
+      .mab-cap:active { transform: scale(0.985); }
       .mab-cap p { font-size: 15.5px; line-height: 1.55; color: rgba(255,255,255,.95); margin: 0; }
 
       .mab-story { margin-bottom: 26px; }
