@@ -753,6 +753,7 @@
       font-weight: 600;
       font-family: var(--font-body);
     }
+    .main-services__cta--mobile { display: none; }
     .main-services__grid {
       max-width: var(--max-w);
       margin: 0 auto;
@@ -1728,6 +1729,8 @@
       .main-services__head { margin-bottom: 18px; }
       .main-services__intro { font-size: 14px; line-height: 1.55; color: var(--sub); }
       .main-services__cta { width: 100%; font-size: 14px; min-height: 44px; }
+      .main-services__head .main-services__cta { display: none; }
+      .main-services__cta--mobile { display: inline-flex; margin-top: 24px; }
 
       /* Services grid: single column */
       .main-services__grid { grid-template-columns: 1fr; }
@@ -1951,6 +1954,7 @@
         </div>
       </div>
     </div>
+    <a href="/services/index.html" class="btn-blue main-services__cta main-services__cta--mobile" data-source-cta="main_services_book_call">Book a free call</a>
   </section>
 
   <section class="nd-highlight section-shell">
@@ -3400,8 +3404,8 @@ Edgbaston, B15 3BE</p>
         grid-template-columns: 1fr;
         padding: 36px 28px;
         row-gap: 28px;
-        background: #162470;
-        border-color: #162470;
+        background: #0982c5;
+        border-color: #0982c5;
       }
       .nd-figma-managed__title { color: #fff; }
       .nd-figma-managed__copy,
