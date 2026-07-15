@@ -1391,12 +1391,27 @@
       }
       .mab-cap__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
       .mab-cap__top h3 { font-size: 19px; font-weight: 700; line-height: 1.25; margin: 0; color: #fff; max-width: 26ch; }
-      .mab-cap__arrow { font-size: 30px; line-height: 1; color: #fff; flex-shrink: 0; display: inline-block; transition: transform 0.25s ease; }
       .mab-cap { display: block; color: #fff; text-decoration: none; transition: transform 0.2s ease; }
+      .mab-cap:active { transform: scale(0.985); }
+      .mab-cap__top { margin-bottom: 0; transition: margin-bottom 0.3s ease; }
+      .mab-cap__arrow {
+        font-size: 30px; line-height: 1; color: #fff; flex-shrink: 0;
+        display: inline-block; opacity: 0; transform: translate(-4px, 4px);
+        transition: opacity 0.25s ease, transform 0.3s ease;
+      }
+      .mab-cap p {
+        max-height: 0; opacity: 0; overflow: hidden;
+        transition: max-height 0.4s ease, opacity 0.3s ease 0.05s;
+      }
+      .mab-cap:hover .mab-cap__top,
+      .mab-cap:focus-visible .mab-cap__top,
+      .mab-cap.is-open .mab-cap__top { margin-bottom: 14px; }
       .mab-cap:hover .mab-cap__arrow,
       .mab-cap:focus-visible .mab-cap__arrow,
-      .mab-cap:active .mab-cap__arrow { transform: rotate(45deg); }
-      .mab-cap:active { transform: scale(0.985); }
+      .mab-cap.is-open .mab-cap__arrow { opacity: 1; transform: translate(0, 0) rotate(45deg); }
+      .mab-cap:hover p,
+      .mab-cap:focus-visible p,
+      .mab-cap.is-open p { max-height: 320px; opacity: 1; }
       .mab-cap p { font-size: 15.5px; line-height: 1.55; color: rgba(255,255,255,.95); margin: 0; }
 
       .mab-story { margin-bottom: 26px; }
@@ -2094,6 +2109,20 @@ Edgbaston, B15 3BE</p>
       vp.addEventListener('scroll', function () {
         if (ticking === false) { ticking = true; requestAnimationFrame(sync); }
       }, { passive: true });
+    })();
+
+    (function mabCapReveal() {
+      var isTouch = window.matchMedia('(hover: none)').matches;
+      if (isTouch === false) return;
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.mab-cap'));
+      cards.forEach(function (card) {
+        card.addEventListener('click', function (e) {
+          if (card.classList.contains('is-open')) return;
+          e.preventDefault();
+          cards.forEach(function (c) { c.classList.remove('is-open'); });
+          card.classList.add('is-open');
+        });
+      });
     })();
   </script>
 </body>
