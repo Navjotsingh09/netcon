@@ -665,72 +665,104 @@
       transform: scale(1);
     }
 
-    .ab-faq {
-      padding: 0;
-    }
-
-    .ab-faq__panel {
-      background: #ebebeb;
-      border-radius: 10px;
-      padding: 50px;
+    .nd-faq {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: 500px 1fr;
+      gap: 28px;
+      background: #ebebeb;
+      border-radius: 8px;
+      padding: 42px 58px 40px 58px;
+      min-height: 432px;
     }
 
-    .ab-faq__title {
-      margin: 0 0 20px;
+    .nd-faq__left {
+      padding-top: 26px;
+      max-width: 420px;
+    }
+
+    .nd-faq__left .section-title {
       color: var(--navy);
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--ab-type-heading-xl);
+      font-size: var(--home-type-heading-xl);
       font-weight: 600;
-      line-height: 1;
+      font-family: var(--font-display);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
     }
 
-    .ab-faq__copy {
-      margin: 0 0 24px;
-      color: var(--sub);
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--ab-type-body-sm);
+    .nd-faq__left p {
+      margin: 0 0 28px;
+      color: #585151;
+      font-family: var(--font-body);
+      font-size: var(--home-type-body-sm);
+      font-weight: 400;
       line-height: 1.65;
       max-width: 38ch;
     }
 
-    .ab-faq-list {
-      border: 1px solid var(--gray-mid);
-      background: #fff;
-    }
-
-    .ab-faq-item {
-      border-bottom: 1px solid var(--gray-mid);
-    }
-
-    .ab-faq-item:last-child {
-      border-bottom: 0;
-    }
-
-    .ab-faq-item__q {
-      width: 100%;
-      border: 0;
-      background: #fff;
-      color: var(--dark);
-      text-align: left;
-      padding: 18px 20px;
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: 18px;
+    .nd-faq__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 108px;
+      height: 44px;
+      background: #353535;
+      color: #ffffff;
+      border-radius: 0;
+      font-family: var(--font-body);
+      font-size: 14px;
       font-weight: 600;
+      text-transform: none;
+      text-decoration: none;
+      padding: 0 18px;
+    }
+
+    .nd-faq__right {
+      padding: 10px 0 0;
+      max-width: 628px;
+      justify-self: end;
+      width: 100%;
+    }
+
+    .nd-faq__item {
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      cursor: pointer;
+      border: 1px solid #c6c6c6;
+      border-top: 0;
+      background: #d5d5d5;
+      border-radius: 0;
+      padding: 15px 20px;
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 400;
     }
 
-    .ab-faq-item__a {
+    .nd-faq__item.is-open {
+      background: #ffffff;
+    }
+
+    .nd-faq__item strong {
+      font-family: var(--font-heading);
+      font-size: 23px;
+      line-height: 1;
+      font-weight: 400;
+      color: #353535;
+      margin-left: 14px;
+    }
+
+    .nd-faq__panel {
+      background: #ffffff;
+      border: 1px solid #c6c6c6;
+      border-top: 0;
+      margin: 0;
       padding: 0 20px 18px;
-      color: var(--sub);
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: 16px;
-      line-height: 1.45;
+      font-family: var(--font-body);
+      font-size: 17px;
+      color: #585151;
+      line-height: 1.55;
     }
 
     .nd-contact__layout {
@@ -1002,7 +1034,6 @@
       .ab-story-card__title,
       .ab-pro__title,
       .ab-test__title,
-      .ab-faq__title,
       .ab-contact__title {
         font-size: 42px;
       }
@@ -1020,8 +1051,7 @@
 
       .ab-intro__grid,
       .ab-pro__card,
-      .ab-contact__panel,
-      .ab-faq__panel {
+      .ab-contact__panel {
         grid-template-columns: 1fr;
       }
 
@@ -1091,7 +1121,6 @@
       .ab-story-card__title,
       .ab-pro__title,
       .ab-test__title,
-      .ab-faq__title,
       .ab-contact__title,
       .ab-intro__title {
         font-size: 32px;
@@ -1111,7 +1140,6 @@
       .ab-story,
       .ab-pro,
       .ab-test,
-      .ab-faq,
       .ab-contact {
         padding: 0;
       }
@@ -1128,7 +1156,6 @@
 
       .ab-story-card__content,
       .ab-pro__card,
-      .ab-faq__panel,
       .ab-contact__panel {
         padding: 24px;
       }
@@ -1155,7 +1182,6 @@
       .ab-story-card__title,
       .ab-pro__title,
       .ab-test__title,
-      .ab-faq__title,
       .ab-contact__title,
       .ab-intro__title {
         font-size: 28px;
@@ -1189,11 +1215,6 @@
         transform: none;
       }
 
-      .ab-faq-item__q {
-        font-size: 16px;
-      }
-
-      .ab-faq__panel,
       .ab-contact__panel,
       .ab-pro__card,
       .ab-story-card__content {
@@ -1429,6 +1450,24 @@
       <div class="ab-test__dots" aria-hidden="true"></div>
     </section>
 
+    <section class="ab-shell">
+      <div class="ab-inner nd-faq">
+        <div class="nd-faq__left">
+          <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+          <p>Still have questions? Get connected to our support team.</p>
+          <a href="/contact.html" class="nd-faq__cta">Contact us</a>
+        </div>
+        <div class="nd-faq__right" id="nd-faq-list">
+          <button class="nd-faq__item is-open"><span>Can network consultancy help reduce cybersecurity risks?</span><strong>−</strong></button>
+          <div class="nd-faq__panel">Yes. We do security audits to update out-of-date firewall configurations and block unauthorised device access before hackers can breach your data perimeter.</div>
+          <button class="nd-faq__item"><span>Do you provide support for businesses with multiple locations?</span><strong>+</strong></button>
+          <div class="nd-faq__panel" hidden>Yes, we provide comprehensive multi-site support to ensure seamless network connectivity and management across all your business locations.</div>
+          <button class="nd-faq__item"><span>What makes Network Consultancy different from larger IT providers?</span><strong>+</strong></button>
+          <div class="nd-faq__panel" hidden>We offer personalised, expert-led service with deep technical expertise and a commitment to understanding your business goals, delivering tailored solutions rather than one-size-fits-all approaches.</div>
+        </div>
+      </div>
+    </section>
+
     <section class="nd-contact section-shell" id="contact">
       <div class="nd-contact__surface">
         <div class="nd-contact__layout">
@@ -1510,33 +1549,6 @@ Edgbaston, B15 3BE</p>
 
             <button class="nd-contact__submit" type="submit">Submit</button>
           </form>
-        </div>
-      </div>
-    </section>
-
-    <section class="ab-shell ab-faq" aria-label="Frequently asked questions">
-      <div class="ab-inner ab-faq__panel">
-        <div>
-          <h2 class="ab-faq__title">Frequently Asked Questions</h2>
-          <p class="ab-faq__copy">Still have questions? Get connected to our support team.</p>
-          <a href="/contact.html" class="ab-button" data-source-cta="about_faq_contact">Contact us</a>
-        </div>
-
-        <div class="ab-faq-list" id="ab-faq-list">
-          <article class="ab-faq-item">
-            <button type="button" class="ab-faq-item__q" aria-expanded="true">What does Network Consultancy specialise in?<span>−</span></button>
-            <div class="ab-faq-item__a">We specialise in network consultancy, managed network services and IT support, helping businesses design, secure and manage reliable network infrastructure that supports daily operations and long-term growth.</div>
-          </article>
-
-          <article class="ab-faq-item">
-            <button type="button" class="ab-faq-item__q" aria-expanded="false">Do you only work with Cisco-based environments?<span>+</span></button>
-            <div class="ab-faq-item__a" hidden>We can review your current setup during a consultation and confirm the best approach for your environment.</div>
-          </article>
-
-          <article class="ab-faq-item">
-            <button type="button" class="ab-faq-item__q" aria-expanded="false">Can you work alongside our internal IT team?<span>+</span></button>
-            <div class="ab-faq-item__a" hidden>Yes. We can work alongside your internal team to cover consultancy, support and managed delivery as needed.</div>
-          </article>
         </div>
       </div>
     </section>
@@ -1696,32 +1708,26 @@ Edgbaston, B15 3BE</p>
         }
       }
 
-      var list = document.getElementById("ab-faq-list");
+      var list = document.getElementById("nd-faq-list");
       if (!list) {
         return;
       }
 
-      var items = list.querySelectorAll(".ab-faq-item");
-      items.forEach(function (item, idx) {
-        var button = item.querySelector(".ab-faq-item__q");
-        var answer = item.querySelector(".ab-faq-item__a");
-        if (!button || !answer) {
-          return;
-        }
-
-        button.addEventListener("click", function () {
-          items.forEach(function (other, otherIdx) {
-            var otherBtn = other.querySelector(".ab-faq-item__q");
-            var otherAnswer = other.querySelector(".ab-faq-item__a");
-            if (!otherBtn || !otherAnswer) {
-              return;
-            }
-
-            var open = otherIdx === idx && otherAnswer.hidden;
-            otherAnswer.hidden = !open;
-            otherBtn.setAttribute("aria-expanded", open ? "true" : "false");
-            otherBtn.lastElementChild.textContent = open ? "−" : "+";
+      var items = list.querySelectorAll(".nd-faq__item");
+      items.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var panel = btn.nextElementSibling;
+          var open = btn.classList.contains("is-open");
+          items.forEach(function (b) {
+            b.classList.remove("is-open");
+            b.querySelector("strong").textContent = "+";
+            if (b.nextElementSibling) b.nextElementSibling.hidden = true;
           });
+          if (!open) {
+            btn.classList.add("is-open");
+            btn.querySelector("strong").textContent = "−";
+            if (panel) panel.hidden = false;
+          }
         });
       });
     })();
