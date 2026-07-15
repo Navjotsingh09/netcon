@@ -30,10 +30,10 @@ html {
   top: -120%;
   left: 16px;
   z-index: 10000;
-  background: #162470;
+  background: #0982C5;
   color: #ffffff;
   padding: 12px 24px;
-  font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Google Sans Flex', 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   border-radius: 0 0 10px 10px;
@@ -72,7 +72,7 @@ html {
 
 /* Widget root */
 #a11y-widget {
-  font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Google Sans Flex', 'Helvetica Neue', Arial, sans-serif;
   isolation: isolate;
   position: fixed;
   top: 0;
@@ -120,7 +120,7 @@ html {
 }
 
 .a11y-trigger:hover {
-  background: #162470;
+  background: #0982C5;
   transform: scale(1.08);
   box-shadow: 0 6px 24px rgba(22, 36, 112, 0.5), 0 2px 8px rgba(0, 0, 0, 0.25);
 }
@@ -128,7 +128,7 @@ html {
 .a11y-trigger:focus-visible {
   outline: 3px solid #ffffff;
   outline-offset: 3px;
-  background: #162470;
+  background: #0982C5;
 }
 
 .a11y-trigger svg {
@@ -144,7 +144,7 @@ html {
   right: 64px;
   top: 50%;
   transform: translateY(-50%);
-  background: #162470;
+  background: #0982C5;
   color: #fff;
   font-size: 13px;
   font-weight: 600;
@@ -200,7 +200,7 @@ html {
 
 /* ── Panel header ─────────────────────────────────────────────── */
 .a11y-panel__header {
-  background: #162470;
+  background: #0982C5;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -219,7 +219,7 @@ html {
 }
 
 .a11y-panel__title {
-  font-family: 'Roboto Condensed', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Google Sans Flex', 'Helvetica Neue', Arial, sans-serif;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -340,12 +340,12 @@ html {
 }
 
 .a11y-font-ctrl:hover:not(:disabled) {
-  background: #162470;
+  background: #0982C5;
   transform: scale(1.1);
 }
 
 .a11y-font-ctrl:focus-visible {
-  outline: 2px solid #162470;
+  outline: 2px solid #0982C5;
   outline-offset: 2px;
 }
 
@@ -358,7 +358,7 @@ html {
 .a11y-font-pct {
   font-size: 14px;
   font-weight: 700;
-  color: #162470;
+  color: #0982C5;
   min-width: 44px;
   text-align: center;
   letter-spacing: 0.02em;
@@ -405,8 +405,8 @@ html {
 }
 
 .a11y-option.is-active {
-  background: #162470;
-  border-color: #162470;
+  background: #0982C5;
+  border-color: #0982C5;
   color: #ffffff;
 }
 
@@ -438,7 +438,7 @@ html {
 
 /* Text icon for Aa / B */
 .a11y-icon-text {
-  font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Google Sans Flex', 'Helvetica Neue', Arial, sans-serif;
   font-size: 17px;
   font-weight: 700;
   color: inherit;
@@ -468,7 +468,7 @@ html {
   border: 2px solid #d9d9d9;
   border-radius: 10px;
   cursor: pointer;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Google Sans Flex', sans-serif;
   font-size: 13px;
   font-weight: 600;
   color: #585151;

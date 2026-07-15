@@ -6,7 +6,7 @@
   <title>Network Consultancy — High-Performance, Secure Networks for Thriving SMEs</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
@@ -14,7 +14,9 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
       color: #353535;
       background: #fff;
       overflow-x: hidden;
@@ -31,10 +33,13 @@
     button { cursor: pointer; border: none; outline: none; background: none; }
 
     :root {
+      --font-display: 'Google Sans Flex', sans-serif;
+      --font-heading: 'Google Sans Flex', sans-serif;
+      --font-body: 'Google Sans Flex', sans-serif;
       --max-w: 1440px;   /* standard container max-width */
       --section-w: 1920px;
       --px: 240px;        /* standard horizontal padding — overridden per breakpoint */
-      --navy: #162470;
+      --navy: #0982c5;
       --blue: #0982c5;
       --dark: #353535;
       --gray-bg: #EBEBEB;
@@ -44,17 +49,17 @@
 
     /* ===== UTILITIES ===== */
     .section-title {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 42px;
       font-weight: 600;
       color: var(--navy);
-      line-height: 1;
+      line-height: 1.08;
     }
     .btn-blue {
       background: var(--blue);
       color: #fff;
-      font-family: 'Barlow', sans-serif;
-      font-size: 20px;
+      font-family: var(--font-body);
+      font-size: 18px;
       font-weight: 600;
       padding: 13px 24px;
       border-radius: 10px;
@@ -69,7 +74,7 @@
     .btn-blue-lg {
       background: var(--blue);
       color: #fff;
-      font-family: 'Barlow', sans-serif;
+      font-family: var(--font-body);
       font-size: 15px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -86,8 +91,8 @@
     .btn-dark {
       background: var(--dark);
       color: #fff;
-      font-family: 'Barlow', sans-serif;
-      font-size: 20px;
+      font-family: var(--font-body);
+      font-size: 18px;
       font-weight: 600;
       padding: 12px 24px;
       border-radius: 10px;
@@ -196,7 +201,7 @@
       margin-right: auto;
     }
     .navbar__links .nav-link {
-      font-family: 'Barlow', sans-serif;
+      font-family: var(--font-body);
       font-size: 16px;
       font-weight: 600;
       color: var(--dark);
@@ -242,13 +247,13 @@
     .mega-inner--services .mega-featured picture,
     .mega-inner--services .mega-featured picture > img { display:none; }
     .mega-featured__body { padding:22px 20px; flex:1; display:flex; flex-direction:column; }
-    .mega-featured__label { font-family:'Barlow',sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(9,130,197,.9); display:block; margin-bottom:10px; }
-    .mega-featured__title { font-family:'Roboto Condensed',sans-serif; font-size:18px; font-weight:700; color:#fff; margin-bottom:8px; line-height:1.2; }
-    .mega-featured__desc { font-family:'Barlow',sans-serif; font-size:11px; color:rgba(255,255,255,.7); line-height:1.5; flex:1; margin-bottom:18px; overflow-wrap:break-word; }
-    .mega-featured__link { font-family:'Barlow',sans-serif; font-size:12px; font-weight:600; color:#fff; display:inline-flex; align-items:center; gap:6px; padding:9px 14px; background:rgba(255,255,255,.12); border-radius:6px; margin-top:auto; transition:background .2s; }
+    .mega-featured__label { font-family:var(--font-body); font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(9,130,197,.9); display:block; margin-bottom:10px; }
+    .mega-featured__title { font-family:var(--font-heading); font-size:18px; font-weight:700; color:#fff; margin-bottom:8px; line-height:1.2; }
+    .mega-featured__desc { font-family:var(--font-body); font-size:11px; color:rgba(255,255,255,.7); line-height:1.5; flex:1; margin-bottom:18px; overflow-wrap:break-word; }
+    .mega-featured__link { font-family:var(--font-body); font-size:12px; font-weight:600; color:#fff; display:inline-flex; align-items:center; gap:6px; padding:9px 14px; background:rgba(255,255,255,.12); border-radius:6px; margin-top:auto; transition:background .2s; }
     .mega-featured__link:hover { background:rgba(255,255,255,.2); text-decoration:none; }
     .mega-items { flex:1; display:grid; grid-template-columns:1fr 1fr; gap:4px; align-content:start; }
-    .mega-inner--services .mega-item { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:11px 14px; border:1px solid var(--gray-mid); border-radius:3px; background:#fff; font-family:'Barlow',sans-serif; font-size:13px; font-weight:600; color:var(--dark); text-decoration:none; min-height:40px; transition:background .15s,border-color .15s,color .15s; }
+    .mega-inner--services .mega-item { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:11px 14px; border:1px solid var(--gray-mid); border-radius:3px; background:#fff; font-family:var(--font-body); font-size:13px; font-weight:600; color:var(--dark); text-decoration:none; min-height:40px; transition:background .15s,border-color .15s,color .15s; }
     .mega-inner--services .mega-item:hover { background:rgba(22,36,112,.05); border-color:rgba(22,36,112,.2); color:var(--navy); }
     .mega-inner--services .mega-item picture,
     .mega-inner--services .mega-item img { display:none; }
@@ -257,8 +262,8 @@
     .mega-inner--services .mega-item:hover::after { opacity:1; transform:translateX(0); }
     /* SOLUTIONS — 4-column text style */
     .mega-heading { display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; margin-bottom:18px; border-bottom:1px solid var(--gray-mid); }
-    .mega-heading__title { font-family:'Barlow',sans-serif; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--sub); }
-    .mega-heading__all { font-family:'Barlow',sans-serif; font-size:13px; font-weight:600; color:var(--blue); }
+    .mega-heading__title { font-family:var(--font-body); font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--sub); }
+    .mega-heading__all { font-family:var(--font-body); font-size:13px; font-weight:600; color:var(--blue); }
     .mega-heading__all:hover { text-decoration:underline; }
     .mega-inner--solutions { padding-bottom:28px; }
     .mega-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--gray-mid); border:1px solid var(--gray-mid); border-radius:8px; overflow:hidden; }
@@ -266,14 +271,14 @@
     .mega-card:hover { background:#f7f8fc; transform:none; box-shadow:none; }
     .mega-card__img { display:none; }
     .mega-card__body { padding:0; flex:1; display:flex; flex-direction:column; }
-    .mega-card__title { font-family:'Roboto Condensed',sans-serif; font-size:15px; font-weight:700; color:var(--navy); margin-bottom:10px; padding-bottom:10px; border-bottom:1px solid var(--gray-mid); line-height:1.3; }
-    .mega-card__desc { font-family:'Barlow',sans-serif; font-size:12px; color:var(--sub); line-height:1.55; flex:1; overflow-wrap:break-word; word-break:break-word; }
-    .mega-card__link { font-family:'Barlow',sans-serif; font-size:12px; font-weight:600; color:var(--blue); margin-top:14px; display:inline-flex; align-items:center; gap:4px; }
+    .mega-card__title { font-family:var(--font-heading); font-size:15px; font-weight:700; color:var(--navy); margin-bottom:10px; padding-bottom:10px; border-bottom:1px solid var(--gray-mid); line-height:1.3; }
+    .mega-card__desc { font-family:var(--font-body); font-size:12px; color:var(--sub); line-height:1.55; flex:1; overflow-wrap:break-word; word-break:break-word; }
+    .mega-card__link { font-family:var(--font-body); font-size:12px; font-weight:600; color:var(--blue); margin-top:14px; display:inline-flex; align-items:center; gap:4px; }
     .mega-card__link:hover { text-decoration:underline; }
     /* INDUSTRIES — Resources style: bordered rows + featured card */
     .mega-inner--industries { display:flex; gap:14px; align-items:stretch; }
     .mega-ind-grid { flex:1; display:grid; grid-template-columns:1fr 1fr; gap:0; background:var(--gray-mid); border:1px solid var(--gray-mid); border-radius:8px; overflow:hidden; align-content:start; align-self:start; }
-    .mega-inner--industries .mega-item { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:12px 16px; border:none; border-radius:0; background:#fff; font-family:'Barlow',sans-serif; font-size:13px; font-weight:500; color:var(--dark); text-decoration:none; min-height:46px; transition:background .15s,color .15s; }
+    .mega-inner--industries .mega-item { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:12px 16px; border:none; border-radius:0; background:#fff; font-family:var(--font-body); font-size:13px; font-weight:500; color:var(--dark); text-decoration:none; min-height:46px; transition:background .15s,color .15s; }
     .mega-inner--industries .mega-item:hover { background:rgba(22,36,112,.04); color:var(--navy); }
     .mega-inner--industries .mega-item picture,
     .mega-inner--industries .mega-item img { display:none; }
@@ -289,10 +294,10 @@
     .mega-res-card:hover { box-shadow:0 8px 24px rgba(0,0,0,.11); transform:translateY(-2px); }
     .mega-res-card__img { width:100%; height:140px; object-fit:cover; display:block; }
     .mega-res-card__body { padding:16px 18px 20px; flex:1; display:flex; flex-direction:column; }
-    .mega-res-card__cat { font-family:'Barlow',sans-serif; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--blue); margin-bottom:6px; }
-    .mega-res-card__title { font-family:'Roboto Condensed',sans-serif; font-size:18px; font-weight:700; color:var(--navy); margin-bottom:8px; line-height:1.2; }
-    .mega-res-card__desc { font-family:'Barlow',sans-serif; font-size:13px; color:var(--sub); line-height:1.5; flex:1; margin-bottom:12px; }
-    .mega-res-card__link { font-family:'Barlow',sans-serif; font-size:13px; font-weight:600; color:var(--blue); }
+    .mega-res-card__cat { font-family:var(--font-body); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--blue); margin-bottom:6px; }
+    .mega-res-card__title { font-family:var(--font-heading); font-size:18px; font-weight:700; color:var(--navy); margin-bottom:8px; line-height:1.2; }
+    .mega-res-card__desc { font-family:var(--font-body); font-size:13px; color:var(--sub); line-height:1.5; flex:1; margin-bottom:12px; }
+    .mega-res-card__link { font-family:var(--font-body); font-size:13px; font-weight:600; color:var(--blue); }
     .mega-res-card__link:hover { text-decoration:underline; }
     /* Hamburger */
     .nav-hamburger {
@@ -355,7 +360,7 @@
       overflow-y: auto;
     }
     .nav-mobile__link {
-      font-family: 'Barlow', sans-serif;
+      font-family: var(--font-body);
       font-size: 16px; font-weight: 500; color: var(--dark);
       min-height: 52px;
       display: flex; align-items: center;
@@ -374,47 +379,326 @@
     }
 
     /* ===== HERO ===== */
-    .hero { padding: 36px var(--px) 40px; max-width: 1920px; margin: 0 auto; }
+    .hero {
+      padding: 0;
+      max-width: 1920px;
+      margin: 0 auto;
+      background: radial-gradient(circle at 15% 20%, #0b3e68 0%, #001d48 55%, #00163b 100%);
+    }
     .hero__wrap {
       position: relative;
-      height: 618px;
-      border-radius: 10px;
+      min-height: 615px;
       overflow: hidden;
     }
+    .hero__slides {
+      position: relative;
+      min-height: 615px;
+    }
+    .hero__slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.55s ease;
+    }
+    .hero__slide.is-active {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 1;
+    }
     .hero__bg {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      object-position: right center;
+      opacity: 0.74;
       transform-origin: center;
       animation: heroBgZoom 8s cubic-bezier(0.33, 1, 0.68, 1) both;
     }
     .hero__overlay {
-      position: absolute; inset: 0;
-      /* Gradient: readable on the left where text lives, clear on the right to show the photo naturally */
-      background: linear-gradient(90deg, rgba(5,15,55,0.55) 0%, rgba(5,15,55,0.38) 40%, rgba(5,15,55,0.08) 70%, transparent 100%);
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 22, 59, 0.92) 0%, rgba(0, 22, 59, 0.75) 36%, rgba(0, 22, 59, 0.28) 64%, rgba(0, 22, 59, 0.04) 100%);
       animation: heroOverlayIn 1.4s ease-out both;
     }
     .hero__content {
-      position: relative; z-index: 2;
-      padding: 117px 0 178px 75px;
-      max-width: 900px;
-      display: flex; flex-direction: column; gap: 51px;
+      position: relative;
+      z-index: 2;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 78px 68px 74px;
+      display: flex;
+      flex-direction: column;
+      gap: 53px;
       align-items: flex-start;
     }
-    .hero__text { display: flex; flex-direction: column; gap: 24px; }
-    .hero__title {
-      font-family: 'Barlow', sans-serif;
-      font-size: 52px; font-weight: 700; line-height: 1.1;
+    .hero__pager {
+      display: inline-flex;
+      gap: 8px;
+      margin-top: -14px;
+    }
+    .hero__pager-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      background: rgba(255, 255, 255, 0.08);
       color: #fff;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+    .hero__pager-btn:hover { transform: translateY(-1px); }
+    .hero__pager-btn.is-active {
+      background: #fff;
+      border-color: #fff;
+      color: #353535;
+    }
+    .hero__text {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      max-width: 560px;
+    }
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 1.06;
+      letter-spacing: -0.01em;
+      color: #fff;
+      text-transform: none;
     }
     .hero__sub {
-      font-size: 18px; font-weight: 400; line-height: 1.6;
-      color: rgba(255,255,255,0.9);
+      font-family: var(--font-body);
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.28;
+      letter-spacing: 0;
+      color: #e0e0e0;
+      width: 612px;
+      max-width: 612px;
+    }
+    .hero__btn {
+      background: #fff;
+      color: #353535;
+      border: 0;
+      border-radius: 2px;
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+      width: 170px;
+      min-height: 50px;
+      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      line-height: normal;
+      transition: background .2s ease;
+    }
+    .hero__btn:hover { background: #f0f0f0; }
+
+    .hero-search-strip {
+      position: relative;
+      z-index: 5;
+      background: transparent;
+      padding: 0 var(--px);
+      max-width: 1920px;
+      margin: 0 auto;
+      margin-top: -72px;
+    }
+    .hero-search-strip > .hero-search-strip__inner {
+      max-width: 1440px;
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      background: #e8edf3;
+      border-radius: 8px;
+      padding: 40px 70px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 1px 0 rgba(0,0,0,.04);
+      gap: 12px;
+      border: 1px solid #e6e6e6;
+    }
+    .hero-search-strip__field {
+      flex: 1;
+      border: 1px solid #d5dce8;
+      border-radius: 16px;
+      min-height: 60px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 24px;
+      color: #353535;
+      font-family: var(--font-body);
+      font-size: 14px;
+      background: #fff;
+      cursor: pointer;
+      overflow: visible;
+      isolation: isolate;
+    }
+    .hero-search-strip__field .hero-search-glow {
+      --glow-line-color: #ffffff;
+      --glow-line-thickness: 2px;
+      --glow-line-length: 22;
+      --glow-blur-color: rgba(255, 255, 255, 1);
+      --glow-blur-size: 12px;
+      --animation-speed: 1200ms;
+      --container-offset: 64px;
+      pointer-events: none;
+      position: absolute;
+      inset: calc(var(--container-offset) / -2);
+      width: calc(100% + var(--container-offset));
+      height: calc(100% + var(--container-offset));
+      opacity: 0;
+      z-index: 2;
+      mix-blend-mode: screen;
+    }
+    .hero-search-strip__field .hero-search-glow rect {
+      width: calc(100% - var(--container-offset));
+      height: calc(100% - var(--container-offset));
+      x: calc(var(--container-offset) / 2);
+      y: calc(var(--container-offset) / 2);
+      fill: transparent;
+      stroke-dasharray: var(--glow-line-length) calc(50 - var(--glow-line-length));
+      transition: stroke-dashoffset var(--animation-speed) ease-in, stroke-dasharray var(--animation-speed) ease-in;
+    }
+    .hero-search-strip__field .hero-search-glow .hero-search-glow__line {
+      stroke: var(--glow-line-color);
+      stroke-width: var(--glow-line-thickness);
+    }
+    .hero-search-strip__field .hero-search-glow .hero-search-glow__blur {
+      stroke: var(--glow-blur-color);
+      stroke-width: var(--glow-blur-size);
+      filter: blur(var(--glow-blur-size)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.95));
+    }
+    .hero-search-strip__field:is(:hover, :focus-visible) .hero-search-glow {
+      animation: hero-search-glow-visibility var(--animation-speed) ease-in;
+    }
+    .hero-search-strip__field:is(:hover, :focus-visible) .hero-search-glow rect {
+      stroke-dashoffset: -80px;
+    }
+    @keyframes hero-search-glow-visibility {
+      0%, 100% { opacity: 0; }
+      25%, 75% { opacity: 1; }
+    }
+    .hero-search-strip__field img {
+      width: 18px;
+      height: 18px;
+      opacity: 1;
+    }
+    .hero-search-strip__hint {
+      color: #4b4b4b;
+      font-size: 11px;
+      font-family: var(--font-body);
+      text-transform: lowercase;
+      margin-left: auto;
+      white-space: nowrap;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .partner-strip {
+      max-width: 1920px;
+      margin: 100px auto;
+      background: transparent;
+      padding: 8px var(--px) 36px;
+    }
+    .partner-strip__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+    .partner-strip__track {
+      display: flex;
+      width: max-content;
+      animation: partner-scroll 26s linear infinite;
+      will-change: transform;
+    }
+    .partner-strip__group {
+      display: flex;
+      align-items: center;
+      gap: 96px;
+      padding-right: 96px;
+      flex-shrink: 0;
+    }
+    .partner-strip__inner img {
+      width: auto;
+      height: 50px;
+      opacity: .95;
+    }
+    .partner-strip__inner img.partner-logo--fortinet,
+    .partner-strip__inner img.partner-logo--ipcortex,
+    .partner-strip__inner img.partner-logo--sonicwall,
+    .partner-strip__inner img.partner-logo--sophos {
+      height: 60px;
+    }
+    @keyframes partner-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
 
     /* ===== MAIN SERVICES GRID ===== */
-    .main-services { padding: 40px var(--px); max-width: 1920px; margin: 0 auto; }
-    .main-services__title { margin-bottom: 55px; }
+    .main-services { padding: 20px var(--px) 40px; max-width: 1920px; margin: 0 auto; }
+    .main-services__head {
+      max-width: var(--max-w);
+      margin: 0 auto 32px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .main-services__head-copy {
+      max-width: 860px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .main-services__title {
+      margin-bottom: 0;
+      font-family: var(--font-heading);
+      font-size: 47px;
+      font-weight: 600;
+      text-transform: capitalize;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    .main-services__intro {
+      color: #585151;
+      font-size: 16px;
+      line-height: 1.5;
+      max-width: 780px;
+    }
+    .main-services__cta {
+      flex-shrink: 0;
+      border-radius: 6px;
+      padding: 9px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-body);
+    }
+    .main-services__grid {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 13.4px;
+    }
     /* Two-row asymmetric grid: row1 350/471/592, row2 350/592/471 */
     .main-services__grid {
       display: flex;
@@ -554,13 +838,13 @@
       min-height: 80px;
     }
     .s-card__title {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 24px; font-weight: 700;
       color: var(--dark); text-align: center;
     }
     /* Desc and button hidden by default, revealed on hover */
     .s-card__desc {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 16px; color: var(--sub); text-align: center;
       overflow: hidden;
       max-height: 0;
@@ -725,7 +1009,7 @@
       max-width: 640px;
     }
     .solutions-infobox h3 {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 42px; font-weight: 600; color: var(--navy);
       margin-bottom: 18px; line-height: 1;
     }
@@ -781,7 +1065,7 @@
       box-shadow: 0 4px 4px rgba(0,0,0,.1);
     }
     .sol-sub p {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 20px; color: var(--sub);
     }
 
@@ -874,7 +1158,7 @@
       padding: 13px 28px;
     }
     .scroll-banner__title {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 42px; font-weight: 600; color: #fff;
       max-width: 807px;
     }
@@ -956,7 +1240,7 @@
       min-height: 400px;
     }
     .testimonials__left h2 {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 70px; font-weight: 700;
       color: var(--navy); line-height: 1;
     }
@@ -993,10 +1277,10 @@
     .t-stars { display: flex; gap: 4px; margin-bottom: 51px; }
     .t-star { font-size: 36px; color: #F59E0B; line-height: 1; }
     .t-quote {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: 32px; font-weight: 300;
-      color: #000; line-height: 1.3;
-      margin-bottom: 50px; max-width: 669px;
+      font-family: var(--font-heading);
+      font-size: 24px; font-weight: 300;
+      color: #000; line-height: 1.5;
+      margin-bottom: 40px; max-width: 669px;
     }
     .t-author { display: flex; align-items: flex-end; gap: 27px; }
     .t-avatar {
@@ -1006,12 +1290,12 @@
     }
     .t-info { color: var(--sub); }
     .t-role {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: 24px; font-weight: 500; margin-bottom: 8px;
+      font-family: var(--font-heading);
+      font-size: 18px; font-weight: 500; margin-bottom: 8px;
     }
     .t-company {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: 20px; font-weight: 400; line-height: 1.3;
+      font-family: var(--font-heading);
+      font-size: 16px; font-weight: 400; line-height: 1.45;
     }
 
     /* ===== FAQ ===== */
@@ -1035,18 +1319,18 @@
       display: flex; align-items: center; gap: 37px; flex: 1;
     }
     .faq-num {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 50px; font-weight: 500; color: #fff; min-width: 60px;
     }
     .faq-q {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 32px; font-weight: 500; color: #fff;
     }
     .faq-icon { width: 50px; height: 50px; flex-shrink: 0; }
     .faq-divider { height: 1px; background: rgba(255,255,255,.2); margin: 0 56px; }
     .faq-answer {
       padding: 30px 56px 51px 127px;
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 32px; font-weight: 500;
       color: #fff; line-height: 1.3;
       display: none;
@@ -1068,7 +1352,7 @@
     }
     .footer__logo { width: 212px; height: 54px; }
     .footer__tagline {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 18px; line-height: 30px; opacity: .8;
     }
     .footer__search {
@@ -1077,7 +1361,7 @@
       justify-content: space-between; padding: 0 25px;
     }
     .footer__search span {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 18px; color: var(--dark); opacity: .8;
     }
     .footer__social { display: flex; gap: 20px; align-items: center; }
@@ -1090,22 +1374,22 @@
     .footer__links { display: flex; gap: 24px; flex: 1; }
     .footer__col { display: flex; flex-direction: column; gap: 0; }
     .footer__col h4 {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 26px; font-weight: 600; margin-bottom: 7px;
     }
     .footer__col h4.mt { margin-top: 40px; }
     .footer__col ul { display: flex; flex-direction: column; }
     .footer__col ul li {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 18px; line-height: 30px; opacity: .8; cursor: pointer;
     }
     .footer__col ul li:hover { opacity: 1; }
     .footer__divider { border: none; border-top: 1px solid rgba(255,255,255,.1); margin-bottom: 40px; }
     .footer__bottom { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
-    .footer__copy { font-family: 'Roboto Condensed', sans-serif; font-size: 16px; line-height: 26px; }
+    .footer__copy { font-family: var(--font-heading); font-size: 16px; line-height: 26px; }
     .footer__bottom-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
     .footer__bottom-links a {
-      font-family: 'Roboto Condensed', sans-serif;
+      font-family: var(--font-heading);
       font-size: 18px; opacity: .8;
     }
     .footer__bottom-links a:hover { opacity: 1; }
@@ -1132,10 +1416,14 @@
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    /* Staggered entrance: BG zooms first, then text cascades in */
-    .hero-anim-1 { animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both; }
-    .hero-anim-2 { animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both; }
-    .hero-anim-3 { animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.65s both; }
+    /* Keep hero copy visible immediately to avoid delayed first paint */
+    .hero-anim-1,
+    .hero-anim-2,
+    .hero-anim-3 {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
 
     /* ===== NAV RESPONSIVE — breakpoints ===== */
     @media (max-width: 1440px) {
@@ -1156,13 +1444,14 @@
     @media (max-width: 1440px) {
       :root { --px: 120px; }  /* cascade: all sections automatically adjust */
       /* Hero content: specific internal padding adjustment */
-      .hero__content { padding: 100px 0 140px 60px; }
+      .hero__content { padding: 76px 68px 72px; }
       /* Why choose: shrink center image */
       .why-img { width: 320px; height: 440px; }
       .why-choose__layout { grid-template-columns: 1fr 320px 1fr; }
       .solutions-bottom { flex-wrap: wrap; }
       /* Footer uses fixed padding — not in the standardised system */
       .footer { padding: 59px var(--px) 60px; }
+      .partner-strip__inner { gap: 16px; }
     }
 
     /* ===== RESPONSIVE — 1024px (Tablet landscape) ===== */
@@ -1179,16 +1468,42 @@
       :root { --px: 32px; }  /* cascade: all padded sections now use 32px */
 
       /* Hero */
-      .hero { padding: 16px var(--px) 40px; }
-      .hero__wrap { height: auto; min-height: 480px; }
-      .hero__content { padding: 60px var(--px) 80px; max-width: 100%; }
-      .hero__title { font-size: 38px; }
-      .hero__sub { font-size: 18px; }
+      .hero { padding: 0; }
+      .hero__wrap { min-height: 320px; }
+      .hero__content { padding: 44px var(--px) 36px; max-width: 100%; }
+      .hero__title { font-size: 34px; line-height: 1.06; }
+      .hero__sub { font-size: 16px; }
+      .hero__btn { width: auto; min-height: 42px; font-size: 15px; padding: 0 14px; }
+      .hero-search-strip { padding: 0 var(--px); }
+      .hero-search-strip { margin-top: -28px; }
+      .hero-search-strip__inner { padding: 16px; }
+      .hero-search-strip__field { min-height: 42px; padding: 0 18px; font-size: 13px; }
+      .hero-search-strip__field .hero-search-glow {
+        --container-offset: 40px;
+        --glow-blur-size: 6px;
+      }
+      .hero-search-strip__hint { display: none; }
+      .partner-strip { padding: 10px var(--px) 20px; margin: 52px auto 34px; }
+      .partner-strip__group { gap: 28px; padding-right: 28px; }
+      .partner-strip__inner img { height: 36px; }
+      .partner-strip__inner img.partner-logo--fortinet,
+      .partner-strip__inner img.partner-logo--ipcortex,
+      .partner-strip__inner img.partner-logo--sonicwall,
+      .partner-strip__inner img.partner-logo--sophos { height: 44px; }
 
       /* Main services: flatten rows into 2-col equal grid */
+      .main-services__head { flex-direction: column; align-items: flex-start; }
+      .main-services { padding-top: 10px; }
+      .main-services__head { margin-bottom: 20px; }
+      .main-services__title { font-size: 32px; line-height: 1.08; color: var(--dark); }
+      .main-services__intro { max-width: none; }
+      .main-services__cta { align-self: flex-start; }
       .main-services__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
       .main-services__row { display: contents; }
-      .svc-card { height: 300px; }
+      .svc-card { height: 250px; }
+      .svc-card__info { left: 16px; right: 16px; bottom: 16px; }
+      .svc-card__label { font-size: 20px; }
+      .svc-card__desc { font-size: 13px; line-height: 1.45; }
 
       /* Services carousel: adjust padding only */
       .services-section__inner { padding: 32px var(--px) 32px; }
@@ -1215,6 +1530,11 @@
       .solutions-progress { width: 100%; max-width: none; }
       .solutions-sub-cards { flex-direction: column; width: 100%; }
       .sol-sub img { height: 180px; }
+
+      /* Video banner */
+      .video-banner { padding: 28px var(--px); }
+      .video-banner__box { height: 360px; border-radius: 16px; }
+      .video-banner__icon { width: 120px; height: 120px; }
 
       /* Industries carousel */
 
@@ -1303,13 +1623,35 @@
       /* Hero */
       .hero__title { font-size: 28px; }
       .hero__sub { font-size: 16px; }
+      .hero__btn { font-size: 14px; padding: 10px 14px; }
+      .hero__wrap { min-height: 290px; }
+      .hero__content { padding: 36px var(--px) 28px; }
+      .hero-search-strip { margin-top: -22px; }
+      .hero-search-strip__inner { padding: 14px; }
+      .hero-search-strip__field { min-height: 40px; padding: 0 16px; }
+      .partner-strip { margin: 46px auto 28px; }
+      .partner-strip__group { gap: 22px; padding-right: 22px; }
+      .partner-strip__inner img { height: 32px; }
+      .partner-strip__inner img.partner-logo--fortinet,
+      .partner-strip__inner img.partner-logo--ipcortex,
+      .partner-strip__inner img.partner-logo--sonicwall,
+      .partner-strip__inner img.partner-logo--sophos { height: 38px; }
       .btn-blue-lg { font-size: 16px; padding: 14px 24px; min-height: 44px; }
       .btn-blue { font-size: 16px; padding: 12px 18px; min-height: 44px; }
       .btn-dark { font-size: 16px; padding: 12px 18px; min-height: 44px; }
 
+      .main-services__title { font-size: 30px; }
+      .main-services__title { color: var(--dark); line-height: 1.08; }
+      .main-services__head { margin-bottom: 18px; }
+      .main-services__intro { font-size: 14px; line-height: 1.55; color: var(--sub); }
+      .main-services__cta { width: 100%; }
+
       /* Services grid: single column */
       .main-services__grid { grid-template-columns: 1fr; }
-      .svc-card { height: 280px; }
+      .svc-card { height: 270px; }
+      .svc-card__info { left: 14px; right: 14px; bottom: 14px; }
+      .svc-card__label { font-size: 19px; }
+      .svc-card__desc { font-size: 13px; }
       .services-section { width: auto; margin: 32px var(--px); }
       .services-section__inner { padding: 24px 20px; overflow: hidden; }
       .sc-viewport { overflow: hidden; }
@@ -1348,9 +1690,13 @@
       .footer__copy { font-size: 15px; line-height: 1.55; }
 
       /* Section titles */
-      .section-title { font-size: 28px; }
+      .section-title { font-size: 28px; line-height: 1.1; }
       .testimonials__left h2 { font-size: 36px; }
       .t-quote { font-size: 18px; }
+
+      .video-banner { padding: 24px var(--px); }
+      .video-banner__box { height: 280px; border-radius: 14px; }
+      .video-banner__icon { width: 88px; height: 88px; }
 
       /* Why col points */
       .why-point p { font-size: 16px; }
@@ -1375,28 +1721,100 @@
   <!-- ========= HERO ========= -->
   <section class="hero">
     <div class="hero__wrap">
-      <picture>
-        <source srcset="/images/hero/hero-bg.webp" type="image/webp">
-        <img class="hero__bg" src="/images/hero/hero-bg.jpg" alt="" width="1920" height="618" loading="eager">
-      </picture>
-      <div class="hero__overlay"></div>
-      <div class="hero__content hero__content--anim">
-        <div class="hero__text">
-          <h1 class="hero__title hero-anim-1">Secure and High-Performance<br>Networks for Modern Businesses</h1>
-          <p class="hero__sub hero-anim-2">We design, secure, and manage resilient networks to optimise performance, reduce risk, and modernise infrastructure for cloud and AI.</p>
+      <div class="hero__slides" data-hero-slides>
+        <article class="hero__slide is-active" data-hero-slide="0">
+          <picture>
+            <img class="hero__bg" src="/images/hero/hero-slide-1.png" alt="" width="1920" height="700" loading="eager">
+          </picture>
+          <div class="hero__overlay"></div>
+          <div class="hero__content hero__content--anim">
+            <div class="hero__text">
+              <h1 class="hero__title hero-anim-1">Cisco solutions</h1>
+              <p class="hero__sub hero-anim-2">Have tech questions? Our AI Answer <br>engine can help.</p>
+            </div>
+            <a href="#contact" class="hero__btn hero-anim-3" data-source-cta="hero_learn_more">Know More</a>
+          </div>
+        </article>
+
+        <article class="hero__slide" data-hero-slide="1">
+          <picture>
+            <img class="hero__bg" src="/images/hero/hero-slide-2.png" alt="" width="1920" height="700" loading="eager">
+          </picture>
+          <div class="hero__overlay"></div>
+          <div class="hero__content hero__content--anim">
+            <div class="hero__text">
+              <h1 class="hero__title hero-anim-1">Secure Networks</h1>
+              <p class="hero__sub hero-anim-2">We design, secure, and manage networks to reduce risk and modernise infrastructure.</p>
+            </div>
+            <a href="#contact" class="hero__btn hero-anim-3" data-source-cta="hero_learn_more">Know More</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero-search-strip" aria-label="Homepage search strip">
+    <div class="hero-search-strip__inner">
+      <button type="button" class="hero-search-strip__field" data-search-trigger aria-label="Search all pages here">
+        <img src="/images/icons/figma-nav-home-2026/search-bar-icon.svg?v=2" alt="" aria-hidden="true">
+        <span>Please ask your question here</span>
+        <span class="hero-search-strip__hint">search all pages here</span>
+        <svg class="hero-search-glow" aria-hidden="true" focusable="false">
+          <rect pathLength="100" stroke-linecap="round" class="hero-search-glow__blur"></rect>
+          <rect pathLength="100" stroke-linecap="round" class="hero-search-glow__line"></rect>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <section class="partner-strip" aria-label="Trusted platform logos">
+    <div class="partner-strip__inner">
+      <div class="partner-strip__track" aria-hidden="true">
+        <div class="partner-strip__group">
+          <img src="/Partner%20logos/cisco-blue-logo.png" alt="Cisco logo" loading="lazy">
+          <img src="/Partner%20logos/citrix-logo.png" alt="Citrix logo" loading="lazy">
+          <img class="partner-logo--fortinet" src="/Partner%20logos/fortinet-logo.wine.png" alt="Fortinet logo" loading="lazy">
+          <img class="partner-logo--ipcortex" src="/Partner%20logos/IPCortex.webp" alt="IPCortex logo" loading="lazy">
+          <img src="/Partner%20logos/Juniper%20logo.png" alt="Juniper logo" loading="lazy">
+          <img src="/Partner%20logos/Microsoft%20logo.png" alt="Microsoft logo" loading="lazy">
+          <img class="partner-logo--sonicwall" src="/Partner%20logos/sonicwall-logo-png-transparent.png" alt="SonicWall logo" loading="lazy">
+          <img class="partner-logo--sophos" src="/Partner%20logos/Sophos-Logo.wine.png" alt="Sophos logo" loading="lazy">
+          <img src="/Partner%20logos/Watchguard%20logo.png" alt="WatchGuard logo" loading="lazy">
+          <img src="/Partner%20logos/cisco-blue-logo.png" alt="Cisco logo" loading="lazy">
+          <img src="/Partner%20logos/citrix-logo.png" alt="Citrix logo" loading="lazy">
+          <img class="partner-logo--fortinet" src="/Partner%20logos/fortinet-logo.wine.png" alt="Fortinet logo" loading="lazy">
         </div>
-        <a href="#contact" class="btn-blue-lg hover-btn hero-anim-3" data-source-cta="hero_health_check">BOOK A FREE NETWORK HEALTH CHECK</a>
+        <div class="partner-strip__group">
+          <img src="/Partner%20logos/cisco-blue-logo.png" alt="Cisco logo" loading="lazy">
+          <img src="/Partner%20logos/citrix-logo.png" alt="Citrix logo" loading="lazy">
+          <img class="partner-logo--fortinet" src="/Partner%20logos/fortinet-logo.wine.png" alt="Fortinet logo" loading="lazy">
+          <img class="partner-logo--ipcortex" src="/Partner%20logos/IPCortex.webp" alt="IPCortex logo" loading="lazy">
+          <img src="/Partner%20logos/Juniper%20logo.png" alt="Juniper logo" loading="lazy">
+          <img src="/Partner%20logos/Microsoft%20logo.png" alt="Microsoft logo" loading="lazy">
+          <img class="partner-logo--sonicwall" src="/Partner%20logos/sonicwall-logo-png-transparent.png" alt="SonicWall logo" loading="lazy">
+          <img class="partner-logo--sophos" src="/Partner%20logos/Sophos-Logo.wine.png" alt="Sophos logo" loading="lazy">
+          <img src="/Partner%20logos/Watchguard%20logo.png" alt="WatchGuard logo" loading="lazy">
+          <img src="/Partner%20logos/cisco-blue-logo.png" alt="Cisco logo" loading="lazy">
+          <img src="/Partner%20logos/citrix-logo.png" alt="Citrix logo" loading="lazy">
+          <img class="partner-logo--fortinet" src="/Partner%20logos/fortinet-logo.wine.png" alt="Fortinet logo" loading="lazy">
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ========= MAIN FOCUSING SERVICES ========= -->
   <section class="main-services">
-    <h2 class="section-title main-services__title animate-fade-up">Main focusing services</h2>
+    <div class="main-services__head">
+      <div class="main-services__head-copy">
+        <h2 class="section-title main-services__title animate-fade-up">Main Focusing Services</h2>
+        <p class="main-services__intro">We deliver end-to-end network and cloud solutions for UK SMEs, family businesses and public organisations. Explore the services below, or book a consultation to discuss your requirements.</p>
+      </div>
+      <a href="/services/index.html" class="btn-blue main-services__cta" data-source-cta="main_services_book_call">Book a free call</a>
+    </div>
     <div class="main-services__grid">
       <!-- Row 1: 350px / 471px / 592px -->
-      <div class="main-services__row main-services__row--1 stagger-children">
-        <div class="svc-card hover-lift animate-fade-up">
+      <div class="main-services__row main-services__row--1">
+        <div class="svc-card hover-lift">
           <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img src="/images/services/service-1.jpg" alt="Network Consultancy" width="471" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
           <div class="svc-card__info">
@@ -1404,7 +1822,7 @@
             <p class="svc-card__desc">Strategic guidance from assessment through implementation — networks built around your business goals.</p>
           </div>
         </div>
-        <div class="svc-card hover-lift animate-fade-up">
+        <div class="svc-card hover-lift">
           <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="Network Support" width="471" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
           <div class="svc-card__info">
@@ -1412,7 +1830,7 @@
             <p class="svc-card__desc">Network support services designed to reduce downtime and improve performance across your infrastructure.</p>
           </div>
         </div>
-        <div class="svc-card hover-lift animate-fade-up">
+        <div class="svc-card hover-lift">
           <picture><source srcset="/images/services/service-4.webp" type="image/webp"><img src="/images/services/service-4.jpg" alt="Managed Network Support" width="471" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
           <div class="svc-card__info">
@@ -1422,8 +1840,8 @@
         </div>
       </div>
       <!-- Row 2: 350px / 592px / 471px (middle and right swap) -->
-      <div class="main-services__row main-services__row--2 stagger-children">
-        <div class="svc-card hover-lift animate-fade-up">
+      <div class="main-services__row main-services__row--2">
+        <div class="svc-card hover-lift">
           <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="Network Design and Deployment" width="592" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
           <div class="svc-card__info">
@@ -1431,7 +1849,7 @@
             <p class="svc-card__desc">Expert consultancy for secure, high-performing, and scalable network architectures.</p>
           </div>
         </div>
-        <div class="svc-card hover-lift animate-fade-up">
+        <div class="svc-card hover-lift">
           <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="Firewall and Network Security" width="592" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
           <div class="svc-card__info">
@@ -1439,7 +1857,7 @@
             <p class="svc-card__desc">Smarter, more practical network protection that fits how your business actually works.</p>
           </div>
         </div>
-        <div class="svc-card hover-lift animate-fade-up">
+        <div class="svc-card hover-lift">
           <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img src="/images/features/feature-2.jpg" alt="Business Continuity and Resilience" width="471" height="435" loading="lazy"></picture>
           <div class="svc-card__grad"></div>
           <div class="svc-card__info">
@@ -1451,669 +1869,1602 @@
     </div>
   </section>
 
-  <!-- ========= VIDEO BANNER ========= -->
-  <div class="video-banner">
-    <div class="video-banner__box" id="video-banner">
-      <video class="video-banner__video" id="video-banner-vid"
-        loop playsinline preload="metadata">
-        <source src="/videos/home-video-banner.mp4" type="video/mp4">
-      </video>
-      <button class="video-banner__overlay" id="video-banner-overlay" type="button" aria-label="Play video">
-        <img class="video-banner__icon" src="/images/misc/icon-play.svg" alt="" aria-hidden="true">
-      </button>
+  <section class="nd-highlight section-shell">
+    <div class="nd-highlight__inner">
+      <div class="nd-highlight__copy">
+        <h3>Network infrastructure that supports secure growth</h3>
+        <p>We help businesses improve network stability, strengthen security posture, and simplify day-to-day operations through practical consultancy and engineering support.</p>
+        <ul>
+          <li>Identify and resolve performance bottlenecks early</li>
+          <li>Reduce avoidable risk through structured network controls</li>
+          <li>Build scalable foundations for hybrid and multi-site operations</li>
+        </ul>
+      </div>
+      <div class="nd-highlight__media">
+        <video class="nd-highlight__video" autoplay muted defaultMuted loop preload="metadata" aria-label="IT infrastructure video preview">
+          <source src="/videos/home-video-banner.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="nd-figma-stack section-shell">
+    <article class="nd-figma-managed">
+      <div class="nd-figma-managed__left">
+        <h3 class="nd-figma-managed__title">MANAGED NETWORK SECURITY</h3>
+        <div class="nd-figma-managed__video" aria-hidden="true">
+          <video autoplay muted loop preload="metadata">
+            <source src="/videos/home-video-banner.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="nd-figma-managed__bars" aria-hidden="true">
+          <span class="nd-figma-managed__bar nd-figma-managed__bar--active"></span>
+          <span class="nd-figma-managed__bar"></span>
+          <span class="nd-figma-managed__bar"></span>
+        </div>
+      </div>
+      <div class="nd-figma-managed__copy">
+        <p>When it comes to enhancing your business's IT infrastructure, Network Consultancy builds a custom roadmap that ensures zero disruption to your daily operations. From your initial infrastructure design to enabling live threat monitoring and daily network management, our reliable UK engineering team will handle your entire network ecosystem seamlessly.</p>
+        <ul>
+          <li>24/7 Firewall Administration and Intrusion Detection</li>
+          <li>Regular Software and Firmware Updates</li>
+          <li>AI-Driven Threat Intelligence & Monitoring</li>
+          <li>Continuous compliance with UK GDPR, the Data Protection Act 2018, ISO 27001, Cyber Essentials, and broader cybersecurity standards</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="nd-figma-card">
+      <h3 class="nd-figma-card__title">Trusted network experts</h3>
+      <div class="nd-figma-card__thumb">
+        <picture><source srcset="/images/misc/it-networking.webp" type="image/webp"><img src="/images/misc/it-networking.jpg" alt="IT networking infrastructure" loading="lazy"></picture>
+      </div>
+      <div class="nd-figma-card__body">
+        <p class="nd-figma-card__lead">Trusted network experts delivering practical business outcomes.</p>
+        <p class="nd-figma-card__text">Our engineers work closely with internal teams to improve uptime, simplify support, and implement network changes with minimal operational disruption.</p>
+        <a href="/about.html" class="nd-figma-card__cta">View Details</a>
+      </div>
+    </article>
+
+    <article class="nd-figma-card">
+      <h3 class="nd-figma-card__title">Trusted network experts</h3>
+      <div class="nd-figma-card__thumb">
+        <picture><source srcset="/images/pages/managed-support.webp" type="image/webp"><img src="/images/pages/managed-support.jpg" alt="Managed network support team" loading="lazy"></picture>
+      </div>
+      <div class="nd-figma-card__body">
+        <p class="nd-figma-card__lead">Trusted network experts delivering practical business outcomes.</p>
+        <p class="nd-figma-card__text">From managed support to specialist consultancy, we provide responsive technical guidance that helps teams maintain secure and efficient network environments.</p>
+        <a href="/about.html" class="nd-figma-card__cta">View Details</a>
+      </div>
+    </article>
+
+    <article class="nd-figma-card">
+      <h3 class="nd-figma-card__title">Trusted network experts</h3>
+      <div class="nd-figma-card__thumb">
+        <picture><source srcset="/images/pages/technician.webp" type="image/webp"><img src="/images/pages/technician.jpg" alt="Network technician on-site" loading="lazy"></picture>
+      </div>
+      <div class="nd-figma-card__body">
+        <p class="nd-figma-card__lead">Trusted network experts delivering practical business outcomes.</p>
+        <p class="nd-figma-card__text">We combine strategic planning with hands-on delivery so organisations can progress from assessment to implementation and long-term operational improvement.</p>
+        <a href="/about.html" class="nd-figma-card__cta">View Details</a>
+      </div>
+    </article>
+  </section>
+
+  <section class="nd-trusted section-shell">
+    <div class="nd-trusted__head">
+      <h2 class="nd-trusted__title">What our client says</h2>
+      <div class="nd-trusted__controls">
+        <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
+          <span aria-hidden="true">&#8249;</span>
+        </button>
+        <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial">
+          <span aria-hidden="true">&#8250;</span>
+        </button>
+      </div>
+    </div>
+    <div class="nd-trusted__viewport">
+      <div class="nd-trusted__track">
+        <article class="nd-t-card">
+          <p class="nd-t-card__quote">“Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.”</p>
+          <div class="nd-t-card__person">
+            <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></span>
+            <div>
+              <p class="nd-t-card__name">Managing Director</p>
+              <p class="nd-t-card__role">Broadcasting Company, London</p>
+            </div>
+          </div>
+        </article>
+        <article class="nd-t-card">
+          <p class="nd-t-card__quote">“Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.”</p>
+          <div class="nd-t-card__person">
+            <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></span>
+            <div>
+              <p class="nd-t-card__name">IT Director</p>
+              <p class="nd-t-card__role">Professional Services Firm, London</p>
+            </div>
+          </div>
+        </article>
+        <article class="nd-t-card">
+          <p class="nd-t-card__quote">“Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.”</p>
+          <div class="nd-t-card__person">
+            <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/services/service-1.jpg" alt="" loading="lazy"></span>
+            <div>
+              <p class="nd-t-card__name">Head of Operations</p>
+              <p class="nd-t-card__role">Healthcare Provider, Birmingham</p>
+            </div>
+          </div>
+        </article>
+        <article class="nd-t-card">
+          <p class="nd-t-card__quote">“Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.”</p>
+          <div class="nd-t-card__person">
+            <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></span>
+            <div>
+              <p class="nd-t-card__name">Managing Partner</p>
+              <p class="nd-t-card__role">Legal Firm, London</p>
+            </div>
+          </div>
+        </article>
+        <article class="nd-t-card">
+          <p class="nd-t-card__quote">“Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.”</p>
+          <div class="nd-t-card__person">
+            <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></span>
+            <div>
+              <p class="nd-t-card__name">Operations Director</p>
+              <p class="nd-t-card__role">Manufacturing Company, Midlands</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="nd-trusted__dots" aria-hidden="true">
+      <span class="nd-trusted__dot nd-trusted__dot--active"></span>
+      <span class="nd-trusted__dot"></span>
+      <span class="nd-trusted__dot"></span>
+    </div>
+  </section>
+
+  <section class="nd-faq section-shell">
+    <div class="nd-faq__left">
+      <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+      <p>Still have questions? Get connected to our support team.</p>
+      <a href="/contact.html" class="nd-faq__cta">Contact us</a>
+    </div>
+    <div class="nd-faq__right" id="nd-faq-list">
+      <button class="nd-faq__item is-open"><span>Can network consultancy help reduce cybersecurity risks?</span><strong>−</strong></button>
+      <div class="nd-faq__panel">Yes. We do security audits to update out-of-date firewall configurations and block unauthorised device access before hackers can breach your data perimeter.</div>
+      <button class="nd-faq__item"><span>Do you provide support for businesses with multiple locations?</span><strong>+</strong></button>
+      <div class="nd-faq__panel" hidden>Yes, we provide comprehensive multi-site support to ensure seamless network connectivity and management across all your business locations.</div>
+      <button class="nd-faq__item"><span>What makes Network Consultancy different from larger IT providers?</span><strong>+</strong></button>
+      <div class="nd-faq__panel" hidden>We offer personalised, expert-led service with deep technical expertise and a commitment to understanding your business goals, delivering tailored solutions rather than one-size-fits-all approaches.</div>
+    </div>
+  </section>
+
+  <section class="nd-contact section-shell" id="contact">
+    <div class="nd-contact__surface">
+      <div class="nd-contact__layout">
+        <div class="nd-contact__intro">
+          <h2 class="nd-contact__title">Contact us today for a free consultation</h2>
+          <p class="nd-contact__subtitle">We pride ourselves on delivering a flexible engagement style in order to meet your requirements. Contact us for your free consultation.</p>
+        </div>
+
+        <div class="nd-contact__tiles">
+          <article class="nd-contact__tile">
+            <span class="nd-contact__chip"><img src="/images/pages/contact-phone-icon.png" alt="Phone icon"></span>
+            <div class="nd-contact__tile-copy">
+              <h3>Chat customer services</h3>
+              <p>+44 (0) 203 150 1401</p>
+            </div>
+          </article>
+
+          <article class="nd-contact__tile">
+            <span class="nd-contact__chip"><img src="/images/pages/contact-email-icon.png" alt="Envelope icon"></span>
+            <div class="nd-contact__tile-copy">
+              <h3>Chat to our sales</h3>
+              <p>info@network-consultancy.com</p>
+            </div>
+          </article>
+
+          <article class="nd-contact__tile">
+            <span class="nd-contact__chip"><img src="/images/pages/contact-address-icon.png" alt="Location icon"></span>
+            <div class="nd-contact__tile-copy">
+              <h3>Address</h3>
+              <p>Birmingham, Beech House, Greenfield Crescent, Edgbaston, B15 3BE</p>
+            </div>
+          </article>
+
+          <article class="nd-contact__tile">
+            <span class="nd-contact__chip"><img src="/images/pages/contact-address-icon-2.png" alt="Location icon"></span>
+            <div class="nd-contact__tile-copy">
+              <h3>Address</h3>
+              <p>Birmingham
+Beech House, Greenfield Crescent
+Edgbaston, B15 3BE</p>
+            </div>
+          </article>
+        </div>
+
+        <form class="nd-contact__form" action="#" method="post">
+          <div class="nd-contact__row nd-contact__row--split">
+            <label class="nd-contact__field">
+              <span class="nd-contact__field-head"><span class="nd-contact__field-label">First Name</span><span class="nd-contact__required">*</span></span>
+              <input type="text" name="first_name" autocomplete="given-name" placeholder="First name" required>
+            </label>
+            <label class="nd-contact__field">
+              <span class="nd-contact__field-head"><span class="nd-contact__field-label">Last Name</span><span class="nd-contact__required">*</span></span>
+              <input type="text" name="last_name" autocomplete="family-name" placeholder="Last name" required>
+            </label>
+          </div>
+
+          <label class="nd-contact__field">
+            <span class="nd-contact__field-head"><span class="nd-contact__field-label">Your Email</span><span class="nd-contact__required">*</span></span>
+            <input type="email" name="email" autocomplete="email" placeholder="Enter your email" required>
+          </label>
+
+          <label class="nd-contact__field">
+            <span class="nd-contact__field-head"><span class="nd-contact__field-label">Your Address</span><span class="nd-contact__required">*</span></span>
+            <input type="text" name="address" autocomplete="street-address" placeholder="Enter Address" required>
+          </label>
+
+          <label class="nd-contact__field nd-contact__field--message">
+            <span class="nd-contact__field-head"><span class="nd-contact__field-label">Message</span><span class="nd-contact__required">*</span></span>
+            <textarea name="message" rows="4" placeholder="Your Message..." required></textarea>
+          </label>
+
+          <label class="nd-contact__agree">
+            <span class="nd-contact__checkbox">
+              <input type="checkbox" name="agree" required>
+              <span class="nd-contact__checkbox-box" aria-hidden="true"></span>
+            </span>
+            <span class="nd-contact__agree-text">I agree with <a href="/privacy-policy.html">Privacy Policy</a> and <a href="/terms-of-service.html">Terms of Conditions</a></span>
+          </label>
+
+          <button class="nd-contact__submit" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .section-shell { max-width: 1920px; margin: 0 auto; padding: 36px var(--px); }
+    :root {
+      --home-type-heading-xl: clamp(2rem, 1.6vw + 1.45rem, 2.75rem);
+      --home-type-heading-lg: clamp(1.75rem, 1.2vw + 1.35rem, 2.375rem);
+      --home-type-body: clamp(1rem, 0.25vw + 0.95rem, 1.125rem);
+      --home-type-body-sm: clamp(0.95rem, 0.18vw + 0.9rem, 1rem);
+      --home-type-label: clamp(0.875rem, 0.12vw + 0.84rem, 0.95rem);
+    }
+    .nd-highlight.section-shell { margin-top: 100px; padding-top: 0; padding-bottom: 0; }
+    .nd-highlight__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      background: #efeded;
+      border-radius: 10px;
+      padding: 100px 68px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 683px);
+      gap: 48px;
+      align-items: start;
+    }
+    .nd-highlight__copy h3 {
+      font-family: var(--font-display);
+      color: #0982c5;
+      font-size: var(--home-type-heading-xl);
+      line-height: 1.1;
+      font-weight: 600;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+      max-width: 20ch;
+    }
+    .nd-highlight__copy p {
+      max-width: 62ch;
+      font-size: var(--home-type-body-sm);
+      line-height: 1.65;
+      color: #585151;
+      margin-bottom: 30px;
+    }
+    .nd-highlight__copy ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+    }
+    .nd-highlight__copy li {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      width: fit-content;
+      min-height: 45px;
+      border-radius: 10px;
+      padding: 0 18px 0 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.65) 0%, rgba(244,244,244,0.25) 100%);
+      color: #585151;
+      font-size: var(--home-type-body-sm);
+      line-height: 1.45;
+    }
+    .nd-highlight__copy li::before {
+      content: '\2713';
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: #353535;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      box-shadow:
+        0 0.7855px 0.7855px rgba(26, 25, 37, 0.12),
+        0 0.261837px 0.261837px rgba(26, 25, 37, 0.24),
+        inset 0 -8.37879px 20.947px rgba(26, 25, 37, 0.08),
+        inset 0 1.04735px 3.14205px rgba(255, 255, 255, 0.08),
+        inset 0 0.785511px 0.785511px rgba(255, 255, 255, 0.08),
+        inset 0 0.261837px 0.261837px rgba(255, 255, 255, 0.12);
+    }
+    .nd-highlight__media {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      min-height: 370px;
+    }
+    .nd-highlight__video {
+      width: 100%;
+      height: 370px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      background: #000;
+    }
+    .nd-why.section-shell { padding: 0; margin-top: 100px; }
+    .nd-managed.section-shell { margin-top: 100px; }
+    .nd-why.section-shell ~ .section-shell { margin-top: 100px; }
+    .nd-figma-stack.section-shell {
+      max-width: var(--max-w);
+      margin: 100px auto 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .nd-figma-managed {
+      min-height: 641px;
+      background: #ebebeb;
+      border: 1px solid #d2d2d2;
+      border-radius: 10px;
+      padding: 60px 70px;
+      display: grid;
+      grid-template-columns: 397px minmax(0, 1fr);
+      column-gap: 104px;
+    }
+    .nd-figma-managed__left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .nd-figma-managed__title {
+      margin: 0;
+      width: 384px;
+      color: #353535;
+      font-family: 'Google Sans Flex', var(--font-heading);
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .nd-figma-managed__video {
+      width: 397px;
+      height: 288px;
+      margin-top: 52px;
+      background: rgba(17, 24, 39, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .nd-figma-managed__video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .nd-figma-managed__bars {
+      display: flex;
+      gap: 24px;
+      margin-top: 72px;
+    }
+    .nd-figma-managed__bar {
+      width: 96px;
+      height: 10px;
+      background: #ffffff;
+      display: block;
+    }
+    .nd-figma-managed__bar--active { background: #0982c5; }
+    .nd-figma-managed__copy {
+      color: #353535;
+      font-family: 'Google Sans Flex', var(--font-heading);
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1;
+    }
+    .nd-figma-managed__copy p {
+      margin: 0 0 18px;
+      font-size: 32px;
+      line-height: 1;
+    }
+    .nd-figma-managed__copy ul {
+      margin: 0;
+      padding-left: 30px;
+      list-style: disc;
+    }
+    .nd-figma-managed__copy li {
+      margin-bottom: 18px;
+      font-size: 32px;
+      line-height: 1;
+    }
+    .nd-figma-managed__copy li:last-child {
+      margin-bottom: 0;
+    }
+    .nd-figma-card {
+      min-height: 384px;
+      background: #ebebeb;
+      border: 1px solid #d2d2d2;
+      border-radius: 10px;
+      padding: 36px 73px;
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      column-gap: 40px;
+      row-gap: 20px;
+      align-items: start;
+    }
+    .nd-figma-card__title {
+      grid-column: 1;
+      margin: 0;
+      color: #162470;
+      font-family: 'Google Sans Flex', var(--font-heading);
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .nd-figma-card__thumb {
+      grid-column: 1;
+      width: 320px;
+      height: 256px;
+      background: rgba(17, 24, 39, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .nd-figma-card__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .nd-figma-card__body {
+      grid-column: 2;
+      grid-row: 2;
+      min-height: 256px;
+      background: #f4f4f4;
+      border: 1px solid #d2d2d2;
+      border-radius: 10px;
+      padding: 24px 40px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .nd-figma-card__lead {
+      margin: 0;
+      max-width: 535px;
+      color: #162470;
+      font-family: var(--font-heading);
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+    .nd-figma-card__text {
+      margin: 0;
+      max-width: 535px;
+      color: #353535;
+      font-family: var(--font-body);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    .nd-figma-card__cta {
+      margin-top: auto;
+      align-self: flex-start;
+      min-width: 144px;
+      min-height: 44px;
+      padding: 10px 20px;
+      background: #0982c5;
+      border-radius: 10px;
+      color: #ffffff;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nd-figma-stack.section-shell ~ .section-shell {
+      margin-top: 100px;
+    }
+    .nd-why {
+      position: relative;
+      width: 100%;
+      max-width: 1440px;
+      height: 1106px;
+      min-height: 1106px;
+      margin: 0 auto;
+    }
+    .nd-why h2 {
+      margin: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #0982c5;
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .nd-why__table {
+      position: absolute;
+      left: 0;
+      top: 81px;
+      width: 100%;
+      border: 1px solid #d2d2d2;
+      border-radius: 10px;
+      overflow: hidden;
+      background: transparent;
+      padding-top: 32px;
+      padding-bottom: 32px;
+      box-sizing: border-box;
+      height: 1025px;
+      min-height: 1025px;
+    }
+    .nd-why__row {
+      display: grid;
+      grid-template-columns: 260px 20px 320px 1fr 50px;
+      gap: 0;
+      align-items: center;
+      height: 100px;
+      min-height: 100px;
+      padding: 0 26px;
+      border-top: none;
+      box-shadow: inset 0 1px 0 #d2d2d2;
+      background: transparent;
+      overflow: hidden;
+      transition: height 0.35s ease, min-height 0.35s ease, padding 0.35s ease;
+    }
+    .nd-why__row:first-child { box-shadow: none; }
+    .nd-why__row:not(.nd-why__row--active) > .nd-why__left {
+      grid-column: 1;
+      display: flex;
+      align-items: center;
+      align-self: center;
+      height: auto;
+      padding: 0;
+    }
+    .nd-why__row:not(.nd-why__row--active) > .nd-why__label { grid-column: 1; }
+    .nd-why__row:not(.nd-why__row--active) > .nd-why__content {
+      grid-column: 3;
+      max-width: 244px;
+      align-self: center;
+    }
+    .nd-why__row:not(.nd-why__row--active) .nd-why__content p:not(.nd-why__lead),
+    .nd-why__row:not(.nd-why__row--active) > .nd-why__thumb,
+    .nd-why__row:not(.nd-why__row--active) .nd-why__cta {
+      display: none;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transform: translateY(-6px);
+    }
+    .nd-why__row--active .nd-why__content p:not(.nd-why__lead),
+    .nd-why__row--active > .nd-why__thumb,
+    .nd-why__row--active .nd-why__cta {
+      display: block;
+      opacity: 1;
+      max-height: 300px;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .nd-why__row--active .nd-why__cta { display: inline-flex; }
+    .nd-why__content p,
+    .nd-why__thumb,
+    .nd-why__cta {
+      transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.35s ease;
+    }
+    .nd-why__row:not(.nd-why__row--active) > .nd-why__toggle {
+      grid-column: 5;
+      justify-self: end;
+      align-self: center;
+    }
+    .nd-why__row--active {
+      --nd-why-active-top: 32px;
+      grid-template-columns: 327.14px 500px 208px 72px;
+      align-items: start;
+      padding: 0 26px;
+      height: 292px;
+      min-height: 292px;
+      position: relative;
+      overflow: visible;
+    }
+    .nd-why__label {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.35;
+      color: #0982C5;
+      align-self: start;
+    }
+    .nd-why__left {
+      display: flex;
+      flex-direction: column;
+      align-self: stretch;
+      justify-content: flex-start;
+      padding: 0;
+    }
+    .nd-why__row--active .nd-why__left { padding: var(--nd-why-active-top) 0 27px; }
+    .nd-why__label--accent { color: #0982c5; }
+    .nd-why__content {
+      font-family: var(--font-body);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: #0982C5;
+      padding-right: 0;
+    }
+    .nd-why__content p { margin: 0; }
+    .nd-why__row--active .nd-why__content { padding-top: var(--nd-why-active-top); }
+    .nd-why__lead {
+      font-family: var(--font-body);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: #0982C5;
+      margin-bottom: 0;
+      max-width: 680px;
+    }
+    .nd-why__row--active .nd-why__content p + p {
+      font-size: 17px;
+      line-height: 1.55;
+      color: #353535;
+      margin-top: 30px;
+      margin-bottom: 27px;
+      max-width: 535px;
+    }
+    .nd-why__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      margin-top: 139px;
+      min-width: 144px;
+      min-height: 42px;
+      border-radius: 10px;
+      padding: 5px 16px;
+      background: #0982c5;
+      color: #e0e0e0;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .nd-why__thumb {
+      background: #cdcdcf;
+      height: 208px;
+      width: 208px;
+      border-radius: 10px;
+      align-self: start;
+      justify-self: center;
+    }
+    .nd-why__row--active .nd-why__thumb {
+      position: absolute;
+      top: var(--nd-why-active-top);
+      right: 169px;
+      margin: 0;
+      justify-self: auto;
+    }
+    .nd-why__toggle {
+      width: 50px;
+      height: 50px;
+      border: 1px solid #d2d2d2;
+      border-radius: 10px;
+      background: transparent;
+      color: #3e3e3e;
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: end;
+      align-self: start;
+      cursor: pointer;
+      padding: 0;
+      overflow: hidden;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .nd-why__toggle:is(:hover, :focus-visible) {
+      background: #0982c5;
+      border-color: #0982c5;
+    }
+    .nd-why__row--active .nd-why__toggle {
+      position: absolute;
+      right: 27px;
+      top: var(--nd-why-active-top);
+      margin: 0;
+      justify-self: auto;
+    }
+    .nd-why__toggle-glyph {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      display: block;
+    }
+    .nd-why__toggle-glyph--x::before,
+    .nd-why__toggle-glyph--x::after {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 4px;
+      width: 2px;
+      height: 16px;
+      background: #525252;
+      border-radius: 1px;
+      transition: background-color 0.2s ease;
+    }
+    .nd-why__toggle-glyph--x::before { transform: rotate(45deg); }
+    .nd-why__toggle-glyph--x::after { transform: rotate(-45deg); }
+    .nd-why__toggle-glyph--down::before,
+    .nd-why__toggle-glyph--down::after {
+      content: '';
+      position: absolute;
+      transition: border-color 0.2s ease;
+    }
+    .nd-why__toggle-glyph--down::before {
+      left: 6px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid #525252;
+      border-bottom: 2px solid #525252;
+      transform: rotate(45deg);
+      border-radius: 1px;
+    }
+    .nd-why__toggle-glyph--down::after {
+      content: none;
+    }
+    .nd-why__toggle:is(:hover, :focus-visible) .nd-why__toggle-glyph--x::before,
+    .nd-why__toggle:is(:hover, :focus-visible) .nd-why__toggle-glyph--x::after {
+      background: #ffffff;
+    }
+    .nd-why__toggle:is(:hover, :focus-visible) .nd-why__toggle-glyph--down::before {
+      border-right-color: #ffffff;
+      border-bottom-color: #ffffff;
+    }
+    .nd-managed.section-shell { padding-top: 0; padding-bottom: 0; }
+    .nd-managed__slider {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .nd-managed__track {
+      display: flex;
+      transition: transform 600ms ease;
+      will-change: transform;
+    }
+    .nd-managed__slide {
+      flex: 0 0 100%;
+      min-width: 100%;
+    }
+    .nd-managed__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      min-height: 641px;
+      background: #ebebeb;
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      padding: 31px 49px 39px 49px;
+      display: grid;
+      grid-template-columns: 520px minmax(0, 1fr);
+      column-gap: 106px;
+      align-items: start;
+    }
+    .nd-managed__left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .nd-managed__title {
+      margin: 0;
+      width: 500px;
+      color: #353535;
+      font-family: var(--font-display);
+      font-size: var(--home-type-heading-xl);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+    .nd-managed__media {
+      margin-top: 39px;
+      width: 520px;
+      height: 302px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #eeeef0;
+    }
+    .nd-managed__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .nd-managed__bars {
+      display: flex;
+      gap: 24px;
+      margin-top: 35px;
+      justify-content: flex-start;
+    }
+    .nd-managed__bar {
+      width: 100px;
+      height: 11px;
+      background: #ffffff;
+      display: block;
+    }
+    .nd-managed__bar--active { background: #0982c5; }
+    .nd-managed__copy {
+      padding-top: 12px;
+      color: #353535;
+      font-family: var(--font-body);
+      font-size: var(--home-type-body);
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    .nd-managed__copy p {
+      margin: 0 0 25px;
+      max-width: 62ch;
+    }
+    .nd-managed__copy ul {
+      margin: 0;
+      padding-left: 36px;
+    }
+    .nd-managed__copy li {
+      margin-bottom: 22px;
+      max-width: 62ch;
+    }
+    .nd-managed__copy li:last-child { margin-bottom: 0; }
+    .nd-trusted {
+      max-width: var(--max-w);
+      position: relative;
+      z-index: 3;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .nd-trusted__head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 2;
+    }
+    .nd-trusted__title {
+      margin: 0;
+      max-width: 620px;
+      color: var(--navy);
+      font-family: var(--font-display);
+      font-size: var(--home-type-heading-xl);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .nd-trusted__controls {
+      display: flex;
+      gap: 16px;
+      padding-top: 2px;
+      flex-shrink: 0;
+      pointer-events: auto;
+    }
+    .nd-trusted__nav {
+      position: relative;
+      z-index: 6;
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      border: 1px solid #d2d2d2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      line-height: 1;
+      font-family: var(--font-heading);
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+    .nd-trusted__nav:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .nd-trusted__nav span { transform: translateY(-2px); }
+    .nd-trusted__nav--prev {
+      background: #f0f0f0;
+      color: #464646;
+    }
+    .nd-trusted__nav--next {
+      background: #000000;
+      border-color: #000000;
+      color: #ffffff;
+    }
+    .nd-trusted__viewport {
+      overflow: hidden;
+      width: 100%;
+    }
+    .nd-trusted__track {
+      display: flex;
+      gap: 26px;
+      width: max-content;
+      transform: translateX(-175px);
+      transition: transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+      will-change: transform;
+    }
+    .nd-t-card {
+      width: 420px;
+      min-height: 282px;
+      border: 1px solid #0982c5;
+      background: transparent;
+      padding: 30px 24px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    .nd-t-card__quote {
+      margin: 0;
+      color: #353535;
+      font-family: var(--font-heading);
+      font-size: var(--home-type-body);
+      font-weight: 400;
+      line-height: 1.65;
+      max-width: 40ch;
+    }
+    .nd-t-card__sub {
+      margin: 16px 0 0;
+      color: #585151;
+      font-family: var(--font-body);
+      font-size: var(--home-type-body-sm);
+      font-weight: 400;
+      line-height: 1.55;
+    }
+    .nd-t-card__person {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 24px;
+    }
+    .nd-t-card__avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
+      background: #f5f5f5;
+      flex-shrink: 0;
+    }
+    .nd-t-card__avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .nd-t-card__name {
+      margin: 0;
+      color: #141a28;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 28px;
+    }
+    .nd-t-card__role {
+      margin: 4px 0 0;
+      color: #585151;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 28px;
+    }
+    .nd-trusted__dots {
+      margin-top: 26px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .nd-trusted__dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #c6c6c6;
+      display: block;
+      opacity: 0.55;
+      transform: scale(0.9);
+      transition: background-color 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+    }
+    .nd-trusted__dot--active {
+      background: #0982c5;
+      opacity: 1;
+      transform: scale(1);
+    }
+    .nd-faq {
+      max-width: var(--max-w);
+      display: grid;
+      grid-template-columns: 500px 1fr;
+      gap: 28px;
+      background: #ebebeb;
+      border-radius: 8px;
+      padding: 42px 58px 40px 58px;
+      min-height: 432px;
+    }
+    .nd-faq__left {
+      padding-top: 26px;
+      max-width: 420px;
+    }
+    .nd-faq__left .section-title {
+      color: var(--navy);
+      font-size: var(--home-type-heading-xl);
+      font-weight: 600;
+      font-family: var(--font-display);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+    }
+    .nd-faq__left p {
+      margin: 0 0 28px;
+      color: #585151;
+      font-family: var(--font-body);
+      font-size: var(--home-type-body-sm);
+      font-weight: 400;
+      line-height: 1.65;
+      max-width: 38ch;
+    }
+    .nd-faq__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 108px;
+      height: 44px;
+      background: #353535;
+      color: #ffffff;
+      border-radius: 0;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: none;
+      text-decoration: none;
+      padding: 0 18px;
+    }
+    .nd-faq__right {
+      padding: 10px 0 0;
+      max-width: 628px;
+      justify-self: end;
+      width: 100%;
+    }
+    .nd-faq__item {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #c6c6c6;
+      border-top: 0;
+      background: #d5d5d5;
+      border-radius: 0;
+      padding: 15px 20px;
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 400;
+    }
+    .nd-contact__layout {
+      width: 1440px;
+      max-width: 100%;
+      display: grid;
+      grid-template-columns: 588px 708px;
+      column-gap: 144px;
+      row-gap: 24px;
+      align-items: start;
+    }
+    .nd-faq__item.is-open {
+      background: #ffffff;
+    }
+    .nd-faq__item strong {
+      font-family: var(--font-heading);
+      font-size: 23px;
+      line-height: 1;
+      font-weight: 400;
+      color: #353535;
+      margin-left: 14px;
+    }
+    .nd-faq__panel {
+      background: #ffffff;
+      border: 1px solid #c6c6c6;
+      border-top: 0;
+      margin: 0;
+      padding: 0 20px 18px;
+      font-family: var(--font-body);
+      font-size: 17px;
+      color: #585151;
+      line-height: 1.55;
+    }
+    .nd-contact__layout {
+      display: grid;
+      grid-template-columns: 588px 708px;
+      column-gap: 144px;
+      row-gap: 24px;
+      align-items: start;
+    }
+    .nd-contact__intro {
+      grid-column: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .nd-contact__title {
+      margin: 0;
+      color: #353535;
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: clamp(2rem, 2vw + 1.35rem, 3rem);
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      max-width: 18ch;
+    }
+    .nd-contact__subtitle {
+      margin: 0;
+      max-width: 588px;
+      color: #000;
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: var(--home-type-body);
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    .nd-contact__tiles {
+      grid-column: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      align-content: start;
+    }
+    .nd-contact__tile {
+      padding: 24px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      overflow: hidden;
+      min-height: 186px;
+    }
+    .nd-contact__chip {
+      width: 38px;
+      height: 38px;
+      padding: 4px;
+      background: #fff;
+      outline: 0.5px solid #d6d6d6;
+      outline-offset: -0.5px;
+      box-shadow: 0 2px 1.5px 0.5px rgba(149, 160, 178, 0.16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      overflow: hidden;
+    }
+    .nd-contact__chip img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .nd-contact__tile-copy {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .nd-contact__tile-copy h3 {
+      margin: 0;
+      color: #141a28;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 28px;
+      font-weight: 500;
+    }
+    .nd-contact__tile-copy p {
+      margin: 0;
+      color: #0a0a0a;
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 24px;
+      font-weight: 400;
+      white-space: pre-line;
+    }
+    .nd-contact__form {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      width: 708px;
+      max-width: 100%;
+      padding: 32px;
+      border: 1px solid #cfd4db;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow: hidden;
+    }
+    .nd-contact__row--split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .nd-contact__field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-start;
+    }
+    .nd-contact__field-head {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .nd-contact__field-label,
+    .nd-contact__required,
+    .nd-contact__agree,
+    .nd-contact__agree-text {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 24px;
+    }
+    .nd-contact__field-label {
+      color: #585151;
+      font-weight: 500;
+    }
+    .nd-contact__required {
+      color: #ff5805;
+      font-weight: 500;
+      margin-left: 2px;
+    }
+    .nd-contact__field > input,
+    .nd-contact__field > textarea {
+      width: 100%;
+      border: 1px solid #d7dce2;
+      background: #fff;
+      color: #353535;
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 24px;
+      font-weight: 400;
+      padding: 10px 12px;
+      outline: none;
+    }
+    .nd-contact__field > input {
+      height: 40px;
+    }
+    .nd-contact__field > textarea {
+      min-height: 128px;
+      resize: vertical;
+      padding-top: 10px;
+    }
+    .nd-contact__field > input::placeholder,
+    .nd-contact__field > textarea::placeholder {
+      color: #585151;
+      opacity: 1;
+    }
+    .nd-contact__agree {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #585151;
+      font-weight: 400;
+      margin-top: 4px;
+    }
+    .nd-contact__checkbox {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nd-contact__checkbox input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      margin: 0;
+    }
+    .nd-contact__checkbox-box {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #c7cbd1;
+      background: #fff;
+      display: block;
+    }
+    .nd-contact__checkbox input:checked + .nd-contact__checkbox-box {
+      background: #0982c5;
+      box-shadow: inset 0 0 0 3px #fff;
+    }
+    .nd-contact__agree-text {
+      color: #585151;
+      font-weight: 400;
+    }
+    .nd-contact__agree-text a {
+      color: #585151;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .nd-contact__submit {
+      width: 100%;
+      height: 48px;
+      border-radius: 5px;
+      background: #0982c5;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 28px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4px;
+    }
+    @media (max-width: 1024px) {
+      .nd-highlight__inner, .nd-faq { grid-template-columns: 1fr; }
+      .nd-managed__inner {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 32px;
+        row-gap: 36px;
+      }
+      .nd-managed__copy { padding-top: 0; }
+      .nd-highlight__inner { padding: 40px 30px; gap: 28px; }
+      .nd-highlight__copy h3 { font-size: 38px; }
+      .nd-highlight__media { min-height: 300px; }
+      .nd-highlight__video { height: 300px; }
+      .nd-trusted__head {
+        margin-bottom: 34px;
+      }
+      .nd-trusted__title {
+        font-size: 42px;
+        max-width: 540px;
+      }
+      .nd-trusted__track {
+        transform: none;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .nd-t-card {
+        width: auto;
+        min-height: 250px;
+      }
+      .nd-t-card__quote { font-size: 19px; line-height: 1.55; }
+      .nd-t-card__sub { font-size: 17px; line-height: 1.5; }
+      .nd-t-card__name { font-size: 16px; }
+      .nd-t-card__role { font-size: 16px; }
+      .nd-why__row, .nd-why__row--active { grid-template-columns: 1fr; }
+      .nd-figma-managed {
+        grid-template-columns: 1fr;
+        padding: 36px 28px;
+        row-gap: 28px;
+      }
+      .nd-figma-managed__title {
+        width: auto;
+        font-size: 40px;
+      }
+      .nd-figma-managed__video {
+        width: 100%;
+        height: 260px;
+        margin-top: 24px;
+      }
+      .nd-figma-managed__bars {
+        margin-top: 24px;
+      }
+      .nd-figma-managed__copy,
+      .nd-figma-managed__copy p,
+      .nd-figma-managed__copy li {
+        font-size: 24px;
+        line-height: 1.15;
+      }
+      .nd-figma-card {
+        grid-template-columns: 1fr;
+        padding: 28px;
+      }
+      .nd-figma-card__title,
+      .nd-figma-card__thumb,
+      .nd-figma-card__body {
+        grid-column: 1;
+      }
+      .nd-figma-card__thumb {
+        width: 100%;
+        height: 220px;
+      }
+      .nd-figma-card__body {
+        grid-row: auto;
+      }
+      .nd-figma-card__lead {
+        max-width: none;
+        font-size: 24px;
+      }
+      .nd-figma-card__text {
+        max-width: none;
+        font-size: 17px;
+        line-height: 1.6;
+      }
+      .nd-figma-card__cta {
+        font-size: 16px;
+      }
+      .nd-contact__layout {
+        width: 100%;
+        grid-template-columns: 1fr;
+        column-gap: 24px;
+      }
+      .nd-contact__intro,
+      .nd-contact__tiles,
+      .nd-contact__form {
+        grid-column: 1;
+      }
+      .nd-contact__form {
+        grid-row: auto;
+        width: 100%;
+      }
+    }
+    @media (max-width: 640px) {
+      .nd-trusted__head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .nd-trusted__controls { gap: 10px; }
+      .nd-trusted__nav {
+        width: 42px;
+        height: 42px;
+        font-size: 34px;
+      }
+      .nd-trusted__track {
+        grid-template-columns: 1fr;
+      }
+      .nd-trusted__title {
+        font-size: 34px;
+        max-width: none;
+      }
+      .nd-t-card {
+        min-height: 230px;
+        padding: 22px 16px 16px;
+      }
+      .nd-t-card__quote { font-size: 18px; line-height: 1.55; }
+      .nd-t-card__sub { font-size: 16px; line-height: 1.5; margin-top: 12px; }
+      .nd-t-card__person { gap: 12px; padding-top: 18px; }
+      .nd-t-card__name { font-size: 16px; }
+      .nd-t-card__role { font-size: 16px; }
+      .nd-figma-stack.section-shell {
+        gap: 20px;
+      }
+      .nd-figma-managed {
+        padding: 24px 18px;
+      }
+      .nd-figma-managed__title {
+        font-size: 34px;
+      }
+      .nd-figma-managed__video {
+        height: 220px;
+      }
+      .nd-figma-managed__bars {
+        gap: 16px;
+      }
+      .nd-figma-managed__bar {
+        width: 72px;
+        height: 8px;
+      }
+      .nd-figma-managed__copy,
+      .nd-figma-managed__copy p,
+      .nd-figma-managed__copy li {
+        font-size: 18px;
+        line-height: 1.25;
+      }
+      .nd-figma-card {
+        padding: 22px 16px;
+      }
+      .nd-figma-card__title {
+        font-size: 28px;
+      }
+      .nd-figma-card__thumb {
+        height: 180px;
+      }
+      .nd-figma-card__body {
+        padding: 18px 14px;
+      }
+      .nd-figma-card__lead {
+        font-size: 20px;
+      }
+      .nd-figma-card__text {
+        font-size: 16px;
+      }
+      .nd-figma-card__cta {
+        min-width: 120px;
+        font-size: 16px;
+      }
+      .nd-contact__surface {
+        padding: 32px 18px 24px;
+      }
+      .nd-contact__title {
+        font-size: 34px;
+        line-height: 1.08;
+      }
+      .nd-contact__subtitle {
+        font-size: 16px;
+        line-height: 28px;
+      }
+      .nd-contact__tiles {
+        grid-template-columns: 1fr;
+      }
+      .nd-contact__tile {
+        min-height: 0;
+      }
+      .nd-contact__form {
+        padding: 20px 16px;
+      }
+      .nd-contact__row--split {
+        grid-template-columns: 1fr;
+      }
+      .nd-highlight__inner { padding: 28px 18px; }
+      .nd-highlight__copy h3 { font-size: 30px; }
+      .nd-highlight__copy p { font-size: 14px; }
+      .nd-highlight__copy li { font-size: 14px; }
+      .nd-highlight__media { min-height: 220px; }
+      .nd-highlight__video { height: 220px; }
+      .nd-contact > .section-title { font-size: 34px; line-height: 1.08; text-align: left; }
+      .nd-contact__grid { gap: 18px; }
+      .nd-contact__info { gap: 18px; }
+      .nd-contact__form { padding: 12px; }
+      .nd-contact__form .btn-blue { min-height: 46px; font-size: 15px; }
+    }
+  </style>
+
   <script>
     (function () {
-      'use strict';
-      var box     = document.getElementById('video-banner');
-      var video   = document.getElementById('video-banner-vid');
-      var overlay = document.getElementById('video-banner-overlay');
-      if (!box || !video) return;
-
-      /* Sync the paused/playing state on the box (controls the play overlay) */
-      function syncState() {
-        box.classList.toggle('is-playing', !video.paused && !video.ended);
-      }
-      video.addEventListener('play', syncState);
-      video.addEventListener('playing', syncState);
-      video.addEventListener('pause', syncState);
-      video.addEventListener('ended', syncState);
-      syncState();
-
-      /* Play overlay button — starts playback on click */
-      if (overlay) {
-        overlay.addEventListener('click', function () {
-          var p = video.play();
-          if (p && typeof p.catch === 'function') { p.catch(function () {}); }
+      var list = document.getElementById('nd-faq-list');
+      if (!list) return;
+      var items = list.querySelectorAll('.nd-faq__item');
+      items.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var panel = btn.nextElementSibling;
+          var open = btn.classList.contains('is-open');
+          items.forEach(function (b) {
+            b.classList.remove('is-open');
+            b.querySelector('strong').textContent = '+';
+            if (b.nextElementSibling) b.nextElementSibling.hidden = true;
+          });
+          if (!open) {
+            btn.classList.add('is-open');
+            btn.querySelector('strong').textContent = '−';
+            if (panel) panel.hidden = false;
+          }
         });
-      }
-
-      /* Show native controls on hover / keyboard focus, hide otherwise */
-      function showControls() { video.setAttribute('controls', 'controls'); }
-      function hideControls() {
-        if (document.activeElement !== video) { video.removeAttribute('controls'); }
-      }
-      box.addEventListener('mouseenter', showControls);
-      box.addEventListener('mouseleave', hideControls);
-      video.addEventListener('focus', showControls);
-      video.addEventListener('blur', hideControls);
+      });
     }());
   </script>
-
-  <!-- ========= SERVICES CARDS ========= -->
-  <section class="services-section">
-    <div class="services-section__inner">
-      <h2 class="section-title services-section__title animate-fade-up">Services</h2>
-      <div class="sc-viewport">
-        <div class="sc-track services-section__cards">
-
-          <div class="s-card">
-            <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-1.jpg" alt="Network Consultancy" width="471" height="435" loading="lazy"></picture>
-            <div class="s-card__body">
-              <div class="s-card__title">1.&nbsp; Network Consultancy</div>
-              <div class="s-card__desc">Specialised planning and professional IT network consulting services.</div>
-              <a href="/services/network-consultancy.html" class="btn-blue hover-btn">Enquire Here</a>
-            </div>
-          </div>
-
-          <div class="s-card">
-            <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-2.jpg" alt="Network Design and Deployment" width="592" height="435" loading="lazy"></picture>
-            <div class="s-card__body">
-              <div class="s-card__title">2.&nbsp; Network Design &amp; Deployment</div>
-              <div class="s-card__desc">End-to-end network architecture design and seamless deployment.</div>
-              <a href="/services/network-design-deployment.html" class="btn-blue hover-btn">Enquire Here</a>
-            </div>
-          </div>
-
-          <div class="s-card">
-            <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-2.jpg" alt="Network Installations" width="471" height="435" loading="lazy"></picture>
-            <div class="s-card__body">
-              <div class="s-card__title">3.&nbsp; Network Installations</div>
-              <div class="s-card__desc">Professional installation of cabling, switches, routers and access points.</div>
-              <a href="/services/network-installations.html" class="btn-blue hover-btn">Enquire Here</a>
-            </div>
-          </div>
-
-          <div class="s-card">
-            <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-3.jpg" alt="Network Support" width="471" height="435" loading="lazy"></picture>
-            <div class="s-card__body">
-              <div class="s-card__title">4.&nbsp; Network Support</div>
-              <div class="s-card__desc">Responsive support keeping your network running at peak performance.</div>
-              <a href="/services/network-support.html" class="btn-blue hover-btn">Enquire Here</a>
-            </div>
-          </div>
-
-          <div class="s-card">
-            <picture><source srcset="/images/services/service-4.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-4.jpg" alt="Managed Network Support" width="471" height="435" loading="lazy"></picture>
-            <div class="s-card__body">
-              <div class="s-card__title">5.&nbsp; Managed Network Support</div>
-              <div class="s-card__desc">Fully managed proactive monitoring and maintenance of your network.</div>
-              <a href="/services/managed-network-support.html" class="btn-blue hover-btn">Enquire Here</a>
-            </div>
-          </div>
-
-          <div class="s-card">
-            <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-1.jpg" alt="Managed Wireless LAN" width="592" height="435" loading="lazy"></picture>
-            <div class="s-card__body">
-              <div class="s-card__title">6.&nbsp; Managed Wireless LAN</div>
-              <div class="s-card__desc">High-performance managed wireless networks with no coverage gaps.</div>
-              <a href="/services/managed-wireless-lan.html" class="btn-blue hover-btn">Enquire Here</a>
-            </div>
-          </div>
-
-          <div class="s-card">
-            <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-1.jpg" alt="Remote Access and VPN" width="471" height="435" loading="lazy"></picture>
-            <div class="s-card__body">
-              <div class="s-card__title">7.&nbsp; Remote Access &amp; VPN</div>
-              <div class="s-card__desc">Secure remote access and VPN solutions for your hybrid workforce.</div>
-              <a href="/services/remote-access-vpn.html" class="btn-blue hover-btn">Enquire Here</a>
-            </div>
-          </div>
-
-          <div class="s-card">
-            <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-2.jpg" alt="Firewall and Network Security" width="471" height="435" loading="lazy"></picture>
-            <div class="s-card__body">
-              <div class="s-card__title">8.&nbsp; Firewall &amp; Network Security</div>
-              <div class="s-card__desc">Enterprise-grade firewall management and network security solutions.</div>
-              <a href="/services/firewall-network-security.html" class="btn-blue hover-btn">Enquire Here</a>
-            </div>
-          </div>
-
-          <div class="s-card">
-            <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-3.jpg" alt="Business Continuity" width="471" height="435" loading="lazy"></picture>
-            <div class="s-card__body">
-              <div class="s-card__title">9.&nbsp; Business Continuity</div>
-              <div class="s-card__desc">Resilient network strategies keeping your business operational through disruptions.</div>
-              <a href="/services/business-continuity.html" class="btn-blue hover-btn">Enquire Here</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="sc-controls">
-        <a href="/services/" class="btn-blue hover-btn sc-see-all">See All</a>
-        <div class="sc-nav-group">
-          <div class="sc-arrows">
-            <button class="sc-btn sc-prev" aria-label="Previous">
-              <svg width="60" height="47" viewBox="0 0 60 47" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="47" rx="6.18557" fill="#EBEBEB"/><path d="M20.4116 16.2271L11.1333 25.5054L20.4116 34.7838M11.1333 25.5054H48.8652" stroke="black" stroke-width="3.09278" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <button class="sc-btn sc-next" aria-label="Next">
-              <svg width="65" height="51" viewBox="0 0 65 51" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="65" height="50.9278" rx="6.70103" fill="#EBEBEB"/><path d="M42.887 15.4124L52.939 25.4639L42.887 35.5154M52.939 25.4639H12.062" stroke="black" stroke-width="3.35052" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </div>
-          <div class="sc-scrubber"><div class="sc-fill"></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========= WHY CHOOSE US ========= -->
-  <section class="why-choose">
-    <div class="why-choose__header animate-fade-up">
-      <h2 class="section-title">Why Organisations Choose Network Consultancy</h2>
-      <p>IT NETWORK SUPPORT WITH EXPERT CISCO CONSULTANCY SOLUTIONS</p>
-    </div>
-    <div class="why-choose__layout">
-      <div class="why-col">
-        <div class="why-point animate-fade-up"><p>TRUSTED NETWORK EXPERTS DELIVERING PRACTICAL BUSINESS OUTCOMES.</p></div>
-        <div class="why-point animate-fade-up"><p>DEEP EXPERTISE ACROSS NETWORKS, INFRASTRUCTURE, AND SECURITY.</p></div>
-        <div class="why-point animate-fade-up"><p>END-TO-END SERVICES FROM CONSULTING TO MANAGED SUPPORT.</p></div>
-        <div class="why-point animate-fade-up"><p>RELIABLE SOLUTIONS TAILORED FOR MULTI-SITE ORGANISATIONS.</p></div>
-      </div>
-      <picture><source srcset="/images/misc/why-choose-us.webp" type="image/webp"><img class="why-img animate-fade-in" src="/images/misc/why-choose-us.jpg" alt="Professional business team" width="400" height="548" loading="lazy"></picture>
-      <div class="why-col">
-        <div class="why-point animate-fade-up"><p>RESPONSIVE SUPPORT WITH PROACTIVE ISSUE PREVENTION.</p></div>
-        <div class="why-point animate-fade-up"><p>24/7 MONITORING TO KEEP SYSTEMS SECURE AND AVAILABLE.</p></div>
-        <div class="why-point animate-fade-up"><p>SEAMLESS COLLABORATION WITH YOUR INTERNAL IT TEAMS.</p></div>
-        <div class="why-point animate-fade-up"><p>SECURITY-FIRST STRATEGIES THAT STRENGTHEN BUSINESS RESILIENCE.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========= IT NETWORKING SOLUTIONS ========= -->
-  <section class="solutions-section">
-    <div class="solutions-section__header">
-      <h2 class="section-title animate-fade-up">IT Networking Solutions</h2>
-    </div>
-    <div class="solutions-main">
-      <picture><source srcset="/images/misc/it-networking.webp" type="image/webp"><img src="/images/misc/it-networking.jpg" alt="IT Networking Solutions — server room" width="1440" height="713" loading="lazy"></picture>
-      <div class="solutions-main__overlay"></div>
-      <div class="solutions-infobox animate-fade-up">
-        <h3>Comprehensive Infrastructure Review</h3>
-        <p>Evaluate existing network components to identify weaknesses, improve reliability, and support effective future business growth.</p>
-        <a href="#contact" class="btn-blue-lg hover-btn">Get To Know More</a>
-      </div>
-    </div>
-    <div class="solutions-bottom">
-      <div class="solutions-nav">
-        <div class="solutions-arrows">
-          <button class="sol-arrow" aria-label="Previous">
-            <svg width="97" height="76" viewBox="0 0 60 47" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="47" rx="6.18557" fill="#EBEBEB"/><path d="M20.4116 16.2271L11.1333 25.5054L20.4116 34.7838M11.1333 25.5054H48.8652" stroke="black" stroke-width="3.09278" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="sol-arrow" aria-label="Next">
-            <svg width="97" height="76" viewBox="0 0 65 51" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="65" height="50.9278" rx="6.70103" fill="#EBEBEB"/><path d="M42.887 15.4124L52.939 25.4639L42.887 35.5154M52.939 25.4639H12.062" stroke="black" stroke-width="3.35052" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="solutions-progress">
-          <div class="solutions-progress-fill"></div>
-        </div>
-      </div>
-      <div class="solutions-sub-cards stagger-children">
-        <div class="sol-sub animate-fade-up">
-          <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img src="/images/services/service-2.jpg" alt="Performance Bottleneck Detection" width="471" height="435" loading="lazy"></picture>
-          <p>Performance Bottleneck Detection</p>
-        </div>
-        <div class="sol-sub animate-fade-up">
-          <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img src="/images/services/service-3.jpg" alt="Security Risk Assessment" width="471" height="435" loading="lazy"></picture>
-          <p>Security Risk Assessment</p>
-        </div>
-        <div class="sol-sub animate-fade-up">
-          <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img src="/images/features/feature-1.jpg" alt="Capacity Planning and Scalability" width="592" height="435" loading="lazy"></picture>
-          <p>Capacity Planning and Scalability</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-  /* =============================================
-     IT Networking Solutions — promote-from-thumbnail slider
-     4 slides. Hero crossfades on nav; clicking a thumbnail
-     promotes it to hero. Loops in both directions.
-  ============================================= */
-  (function () {
-    'use strict';
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var slides = [
-      { srcset: '/images/misc/it-networking.webp',  src: '/images/misc/it-networking.jpg',  alt: 'IT Networking Solutions',            title: 'Comprehensive Infrastructure Review',  desc: 'Evaluate existing network components to identify weaknesses, improve reliability, and support effective future business growth.',          label: 'Infrastructure Review' },
-      { srcset: '/images/services/service-2.webp',  src: '/images/services/service-2.jpg',  alt: 'Performance Bottleneck Detection',   title: 'Performance Bottleneck Detection',     desc: 'Identify and resolve network performance issues before they impact your business operations and productivity.',                             label: 'Performance Bottleneck Detection' },
-      { srcset: '/images/services/service-3.webp',  src: '/images/services/service-3.jpg',  alt: 'Security Risk Assessment',            title: 'Security Risk Assessment',             desc: 'Comprehensive audit of your network security posture to uncover vulnerabilities and strengthen your defences.',                             label: 'Security Risk Assessment' },
-      { srcset: '/images/features/feature-1.webp',  src: '/images/features/feature-1.jpg',  alt: 'Capacity Planning and Scalability',   title: 'Capacity Planning & Scalability',      desc: 'Ensure your network infrastructure scales seamlessly with business growth through expert capacity analysis and planning.',                  label: 'Capacity Planning and Scalability' }
-    ];
-
-    var total = slides.length;
-    var idx   = 0;
-    var busy  = false;
-
-    var section    = document.querySelector('.solutions-section');
-    if (!section) return;
-
-    var heroSource = section.querySelector('.solutions-main source');
-    var heroImg    = section.querySelector('.solutions-main img');
-    var heroH3     = section.querySelector('.solutions-infobox h3');
-    var heroP      = section.querySelector('.solutions-infobox p');
-    var thumbs     = Array.prototype.slice.call(section.querySelectorAll('.sol-sub'));
-    var fill       = section.querySelector('.solutions-progress-fill');
-    var prevBtn    = section.querySelectorAll('.sol-arrow')[0];
-    var nextBtn    = section.querySelectorAll('.sol-arrow')[1];
-
-    /* Smooth fade on hero elements */
-    heroImg.style.transition = 'opacity 0.32s ease';
-    heroH3.style.transition  = 'opacity 0.28s ease';
-    heroP.style.transition   = 'opacity 0.28s ease';
-
-    function setThumb(el, slide) {
-      var src = el.querySelector('source');
-      var img = el.querySelector('img');
-      var lbl = el.querySelector('p');
-      if (src) src.srcset = slide.srcset;
-      img.src = slide.src;
-      img.alt = slide.alt;
-      lbl.textContent = slide.label;
-    }
-
-    function updateProgress() {
-      fill.style.width = Math.round((idx / (total - 1)) * 100) + '%';
-    }
-
-    function goTo(n) {
-      if (busy) return;
-      busy = true;
-      idx = ((n % total) + total) % total;
-
-      /* Fade hero out */
-      heroImg.style.opacity = '0';
-      heroH3.style.opacity  = '0';
-      heroP.style.opacity   = '0';
-
-      setTimeout(function () {
-        var s = slides[idx];
-
-        /* Swap hero image + text */
-        if (heroSource) heroSource.srcset = s.srcset;
-        heroImg.src        = s.src;
-        heroImg.alt        = s.alt;
-        heroH3.textContent = s.title;
-        heroP.textContent  = s.desc;
-
-        /* Rotate thumbnails: show the other 3 slides in order */
-        thumbs.forEach(function (thumb, i) {
-          setThumb(thumb, slides[(idx + i + 1) % total]);
-        });
-
-        updateProgress();
-
-        /* Fade hero back in */
-        heroImg.style.opacity = '1';
-        heroH3.style.opacity  = '1';
-        heroP.style.opacity   = '1';
-
-        busy = false;
-      }, 300);
-    }
-
-    /* Clicking a thumbnail promotes it to hero */
-    thumbs.forEach(function (thumb, i) {
-      thumb.style.cursor = 'pointer';
-      thumb.addEventListener('click', function () { goTo(idx + i + 1); });
-      thumb.querySelector('img').style.transition = 'opacity 0.2s, transform 0.2s';
-      thumb.addEventListener('mouseenter', function () {
-        thumb.querySelector('img').style.opacity   = '0.8';
-        thumb.querySelector('img').style.transform = 'scale(1.03)';
-      });
-      thumb.addEventListener('mouseleave', function () {
-        thumb.querySelector('img').style.opacity   = '1';
-        thumb.querySelector('img').style.transform = 'scale(1)';
-      });
-    });
-
-    prevBtn.addEventListener('click', function () { goTo(idx - 1); });
-    nextBtn.addEventListener('click', function () { goTo(idx + 1); });
-
-    updateProgress();
-  }());
-  </script>
-
-  <!-- ========= INDUSTRIES ========= -->
-  <section class="industries-section">
-    <h2 class="section-title industries-section__title animate-fade-up">INDUSTRIES</h2>
-    <div class="sc-viewport">
-      <div class="sc-track industries-section__cards">
-
-        <div class="s-card">
-          <picture><source srcset="/images/services/service-4.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-4.jpg" alt="Financial Services" width="471" height="435" loading="lazy"></picture>
-          <div class="s-card__body">
-            <div class="s-card__title">1.&nbsp; Financial Services</div>
-            <div class="s-card__desc">Secure, compliant network infrastructure for financial institutions.</div>
-            <a href="/industries/financial-services.html" class="btn-blue hover-btn">Enquire Here</a>
-          </div>
-        </div>
-
-        <div class="s-card">
-          <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-1.jpg" alt="Healthcare and Clinics" width="592" height="435" loading="lazy"></picture>
-          <div class="s-card__body">
-            <div class="s-card__title">2.&nbsp; Healthcare &amp; Clinics</div>
-            <div class="s-card__desc">Reliable, fast networks that support critical healthcare operations.</div>
-            <a href="/industries/healthcare-clinics.html" class="btn-blue hover-btn">Enquire Here</a>
-          </div>
-        </div>
-
-        <div class="s-card">
-          <picture><source srcset="/images/services/service-2.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-2.jpg" alt="Legal Firms" width="471" height="435" loading="lazy"></picture>
-          <div class="s-card__body">
-            <div class="s-card__title">3.&nbsp; Legal Firms</div>
-            <div class="s-card__desc">High-security networking for law firms handling sensitive client data.</div>
-            <a href="/industries/legal-firms.html" class="btn-blue hover-btn">Enquire Here</a>
-          </div>
-        </div>
-
-        <div class="s-card">
-          <picture><source srcset="/images/services/service-3.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-3.jpg" alt="Manufacturing" width="471" height="435" loading="lazy"></picture>
-          <div class="s-card__body">
-            <div class="s-card__title">4.&nbsp; Manufacturing</div>
-            <div class="s-card__desc">Robust network infrastructure connecting factory floors and operations.</div>
-            <a href="/industries/manufacturing.html" class="btn-blue hover-btn">Enquire Here</a>
-          </div>
-        </div>
-
-        <div class="s-card">
-          <picture><source srcset="/images/features/feature-2.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-2.jpg" alt="Multi-Site Businesses" width="592" height="435" loading="lazy"></picture>
-          <div class="s-card__body">
-            <div class="s-card__title">5.&nbsp; Multi-Site Businesses</div>
-            <div class="s-card__desc">Unified, consistent network performance across all your locations.</div>
-            <a href="/industries/multi-site-businesses.html" class="btn-blue hover-btn">Enquire Here</a>
-          </div>
-        </div>
-
-        <div class="s-card">
-          <picture><source srcset="/images/services/service-1.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-1.jpg" alt="Professional Services" width="471" height="435" loading="lazy"></picture>
-          <div class="s-card__body">
-            <div class="s-card__title">6.&nbsp; Professional Services</div>
-            <div class="s-card__desc">Dependable connectivity for consultancies, agencies and professional firms.</div>
-            <a href="/industries/professional-services.html" class="btn-blue hover-btn">Enquire Here</a>
-          </div>
-        </div>
-
-        <div class="s-card">
-          <picture><source srcset="/images/services/service-4.webp" type="image/webp"><img class="s-card__img" src="/images/services/service-4.jpg" alt="Recruitment Agencies" width="471" height="435" loading="lazy"></picture>
-          <div class="s-card__body">
-            <div class="s-card__title">7.&nbsp; Recruitment Agencies</div>
-            <div class="s-card__desc">Fast, cloud-ready networks keeping recruitment teams connected.</div>
-            <a href="/industries/recruitment-agencies.html" class="btn-blue hover-btn">Enquire Here</a>
-          </div>
-        </div>
-
-        <div class="s-card">
-          <picture><source srcset="/images/features/feature-1.webp" type="image/webp"><img class="s-card__img" src="/images/features/feature-1.jpg" alt="Internal IT Teams" width="592" height="435" loading="lazy"></picture>
-          <div class="s-card__body">
-            <div class="s-card__title">8.&nbsp; Internal IT Teams</div>
-            <div class="s-card__desc">Co-managed IT partnering with your in-house team for network excellence.</div>
-            <a href="/industries/internal-it-teams.html" class="btn-blue hover-btn">Enquire Here</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <div class="sc-controls">
-      <a href="/industries/" class="btn-blue hover-btn sc-see-all">See All</a>
-      <div class="sc-nav-group">
-        <div class="sc-arrows">
-          <button class="sc-btn sc-prev" aria-label="Previous">
-            <svg width="60" height="47" viewBox="0 0 60 47" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="47" rx="6.18557" fill="#EBEBEB"/><path d="M20.4116 16.2271L11.1333 25.5054L20.4116 34.7838M11.1333 25.5054H48.8652" stroke="black" stroke-width="3.09278" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="sc-btn sc-next" aria-label="Next">
-            <svg width="65" height="51" viewBox="0 0 65 51" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="65" height="50.9278" rx="6.70103" fill="#EBEBEB"/><path d="M42.887 15.4124L52.939 25.4639L42.887 35.5154M52.939 25.4639H12.062" stroke="black" stroke-width="3.35052" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="sc-scrubber"><div class="sc-fill"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-  /* =============================================
-     Peek carousel — Services + Industries
-     Shows 2 full cards + 1 peeking (blurred).
-     Position-aware: blur applied to whichever
-     card partially overflows the right edge.
-  ============================================= */
-  (function () {
-    'use strict';
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    function initCarousel(section) {
-      var viewport = section.querySelector('.sc-viewport');
-      var track    = section.querySelector('.sc-track');
-      if (!viewport || !track) return;
-
-      var cards   = Array.prototype.slice.call(track.querySelectorAll('.s-card'));
-      if (!cards.length) return;
-
-      var prevBtn = section.querySelector('.sc-prev');
-      var nextBtn = section.querySelector('.sc-next');
-      var fill    = section.querySelector('.sc-fill');
-      var idx = 0;
-
-      function gap() {
-        var g = parseFloat(getComputedStyle(track).gap);
-        return isNaN(g) ? 24 : g;
-      }
-      function cardW()  { return cards[0].getBoundingClientRect().width; }
-      function vpW()    { return viewport.getBoundingClientRect().width; }
-      function maxIdx() {
-        var cw = cardW(), g = gap(), vw = vpW();
-        var visible = Math.floor((vw + g) / (cw + g));
-        return Math.max(0, cards.length - visible);
-      }
-
-      function updatePeek() {
-        var cw = cardW(), g = gap(), vw = vpW();
-        var offset = idx * (cw + g);
-        cards.forEach(function (card, i) {
-          var left  = i * (cw + g) - offset;
-          var right = left + cw;
-          /* peek: card straddles the right edge */
-          card.classList.toggle('s-card--peek', right > vw + 1 && left < vw - 1);
-        });
-      }
-
-      function render() {
-        var cw = cardW(), g = gap();
-        track.style.transform = 'translateX(' + (-idx * (cw + g)).toFixed(1) + 'px)';
-        updatePeek();
-        /* scrubber */
-        var max = maxIdx();
-        if (fill) fill.style.width = (max > 0 ? (idx / max) * 100 : 100) + '%';
-        /* buttons */
-        if (prevBtn) prevBtn.disabled = idx === 0;
-        if (nextBtn) nextBtn.disabled = idx >= maxIdx();
-      }
-
-      function goTo(n) {
-        idx = Math.max(0, Math.min(n, maxIdx()));
-        render();
-      }
-
-      if (prevBtn) prevBtn.addEventListener('click', function () { goTo(idx - 1); });
-      if (nextBtn) nextBtn.addEventListener('click', function () { goTo(idx + 1); });
-
-      var resizeTimer;
-      window.addEventListener('resize', function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () { goTo(idx); }, 120);
-      });
-
-      render();
-    }
-
-    var sections = document.querySelectorAll('.services-section, .industries-section');
-    Array.prototype.forEach.call(sections, initCarousel);
-  }());
-  </script>
-
-  <!-- ========= MANAGED NETWORK SECURITY + NETWORK CONSULTANCY BANNERS (sticky flip) ========= -->
-  <div class="banners-flip" id="banners-flip">
-    <div class="banners-flip__stage">
-
-    <!-- CARD 1: front — slides up on scroll -->
-    <div class="scroll-banner-wrap">
-      <div class="scroll-banner">
-        <picture><source srcset="/images/banners/scroll-banner-1.webp" type="image/webp"><img class="scroll-banner__bg" src="/images/banners/scroll-banner-1.jpg" alt="" width="1420" height="914" loading="lazy"></picture>
-        <div class="scroll-banner__overlay"></div>
-        <div class="scroll-banner__content">
-          <h2 class="scroll-banner__title">MANAGED NETWORK SECURITY</h2>
-          <div class="scroll-banner__body">
-            <p>When it comes to enhancing your business's IT infrastructure, Network Consultancy Services provides a gateway to success. Our expertise in this realm covers not just network consultancy services but also extends to Managed Network Security and Managed Network Solutions.</p>
-            <ul>
-              <li>24/7 Firewall Administration and Intrusion Detection</li>
-              <li>Regular Software and Firmware Updates</li>
-              <li>AI-Driven Threat Intelligence &amp; Monitoring</li>
-              <li>Continuous Compliance of Regulations such as ISO 27001 or GDPR</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD 2: back — revealed beneath Card 1 -->
-    <div class="scroll-banner-wrap scroll-banner-wrap--2">
-      <div class="scroll-banner scroll-banner--cta">
-        <picture><source srcset="/images/banners/scroll-banner-2.webp" type="image/webp"><img class="scroll-banner__bg" src="/images/banners/scroll-banner-2.jpg" alt="" width="1420" height="914" loading="lazy"></picture>
-        <div class="scroll-banner__overlay"></div>
-        <div class="scroll-banner__content">
-          <h2 class="scroll-banner__title">NETWORK CONSULTANCY SERVICES</h2>
-          <div class="scroll-banner__body">
-            <p>Our network consultants provide specialised guidance across your core setups:</p>
-            <ul>
-              <li><strong>Cisco Hardware Consultancy:</strong> We configure and deploy your physical routers and switches.</li>
-              <li><strong>Microsoft 365 Readiness:</strong> We audit your infrastructure to ensure secure cloud access.</li>
-              <li><strong>Managed Wireless LAN:</strong> We engineer high-performance wireless networks with no coverage gaps.</li>
-              <li><strong>Remote Access &amp; VPNs:</strong> We implement reliable connectivity for your hybrid team.</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn-blue-lg hover-btn">Schedule a Network Health Assessment</a>
-        </div>
-      </div>
-    </div>
-
-    </div><!-- /.banners-flip__stage -->
-  </div><!-- /.banners-flip -->
-
-  <script>
-  /* =============================================
-     Sticky card deck — vanilla JS, no libraries
-     Card 1 slides up, Card 2 unfolds from behind.
-     Both share one sticky stage so they start stacked.
-  ============================================= */
-  (function () {
-    'use strict';
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var wrapper  = document.getElementById('banners-flip');
-    var stage    = wrapper ? wrapper.querySelector('.banners-flip__stage') : null;
-    var card1    = stage  ? stage.querySelector('.scroll-banner-wrap:first-child') : null;
-    var card2Bgr = stage  ? stage.querySelector('.scroll-banner-wrap--2 .scroll-banner') : null;
-    if (!wrapper || !card1) return;
-
-    var isMobile = window.innerWidth <= 768;
-
-    function setup() {
-      isMobile = window.innerWidth <= 768;
-      if (isMobile) {
-        wrapper.style.height = '';
-        card1.style.transform = '';
-        if (card2Bgr) card2Bgr.style.transform = '';
-        return;
-      }
-      /* Container must be 2x card height so there's enough scroll distance */
-      var cardH = card1.querySelector('.scroll-banner').offsetHeight;
-      wrapper.style.height = (cardH * 2 + 80) + 'px';
-    }
-
-    function easeOut(t) {
-      /* cubic ease-out: fast start, graceful deceleration */
-      return 1 - Math.pow(1 - t, 3);
-    }
-
-    var ticking = false;
-    function update() {
-      if (isMobile) { ticking = false; return; }
-      var rect  = wrapper.getBoundingClientRect();
-      var cardH = card1.querySelector('.scroll-banner').offsetHeight;
-      /* Use full available scroll range so there is no dead zone at the bottom */
-      var scrollRange = Math.max(wrapper.clientHeight - cardH, cardH);
-      /* progress: 0 = cards stacked, 1 = Card 1 fully slid off */
-      var raw      = Math.max(0, Math.min(1, -rect.top / scrollRange));
-      var progress = easeOut(raw);
-      /* Card 1 slides up and away (110% so it fully clears the stage) */
-      card1.style.transform = 'translateY(' + (-progress * 110).toFixed(3) + '%)';
-      /* Card 2 grows from 0.94->1.0 and rises 40px into full position */
-      if (card2Bgr) {
-        var scl = (0.94 + 0.06 * progress).toFixed(4);
-        var ty  = (40 * (1 - progress)).toFixed(2);
-        card2Bgr.style.transform = 'scale(' + scl + ') translateY(' + ty + 'px)';
-      }
-      ticking = false;
-    }
-
-    window.addEventListener('scroll', function () {
-      if (!ticking) { requestAnimationFrame(update); ticking = true; }
-    }, { passive: true });
-
-    window.addEventListener('resize', function () {
-      setup();
-      requestAnimationFrame(update);
-    });
-
-    setup();
-    update();
-  }());
-  </script>
-
-  <!-- ========= OUR CLIENTS ========= -->
-  <section class="our-clients">
-    <div class="our-clients__inner">
-      <h2 class="our-clients__label section-title animate-fade-up">Our clients</h2>
-      <div class="clients-grid stagger-children">
-        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-01.svg" alt="Client logo" loading="lazy"></div>
-        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-02.svg" alt="Client logo" loading="lazy"></div>
-        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-03.svg" alt="Client logo" loading="lazy"></div>
-        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-04.svg" alt="Client logo" loading="lazy"></div>
-        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-05.svg" alt="Client logo" loading="lazy"></div>
-        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-06.svg" alt="Client logo" loading="lazy"></div>
-        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-07.svg" alt="Client logo" loading="lazy"></div>
-        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-08.svg" alt="Client logo" loading="lazy"></div>
-        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-09.svg" alt="Client logo" loading="lazy"></div>
-        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-10.svg" alt="Client logo" loading="lazy"></div>
-        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-11.svg" alt="Client logo" loading="lazy"></div>
-        <div class="client-box animate-fade-in"><img src="/images/misc/client-logo-12.svg" alt="Client logo" loading="lazy"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========= TESTIMONIALS (CMS) ========= -->
-  <div data-cms="testimonials"></div>
-
-  <!-- ========= FAQ (CMS) ========= -->
-  <div data-cms="faq"></div>
-
-
-
-  <div id="site-contact"></div>
-  <script src="/js/form-source-tracking.js"></script>
-  <script src="/js/contact.js"></script>
 
   <div id="site-footer"></div>
   <script src="/js/footer.js"></script>
@@ -2172,6 +3523,229 @@
         }
       });
     });
+
+    // Hero search strip glow radius sync
+    (function setHeroSearchGlowRx() {
+      var fields = document.querySelectorAll('.hero-search-strip__field');
+      if (!fields.length) return;
+
+      fields.forEach(function(field) {
+        var rx = getComputedStyle(field).borderRadius;
+        var rects = field.querySelectorAll('.hero-search-glow rect');
+        rects.forEach(function(rect) { rect.setAttribute('rx', rx); });
+      });
+    }());
+
+    // Hero slide rotator
+    (function rotateHeroSlides() {
+      var slides = Array.prototype.slice.call(document.querySelectorAll('[data-hero-slide]'));
+      if (slides.length < 2) return;
+
+      var activeIndex = 0;
+      var timer = null;
+
+      function setActive(index) {
+        activeIndex = index;
+        slides.forEach(function(slide, slideIndex) {
+          slide.classList.toggle('is-active', slideIndex === index);
+        });
+      }
+
+      function nextSlide() {
+        setActive((activeIndex + 1) % slides.length);
+      }
+
+      timer = window.setInterval(nextSlide, 7000);
+    }());
+
+    // Managed section slider
+    (function rotateManagedSlides() {
+      var track = document.querySelector('.nd-managed__track');
+      var slides = Array.prototype.slice.call(document.querySelectorAll('[data-managed-slide]'));
+      if (!track || slides.length < 2) return;
+
+      var activeIndex = 0;
+
+      function setActive(index) {
+        activeIndex = index;
+        track.style.transform = 'translateX(' + (index * -100) + '%)';
+        slides.forEach(function(slide, slideIndex) {
+          var isActive = slideIndex === index;
+          slide.classList.toggle('is-active', isActive);
+          slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+          Array.prototype.slice.call(slide.querySelectorAll('[data-managed-bar]')).forEach(function(bar, barIndex) {
+            bar.classList.toggle('nd-managed__bar--active', isActive && barIndex === index);
+          });
+        });
+      }
+
+      function nextSlide() {
+        setActive((activeIndex + 1) % slides.length);
+      }
+
+      setActive(0);
+      window.setInterval(nextSlide, 7000);
+    }());
+
+    // Hero search strip hint rotator
+    (function rotateHeroSearchHint() {
+      var field = document.querySelector('.hero-search-strip__field');
+      var hint = document.querySelector('.hero-search-strip__hint');
+      if (!field || !hint) return;
+
+      var hints = [
+        'network security review',
+        'managed network support',
+        'network design and deployment',
+        'business continuity planning',
+        'wireless lan support',
+        'cisco network consultancy'
+      ];
+
+      var index = 0;
+
+      function swapHint() {
+        index = (index + 1) % hints.length;
+        hint.style.opacity = '0';
+        hint.style.transform = 'translateY(-2px)';
+
+        setTimeout(function () {
+          hint.textContent = hints[index];
+          hint.style.opacity = '1';
+          hint.style.transform = 'translateY(0)';
+        }, 180);
+      }
+
+      setInterval(swapHint, 3000);
+    }());
+
+    // Highlight video autoplay
+    (function ensureHighlightVideoPlays() {
+      var video = document.querySelector('.nd-highlight__video');
+      if (!video) return;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.setAttribute('muted', '');
+      var playAttempt = video.play();
+      if (playAttempt && typeof playAttempt.catch === 'function') {
+        playAttempt.catch(function() {});
+      }
+    }());
+
+    // ND Why accordion
+    (function () {
+      var table = document.querySelector('.nd-why__table');
+      if (!table) return;
+      var seedBody = table.querySelector('.nd-why__row--active .nd-why__content p + p');
+      var defaultBodyText = seedBody ? seedBody.textContent.trim() : '';
+
+      function getDirectChildByClass(parent, className) {
+        for (var i = 0; i < parent.children.length; i += 1) {
+          var child = parent.children[i];
+          if (child.classList && child.classList.contains(className)) return child;
+        }
+        return null;
+      }
+
+      function ensureRowStructure(row) {
+        var toggle = getDirectChildByClass(row, 'nd-why__toggle');
+        if (!toggle) return;
+
+        var left = getDirectChildByClass(row, 'nd-why__left');
+        var directLabel = getDirectChildByClass(row, 'nd-why__label');
+
+        if (!left) {
+          left = document.createElement('div');
+          left.className = 'nd-why__left';
+          row.insertBefore(left, row.firstChild);
+        }
+
+        if (directLabel) {
+          left.appendChild(directLabel);
+        }
+
+        var leftLabel = left.querySelector('.nd-why__label');
+        if (!leftLabel) {
+          leftLabel = document.createElement('div');
+          leftLabel.className = 'nd-why__label';
+          leftLabel.textContent = 'Section title';
+          left.insertBefore(leftLabel, left.firstChild);
+        }
+
+        var cta = left.querySelector('.nd-why__cta');
+        if (!cta) {
+          cta = document.createElement('a');
+          cta.href = '/about.html';
+          cta.className = 'nd-why__cta';
+          cta.textContent = 'Vev Details';
+          left.appendChild(cta);
+        }
+
+        var content = getDirectChildByClass(row, 'nd-why__content') || row.querySelector('.nd-why__content');
+        if (content) {
+          if (!getDirectChildByClass(row, 'nd-why__content')) {
+            row.insertBefore(content, toggle);
+          }
+
+          if (!content.querySelector('.nd-why__lead')) {
+            var leadText = content.textContent.trim();
+            content.textContent = '';
+            var lead = document.createElement('p');
+            lead.className = 'nd-why__lead';
+            lead.textContent = leadText;
+            content.appendChild(lead);
+          }
+
+          var details = content.querySelector('p:not(.nd-why__lead)');
+          if (!details && defaultBodyText) {
+            details = document.createElement('p');
+            details.className = 'nd-why__detail';
+            details.textContent = defaultBodyText;
+            content.appendChild(details);
+          }
+        }
+
+        var thumb = getDirectChildByClass(row, 'nd-why__thumb');
+        if (!thumb) {
+          thumb = document.createElement('div');
+          thumb.className = 'nd-why__thumb';
+          row.insertBefore(thumb, toggle);
+        }
+      }
+
+      function setRowState(row, isActive) {
+        row.classList.toggle('nd-why__row--active', isActive);
+        row.style.gridTemplateColumns = isActive ? '327.14px 500px 208px 72px' : '260px 20px 320px 1fr 50px';
+        row.style.alignItems = isActive ? 'start' : 'center';
+        row.style.height = isActive ? '292px' : '100px';
+        row.style.minHeight = isActive ? '292px' : '100px';
+        row.style.overflow = isActive ? 'visible' : 'hidden';
+        var toggle = getDirectChildByClass(row, 'nd-why__toggle');
+        if (!toggle) return;
+
+        toggle.setAttribute('aria-label', isActive ? 'Collapse row' : 'Expand row');
+        var glyph = toggle.querySelector('.nd-why__toggle-glyph');
+        if (!glyph) return;
+
+        glyph.classList.toggle('nd-why__toggle-glyph--x', isActive);
+        glyph.classList.toggle('nd-why__toggle-glyph--down', !isActive);
+      }
+
+      var rows = Array.prototype.slice.call(table.querySelectorAll('.nd-why__row'));
+      rows.forEach(ensureRowStructure);
+
+      rows.forEach(function (row) {
+        var toggle = getDirectChildByClass(row, 'nd-why__toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', function () {
+          var isAlreadyActive = row.classList.contains('nd-why__row--active');
+          rows.forEach(function (r) { setRowState(r, !isAlreadyActive && r === row); });
+        });
+      });
+
+      var activeRow = table.querySelector('.nd-why__row.nd-why__row--active') || rows[0] || null;
+      rows.forEach(function (row) { setRowState(row, row === activeRow); });
+    }());
 
     // ===== SCROLL-AWARE NAVBAR =====
     var navbar = document.querySelector('.navbar');
@@ -2233,6 +3807,194 @@
         closeMobileNav();
       }
     });
+
+    // ===== TRUSTED TESTIMONIAL CONTROLS =====
+    (function () {
+      var trusted = document.querySelector('.nd-trusted');
+      if (!trusted) return;
+
+      var track = trusted.querySelector('.nd-trusted__track');
+      var prevBtn = trusted.querySelector('.nd-trusted__nav--prev');
+      var nextBtn = trusted.querySelector('.nd-trusted__nav--next');
+      var dotsWrap = trusted.querySelector('.nd-trusted__dots');
+      if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
+
+      var desktopQuery = window.matchMedia('(min-width: 1025px)');
+      var baseTranslate = -175;
+      var step = 0;
+      var currentIndex = 0;
+      var cardCount = 0;
+      var dots = [];
+      var isAnimating = false;
+      var transitionMs = 420;
+      var isDesktop = desktopQuery.matches;
+
+      function extractTranslateX(node) {
+        var t = window.getComputedStyle(node).transform;
+        if (!t || t === 'none') return 0;
+        var m = t.match(/matrix\(([^)]+)\)/);
+        if (m) {
+          var parts = m[1].split(',');
+          return parseFloat(parts[4]) || 0;
+        }
+        var m3 = t.match(/matrix3d\(([^)]+)\)/);
+        if (m3) {
+          var values = m3[1].split(',');
+          return parseFloat(values[12]) || 0;
+        }
+        return 0;
+      }
+
+      function updateDots() {
+        if (!dots.length || !cardCount) return;
+        var dotIndex = ((currentIndex % cardCount) + cardCount) % cardCount;
+        dots.forEach(function (dot, i) {
+          dot.classList.toggle('nd-trusted__dot--active', i === dotIndex);
+        });
+      }
+
+      function setDesktopState(enabled) {
+        isDesktop = enabled;
+        if (!isDesktop) {
+          isAnimating = false;
+          prevBtn.disabled = true;
+          nextBtn.disabled = true;
+          track.style.transition = '';
+          track.style.transform = '';
+          track.style.willChange = '';
+          currentIndex = 0;
+          updateDots();
+          return;
+        }
+
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
+        track.style.transition = 'transform ' + transitionMs + 'ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+        track.style.willChange = 'transform';
+        track.style.transform = 'translateX(' + baseTranslate + 'px)';
+        currentIndex = 0;
+        updateDots();
+      }
+
+      function recalcMetrics() {
+        var cards = Array.prototype.slice.call(track.querySelectorAll('.nd-t-card'));
+        cardCount = cards.length;
+        if (cardCount < 2) {
+          prevBtn.disabled = true;
+          nextBtn.disabled = true;
+          return;
+        }
+
+        var firstLeft = cards[0].offsetLeft;
+        var secondLeft = cards[1].offsetLeft;
+        step = Math.max(1, secondLeft - firstLeft);
+
+        if (!dots.length || dots.length !== cardCount) {
+          dotsWrap.innerHTML = '';
+          for (var i = 0; i < cardCount; i += 1) {
+            var dot = document.createElement('span');
+            dot.className = 'nd-trusted__dot';
+            dotsWrap.appendChild(dot);
+          }
+          dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.nd-trusted__dot'));
+        }
+      }
+
+      function onNext() {
+        if (!isDesktop || isAnimating || cardCount < 2) return;
+        isAnimating = true;
+        var done = false;
+
+        function finish() {
+          if (done) return;
+          done = true;
+          track.removeEventListener('transitionend', onEnd);
+          var first = track.firstElementChild;
+          if (first) track.appendChild(first);
+          track.style.transition = 'none';
+          track.style.transform = 'translateX(' + baseTranslate + 'px)';
+          void track.offsetHeight;
+          track.style.transition = 'transform ' + transitionMs + 'ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+          currentIndex = (currentIndex + 1) % cardCount;
+          updateDots();
+          isAnimating = false;
+        }
+
+        function onEnd(event) {
+          if (event.propertyName !== 'transform') return;
+          finish();
+        }
+
+        track.addEventListener('transitionend', onEnd);
+        track.style.transform = 'translateX(' + (baseTranslate - step) + 'px)';
+        window.setTimeout(finish, transitionMs + 60);
+      }
+
+      function onPrev() {
+        if (!isDesktop || isAnimating || cardCount < 2) return;
+        isAnimating = true;
+        var done = false;
+        var last = track.lastElementChild;
+        if (last) track.insertBefore(last, track.firstElementChild);
+
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(' + (baseTranslate - step) + 'px)';
+        void track.offsetHeight;
+        track.style.transition = 'transform ' + transitionMs + 'ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+        track.style.transform = 'translateX(' + baseTranslate + 'px)';
+
+        function finish() {
+          if (done) return;
+          done = true;
+          track.removeEventListener('transitionend', onEnd);
+          currentIndex = (currentIndex - 1 + cardCount) % cardCount;
+          updateDots();
+          isAnimating = false;
+        }
+
+        function onEnd(event) {
+          if (event.propertyName !== 'transform') return;
+          finish();
+        }
+
+        track.addEventListener('transitionend', onEnd);
+        window.setTimeout(finish, transitionMs + 60);
+      }
+
+      function configure() {
+        recalcMetrics();
+        if (!desktopQuery.matches) {
+          setDesktopState(false);
+          return;
+        }
+
+        if (!isDesktop) {
+          setDesktopState(true);
+        } else {
+          baseTranslate = extractTranslateX(track) || -175;
+          track.style.transform = 'translateX(' + baseTranslate + 'px)';
+          updateDots();
+        }
+      }
+
+      prevBtn.addEventListener('click', onPrev);
+      nextBtn.addEventListener('click', onNext);
+
+      trusted.addEventListener('keydown', function (event) {
+        if (!isDesktop) return;
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          onPrev();
+        }
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          onNext();
+        }
+      });
+
+      window.addEventListener('resize', configure);
+      configure();
+    }());
   </script>
 
 

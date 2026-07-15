@@ -1,0 +1,37 @@
+<svg width="47" height="54" viewBox="0 0 47 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="47" height="54" fill="#D3D0D0"/>
+<g id="Nav Design Home">
+<rect width="1920" height="6987" transform="translate(-566 -6452)" fill="white"/>
+<g id="Group 258">
+<g id="CTA - Helio UI">
+<rect width="1440" height="883" transform="translate(-326 -430)" fill="white"/>
+<g id="Contact Section">
+<g id="Features">
+<rect width="286" height="226" transform="translate(-24 -24)" fill="white"/>
+<g id="icon">
+<path d="M46.75 0.25V53.75H0.25V0.25H46.75Z" fill="#F5F5F6"/>
+<path d="M46.75 0.25V53.75H0.25V0.25H46.75Z" stroke="#E6E6E7" stroke-width="0.5"/>
+<g id="wrap" filter="url(#filter0_d_2481_11666)">
+<rect width="39" height="46" transform="translate(4 4)" fill="white"/>
+<path id="Vector" d="M23.5 12C17.1491 12 12 17.0372 12 23.25C12 25.6964 12.8199 27.9412 14.1826 29.7797C14.207 29.8237 14.2109 29.873 14.2387 29.9152L21.9053 41.1652C22.2609 41.6869 22.8598 42 23.5 42C24.1402 42 24.7391 41.6869 25.0947 41.1652L32.7613 29.9152C32.7896 29.873 32.793 29.8237 32.8174 29.7797C34.1801 27.9412 35 25.6964 35 23.25C35 17.0372 29.8509 12 23.5 12ZM23.5 27C21.383 27 19.6667 25.3209 19.6667 23.25C19.6667 21.1791 21.383 19.5 23.5 19.5C25.617 19.5 27.3333 21.1791 27.3333 23.25C27.3333 25.3209 25.617 27 23.5 27Z" fill="#231F20"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_2481_11666" x="2" y="4" width="43" height="50" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_2481_11666"/>
+<feOffset dy="2"/>
+<feGaussianBlur stdDeviation="0.75"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.584314 0 0 0 0 0.627451 0 0 0 0 0.698039 0 0 0 0.16 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2481_11666"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2481_11666" result="shape"/>
+</filter>
+</defs>
+</svg>

@@ -20,33 +20,33 @@
   var TESTIMONIALS = [
     {
       quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      role:    'MANAGING DIRECTOR',
-      company: 'BROADCASTING COMPANY, LONDON',
-      avatar:  'https://untitledui.com/images/avatars/orlando-diggs'
+      name:    'Managing Director',
+      role:    'Broadcasting Company, London',
+      avatar:  '/images/features/feature-1.jpg'
     },
     {
       quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      role:    'IT DIRECTOR',
-      company: 'PROFESSIONAL SERVICES FIRM, LONDON',
-      avatar:  'https://untitledui.com/images/avatars/drew-cano'
+      name:    'IT Director',
+      role:    'Professional Services Firm, London',
+      avatar:  '/images/features/feature-2.jpg'
     },
     {
       quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      role:    'HEAD OF OPERATIONS',
-      company: 'HEALTHCARE PROVIDER, BIRMINGHAM',
-      avatar:  'https://untitledui.com/images/avatars/lana-steiner'
+      name:    'Head of Operations',
+      role:    'Healthcare Provider, Birmingham',
+      avatar:  '/images/services/service-1.jpg'
     },
     {
       quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      role:    'MANAGING PARTNER',
-      company: 'LEGAL FIRM, LONDON',
-      avatar:  'https://untitledui.com/images/avatars/demi-wilkinson'
+      name:    'Managing Partner',
+      role:    'Legal Firm, London',
+      avatar:  '/images/services/service-2.jpg'
     },
     {
       quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      role:    'OPERATIONS DIRECTOR',
-      company: 'MANUFACTURING COMPANY, MIDLANDS',
-      avatar:  'https://untitledui.com/images/avatars/zahir-mays'
+      name:    'Operations Director',
+      role:    'Manufacturing Company, Midlands',
+      avatar:  '/images/services/service-3.jpg'
     }
   ];
 
@@ -81,118 +81,260 @@
   }
 
   function renderTestimonials(container) {
-    /* Build unique IDs so multiple sliders on one page don't clash */
-    var uid  = 't' + (Date.now() % 100000);
-    var pid  = uid + '-prev';
-    var nid  = uid + '-next';
-    var fid  = uid + '-fill';
-    var tid  = uid + '-track';
-
     var cards = TESTIMONIALS.map(function (t) {
       return [
-        '<div class="t-card">',
-        '  <div class="t-stars">',
-        '    <span class="t-star">&#9733;</span>'.repeat(5),
-        '  </div>',
-        '  <p class="t-quote">' + escHtml(t.quote) + '</p>',
-        '  <div class="t-author">',
-        '    <img class="t-avatar" src="' + t.avatar + '" alt="' + escHtml(t.role) + '" loading="lazy">',
-        '    <div class="t-info">',
-        '      <div class="t-role">' + escHtml(t.role) + '</div>',
-        '      <div class="t-company">' + escHtml(t.company) + '</div>',
+        '<article class="nd-t-card">',
+        '  <p class="nd-t-card__quote">\u201c' + escHtml(t.quote) + '\u201d</p>',
+        '  <div class="nd-t-card__person">',
+        '    <span class="nd-t-card__avatar" aria-hidden="true"><img src="' + t.avatar + '" alt="" loading="lazy"></span>',
+        '    <div>',
+        '      <p class="nd-t-card__name">' + escHtml(t.name) + '</p>',
+        '      <p class="nd-t-card__role">' + escHtml(t.role) + '</p>',
         '    </div>',
         '  </div>',
-        '</div>'
+        '</article>'
       ].join('\n');
     }).join('\n');
 
     container.innerHTML = [
-      '<section class="testimonials">',
-      '  <div class="testimonials__layout">',
-      '    <div class="testimonials__left animate-fade-up">',
-      '      <h2>What our<br>client says</h2>',
-      '      <div class="t-nav">',
-      '        <div class="t-arrows">',
-      '          <img id="' + pid + '" class="t-arrow" src="/images/misc/icon-arrow-left.svg" alt="Previous testimonial">',
-      '          <img id="' + nid + '" class="t-arrow" src="/images/misc/icon-arrow-right.svg" alt="Next testimonial">',
-      '        </div>',
-      '        <div class="t-progress">',
-      '          <div id="' + fid + '" class="t-progress-fill"></div>',
-      '        </div>',
-      '      </div>',
-      '    </div>',
-      '    <div class="t-slider animate-fade-up">',
-      '      <div id="' + tid + '" class="t-track">',
-      cards,
-      '      </div>',
+      '<section class="nd-trusted section-shell">',
+      '  <div class="nd-trusted__head">',
+      '    <h2 class="nd-trusted__title">Trusted by Families and Small Business</h2>',
+      '    <div class="nd-trusted__controls">',
+      '      <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial"><span aria-hidden="true">&#8249;</span></button>',
+      '      <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial"><span aria-hidden="true">&#8250;</span></button>',
       '    </div>',
       '  </div>',
+      '  <div class="nd-trusted__viewport">',
+      '    <div class="nd-trusted__track">',
+      cards,
+      '    </div>',
+      '  </div>',
+      '  <div class="nd-trusted__dots" aria-hidden="true"></div>',
       '</section>'
     ].join('\n');
 
     revealAnimatedContent(container);
+    initTrustedSlider(container.querySelector('.nd-trusted'));
+  }
 
-    /* Init slider */
-    var track   = document.getElementById(tid);
-    var fill    = document.getElementById(fid);
-    var prevBtn = document.getElementById(pid);
-    var nextBtn = document.getElementById(nid);
-    var total   = TESTIMONIALS.length;
-    var current = 0;
+  function initTrustedSlider(trusted) {
+    if (!trusted) return;
+    var track = trusted.querySelector('.nd-trusted__track');
+    var prevBtn = trusted.querySelector('.nd-trusted__nav--prev');
+    var nextBtn = trusted.querySelector('.nd-trusted__nav--next');
+    var dotsWrap = trusted.querySelector('.nd-trusted__dots');
+    if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
 
-    function goTo(idx) {
-      current = ((idx % total) + total) % total;
-      track.style.transform = 'translateX(-' + (current * 100) + '%)';
-      if (fill) fill.style.width = ((current + 1) / total * 100).toFixed(1) + '%';
+    var desktopQuery = window.matchMedia('(min-width: 1025px)');
+    var baseTranslate = -175;
+    var step = 0;
+    var currentIndex = 0;
+    var cardCount = 0;
+    var dots = [];
+    var isAnimating = false;
+    var transitionMs = 420;
+    var isDesktop = desktopQuery.matches;
+
+    function extractTranslateX(node) {
+      var t = window.getComputedStyle(node).transform;
+      if (!t || t === 'none') return 0;
+      var m = t.match(/matrix\(([^)]+)\)/);
+      if (m) {
+        var parts = m[1].split(',');
+        return parseFloat(parts[4]) || 0;
+      }
+      return 0;
     }
 
-    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
-    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
+    function updateDots() {
+      if (!dots.length || !cardCount) return;
+      var dotIndex = ((currentIndex % cardCount) + cardCount) % cardCount;
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('nd-trusted__dot--active', i === dotIndex);
+      });
+    }
 
-    /* Keyboard: only fire when section is in view */
-    document.addEventListener('keydown', function (e) {
-      var s = container.querySelector('.testimonials');
-      if (!s) return;
-      var r = s.getBoundingClientRect();
-      if (r.top > window.innerHeight || r.bottom < 0) return;
-      if (e.key === 'ArrowLeft')  goTo(current - 1);
-      if (e.key === 'ArrowRight') goTo(current + 1);
+    function setDesktopState(enabled) {
+      isDesktop = enabled;
+      if (!isDesktop) {
+        isAnimating = false;
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        track.style.transition = '';
+        track.style.transform = '';
+        track.style.willChange = '';
+        currentIndex = 0;
+        updateDots();
+        return;
+      }
+      prevBtn.disabled = false;
+      nextBtn.disabled = false;
+      track.style.transition = 'transform ' + transitionMs + 'ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+      track.style.willChange = 'transform';
+      track.style.transform = 'translateX(' + baseTranslate + 'px)';
+      currentIndex = 0;
+      updateDots();
+    }
+
+    function recalcMetrics() {
+      var cards = Array.prototype.slice.call(track.querySelectorAll('.nd-t-card'));
+      cardCount = cards.length;
+      if (cardCount < 2) {
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        return;
+      }
+      var firstLeft = cards[0].offsetLeft;
+      var secondLeft = cards[1].offsetLeft;
+      step = Math.max(1, secondLeft - firstLeft);
+
+      if (!dots.length || dots.length !== cardCount) {
+        dotsWrap.innerHTML = '';
+        for (var i = 0; i < cardCount; i += 1) {
+          var dot = document.createElement('span');
+          dot.className = 'nd-trusted__dot';
+          dotsWrap.appendChild(dot);
+        }
+        dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.nd-trusted__dot'));
+      }
+    }
+
+    function onNext() {
+      if (!isDesktop || isAnimating || cardCount < 2) return;
+      isAnimating = true;
+      var done = false;
+
+      function finish() {
+        if (done) return;
+        done = true;
+        track.removeEventListener('transitionend', onEnd);
+        var first = track.firstElementChild;
+        if (first) track.appendChild(first);
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(' + baseTranslate + 'px)';
+        void track.offsetHeight;
+        track.style.transition = 'transform ' + transitionMs + 'ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+        currentIndex = (currentIndex + 1) % cardCount;
+        updateDots();
+        isAnimating = false;
+      }
+
+      function onEnd(event) {
+        if (event.propertyName !== 'transform') return;
+        finish();
+      }
+
+      track.addEventListener('transitionend', onEnd);
+      track.style.transform = 'translateX(' + (baseTranslate - step) + 'px)';
+      window.setTimeout(finish, transitionMs + 60);
+    }
+
+    function onPrev() {
+      if (!isDesktop || isAnimating || cardCount < 2) return;
+      isAnimating = true;
+      var done = false;
+      var last = track.lastElementChild;
+      if (last) track.insertBefore(last, track.firstElementChild);
+
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(' + (baseTranslate - step) + 'px)';
+      void track.offsetHeight;
+      track.style.transition = 'transform ' + transitionMs + 'ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+      track.style.transform = 'translateX(' + baseTranslate + 'px)';
+
+      function finish() {
+        if (done) return;
+        done = true;
+        track.removeEventListener('transitionend', onEnd);
+        currentIndex = (currentIndex - 1 + cardCount) % cardCount;
+        updateDots();
+        isAnimating = false;
+      }
+
+      function onEnd(event) {
+        if (event.propertyName !== 'transform') return;
+        finish();
+      }
+
+      track.addEventListener('transitionend', onEnd);
+      window.setTimeout(finish, transitionMs + 60);
+    }
+
+    function configure() {
+      recalcMetrics();
+      if (!desktopQuery.matches) {
+        setDesktopState(false);
+        return;
+      }
+      if (!isDesktop) {
+        setDesktopState(true);
+      } else {
+        baseTranslate = extractTranslateX(track) || -175;
+        track.style.transform = 'translateX(' + baseTranslate + 'px)';
+        updateDots();
+      }
+    }
+
+    prevBtn.addEventListener('click', onPrev);
+    nextBtn.addEventListener('click', onNext);
+
+    trusted.addEventListener('keydown', function (event) {
+      if (!isDesktop) return;
+      if (event.key === 'ArrowLeft') { event.preventDefault(); onPrev(); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); onNext(); }
     });
 
-    goTo(0);
+    window.addEventListener('resize', configure);
+    configure();
   }
 
   function renderFAQ(container) {
     var faqSource = (typeof window !== 'undefined' && Array.isArray(window.PAGE_FAQ) && window.PAGE_FAQ.length) ? window.PAGE_FAQ : FAQ_ITEMS;
     var items = faqSource.map(function (item, i) {
-      var num    = String(i + 1).padStart(2, '0');
-      var state  = item.open ? 'open' : 'closed';
-      var dStyle = item.open ? '' : ' style="display:none;"';
+      var openAttr = item.open ? ' is-open' : '';
+      var mark     = item.open ? '\u2212' : '+';
+      var hidden   = item.open ? '' : ' hidden';
       return [
-        '<div class="faq-item ' + state + ' animate-fade-up">',
-        '  <div class="faq-header" role="button" tabindex="0" aria-expanded="' + item.open + '">',
-        '    <div class="faq-header-left">',
-        '      <span class="faq-num">' + num + '</span>',
-        '      <span class="faq-q">' + escHtml(item.question) + '</span>',
-        '    </div>',
-        '    ' + STAR_SVG,
-        '  </div>',
-        '  <div class="faq-divider"' + dStyle + '></div>',
-        '  <div class="faq-answer">' + escHtml(item.answer) + '</div>',
-        '</div>'
+        '<button class="nd-faq__item' + openAttr + '"><span>' + escHtml(item.question) + '</span><strong>' + mark + '</strong></button>',
+        '<div class="nd-faq__panel"' + hidden + '>' + escHtml(item.answer) + '</div>'
       ].join('\n');
     }).join('\n');
 
     container.innerHTML = [
-      '<section class="faq">',
-      '  <h2 class="section-title animate-fade-up">FREQUENTLY ASKED QUESTIONS</h2>',
-      '  <div class="faq-list stagger-children">',
+      '<section class="nd-faq section-shell">',
+      '  <div class="nd-faq__left">',
+      '    <h2 class="section-title">Frequently Asked Questions</h2>',
+      '    <p>Still have questions? Get connected to our support team.</p>',
+      '    <a href="/contact.html" class="nd-faq__cta">Contact us</a>',
+      '  </div>',
+      '  <div class="nd-faq__right" data-faq-list>',
       items,
       '  </div>',
       '</section>'
     ].join('\n');
 
     revealAnimatedContent(container);
+
+    var list = container.querySelector('[data-faq-list]');
+    if (!list) return;
+    var btns = list.querySelectorAll('.nd-faq__item');
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var panel = btn.nextElementSibling;
+        var open = btn.classList.contains('is-open');
+        btns.forEach(function (b) {
+          b.classList.remove('is-open');
+          b.querySelector('strong').textContent = '+';
+          if (b.nextElementSibling) b.nextElementSibling.hidden = true;
+        });
+        if (!open) {
+          btn.classList.add('is-open');
+          btn.querySelector('strong').textContent = '\u2212';
+          if (panel) panel.hidden = false;
+        }
+      });
+    });
   }
 
   /* ── HTML escaping ─────────────────────────────────────────── */

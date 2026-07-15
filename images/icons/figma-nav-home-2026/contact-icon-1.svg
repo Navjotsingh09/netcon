@@ -1,0 +1,37 @@
+<svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="49" height="48" fill="#D3D0D0"/>
+<g id="Nav Design Home">
+<rect width="1920" height="6987" transform="translate(-264 -6259)" fill="white"/>
+<g id="Group 258">
+<g id="CTA - Helio UI">
+<rect width="1440" height="883" transform="translate(-24 -237)" fill="white"/>
+<g id="Contact Section">
+<g id="Features">
+<rect width="286" height="172" transform="translate(-24 -24)" fill="white"/>
+<g id="icon">
+<rect x="0.25" y="0.25" width="48.5" height="47.5" fill="#F5F5F6"/>
+<rect x="0.25" y="0.25" width="48.5" height="47.5" stroke="#E6E6E7" stroke-width="0.5"/>
+<g id="wrap" filter="url(#filter0_d_2481_11666)">
+<rect width="41" height="40" transform="translate(4 4)" fill="white"/>
+<path id="Vector" d="M29.4391 27.397L28.8065 28.0363C28.8065 28.0363 27.3029 29.556 23.1987 25.4078C19.0946 21.2598 20.5982 19.7401 20.5982 19.7401L20.9965 19.3375C21.9779 18.3457 22.0704 16.7533 21.2142 15.5908L19.4629 13.2128C18.4032 11.774 16.3555 11.5839 15.1409 12.8115L12.9609 15.0149C12.3587 15.6236 11.9551 16.4126 12.004 17.2879C12.1292 19.5273 13.126 24.3455 18.688 29.967C24.5862 35.9283 30.1205 36.1652 32.3837 35.9508C33.0996 35.883 33.7221 35.5124 34.2237 35.0053L36.1968 33.0113C37.5286 31.6652 37.153 29.3575 35.449 28.416L32.7955 26.9498C31.6766 26.3316 30.3136 26.5131 29.4391 27.397Z" fill="#1C274C"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_2481_11666" x="2" y="4" width="45" height="44" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_2481_11666"/>
+<feOffset dy="2"/>
+<feGaussianBlur stdDeviation="0.75"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.584314 0 0 0 0 0.627451 0 0 0 0 0.698039 0 0 0 0.16 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2481_11666"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2481_11666" result="shape"/>
+</filter>
+</defs>
+</svg>

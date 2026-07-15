@@ -4,15 +4,259 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manufacturing IT Network Support | Network Consultancy</title>
-  <meta name="description" content="Network infrastructure and consultancy support for manufacturing operations.">
+  <meta name="description" content="Practical IT network engineering and support for manufacturing operations.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css?v=industry-family-1">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+  <style>
+    /* industry-detail-spacing */
+    body.industry-detail-page #main > section + section { margin-top: 40px !important; }
+    body.industry-detail-page #main > #contact { margin-top: 40px !important; }
+  </style>
+  <style>
+    .manufacturing-panel { margin-top:28px; }
+    .manufacturing-panel .industry-panel__caption--landing { max-width: 430px; }
+
+    .manufacturing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .manufacturing-grid__col {
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .manufacturing-grid__col p + p {
+      margin-top: 38px;
+      padding-top: 20px;
+      border-top: 1px solid var(--gray-mid);
+    }
+
+    .manufacturing-grid__image {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .manufacturing-grid--spaced { margin-top: 30px; }
+
+    .manufacturing-testimonial {
+      padding: 72px var(--px);
+      max-width: var(--section-w);
+      margin: 0 auto;
+      background: linear-gradient(90deg, #dfeeff 0%, #f9fcff 55%, #dfeeff 100%);
+    }
+
+    .manufacturing-testimonial__inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .manufacturing-testimonial__left h2 {
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 0.95;
+      max-width: 180px;
+      margin-bottom: 28px;
+    }
+
+    .manufacturing-testimonial__controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 88px;
+    }
+
+    .manufacturing-testimonial__arrow {
+      width: 48px;
+      height: 36px;
+      border-radius: 4px;
+      border: 1px solid rgba(22,36,112,.18);
+      background: rgba(255,255,255,.45);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--dark);
+    }
+
+    .manufacturing-testimonial__progress {
+      height: 4px;
+      width: 110px;
+      border-radius: 999px;
+      background: rgba(22,36,112,.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .manufacturing-testimonial__progress::after {
+      content: '';
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 56px;
+      background: var(--dark);
+      border-radius: inherit;
+    }
+
+    .manufacturing-testimonial__card {
+      background: #fff;
+      border: 1px solid rgba(22,36,112,.08);
+      border-radius: 18px;
+      padding: 34px 40px 38px;
+      box-shadow: 0 10px 26px rgba(22,36,112,.08);
+      max-width: 610px;
+      margin-left: auto;
+    }
+
+    .manufacturing-testimonial__stars {
+      color: #d88919;
+      letter-spacing: 4px;
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .manufacturing-testimonial__quote {
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 1.35;
+      color: var(--dark);
+      margin-bottom: 26px;
+    }
+
+    .manufacturing-testimonial__meta {
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 15px;
+      color: var(--sub);
+      max-width: 260px;
+    }
+
+    .manufacturing-cta-band {
+      background: var(--blue);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+      max-width: var(--section-w);
+      margin: 0 auto;
+    }
+
+    .manufacturing-cta-band__tags {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+      padding: 0 var(--px);
+      pointer-events: none;
+    }
+
+    .manufacturing-cta-band__row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .manufacturing-cta-band__row span {
+      background: #fff;
+      color: var(--blue);
+      opacity: .5;
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 12px 32px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .manufacturing-cta-band__card {
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      border-radius: 20px;
+      padding: 46px 84px;
+      max-width: 660px;
+      margin: 0 auto;
+      text-align: center;
+      box-shadow: 0 12px 28px rgba(0,0,0,.12);
+    }
+
+    .manufacturing-cta-band__text {
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--sub);
+      line-height: 1.55;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 1200px) {
+      .manufacturing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .manufacturing-grid__image {
+        height: auto;
+      }
+
+      .manufacturing-testimonial__inner {
+        grid-template-columns: 1fr;
+      }
+
+      .manufacturing-testimonial__left h2 {
+        max-width: none;
+      }
+
+      .manufacturing-testimonial__card {
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .manufacturing-testimonial {
+        padding: 56px 20px;
+      }
+
+      .manufacturing-testimonial__left h2 {
+        font-size: 40px;
+      }
+
+      .manufacturing-testimonial__card {
+        padding: 28px 24px 30px;
+      }
+
+      .manufacturing-testimonial__quote {
+        font-size: 22px;
+      }
+
+      .manufacturing-cta-band__card {
+        padding: 32px 28px;
+        margin: 0 20px;
+      }
+
+      .manufacturing-cta-band__text {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="industry-detail-page">
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <div id="site-navbar"></div>
@@ -39,42 +283,38 @@
 
   <section class="section section--gradient animate-fade-up" aria-labelledby="intro-h">
     <div>
-      <span class="eyebrow">Manufacturing</span>
-      <h2 class="heading-xl" id="intro-h">What Manufacturing Teams Need from IT Infrastructure</h2>
-      <div class="body-lg"><p>Strong network foundations keep Manufacturing operations stable, secure, and ready for growth. We design practical infrastructure that supports day-to-day productivity while reducing avoidable disruption.</p><p>Our approach balances performance, cyber resilience, and governance so your systems remain dependable as operational demand changes.</p></div>
+      <h2 class="heading-xl" id="intro-h">Driving Manufacturing Efficiency Through Reliable IT Infrastructure</h2>
+      <div class="body-lg"><p>We build and manage rock-solid network infrastructure that connects your floor, warehouse, and office, keeping your supply chain moving without costly delays.</p></div>
     </div>
-  </section>
-
-  <section class="section animate-fade-up" aria-labelledby="how-h">
-    <div class="industry-panel">
+    <div class="industry-panel manufacturing-panel">
       <div class="industry-panel__grid">
-        <div class="industry-panel__nav" aria-label="Delivery stages for Manufacturing">
-          <div class="industry-panel__nav-item is-active">Planning and Assessment</div>
-          <div class="industry-panel__nav-item">Secure Network Design and Deployment</div>
-          <div class="industry-panel__nav-item">Monitoring and Threat Detection</div>
-          <div class="industry-panel__nav-item">Performance Tuning and Management</div>
-          <div class="industry-panel__nav-item">Compliance and Governance Support</div>
-          <div class="industry-panel__nav-item">Backup and Recovery Readiness</div>
+        <div class="industry-panel__nav" aria-label="Manufacturing focus areas">
+          <div class="industry-panel__nav-item is-active">Zero Production Downtime</div>
+          <div class="industry-panel__nav-item">Connected Operational Systems</div>
+          <div class="industry-panel__nav-item">Real-Time Access to Critical Systems</div>
+          <div class="industry-panel__nav-item">Industrial Network Security</div>
+          <div class="industry-panel__nav-item">Multi-Site Connectivity</div>
+          <div class="industry-panel__nav-item">Network Performance Optimisation</div>
         </div>
-        <div class="industry-panel__visual">
+        <div class="industry-panel__visual industry-panel__visual--tall">
           <picture>
             <source srcset="/images/pages/unique/industries-manufacturing-technician.jpg" type="image/jpeg">
             <img src="/images/pages/unique/industries-manufacturing-technician.jpg" alt="Manufacturing network planning" loading="lazy">
           </picture>
-          <div class="industry-panel__caption">
-            <h3 id="how-h">How We Deliver Results</h3>
-            <p>We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency.</p>
+          <div class="industry-panel__caption industry-panel__caption--landing">
+            <h3>Zero Production Downtime</h3>
+            <p>We monitor your network 24/7 to catch and fix connectivity gaps before they stall your machinery or assembly lines.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section animate-fade-up" aria-labelledby="when-h">
+  <section class="section animate-fade-up" aria-labelledby="how-h">
     <div class="split split--3-2">
       <div>
-        <h2 class="heading-lg" id="when-h">When Manufacturing Networks Need Immediate Attention</h2>
-        <div class="body-lg"><p>If teams are seeing recurring slowdowns, unstable connectivity, or rising security risk, your network may need structured remediation rather than patch fixes.</p><p>We stabilise critical routes first, then improve observability and resilience so your operations run with fewer interruptions.</p></div>
+        <h2 class="heading-lg" id="how-h">How We Help Manufacturing Industries Drive Growth Through IT Support</h2>
+        <div class="body-lg"><p>To scale production smoothly and stay on top of orders, your operations must be able to run without interruption. IT support creates the stable foundation your production teams need to increase output capacity, stay organised, and grow without bottlenecks.</p></div>
         <div class="industry-arrows" aria-hidden="true">
           <span class="industry-arrow">&#8592;</span>
           <span class="industry-arrow">&#8594;</span>
@@ -83,10 +323,29 @@
       </div>
       <div class="industry-insight">
         <div>
-          <div class="industry-insight__title">Service Pressure Points</div>
-          <div class="industry-insight__copy">Teams often report endpoint congestion, inconsistent remote access, and delayed issue detection. We prioritise these risks to restore confidence quickly.</div>
+          <div class="industry-insight__title">Keeping Systems Stable</div>
+          <div class="industry-insight__copy">We verify existing server architecture and plan network resilience so your operations stay productive throughout the day.</div>
         </div>
-        <div class="industry-insight__count">1/5</div>
+        <div class="industry-insight__count">1/6</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section animate-fade-up" aria-labelledby="components-h">
+    <h2 class="heading-lg" id="components-h">Key Components of IT Support Services for Manufacturing</h2>
+    <div class="body-lg"><p>IT support in manufacturing environments needs to keep every system in step so that tasks remain stable and operations keep running smoothly.</p></div>
+    <div class="manufacturing-grid manufacturing-grid--spaced">
+      <div class="body-lg manufacturing-grid__col">
+        <p>Network management ensures the factory floor, warehouse, and office systems are all aligned to the same uptime and security priorities.</p>
+        <p>Cybersecurity helps protect shared operational data and industrial control systems against threats, while preventing production interruptions.</p>
+      </div>
+      <picture>
+        <source srcset="/images/pages/unique/industries-manufacturing-technician.jpg" type="image/jpeg">
+        <img class="manufacturing-grid__image" src="/images/pages/unique/industries-manufacturing-technician.jpg" alt="Manufacturing network planning" loading="lazy">
+      </picture>
+      <div class="body-lg manufacturing-grid__col">
+        <p>System monitoring enables issues to be identified early, helping prevent downtime and production delays.</p>
+        <p>Cloud integration improves flexibility and makes it easier to store, share, and use business applications as work schedules change.</p>
       </div>
     </div>
   </section>
@@ -95,35 +354,16 @@
     <div class="industry-banner__inner">
       <div class="industry-banner__bg">
         <picture>
-          <source srcset="/images/pages/unique/industries-manufacturing-technician.jpg" type="image/jpeg">
-          <img src="/images/pages/unique/industries-manufacturing-technician.jpg" alt="Manufacturing support delivery" loading="lazy">
+          <source srcset="/images/pages/unique/industries-manufacturing-managed-support.jpg" type="image/jpeg">
+          <img src="/images/pages/unique/industries-manufacturing-managed-support.jpg" alt="Manufacturing support delivery" loading="lazy">
         </picture>
       </div>
       <div class="industry-banner__overlay" aria-hidden="true"></div>
       <div class="industry-banner__content">
-        <span class="industry-banner__eyebrow">Why Choose Us</span>
-        <h2 class="industry-banner__title" id="why-h">Why Organisations in Manufacturing Choose Network Consultancy</h2>
-        <p class="industry-banner__text">We combine consultancy and managed support to solve operational network issues with clear accountability, practical action plans, and measurable service improvements.</p>
+        <h2 class="industry-banner__title" id="why-h">Why Choose Us?</h2>
+        <p class="industry-banner__text">We provide practical IT support and network consultancy designed for manufacturing environments. Our focus is on keeping systems reliable, secure and easy to manage so your teams can stay productive.</p>
+        <p class="industry-banner__text">Through ongoing monitoring, structured planning, and quick response times, we help reduce downtime, support system stability, and keep your operations running consistently across all areas of your business.</p>
       </div>
-    </div>
-  </section>
-
-  <section class="section animate-fade-up" aria-labelledby="what-h">
-    <div class="split split--3-2 split--reverse">
-      <div>
-        <span class="eyebrow">What You Get</span>
-        <h2 class="heading-lg" id="what-h">What Better Network Operations Look Like</h2>
-        <div class="body-lg"><p>Teams get faster access to core tools, fewer recurring incidents, and stronger confidence in security controls. We focus on outcomes your users can feel every day.</p></div>
-        <ul class="check-list">
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">More predictable network performance across sites and teams</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Earlier issue detection and faster remediation paths</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Security controls aligned with real operational workflows</span></li>
-        </ul>
-      </div>
-      <picture>
-        <source srcset="/images/pages/unique/industries-manufacturing-managed-support.jpg" type="image/jpeg">
-        <img class="split__img split__img--med" src="/images/pages/unique/industries-manufacturing-managed-support.jpg" alt="Manufacturing network equipment" width="600" height="380" loading="lazy">
-      </picture>
     </div>
   </section>
 
@@ -132,8 +372,8 @@
       <h2 class="industry-testimonial__title">What our client says</h2>
       <article class="industry-testimonial__card">
         <div class="industry-testimonial__stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote class="industry-testimonial__quote">Network performance and reliability improved quickly, giving our team a stronger operational baseline and fewer service interruptions.</blockquote>
-        <p class="industry-testimonial__meta">Client feedback from a recent Manufacturing engagement</p>
+        <blockquote class="industry-testimonial__quote">The network consultancy team transformed our infrastructure, reducing downtime and improving confidence in our production systems.</blockquote>
+        <p class="industry-testimonial__meta">Operations Director, Birmingham manufacturing site</p>
       </article>
     </div>
   </section>
@@ -141,12 +381,12 @@
   <section class="industry-cta animate-fade-up" aria-label="Call to action">
     <div class="industry-cta__inner">
       <div class="industry-cta__chips" aria-hidden="true">
-        <span class="industry-cta__chip">service 1</span><span class="industry-cta__chip">service 2</span><span class="industry-cta__chip">service 3</span><span class="industry-cta__chip">service 4</span><span class="industry-cta__chip">service 5</span><span class="industry-cta__chip">service 6</span><span class="industry-cta__chip">service 7</span><span class="industry-cta__chip">service 8</span>
+        <span class="industry-cta__chip">Network Consultancy</span><span class="industry-cta__chip">Network Support</span><span class="industry-cta__chip">Managed Network Support</span><span class="industry-cta__chip">Managed Wireless LAN</span><span class="industry-cta__chip">Network Installations</span><span class="industry-cta__chip">Network Design &amp; Deployment</span><span class="industry-cta__chip">Firewall &amp; Network Security</span><span class="industry-cta__chip">Remote Access &amp; VPN</span>
       </div>
       <div class="industry-cta__card">
-        <h2 class="industry-cta__title">Ready to Strengthen Your Network</h2>
-        <p class="industry-cta__text">Speak with our consultants to review current network risk, performance bottlenecks, and practical next steps for your organisation.</p>
-        <a href="/contact.html" class="btn-dark">Book Your Assessment</a>
+        <h2 class="industry-cta__title">Strengthen Your Manufacturing Network</h2>
+        <p class="industry-cta__text">Support your production systems and scale operations with reliable, resilient connectivity and practical support for your manufacturing environment.</p>
+        <a href="/contact.html" class="btn-dark">Book a Network Health Check</a>
       </div>
     </div>
   </section>
@@ -156,27 +396,27 @@
     <div class="faq-list">
       <div class="faq-item open">
         <div class="faq-header">
-          <div class="faq-header-left"><span class="faq-num">01</span><span class="faq-q">Why is network consultancy important for Manufacturing organisations?</span></div>
+          <div class="faq-header-left"><span class="faq-num">01</span><span class="faq-q">Why is network consultancy important for manufacturing companies?</span></div>
           <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="faq-divider"></div>
-        <div class="faq-answer">Consultancy helps align infrastructure with operational goals so teams have dependable connectivity, clearer security controls, and fewer recurring incidents.</div>
+        <div class="faq-answer">Network consultancy helps manufacturing companies build more reliable and efficient IT systems. It improves connectivity, supports secure operations, reduces downtime and helps keep production processes running smoothly.</div>
       </div>
       <div class="faq-item closed">
         <div class="faq-header">
-          <div class="faq-header-left"><span class="faq-num">02</span><span class="faq-q">How do you reduce downtime and service disruption?</span></div>
+          <div class="faq-header-left"><span class="faq-num">02</span><span class="faq-q">How can IT support improve manufacturing productivity?</span></div>
           <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="faq-divider faq-divider--hidden"></div>
-        <div class="faq-answer">We prioritise critical network paths, improve monitoring, and implement resilient configurations so faults are detected and resolved faster.</div>
+        <div class="faq-answer">By reducing disruptions, improving system visibility, and keeping production, office, and warehouse networks aligned, IT support helps teams work faster and with fewer interruptions.</div>
       </div>
       <div class="faq-item closed">
         <div class="faq-header">
-          <div class="faq-header-left"><span class="faq-num">03</span><span class="faq-q">Can you work alongside an internal IT team?</span></div>
+          <div class="faq-header-left"><span class="faq-num">03</span><span class="faq-q">What services are included in manufacturing IT support?</span></div>
           <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="faq-divider faq-divider--hidden"></div>
-        <div class="faq-answer">Yes. We often act as an extension of internal teams, providing specialist network capability while your team retains operational ownership.</div>
+        <div class="faq-answer">We provide network planning, system monitoring, security support, and infrastructure improvements tailored to manufacturing environments.</div>
       </div>
     </div>
   </section>

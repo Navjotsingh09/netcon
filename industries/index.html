@@ -7,10 +7,304 @@
   <meta name="description" content="Industry-focused IT network consultancy for regulated, operationally critical, and high-growth organisations.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+  <style>
+    .industries-hero {
+      max-width: var(--max-w);
+      margin: 12px auto 0;
+      border-radius: 10px;
+      min-height: 430px;
+    }
+
+    .industries-hero .page-hero__bg,
+    .industries-hero .page-hero__overlay,
+    .industries-hero .page-hero__bg img {
+      border-radius: inherit;
+    }
+
+    .industries-hero .page-hero__overlay {
+      background: linear-gradient(105deg, rgba(11, 25, 75, 0.66) 0%, rgba(11, 25, 75, 0.42) 50%, rgba(11, 25, 75, 0.2) 100%);
+    }
+
+    .industries-hero .page-hero__content {
+      max-width: var(--max-w);
+      padding: 62px 32px;
+    }
+
+    .industries-hero .page-hero__title {
+      max-width: 640px;
+      font-size: 64px;
+      line-height: 1.03;
+      margin-bottom: 14px;
+    }
+
+    .industries-hero .page-hero__sub {
+      font-size: 16px;
+      line-height: 1.5;
+      max-width: 600px;
+    }
+
+    .industries-hero .page-hero__cta {
+      margin-top: 24px;
+    }
+
+    .industries-hero .btn-blue {
+      font-size: 20px;
+      padding: 13px 24px;
+      border-radius: 10px;
+    }
+
+    .solutions-section {
+      padding: 40px var(--px);
+      max-width: var(--section-w);
+      margin: 40px auto 0;
+    }
+
+    .testimonials,
+    #contact {
+      margin-top: 40px;
+    }
+
+    [data-cms="faq"] {
+      margin-top: 60px;
+    }
+
+    [data-cms="faq"] .section-title {
+      margin-bottom: 40px;
+    }
+
+    [data-cms="faq"] .faq-list {
+      margin-top: 24px;
+    }
+
+    .industry-cta {
+      margin-top: 20px;
+    }
+
+    .solutions-section__header {
+      margin-bottom: 40px;
+    }
+
+    .solutions-section__header .section-title {
+      max-width: 980px;
+    }
+
+    .solutions-main {
+      position: relative;
+      height: 713px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: -90px;
+    }
+
+    .solutions-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .solutions-main__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(4, 31, 93, 0.2);
+    }
+
+    .solutions-infobox {
+      position: absolute;
+      bottom: 122px;
+      left: 65px;
+      background: #ebebeb;
+      border-radius: 20px;
+      padding: 31px 51px;
+      max-width: 640px;
+    }
+
+    .solutions-infobox h3 {
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 42px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 18px;
+      line-height: 1;
+    }
+
+    .solutions-infobox p {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--sub);
+      line-height: 1.25;
+      margin-bottom: 24px;
+    }
+
+    .solutions-bottom {
+      display: flex;
+      align-items: flex-end;
+      gap: 61px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .solutions-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 31px;
+      align-items: flex-end;
+      flex-shrink: 0;
+      padding-bottom: 4px;
+    }
+
+    .solutions-arrows {
+      display: flex;
+      gap: 20px;
+    }
+
+    .sol-arrow {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: inline-flex;
+      line-height: 0;
+    }
+
+    .sol-arrow svg rect {
+      transition: fill 0.2s ease;
+    }
+
+    .sol-arrow svg path {
+      transition: stroke 0.2s ease;
+    }
+
+    .sol-arrow:hover svg rect {
+      fill: var(--blue);
+    }
+
+    .sol-arrow:hover svg path {
+      stroke: #fff;
+    }
+
+    .solutions-progress {
+      width: 421px;
+      height: 16px;
+      background: var(--gray-mid);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .solutions-progress-fill {
+      height: 100%;
+      background: var(--sub);
+      border-radius: 10px;
+      transition: width 0.4s ease;
+    }
+
+    .solutions-sub-cards {
+      display: flex;
+      gap: 29px;
+      flex: 1;
+    }
+
+    .sol-sub {
+      display: flex;
+      flex-direction: column;
+      gap: 27px;
+      flex: 1;
+    }
+
+    .sol-sub img {
+      width: 100%;
+      height: 224px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .sol-sub p {
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 20px;
+      color: var(--sub);
+    }
+
+    @media (max-width: 900px) {
+      .industries-hero {
+        border-radius: 0;
+        margin-top: 0;
+      }
+
+      .industries-hero .page-hero__content {
+        padding: 56px 24px;
+      }
+
+      .industries-hero .page-hero__title {
+        font-size: 44px;
+        max-width: 560px;
+      }
+
+      .solutions-main {
+        height: 400px;
+      }
+
+      .solutions-infobox {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        max-width: none;
+        padding: 24px;
+      }
+
+      .solutions-infobox h3 {
+        font-size: 24px;
+      }
+
+      .solutions-infobox p {
+        font-size: 18px;
+      }
+
+      .solutions-bottom {
+        flex-direction: column;
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .solutions-nav {
+        width: 100%;
+        align-items: stretch;
+        padding-bottom: 0;
+      }
+
+      .solutions-arrows {
+        justify-content: flex-start;
+      }
+
+      .solutions-progress {
+        width: 100%;
+        max-width: none;
+      }
+
+      .solutions-sub-cards {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .sol-sub img {
+        height: 180px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .industries-hero .page-hero__title {
+        font-size: 36px;
+      }
+
+      .industries-hero .page-hero__sub {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -19,7 +313,7 @@
   <script src="/js/navbar.js"></script>
   <main id="main">
 
-  <section class="page-hero" aria-label="Industries hero">
+  <section class="page-hero industries-hero" aria-label="Industries hero">
     <div class="page-hero__bg">
       <picture>
         <source srcset="/images/pages/unique/industries-legal-firms-results.jpg" type="image/jpeg">
@@ -28,82 +322,299 @@
       <div class="page-hero__overlay" aria-hidden="true"></div>
     </div>
     <div class="page-hero__content animate-fade-up">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep" aria-hidden="true">&#8250;</span><span>Industries</span></nav>
       <h1 class="page-hero__title">IT Infrastructure, Networking and Security Support for High-Risk Industries</h1>
-      <p class="page-hero__sub">Support your organisation with managed IT infrastructure, secure networking, and consultancy designed to protect critical operations.</p>
+      <p class="page-hero__sub">Support your business with managed IT infrastructure and encrypted networks. Network Consultancy offers solutions that reduce costly downtime and protect your critical business assets.</p>
       <div class="page-hero__cta">
         <a href="/contact.html" class="btn-blue" data-source-cta="industry_health_check">Book a Network Health Check</a>
       </div>
     </div>
   </section>
 
-  <section class="section animate-fade-up" aria-labelledby="industries-h2">
-    <h2 class="heading-xl" id="industries-h2">Meet Modern Industry Demands with Our Network Consultancy Experts</h2>
-    <div class="industry-panel industry-panel--landing industry-carousel">
-      <div class="industry-panel__grid industry-panel__grid--single">
-        <div class="industry-panel__visual industry-panel__visual--tall">
+  <section class="solutions-section" aria-labelledby="industries-h2">
+    <div class="solutions-section__header">
+      <h2 class="section-title animate-fade-up" id="industries-h2">Meet Modern Industry Demands with Our<br>Network Consultancy Experts</h2>
+    </div>
+    <div class="solutions-main">
+      <picture>
+        <source srcset="/images/pages/unique/industries-legal-firms-results.jpg" type="image/jpeg">
+        <img src="/images/pages/unique/industries-legal-firms-results.jpg" alt="IT support for legal firms" width="1440" height="713" loading="lazy">
+      </picture>
+      <div class="solutions-main__overlay"></div>
+      <div class="solutions-infobox animate-fade-up">
+        <h3>IT Support For Legal Firms</h3>
+        <p>Providing secure networks and fast file retrieval to protect client confidentiality and keep billable hours uninterrupted.</p>
+        <a href="/industries/legal-firms.html" class="btn-blue">Get To Know More</a>
+      </div>
+    </div>
+    <div class="solutions-bottom">
+      <div class="solutions-nav">
+        <div class="solutions-arrows">
+          <button class="sol-arrow" aria-label="Previous">
+            <svg width="97" height="76" viewBox="0 0 60 47" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="47" rx="6.18557" fill="#EBEBEB"/><path d="M20.4116 16.2271L11.1333 25.5054L20.4116 34.7838M11.1333 25.5054H48.8652" stroke="black" stroke-width="3.09278" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="sol-arrow" aria-label="Next">
+            <svg width="97" height="76" viewBox="0 0 65 51" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="65" height="50.9278" rx="6.70103" fill="#EBEBEB"/><path d="M42.887 15.4124L52.939 25.4639L42.887 35.5154M52.939 25.4639H12.062" stroke="black" stroke-width="3.35052" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <div class="solutions-progress">
+          <div class="solutions-progress-fill"></div>
+        </div>
+      </div>
+      <div class="solutions-sub-cards stagger-children">
+        <div class="sol-sub animate-fade-up">
           <picture>
-            <source srcset="/images/pages/unique/industries-legal-firms-results.jpg" type="image/jpeg">
-            <img src="/images/pages/unique/industries-legal-firms-results.jpg" alt="IT support for legal firms" loading="lazy">
+            <source srcset="/images/pages/unique/industries-financial-services-professional.jpg" type="image/jpeg">
+            <img src="/images/pages/unique/industries-financial-services-professional.jpg" alt="IT support for financial services" width="471" height="435" loading="lazy">
           </picture>
-          <div class="industry-hero-card">
-            <h3 class="industry-hero-card__title">IT Support For Legal Firms</h3>
-            <p class="industry-hero-card__copy">Providing secure networks and fast file retrieval to protect client confidentiality and keep billable hours uninterrupted.</p>
-            <p class="industry-hero-card__copy">Every system upgrade focuses on stopping drops, protecting case files, and running modern legal tech smoothly.</p>
-            <a href="/industries/legal-firms.html" class="btn-blue">Get To Know More</a>
+          <p>IT Support For Financial Services</p>
+        </div>
+        <div class="sol-sub animate-fade-up">
+          <picture>
+            <source srcset="/images/pages/unique/industries-recruitment-agencies-cyber-security.jpg" type="image/jpeg">
+            <img src="/images/pages/unique/industries-recruitment-agencies-cyber-security.jpg" alt="IT support for recruitment agencies" width="471" height="435" loading="lazy">
+          </picture>
+          <p>IT Support For Recruitment Agencies</p>
+        </div>
+        <div class="sol-sub animate-fade-up">
+          <picture>
+            <source srcset="/images/pages/unique/industries-healthcare-clinics-managed-support.jpg" type="image/jpeg">
+            <img src="/images/pages/unique/industries-healthcare-clinics-managed-support.jpg" alt="IT support for healthcare and clinics" width="592" height="435" loading="lazy">
+          </picture>
+          <p>IT Support For Healthcare and Clinics</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    'use strict';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var slides = [
+      {
+        srcset: '/images/pages/unique/industries-legal-firms-results.jpg',
+        src: '/images/pages/unique/industries-legal-firms-results.jpg',
+        alt: 'IT support for legal firms',
+        title: 'IT Support For Legal Firms',
+        desc: 'Providing secure networks and fast file retrieval to protect client confidentiality and keep billable hours uninterrupted.',
+        label: 'IT Support For Legal Firms',
+        href: '/industries/legal-firms.html'
+      },
+      {
+        srcset: '/images/pages/unique/industries-financial-services-professional.jpg',
+        src: '/images/pages/unique/industries-financial-services-professional.jpg',
+        alt: 'IT support for financial services',
+        title: 'IT Support For Financial Services',
+        desc: 'Stable, secure network infrastructure tailored for performance, compliance, and always-on service delivery in financial environments.',
+        label: 'IT Support For Financial Services',
+        href: '/industries/financial-services.html'
+      },
+      {
+        srcset: '/images/pages/unique/industries-recruitment-agencies-cyber-security.jpg',
+        src: '/images/pages/unique/industries-recruitment-agencies-cyber-security.jpg',
+        alt: 'IT support for recruitment agencies',
+        title: 'IT Support For Recruitment Agencies',
+        desc: 'High-availability, cloud-ready connectivity to keep recruiters, consultants, and candidates connected without interruptions.',
+        label: 'IT Support For Recruitment Agencies',
+        href: '/industries/recruitment-agencies.html'
+      },
+      {
+        srcset: '/images/pages/unique/industries-healthcare-clinics-managed-support.jpg',
+        src: '/images/pages/unique/industries-healthcare-clinics-managed-support.jpg',
+        alt: 'IT support for healthcare and clinics',
+        title: 'IT Support For Healthcare and Clinics',
+        desc: 'Reliable, secure networking that supports clinical systems, protects sensitive data, and improves continuity of care operations.',
+        label: 'IT Support For Healthcare and Clinics',
+        href: '/industries/healthcare-clinics.html'
+      }
+    ];
+
+    var total = slides.length;
+    var idx = 0;
+    var busy = false;
+
+    var section = document.querySelector('.solutions-section');
+    if (!section) return;
+
+    var heroSource = section.querySelector('.solutions-main source');
+    var heroImg = section.querySelector('.solutions-main img');
+    var heroH3 = section.querySelector('.solutions-infobox h3');
+    var heroP = section.querySelector('.solutions-infobox p');
+    var heroLink = section.querySelector('.solutions-infobox a');
+    var thumbs = Array.prototype.slice.call(section.querySelectorAll('.sol-sub'));
+    var fill = section.querySelector('.solutions-progress-fill');
+    var prevBtn = section.querySelectorAll('.sol-arrow')[0];
+    var nextBtn = section.querySelectorAll('.sol-arrow')[1];
+
+    heroImg.style.transition = 'opacity 0.32s ease';
+    heroH3.style.transition = 'opacity 0.28s ease';
+    heroP.style.transition = 'opacity 0.28s ease';
+
+    function setThumb(el, slide) {
+      var src = el.querySelector('source');
+      var img = el.querySelector('img');
+      var lbl = el.querySelector('p');
+      if (src) src.srcset = slide.srcset;
+      img.src = slide.src;
+      img.alt = slide.alt;
+      lbl.textContent = slide.label;
+    }
+
+    function updateProgress() {
+      fill.style.width = Math.round((idx / (total - 1)) * 100) + '%';
+    }
+
+    function goTo(n) {
+      if (busy) return;
+      busy = true;
+      idx = ((n % total) + total) % total;
+
+      heroImg.style.opacity = '0';
+      heroH3.style.opacity = '0';
+      heroP.style.opacity = '0';
+
+      setTimeout(function () {
+        var s = slides[idx];
+
+        if (heroSource) heroSource.srcset = s.srcset;
+        heroImg.src = s.src;
+        heroImg.alt = s.alt;
+        heroH3.textContent = s.title;
+        heroP.textContent = s.desc;
+        heroLink.href = s.href;
+
+        thumbs.forEach(function (thumb, i) {
+          setThumb(thumb, slides[(idx + i + 1) % total]);
+        });
+
+        updateProgress();
+
+        heroImg.style.opacity = '1';
+        heroH3.style.opacity = '1';
+        heroP.style.opacity = '1';
+
+        busy = false;
+      }, 300);
+    }
+
+    thumbs.forEach(function (thumb, i) {
+      thumb.style.cursor = 'pointer';
+      thumb.addEventListener('click', function () {
+        goTo(idx + i + 1);
+      });
+      thumb.querySelector('img').style.transition = 'opacity 0.2s, transform 0.2s';
+      thumb.addEventListener('mouseenter', function () {
+        thumb.querySelector('img').style.opacity = '0.8';
+        thumb.querySelector('img').style.transform = 'scale(1.03)';
+      });
+      thumb.addEventListener('mouseleave', function () {
+        thumb.querySelector('img').style.opacity = '1';
+        thumb.querySelector('img').style.transform = 'scale(1)';
+      });
+    });
+
+    prevBtn.addEventListener('click', function () {
+      goTo(idx - 1);
+    });
+    nextBtn.addEventListener('click', function () {
+      goTo(idx + 1);
+    });
+
+    updateProgress();
+  }());
+  </script>
+
+  <section class="testimonials" aria-label="Client testimonial">
+    <div class="testimonials__layout">
+      <div class="testimonials__left animate-fade-up">
+        <h2>What our<br>client says</h2>
+        <div class="t-nav">
+          <div class="t-arrows">
+            <img class="t-arrow industry-t-prev" src="/images/misc/icon-arrow-left.svg" alt="Previous testimonial">
+            <img class="t-arrow industry-t-next" src="/images/misc/icon-arrow-right.svg" alt="Next testimonial">
+          </div>
+          <div class="t-progress">
+            <div class="t-progress-fill industry-t-fill"></div>
           </div>
         </div>
       </div>
-
-      <div class="industry-controls" aria-hidden="true">
-        <div class="industry-arrows industry-arrows--compact">
-          <span class="industry-arrow">&#8592;</span>
-          <span class="industry-arrow">&#8594;</span>
+      <div class="t-slider animate-fade-up">
+        <div class="t-track industry-t-track">
+          <div class="t-card">
+            <div class="t-stars">
+              <span class="t-star">&#9733;</span><span class="t-star">&#9733;</span><span class="t-star">&#9733;</span><span class="t-star">&#9733;</span><span class="t-star">&#9733;</span>
+            </div>
+            <p class="t-quote">The network consultancy team transformed our infrastructure with minimal disruption and improved overall reliability.</p>
+            <div class="t-author">
+              <img class="t-avatar" src="/images/misc/testimonial-avatar.svg" alt="IT Director" loading="lazy">
+              <div class="t-info">
+                <div class="t-role">IT DIRECTOR</div>
+                <div class="t-company">MANUFACTURING LTD., MANCHESTER</div>
+              </div>
+            </div>
+          </div>
+          <div class="t-card">
+            <div class="t-stars">
+              <span class="t-star">&#9733;</span><span class="t-star">&#9733;</span><span class="t-star">&#9733;</span><span class="t-star">&#9733;</span><span class="t-star">&#9733;</span>
+            </div>
+            <p class="t-quote">Strong security and stable network performance gives us confidence in delivering legal services to clients without interruption.</p>
+            <div class="t-author">
+              <img class="t-avatar" src="/images/misc/testimonial-avatar.svg" alt="Operations Lead" loading="lazy">
+              <div class="t-info">
+                <div class="t-role">OPERATIONS LEAD</div>
+                <div class="t-company">LEGAL PRACTICE</div>
+              </div>
+            </div>
+          </div>
+          <div class="t-card">
+            <div class="t-stars">
+              <span class="t-star">&#9733;</span><span class="t-star">&#9733;</span><span class="t-star">&#9733;</span><span class="t-star">&#9733;</span><span class="t-star">&#9733;</span>
+            </div>
+            <p class="t-quote">Our network has shifted from reactive fixes to proactive monitoring, and the new controls around access have improved stability and confidence across all service points.</p>
+            <div class="t-author">
+              <img class="t-avatar" src="/images/misc/testimonial-avatar.svg" alt="Operations Director" loading="lazy">
+              <div class="t-info">
+                <div class="t-role">OPERATIONS DIRECTOR</div>
+                <div class="t-company">HEALTHCARE SERVICES, MANCHESTER</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="industry-controls__progress"></div>
-      </div>
-
-      <div class="industry-carousel__thumbs">
-        <article class="industry-carousel__thumb">
-          <picture>
-            <source srcset="/images/pages/unique/industries-manufacturing-technician.jpg" type="image/jpeg">
-            <img src="/images/pages/unique/industries-manufacturing-technician.jpg" alt="IT support for financial services" loading="lazy">
-          </picture>
-          <p>IT Support For Financial Services</p>
-        </article>
-        <article class="industry-carousel__thumb">
-          <picture>
-            <source srcset="/images/pages/unique/industries-manufacturing-technician.jpg" type="image/jpeg">
-            <img src="/images/pages/unique/industries-manufacturing-technician.jpg" alt="IT support for recruitment agencies" loading="lazy">
-          </picture>
-          <p>IT Support For Recruitment Agencies</p>
-        </article>
-        <article class="industry-carousel__thumb">
-          <picture>
-            <source srcset="/images/pages/unique/industries-manufacturing-technician.jpg" type="image/jpeg">
-            <img src="/images/pages/unique/industries-manufacturing-technician.jpg" alt="IT support for healthcare and clinics" loading="lazy">
-          </picture>
-          <p>IT Support For Healthcare and Clinics</p>
-        </article>
       </div>
     </div>
   </section>
 
-  <section class="industry-testimonial" aria-label="Client testimonial">
-    <div class="industry-testimonial__inner animate-fade-up">
-      <h2 class="industry-testimonial__title">What our client says</h2>
-      <article class="industry-testimonial__card">
-        <div class="industry-testimonial__stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote class="industry-testimonial__quote">The network consultancy team transformed our infrastructure with minimal disruption and improved overall reliability.</blockquote>
-        <p class="industry-testimonial__meta">James Carter, IT Director of Manufacturing Ltd., Manchester</p>
-      </article>
-    </div>
-  </section>
+  <script>
+  (function () {
+    'use strict';
+    var section = document.querySelector('.testimonials');
+    if (!section) return;
+
+    var track = section.querySelector('.industry-t-track');
+    var fill = section.querySelector('.industry-t-fill');
+    var prevBtn = section.querySelector('.industry-t-prev');
+    var nextBtn = section.querySelector('.industry-t-next');
+    var total = section.querySelectorAll('.t-card').length;
+    var current = 0;
+
+    function goTo(idx) {
+      current = ((idx % total) + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      if (fill) fill.style.width = ((current + 1) / total * 100).toFixed(1) + '%';
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+    goTo(0);
+  }());
+  </script>
 
   <section class="industry-cta animate-fade-up" aria-label="Call to action">
     <div class="industry-cta__inner">
       <div class="industry-cta__chips" aria-hidden="true">
-        <span class="industry-cta__chip">service 1</span><span class="industry-cta__chip">service 2</span><span class="industry-cta__chip">service 3</span><span class="industry-cta__chip">service 4</span><span class="industry-cta__chip">service 5</span><span class="industry-cta__chip">service 6</span><span class="industry-cta__chip">service 7</span><span class="industry-cta__chip">service 8</span>
+        <span class="industry-cta__chip">Network Consultancy</span><span class="industry-cta__chip">Network Support</span><span class="industry-cta__chip">Managed Network Support</span><span class="industry-cta__chip">Managed Wireless LAN</span><span class="industry-cta__chip">Network Installations</span><span class="industry-cta__chip">Network Design &amp; Deployment</span><span class="industry-cta__chip">Firewall &amp; Network Security</span><span class="industry-cta__chip">Remote Access &amp; VPN</span>
       </div>
       <div class="industry-cta__card">
         <h2 class="industry-cta__title">Ready to Strengthen Your IT Infrastructure</h2>
@@ -113,35 +624,26 @@
     </div>
   </section>
 
-  <section class="faq animate-fade-up" aria-labelledby="faq-h">
-    <h2 class="section-title faq__title" id="faq-h">Frequently Asked Questions</h2>
-    <div class="faq-list">
-      <div class="faq-item open">
-        <div class="faq-header">
-          <div class="faq-header-left"><span class="faq-num">01</span><span class="faq-q">What is included in network consultancy?</span></div>
-          <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <div class="faq-divider"></div>
-        <div class="faq-answer">Network consultancy services typically include network planning, infrastructure assessments, performance optimization, cybersecurity guidance, cloud connectivity solutions, network monitoring, and ongoing technical support.<br><br>Each service is tailored to align with your operational requirements, business objectives, and long-term technology strategy.</div>
-      </div>
-      <div class="faq-item closed">
-        <div class="faq-header">
-          <div class="faq-header-left"><span class="faq-num">02</span><span class="faq-q">How can network consultancy improve business performance?</span></div>
-          <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <div class="faq-divider faq-divider--hidden"></div>
-        <div class="faq-answer">Better architecture and stronger visibility reduce downtime, improve response times, and support more reliable service delivery.</div>
-      </div>
-      <div class="faq-item closed">
-        <div class="faq-header">
-          <div class="faq-header-left"><span class="faq-num">03</span><span class="faq-q">Is network consultancy suitable for remote and hybrid working?</span></div>
-          <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <div class="faq-divider faq-divider--hidden"></div>
-        <div class="faq-answer">Yes. We design support models for single-site, distributed, and hybrid operational environments.</div>
-      </div>
-    </div>
-  </section>
+  <script>
+  window.PAGE_FAQ = [
+    {
+      question: 'What is included in network consultancy?',
+      answer: 'Network consultancy services typically include network planning, infrastructure assessments, performance optimization, cybersecurity guidance, cloud connectivity solutions, network monitoring, and ongoing technical support. Each service is tailored to align with your operational requirements, business objectives, and long-term technology strategy.',
+      open: true
+    },
+    {
+      question: 'How can network consultancy improve business performance?',
+      answer: 'Better architecture and stronger visibility reduce downtime, improve response times, and support more reliable service delivery.',
+      open: false
+    },
+    {
+      question: 'Is network consultancy suitable for remote and hybrid working?',
+      answer: 'Yes. We design support models for single-site, distributed, and hybrid operational environments.',
+      open: false
+    }
+  ];
+  </script>
+  <div data-cms="faq"></div>
 
   <div id="site-contact"></div>
   <script src="/js/form-source-tracking.js"></script>
@@ -150,6 +652,7 @@
 
   <div id="site-footer"></div>
   <script src="/js/footer.js"></script>
+  <script src="/js/cms.js" defer></script>
 
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>

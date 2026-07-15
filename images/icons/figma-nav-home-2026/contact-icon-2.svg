@@ -1,0 +1,37 @@
+<svg width="58" height="48" viewBox="0 0 58 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="58" height="48" fill="#D3D0D0"/>
+<g id="Nav Design Home">
+<rect width="1920" height="6987" transform="translate(-566 -6259)" fill="white"/>
+<g id="Group 258">
+<g id="CTA - Helio UI">
+<rect width="1440" height="883" transform="translate(-326 -237)" fill="white"/>
+<g id="Contact Section">
+<g id="Features">
+<rect width="286" height="172" transform="translate(-24 -24)" fill="white"/>
+<g id="icon">
+<path d="M57.75 0.25V47.75H0.25V0.25H57.75Z" fill="#F5F5F6"/>
+<path d="M57.75 0.25V47.75H0.25V0.25H57.75Z" stroke="#E6E6E7" stroke-width="0.5"/>
+<g id="wrap" filter="url(#filter0_d_2481_11666)">
+<rect width="50" height="40" transform="translate(4 4)" fill="white"/>
+<path id="Vector" d="M42.0349 12H15.9651C13.7749 12 12 13.7675 12 15.9479V32.052C12 34.2325 13.7749 36 15.9651 36H42.0349C44.2245 36 46 34.2325 46 32.052V15.9479C46 13.7675 44.2246 12 42.0349 12ZM44.1068 33.1157L43.352 34.0058L32.7823 25.4156L31.1454 26.9666C29.9323 28.076 28.0678 28.076 26.8546 26.9666L25.2177 25.4156L14.648 34.0058L13.8932 33.1157L23.817 24.0881L13.8282 14.7399L14.4188 13.9607L29 24.9628L43.5812 13.9607L44.1712 14.7399L34.1831 24.0881L44.1068 33.1157Z" fill="black"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_2481_11666" x="2" y="4" width="54" height="44" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_2481_11666"/>
+<feOffset dy="2"/>
+<feGaussianBlur stdDeviation="0.75"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.584314 0 0 0 0 0.627451 0 0 0 0 0.698039 0 0 0 0.16 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2481_11666"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2481_11666" result="shape"/>
+</filter>
+</defs>
+</svg>

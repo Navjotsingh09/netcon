@@ -7,12 +7,17 @@
   <meta name="description" content="Co-managed network consultancy and support for internal IT teams.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css?v=industry-family-1">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+  <style>
+    /* industry-detail-spacing */
+    body.industry-detail-page #main > section + section { margin-top: 40px !important; }
+    body.industry-detail-page #main > #contact { margin-top: 40px !important; }
+  </style>
 </head>
-<body>
+<body class="industry-detail-page">
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <div id="site-navbar"></div>
@@ -38,56 +43,42 @@
   </section>
 
   <section class="section section--gradient animate-fade-up" aria-labelledby="intro-h">
-    <div>
-      <span class="eyebrow">Internal IT Teams</span>
-      <h2 class="heading-xl" id="intro-h">What Internal IT Departments Need from IT Infrastructure</h2>
-      <div class="body-lg"><p>Strong network foundations keep Internal IT Teams operations stable, secure, and ready for growth. We design practical infrastructure that supports day-to-day productivity while reducing avoidable disruption.</p><p>Our approach balances performance, cyber resilience, and governance so your systems remain dependable as operational demand changes.</p></div>
-    </div>
-  </section>
-
-  <section class="section animate-fade-up" aria-labelledby="how-h">
-    <div class="industry-panel">
-      <div class="industry-panel__grid">
-        <div class="industry-panel__nav" aria-label="Delivery stages for Internal IT Teams">
-          <div class="industry-panel__nav-item is-active">Planning and Assessment</div>
-          <div class="industry-panel__nav-item">Secure Network Design and Deployment</div>
-          <div class="industry-panel__nav-item">Monitoring and Threat Detection</div>
-          <div class="industry-panel__nav-item">Performance Tuning and Management</div>
-          <div class="industry-panel__nav-item">Compliance and Governance Support</div>
-          <div class="industry-panel__nav-item">Backup and Recovery Readiness</div>
-        </div>
-        <div class="industry-panel__visual">
-          <picture>
-            <source srcset="/images/pages/unique/industries-internal-it-teams-network-abstract.jpg" type="image/jpeg">
-            <img src="/images/pages/unique/industries-internal-it-teams-network-abstract.jpg" alt="Internal IT Teams network planning" loading="lazy">
-          </picture>
-          <div class="industry-panel__caption">
-            <h3 id="how-h">How We Deliver Results</h3>
-            <p>We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section animate-fade-up" aria-labelledby="when-h">
     <div class="split split--3-2">
       <div>
-        <h2 class="heading-lg" id="when-h">When Internal IT Teams Networks Need Immediate Attention</h2>
-        <div class="body-lg"><p>If teams are seeing recurring slowdowns, unstable connectivity, or rising security risk, your network may need structured remediation rather than patch fixes.</p><p>We stabilise critical routes first, then improve observability and resilience so your operations run with fewer interruptions.</p></div>
+        <h2 class="heading-xl" id="intro-h">Strengthening Internal IT with Expert Network Support</h2>
+        <div class="body-lg"><p>A network specialist provides support to your existing personnel without increasing their workload on a daily basis.</p></div>
         <div class="industry-arrows" aria-hidden="true">
           <span class="industry-arrow">&#8592;</span>
           <span class="industry-arrow">&#8594;</span>
         </div>
         <div class="industry-progress" aria-hidden="true"></div>
       </div>
-      <div class="industry-insight">
+      <article class="industry-hero-card">
         <div>
-          <div class="industry-insight__title">Service Pressure Points</div>
-          <div class="industry-insight__copy">Teams often report endpoint congestion, inconsistent remote access, and delayed issue detection. We prioritise these risks to restore confidence quickly.</div>
+          <h3 class="industry-hero-card__title">The Expanding Responsibilities of Internal IT Teams</h3>
+          <p class="industry-hero-card__copy">IT departments today face challenges from multiple fronts, including cyber security, maintaining infrastructure, supporting users and long-term strategic planning.</p>
         </div>
-        <div class="industry-insight__count">1/5</div>
+        <div class="industry-hero-card__count">1/5</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section animate-fade-up" aria-labelledby="support-h">
+    <div class="split split--3-2">
+      <div>
+        <h2 class="heading-lg" id="support-h">Network Support for Internal IT Teams</h2>
+        <div class="body-lg"><p>Network Consultancy works as an extension of internal IT teams, stepping in to conduct network assessments, plan infrastructure, and perform security work as needed.</p><p>Specialists handle networking problems that take more time than internal teams can spare without diverting them from other priorities.</p><p>Support is focused on solving processes rather than replacing them, so internal teams remain fully informed while gaining access to specialists for the parts of the network that need closer attention.</p></div>
+
+        <h3 class="heading-md heading-md--tight">Network Expertise That Works Alongside Your IT Team</h3>
+        <div class="body-lg"><p>Internal IT teams gain direct line to networking knowledge they do not have to build in-house. Network Consultancy steps in for capacity planning, performance monitoring, and troubleshooting, working from the same network architecture and security priorities the internal team already follows, with solutions shaped around the organisation context instead of broad standard assumptions.</p></div>
+
+        <h3 class="heading-md heading-md--tight">Partnering with IT Teams for Better Network Performance</h3>
+        <div class="body-lg"><p>Network performance impacts how efficiently an organisation operates and how users use the company systems every day.</p><p>Network consultancy assesses the current infrastructure and identifies traffic congestion or bottlenecks that delay service delivery.</p><p>Putting together capacity plans and continuously monitoring the performance of existing systems gives the internal IT department clearer visibility into the network, safer recovery in the event of issues, and better operational support over time.</p></div>
       </div>
+      <picture>
+        <source srcset="/images/pages/unique/industries-internal-it-teams-managed-support.jpg" type="image/jpeg">
+        <img class="split__img split__img--med" src="/images/pages/unique/industries-internal-it-teams-managed-support.jpg" alt="Internal IT teams managed network support" width="600" height="380" loading="lazy">
+      </picture>
     </div>
   </section>
 
@@ -102,28 +93,10 @@
       <div class="industry-banner__overlay" aria-hidden="true"></div>
       <div class="industry-banner__content">
         <span class="industry-banner__eyebrow">Why Choose Us</span>
-        <h2 class="industry-banner__title" id="why-h">Why Organisations in Internal IT Teams Choose Network Consultancy</h2>
-        <p class="industry-banner__text">We combine consultancy and managed support to solve operational network issues with clear accountability, practical action plans, and measurable service improvements.</p>
+        <h2 class="industry-banner__title" id="why-h">Why Choose Network Consultancy?</h2>
+        <p class="industry-banner__text">Network Consulting provides additional support for an internal IT department's efforts and services that the IT department alone cannot offer.</p>
+        <p class="industry-banner__text">A consultant will work in conjunction with internal IT staff for draft assigned to network design projects, to design networks, diagnose problems in existing networks, and develop infrastructure plans.</p>
       </div>
-    </div>
-  </section>
-
-  <section class="section animate-fade-up" aria-labelledby="what-h">
-    <div class="split split--3-2 split--reverse">
-      <div>
-        <span class="eyebrow">What You Get</span>
-        <h2 class="heading-lg" id="what-h">What Better Network Operations Look Like</h2>
-        <div class="body-lg"><p>Teams get faster access to core tools, fewer recurring incidents, and stronger confidence in security controls. We focus on outcomes your users can feel every day.</p></div>
-        <ul class="check-list">
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">More predictable network performance across sites and teams</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Earlier issue detection and faster remediation paths</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Security controls aligned with real operational workflows</span></li>
-        </ul>
-      </div>
-      <picture>
-        <source srcset="/images/pages/unique/industries-internal-it-teams-managed-support.jpg" type="image/jpeg">
-        <img class="split__img split__img--med" src="/images/pages/unique/industries-internal-it-teams-managed-support.jpg" alt="Internal IT Teams network equipment" width="600" height="380" loading="lazy">
-      </picture>
     </div>
   </section>
 
@@ -132,8 +105,8 @@
       <h2 class="industry-testimonial__title">What our client says</h2>
       <article class="industry-testimonial__card">
         <div class="industry-testimonial__stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote class="industry-testimonial__quote">Network performance and reliability improved quickly, giving our team a stronger operational baseline and fewer service interruptions.</blockquote>
-        <p class="industry-testimonial__meta">Client feedback from a recent Internal IT Teams engagement</p>
+        <blockquote class="industry-testimonial__quote">The network consultancy team integrated seamlessly with our internal IT department. Their expertise improved network performance and reduced recurring connectivity issues across multiple locations.</blockquote>
+        <p class="industry-testimonial__meta">James Thorne, IT Manager, Logistics and Retail</p>
       </article>
     </div>
   </section>
@@ -141,12 +114,11 @@
   <section class="industry-cta animate-fade-up" aria-label="Call to action">
     <div class="industry-cta__inner">
       <div class="industry-cta__chips" aria-hidden="true">
-        <span class="industry-cta__chip">service 1</span><span class="industry-cta__chip">service 2</span><span class="industry-cta__chip">service 3</span><span class="industry-cta__chip">service 4</span><span class="industry-cta__chip">service 5</span><span class="industry-cta__chip">service 6</span><span class="industry-cta__chip">service 7</span><span class="industry-cta__chip">service 8</span>
+        <span class="industry-cta__chip">Network Consultancy</span><span class="industry-cta__chip">Network Support</span><span class="industry-cta__chip">Managed Network Support</span><span class="industry-cta__chip">Managed Wireless LAN</span><span class="industry-cta__chip">Network Installations</span><span class="industry-cta__chip">Network Design &amp; Deployment</span><span class="industry-cta__chip">Firewall &amp; Network Security</span><span class="industry-cta__chip">Remote Access &amp; VPN</span>
       </div>
       <div class="industry-cta__card">
-        <h2 class="industry-cta__title">Ready to Strengthen Your Network</h2>
-        <p class="industry-cta__text">Speak with our consultants to review current network risk, performance bottlenecks, and practical next steps for your organisation.</p>
-        <a href="/contact.html" class="btn-dark">Book Your Assessment</a>
+        <h2 class="industry-cta__title">Add specialist network support to your internal IT team, with project planning that fits around your team's existing workload.</h2>
+        <a href="/contact.html" class="btn-dark">Discuss Co-Managed IT Support</a>
       </div>
     </div>
   </section>
@@ -156,27 +128,27 @@
     <div class="faq-list">
       <div class="faq-item open">
         <div class="faq-header">
-          <div class="faq-header-left"><span class="faq-num">01</span><span class="faq-q">Why is network consultancy important for Internal IT Teams organisations?</span></div>
+          <div class="faq-header-left"><span class="faq-num">01</span><span class="faq-q">What exactly is network consultancy, and how does it assist the internal IT team?</span></div>
           <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="faq-divider"></div>
-        <div class="faq-answer">Consultancy helps align infrastructure with operational goals so teams have dependable connectivity, clearer security controls, and fewer recurring incidents.</div>
+        <div class="faq-answer">Network consultants provide specialised networking knowledge that the internal IT team's schedule does not permit them to develop within the organisation.<br><br>The consultant will design, troubleshoot, and secure networks in conjunction with the internal IT team. The consultant applies their expertise to the networks that require more focus than the internal IT team can provide in their daily activities.</div>
       </div>
       <div class="faq-item closed">
         <div class="faq-header">
-          <div class="faq-header-left"><span class="faq-num">02</span><span class="faq-q">How do you reduce downtime and service disruption?</span></div>
+          <div class="faq-header-left"><span class="faq-num">02</span><span class="faq-q">When should an organisation use network consultancy services?</span></div>
           <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="faq-divider faq-divider--hidden"></div>
-        <div class="faq-answer">We prioritise critical network paths, improve monitoring, and implement resilient configurations so faults are detected and resolved faster.</div>
+        <div class="faq-answer">Organisations usually bring in consultancy when internal teams are stretched, network changes are high risk, or performance issues continue despite repeated fixes.<br><br>It is especially useful during growth, office moves, mergers, or infrastructure refresh projects where specialist design and migration planning are needed.</div>
       </div>
       <div class="faq-item closed">
         <div class="faq-header">
-          <div class="faq-header-left"><span class="faq-num">03</span><span class="faq-q">Can you work alongside an internal IT team?</span></div>
+          <div class="faq-header-left"><span class="faq-num">03</span><span class="faq-q">What are the benefits of working with a network consultancy?</span></div>
           <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="faq-divider faq-divider--hidden"></div>
-        <div class="faq-answer">Yes. We often act as an extension of internal teams, providing specialist network capability while your team retains operational ownership.</div>
+        <div class="faq-answer">You gain access to specialist expertise, improved network stability, stronger security posture, and faster delivery of complex networking projects.<br><br>Your internal team keeps ownership while benefiting from additional capability where it matters most.</div>
       </div>
     </div>
   </section>

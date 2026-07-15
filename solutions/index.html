@@ -4,354 +4,931 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solutions | Network Consultancy</title>
-  <meta name="description" content="Professional network assessments that improve connectivity, resilience, security, and long-term business performance for UK SMEs.">
+  <meta name="description" content="Professional network assessments and practical recommendations for performance, resilience, and long-term business growth.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css?v=home-sections-20260715b">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
-    .sol-hero { padding:36px var(--px) 60px; max-width:var(--section-w); margin:0 auto; }
-    .sol-hero__wrap { position:relative; max-width:1440px; margin:0 auto; min-height:620px; border-radius:20px; overflow:hidden; }
-    .sol-hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-    .sol-hero__overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(17,27,58,.86) 0%,rgba(17,27,58,.72) 34%,rgba(17,27,58,.2) 62%,rgba(17,27,58,0) 78%); }
-    .sol-hero__content { position:relative; z-index:2; max-width:640px; padding:124px 0 0 58px; }
-    .sol-hero__tag { display:inline-block; font-family:"Barlow",sans-serif; font-size:14px; font-weight:600; color:#fff; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.32); border-radius:20px; padding:6px 18px; letter-spacing:.06em; text-transform:uppercase; margin-bottom:20px; }
-    .sol-hero__title { font-family:"Roboto Condensed",sans-serif; font-size:60px; font-weight:600; color:#fff; line-height:1.04; margin-bottom:24px; }
-    .sol-hero__sub { font-family:"Barlow",sans-serif; font-size:19px; color:rgba(255,255,255,.92); line-height:1.55; margin-bottom:32px; max-width:520px; }
+    :root {
+      --sol-gap: 24px;
+      --sol-radius: 10px;
+      --sol-card-radius: 24px;
+    }
 
-    .commitment { padding:0 var(--px) 80px; max-width:var(--section-w); margin:0 auto; }
-    .commitment__inner { max-width:1440px; margin:0 auto; }
-    .commitment__head { margin-bottom:32px; }
-    .commitment__head h2 { font-family:"Roboto Condensed",sans-serif; font-size:42px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:10px; }
-    .commitment__head p { font-family:"Barlow",sans-serif; font-size:18px; color:var(--sub); }
-    .commitment__stage { position:relative; height:500px; border-radius:20px; overflow:hidden; margin-bottom:24px; }
-    .commitment__stage img { width:100%; height:100%; object-fit:cover; display:block; }
-    .commitment__stage-overlay { position:absolute; inset:0; background:rgba(17,27,58,.16); }
-    .commitment__card { position:absolute; left:52px; bottom:52px; background:#ececec; border-radius:18px; padding:28px 36px; max-width:430px; }
-    .commitment__card h3 { font-family:"Roboto Condensed",sans-serif; font-size:38px; font-weight:600; color:var(--navy); line-height:1.05; margin-bottom:12px; }
-    .commitment__card p { font-family:"Barlow",sans-serif; font-size:17px; color:var(--sub); line-height:1.48; margin-bottom:22px; }
-    .commitment__bottom { display:flex; align-items:flex-end; gap:54px; }
-    .commitment__nav { display:flex; flex-direction:column; gap:22px; align-items:flex-end; flex-shrink:0; }
-    .commitment__arrows { display:flex; gap:16px; }
-    .commitment__arrow { width:66px; height:52px; border-radius:8px; border:1px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:22px; color:#000; transition:background .2s,color .2s; }
-    .commitment__arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
-    .commitment__progress { width:248px; height:10px; border-radius:10px; background:var(--gray-mid); overflow:hidden; }
-    .commitment__progress-fill { width:25%; height:100%; background:#4d4a4a; border-radius:10px; transition:width .35s ease; }
-    .commitment__thumbs { display:flex; gap:22px; flex:1; }
-    .commitment__thumb { flex:1; cursor:pointer; }
-    .commitment__thumb img { width:100%; height:170px; object-fit:cover; border-radius:14px; display:block; transition:opacity .2s; }
-    .commitment__thumb:hover img { opacity:.8; }
-    .commitment__thumb p { font-family:"Roboto Condensed",sans-serif; font-size:15px; color:var(--sub); margin-top:10px; }
+    .sol-page {
+      width: 100%;
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 0;
+    }
 
-    .solutions-grid { padding:0 var(--px) 90px; max-width:var(--section-w); margin:0 auto; }
-    .solutions-grid__inner { max-width:1440px; margin:0 auto; }
-    .solutions-grid h2 { font-family:"Roboto Condensed",sans-serif; font-size:42px; font-weight:600; color:var(--navy); line-height:1.05; text-transform:uppercase; margin-bottom:14px; }
-    .solutions-grid__intro { font-family:"Barlow",sans-serif; font-size:17px; color:var(--sub); line-height:1.6; max-width:1040px; margin-bottom:34px; }
-    .solutions-grid__cards { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
-    .solutions-grid__tile { position:relative; display:block; border-radius:16px; overflow:hidden; min-height:260px; text-decoration:none; }
-    .solutions-grid__tile img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
-    .solutions-grid__tile:hover img { transform:scale(1.04); }
-    .solutions-grid__tile::after { content:""; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,.12)); }
-    .solutions-grid__label { position:absolute; z-index:2; left:24px; bottom:22px; font-family:"Roboto Condensed",sans-serif; font-size:26px; font-weight:500; color:#fff; line-height:1.1; max-width:280px; }
-    .solutions-grid__arrow { position:absolute; z-index:2; right:20px; bottom:22px; width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.2); display:flex; align-items:center; justify-content:center; font-size:18px; color:#fff; }
+    .sol-hero-landing {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      background: #13203f;
+      min-height: 515px;
+      padding: 148px var(--px) 40px;
+      position: relative;
+      overflow: hidden;
+    }
 
-    .sol-testi { padding:88px var(--px); max-width:var(--section-w); margin:0 auto; background:linear-gradient(91deg,rgba(241,244,249,.72) 0%,rgba(173,217,243,.58) 17%,rgba(160,182,229,.52) 35%,rgba(8,173,252,.18) 49%,rgba(160,182,229,.52) 68%,rgba(173,217,243,.55) 83%,rgba(245,248,253,.72) 100%); }
-    .sol-testi__inner { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:320px 1fr; gap:70px; align-items:center; }
-    .sol-testi__left h2 { font-family:"Roboto Condensed",sans-serif; font-size:60px; font-weight:600; color:var(--navy); line-height:1.02; }
-    .sol-testi__nav { margin-top:84px; display:flex; flex-direction:column; gap:22px; align-items:flex-end; }
-    .sol-testi__arrows { display:flex; gap:16px; }
-    .sol-testi__arrow { width:58px; height:50px; border-radius:8px; border:1px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:24px; transition:background .2s; }
-    .sol-testi__arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
-    .sol-testi__bar { width:200px; height:10px; border-radius:10px; background:var(--gray-mid); overflow:hidden; }
-    .sol-testi__bar-fill { width:33%; height:100%; background:#4d4a4a; border-radius:10px; transition:width .35s ease; }
-    .sol-testi__card { background:#fff; border-radius:20px; padding:44px 44px 40px; box-shadow:0 4px 12px rgba(0,0,0,.08); }
-    .sol-testi__stars { color:#f0a31f; font-size:24px; letter-spacing:4px; margin-bottom:26px; }
-    .sol-testi__quote { font-family:"Roboto Condensed",sans-serif; font-size:26px; font-weight:300; color:#222; line-height:1.44; margin-bottom:28px; }
-    .sol-testi__meta { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; }
-    .sol-testi__person { display:flex; align-items:center; gap:16px; }
-    .sol-testi__avatar { width:52px; height:52px; border-radius:50%; background:var(--gray-mid); overflow:hidden; flex-shrink:0; }
-    .sol-testi__avatar img { width:100%; height:100%; object-fit:cover; }
-    .sol-testi__name { font-family:"Roboto Condensed",sans-serif; font-size:16px; font-weight:600; color:#222; }
-    .sol-testi__role { font-family:"Barlow",sans-serif; font-size:13px; color:var(--sub); line-height:1.4; }
-    .sol-testi__mark { font-family:Georgia,serif; font-size:76px; color:#111; line-height:1; }
+    .sol-hero-landing__inner {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
+      align-items: end;
+    }
 
-    .sol-cta-band { background:var(--blue); padding:80px 0; position:relative; overflow:hidden; }
-    .sol-cta-band__tags { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; gap:24px; padding:0 var(--px); pointer-events:none; }
-    .sol-cta-band__row { display:flex; gap:20px; flex-wrap:nowrap; }
-    .sol-cta-band__row span { background:#fff; color:var(--blue); opacity:.45; font-family:"Roboto Condensed",sans-serif; font-size:18px; font-weight:500; padding:12px 32px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
-    .sol-cta-band__card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:44px 66px; max-width:580px; margin:0 auto; text-align:center; box-shadow:0 4px 24px rgba(0,0,0,.12); }
-    .sol-cta-band__text { font-family:"Barlow",sans-serif; font-size:20px; font-weight:500; color:var(--sub); line-height:1.55; margin-bottom:28px; }
+    .sol-hero-landing__inner > div {
+      width: 100%;
+    }
 
-    @media(max-width:1440px){ .sol-hero__title{font-size:52px;} }
-    @media(max-width:1200px){ .sol-hero__title{font-size:44px;} .commitment__bottom,.sol-testi__inner{display:block;} .sol-testi__nav{align-items:flex-start;margin-top:24px;} .commitment__thumbs{flex-wrap:wrap;} }
-    @media(max-width:768px){ .sol-hero__wrap{min-height:460px;} .sol-hero__content{padding:70px 24px 0;} .sol-hero__title{font-size:34px;} .sol-hero__sub{font-size:16px;} .commitment__stage{height:340px;} .commitment__card{left:16px;right:16px;bottom:16px;max-width:none;padding:18px 20px;} .commitment__card h3{font-size:26px;} .solutions-grid__cards{grid-template-columns:1fr;} .sol-testi__left h2{font-size:40px;} .sol-testi__card{padding:28px 24px;} .sol-cta-band__card{padding:32px 28px;} }
-    @media(max-width:480px){ .sol-hero__title{font-size:28px;} }
+    .sol-hero-landing h1 {
+      color: #ffffff;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 64px;
+      font-weight: 600;
+      line-height: 1;
+      margin: 0 0 14px;
+      max-width: 804px;
+    }
+
+    .sol-hero-landing p {
+      color: #ffffff;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1;
+      max-width: 640px;
+      margin: 0 0 24px;
+    }
+
+    .sol-hero-landing__art {
+      width: 100%;
+      max-width: 735px;
+      height: 332px;
+      border-radius: var(--sol-radius);
+      overflow: hidden;
+      justify-self: end;
+      margin-bottom: 10px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .sol-hero-landing__art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .sol-hero-landing__btn {
+      background: #d9d9d9;
+      color: #353535;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sol-hero-landing .animate-fade-up {
+      opacity: 1;
+      transform: none;
+    }
+
+    .sol-commit {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 50px var(--px) 60px;
+      background: #fff;
+    }
+
+    .sol-commit__inner {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .sol-commit__head h2 {
+      color: #162470;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .sol-commit__head p {
+      margin: 18px 0 28px;
+      color: #585151;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.2;
+      max-width: 994px;
+    }
+
+    .sol-commit__line {
+      width: 100%;
+      height: 1px;
+      background: #d9d9d9;
+      margin-bottom: 48px;
+    }
+
+    .sol-commit__rows {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sol-gap);
+    }
+
+    .sol-card-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--sol-gap);
+    }
+
+    .sol-card {
+      position: relative;
+      min-height: 460px;
+      border-radius: var(--sol-card-radius);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      background: #1f2024;
+      text-decoration: none;
+    }
+
+    .sol-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      display: block;
+    }
+
+    .sol-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9,130,197,0) 0%, rgba(9,130,197,.95) 100%);
+    }
+
+    .sol-card__content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 28px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .sol-card h3 {
+      margin: 0;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 1;
+      max-width: 320px;
+    }
+
+    .sol-card p {
+      margin: 12px 0 0;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.45;
+      max-width: 340px;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.22s ease, transform 0.22s ease, max-height 0.22s ease;
+    }
+
+    .sol-card:hover p,
+    .sol-card:focus-within p,
+    .sol-card.is-hovered p {
+      opacity: 1;
+      max-height: 220px;
+      transform: translateY(0);
+    }
+
+    .sol-card__arrow {
+      width: 56px;
+      height: 56px;
+      flex: 0 0 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-top: 2px;
+    }
+
+    .sol-card__arrow svg {
+      width: 32px;
+      height: 32px;
+      stroke: #fff;
+      stroke-width: 2.5;
+      fill: none;
+      transform-origin: center;
+      opacity: 1;
+      transform: rotate(0deg);
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+
+    .sol-card:not(:hover) .sol-card__arrow svg {
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+
+    .sol-card:hover .sol-card__arrow svg,
+    .sol-card:focus-within .sol-card__arrow svg,
+    .sol-card.is-hovered .sol-card__arrow svg {
+      opacity: 1;
+      transform: rotate(-45deg);
+    }
+
+    .sol-card--wide {
+      grid-column: span 2;
+    }
+
+    .sol-card-row--single {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: none;
+    }
+
+    .sol-card-row--single .sol-card {
+      grid-column: 1 / -1;
+    }
+
+    .sol-benefits {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 50px var(--px) 90px;
+      background: #fff;
+    }
+
+    .sol-benefits__inner {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .sol-benefits h2 {
+      margin: 0;
+      color: #162470;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .sol-benefits p {
+      margin: 16px 0 0;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.45;
+      max-width: 1120px;
+    }
+
+    .sol-benefits__mosaic {
+      width: 100%;
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 58% 42%;
+      gap: var(--sol-gap);
+    }
+
+    .sol-benefits__mosaic--second {
+      grid-template-columns: 42% 58%;
+      margin-top: var(--sol-gap);
+    }
+
+    .sol-benefit-tile {
+      min-height: 390px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      display: block;
+      text-decoration: none;
+      background: #1f2024;
+    }
+
+    .sol-benefit-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: absolute;
+      inset: 0;
+    }
+
+    .sol-benefit-tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,.55) 55%, rgba(0,0,0,.92) 100%);
+    }
+
+    .sol-benefit-tile__content {
+      position: absolute;
+      z-index: 2;
+      left: 28px;
+      bottom: 30px;
+      right: 28px;
+      color: #fff;
+      padding: 18px 20px;
+      border-radius: 12px;
+      background: rgba(10, 12, 20, 0.45);
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
+    }
+
+    .sol-benefits .sol-benefit-tile__label {
+      color: #fff;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 38px;
+      font-weight: 500;
+      line-height: 1.02;
+      letter-spacing: 0.01em;
+      margin: 0;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+    }
+
+    .sol-benefits .sol-benefit-tile__body {
+      margin: 12px 0 0;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      line-height: 1.45;
+      color: #fff;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.65);
+      max-width: 540px;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.22s ease, transform 0.22s ease, max-height 0.22s ease;
+    }
+
+    .sol-benefit-tile:hover .sol-benefit-tile__body,
+    .sol-benefit-tile:focus-within .sol-benefit-tile__body {
+      opacity: 1;
+      max-height: 180px;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1440px) {
+      .sol-hero-landing h1 { font-size: 56px; }
+      .sol-hero-landing p { font-size: 28px; }
+      .sol-card h3 { font-size: 34px; }
+      .sol-benefit-tile__label { font-size: 34px; }
+    }
+
+    @media (max-width: 1200px) {
+      .sol-hero-landing {
+        padding-top: 120px;
+        padding-bottom: 32px;
+      }
+      .sol-hero-landing__inner {
+        grid-template-columns: 1fr;
+      }
+      .sol-hero-landing__art {
+        justify-self: start;
+      }
+      .sol-card-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .sol-card--wide {
+        grid-column: span 2;
+      }
+      .sol-card-row--single {
+        max-width: none;
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .sol-benefits__mosaic,
+      .sol-benefits__mosaic--second {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sol-hero-landing {
+        padding-top: 104px;
+      }
+      .sol-hero-landing h1 {
+        font-size: 42px;
+      }
+      .sol-hero-landing p {
+        font-size: 22px;
+        line-height: 1.15;
+      }
+      .sol-hero-landing__art {
+        height: 240px;
+      }
+      .sol-commit,
+      .sol-benefits {
+        padding-top: 36px;
+      }
+      .sol-commit__head h2,
+      .sol-benefits h2 {
+        font-size: 38px;
+      }
+      .sol-card-row,
+      .sol-card-row--single {
+        grid-template-columns: 1fr;
+      }
+      .sol-card--wide {
+        grid-column: auto;
+      }
+      .sol-card-row--single .sol-card {
+        grid-column: auto;
+      }
+      .sol-card {
+        min-height: 380px;
+      }
+      .sol-card h3 {
+        font-size: 30px;
+      }
+      .sol-card p {
+        font-size: 16px;
+      }
+      .sol-benefit-tile {
+        min-height: 300px;
+      }
+      .sol-benefit-tile__label {
+        font-size: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sol-hero-landing h1 {
+        font-size: 34px;
+      }
+      .sol-hero-landing p {
+        font-size: 18px;
+      }
+      .sol-hero-landing__btn {
+        width: 100%;
+      }
+      .sol-commit__head h2,
+      .sol-benefits h2 {
+        font-size: 32px;
+      }
+      .sol-card h3 {
+        font-size: 26px;
+      }
+      .sol-benefit-tile__label {
+        font-size: 26px;
+      }
+    }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
-  <main id="main">
 
-    <section class="sol-hero" aria-label="Solutions hero">
-      <div class="sol-hero__wrap">
-        <picture>
-          <source srcset="/images/pages/unique/solutions-index-nc-hero-person.webp" type="image/webp">
-          <img class="sol-hero__bg" src="/images/pages/unique/solutions-index-nc-hero-person.jpg" alt="" width="1440" height="620" loading="eager">
-        </picture>
-        <div class="sol-hero__overlay" aria-hidden="true"></div>
-        <div class="sol-hero__content animate-fade-up">
-          <div class="sol-hero__tag">Network Assessments</div>
-          <h1 class="sol-hero__title">Professional Network Assessments for Better Business Performance</h1>
-          <p class="sol-hero__sub">Understanding how your network is performing with a professional assessment that helps improve connectivity, resilience, security, and support for the long-term needs of your business.</p>
-          <a href="/contact.html" class="btn-blue" data-source-cta="solutions_landing_health_check">BOOK A NETWORK HEALTH CHECK</a>
+  <main id="main" class="sol-page">
+    <section class="sol-hero-landing" aria-labelledby="sol-hero-title">
+      <div class="sol-hero-landing__inner">
+        <div>
+          <h1 id="sol-hero-title">Professional Network Assessments for Better Business Performance</h1>
+          <p>Understand how your network is performing with a professional assessment that helps improve connectivity, strengthen security, and support the long-term needs of your business.</p>
+          <a href="/contact.html" class="sol-hero-landing__btn" data-source-cta="solutions_landing_book_health_check">Book a Network Health Check</a>
         </div>
       </div>
     </section>
 
-    <section class="commitment" aria-labelledby="commitment-h">
-      <div class="commitment__inner">
-        <div class="commitment__head animate-fade-up">
-          <h2 id="commitment-h">Our Commitment to You</h2>
+    <section class="sol-commit" aria-labelledby="sol-commit-title">
+      <div class="sol-commit__inner">
+        <header class="sol-commit__head animate-fade-up">
+          <h2 id="sol-commit-title">Our Commitment to You</h2>
           <p>Supporting your every step with clarity, expertise, and confidence.</p>
-        </div>
-        <div class="commitment__stage animate-fade-up">
-          <picture>
-            <source id="commitment-src" srcset="/images/pages/nc-hero-wide.webp" type="image/webp">
-            <img id="commitment-img" src="/images/pages/nc-hero-wide.jpg" alt="Comprehensive infrastructure review" loading="lazy">
-          </picture>
-          <div class="commitment__stage-overlay"></div>
-          <div class="commitment__card">
-            <h3 id="commitment-title">Comprehensive Infrastructure Review</h3>
-            <p id="commitment-desc">We assess your existing network infrastructure to identify areas for improvement, increase reliability, and ensure your systems can support your business as it grows.</p>
-            <a id="commitment-link" href="/solutions/network-health-check.html" class="btn-blue">GET TO KNOW MORE</a>
+        </header>
+        <div class="sol-commit__line"></div>
+
+        <div class="sol-commit__rows">
+          <div class="sol-card-row">
+            <a class="sol-card" href="/solutions/network-health-check.html">
+              <picture>
+                <source srcset="/images/pages/unique/solutions-network-health-check-nc-hero-person.webp" type="image/webp">
+                <img src="/images/pages/unique/solutions-network-health-check-nc-hero-person.jpg" alt="Comprehensive infrastructure review" loading="lazy">
+              </picture>
+              <div class="sol-card__content">
+                <div>
+                  <h3>Comprehensive Infrastructure Review</h3>
+                  <p>We assess your existing network infrastructure to identify areas for improvement, increase reliability, and ensure your systems can support your business as it grows.</p>
+                </div>
+                <span class="sol-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M5 12H19"></path>
+                    <path d="M13 6L19 12L13 18"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
+            <a class="sol-card" href="/solutions/network-health-check.html">
+              <picture>
+                <source srcset="/images/pages/unique/solutions-network-health-check-technician.jpg" type="image/jpeg">
+                <img src="/images/pages/unique/solutions-network-health-check-technician.jpg" alt="Performance assessment" loading="lazy">
+              </picture>
+              <div class="sol-card__content">
+                <div>
+                  <h3>Performance Assessment</h3>
+                  <p>Traffic flows are analysed to determine whether routing, throughput, and prioritisation are creating avoidable bottlenecks across the network.</p>
+                </div>
+                <span class="sol-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M5 12H19"></path>
+                    <path d="M13 6L19 12L13 18"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
+            <a class="sol-card" href="/solutions/cyber-security-review.html">
+              <picture>
+                <source srcset="/images/pages/unique/solutions-network-health-check-cyber-security.jpg" type="image/jpeg">
+                <img src="/images/pages/unique/solutions-network-health-check-cyber-security.jpg" alt="Security assessment" loading="lazy">
+              </picture>
+              <div class="sol-card__content">
+                <div>
+                  <h3>Security Assessment</h3>
+                  <p>Security weaknesses at the network edge are reviewed to expose vulnerabilities before they become incidents or cause operational disruption.</p>
+                </div>
+                <span class="sol-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M5 12H19"></path>
+                    <path d="M13 6L19 12L13 18"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
           </div>
-        </div>
-        <div class="commitment__bottom animate-fade-up">
-          <div class="commitment__nav">
-            <div class="commitment__arrows">
-              <button class="commitment__arrow" id="commitment-prev" aria-label="Previous">&#8592;</button>
-              <button class="commitment__arrow" id="commitment-next" aria-label="Next">&#8594;</button>
-            </div>
-            <div class="commitment__progress"><div class="commitment__progress-fill" id="commitment-fill"></div></div>
+
+          <div class="sol-card-row">
+            <a class="sol-card" href="/solutions/network-health-check.html">
+              <picture>
+                <source srcset="/images/pages/unique/solutions-network-health-check-managed-support.jpg" type="image/jpeg">
+                <img src="/images/pages/unique/solutions-network-health-check-managed-support.jpg" alt="Capacity planning" loading="lazy">
+              </picture>
+              <div class="sol-card__content">
+                <div>
+                  <h3>Capacity Planning</h3>
+                  <p>You receive practical recommendations that help your team know what to change first and why those improvements matter most.</p>
+                </div>
+                <span class="sol-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M5 12H19"></path>
+                    <path d="M13 6L19 12L13 18"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
+            <a class="sol-card" href="/solutions/network-health-check.html">
+              <picture>
+                <source srcset="/images/pages/unique/solutions-network-health-check-servers.webp" type="image/webp">
+                <img src="/images/pages/unique/solutions-network-health-check-servers.jpg" alt="Enhancing network reliability" loading="lazy">
+              </picture>
+              <div class="sol-card__content">
+                <div>
+                  <h3>Enhancing Network Reliability</h3>
+                  <p>The final output provides clear, evidence-backed recommendations that help strengthen reliability and improve day-to-day system performance.</p>
+                </div>
+                <span class="sol-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M5 12H19"></path>
+                    <path d="M13 6L19 12L13 18"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
+            <a class="sol-card" href="/solutions/network-health-check.html">
+              <picture>
+                <source srcset="/images/pages/unique/solutions-network-health-check-professional.jpg" type="image/jpeg">
+                <img src="/images/pages/unique/solutions-network-health-check-professional.jpg" alt="Network device review" loading="lazy">
+              </picture>
+              <div class="sol-card__content">
+                <div>
+                  <h3>Network Device Review</h3>
+                  <p>Routers, switches, and endpoint support hardware are checked to confirm they can sustain expected business load without degrading reliability.</p>
+                </div>
+                <span class="sol-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M5 12H19"></path>
+                    <path d="M13 6L19 12L13 18"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
           </div>
-          <div class="commitment__thumbs" id="commitment-thumbs">
-            <div class="commitment__thumb">
-              <picture><source srcset="/images/pages/technician.webp" type="image/webp"><img src="/images/pages/unique/solutions-index-technician.jpg" alt="AI readiness assessment" loading="lazy"></picture>
-              <p>AI Readiness Assessment</p>
-            </div>
-            <div class="commitment__thumb">
-              <picture><source srcset="/images/pages/unique/solutions-index-cyber-security.jpg" type="image/webp"><img src="/images/pages/unique/solutions-index-cyber-security.jpg" alt="Cyber security review" loading="lazy"></picture>
-              <p>Cyber Security Review</p>
-            </div>
-            <div class="commitment__thumb">
-              <picture><source srcset="/images/pages/unique/solutions-index-professional.jpg" type="image/webp"><img src="/images/pages/unique/solutions-index-professional.jpg" alt="Microsoft 365 readiness" loading="lazy"></picture>
-              <p>Microsoft 365 Readiness</p>
-            </div>
+
+          <div class="sol-card-row">
+            <a class="sol-card" href="/solutions/cyber-security-review.html">
+              <picture>
+                <source srcset="/images/pages/unique/solutions-cyber-security-review-nc-hero-person.webp" type="image/webp">
+                <img src="/images/pages/unique/solutions-cyber-security-review-nc-hero-person.jpg" alt="Compliance and best practice review" loading="lazy">
+              </picture>
+              <div class="sol-card__content">
+                <div>
+                  <h3>Compliance and Best Practice Review</h3>
+                  <p>Compliance-sensitive controls are reviewed to see where policy and practice may not align with requirements.</p>
+                </div>
+                <span class="sol-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M5 12H19"></path>
+                    <path d="M13 6L19 12L13 18"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
+            <a class="sol-card" href="/solutions/cyber-security-review.html">
+              <picture>
+                <source srcset="/images/pages/unique/solutions-cyber-security-review-cyber-security.jpg" type="image/jpeg">
+                <img src="/images/pages/unique/solutions-cyber-security-review-cyber-security.jpg" alt="Wireless network assessment" loading="lazy">
+              </picture>
+              <div class="sol-card__content">
+                <div>
+                  <h3>Wireless Network Assessment</h3>
+                  <p>Our assessment highlights potential security risks and offers practical recommendations to help safeguard your systems, users, and business data.</p>
+                </div>
+                <span class="sol-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M5 12H19"></path>
+                    <path d="M13 6L19 12L13 18"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
+            <a class="sol-card" href="/solutions/ai-ready-infrastructure.html">
+              <picture>
+                <source srcset="/images/pages/unique/solutions-ai-ready-infrastructure-servers.webp" type="image/webp">
+                <img src="/images/pages/unique/solutions-ai-ready-infrastructure-servers.jpg" alt="Planning for future growth" loading="lazy">
+              </picture>
+              <div class="sol-card__content">
+                <div>
+                  <h3>Planning for Future Growth</h3>
+                  <p>We evaluate whether your existing network and IT infrastructure are equipped to support modern AI tools and future technology demands, identifying any gaps that may require improvement.</p>
+                </div>
+                <span class="sol-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M5 12H19"></path>
+                    <path d="M13 6L19 12L13 18"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
+          </div>
+
+          <div class="sol-card-row sol-card-row--single">
+            <a class="sol-card" href="/solutions/network-health-check.html">
+              <picture>
+                <source srcset="/images/pages/unique/solutions-ai-ready-infrastructure-managed-support.jpg" type="image/jpeg">
+                <img src="/images/pages/unique/solutions-ai-ready-infrastructure-managed-support.jpg" alt="Practical recommendations" loading="lazy">
+              </picture>
+              <div class="sol-card__content">
+                <div>
+                  <h3>Practical Recommendations</h3>
+                  <p>The final output provides clear, evidence-backed recommendations that help strengthen reliability and improve day-to-day system performance.</p>
+                </div>
+                <span class="sol-card__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M5 12H19"></path>
+                    <path d="M13 6L19 12L13 18"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="solutions-grid animate-fade-up" aria-labelledby="solutions-grid-h">
-      <div class="solutions-grid__inner">
-        <h2 id="solutions-grid-h">WHAT YOU'LL GET FROM US...</h2>
-        <p class="solutions-grid__intro">Every review is designed to uncover hidden risks, improve visibility, and give your business a clearer roadmap for future investment. We identify where the real issues are, how they affect performance, resilience, and security, and provide practical recommendations you can act on with confidence.</p>
-        <div class="solutions-grid__cards">
-          <a class="solutions-grid__tile" href="/solutions/network-health-check.html">
-            <picture><source srcset="/images/pages/unique/solutions-index-managed-support.webp" type="image/webp"><img src="/images/pages/unique/solutions-index-managed-support.jpg" alt="Network Health Check" loading="lazy"></picture>
-            <span class="solutions-grid__label">Network Health Check</span>
-            <span class="solutions-grid__arrow">&#8594;</span>
+    <section class="sol-benefits" aria-labelledby="sol-benefits-title">
+      <div class="sol-benefits__inner">
+        <h2 id="sol-benefits-title">WHAT YOU'LL GET FROM US...</h2>
+        <p>Every business needs a strong network to stay connected, secure, and efficient. We deliver practical assessments that help you understand where your network can be improved and how to build a more dependable foundation for growth.</p>
+
+        <div class="sol-benefits__mosaic animate-fade-up">
+          <a class="sol-benefit-tile" href="/solutions/network-health-check.html">
+            <picture>
+              <source srcset="/images/pages/unique/solutions-index-managed-support.webp" type="image/webp">
+              <img src="/images/pages/unique/solutions-index-managed-support.jpg" alt="Network Health Check" loading="lazy">
+            </picture>
+            <div class="sol-benefit-tile__content">
+              <span class="sol-benefit-tile__label">Network Health Check</span>
+              <p class="sol-benefit-tile__body">We assess the overall health of your network, pinpoint performance issues, and identify opportunities to improve stability and reliability.</p>
+            </div>
           </a>
-          <a class="solutions-grid__tile" href="/solutions/cyber-security-review.html">
-            <picture><source srcset="/images/pages/unique/solutions-index-cyber-security.jpg" type="image/webp"><img src="/images/pages/unique/solutions-index-cyber-security.jpg" alt="Cyber Security Review" loading="lazy"></picture>
-            <span class="solutions-grid__label">Cyber Security Review</span>
-            <span class="solutions-grid__arrow">&#8594;</span>
+          <a class="sol-benefit-tile" href="/solutions/cyber-security-review.html">
+            <picture>
+              <source srcset="/images/pages/unique/solutions-index-cyber-security.jpg" type="image/jpeg">
+              <img src="/images/pages/unique/solutions-index-cyber-security.jpg" alt="Cyber Security Review" loading="lazy">
+            </picture>
+            <div class="sol-benefit-tile__content">
+              <span class="sol-benefit-tile__label">Cyber Security Review</span>
+              <p class="sol-benefit-tile__body">Our assessment highlights potential security risks and offers practical recommendations to help safeguard your systems, users, and business data.</p>
+            </div>
           </a>
-          <a class="solutions-grid__tile" href="/solutions/microsoft-365-network.html">
-            <picture><source srcset="/images/pages/unique/solutions-index-professional.jpg" type="image/webp"><img src="/images/pages/unique/solutions-index-professional.jpg" alt="Microsoft 365 and Network Readiness" loading="lazy"></picture>
-            <span class="solutions-grid__label">Microsoft 365 and Network Readiness</span>
-            <span class="solutions-grid__arrow">&#8594;</span>
+        </div>
+
+        <div class="sol-benefits__mosaic sol-benefits__mosaic--second animate-fade-up">
+          <a class="sol-benefit-tile" href="/solutions/microsoft-365-network.html">
+            <picture>
+              <source srcset="/images/pages/unique/solutions-index-professional.jpg" type="image/jpeg">
+              <img src="/images/pages/unique/solutions-index-professional.jpg" alt="Microsoft 365 and Network Readiness" loading="lazy">
+            </picture>
+            <div class="sol-benefit-tile__content">
+              <span class="sol-benefit-tile__label">Microsoft 365 and Network Readiness</span>
+              <p class="sol-benefit-tile__body">We assess your network's readiness for Microsoft 365 services, helping ensure consistent performance, secure access, and seamless collaboration across your organisation.</p>
+            </div>
           </a>
-          <a class="solutions-grid__tile" href="/solutions/ai-ready-infrastructure.html">
-            <picture><source srcset="/images/pages/technician.webp" type="image/webp"><img src="/images/pages/unique/solutions-index-technician.jpg" alt="AI-Ready Infrastructure Review" loading="lazy"></picture>
-            <span class="solutions-grid__label">AI-Ready Infrastructure Review</span>
-            <span class="solutions-grid__arrow">&#8594;</span>
+          <a class="sol-benefit-tile" href="/solutions/ai-ready-infrastructure.html">
+            <picture>
+              <source srcset="/images/pages/unique/solutions-index-technician.jpg" type="image/jpeg">
+              <img src="/images/pages/unique/solutions-index-technician.jpg" alt="AI ready Infrastructure Review" loading="lazy">
+            </picture>
+            <div class="sol-benefit-tile__content">
+              <span class="sol-benefit-tile__label">AI-Ready Infrastructure Review</span>
+              <p class="sol-benefit-tile__body">We evaluate whether your existing network and IT infrastructure are equipped to support modern AI tools and future technology demands, identifying any gaps that may require improvement.</p>
+            </div>
           </a>
         </div>
       </div>
     </section>
 
-    <section class="sol-testi" aria-label="Client testimonials">
-      <div class="sol-testi__inner">
-        <div class="sol-testi__left animate-fade-up">
-          <h2>What our<br>client says</h2>
-          <div class="sol-testi__nav">
-            <div class="sol-testi__arrows">
-              <button class="sol-testi__arrow" id="st-prev" aria-label="Previous testimonial">&#8592;</button>
-              <button class="sol-testi__arrow" id="st-next" aria-label="Next testimonial">&#8594;</button>
-            </div>
-            <div class="sol-testi__bar"><div class="sol-testi__bar-fill" id="st-fill"></div></div>
-          </div>
+    <section class="section-shell">
+      <div class="nd-trusted">
+      <div class="nd-trusted__head">
+        <h2 class="nd-trusted__title">What our clients say</h2>
+        <div class="nd-trusted__controls">
+          <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
+            <span aria-hidden="true">&#8249;</span>
+          </button>
+          <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial">
+            <span aria-hidden="true">&#8250;</span>
+          </button>
         </div>
-        <div class="sol-testi__card animate-fade-up">
-          <div class="sol-testi__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote class="sol-testi__quote" id="st-quote">The network consultancy team transformed our ageing infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We experienced fewer outages and better productivity since implementation.</blockquote>
-          <div class="sol-testi__meta">
-            <div class="sol-testi__person">
-              <div class="sol-testi__avatar"></div>
+      </div>
+      <div class="nd-trusted__viewport">
+        <div class="nd-trusted__track">
+          <article class="nd-t-card">
+            <p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p>
+            <div class="nd-t-card__person">
+              <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></span>
               <div>
-                <div class="sol-testi__name" id="st-name">James Walker</div>
-                <div class="sol-testi__role" id="st-role">IT Manager, England</div>
+                <p class="nd-t-card__name">Managing Director</p>
+                <p class="nd-t-card__role">Broadcasting Company, London</p>
               </div>
             </div>
-            <div class="sol-testi__mark">99</div>
-          </div>
+          </article>
+          <article class="nd-t-card">
+            <p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p>
+            <div class="nd-t-card__person">
+              <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></span>
+              <div>
+                <p class="nd-t-card__name">IT Director</p>
+                <p class="nd-t-card__role">Professional Services Firm, London</p>
+              </div>
+            </div>
+          </article>
+          <article class="nd-t-card">
+            <p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p>
+            <div class="nd-t-card__person">
+              <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/services/service-1.jpg" alt="" loading="lazy"></span>
+              <div>
+                <p class="nd-t-card__name">Head of Operations</p>
+                <p class="nd-t-card__role">Healthcare Provider, Birmingham</p>
+              </div>
+            </div>
+          </article>
+          <article class="nd-t-card">
+            <p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p>
+            <div class="nd-t-card__person">
+              <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></span>
+              <div>
+                <p class="nd-t-card__name">Managing Partner</p>
+                <p class="nd-t-card__role">Legal Firm, London</p>
+              </div>
+            </div>
+          </article>
+          <article class="nd-t-card">
+            <p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p>
+            <div class="nd-t-card__person">
+              <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></span>
+              <div>
+                <p class="nd-t-card__name">Operations Director</p>
+                <p class="nd-t-card__role">Manufacturing Company, Midlands</p>
+              </div>
+            </div>
+          </article>
         </div>
+      </div>
+      <div class="nd-trusted__dots" aria-hidden="true">
+        <span class="nd-trusted__dot nd-trusted__dot--active"></span>
+        <span class="nd-trusted__dot"></span>
+        <span class="nd-trusted__dot"></span>
+      </div>
       </div>
     </section>
 
-    <section class="sol-cta-band" aria-label="Solutions CTA">
-      <div class="sol-cta-band__tags" aria-hidden="true">
-        <div class="sol-cta-band__row">
-          <span>Network Health Check</span><span>Cyber Security Review</span><span>Microsoft 365 &amp; Network</span><span>AI-Ready Infrastructure</span><span>Network Health Check</span><span>Cyber Security Review</span>
-        </div>
-        <div class="sol-cta-band__row">
-          <span>Cyber Security Review</span><span>AI-Ready Infrastructure</span><span>Network Health Check</span><span>Microsoft 365 &amp; Network</span><span>Cyber Security Review</span><span>AI-Ready Infrastructure</span>
-        </div>
+    <section class="section-shell">
+      <div class="nd-faq">
+      <div class="nd-faq__left">
+          <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+        <p>Still have questions? Get connected to our support team.</p>
+        <a href="/contact.html" class="nd-faq__cta">Contact us</a>
       </div>
-      <div class="sol-cta-band__card">
-        <p class="sol-cta-band__text">Gain a clear understanding of your network's performance, strengthen security and identify practical improvements that support your business today and as it grows.</p>
-        <a href="/contact.html" class="btn-dark">Book Your Network Assessment</a>
+      <div class="nd-faq__right" id="nd-faq-list">
+        <button class="nd-faq__item is-open"><span>What is a network consultancy service?</span><strong>&minus;</strong></button>
+        <div class="nd-faq__panel">A network consultancy service reviews your existing IT infrastructure to identify performance, security, and reliability issues. It provides practical recommendations to improve network performance, support future growth, and help your business make better use of its technology.</div>
+        <button class="nd-faq__item"><span>How can network consultancy improve business performance?</span><strong>+</strong></button>
+        <div class="nd-faq__panel" hidden>By finding bottlenecks, hidden risks, and weak points in your environment, consultancy helps improve reliability, reduce disruption, and provide better day-to-day system performance.</div>
+        <button class="nd-faq__item"><span>When should a business consider a network assessment?</span><strong>+</strong></button>
+        <div class="nd-faq__panel" hidden>A business should consider an assessment when performance is inconsistent, growth is putting pressure on infrastructure, security needs are increasing, or future investment decisions need clearer technical evidence.</div>
+      </div>
       </div>
     </section>
-
-    <script>
-      window.PAGE_FAQ = [
-        { question: "What is a network consultancy service?", answer: "A network consultancy service reviews your existing IT infrastructure to identify performance, security, and reliability issues. It provides practical recommendations to improve network performance, support future growth, and help your business make better use of its technology.", open: true },
-        { question: "How can network consultancy improve business performance?", answer: "By finding bottlenecks, hidden risks, and weak points in your environment, consultancy helps improve reliability, reduce disruption, and give your teams better day-to-day system performance.", open: false },
-        { question: "When should a business consider a network assessment?", answer: "A business should consider an assessment when performance is inconsistent, growth is putting pressure on infrastructure, security needs are increasing, or future investment decisions need clearer technical evidence.", open: false }
-      ];
-    </script>
-    <div data-cms="faq"></div>
 
     <div id="site-contact"></div>
     <script src="/js/form-source-tracking.js"></script>
-  <script src="/js/contact.js"></script>
+    <script src="/js/contact.js?v=home-sections-20260715"></script>
   </main>
 
   <div id="site-footer"></div>
-  <script src="/js/cms.js"></script>
   <script src="/js/footer.js"></script>
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
   <script>
     (function () {
-      var stages = [
-        {
-          srcset: "/images/pages/nc-hero-wide.webp", src: "/images/pages/nc-hero-wide.jpg",
-          title: "Comprehensive Infrastructure Review",
-          desc: "We assess your existing network infrastructure to identify areas for improvement, increase reliability, and ensure your systems can support your business as it grows.",
-          href: "/solutions/network-health-check.html",
-          thumbs: [
-            { srcset:"/images/pages/technician.webp", src:"/images/pages/unique/solutions-index-technician.jpg", label:"AI Readiness Assessment" },
-            { srcset:"/images/pages/unique/solutions-index-cyber-security.jpg", src:"/images/pages/unique/solutions-index-cyber-security.jpg", label:"Cyber Security Review" },
-            { srcset:"/images/pages/unique/solutions-index-professional.jpg", src:"/images/pages/unique/solutions-index-professional.jpg", label:"Microsoft 365 Readiness" }
-          ]
-        },
-        {
-          srcset: "/images/pages/technician.webp", src: "/images/pages/unique/solutions-index-technician.jpg",
-          title: "AI Readiness Assessment",
-          desc: "We examine whether your current network, security, and operations can support AI-driven workloads and automation without introducing performance bottlenecks.",
-          href: "/solutions/ai-ready-infrastructure.html",
-          thumbs: [
-            { srcset:"/images/pages/unique/solutions-index-cyber-security.jpg", src:"/images/pages/unique/solutions-index-cyber-security.jpg", label:"Cyber Security Review" },
-            { srcset:"/images/pages/unique/solutions-index-professional.jpg", src:"/images/pages/unique/solutions-index-professional.jpg", label:"Microsoft 365 Readiness" },
-            { srcset:"/images/pages/unique/solutions-index-managed-support.webp", src:"/images/pages/unique/solutions-index-managed-support.jpg", label:"Network Health Check" }
-          ]
-        },
-        {
-          srcset: "/images/pages/unique/solutions-index-cyber-security.jpg", src: "/images/pages/unique/solutions-index-cyber-security.jpg",
-          title: "Cyber Security Review",
-          desc: "Our structured cyber reviews identify the practical vulnerabilities and access risks that could expose your business to avoidable disruption.",
-          href: "/solutions/cyber-security-review.html",
-          thumbs: [
-            { srcset:"/images/pages/unique/solutions-index-professional.jpg", src:"/images/pages/unique/solutions-index-professional.jpg", label:"Microsoft 365 Readiness" },
-            { srcset:"/images/pages/unique/solutions-index-managed-support.webp", src:"/images/pages/unique/solutions-index-managed-support.jpg", label:"Network Health Check" },
-            { srcset:"/images/pages/technician.webp", src:"/images/pages/unique/solutions-index-technician.jpg", label:"AI Readiness Assessment" }
-          ]
-        },
-        {
-          srcset: "/images/pages/unique/solutions-index-professional.jpg", src: "/images/pages/unique/solutions-index-professional.jpg",
-          title: "Microsoft 365 Readiness",
-          desc: "We review your bandwidth, endpoint stability, and Microsoft 365 supportability so your rollout is smooth, resilient, and well-supported from day one.",
-          href: "/solutions/microsoft-365-network.html",
-          thumbs: [
-            { srcset:"/images/pages/unique/solutions-index-managed-support.webp", src:"/images/pages/unique/solutions-index-managed-support.jpg", label:"Network Health Check" },
-            { srcset:"/images/pages/technician.webp", src:"/images/pages/unique/solutions-index-technician.jpg", label:"AI Readiness Assessment" },
-            { srcset:"/images/pages/unique/solutions-index-cyber-security.jpg", src:"/images/pages/unique/solutions-index-cyber-security.jpg", label:"Cyber Security Review" }
-          ]
-        }
-      ];
-      var idx = 0;
-      var srcEl = document.getElementById("commitment-src");
-      var imgEl = document.getElementById("commitment-img");
-      var titleEl = document.getElementById("commitment-title");
-      var descEl = document.getElementById("commitment-desc");
-      var linkEl = document.getElementById("commitment-link");
-      var fillEl = document.getElementById("commitment-fill");
-      var thumbEls = Array.from(document.querySelectorAll("#commitment-thumbs .commitment__thumb"));
-      function renderStage() {
-        var s = stages[idx];
-        if (srcEl) srcEl.setAttribute("srcset", s.srcset);
-        imgEl.src = s.src;
-        imgEl.alt = s.title;
-        titleEl.textContent = s.title;
-        descEl.textContent = s.desc;
-        linkEl.href = s.href;
-        fillEl.style.width = (((idx + 1) / stages.length) * 100) + "%";
-        thumbEls.forEach(function (thumb, i) {
-          var t = s.thumbs[i];
-          var tSrc = thumb.querySelector("source");
-          var tImg = thumb.querySelector("img");
-          var tLabel = thumb.querySelector("p");
-          if (tSrc) tSrc.setAttribute("srcset", t.srcset);
-          tImg.src = t.src;
-          tImg.alt = t.label;
-          tLabel.textContent = t.label;
+      var list = document.getElementById('nd-faq-list');
+      if (!list) return;
+      var items = list.querySelectorAll('.nd-faq__item');
+      items.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var panel = btn.nextElementSibling;
+          var open = btn.classList.contains('is-open');
+          items.forEach(function (item) {
+            item.classList.remove('is-open');
+            var mark = item.querySelector('strong');
+            if (mark) mark.textContent = '+';
+            if (item.nextElementSibling) item.nextElementSibling.hidden = true;
+          });
+          if (!open) {
+            btn.classList.add('is-open');
+            var activeMark = btn.querySelector('strong');
+            if (activeMark) activeMark.textContent = '−';
+            if (panel) panel.hidden = false;
+          }
         });
-      }
-      document.getElementById("commitment-prev").addEventListener("click", function () { idx = (idx - 1 + stages.length) % stages.length; renderStage(); });
-      document.getElementById("commitment-next").addEventListener("click", function () { idx = (idx + 1) % stages.length; renderStage(); });
-      thumbEls.forEach(function (thumb, i) {
-        thumb.addEventListener("click", function () { idx = (i + 1) % stages.length; renderStage(); });
       });
-      renderStage();
-
-      var testimonials = [
-        { quote: "The network consultancy team transformed our ageing infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We experienced fewer outages and better productivity since implementation.", name: "James Walker", role: "IT Manager, England" },
-        { quote: "The recommendations gave us real clarity on where to invest next. Instead of guessing, we had a practical roadmap backed by expert assessment and measurable priorities.", name: "Sarah Ellis", role: "Operations Lead, Midlands" },
-        { quote: "Each assessment exposed issues we would not have spotted internally. The result was stronger performance, clearer visibility, and more confidence in our next steps.", name: "David Turner", role: "Infrastructure Manager, London" }
-      ];
-      var ti = 0;
-      var q = document.getElementById("st-quote");
-      var n = document.getElementById("st-name");
-      var r = document.getElementById("st-role");
-      var f = document.getElementById("st-fill");
-      function renderTestimonial() {
-        var t = testimonials[ti];
-        q.textContent = t.quote;
-        n.textContent = t.name;
-        r.textContent = t.role;
-        f.style.width = (((ti + 1) / testimonials.length) * 100) + "%";
-      }
-      document.getElementById("st-prev").addEventListener("click", function () { ti = (ti - 1 + testimonials.length) % testimonials.length; renderTestimonial(); });
-      document.getElementById("st-next").addEventListener("click", function () { ti = (ti + 1) % testimonials.length; renderTestimonial(); });
-      renderTestimonial();
     }());
+
+    (function () {
+      var cards = document.querySelectorAll('.sol-card');
+      cards.forEach(function (card) {
+        var arrow = card.querySelector('.sol-card__arrow svg');
+
+        function setCardState(active) {
+          if (arrow) {
+            arrow.style.transform = active ? 'rotate(-45deg)' : 'rotate(0deg)';
+          }
+        }
+
+        card.addEventListener('mouseenter', function () {
+          card.classList.add('is-hovered');
+          setCardState(true);
+        });
+        card.addEventListener('mouseleave', function () {
+          card.classList.remove('is-hovered');
+          setCardState(false);
+        });
+        card.addEventListener('focusin', function () {
+          card.classList.add('is-hovered');
+          setCardState(true);
+        });
+        card.addEventListener('focusout', function () {
+          if (!card.contains(document.activeElement)) {
+            card.classList.remove('is-hovered');
+            setCardState(false);
+          }
+        });
+      });
+    })();
   </script>
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>

@@ -7,125 +7,475 @@
   <meta name="description" content="Security-led network infrastructure for financial services organisations — robust connectivity, compliance, and cyber protection.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css?v=industry-family-1">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+  <style>
+    /* industry-detail-spacing */
+    body.industry-detail-page #main > section + section { margin-top: 40px !important; }
+    body.industry-detail-page #main > #contact { margin-top: 40px !important; }
+
+    /* Financial services hero matches JPEG card-style treatment */
+    .page-hero.page-hero--financial {
+      max-width: var(--max-w);
+      min-height: 430px;
+      margin: 16px auto 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .page-hero.page-hero--financial .page-hero__overlay {
+      background: linear-gradient(98deg, rgba(18, 32, 84, 0.9) 0%, rgba(18, 32, 84, 0.72) 44%, rgba(18, 32, 84, 0.35) 100%);
+    }
+    .page-hero.page-hero--financial .page-hero__bg picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .page-hero.page-hero--financial .page-hero__content {
+      padding: 74px 62px;
+      max-width: 760px;
+      margin: 0;
+    }
+    .page-hero.page-hero--financial .breadcrumb {
+      display: none;
+    }
+    .page-hero.page-hero--financial .page-hero__title {
+      font-size: 56px;
+      line-height: 1.03;
+      max-width: 620px;
+      margin-bottom: 16px;
+    }
+    .page-hero.page-hero--financial .page-hero__sub {
+      font-size: 18px;
+      line-height: 1.45;
+      max-width: 520px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .page-hero.page-hero--financial .page-hero__cta {
+      margin-top: 24px;
+    }
+
+    /* Financial page section-specific parity tweaks */
+    .fin-intro {
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+    .fin-intro .heading-xl {
+      max-width: 980px;
+      margin-bottom: 14px;
+    }
+    .fin-intro .body-lg {
+      max-width: 1080px;
+    }
+    .fin-intro .industry-panel {
+      margin-top: 22px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .fin-intro .industry-panel__caption {
+      display: none;
+    }
+    .fin-intro .industry-panel__visual {
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .fin-intro .industry-panel__visual picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .fin-intro .industry-panel__visual img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .fin-cyber {
+      padding-top: 66px;
+      padding-bottom: 62px;
+    }
+    .fin-cyber .split {
+      align-items: start;
+      gap: 54px;
+    }
+    .fin-cyber .body-lg {
+      max-width: 760px;
+    }
+    .fin-cyber .industry-progress {
+      width: 174px;
+      height: 8px;
+      margin-top: 34px;
+    }
+    .fin-cyber .industry-arrows {
+      margin-top: 14px;
+      gap: 12px;
+    }
+    .fin-cyber .industry-arrow,
+    .fin-testimonial .industry-arrow {
+      width: 40px;
+      height: 30px;
+      border: 1px solid var(--gray-mid);
+      background: #fff;
+      color: var(--dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fin-cyber .industry-insight {
+      border-radius: 8px;
+      min-height: 220px;
+      padding: 20px 22px;
+    }
+    .fin-cyber .industry-insight__count {
+      margin-top: 18px;
+    }
+
+    .fin-banner .industry-banner__inner {
+      min-height: 520px;
+      border-radius: 10px;
+    }
+    .fin-banner .industry-banner__bg picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .fin-banner .industry-banner__content {
+      max-width: 720px;
+      padding: 44px 42px;
+    }
+    .fin-banner .industry-banner__title {
+      font-size: 52px;
+      line-height: 1.04;
+    }
+    .fin-banner .industry-banner__text {
+      font-size: 18px;
+      line-height: 1.5;
+      max-width: 640px;
+    }
+    .fin-banner__dots {
+      position: absolute;
+      left: 42px;
+      bottom: 30px;
+      z-index: 2;
+      display: flex;
+      gap: 10px;
+    }
+    .fin-banner__dot {
+      width: 26px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+    }
+    .fin-banner__dot.is-active {
+      background: #08adfc;
+    }
+
+    .fin-why {
+      padding-top: 58px;
+    }
+    .fin-why .split {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 56px;
+    }
+    .fin-why .split > div:first-child {
+      flex: 0 0 58%;
+      max-width: 58%;
+    }
+    .fin-why .split > picture {
+      flex: 0 0 38%;
+      max-width: 38%;
+      display: block;
+    }
+    .fin-why .heading-lg {
+      margin-bottom: 14px;
+    }
+    .fin-why .body-lg {
+      max-width: 720px;
+    }
+    .fin-why .split__img {
+      border-radius: 8px;
+      height: 300px;
+      object-position: center;
+      width: 100%;
+    }
+
+    .fin-testimonial {
+      padding-top: 62px;
+      padding-bottom: 62px;
+      background: #d6eafa;
+    }
+    .fin-testimonial .industry-testimonial__inner {
+      grid-template-columns: 236px 1fr;
+      gap: 28px;
+      align-items: end;
+    }
+    .fin-testimonial .industry-testimonial__title {
+      font-size: 50px;
+      line-height: 0.95;
+      max-width: 220px;
+    }
+    .fin-testimonial__left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 260px;
+    }
+    .fin-testimonial__controls {
+      margin-top: 34px;
+    }
+    .fin-testimonial__controls .industry-progress {
+      width: 108px;
+      height: 8px;
+      margin-top: 0;
+    }
+    .fin-testimonial__controls .industry-arrows {
+      margin-top: 14px;
+    }
+    .fin-testimonial .industry-testimonial__card {
+      border-radius: 8px;
+      padding: 26px 30px;
+      max-width: 760px;
+    }
+    .fin-testimonial .industry-testimonial__quote {
+      font-size: 22px;
+      line-height: 1.55;
+    }
+
+    .fin-cta {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+    .fin-cta .industry-cta__inner {
+      min-height: 198px;
+      position: relative;
+    }
+    .fin-cta .industry-cta__chips {
+      position: absolute;
+      inset: 0;
+      display: block;
+      pointer-events: none;
+    }
+    .fin-cta .industry-cta__chip {
+      position: absolute;
+      white-space: nowrap;
+      border-radius: 14px;
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+    .fin-cta .industry-cta__chip:nth-child(1) { top: 34px; left: 8px; }
+    .fin-cta .industry-cta__chip:nth-child(2) { top: 34px; left: 164px; }
+    .fin-cta .industry-cta__chip:nth-child(3) { top: 34px; right: 154px; }
+    .fin-cta .industry-cta__chip:nth-child(4) { top: 34px; right: 8px; }
+    .fin-cta .industry-cta__chip:nth-child(5) { bottom: 34px; left: 8px; }
+    .fin-cta .industry-cta__chip:nth-child(6) { bottom: 34px; left: 190px; }
+    .fin-cta .industry-cta__chip:nth-child(7) { bottom: 34px; right: 184px; }
+    .fin-cta .industry-cta__chip:nth-child(8) { bottom: 34px; right: 8px; }
+    .fin-cta .industry-cta__card {
+      border-radius: 8px;
+      width: min(620px, 100%);
+      padding: 20px 26px;
+    }
+    .fin-cta .industry-cta__title {
+      font-size: 40px;
+      line-height: 1.02;
+      margin-bottom: 12px;
+    }
+    .fin-cta .industry-cta__text {
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 1200px) {
+      .page-hero.page-hero--financial {
+        margin-top: 10px;
+      }
+      .page-hero.page-hero--financial .page-hero__content {
+        padding: 52px 36px;
+        max-width: 100%;
+      }
+      .page-hero.page-hero--financial .page-hero__title {
+        font-size: 44px;
+        max-width: 560px;
+      }
+
+      .fin-banner .industry-banner__title {
+        font-size: 44px;
+      }
+      .fin-testimonial .industry-testimonial__inner {
+        grid-template-columns: 1fr;
+      }
+      .fin-testimonial .industry-testimonial__title {
+        max-width: none;
+      }
+      .fin-testimonial__left {
+        min-height: 0;
+      }
+      .fin-why .split {
+        display: grid;
+      }
+      .fin-why .split > div:first-child,
+      .fin-why .split > picture {
+        flex: initial;
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-hero.page-hero--financial {
+        border-radius: 0;
+        margin-top: 0;
+      }
+      .page-hero.page-hero--financial .page-hero__content {
+        padding: 42px 24px;
+      }
+      .page-hero.page-hero--financial .page-hero__title {
+        font-size: 34px;
+      }
+      .page-hero.page-hero--financial .page-hero__sub {
+        font-size: 16px;
+      }
+
+      .fin-intro,
+      .fin-cyber,
+      .fin-why,
+      .fin-testimonial,
+      .fin-cta {
+        padding-top: 52px;
+        padding-bottom: 52px;
+      }
+      .fin-banner .industry-banner__content {
+        padding: 32px 24px;
+      }
+      .fin-banner .industry-banner__title {
+        font-size: 34px;
+      }
+      .fin-banner__dots {
+        left: 24px;
+        bottom: 20px;
+      }
+      .fin-cta .industry-cta__title {
+        font-size: 30px;
+      }
+      .fin-cta .industry-cta__chips {
+        display: none;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="industry-detail-page">
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
   <main id="main">
 
-  <section class="page-hero" aria-label="Page hero">
+  <section class="page-hero page-hero--financial" aria-label="Page hero">
     <div class="page-hero__bg">
       <picture>
-        <source srcset="/images/pages/unique/industries-financial-services-professional.jpg" type="image/jpeg">
-        <img src="/images/pages/unique/industries-financial-services-professional.jpg" alt="Financial services professional in a modern office" loading="eager" width="1920" height="640">
+        <source srcset="/images/pages/unique/generated/financial-services-hero-photoonly.jpg" type="image/jpeg">
+        <img src="/images/pages/unique/generated/financial-services-hero-photoonly.jpg" alt="Financial services professional in a modern office" loading="eager" width="820" height="620">
       </picture>
       <div class="page-hero__overlay" aria-hidden="true"></div>
     </div>
     <div class="page-hero__content animate-fade-up">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep" aria-hidden="true">&#8250;</span><a href="/industries/">Industries</a><span class="bc-sep" aria-hidden="true">&#8250;</span><span>Financial Services</span></nav>
       <h1 class="page-hero__title">High-Availability Networking and Security for Financial Organisations</h1>
-      <p class="page-hero__sub">Network Consultancy designs secure, resilient infrastructure for finance teams, trading floors, and client-facing environments.</p>
+      <p class="page-hero__sub">Network Consultancy designs secure IT networks for banks and financial institutions to protect data, meet compliance, and prevent irreversible downtime.</p>
       <div class="page-hero__cta">
         <a href="/contact.html" class="btn-blue" data-source-cta="industry_health_check">Book a Network Health Check</a>
       </div>
     </div>
   </section>
 
-  <section class="section section--gradient animate-fade-up" aria-labelledby="fin-intro-h">
-    <div class="split split--3-2">
+  <section class="section section--gradient animate-fade-up fin-intro" aria-labelledby="fin-intro-h">
+    <div class="stack-lg">
       <div>
-        <span class="eyebrow">Financial Services</span>
         <h2 class="heading-xl" id="fin-intro-h">Engineer the Future of Financial Services with a Modern Network</h2>
-        <div class="body-lg"><p>Every financial organisation needs a dependable network that supports secure transaction pathways, instant communication, and layered security controls to protect transaction data and maintain regulatory compliance.</p><p>We shape network design, monitoring, and managed support around the pace of your business, so teams stay connected, protected, and ready to operate without disruption.</p></div>
-        <ul class="check-list">
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Secure transaction pathways and client data flows</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">High availability built for critical business systems</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Compliance-aware configuration and governance</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Monitoring, response, and recovery planning</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Multi-site performance without bottlenecks</span></li>
-        </ul>
+        <div class="body-lg"><p>Every financial organisation needs a dependable network. We engineer zero-latency core IT security networks and layered security controls to protect transaction pathways and maintain regulatory compliance.</p></div>
       </div>
-      <picture>
-        <source srcset="/images/pages/unique/industries-financial-services-professional.jpg" type="image/jpeg">
-        <img class="split__img split__img--tall" src="/images/pages/unique/industries-financial-services-professional.jpg" alt="Financial services professional smiling in a modern workspace" width="600" height="480" loading="lazy">
-      </picture>
-    </div>
-  </section>
 
-  <section class="section animate-fade-up" aria-labelledby="fin-panel-h">
-    <div class="split split--3-2">
-      <div>
-        <h2 class="heading-lg" id="fin-panel-h">Primary Cyber Threats and Vulnerabilities for Financial Services</h2>
-        <div class="body-lg"><p>Financial organisations are prime targets for cyber attacks because they handle valuable information, money, and high-trust digital services. That makes resilience, visibility, and response planning essential.</p><p>We reduce the risk of phishing, ransomware, and account takeover by tightening access controls, monitoring unusual activity, and keeping recovery plans ready.</p></div>
-      </div>
-      <div class="industry-insight">
-        <div>
-          <div class="industry-insight__title">Phishing attacks</div>
-          <div class="industry-insight__copy">Fraudulent messages and websites are used to steal login details or sensitive financial information by creating urgency and trust.</div>
-        </div>
-        <div class="industry-insight__count">1/3</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section animate-fade-up" aria-labelledby="fin-tabs-h">
-    <div class="industry-panel">
-      <div class="industry-panel__grid">
-        <div class="industry-panel__nav" aria-label="Financial services focus areas">
-          <div class="industry-panel__nav-item is-active">Planning and Assessment</div>
-          <div class="industry-panel__nav-item">Strategic Network Design and Deployment</div>
-          <div class="industry-panel__nav-item">Continuous Monitoring and Threat Detection</div>
-          <div class="industry-panel__nav-item">Performance Optimisation and Ongoing Management</div>
-          <div class="industry-panel__nav-item">Compliance and Governance</div>
-          <div class="industry-panel__nav-item">Backup and Disaster Recovery</div>
-        </div>
-        <div class="industry-panel__visual">
-          <picture>
-            <source srcset="/images/pages/unique/industries-financial-services-managed-support.jpg" type="image/jpeg">
-            <img src="/images/pages/unique/industries-financial-services-managed-support.jpg" alt="Network support planning for financial services" loading="lazy">
-          </picture>
-          <div class="industry-panel__caption">
-            <h3>Planning and Assessment</h3>
-            <p>We start by mapping your current network, security risks, and compliance requirements before shaping the right roadmap.</p>
+      <div class="industry-panel">
+        <div class="industry-panel__grid">
+          <div class="industry-panel__nav" aria-label="Financial services focus areas">
+            <div class="industry-panel__nav-item is-active">Planning and Assessment</div>
+            <div class="industry-panel__nav-item">Secure Network Design and Deployment</div>
+            <div class="industry-panel__nav-item">Continuous Monitoring and Threat Detection</div>
+            <div class="industry-panel__nav-item">Performance Optimisation and Ongoing Management</div>
+            <div class="industry-panel__nav-item">Compliance and Governance</div>
+            <div class="industry-panel__nav-item">Backup and Disaster Recovery</div>
+          </div>
+          <div class="industry-panel__visual">
+            <picture>
+              <source srcset="/images/pages/unique/generated/financial-services-panel-photoonly.jpg" type="image/jpeg">
+              <img src="/images/pages/unique/generated/financial-services-panel-photoonly.jpg" alt="Planning and assessment for financial network services" loading="lazy">
+            </picture>
+            <div class="industry-panel__caption">
+              <h3>Planning and Assessment</h3>
+              <p>We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="industry-banner animate-fade-up" aria-labelledby="fin-banner-h">
+  <section class="section animate-fade-up fin-cyber" aria-labelledby="fin-panel-h">
+    <div class="split split--3-2">
+      <div>
+        <h2 class="heading-lg" id="fin-panel-h">Primary Cyber Threats and Vulnerabilities for Financial Services</h2>
+        <div class="body-lg"><p>Understanding the most common threats is an important part of protecting your network and maintaining business continuity.</p><p>Fraudulent emails, messages and websites are used to trick employees or customers into revealing login details or other sensitive information while attackers target financial systems.</p></div>
+        <div class="industry-progress" aria-hidden="true"></div>
+        <div class="industry-arrows" aria-hidden="true">
+          <button class="industry-arrow" type="button" tabindex="-1"><span>&larr;</span></button>
+          <button class="industry-arrow" type="button" tabindex="-1"><span>&rarr;</span></button>
+        </div>
+      </div>
+      <div class="industry-insight">
+        <div>
+          <div class="industry-insight__title">Phishing attacks</div>
+          <div class="industry-insight__copy">Fraudulent emails, messages and websites are used to trick users into revealing login details and other sensitive information.</div>
+        </div>
+        <div class="industry-insight__count">1/3</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="industry-banner animate-fade-up fin-banner" aria-labelledby="fin-banner-h">
     <div class="industry-banner__inner">
       <div class="industry-banner__bg">
         <picture>
-          <source srcset="/images/pages/unique/industries-financial-services-managed-support.jpg" type="image/jpeg">
-          <img src="/images/pages/unique/industries-financial-services-managed-support.jpg" alt="Financial services network support" loading="lazy">
+          <source srcset="/images/pages/unique/generated/financial-services-hero-photoonly.jpg" type="image/jpeg">
+          <img src="/images/pages/unique/generated/financial-services-hero-photoonly.jpg" alt="Financial services network support" loading="lazy">
         </picture>
       </div>
       <div class="industry-banner__overlay" aria-hidden="true"></div>
       <div class="industry-banner__content">
         <span class="industry-banner__eyebrow">Why Choose Us</span>
         <h2 class="industry-banner__title" id="fin-banner-h">Common Types of Cyber Attacks Financial Systems Face</h2>
-        <p class="industry-banner__text">Financial systems face phishing, ransomware, brute-force attempts, insider abuse, and distributed denial-of-service attacks. We build practical controls that reduce exposure and help your team respond quickly when something changes.</p>
+        <p class="industry-banner__text">Attackers look for weaknesses in software, poorly secured APIs, and weak passwords. They use techniques like ransomware, phishing and distributed denial-of-service attacks, as well as credential stuffing and man-in-the-middle attacks to compromise accounts or intercept data.</p>
+      </div>
+      <div class="fin-banner__dots" aria-hidden="true">
+        <span class="fin-banner__dot is-active"></span>
+        <span class="fin-banner__dot"></span>
+        <span class="fin-banner__dot"></span>
       </div>
     </div>
   </section>
 
-  <section class="section animate-fade-up" aria-labelledby="fin-why-h">
-    <div class="split split--3-2 split--reverse">
+  <section class="section animate-fade-up fin-why" aria-labelledby="fin-why-h">
+    <div class="split split--3-2">
       <div>
         <span class="eyebrow">Why Choose Us</span>
-        <h2 class="heading-lg" id="fin-why-h">Your Specialist Network Partner</h2>
-        <div class="body-lg"><p>We understand the pace, pressure, and compliance demands that financial organisations work under. Our approach balances security with usability so teams can stay productive without exposing the business to unnecessary risk.</p><p>From planning through to ongoing support, we make sure the network stays stable, secure, and ready for the next change in demand.</p></div>
+        <h2 class="heading-lg" id="fin-why-h">Why Choose Us</h2>
+        <div class="body-lg"><p>We have experience delivering secure IT network solutions for banks and financial institutions.</p><p>We design our networks with security in mind, keep a close eye on regulatory requirements, and adapt to the changing needs of the financial sector.</p></div>
         <ul class="check-list">
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Security-led design for regulated environments</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Continuous monitoring and practical response planning</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Recovery and continuity planning that reduces disruption</span></li>
+          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Experience delivering secure IT network solutions for banks, financial institutions and organisations that handle sensitive information</span></li>
+          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Security-focused network design with continuous monitoring</span></li>
+          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Reliable infrastructure built to support business continuity</span></li>
         </ul>
       </div>
       <picture>
@@ -134,19 +484,36 @@
       </picture>
     </div>
   </section>
-  <section class="testimonial-band" aria-label="Client testimonial">
-    <div class="testimonial-band__inner animate-fade-up">
-      <div class="testimonial-band__stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <blockquote class="testimonial-band__quote">&#8220;The improvements to our network security posture have given us much better control over access. Our compliance position has improved substantially.&#8221;</blockquote>
-      <cite class="testimonial-band__author">&#8212; <strong>Emma Walker</strong>, Financial Services Director</cite>
+  <section class="industry-testimonial fin-testimonial" aria-label="Client testimonial">
+    <div class="industry-testimonial__inner animate-fade-up">
+      <div class="fin-testimonial__left">
+        <h2 class="industry-testimonial__title">What our client says</h2>
+        <div class="fin-testimonial__controls" aria-hidden="true">
+          <div class="industry-progress"></div>
+          <div class="industry-arrows">
+            <button class="industry-arrow" type="button" tabindex="-1"><span>&larr;</span></button>
+            <button class="industry-arrow" type="button" tabindex="-1"><span>&rarr;</span></button>
+          </div>
+        </div>
+      </div>
+      <article class="industry-testimonial__card">
+        <div class="industry-testimonial__stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote class="industry-testimonial__quote">The improvements to our network have made a real difference. Our systems are more reliable, and we have greater confidence that sensitive financial data is properly protected.</blockquote>
+        <p class="industry-testimonial__meta">James Carter, IT Director, London</p>
+      </article>
     </div>
   </section>
-  <section class="cta-band section--gradient animate-fade-up" aria-label="Call to action">
-    <h2 class="cta-band__title">Strengthen Your Financial Network</h2>
-    <p class="cta-band__sub">Protect your systems, support your compliance goals, and reduce disruption with a modern network strategy built around financial services.</p>
-    <div class="cta-band__btns">
-      <a href="/contact.html" class="btn-blue">Book a Network Health Check</a>
-      <a href="/solutions/network-health-check.html" class="btn-outline">View Network Health Check</a>
+
+  <section class="industry-cta animate-fade-up fin-cta" aria-label="Call to action">
+    <div class="industry-cta__inner">
+      <div class="industry-cta__chips" aria-hidden="true">
+        <span class="industry-cta__chip">Network Consultancy</span><span class="industry-cta__chip">Network Support</span><span class="industry-cta__chip">Managed Network Support</span><span class="industry-cta__chip">Managed Wireless LAN</span><span class="industry-cta__chip">Network Installations</span><span class="industry-cta__chip">Network Design &amp; Deployment</span><span class="industry-cta__chip">Firewall &amp; Network Security</span><span class="industry-cta__chip">Remote Access &amp; VPN</span>
+      </div>
+      <div class="industry-cta__card">
+        <h2 class="industry-cta__title">Strengthen Your Financial Network</h2>
+        <p class="industry-cta__text">Build stronger security and business continuity with a reliable network infrastructure built around financial services.</p>
+        <a href="/contact.html" class="btn-dark">Book a Network Health Check</a>
+      </div>
     </div>
   </section>
   <section class="faq animate-fade-up" aria-labelledby="faq-h">
@@ -158,23 +525,23 @@
           <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="faq-divider"></div>
-        <div class="faq-answer">They usually combine layered security controls, access management, monitoring, encryption, and response procedures so sensitive financial data stays protected and systems remain available.</div>
+        <div class="faq-answer">To safeguard sensitive financial data and ensure regulatory compliance, financial institutions use layered security measures, including firewalls, encryption, intrusion detection, ongoing monitoring, and stringent access controls.</div>
       </div>
       <div class="faq-item closed">
         <div class="faq-header">
-          <div class="faq-header-left"><span class="faq-num">02</span><span class="faq-q">What are the most common cyber threats for financial organisations?</span></div>
+          <div class="faq-header-left"><span class="faq-num">02</span><span class="faq-q">What are the most common cyber threats financial organisations face?</span></div>
           <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="faq-divider faq-divider--hidden"></div>
-        <div class="faq-answer">Phishing, ransomware, account takeover, insider misuse, and denial-of-service attacks are all common risks. We design networks to reduce the impact of each one.</div>
+        <div class="faq-answer">Phishing, ransomware, account takeover, and distributed denial-of-service attacks are among the most common threats. Financial institutions reduce risk by hardening access, monitoring traffic, and strengthening response controls.</div>
       </div>
       <div class="faq-item closed">
         <div class="faq-header">
-          <div class="faq-header-left"><span class="faq-num">03</span><span class="faq-q">Why is continuous monitoring important?</span></div>
+          <div class="faq-header-left"><span class="faq-num">03</span><span class="faq-q">Why is continuous network monitoring important?</span></div>
           <svg class="faq-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="22" cy="22" r="21" stroke="white" stroke-width="1.5"/><path d="M22 11v22M11 22h22" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="faq-divider faq-divider--hidden"></div>
-        <div class="faq-answer">Continuous monitoring helps identify unusual behaviour early, so teams can respond before a small issue becomes an outage or a security incident.</div>
+        <div class="faq-answer">Continuous monitoring helps detect unusual behaviour early so teams can respond before issues become outages or security incidents.</div>
       </div>
     </div>
   </section>

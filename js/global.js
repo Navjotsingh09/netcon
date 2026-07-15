@@ -1,141 +1,11 @@
 /**
  * Network Consultancy — Global JavaScript
- * Handles: scroll-aware navbar, mega menu, mobile nav drawer, FAQ accordion, contact form
+ * Handles: FAQ accordion, contact form.
+ * All navbar behaviour (sticky state, mega menus, mobile drawer)
+ * lives in js/navbar.js alongside the injected markup.
  */
 (function () {
   'use strict';
-
-  /* ── Scroll-aware navbar ───────────────────────────────────── */
-  var stickyNav = document.querySelector('.navbar--sticky');
-  if (stickyNav) {
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 24) { stickyNav.classList.add('is-scrolled'); }
-      else { stickyNav.classList.remove('is-scrolled'); }
-    }, { passive: true });
-  }
-
-  /* ── Mega Menu ─────────────────────────────────────────────── */
-  var triggers = document.querySelectorAll('.has-mega');
-  function setMenuOpen(el, isOpen) {
-    var trigger = el.querySelector('.nav-trigger, .nav-link');
-    el.classList.toggle('is-open', isOpen);
-    if (trigger && trigger.classList.contains('nav-trigger')) {
-      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    }
-  }
-
-  function closeAllMenus(exceptEl) {
-    triggers.forEach(function (t) {
-      if (!exceptEl || t !== exceptEl) setMenuOpen(t, false);
-    });
-  }
-
-  triggers.forEach(function (el) {
-    var closeTimer;
-    var trigger = el.querySelector('.nav-trigger, .nav-link');
-
-    function openMenu() {
-      clearTimeout(closeTimer);
-      closeAllMenus(el);
-      setMenuOpen(el, true);
-    }
-
-    function scheduleClose() {
-      closeTimer = setTimeout(function () { setMenuOpen(el, false); }, 160);
-    }
-
-    el.addEventListener('mouseenter', openMenu);
-    el.addEventListener('mouseleave', scheduleClose);
-
-    var menu = el.querySelector('.mega-menu');
-    if (menu) {
-      menu.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
-      menu.addEventListener('mouseleave', scheduleClose);
-    }
-
-    if (trigger) {
-      trigger.addEventListener('click', function (e) {
-        if (window.matchMedia('(hover: hover)').matches) {
-          if (trigger.classList.contains('nav-trigger')) e.preventDefault();
-          if (el.classList.contains('is-open')) setMenuOpen(el, false);
-          else openMenu();
-        } else {
-          e.preventDefault();
-          if (el.classList.contains('is-open')) setMenuOpen(el, false);
-          else openMenu();
-        }
-      });
-
-      trigger.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          if (el.classList.contains('is-open')) setMenuOpen(el, false);
-          else openMenu();
-        }
-        if (e.key === 'Escape') {
-          setMenuOpen(el, false);
-          trigger.focus();
-        }
-      });
-    }
-
-    el.addEventListener('focusin', function () {
-      if (window.matchMedia('(hover: hover)').matches) openMenu();
-    });
-
-    el.addEventListener('focusout', function () {
-      setTimeout(function () {
-        if (!el.contains(document.activeElement)) setMenuOpen(el, false);
-      }, 0);
-    });
-  });
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.has-mega')) {
-      closeAllMenus();
-    }
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      closeAllMenus();
-    }
-  });
-
-  /* ── Mobile Nav (slide-in drawer) ─────────────────────────── */
-  var hb  = document.getElementById('nav-hamburger');
-  var mn  = document.getElementById('nav-mobile');
-  var mc  = document.getElementById('nav-mobile-close');
-
-  /* Inject backdrop once */
-  var backdrop = document.createElement('div');
-  backdrop.className = 'nav-backdrop';
-  document.body.appendChild(backdrop);
-
-  function openNav() {
-    var sbw = window.innerWidth - document.documentElement.clientWidth;
-    document.body.style.overflow = 'hidden';
-    if (sbw > 0) document.body.style.paddingRight = sbw + 'px';
-    if (mn) mn.classList.add('is-open');
-    backdrop.classList.add('is-open');
-    if (hb) { hb.classList.add('open'); hb.setAttribute('aria-expanded', 'true'); }
-    if (mc) setTimeout(function () { mc.focus(); }, 30);
-  }
-  function closeNav() {
-    if (mn) mn.classList.remove('is-open');
-    backdrop.classList.remove('is-open');
-    if (hb) { hb.classList.remove('open'); hb.setAttribute('aria-expanded', 'false'); }
-    document.body.style.overflow = '';
-    document.body.style.paddingRight = '';
-    if (hb) hb.focus();
-  }
-  if (hb) hb.addEventListener('click', openNav);
-  if (mc) mc.addEventListener('click', closeNav);
-  backdrop.addEventListener('click', closeNav);
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && mn && mn.classList.contains('is-open')) closeNav();
-  });
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 1024 && mn && mn.classList.contains('is-open')) closeNav();
-  });
 
   /* ── FAQ Accordion ─────────────────────────────────────────── */
   /* Event delegation: works for both static HTML and CMS-injected FAQs */
@@ -164,6 +34,213 @@
       if (div) div.style.display = '';
     }
   });
+
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('.nd-faq__item');
+    if (!trigger) return;
+    var list = trigger.parentElement;
+    if (!list) return;
+    var wasOpen = trigger.classList.contains('is-open');
+    Array.prototype.forEach.call(list.querySelectorAll('.nd-faq__item'), function (item) {
+      item.classList.remove('is-open');
+      var mark = item.querySelector('strong');
+      if (mark) mark.textContent = '+';
+      if (item.nextElementSibling) item.nextElementSibling.hidden = true;
+    });
+    if (!wasOpen) {
+      trigger.classList.add('is-open');
+      var activeMark = trigger.querySelector('strong');
+      if (activeMark) activeMark.textContent = '−';
+      if (trigger.nextElementSibling) trigger.nextElementSibling.hidden = false;
+    }
+  });
+
+  (function initTrustedSlider() {
+    var trusted = document.querySelector('.nd-trusted');
+    if (!trusted) return;
+
+    var track = trusted.querySelector('.nd-trusted__track');
+    var prevBtn = trusted.querySelector('.nd-trusted__nav--prev');
+    var nextBtn = trusted.querySelector('.nd-trusted__nav--next');
+    var dotsWrap = trusted.querySelector('.nd-trusted__dots');
+    if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
+
+    var desktopQuery = window.matchMedia('(min-width: 1025px)');
+    var baseTranslate = 0;
+    var step = 0;
+    var currentIndex = 0;
+    var cardCount = 0;
+    var dots = [];
+    var isAnimating = false;
+    var transitionMs = 420;
+    var isDesktop = desktopQuery.matches;
+
+    function extractTranslateX(node) {
+      var transform = window.getComputedStyle(node).transform;
+      if (!transform || transform === 'none') return 0;
+      var matrix = transform.match(/matrix\(([^)]+)\)/);
+      if (matrix) {
+        var parts = matrix[1].split(',');
+        return parseFloat(parts[4]) || 0;
+      }
+      var matrix3d = transform.match(/matrix3d\(([^)]+)\)/);
+      if (matrix3d) {
+        var values = matrix3d[1].split(',');
+        return parseFloat(values[12]) || 0;
+      }
+      return 0;
+    }
+
+    function updateDots() {
+      if (!dots.length || !cardCount) return;
+      var dotIndex = ((currentIndex % cardCount) + cardCount) % cardCount;
+      dots.forEach(function (dot, index) {
+        dot.classList.toggle('nd-trusted__dot--active', index === dotIndex);
+      });
+    }
+
+    function setDesktopState(enabled) {
+      isDesktop = enabled;
+      if (!isDesktop) {
+        isAnimating = false;
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        track.style.transition = '';
+        track.style.transform = '';
+        track.style.willChange = '';
+        currentIndex = 0;
+        updateDots();
+        return;
+      }
+
+      prevBtn.disabled = false;
+      nextBtn.disabled = false;
+      track.style.transition = 'transform ' + transitionMs + 'ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+      track.style.willChange = 'transform';
+      track.style.transform = 'translateX(' + baseTranslate + 'px)';
+      currentIndex = 0;
+      updateDots();
+    }
+
+    function recalcMetrics() {
+      var cards = Array.prototype.slice.call(track.querySelectorAll('.nd-t-card'));
+      cardCount = cards.length;
+      if (cardCount < 2) {
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        return;
+      }
+
+      var firstLeft = cards[0].offsetLeft;
+      var secondLeft = cards[1].offsetLeft;
+      step = Math.max(1, secondLeft - firstLeft);
+
+      if (!dots.length || dots.length !== cardCount) {
+        dotsWrap.innerHTML = '';
+        for (var i = 0; i < cardCount; i += 1) {
+          var dot = document.createElement('span');
+          dot.className = 'nd-trusted__dot';
+          dotsWrap.appendChild(dot);
+        }
+        dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.nd-trusted__dot'));
+      }
+    }
+
+    function onNext() {
+      if (!isDesktop || isAnimating || cardCount < 2) return;
+      isAnimating = true;
+      var done = false;
+
+      function finish() {
+        if (done) return;
+        done = true;
+        track.removeEventListener('transitionend', onEnd);
+        var first = track.firstElementChild;
+        if (first) track.appendChild(first);
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(' + baseTranslate + 'px)';
+        void track.offsetHeight;
+        track.style.transition = 'transform ' + transitionMs + 'ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+        currentIndex = (currentIndex + 1) % cardCount;
+        updateDots();
+        isAnimating = false;
+      }
+
+      function onEnd(event) {
+        if (event.propertyName !== 'transform') return;
+        finish();
+      }
+
+      track.addEventListener('transitionend', onEnd);
+      track.style.transform = 'translateX(' + (baseTranslate - step) + 'px)';
+      window.setTimeout(finish, transitionMs + 60);
+    }
+
+    function onPrev() {
+      if (!isDesktop || isAnimating || cardCount < 2) return;
+      isAnimating = true;
+      var done = false;
+      var last = track.lastElementChild;
+      if (last) track.insertBefore(last, track.firstElementChild);
+
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(' + (baseTranslate - step) + 'px)';
+      void track.offsetHeight;
+      track.style.transition = 'transform ' + transitionMs + 'ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+      track.style.transform = 'translateX(' + baseTranslate + 'px)';
+
+      function finish() {
+        if (done) return;
+        done = true;
+        track.removeEventListener('transitionend', onEnd);
+        currentIndex = (currentIndex - 1 + cardCount) % cardCount;
+        updateDots();
+        isAnimating = false;
+      }
+
+      function onEnd(event) {
+        if (event.propertyName !== 'transform') return;
+        finish();
+      }
+
+      track.addEventListener('transitionend', onEnd);
+      window.setTimeout(finish, transitionMs + 60);
+    }
+
+    function configure() {
+      recalcMetrics();
+      if (!desktopQuery.matches) {
+        setDesktopState(false);
+        return;
+      }
+
+      if (!isDesktop) {
+        setDesktopState(true);
+      } else {
+        baseTranslate = extractTranslateX(track) || -175;
+        track.style.transform = 'translateX(' + baseTranslate + 'px)';
+        updateDots();
+      }
+    }
+
+    prevBtn.addEventListener('click', onPrev);
+    nextBtn.addEventListener('click', onNext);
+
+    trusted.addEventListener('keydown', function (event) {
+      if (!isDesktop) return;
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        onPrev();
+      }
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        onNext();
+      }
+    });
+
+    window.addEventListener('resize', configure);
+    configure();
+  }());
 
   /* ── Contact Form ──────────────────────────────────────────── */
   var form    = document.getElementById('contact-form');
