@@ -12,166 +12,744 @@
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
-    .sol-hero { max-width:var(--section-w); margin:0 auto; background:#13203f; padding:132px var(--px) 54px; }
-    .sol-hero__content { max-width:var(--max-w); margin:0 auto; max-width:760px; }
-    .sol-hero__title { font-family:"Google Sans Flex",sans-serif; font-size:64px; font-weight:600; color:#fff; line-height:1.08; margin-bottom:20px; }
-    .sol-hero__sub { font-family:"Google Sans Flex",sans-serif; font-size:24px; color:#fff; line-height:1.35; margin-bottom:20px; }
+    .aif-page {
+      width: 100%;
+      max-width: var(--section-w);
+      margin: 0 auto;
+    }
 
-    .tabpanel { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
-    .tabpanel__inner { max-width:1440px; margin:0 auto; }
-    .tabpanel__head { margin-bottom:22px; }
-    .tabpanel__head h2 { font-family:"Google Sans Flex",sans-serif; font-size:40px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:10px; }
-    .tabpanel__head p { font-family:"Google Sans Flex",sans-serif; font-size:17px; color:var(--sub); line-height:1.6; max-width:980px; }
-    .tabpanel__card { display:flex; gap:34px; background:#fff; border:1px solid var(--gray-mid); border-radius:20px; box-shadow:0 4px 14px rgba(0,0,0,.06); padding:26px; }
-    .tabpanel__tabs { flex:0 0 31%; display:flex; flex-direction:column; }
-    .tabpanel__tab { border:none; background:none; text-align:left; font-family:"Google Sans Flex",sans-serif; font-size:17px; font-weight:500; color:#2b2b2b; padding:17px 10px; border-top:1px solid var(--gray-mid); cursor:pointer; transition:background .2s,color .2s; }
-    .tabpanel__tab:first-child { border-top:none; }
-    .tabpanel__tab.active { background:var(--blue); color:#fff; border-radius:10px; border-top-color:transparent; padding:17px 18px; }
-    .tabpanel__panel { flex:1; position:relative; min-height:410px; border-radius:18px; overflow:hidden; padding:28px; display:flex; align-items:flex-end; }
-    .tabpanel__panel img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-    .tabpanel__panel::after { content:""; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.1)); }
-    .tabpanel__panel-card { position:relative; z-index:2; background:#fff; border-radius:16px; padding:22px 24px; width:100%; max-width:520px; }
-    .tabpanel__panel-card h3 { font-family:"Google Sans Flex",sans-serif; font-size:32px; font-weight:600; color:#353535; line-height:1.08; margin-bottom:10px; }
-    .tabpanel__panel-card p { font-family:"Google Sans Flex",sans-serif; font-size:16px; color:#353535; line-height:1.55; }
+    .aif-page > section {
+      width: 100%;
+      align-self: stretch;
+    }
 
-    .assess { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
-    .assess__inner { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
-    .assess__left h2 { font-family:"Google Sans Flex",sans-serif; font-size:40px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:22px; }
-    .assess__left p { font-family:"Google Sans Flex",sans-serif; font-size:17px; color:var(--sub); line-height:1.65; margin-bottom:16px; }
-    .assess__nav { margin-top:34px; display:flex; flex-direction:column; gap:20px; align-items:flex-start; }
-    .assess__arrows { display:flex; gap:14px; }
-    .assess__arrow { width:58px; height:48px; border-radius:8px; border:1px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:22px; transition:background .2s; }
-    .assess__arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
-    .assess__bar { width:190px; height:10px; border-radius:10px; background:var(--gray-mid); overflow:hidden; }
-    .assess__bar-fill { height:100%; background:#4d4a4a; border-radius:10px; transition:width .35s ease; }
-    .assess__card { background:#859aba; border-radius:20px; padding:36px 36px 30px; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:space-between; }
-    .assess__card h3 { font-family:"Google Sans Flex",sans-serif; font-size:32px; font-weight:600; line-height:1.12; margin-bottom:14px; }
-    .assess__card p { font-family:"Google Sans Flex",sans-serif; font-size:17px; line-height:1.55; color:rgba(255,255,255,.94); }
-    .assess__count { font-family:"Google Sans Flex",sans-serif; font-size:36px; font-weight:600; margin-top:24px; }
+    .aif-hero {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      background: #13203f;
+      padding: 135px var(--px) 48px;
+    }
 
-    .dark-banner { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
-    .dark-banner__wrap { position:relative; max-width:1440px; margin:0 auto; min-height:540px; border-radius:20px; overflow:hidden; }
-    .dark-banner__wrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-    .dark-banner__overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(17,27,58,.92) 0%,rgba(17,27,58,.76) 44%,rgba(17,27,58,.2) 72%,rgba(17,27,58,0) 88%); }
-    .dark-banner__content { position:relative; z-index:2; max-width:640px; padding:72px 0 0 56px; }
-    .dark-banner__content h2 { font-family:"Google Sans Flex",sans-serif; font-size:46px; font-weight:600; color:#fff; line-height:1.08; margin-bottom:22px; }
-    .dark-banner__content p { font-family:"Google Sans Flex",sans-serif; font-size:17px; color:rgba(255,255,255,.9); line-height:1.65; margin-bottom:14px; }
-    .dark-banner__dots { display:flex; gap:14px; margin-top:32px; }
-    .dark-banner__dots span { width:48px; height:6px; border-radius:999px; background:rgba(255,255,255,.45); }
-    .dark-banner__dots span.active { background:var(--blue); }
+    .aif-hero__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 735px;
+      gap: 24px;
+      align-items: end;
+    }
 
-    .split-info { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
-    .split-info__inner { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
-    .split-info__text h2 { font-family:"Google Sans Flex",sans-serif; font-size:38px; font-weight:600; color:var(--navy); line-height:1.15; margin-bottom:18px; }
-    .split-info__text p { font-family:"Google Sans Flex",sans-serif; font-size:17px; color:var(--sub); line-height:1.65; margin-bottom:14px; }
-    .split-info__image img { width:100%; height:340px; object-fit:cover; border-radius:16px; display:block; }
+    .aif-hero__copy {
+      max-width: 901px;
+    }
 
+    .aif-hero__copy h1 {
+      margin: 0 0 15px;
+      max-width: 804px;
+      color: #fff;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 64px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
 
-    .sol-cta-band { background:var(--blue); padding:80px 0; position:relative; overflow:hidden; }
-    .sol-cta-band__tags { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; gap:24px; padding:0 var(--px); pointer-events:none; }
-    .sol-cta-band__row { display:flex; gap:20px; flex-wrap:nowrap; }
-    .sol-cta-band__row span { background:#fff; color:var(--blue); opacity:.45; font-family:"Google Sans Flex",sans-serif; font-size:18px; font-weight:500; padding:12px 32px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
-    .sol-cta-band__card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:44px 66px; max-width:580px; margin:0 auto; text-align:center; box-shadow:0 4px 24px rgba(0,0,0,.12); }
-    .sol-cta-band__text { font-family:"Google Sans Flex",sans-serif; font-size:20px; font-weight:500; color:var(--sub); line-height:1.55; margin-bottom:28px; }
+    .aif-hero__copy p {
+      margin: 0 0 16px;
+      max-width: 640px;
+      color: #fff;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
 
-    @media(max-width:1200px){ .sol-hero__title,.testi__left h2{font-size:46px;} .tabpanel__card,.assess__inner,.split-info__inner,.testi__inner{display:block;} .testi__nav,.assess__nav{align-items:flex-start;margin-top:24px;} }
-    @media(max-width:768px){ .sol-hero{padding:108px var(--px) 44px;} .sol-hero__title{font-size:42px;} .sol-hero__sub{font-size:20px;} .tabpanel__card{padding:18px;} .tabpanel__panel{min-height:300px;} .dark-banner__content{padding:44px 24px 0;} .dark-banner__content h2{font-size:34px;} .sol-cta-band__card{padding:32px 28px;} }
-    @media(max-width:480px){ .sol-hero__title{font-size:28px;} }
+    .aif-hero__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+      min-height: 50px;
+      padding: 0 12px;
+      background: #fff;
+      color: #353535;
+      border-radius: 2px;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .aif-hero__art {
+      width: 735px;
+      max-width: 100%;
+      height: 332px;
+      border-radius: 10px;
+      overflow: hidden;
+      justify-self: end;
+    }
+
+    .aif-hero__art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .aif-overview {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 48px var(--px) 0;
+    }
+
+    .aif-overview__head {
+      max-width: var(--max-w);
+      margin: 0 auto 32px;
+    }
+
+    .aif-overview__head h2 {
+      margin: 0 0 16px;
+      color: #0982c5;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
+
+    .aif-overview__head p {
+      margin: 0;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+      max-width: 980px;
+    }
+
+    .aif-overview__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 386px) minmax(0, 822px);
+      gap: 56px;
+      align-items: start;
+      background: #fff;
+      border: 1px solid #353535;
+      border-radius: 30px;
+      padding: 40px;
+    }
+
+    .aif-overview__feature {
+      position: relative;
+      min-height: 678px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #0c1b3d;
+      display: flex;
+      align-items: flex-end;
+      padding: 28px;
+    }
+
+    .aif-overview__feature img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .aif-overview__feature::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9,130,197,0.18) 0%, rgba(9,130,197,0.88) 100%);
+    }
+
+    .aif-overview__panel {
+      position: relative;
+      z-index: 2;
+      width: 735px;
+      max-width: 100%;
+      padding: 28px;
+      background: #fff;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+    }
+
+    .aif-overview__panel.is-switching {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .aif-overview__panel h2 {
+      margin: 0;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .aif-overview__panel p {
+      margin: 0;
+      color: #353535;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.55;
+    }
+
+    .aif-overview__list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .aif-overview__list-item {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #353535;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.25;
+      transition: color 0.2s ease-out, background 0.25s ease-out, padding 0.25s ease-out;
+    }
+
+    .aif-overview__list-item:hover {
+      color: #0982c5;
+    }
+
+    .aif-overview__list-item--active,
+    .aif-overview__list-item--active:hover {
+      padding: 24px;
+      border-radius: 20px;
+      border-bottom: 0;
+      background: #0982c5;
+      color: #fff;
+    }
+
+    .aif-gains {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 50px var(--px) 0;
+    }
+
+    .aif-gains__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 680px 680px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .aif-gains__intro {
+      position: sticky;
+      top: 140px;
+    }
+
+    .aif-gains__intro h2 {
+      margin: 0 0 16px;
+      color: #0982c5;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
+
+    .aif-gains__intro p {
+      margin: 0 0 14px;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .aif-gains__stack {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .aif-gains__card {
+      position: sticky;
+      padding: 28px;
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      background: #fff;
+      min-height: 266px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      box-shadow: 0 -14px 32px -12px rgba(0, 0, 0, 0.14);
+    }
+
+    .aif-gains__card:nth-child(1) { top: 140px; z-index: 1; }
+    .aif-gains__card:nth-child(2) { top: 168px; z-index: 2; margin-top: 150px; }
+    .aif-gains__card:nth-child(3) { top: 196px; z-index: 3; margin-top: 150px; }
+    .aif-gains__card:nth-child(4) { top: 224px; z-index: 4; margin-top: 150px; }
+    .aif-gains__card:nth-child(5) { top: 252px; z-index: 5; margin-top: 150px; }
+
+    .aif-gains__card h3,
+    .aif-gains__card .aif-gains__count {
+      margin: 0;
+      color: #0982c5;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .aif-gains__card p {
+      margin: 0;
+      color: #353535;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .aif-risk,
+    .aif-why {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 50px var(--px) 0;
+    }
+
+    .aif-risk__inner,
+    .aif-why__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 675px 689px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .aif-risk__copy h2,
+    .aif-why__copy h2 {
+      margin: 0 0 36px;
+      color: #0982c5;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
+
+    .aif-risk__copy p,
+    .aif-why__copy p {
+      margin: 0 0 18px;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .aif-risk__media img,
+    .aif-why__media img {
+      width: 100%;
+      height: 517px;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+    }
+
+    .aif-cta-band {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      background: #0982c5;
+      padding: 80px 140px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .aif-cta-band__grid {
+      max-width: 1552px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 24px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .aif-cta-band__chip {
+      padding: 16px 48px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.5);
+      color: #0982c5;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .aif-cta-band__card {
+      width: 658px;
+      margin: 40px auto 0;
+      padding: 46px 84px;
+      border-radius: 20px;
+      background: #fff;
+      text-align: center;
+    }
+
+    .aif-cta-band__card p {
+      margin: 0 0 28px;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 1200px) {
+      .aif-hero__inner,
+      .aif-overview__inner,
+      .aif-gains__inner,
+      .aif-risk__inner,
+      .aif-why__inner {
+        grid-template-columns: 1fr;
+      }
+
+      .aif-hero {
+        padding-top: 112px;
+      }
+
+      .aif-hero__art {
+        justify-self: start;
+      }
+
+      .aif-overview__feature {
+        order: -1;
+      }
+
+      .aif-overview__inner {
+        padding: 24px;
+      }
+
+      .aif-overview__list {
+        gap: 24px;
+      }
+
+      .aif-gains__intro {
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .aif-hero__copy h1,
+      .aif-overview__head h2,
+      .aif-gains__intro h2,
+      .aif-risk__copy h2,
+      .aif-why__copy h2 {
+        font-size: 36px;
+      }
+
+      .aif-hero__copy p {
+        font-size: 20px;
+      }
+
+      .aif-overview__head p,
+      .aif-gains__intro p,
+      .aif-risk__copy p,
+      .aif-why__copy p,
+      .aif-gains__card p,
+      .aif-cta-band__card p {
+        font-size: 16px;
+      }
+
+      .aif-overview__feature {
+        min-height: 560px;
+      }
+
+      .aif-overview__list-item {
+        font-size: 22px;
+      }
+
+      .aif-gains__card,
+      .aif-risk__media img,
+      .aif-why__media img {
+        min-height: 0;
+        height: auto;
+      }
+
+      .aif-cta-band {
+        padding: 48px 32px;
+      }
+
+      .aif-cta-band__card {
+        width: 100%;
+        padding: 32px 24px;
+      }
+    }
+
+    /* ===== Mobile AIF (Solutions mobile landing.png design) ===== */
+    .maif { display: none; }
+
+    @media (max-width: 768px) {
+      .maif { display: block; }
+      .aif-hero, .aif-overview, .aif-gains, .aif-risk, .aif-why { display: none; }
+
+      .maif-hero { background: #02172f; padding: 40px 22px; color: #fff; }
+      .maif-hero h1 { font-size: 26px; font-weight: 700; line-height: 1.2; margin: 0 0 14px; color: #fff; }
+      .maif-hero p { font-size: 17px; line-height: 1.5; color: rgba(255,255,255,.92); margin: 0 0 22px; }
+      .maif-hero__btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        background: #f2f2f2; color: #1c1c1c; font-size: 13px; font-weight: 600;
+        padding: 10px 24px; border-radius: 4px; min-height: 40px; text-decoration: none;
+      }
+
+      .maif-sec { padding: 26px 22px 6px; }
+      .maif-h { color: #0982c5; font-size: 22px; font-weight: 700; line-height: 1.25; margin: 0 0 12px; }
+      .maif-p { font-size: 16px; line-height: 1.6; color: #353535; margin: 0 0 16px; }
+      .maif-img { width: 100%; height: auto; border-radius: 12px; display: block; margin: 6px 0 12px; object-fit: cover; }
+
+      .maif-acc { border: 1px solid #e7e7e7; border-radius: 10px; overflow: hidden; }
+      .maif-acc__head {
+        background: #0982c5; color: #fff; font-size: 16px; font-weight: 600;
+        padding: 16px 18px; display: flex; justify-content: space-between; align-items: center;
+      }
+      .maif-acc__panel { padding: 18px; border-bottom: 1px solid #e7e7e7; }
+      .maif-acc__panel p { font-size: 14.5px; line-height: 1.6; color: #353535; margin: 0 0 12px; }
+      .maif-acc__panel img { width: 100%; height: auto; border-radius: 6px; display: block; }
+      .maif-acc__bar { margin-top: 12px; height: 4px; border-radius: 2px; background: #e0e0e0; overflow: hidden; }
+      .maif-acc__bar span { display: block; width: 25%; height: 100%; background: #0982c5; border-radius: 2px; }
+      .maif-acc__item {
+        padding: 16px 18px; font-size: 15px; font-weight: 600; color: #1c1c1c;
+        border-bottom: 1px solid #ececec; display: flex; justify-content: space-between; align-items: center;
+      }
+      .maif-acc__item:last-child { border-bottom: 0; }
+      .maif-acc__item span, .maif-acc__head span { color: currentColor; font-size: 18px; line-height: 1; }
+
+      .maif-card {
+        position: relative; background: #fff; border: 1px solid #e7e7e7; border-radius: 8px;
+        padding: 22px 18px 40px; margin-bottom: 18px;
+      }
+      .maif-card h3 { color: #0982c5; font-size: 17px; font-weight: 700; margin: 0 0 10px; }
+      .maif-card p { font-size: 15px; line-height: 1.55; color: #4a4a4a; margin: 0; }
+      .maif-card__count { position: absolute; left: 18px; bottom: 14px; font-size: 13px; font-weight: 600; color: #6d76a6; }
+
+      .maif-process { background: #0982c5; border-radius: 12px; padding: 24px 18px; color: #fff; }
+      .maif-process h2 { color: #fff; font-size: 19px; font-weight: 700; line-height: 1.3; margin: 0 0 16px; }
+      .maif-process img { width: 100%; height: auto; border-radius: 8px; display: block; margin-bottom: 16px; }
+      .maif-process p { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.94); margin: 0 0 14px; }
+      .maif-process p:last-child { margin-bottom: 0; }
+
+      /* FAQ clean white accordion + trusted heading color per design */
+      .nd-faq { background: #fff; border: 0; padding: 6px 22px 10px; }
+      .nd-faq__left .section-title { color: #0982c5; font-size: 22px; font-weight: 700; }
+      .nd-faq__left p { font-size: 14px; color: #4a4a4a; margin-bottom: 14px; }
+      .nd-faq__cta { display: none; }
+      .nd-faq__item {
+        background: #fff; border: 0; border-bottom: 1px solid #e4e4e4;
+        padding: 18px 4px; text-align: left; font-size: 17px; font-weight: 500; color: #1c1c1c;
+      }
+      .nd-faq__item span { text-align: left; }
+      .nd-faq__item.is-open { background: #f5f5f6; border-bottom: 0; padding: 18px 14px 6px; }
+      .nd-faq__panel {
+        background: #f5f5f6; border: 0; padding: 0 14px 18px; margin-bottom: 6px;
+        font-size: 15.5px; line-height: 1.65; color: #4a4a4a;
+      }
+      .nd-trusted__title { color: #0982c5; }
+    }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
-  <main id="main" class="sol-detail-page">
+  <main id="main" class="sol-detail-page aif-page">
+    <div class="maif">
 
-    <section class="sol-hero" aria-label="AI-Ready Infrastructure hero">
-      <div class="sol-hero__content animate-fade-up">
-        <h1 class="sol-hero__title">Professional Network Assessments</h1>
-        <p class="sol-hero__sub">Understand how your network is performing with a professional assessment that helps improve connectivity, strengthen resilience, and support future growth.</p>
-        <a href="/contact.html" class="btn-blue" data-source-cta="solution_hero_health_check">Book Health Check</a>
+      <section class="maif-hero">
+        <h1>Professional Network Assessments</h1>
+        <p>Understand how your network is performing with a professional assessment that helps improve connectivity, strengthen resilience, and support future growth.</p>
+        <a href="/contact.html" class="maif-hero__btn" data-source-cta="solution_hero_health_check">Book Health Check</a>
+      </section>
+
+      <section class="maif-sec animate-fade-up">
+        <h2 class="maif-h">Core Pillars of AI-Ready Infrastructure</h2>
+        <p class="maif-p">The infrastructure that supports AI thrives on reliable connection speed and power. It requires bandwidth that can sustain heavy workloads, hardware that performs consistently, and protection that keeps data secure as systems evolve.</p>
+        <div class="maif-acc">
+          <div class="maif-acc__head">Connection Speed (Bandwidth) <span aria-hidden="true">&#94;</span></div>
+          <div class="maif-acc__panel">
+            <p>Your file operations need sustained throughput. Stable transfer speeds let applications and tools process data quickly without delay.</p>
+            <img src="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg" alt="Connection Speed (Bandwidth)" loading="lazy">
+            <div class="maif-acc__bar" aria-hidden="true"><span></span></div>
+          </div>
+          <div class="maif-acc__item">Traffic Separation (Segmentation) <span aria-hidden="true">&#8964;</span></div>
+          <div class="maif-acc__item">Hardware Capability (Routers &amp; Switches) <span aria-hidden="true">&#8964;</span></div>
+          <div class="maif-acc__item">File Retrieval Speed (Storage Access) <span aria-hidden="true">&#8964;</span></div>
+          <div class="maif-acc__item">Power Reliability (Electrical Capacity) <span aria-hidden="true">&#8964;</span></div>
+          <div class="maif-acc__item">Data Protection (Firewall Throughput) <span aria-hidden="true">&#8964;</span></div>
+        </div>
+      </section>
+
+      <section class="maif-sec animate-fade-up">
+        <h2 class="maif-h">How We Assess Your IT Readiness for Successful AI Adoption</h2>
+        <p class="maif-p">Our process evaluates how your current environment behaves under realistic pressure. We review connection speed, segmentation, hardware capability, storage retrieval, power reliability, and data protection.</p>
+        <p class="maif-p">This gives you a clear picture of whether your foundations can support high-volume AI workloads without instability or performance loss.</p>
+        <article class="maif-card"><h3>Bandwidth Capacity Testing</h3><p>Testing your internet and internal transfer speeds under pressure reveals whether large AI file operations will freeze or lag during real workloads.</p><span class="maif-card__count">1/5</span></article>
+        <article class="maif-card"><h3>Segmentation Stress Review</h3><p>We examine whether traffic can be isolated cleanly so important workloads are protected from competing demand across your network.</p><span class="maif-card__count">2/5</span></article>
+        <article class="maif-card"><h3>Hardware Readiness Assessment</h3><p>Routers, switches, and critical hardware are reviewed to confirm they can sustain increased AI-related throughput without degradation.</p><span class="maif-card__count">3/5</span></article>
+        <article class="maif-card"><h3>Storage and Retrieval Performance</h3><p>We test whether data can be accessed at the speed modern AI tools require without dragging application performance down.</p><span class="maif-card__count">4/5</span></article>
+        <article class="maif-card"><h3>Power and Protection Resilience</h3><p>Power reliability and firewall throughput are checked to make sure protection and uptime hold under sustained computational load.</p><span class="maif-card__count">5/5</span></article>
+      </section>
+
+      <section class="maif-sec animate-fade-up">
+        <div class="maif-process">
+          <h2>Business Impact of Ensuring AI-Ready Infrastructure</h2>
+          <img src="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg" alt="Business impact of AI-ready infrastructure" loading="lazy">
+          <p>Building an AI-ready infrastructure guarantees predictable operational costs and faster product delivery.</p>
+          <p>High-throughput networks transfer data more instantly to your applications without causing system lag or application timeouts.</p>
+          <p>This architecture stabilises your computing speed, protects client-facing server environments, and allows your enterprise to scale automated services safely without exponential cost increases.</p>
+        </div>
+      </section>
+
+      <section class="maif-sec animate-fade-up">
+        <h2 class="maif-h">Why Choose Us</h2>
+        <p class="maif-p">Our AI-Ready Infrastructure Review provides useful, business-focused insights that go beyond simple evaluations. In comparison to real-world AI requirements, we assess infrastructure performance, resilience, governance, security, and scalability.</p>
+        <p class="maif-p">We identify where your existing setup will struggle and where structured improvement will create the biggest advantage for long-term scalability and protection.</p>
+        <p class="maif-p">We assist organisations in lowering risk, optimising investments, and confidently preparing for AI-enabled operations by providing a clear, attainable roadmap for future success.</p>
+        <img class="maif-img" src="/images/pages/unique/solutions-ai-ready-infrastructure-servers.jpg" alt="Infrastructure cabling and servers" loading="lazy">
+      </section>
+
+    </div>
+
+    <section class="aif-hero" aria-label="AI-Ready Infrastructure hero">
+      <div class="aif-hero__inner">
+        <div class="aif-hero__copy animate-fade-up">
+          <h1>Professional Network Assessments</h1>
+          <p>Understand how your network is performing with a professional assessment that helps improve connectivity, strengthen resilience, and support future growth.</p>
+          <a href="/contact.html" class="aif-hero__btn" data-source-cta="solution_hero_health_check">Book Health Check</a>
+        </div>
+        <div class="aif-hero__art animate-fade-up">
+          <picture>
+            <source srcset="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.webp" type="image/webp">
+            <img src="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg" alt="AI-Ready Infrastructure review" width="735" height="332" loading="eager">
+          </picture>
+        </div>
       </div>
     </section>
 
-    <section class="tabpanel" aria-labelledby="ai-pillars-h">
-      <div class="tabpanel__inner">
-        <div class="tabpanel__head animate-fade-up">
-          <h2 id="ai-pillars-h">Core Pillars of AI-Ready Infrastructure</h2>
-          <p>The infrastructure that supports AI thrives on reliable connection speed and power. It requires bandwidth that can sustain heavy workloads, hardware that performs consistently, and protection that keeps data secure as systems evolve.</p>
+    <section class="aif-overview" aria-labelledby="aif-overview-title">
+      <div class="aif-overview__head animate-fade-up">
+        <h2 id="ai-pillars-h">Core Pillars of AI-Ready Infrastructure</h2>
+        <p>The infrastructure that supports AI thrives on reliable connection speed and power. It requires bandwidth that can sustain heavy workloads, hardware that performs consistently, and protection that keeps data secure as systems evolve.</p>
+      </div>
+      <div class="aif-overview__inner">
+        <div class="aif-overview__list animate-fade-up" role="tablist" aria-label="Core pillars of AI-ready infrastructure">
+          <button type="button" role="tab" aria-selected="true" class="aif-overview__list-item aif-overview__list-item--active"
+            data-title="Connection Speed (Bandwidth)"
+            data-copy="Your file operations need sustained throughput. Stable transfer speeds let applications and tools process data quickly without delay."
+            data-img="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg">Connection Speed (Bandwidth)</button>
+          <button type="button" role="tab" aria-selected="false" class="aif-overview__list-item"
+            data-title="Traffic Separation (Segmentation)"
+            data-copy="Segmentation keeps workloads isolated, reducing congestion and preventing less important traffic from slowing critical AI operations."
+            data-img="/images/pages/unique/solutions-ai-ready-infrastructure-technician.jpg">Traffic Separation (Segmentation)</button>
+          <button type="button" role="tab" aria-selected="false" class="aif-overview__list-item"
+            data-title="Hardware Capability (Routers &amp; Switches)"
+            data-copy="Routers and switches must be able to route large data volumes consistently without becoming the bottleneck under sustained load."
+            data-img="/images/pages/unique/solutions-ai-ready-infrastructure-servers.jpg">Hardware Capability (Routers &amp; Switches)</button>
+          <button type="button" role="tab" aria-selected="false" class="aif-overview__list-item"
+            data-title="File Retrieval Speed (Storage Access)"
+            data-copy="Fast retrieval allows models and automation tools to access the information they need without workflow interruptions or timeouts."
+            data-img="/images/pages/unique/solutions-ai-ready-infrastructure-managed-support.jpg">File Retrieval Speed (Storage Access)</button>
+          <button type="button" role="tab" aria-selected="false" class="aif-overview__list-item"
+            data-title="Power Reliability (Electrical Capacity)"
+            data-copy="Reliable power and clean failover keep systems stable when high computational demand increases infrastructure stress."
+            data-img="/images/pages/unique/solutions-ai-ready-infrastructure-professional.jpg">Power Reliability (Electrical Capacity)</button>
+          <button type="button" role="tab" aria-selected="false" class="aif-overview__list-item"
+            data-title="Data Protection (Firewall Throughput)"
+            data-copy="Security controls must protect high-volume traffic without choking performance or exposing sensitive information during AI operations."
+            data-img="/images/pages/unique/solutions-ai-ready-infrastructure-cyber-security.jpg">Data Protection (Firewall Throughput)</button>
         </div>
-        <div class="tabpanel__card animate-fade-up" id="ai-tabs">
-          <div class="tabpanel__tabs" role="tablist">
-            <button class="tabpanel__tab active" role="tab" aria-selected="true">Connection Speed (Bandwidth)</button>
-            <button class="tabpanel__tab" role="tab" aria-selected="false">Traffic Separation (Segmentation)</button>
-            <button class="tabpanel__tab" role="tab" aria-selected="false">Hardware Capability (Routers &amp; Switches)</button>
-            <button class="tabpanel__tab" role="tab" aria-selected="false">File Retrieval Speed (Storage Access)</button>
-            <button class="tabpanel__tab" role="tab" aria-selected="false">Power Reliability (Electrical Capacity)</button>
-            <button class="tabpanel__tab" role="tab" aria-selected="false">Data Protection (Firewall Throughput)</button>
-          </div>
-          <div class="tabpanel__panel">
-            <img id="ai-tab-img" src="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg" alt="AI readiness assessment" loading="lazy">
-            <div class="tabpanel__panel-card">
-              <h3 id="ai-tab-title">Connection Speed (Bandwidth)</h3>
-              <p id="ai-tab-desc">Your file operations need sustained throughput. Stable transfer speeds let applications and tools process data quickly without delay.</p>
-            </div>
+        <div class="aif-overview__feature animate-fade-up">
+          <img id="aif-tab-img" src="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg" alt="Connection Speed (Bandwidth)" loading="lazy">
+          <div class="aif-overview__panel" role="tabpanel">
+            <h2 id="aif-overview-title">Connection Speed (Bandwidth)</h2>
+            <p>Your file operations need sustained throughput. Stable transfer speeds let applications and tools process data quickly without delay.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="assess" aria-labelledby="ai-assess-h">
-      <div class="assess__inner">
-        <div class="assess__left animate-fade-up">
+    <section class="aif-gains" aria-labelledby="ai-assess-h">
+      <div class="aif-gains__inner">
+        <div class="aif-gains__intro animate-fade-up">
           <h2 id="ai-assess-h">How We Assess Your IT Readiness for Successful AI Adoption</h2>
           <p>Our process evaluates how your current environment behaves under realistic pressure. We review connection speed, segmentation, hardware capability, storage retrieval, power reliability, and data protection.</p>
           <p>This gives you a clear picture of whether your foundations can support high-volume AI workloads without instability or performance loss.</p>
-          <div class="assess__nav">
-            <div class="assess__arrows">
-              <button class="assess__arrow" id="ai-assess-prev" aria-label="Previous">&#8592;</button>
-              <button class="assess__arrow" id="ai-assess-next" aria-label="Next">&#8594;</button>
-            </div>
-            <div class="assess__bar"><div class="assess__bar-fill" id="ai-assess-fill"></div></div>
-          </div>
         </div>
-        <div class="assess__card animate-fade-up">
-          <div>
-            <h3 id="ai-assess-title">Bandwidth Capacity Testing</h3>
-            <p id="ai-assess-desc">Testing your internet and internal transfer speeds under pressure reveals whether large AI file operations will freeze or lag during real workloads.</p>
-          </div>
-          <div class="assess__count" id="ai-assess-count">1 / 5</div>
+        <div class="aif-gains__stack animate-fade-up">
+          <article class="aif-gains__card">
+            <h3>Bandwidth Capacity Testing</h3>
+            <p class="aif-gains__count">1/5</p>
+            <p>Testing your internet and internal transfer speeds under pressure reveals whether large AI file operations will freeze or lag during real workloads.</p>
+          </article>
+          <article class="aif-gains__card">
+            <h3>Segmentation Stress Review</h3>
+            <p class="aif-gains__count">2/5</p>
+            <p>We examine whether traffic can be isolated cleanly so important workloads are protected from competing demand across your network.</p>
+          </article>
+          <article class="aif-gains__card">
+            <h3>Hardware Readiness Assessment</h3>
+            <p class="aif-gains__count">3/5</p>
+            <p>Routers, switches, and critical hardware are reviewed to confirm they can sustain increased AI-related throughput without degradation.</p>
+          </article>
+          <article class="aif-gains__card">
+            <h3>Storage and Retrieval Performance</h3>
+            <p class="aif-gains__count">4/5</p>
+            <p>We test whether data can be accessed at the speed modern AI tools require without dragging application performance down.</p>
+          </article>
+          <article class="aif-gains__card">
+            <h3>Power and Protection Resilience</h3>
+            <p class="aif-gains__count">5/5</p>
+            <p>Power reliability and firewall throughput are checked to make sure protection and uptime hold under sustained computational load.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="dark-banner" aria-labelledby="ai-banner-h">
-      <div class="dark-banner__wrap animate-fade-up">
-        <picture>
-          <source srcset="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.webp" type="image/webp">
-          <img src="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg" alt="" loading="lazy">
-        </picture>
-        <div class="dark-banner__overlay"></div>
-        <div class="dark-banner__content">
+    <section class="aif-risk" aria-labelledby="ai-banner-h">
+      <div class="aif-risk__inner">
+        <div class="aif-risk__copy animate-fade-up">
           <h2 id="ai-banner-h">Business Impact of Ensuring AI-Ready Infrastructure</h2>
           <p>Building an AI-ready infrastructure guarantees predictable operational costs and faster product delivery.</p>
           <p>High-throughput networks transfer data more instantly to your applications without causing system lag or application timeouts.</p>
           <p>This architecture stabilises your computing speed, protects client-facing server environments, and allows your enterprise to scale automated services safely without exponential cost increases.</p>
-          <div class="dark-banner__dots">
-            <span class="active"></span>
-            <span></span>
-          </div>
+        </div>
+        <div class="aif-risk__media animate-fade-up">
+          <picture>
+            <source srcset="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.webp" type="image/webp">
+            <img src="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg" alt="Business impact of AI-ready infrastructure" loading="lazy">
+          </picture>
         </div>
       </div>
     </section>
 
-    <section class="split-info" aria-labelledby="ai-why-h">
-      <div class="split-info__inner animate-fade-up">
-        <div class="split-info__text">
+    <section class="aif-why" aria-labelledby="ai-why-h">
+      <div class="aif-why__inner">
+        <div class="aif-why__copy animate-fade-up">
           <h2 id="ai-why-h">Why Choose Us</h2>
           <p>Our AI-Ready Infrastructure Review provides useful, business-focused insights that go beyond simple evaluations. In comparison to real-world AI requirements, we assess infrastructure performance, resilience, governance, security, and scalability.</p>
           <p>We identify where your existing setup will struggle and where structured improvement will create the biggest advantage for long-term scalability and protection.</p>
           <p>We assist organisations in lowering risk, optimising investments, and confidently preparing for AI-enabled operations by providing a clear, attainable roadmap for future success.</p>
         </div>
-        <div class="split-info__image">
+        <div class="aif-why__media animate-fade-up">
           <picture>
             <source srcset="/images/pages/unique/solutions-ai-ready-infrastructure-servers.webp" type="image/webp">
             <img src="/images/pages/unique/solutions-ai-ready-infrastructure-servers.jpg" alt="Infrastructure cabling and servers" loading="lazy">
@@ -182,22 +760,24 @@
 
     <section class="section-shell"><div class="nd-trusted"><div class="nd-trusted__head"><h2 class="nd-trusted__title">What our clients say</h2><div class="nd-trusted__controls"><button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial"><span aria-hidden="true">&#8249;</span></button><button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial"><span aria-hidden="true">&#8250;</span></button></div></div><div class="nd-trusted__viewport"><div class="nd-trusted__track"><article class="nd-t-card"><p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p><div class="nd-t-card__person"><span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></span><div><p class="nd-t-card__name">Managing Director</p><p class="nd-t-card__role">Broadcasting Company, London</p></div></div></article><article class="nd-t-card"><p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p><div class="nd-t-card__person"><span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></span><div><p class="nd-t-card__name">IT Director</p><p class="nd-t-card__role">Professional Services Firm, London</p></div></div></article><article class="nd-t-card"><p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p><div class="nd-t-card__person"><span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/services/service-1.jpg" alt="" loading="lazy"></span><div><p class="nd-t-card__name">Head of Operations</p><p class="nd-t-card__role">Healthcare Provider, Birmingham</p></div></div></article><article class="nd-t-card"><p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p><div class="nd-t-card__person"><span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></span><div><p class="nd-t-card__name">Managing Partner</p><p class="nd-t-card__role">Legal Firm, London</p></div></div></article><article class="nd-t-card"><p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p><div class="nd-t-card__person"><span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></span><div><p class="nd-t-card__name">Operations Director</p><p class="nd-t-card__role">Manufacturing Company, Midlands</p></div></div></article></div></div><div class="nd-trusted__dots" aria-hidden="true"><span class="nd-trusted__dot nd-trusted__dot--active"></span><span class="nd-trusted__dot"></span><span class="nd-trusted__dot"></span></div></div></section>
 
-    <section class="sol-cta-band" aria-label="AI Infrastructure CTA">
-      <div class="sol-cta-band__tags" aria-hidden="true">
-        <div class="sol-cta-band__row">
-          <span>AI-Ready Infrastructure</span><span>Network Health Check</span><span>Cyber Security Review</span><span>Microsoft 365 &amp; Network</span><span>AI-Ready Infrastructure</span><span>Network Health Check</span>
-        </div>
-        <div class="sol-cta-band__row">
-          <span>Network Health Check</span><span>Microsoft 365 &amp; Network</span><span>AI-Ready Infrastructure</span><span>Cyber Security Review</span><span>Network Health Check</span><span>Microsoft 365 &amp; Network</span>
-        </div>
+    <section class="section-shell"><div class="nd-faq"><div class="nd-faq__left"><h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2><p>Still have questions? Get connected to our support team.</p><a href="/contact.html" class="nd-faq__cta">Contact us</a></div><div class="nd-faq__right" id="nd-faq-list"><button class="nd-faq__item is-open"><span>What is an AI-Ready Infrastructure Review?</span><strong>&minus;</strong></button><div class="nd-faq__panel">The effectiveness of your systems, networks, security measures, and operational underpinnings in supporting AI-enabled workloads and automation projects is assessed by an AI-Ready Infrastructure Review.</div><button class="nd-faq__item"><span>Why should companies perform an AI readiness assessment before using AI solutions?</span><strong>+</strong></button><div class="nd-faq__panel" hidden>Enterprises need it to identify infrastructure weaknesses before rollout, so they can avoid performance issues, unexpected costs, and security gaps when AI workloads are introduced.</div><button class="nd-faq__item"><span>What results can we anticipate from the review?</span><strong>+</strong></button><div class="nd-faq__panel" hidden>You can expect clearer visibility into bottlenecks, practical improvement priorities, and a more realistic roadmap for preparing your environment to support AI adoption confidently.</div></div></div></section>
+
+    <section class="aif-cta-band" aria-label="AI Infrastructure CTA">
+      <div class="aif-cta-band__grid" aria-hidden="true">
+        <span class="aif-cta-band__chip">AI-Ready Infrastructure</span>
+        <span class="aif-cta-band__chip">Network Health Check</span>
+        <span class="aif-cta-band__chip">Cyber Security Review</span>
+        <span class="aif-cta-band__chip">Microsoft 365 &amp; Network</span>
+        <span class="aif-cta-band__chip">AI-Ready Infrastructure</span>
+        <span class="aif-cta-band__chip">Network Health Check</span>
+        <span class="aif-cta-band__chip">Cyber Security Review</span>
+        <span class="aif-cta-band__chip">Microsoft 365 &amp; Network</span>
       </div>
-      <div class="sol-cta-band__card">
-        <p class="sol-cta-band__text">If your team is unsure whether your infrastructure can handle AI workloads, our review gives you the bandwidth, security, storage, and resilience insights needed to plan confidently.</p>
+      <div class="aif-cta-band__card">
+        <p>If your team is unsure whether your infrastructure can handle AI workloads, our review gives you the bandwidth, security, storage, and resilience insights needed to plan confidently.</p>
         <a href="/contact.html" class="btn-dark" data-source-cta="solution_secondary_review">Get a Network Security Review</a>
       </div>
     </section>
-
-    <section class="section-shell"><div class="nd-faq"><div class="nd-faq__left"><h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2><p>Still have questions? Get connected to our support team.</p><a href="/contact.html" class="nd-faq__cta">Contact us</a></div><div class="nd-faq__right" id="nd-faq-list"><button class="nd-faq__item is-open"><span>What is an AI-Ready Infrastructure Review?</span><strong>&minus;</strong></button><div class="nd-faq__panel">The effectiveness of your systems, networks, security measures, and operational underpinnings in supporting AI-enabled workloads and automation projects is assessed by an AI-Ready Infrastructure Review.</div><button class="nd-faq__item"><span>Why should companies perform an AI readiness assessment before using AI solutions?</span><strong>+</strong></button><div class="nd-faq__panel" hidden>Enterprises need it to identify infrastructure weaknesses before rollout, so they can avoid performance issues, unexpected costs, and security gaps when AI workloads are introduced.</div><button class="nd-faq__item"><span>What results can we anticipate from the review?</span><strong>+</strong></button><div class="nd-faq__panel" hidden>You can expect clearer visibility into bottlenecks, practical improvement priorities, and a more realistic roadmap for preparing your environment to support AI adoption confidently.</div></div></div></section>
 
     <div id="site-contact"></div>
     <script src="/js/form-source-tracking.js"></script>
@@ -209,44 +789,54 @@
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
   <script>
-    (function () {
-      var tabData = [
-        { title:"Connection Speed (Bandwidth)", desc:"Your file operations need sustained throughput. Stable transfer speeds let applications and tools process data quickly without delay.", img:"/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg" },
-        { title:"Traffic Separation (Segmentation)", desc:"Segmentation keeps workloads isolated, reducing congestion and preventing less important traffic from slowing critical AI operations.", img:"/images/pages/unique/solutions-ai-ready-infrastructure-technician.jpg" },
-        { title:"Hardware Capability (Routers & Switches)", desc:"Routers and switches must be able to route large data volumes consistently without becoming the bottleneck under sustained load.", img:"/images/pages/unique/solutions-ai-ready-infrastructure-servers.jpg" },
-        { title:"File Retrieval Speed (Storage Access)", desc:"Fast retrieval allows models and automation tools to access the information they need without workflow interruptions or timeouts.", img:"/images/pages/unique/solutions-ai-ready-infrastructure-managed-support.jpg" },
-        { title:"Power Reliability (Electrical Capacity)", desc:"Reliable power and clean failover keep systems stable when high computational demand increases infrastructure stress.", img:"/images/pages/unique/solutions-ai-ready-infrastructure-professional.jpg" },
-        { title:"Data Protection (Firewall Throughput)", desc:"Security controls must protect high-volume traffic without choking performance or exposing sensitive information during AI operations.", img:"/images/pages/unique/solutions-ai-ready-infrastructure-cyber-security.jpg" }
-      ];
-      var tIdx = 0;
-      var tabs = Array.from(document.querySelectorAll("#ai-tabs .tabpanel__tab"));
-      var tTitle = document.getElementById("ai-tab-title");
-      var tDesc = document.getElementById("ai-tab-desc");
-      var tImg = document.getElementById("ai-tab-img");
-      function renderTab() {
-        tabs.forEach(function (tab, i) { tab.classList.toggle("active", i === tIdx); tab.setAttribute("aria-selected", i === tIdx ? "true" : "false"); });
-        var d = tabData[tIdx]; tTitle.textContent = d.title; tDesc.textContent = d.desc; tImg.src = d.img; tImg.alt = d.title;
+    (function maifDots() {
+      var vp = document.querySelector('.nd-trusted__viewport');
+      var dots = Array.prototype.slice.call(document.querySelectorAll('.nd-trusted__dots .nd-trusted__dot'));
+      if (vp === null || dots.length === 0) return;
+      var ticking = false;
+      function sync() {
+        ticking = false;
+        var card = vp.querySelector('.nd-t-card');
+        if (card === null) return;
+        var step = card.offsetWidth + 18;
+        var idx = Math.round(vp.scrollLeft / step);
+        idx = Math.max(0, Math.min(dots.length - 1, idx % dots.length));
+        dots.forEach(function (d, i) { d.classList.toggle('nd-trusted__dot--active', i === idx); });
       }
-      tabs.forEach(function (tab, i) { tab.addEventListener("click", function () { tIdx = i; renderTab(); }); });
-      renderTab();
+      vp.addEventListener('scroll', function () {
+        if (ticking === false) { ticking = true; requestAnimationFrame(sync); }
+      }, { passive: true });
+    })();
 
-      var assessData = [
-        { title:"Bandwidth Capacity Testing", desc:"Testing your internet and internal transfer speeds under pressure reveals whether large AI file operations will freeze or lag during real workloads." },
-        { title:"Segmentation Stress Review", desc:"We examine whether traffic can be isolated cleanly so important workloads are protected from competing demand across your network." },
-        { title:"Hardware Readiness Assessment", desc:"Routers, switches, and critical hardware are reviewed to confirm they can sustain increased AI-related throughput without degradation." },
-        { title:"Storage and Retrieval Performance", desc:"We test whether data can be accessed at the speed modern AI tools require without dragging application performance down." },
-        { title:"Power and Protection Resilience", desc:"Power reliability and firewall throughput are checked to make sure protection and uptime hold under sustained computational load." }
-      ];
-      var ai = 0;
-      var at = document.getElementById("ai-assess-title");
-      var ad = document.getElementById("ai-assess-desc");
-      var ac = document.getElementById("ai-assess-count");
-      var af = document.getElementById("ai-assess-fill");
-      function renderAssess() { var d = assessData[ai]; at.textContent = d.title; ad.textContent = d.desc; ac.textContent = (ai + 1) + " / " + assessData.length; af.style.width = (((ai + 1) / assessData.length) * 100) + "%"; }
-      document.getElementById("ai-assess-prev").addEventListener("click", function () { ai = (ai - 1 + assessData.length) % assessData.length; renderAssess(); });
-      document.getElementById("ai-assess-next").addEventListener("click", function () { ai = (ai + 1) % assessData.length; renderAssess(); });
-      renderAssess();
-    }());
+    (function aifOverviewTabs() {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.aif-overview__list-item'));
+      var panel = document.querySelector('.aif-overview__panel');
+      var img = document.getElementById('aif-tab-img');
+      if (tabs.length === 0 || panel === null) return;
+      var title = panel.querySelector('h2');
+      var copy = panel.querySelector('p');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          if (tab.classList.contains('aif-overview__list-item--active')) return;
+          tabs.forEach(function (t) {
+            t.classList.remove('aif-overview__list-item--active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('aif-overview__list-item--active');
+          tab.setAttribute('aria-selected', 'true');
+          panel.classList.add('is-switching');
+          setTimeout(function () {
+            title.textContent = tab.getAttribute('data-title');
+            copy.textContent = tab.getAttribute('data-copy');
+            if (img !== null && tab.getAttribute('data-img')) {
+              img.src = tab.getAttribute('data-img');
+              img.alt = tab.getAttribute('data-title');
+            }
+            panel.classList.remove('is-switching');
+          }, 250);
+        });
+      });
+    })();
   </script>
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
