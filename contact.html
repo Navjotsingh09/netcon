@@ -78,6 +78,30 @@
       .ctu-contact-item:hover .ctu-contact-icon { transform: none; }
     }
 
+    /* ── Reveal-on-hover: resting card shows only icon + category + number;
+          title + description appear on hover/focus. Mouse devices only —
+          touch devices (hover:none) always show full content. ─────────── */
+    @media (hover: hover) {
+      .ctu-card-title,
+      .ctu-desc {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity .3s ease, transform .3s ease;
+      }
+      .ctu-desc { transition-delay: .04s; }
+      .ctu-card:hover .ctu-card-title,
+      .ctu-card:focus-within .ctu-card-title,
+      .ctu-card:hover .ctu-desc,
+      .ctu-card:focus-within .ctu-desc {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (hover: hover) and (prefers-reduced-motion: reduce) {
+      .ctu-card-title,
+      .ctu-desc { transition: none; transform: none; }
+    }
+
     @media (max-width: 1200px) {
       .ctu-title { font-size: 36px; }
       .ctu-body { font-size: 20px; }
@@ -114,7 +138,7 @@
   <section class="ctu-cards" aria-label="Contact inquiry types">
     <div class="ctu-grid stagger-children">
 
-      <div class="ctu-card ctu-card--active animate-fade-up">
+      <div class="ctu-card ctu-card--active animate-fade-up" tabindex="0">
         <span class="ctu-num" aria-hidden="true">01</span>
         <div class="ctu-icon">
           <img src="/images/pages/contact-icon-general.svg" alt="" loading="lazy" width="85" height="85">
@@ -124,7 +148,7 @@
         <p class="ctu-desc">For initial discussions, partnership talks, or inquiries about our offerings.</p>
       </div>
 
-      <div class="ctu-card animate-fade-up">
+      <div class="ctu-card animate-fade-up" tabindex="0">
         <span class="ctu-num" aria-hidden="true">02</span>
         <div class="ctu-icon">
           <img src="/images/pages/contact-icon-support.svg" alt="" loading="lazy" width="85" height="85">
@@ -134,7 +158,7 @@
         <p class="ctu-desc">Raise a ticket for service requests, operational support, or immediate assistance with network problems.</p>
       </div>
 
-      <div class="ctu-card animate-fade-up">
+      <div class="ctu-card animate-fade-up" tabindex="0">
         <span class="ctu-num" aria-hidden="true">03</span>
         <div class="ctu-icon ctu-icon--projects">
           <img src="/images/pages/contact-icon-projects.svg" alt="" loading="lazy" width="85" height="85">
@@ -147,7 +171,7 @@
         <p class="ctu-desc">For engineering initiatives: networks, hardware, firewalls, infrastructure upgrades.</p>
       </div>
 
-      <div class="ctu-card animate-fade-up">
+      <div class="ctu-card animate-fade-up" tabindex="0">
         <span class="ctu-num" aria-hidden="true">04</span>
         <div class="ctu-icon ctu-icon--composite">
           <img class="ctu-icon-bg" src="/images/pages/contact-icon-appt-bg.svg" alt="" loading="lazy" width="85" height="85">
@@ -161,7 +185,7 @@
         <p class="ctu-desc">Schedule an inspection of network performance, security vulnerabilities, and configuration flaws.</p>
       </div>
 
-      <div class="ctu-card animate-fade-up">
+      <div class="ctu-card animate-fade-up" tabindex="0">
         <span class="ctu-num" aria-hidden="true">05</span>
         <div class="ctu-icon ctu-icon--composite">
           <img class="ctu-icon-bg" src="/images/pages/contact-icon-assist-bg.svg" alt="" loading="lazy" width="85" height="85">
@@ -175,7 +199,7 @@
         <p class="ctu-desc">Get immediate, on-demand engineering support to resolve critical network downtime and outages.</p>
       </div>
 
-      <div class="ctu-card animate-fade-up">
+      <div class="ctu-card animate-fade-up" tabindex="0">
         <span class="ctu-num" aria-hidden="true">06</span>
         <div class="ctu-icon">
           <img src="/images/pages/contact-icon-consulting.svg" alt="" loading="lazy" width="85" height="85">
