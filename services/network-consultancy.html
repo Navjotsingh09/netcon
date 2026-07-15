@@ -38,23 +38,10 @@
   @media(max-width:480px){ .nc-hero__title{font-size:28px;} }
 
 
-  /* ===== Testimonials — What our client says ===== */
-  .tst { display:grid; grid-template-columns:1fr 1.35fr; gap:64px; align-items:center; }
-  .tst__left h2 { font-family:'Google Sans Flex',sans-serif; font-size:48px; font-weight:600; color:var(--navy); line-height:1.05; margin-bottom:48px; }
-  .tst__nav { display:flex; align-items:center; gap:24px; }
-  .tst__arrow { width:56px; height:56px; border-radius:12px; border:1.5px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:22px; color:var(--dark); transition:background .2s,color .2s,border-color .2s; }
-  .tst__arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
-  .tst__bar { flex:1; max-width:200px; height:14px; background:var(--gray-mid); border-radius:10px; overflow:hidden; }
-  .tst__bar-fill { height:100%; width:33%; background:var(--sub); border-radius:10px; transition:width .4s ease; }
-  .tst__card { background:#fff; border-radius:24px; padding:48px 52px; box-shadow:0 10px 40px rgba(9,130,197,.08); position:relative; }
-  .tst__stars { color:#f5a623; font-size:26px; letter-spacing:4px; margin-bottom:24px; }
-  .tst__quote { font-family:'Google Sans Flex',sans-serif; font-size:18px; font-weight:400; color:var(--dark); line-height:1.65; margin-bottom:28px; max-width:88%; transition:opacity .3s; }
-  .tst__person { display:flex; align-items:center; gap:16px; }
-  .tst__avatar { width:56px; height:56px; border-radius:50%; object-fit:cover; background:var(--gray-mid); flex-shrink:0; }
-  .tst__meta strong { display:block; font-family:'Google Sans Flex',sans-serif; font-size:17px; font-weight:600; color:var(--navy); }
-  .tst__meta span { font-family:'Google Sans Flex',sans-serif; font-size:14px; color:var(--sub); }
-  .tst__qmark { position:absolute; right:48px; bottom:36px; font-family:Georgia,serif; font-size:96px; color:var(--gray-mid); line-height:1; pointer-events:none; }
-  @media(max-width:900px){ .tst{grid-template-columns:1fr;gap:36px;} .tst__left h2{font-size:38px;margin-bottom:28px;} .tst__card{padding:32px 28px;} .tst__quote{max-width:100%;} }
+
+  /* ===== Testimonials (nd-trusted) — 3 cards: start track at ~0 so
+     global.js doesn't apply its 5-card -175px peek fallback ===== */
+  .nd-trusted__track { transform: translateX(-1px); }
 
   /* ===== Key Solution Areas — tabs + image card ===== */
   .ksa__card { display:flex; gap:36px; background:#fff; border:0.2px solid #353535; border-radius:30px; box-shadow:0 4px 4px rgba(0,0,0,.1); padding:40px; }
@@ -84,12 +71,13 @@
   .biz { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
   .biz__left h2 { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:18px; }
   .biz__left p { font-family:'Google Sans Flex',sans-serif; font-size:20px; color:var(--sub); line-height:1.5; margin-bottom:40px; }
-  .biz__nav { display:flex; align-items:center; gap:24px; }
-  .biz__arrow { width:56px; height:56px; border-radius:12px; border:1.5px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:22px; color:var(--dark); transition:background .2s,color .2s,border-color .2s; }
-  .biz__arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
-  .biz__bar { flex:1; max-width:240px; height:14px; background:var(--gray-mid); border-radius:10px; overflow:hidden; }
-  .biz__bar-fill { height:100%; width:25%; background:var(--sub); border-radius:10px; transition:width .4s ease; }
-  .biz__card { background:#859aba; border-radius:30px; padding:50px 43px 52px; min-height:360px; color:#fff; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 4px 2px rgba(0,0,0,.1); }
+  .biz__nav { display:flex; align-items:center; gap:16px; }
+  .biz__arrow { width:48px; height:48px; border-radius:6px; border:1px solid #d2d2d2; background:#f0f0f0; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:22px; color:#464646; transition:background .2s,color .2s,border-color .2s; }
+  .biz__arrow:last-of-type { background:#000; border-color:#000; color:#fff; }
+  .biz__arrow:hover { background:var(--blue); color:#fff; border-color:var(--blue); }
+  .biz__bar { flex:1; max-width:240px; height:6px; margin-left:8px; background:#e4e4e4; border-radius:4px; overflow:hidden; }
+  .biz__bar-fill { height:100%; width:25%; background:var(--blue); border-radius:4px; transition:width .4s ease; }
+  .biz__card { background:#13203f; border-radius:16px; padding:50px 43px 52px; min-height:360px; color:#fff; display:flex; flex-direction:column; justify-content:space-between; }
   .biz__card-count { display:none; }
   .biz__card h3 { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; line-height:1.05; margin-bottom:20px; transition:opacity .3s; }
   .biz__card p { font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; line-height:1.35; letter-spacing:.02em; color:rgba(255,255,255,.95); transition:opacity .3s; margin-bottom:28px; }
@@ -179,7 +167,7 @@
   </section>
 
   <!-- ===== WHO WE SERVE ===== -->
-  <section class="sd-section" style="background:linear-gradient(91deg,rgba(241,244,249,.5) 0%,rgba(173,217,243,.5) 15%,rgba(160,182,229,.5) 33%,rgba(8,173,252,.2) 49%,rgba(160,182,229,.5) 68%,rgba(173,217,243,.5) 83%,rgba(245,248,253,.5) 100%);" aria-labelledby="wws-h">
+  <section class="sd-section" style="background:#f7f9fc;" aria-labelledby="wws-h">
     <div class="sd-wrap">
       <div class="sd-head" style="text-align:left;margin-left:0;">
         <h2 id="wws-h">Who We Serve</h2>
@@ -269,25 +257,56 @@
   </section>
 
   <!-- ===== TESTIMONIALS ===== -->
-  <section class="sd-section" style="background:linear-gradient(91deg,rgba(241,244,249,.5) 0%,rgba(173,217,243,.5) 15%,rgba(160,182,229,.5) 33%,rgba(8,173,252,.2) 49%,rgba(160,182,229,.5) 68%,rgba(173,217,243,.5) 83%,rgba(245,248,253,.5) 100%);" aria-labelledby="tst-h">
+  <section class="sd-section" aria-labelledby="tst-h">
     <div class="sd-wrap">
-      <div class="tst" id="tst">
-        <div class="tst__left">
-          <h2 id="tst-h">What our<br>client says</h2>
-          <div class="tst__nav">
-            <button class="tst__arrow" id="tst-prev" aria-label="Previous testimonial">&#8592;</button>
-            <button class="tst__arrow" id="tst-next" aria-label="Next testimonial">&#8594;</button>
-            <div class="tst__bar"><div class="tst__bar-fill" id="tst-fill"></div></div>
+      <div class="nd-trusted">
+        <div class="nd-trusted__head">
+          <h2 class="nd-trusted__title" id="tst-h">What our clients say</h2>
+          <div class="nd-trusted__controls">
+            <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
+              <span aria-hidden="true">&#8249;</span>
+            </button>
+            <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial">
+              <span aria-hidden="true">&#8250;</span>
+            </button>
           </div>
         </div>
-        <div class="tst__card">
-          <div class="tst__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="tst__quote" id="tst-quote">The team&rsquo;s network consulting services revolutionised our entire infrastructure. Our operations were streamlined, security was strengthened, and uptime was improved thanks to their network consulting expertise. We were able to modernise legacy systems without any disruptions thanks to their innovative network consulting approach.</p>
-          <div class="tst__person">
-            <div class="tst__avatar" aria-hidden="true"></div>
-            <div class="tst__meta"><strong id="tst-name">James Carter</strong><span id="tst-role">IT Logistics UK, London</span></div>
+        <div class="nd-trusted__viewport">
+          <div class="nd-trusted__track">
+            <article class="nd-t-card">
+              <p class="nd-t-card__quote">&ldquo;The team&rsquo;s network consulting services revolutionised our entire infrastructure. Our operations were streamlined, security was strengthened, and uptime was improved thanks to their network consulting expertise. We were able to modernise legacy systems without any disruptions thanks to their innovative network consulting approach.&rdquo;</p>
+              <div class="nd-t-card__person">
+                <span class="nd-t-card__avatar" aria-hidden="true"></span>
+                <div>
+                  <p class="nd-t-card__name">James Carter</p>
+                  <p class="nd-t-card__role">IT Logistics UK, London</p>
+                </div>
+              </div>
+            </article>
+            <article class="nd-t-card">
+              <p class="nd-t-card__quote">&ldquo;Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our network and security are in good hands. I would not hesitate to recommend Anup and his team.&rdquo;</p>
+              <div class="nd-t-card__person">
+                <span class="nd-t-card__avatar" aria-hidden="true"></span>
+                <div>
+                  <p class="nd-t-card__name">Managing Director</p>
+                  <p class="nd-t-card__role">Broadcasting Company, London</p>
+                </div>
+              </div>
+            </article>
+            <article class="nd-t-card">
+              <p class="nd-t-card__quote">&ldquo;Their consultants took the time to understand our multi-site setup and delivered a resilient, secure network that just works. Downtime is no longer a concern for our operations.&rdquo;</p>
+              <div class="nd-t-card__person">
+                <span class="nd-t-card__avatar" aria-hidden="true"></span>
+                <div>
+                  <p class="nd-t-card__name">IT Director</p>
+                  <p class="nd-t-card__role">Professional Services Firm, London</p>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="tst__qmark" aria-hidden="true">&rdquo;</div>
+        </div>
+        <div class="nd-trusted__dots" aria-hidden="true">
+          <span class="nd-trusted__dot nd-trusted__dot--active"></span>
         </div>
       </div>
     </div>
@@ -385,31 +404,6 @@
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
   })();
 
-  /* Testimonials — slider */
-  (function () {
-    var tst = document.getElementById('tst');
-    if (!tst) return;
-    var items = [
-      { quote:'The team\u2019s network consulting services revolutionised our entire infrastructure. Our operations were streamlined, security was strengthened, and uptime was improved thanks to their network consulting expertise. We were able to modernise legacy systems without any disruptions thanks to their innovative network consulting approach.', name:'James Carter', role:'IT Logistics UK, London' },
-      { quote:'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our network and security are in good hands. I would not hesitate to recommend Anup and his team.', name:'Managing Director', role:'Broadcasting Company, London' },
-      { quote:'Their consultants took the time to understand our multi-site setup and delivered a resilient, secure network that just works. Downtime is no longer a concern for our operations.', name:'IT Director', role:'Professional Services Firm, London' }
-    ];
-    var i = 0, total = items.length;
-    var quote = document.getElementById('tst-quote');
-    var name = document.getElementById('tst-name');
-    var role = document.getElementById('tst-role');
-    var fill = document.getElementById('tst-fill');
-    function render() {
-      quote.style.opacity = '0';
-      setTimeout(function () {
-        quote.textContent = items[i].quote; name.textContent = items[i].name; role.textContent = items[i].role;
-        fill.style.width = ((i + 1) / total * 100) + '%';
-        quote.style.opacity = '1';
-      }, 200);
-    }
-    document.getElementById('tst-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
-    document.getElementById('tst-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
-  })();
   </script>
 
   <script src="/js/cms.js"></script>
