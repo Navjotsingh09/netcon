@@ -408,13 +408,43 @@
       max-width: 56ch;
     }
 
+    .ab-story-card__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      counter-reset: story-step;
+    }
+
+    .ab-story-card__list li {
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: var(--ab-type-body);
+      font-weight: 400;
+      line-height: 1.65;
+      max-width: 56ch;
+      padding-left: 30px;
+      position: relative;
+      counter-increment: story-step;
+    }
+
+    .ab-story-card__list li::before {
+      content: counter(story-step) ")";
+      position: absolute;
+      left: 0;
+      font-weight: 600;
+    }
+
     .ab-story-card--blue .ab-story-card__title,
-    .ab-story-card--blue .ab-story-card__body {
+    .ab-story-card--blue .ab-story-card__body,
+    .ab-story-card--blue .ab-story-card__list li {
       color: #fff;
     }
 
     .ab-story-card--light .ab-story-card__title,
-    .ab-story-card--light .ab-story-card__body {
+    .ab-story-card--light .ab-story-card__body,
+    .ab-story-card--light .ab-story-card__list li {
       color: var(--dark);
     }
 
@@ -1426,14 +1456,21 @@
         </div>
         <div class="ab-story-card__content">
           <h2 class="ab-story-card__title">The Origin of Network Consultancy</h2>
-          <p class="ab-story-card__body">We think that clients require more than just general assistance or sophisticated counsel. That means practical engineering, structured delivery, and support that stays close to the realities of each environment.</p>
+          <p class="ab-story-card__body">Since 1995, Network Consultancy has operated as a specialised IT and network engineering brand. We built this company to bring mid-sized businesses out of basic infrastructure and cybersecurity limitations to enterprise-level technical expertise at a price that doesn't restrict their growth.</p>
+          <p class="ab-story-card__body">From the public to the private sectors across the UK, our deep expertise in networks, security, and infrastructure supports operations to eliminate downtime and vulnerabilities that disrupt daily business.</p>
         </div>
       </article>
 
       <article class="ab-inner ab-story-card ab-story-card--light animate-fade-up">
         <div class="ab-story-card__content">
           <h2 class="ab-story-card__title">How We Operate</h2>
-          <p class="ab-story-card__body">Flexible services for managed, on-site, or remote projects. We approach your network with consultancy, support and managed service delivery so the right work happens at the right stage.</p>
+          <p class="ab-story-card__body">Our company operates with a business-focused mindset to give clients a partner-like experience rather than ticketing queues.</p>
+          <p class="ab-story-card__body">We approach your network with:</p>
+          <ol class="ab-story-card__list">
+            <li>Consultancy that is backed by Cisco-certified engineers, assessing network, design, and vulnerability audits.</li>
+            <li>24/7 Senior-engineer support access, where you can run exactly when network emergencies hit.</li>
+            <li>Managed engineering where the accountability of your system uptime rests entirely on our team.</li>
+          </ol>
         </div>
         <div class="ab-story-card__media">
           <picture>
