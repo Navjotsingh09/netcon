@@ -1852,8 +1852,12 @@ body.industry-detail-page #main > #contact {
   .nd-faq__left, .nd-faq__right { min-width: 0; max-width: 100%; justify-self: stretch; }
   .nd-trusted__head { margin-bottom: 34px; }
   .nd-trusted__title { font-size: 42px; max-width: 540px; }
-  .nd-trusted__track { transform: none; width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-  .nd-t-card { width: auto; min-height: 250px; }
+  .nd-trusted__controls { display: none; }
+  .nd-trusted__dots { display: none; }
+  .nd-trusted__viewport { overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px; }
+  .nd-trusted__viewport::-webkit-scrollbar { display: none; }
+  .nd-trusted__track { transform: none !important; width: max-content; display: flex; gap: 18px; }
+  .nd-t-card { width: min(400px, calc(100vw - 2 * var(--px) - 28px)); min-height: 250px; scroll-snap-align: start; }
   .nd-t-card__quote { font-size: 19px; line-height: 1.55; }
   .nd-t-card__sub { font-size: 17px; line-height: 1.5; }
   .nd-t-card__name { font-size: 16px; }
@@ -1864,9 +1868,6 @@ body.industry-detail-page #main > #contact {
 }
 @media (max-width: 640px) {
   .nd-trusted__head { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
-  .nd-trusted__controls { gap: 10px; }
-  .nd-trusted__nav { width: 42px; height: 42px; font-size: 34px; }
-  .nd-trusted__track { grid-template-columns: 1fr; }
   .nd-trusted__title { font-size: 34px; max-width: none; }
   .nd-t-card { min-height: 230px; padding: 22px 16px 16px; }
   .nd-t-card__quote { font-size: 18px; line-height: 1.55; }

@@ -531,6 +531,7 @@
       box-shadow: 0 1px 0 rgba(0,0,0,.04);
       gap: 12px;
       border: 1px solid #e6e6e6;
+      position: relative;
     }
     .hero-search-strip__field {
       flex: 1;
@@ -546,9 +547,45 @@
       font-family: var(--font-body);
       font-size: 14px;
       background: #fff;
-      cursor: pointer;
+      cursor: text;
       overflow: visible;
       isolation: isolate;
+    }
+    .hero-search-strip__input {
+      flex: 1;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: #353535;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.2;
+      min-width: 0;
+    }
+    .hero-search-strip__input::placeholder {
+      color: #4b4b4b;
+      opacity: 1;
+    }
+    .hero-search-strip__submit {
+      border: 0;
+      border-radius: 10px;
+      min-height: 40px;
+      padding: 0 18px;
+      background: #0982c5;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .2s ease;
+      position: relative;
+      z-index: 3;
+    }
+    .hero-search-strip__submit:hover,
+    .hero-search-strip__submit:focus-visible {
+      background: #076da6;
     }
     .hero-search-strip__field .hero-search-glow {
       --glow-line-color: #ffffff;
@@ -585,10 +622,10 @@
       stroke-width: var(--glow-blur-size);
       filter: blur(var(--glow-blur-size)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.95));
     }
-    .hero-search-strip__field:is(:hover, :focus-visible) .hero-search-glow {
+    .hero-search-strip__field:is(:hover, :focus-within) .hero-search-glow {
       animation: hero-search-glow-visibility var(--animation-speed) ease-in;
     }
-    .hero-search-strip__field:is(:hover, :focus-visible) .hero-search-glow rect {
+    .hero-search-strip__field:is(:hover, :focus-within) .hero-search-glow rect {
       stroke-dashoffset: -80px;
     }
     @keyframes hero-search-glow-visibility {
@@ -599,6 +636,9 @@
       width: 18px;
       height: 18px;
       opacity: 1;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 3;
     }
     .hero-search-strip__hint {
       color: #4b4b4b;
@@ -610,6 +650,47 @@
       opacity: 1;
       transform: translateY(0);
       transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .hero-search-strip__results {
+      position: absolute;
+      left: 70px;
+      right: 70px;
+      top: calc(100% - 26px);
+      background: #fff;
+      border: 1px solid #d5dce8;
+      border-radius: 0 0 14px 14px;
+      box-shadow: 0 12px 26px rgba(9, 40, 84, 0.16);
+      padding: 8px;
+      z-index: 12;
+    }
+    .hero-search-strip__results[hidden] {
+      display: none;
+    }
+    .hero-search-strip__result {
+      display: block;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 10px 12px;
+      border: 1px solid #e8edf3;
+      color: #1f3352;
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+    .hero-search-strip__result:last-child {
+      margin-bottom: 0;
+    }
+    .hero-search-strip__result:hover,
+    .hero-search-strip__result:focus-visible {
+      border-color: #b7d6ef;
+      background: #f4f9ff;
+    }
+    .hero-search-strip__result strong {
+      display: block;
+      color: #102e74;
+      font-size: 15px;
+      margin-bottom: 3px;
     }
 
     .partner-strip {
@@ -1478,11 +1559,17 @@
       .hero-search-strip { margin-top: -28px; }
       .hero-search-strip__inner { padding: 16px; }
       .hero-search-strip__field { min-height: 44px; padding: 0 18px; font-size: 14px; }
+      .hero-search-strip__input { font-size: 14px; }
+      .hero-search-strip__submit { min-height: 34px; padding: 0 12px; font-size: 13px; }
       .hero-search-strip__field .hero-search-glow {
         --container-offset: 40px;
         --glow-blur-size: 6px;
       }
-      .hero-search-strip__hint { display: none; }
+      .hero-search-strip__results {
+        left: 16px;
+        right: 16px;
+        top: calc(100% - 14px);
+      }
       .partner-strip { padding: 10px var(--px) 20px; margin: 52px auto 34px; }
       .partner-strip__group { gap: 28px; padding-right: 28px; }
       .partner-strip__inner img { height: 36px; }
@@ -1629,6 +1716,15 @@
       .hero-search-strip { margin-top: -22px; }
       .hero-search-strip__inner { padding: 14px; }
       .hero-search-strip__field { min-height: 44px; padding: 0 16px; }
+      .hero-search-strip__submit {
+        min-height: 32px;
+        padding: 0 10px;
+        font-size: 12px;
+      }
+      .hero-search-strip__results {
+        left: 14px;
+        right: 14px;
+      }
       .partner-strip { margin: 46px auto 28px; }
       .partner-strip__group { gap: 22px; padding-right: 22px; }
       .partner-strip__inner img { height: 32px; }
@@ -1755,15 +1851,16 @@
 
   <section class="hero-search-strip" aria-label="Homepage search strip">
     <div class="hero-search-strip__inner">
-      <button type="button" class="hero-search-strip__field" data-search-trigger aria-label="Search all pages here">
+      <form class="hero-search-strip__field" role="search" aria-label="Search all pages here">
         <img src="/images/icons/figma-nav-home-2026/search-bar-icon.svg?v=2" alt="" aria-hidden="true">
-        <span>Please ask your question here</span>
-        <span class="hero-search-strip__hint">search all pages here</span>
+        <input type="search" class="hero-search-strip__input" name="q" autocomplete="off" placeholder="Please ask your question here" aria-label="Type your search query">
+        <button type="submit" class="hero-search-strip__submit" aria-label="Run search">Search</button>
         <svg class="hero-search-glow" aria-hidden="true" focusable="false">
           <rect pathLength="100" stroke-linecap="round" class="hero-search-glow__blur"></rect>
           <rect pathLength="100" stroke-linecap="round" class="hero-search-glow__line"></rect>
         </svg>
-      </button>
+      </form>
+      <div class="hero-search-strip__results" data-hero-search-results hidden></div>
     </div>
   </section>
 
@@ -3245,16 +3342,26 @@ Edgbaston, B15 3BE</p>
         font-size: 42px;
         max-width: 540px;
       }
+      .nd-trusted__controls { display: none; }
+      .nd-trusted__dots { display: none; }
+      .nd-trusted__viewport {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+      }
+      .nd-trusted__viewport::-webkit-scrollbar { display: none; }
       .nd-trusted__track {
-        transform: none;
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        transform: none !important;
+        width: max-content;
+        display: flex;
         gap: 18px;
       }
       .nd-t-card {
-        width: auto;
+        width: min(400px, calc(100vw - 2 * var(--px) - 28px));
         min-height: 250px;
+        scroll-snap-align: start;
       }
       .nd-t-card__quote { font-size: 19px; line-height: 1.55; }
       .nd-t-card__sub { font-size: 17px; line-height: 1.5; }
@@ -3333,15 +3440,6 @@ Edgbaston, B15 3BE</p>
         align-items: flex-start;
         gap: 16px;
         margin-bottom: 24px;
-      }
-      .nd-trusted__controls { gap: 10px; }
-      .nd-trusted__nav {
-        width: 42px;
-        height: 42px;
-        font-size: 34px;
-      }
-      .nd-trusted__track {
-        grid-template-columns: 1fr;
       }
       .nd-trusted__title {
         font-size: 34px;
@@ -3696,13 +3794,14 @@ Edgbaston, B15 3BE</p>
       startAuto();
     }());
 
-    // Hero search strip hint rotator
-    (function rotateHeroSearchHint() {
-      var field = document.querySelector('.hero-search-strip__field');
-      var hint = document.querySelector('.hero-search-strip__hint');
-      if (!field || !hint) return;
+    // Hero search strip inline search
+    (function initHeroSearchStrip() {
+      var form = document.querySelector('.hero-search-strip__field');
+      var input = document.querySelector('.hero-search-strip__input');
+      var resultsBox = document.querySelector('[data-hero-search-results]');
+      if (!form || !input || !resultsBox) return;
 
-      var hints = [
+      var placeholderHints = [
         'network security review',
         'managed network support',
         'network design and deployment',
@@ -3711,21 +3810,131 @@ Edgbaston, B15 3BE</p>
         'cisco network consultancy'
       ];
 
-      var index = 0;
+      var hintIndex = 0;
+      var hintTimer = null;
 
-      function swapHint() {
-        index = (index + 1) % hints.length;
-        hint.style.opacity = '0';
-        hint.style.transform = 'translateY(-2px)';
-
-        setTimeout(function () {
-          hint.textContent = hints[index];
-          hint.style.opacity = '1';
-          hint.style.transform = 'translateY(0)';
-        }, 180);
+      function normalize(value) {
+        return String(value || '').toLowerCase().trim();
       }
 
-      setInterval(swapHint, 3000);
+      function tokenize(value) {
+        return normalize(value).replace(/[^a-z0-9\s&-]/g, ' ').replace(/\s+/g, ' ').trim();
+      }
+
+      function scoreItem(item, query, queryWords) {
+        var title = normalize(item.title);
+        var summary = normalize(item.summary);
+        var category = normalize(item.category);
+        var keywords = Array.isArray(item.keywords) ? normalize(item.keywords.join(' ')) : '';
+        var bag = ' ' + [title, summary, category, keywords].join(' ') + ' ';
+
+        var score = 0;
+        if (title.indexOf(query) > -1) score += 42;
+        if (summary.indexOf(query) > -1) score += 20;
+        if (keywords.indexOf(query) > -1) score += 22;
+        if (category.indexOf(query) > -1) score += 8;
+
+        queryWords.forEach(function(word) {
+          if (word && bag.indexOf(' ' + word + ' ') > -1) score += 7;
+        });
+
+        return score;
+      }
+
+      function getMatches(query) {
+        var dataset = Array.isArray(window.SEARCH_INDEX) ? window.SEARCH_INDEX : [];
+        if (!dataset.length) return [];
+
+        var safeQuery = tokenize(query);
+        if (!safeQuery) return [];
+        var words = safeQuery.split(' ').filter(Boolean);
+
+        return dataset
+          .map(function(item) {
+            return { item: item, score: scoreItem(item, safeQuery, words) };
+          })
+          .filter(function(entry) {
+            return entry.score > 0;
+          })
+          .sort(function(a, b) {
+            return b.score - a.score;
+          })
+          .map(function(entry) {
+            return entry.item;
+          });
+      }
+
+      function hideResults() {
+        resultsBox.hidden = true;
+        resultsBox.innerHTML = '';
+      }
+
+      function renderResults(matches) {
+        if (!matches.length) {
+          hideResults();
+          return;
+        }
+
+        resultsBox.innerHTML = matches.slice(0, 5).map(function(result) {
+          var summary = result.summary || 'Open this page';
+          return '<a class="hero-search-strip__result" href="' + result.url + '">' +
+            '<strong>' + result.title + '</strong>' +
+            '<span>' + summary + '</span>' +
+          '</a>';
+        }).join('');
+
+        resultsBox.hidden = false;
+      }
+
+      function rotatePlaceholder() {
+        if (document.activeElement === input || input.value.trim()) return;
+        hintIndex = (hintIndex + 1) % placeholderHints.length;
+        input.placeholder = placeholderHints[hintIndex];
+      }
+
+      input.addEventListener('input', function() {
+        var query = input.value.trim();
+        if (!query) {
+          hideResults();
+          return;
+        }
+        renderResults(getMatches(query));
+      });
+
+      input.addEventListener('focus', function() {
+        if (input.value.trim()) {
+          renderResults(getMatches(input.value));
+        }
+      });
+
+      input.addEventListener('blur', function() {
+        window.setTimeout(hideResults, 140);
+      });
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        var query = input.value.trim();
+        if (!query) return;
+
+        var matches = getMatches(query);
+        if (matches.length) {
+          window.location.href = matches[0].url;
+          return;
+        }
+
+        window.location.href = '/contact.html?search=' + encodeURIComponent(query);
+      });
+
+      hintTimer = window.setInterval(rotatePlaceholder, 3000);
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden && hintTimer) {
+          window.clearInterval(hintTimer);
+          hintTimer = null;
+        }
+        if (!document.hidden && !hintTimer) {
+          hintTimer = window.setInterval(rotatePlaceholder, 3000);
+        }
+      });
     }());
 
     // Highlight video autoplay

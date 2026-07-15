@@ -325,6 +325,12 @@
     }
 
     @media (max-width: 768px) {
+      /* Decorative-only arrows (no slider JS) — hide on touch layouts */
+      .fin-cyber .industry-arrows,
+      .fin-cyber .industry-progress,
+      .fin-testimonial__controls {
+        display: none;
+      }
       .page-hero.page-hero--financial {
         border-radius: 0;
         margin-top: 0;
