@@ -733,123 +733,266 @@
       line-height: 1.45;
     }
 
-    .ab-contact {
-      padding: 0;
-    }
-
-    .ab-contact__panel {
-      border: 1px solid var(--gray-mid);
-      border-radius: 10px;
-      background: #fff;
-      padding: 50px;
+    .nd-contact__layout {
+      width: 1440px;
+      max-width: 100%;
       display: grid;
-      grid-template-columns: 44% 1fr;
-      gap: 38px;
+      grid-template-columns: 588px 708px;
+      column-gap: 144px;
+      row-gap: 24px;
+      align-items: start;
     }
 
-    .ab-contact__title {
-      margin: 0 0 14px;
-      color: var(--dark);
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--ab-type-heading-xl);
-      font-weight: 600;
-      line-height: 1;
-    }
-
-    .ab-contact__sub {
-      margin: 0 0 20px;
-      color: var(--sub);
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--ab-type-body);
-      line-height: 1.6;
-      max-width: 42ch;
-    }
-
-    .ab-contact__tiles {
+    .nd-contact__layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      grid-template-columns: 588px 708px;
+      column-gap: 144px;
+      row-gap: 24px;
+      align-items: start;
     }
 
-    .ab-contact__tile {
-      border: 1px solid var(--gray-mid);
-      background: #f8f8f8;
-      padding: 16px;
-      display: grid;
-      gap: 8px;
+    .nd-contact__intro {
+      grid-column: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    .ab-contact__tile h3,
-    .ab-contact__tile p {
+    .nd-contact__title {
       margin: 0;
-      font-family: "Google Sans Flex", sans-serif;
-      color: var(--dark);
-    }
-
-    .ab-contact__tile h3 {
-      font-size: 16px;
+      color: #353535;
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: clamp(2rem, 2vw + 1.35rem, 3rem);
+      line-height: 1.12;
       font-weight: 700;
+      letter-spacing: -0.01em;
+      max-width: 18ch;
     }
 
-    .ab-contact__tile p {
-      font-size: 15px;
-      line-height: 1.35;
+    .nd-contact__subtitle {
+      margin: 0;
+      max-width: 588px;
+      color: #000;
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: var(--home-type-body);
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    .nd-contact__tiles {
+      grid-column: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      align-content: start;
+    }
+
+    .nd-contact__tile {
+      padding: 24px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      overflow: hidden;
+      min-height: 186px;
+    }
+
+    .nd-contact__chip {
+      width: 38px;
+      height: 38px;
+      padding: 4px;
+      background: #fff;
+      outline: 0.5px solid #d6d6d6;
+      outline-offset: -0.5px;
+      box-shadow: 0 2px 1.5px 0.5px rgba(149, 160, 178, 0.16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      overflow: hidden;
+    }
+
+    .nd-contact__chip img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .nd-contact__tile-copy {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .nd-contact__tile-copy h3 {
+      margin: 0;
+      color: #141a28;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 28px;
+      font-weight: 500;
+    }
+
+    .nd-contact__tile-copy p {
+      margin: 0;
+      color: #0a0a0a;
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 24px;
+      font-weight: 400;
       white-space: pre-line;
     }
 
-    .ab-form {
-      display: grid;
-      gap: 14px;
-    }
-
-    .ab-form__row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .ab-field {
-      display: grid;
-      gap: 6px;
-    }
-
-    .ab-field label {
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--sub);
-    }
-
-    .ab-field input,
-    .ab-field textarea,
-    .ab-field select {
-      width: 100%;
-      border: 1px solid var(--gray-mid);
-      border-radius: 0;
+    .nd-contact__form {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      width: 708px;
+      max-width: 100%;
+      padding: 32px;
+      border: 1px solid #cfd4db;
       background: #fff;
-      padding: 10px 12px;
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: 15px;
-      color: var(--dark);
-    }
-
-    .ab-field textarea {
-      min-height: 116px;
-      resize: vertical;
-    }
-
-    .ab-form__agree {
       display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: 14px;
-      color: var(--sub);
-      line-height: 1.35;
+      flex-direction: column;
+      gap: 16px;
+      overflow: hidden;
     }
 
-    .ab-form__agree a {
-      color: var(--sub);
+    .nd-contact__row--split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .nd-contact__field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-start;
+    }
+
+    .nd-contact__field-head {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .nd-contact__field-label,
+    .nd-contact__required,
+    .nd-contact__agree,
+    .nd-contact__agree-text {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 24px;
+    }
+
+    .nd-contact__field-label {
+      color: #585151;
+      font-weight: 500;
+    }
+
+    .nd-contact__required {
+      color: #ff5805;
+      font-weight: 500;
+      margin-left: 2px;
+    }
+
+    .nd-contact__field > input,
+    .nd-contact__field > textarea {
+      width: 100%;
+      border: 1px solid #d7dce2;
+      background: #fff;
+      color: #353535;
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 24px;
+      font-weight: 400;
+      padding: 10px 12px;
+      outline: none;
+    }
+
+    .nd-contact__field > input {
+      height: 40px;
+    }
+
+    .nd-contact__field > textarea {
+      min-height: 128px;
+      resize: vertical;
+      padding-top: 10px;
+    }
+
+    .nd-contact__field > input::placeholder,
+    .nd-contact__field > textarea::placeholder {
+      color: #585151;
+      opacity: 1;
+    }
+
+    .nd-contact__agree {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #585151;
+      font-weight: 400;
+      margin-top: 4px;
+    }
+
+    .nd-contact__checkbox {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nd-contact__checkbox input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      margin: 0;
+    }
+
+    .nd-contact__checkbox-box {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #c7cbd1;
+      background: #fff;
+      display: block;
+    }
+
+    .nd-contact__checkbox input:checked + .nd-contact__checkbox-box {
+      background: #0982c5;
+      box-shadow: inset 0 0 0 3px #fff;
+    }
+
+    .nd-contact__agree-text {
+      color: #585151;
+      font-weight: 400;
+    }
+
+    .nd-contact__agree-text a {
+      color: #585151;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .nd-contact__submit {
+      width: 100%;
+      height: 48px;
+      border-radius: 5px;
+      background: #0982c5;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 28px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4px;
     }
 
     @media (max-width: 1440px) {
@@ -1286,6 +1429,91 @@
       <div class="ab-test__dots" aria-hidden="true"></div>
     </section>
 
+    <section class="nd-contact section-shell" id="contact">
+      <div class="nd-contact__surface">
+        <div class="nd-contact__layout">
+          <div class="nd-contact__intro">
+            <h2 class="nd-contact__title">Contact us today for a free consultation</h2>
+            <p class="nd-contact__subtitle">We pride ourselves on delivering a flexible engagement style in order to meet your requirements. Contact us for your free consultation.</p>
+          </div>
+
+          <div class="nd-contact__tiles">
+            <article class="nd-contact__tile">
+              <span class="nd-contact__chip"><img src="/images/pages/contact-phone-icon.png" alt="Phone icon"></span>
+              <div class="nd-contact__tile-copy">
+                <h3>Chat customer services</h3>
+                <p>+44 (0) 203 150 1401</p>
+              </div>
+            </article>
+
+            <article class="nd-contact__tile">
+              <span class="nd-contact__chip"><img src="/images/pages/contact-email-icon.png" alt="Envelope icon"></span>
+              <div class="nd-contact__tile-copy">
+                <h3>Chat to our sales</h3>
+                <p>info@network-consultancy.com</p>
+              </div>
+            </article>
+
+            <article class="nd-contact__tile">
+              <span class="nd-contact__chip"><img src="/images/pages/contact-address-icon.png" alt="Location icon"></span>
+              <div class="nd-contact__tile-copy">
+                <h3>Address</h3>
+                <p>Birmingham, Beech House, Greenfield Crescent, Edgbaston, B15 3BE</p>
+              </div>
+            </article>
+
+            <article class="nd-contact__tile">
+              <span class="nd-contact__chip"><img src="/images/pages/contact-address-icon-2.png" alt="Location icon"></span>
+              <div class="nd-contact__tile-copy">
+                <h3>Address</h3>
+                <p>Birmingham
+Beech House, Greenfield Crescent
+Edgbaston, B15 3BE</p>
+              </div>
+            </article>
+          </div>
+
+          <form class="nd-contact__form" action="#" method="post">
+            <div class="nd-contact__row nd-contact__row--split">
+              <label class="nd-contact__field">
+                <span class="nd-contact__field-head"><span class="nd-contact__field-label">First Name</span><span class="nd-contact__required">*</span></span>
+                <input type="text" name="first_name" autocomplete="given-name" placeholder="First name" required>
+              </label>
+              <label class="nd-contact__field">
+                <span class="nd-contact__field-head"><span class="nd-contact__field-label">Last Name</span><span class="nd-contact__required">*</span></span>
+                <input type="text" name="last_name" autocomplete="family-name" placeholder="Last name" required>
+              </label>
+            </div>
+
+            <label class="nd-contact__field">
+              <span class="nd-contact__field-head"><span class="nd-contact__field-label">Your Email</span><span class="nd-contact__required">*</span></span>
+              <input type="email" name="email" autocomplete="email" placeholder="Enter your email" required>
+            </label>
+
+            <label class="nd-contact__field">
+              <span class="nd-contact__field-head"><span class="nd-contact__field-label">Your Address</span><span class="nd-contact__required">*</span></span>
+              <input type="text" name="address" autocomplete="street-address" placeholder="Enter Address" required>
+            </label>
+
+            <label class="nd-contact__field nd-contact__field--message">
+              <span class="nd-contact__field-head"><span class="nd-contact__field-label">Message</span><span class="nd-contact__required">*</span></span>
+              <textarea name="message" rows="4" placeholder="Your Message..." required></textarea>
+            </label>
+
+            <label class="nd-contact__agree">
+              <span class="nd-contact__checkbox">
+                <input type="checkbox" name="agree" required>
+                <span class="nd-contact__checkbox-box" aria-hidden="true"></span>
+              </span>
+              <span class="nd-contact__agree-text">I agree with <a href="/privacy-policy.html">Privacy Policy</a> and <a href="/terms-of-service.html">Terms of Conditions</a></span>
+            </label>
+
+            <button class="nd-contact__submit" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <section class="ab-shell ab-faq" aria-label="Frequently asked questions">
       <div class="ab-inner ab-faq__panel">
         <div>
@@ -1310,90 +1538,6 @@
             <div class="ab-faq-item__a" hidden>Yes. We can work alongside your internal team to cover consultancy, support and managed delivery as needed.</div>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="ab-shell ab-contact" id="contact">
-      <div class="ab-inner ab-contact__panel animate-fade-up">
-        <div>
-          <h2 class="ab-contact__title">Contact us today for a free consultation</h2>
-          <p class="ab-contact__sub">We pride ourselves on delivering a flexible engagement style in order to meet your requirements. Contact us for your free consultation.</p>
-
-          <div class="ab-contact__tiles">
-            <article class="ab-contact__tile">
-              <h3>Phone</h3>
-              <p>+44 (0) 203 150 1401</p>
-            </article>
-            <article class="ab-contact__tile">
-              <h3>Email</h3>
-              <p>info@network-consultancy.com</p>
-            </article>
-            <article class="ab-contact__tile">
-              <h3>Address</h3>
-              <p>Birmingham, Beech House, Greenfield Crescent, Edgbaston, B15 3BE</p>
-            </article>
-            <article class="ab-contact__tile">
-              <h3>Support</h3>
-              <p>Managed, on-site or remote projects</p>
-            </article>
-          </div>
-        </div>
-
-        <form class="ab-form" action="/contact.html" method="get">
-          <div class="ab-form__row">
-            <div class="ab-field">
-              <label for="ab-full-name">Full Name *</label>
-              <input id="ab-full-name" name="full_name" type="text" placeholder="Full name" autocomplete="name" required>
-            </div>
-            <div class="ab-field">
-              <label for="ab-last-name">Last Name *</label>
-              <input id="ab-last-name" name="last_name" type="text" placeholder="Last name" autocomplete="family-name" required>
-            </div>
-          </div>
-
-          <div class="ab-field">
-            <label for="ab-phone">Phone Number *</label>
-            <input id="ab-phone" name="phone" type="tel" placeholder="Phone number" autocomplete="tel" required>
-          </div>
-
-          <div class="ab-field">
-            <label for="ab-company">Company Name *</label>
-            <input id="ab-company" name="company" type="text" placeholder="Company name" autocomplete="organization" required>
-          </div>
-
-          <div class="ab-field">
-            <label for="ab-help">I Need help with *</label>
-            <select id="ab-help" name="help_with" required>
-              <option value="">Select an option</option>
-              <option>Consultancy</option>
-              <option>Support</option>
-              <option>Managed services</option>
-              <option>Network health check</option>
-            </select>
-          </div>
-
-          <div class="ab-field">
-            <label for="ab-scale">Scale of Business *</label>
-            <input id="ab-scale" name="scale" type="text" placeholder="Scale of business" autocomplete="organization-title" required>
-          </div>
-
-          <div class="ab-field">
-            <label for="ab-message">Message *</label>
-            <textarea id="ab-message" name="message" placeholder="Your message..." required></textarea>
-          </div>
-
-          <div class="ab-field">
-            <label for="ab-source">Where did you hear about us? *</label>
-            <input id="ab-source" name="source" type="text" placeholder="Where did you hear about us?" autocomplete="off" required>
-          </div>
-
-          <label class="ab-form__agree">
-            <input type="checkbox" required>
-            <span>I agree with <a href="/privacy-policy.html">Privacy Policy</a> and <a href="/terms-of-service.html">Terms of Conditions</a></span>
-          </label>
-
-          <button type="submit" class="ab-button" data-source-cta="about_form_submit">Submit</button>
-        </form>
       </div>
     </section>
   </main>
