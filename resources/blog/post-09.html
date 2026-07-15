@@ -20,7 +20,8 @@
     .blog-detail__frame {
       max-width: 1440px;
       margin: 0 auto;
-      border: 1px solid #8d8d8d;
+      border: 1px solid #e4e4e4;
+      border-radius: 10px;
       padding: 43px 40px 86px;
       background: #fff;
     }
@@ -47,7 +48,7 @@
     }
     .blog-main__meta {
       font-family: 'Google Sans Flex', sans-serif;
-      font-size: 28px;
+      font-size: 16px;
       color: #666;
       margin-bottom: 20px;
       display: flex;
@@ -56,9 +57,10 @@
     }
     .blog-main h1 {
       font-family: 'Google Sans Flex', sans-serif;
-      font-size: 56px;
-      line-height: 1.18;
-      color: #3e3e3e;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--navy);
       margin-bottom: 26px;
     }
     .blog-main p {
@@ -70,16 +72,18 @@
     }
     .blog-main h2 {
       font-family: 'Google Sans Flex', sans-serif;
-      font-size: 42px;
-      color: #3d3d3d;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--navy);
       margin: 42px 0 20px;
       line-height: 1.18;
     }
 
     .blog-side__card,
     .blog-side__categories {
-      background: #ebebeb;
-      border-radius: 24px;
+      background: #f7f9fc;
+      border: 1px solid #e4e4e4;
+      border-radius: 10px;
       padding: 26px 24px;
     }
     .blog-side__card {
@@ -87,9 +91,10 @@
     }
     .blog-side h3 {
       font-family: 'Google Sans Flex', sans-serif;
-      font-size: 48px;
-      line-height: 1;
-      color: #4f4f4f;
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--navy);
       margin-bottom: 22px;
     }
     .latest-item {
@@ -104,7 +109,7 @@
       height: 71px;
       border-radius: 8px;
       background: #d1d1d1;
-      border: 1px solid #1c1c1c;
+      border: 1px solid #e0e0e0;
     }
     .latest-item p {
       font-family: 'Google Sans Flex', sans-serif;
@@ -120,8 +125,9 @@
     }
     .blog-side__more {
       font-family: 'Google Sans Flex', sans-serif;
-      font-size: 20px;
-      color: #666;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--blue);
       margin-top: 12px;
       display: inline-block;
     }
@@ -133,7 +139,7 @@
     }
     .cat-list a {
       font-family: 'Google Sans Flex', sans-serif;
-      font-size: 32px;
+      font-size: 18px;
       color: #616161;
       display: inline-flex;
       align-items: center;
@@ -148,7 +154,7 @@
     .cat-list a.active::before {
       content: '\203A';
       color: var(--navy);
-      font-size: 32px;
+      font-size: 18px;
       line-height: 1;
     }
     .faq-divider--hidden {
@@ -162,13 +168,11 @@
     }
 
     @media (max-width: 1600px) {
-      .blog-main h1,
-      .blog-side h3 {
+      .blog-main h1 {
         font-size: 40px;
       }
-      .blog-main h2,
-      .cat-list a {
-        font-size: 34px;
+      .blog-main h2 {
+        font-size: 28px;
       }
       .blog-main p,
       .blog-main__meta {
@@ -200,13 +204,17 @@
         min-height: 340px;
         border-radius: 16px;
       }
-      .blog-main h1,
-      .blog-side h3,
-      .blog-main h2 {
+      .blog-main h1 {
         font-size: 32px;
       }
+      .blog-main h2 {
+        font-size: 26px;
+      }
+      .blog-side h3 {
+        font-size: 22px;
+      }
       .cat-list a {
-        font-size: 24px;
+        font-size: 17px;
       }
     }
     @media (max-width: 768px) {
@@ -219,10 +227,14 @@
       .blog-main p {
         font-size: 16px;
       }
-      .blog-main h1,
-      .blog-main h2,
-      .blog-side h3 {
+      .blog-main h1 {
         font-size: 26px;
+      }
+      .blog-main h2 {
+        font-size: 22px;
+      }
+      .blog-side h3 {
+        font-size: 20px;
       }
       .latest-item {
         grid-template-columns: 64px 1fr;
@@ -233,7 +245,7 @@
         border-width: 1px;
       }
       .cat-list a {
-        font-size: 20px;
+        font-size: 16px;
       }
     }
   </style>

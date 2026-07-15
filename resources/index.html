@@ -11,6 +11,18 @@
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+  <style>
+  /* Resources — new design language (page-local; global.css untouched) */
+  .section { padding:0 var(--px); margin:100px auto; }
+  .nd-contact.section-shell { margin-top:100px; }
+  /* Bordered-card idiom (nd-t-card / services tiles) */
+  .res-card { background:#fff; border:1px solid var(--blue); border-radius:6px; box-shadow:none; }
+  .res-card:hover { transform:translateY(-3px); box-shadow:0 10px 24px rgba(19,32,63,.10); background:rgba(9,130,197,.03); }
+  .res-card__title { font-weight:600; }
+  .res-card__link:hover { text-decoration:underline; }
+  @media(max-width:768px){ .section { margin:56px auto; } .nd-contact.section-shell { margin-top:56px; } }
+  @media(prefers-reduced-motion:reduce){ .res-card, .res-card:hover { transition:none; transform:none; } }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
