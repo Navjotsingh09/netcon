@@ -892,29 +892,10 @@
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
   <script>
-    (function () {
-      var list = document.getElementById('nd-faq-list');
-      if (!list) return;
-      var items = list.querySelectorAll('.nd-faq__item');
-      items.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var panel = btn.nextElementSibling;
-          var open = btn.classList.contains('is-open');
-          items.forEach(function (item) {
-            item.classList.remove('is-open');
-            var mark = item.querySelector('strong');
-            if (mark) mark.textContent = '+';
-            if (item.nextElementSibling) item.nextElementSibling.hidden = true;
-          });
-          if (!open) {
-            btn.classList.add('is-open');
-            var activeMark = btn.querySelector('strong');
-            if (activeMark) activeMark.textContent = '−';
-            if (panel) panel.hidden = false;
-          }
-        });
-      });
-    }());
+    /* Click handling for .nd-faq__item is done globally via event
+       delegation in js/global.js (loaded below). Do not attach a second
+       listener here, or each click fires twice: open, then immediately
+       close again. */
 
     (function () {
       var cards = document.querySelectorAll('.sol-card');
