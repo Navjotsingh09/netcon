@@ -622,7 +622,7 @@
     }
     .hero-search-strip__hint {
       color: #4b4b4b;
-      font-size: 11px;
+      font-size: 14px;
       font-family: var(--font-body);
       text-transform: lowercase;
       margin-left: auto;
@@ -1534,12 +1534,21 @@
       .hero__content { padding: 44px var(--px) 36px; max-width: 100%; }
       .hero__title { font-size: 34px; line-height: 1.06; }
       .hero__sub { font-size: 16px; }
-      .hero__btn { width: auto; min-height: 42px; font-size: 15px; padding: 0 14px; }
+      .hero__btn { width: auto; min-height: 44px; font-size: 15px; padding: 0 14px; }
       .hero-search-strip { padding: 0 var(--px); }
       .hero-search-strip { margin-top: -28px; }
       .hero-search-strip__inner { padding: 16px; }
-      .hero-search-strip__field { min-height: 44px; padding: 0 18px; font-size: 14px; }
-      .hero-search-strip__input { font-size: 14px; }
+      .hero-search-strip__field { min-height: 48px; padding: 0 16px; font-size: 14px; }
+      .hero-search-strip__input { font-size: 16px; }
+      /* Rotating hint collides with the prompt text on small screens */
+      .hero-search-strip__hint { display: none; }
+      .hero-search-strip__field > span:not(.hero-search-strip__hint) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 0;
+        flex: 1;
+      }
       .hero-search-strip__field .hero-search-glow {
         --container-offset: 40px;
         --glow-blur-size: 6px;
@@ -1569,7 +1578,7 @@
       .svc-card { height: 250px; }
       .svc-card__info { left: 16px; right: 16px; bottom: 16px; }
       .svc-card__label { font-size: 20px; }
-      .svc-card__desc { font-size: 13px; line-height: 1.45; }
+      .svc-card__desc { font-size: 14px; line-height: 1.45; }
 
       /* Services carousel: adjust padding only */
       .services-section__inner { padding: 32px var(--px) 32px; }
@@ -1721,7 +1730,7 @@
       .svc-card { height: 270px; }
       .svc-card__info { left: 14px; right: 14px; bottom: 14px; }
       .svc-card__label { font-size: 19px; }
-      .svc-card__desc { font-size: 13px; }
+      .svc-card__desc { font-size: 14px; }
       .services-section { width: auto; margin: 32px var(--px); }
       .services-section__inner { padding: 24px 20px; overflow: hidden; }
       .sc-viewport { overflow: hidden; }
@@ -2618,7 +2627,7 @@ Edgbaston, B15 3BE</p>
       align-self: flex-start;
       margin-top: 139px;
       min-width: 144px;
-      min-height: 42px;
+      min-height: 44px;
       border-radius: 10px;
       padding: 5px 16px;
       background: #0982c5;
