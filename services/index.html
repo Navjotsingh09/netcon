@@ -15,7 +15,7 @@
   /* ── Page Section Rhythm ────────────────────────────────────── */
   #main { display:flex; flex-direction:column; gap:clamp(72px, 7vw, 100px); }
   #main > .svcs-hero { padding-bottom:0; width:100%; margin-left:0; margin-right:0; align-self:stretch; }
-  #main > .services-section { margin:0 auto; }
+  #main > .svl-overview { margin:0 auto; }
   #main > .svc-cta-band,
   #main > [data-cms],
   #main > #site-contact { margin:0; }
@@ -66,33 +66,26 @@
   @media(max-width:768px){ .svcs-hero__title{font-size:42px;} .svcs-hero__sub{font-size:20px;} .svcs-hero__content{padding:60px var(--px) 80px var(--px);} }
   @media(max-width:480px){ .svcs-hero__title{font-size:28px;} }
 
-  /* Services We Offer — hero + thumbnail slider (shared component: Home "IT Networking Solutions", About "Our Capabilities") */
-  .services-section { width: calc(100% - (var(--px) * 2)); max-width:var(--max-w); margin:0 auto; padding-bottom:20px; }
-  .services-section__title { margin:0 0 40px; color:var(--navy); }
+  /* Services We Offer — bordered tab overview (shared component: solutions family) */
+  .svl-overview { width: calc(100% - (var(--px) * 2)); max-width:var(--max-w); margin:0 auto; }
+  .svl-overview__title { margin:0 0 40px; color:var(--navy); }
   .btn-blue-lg { background:var(--blue); color:#fff; font-family:'Google Sans Flex',sans-serif; font-size:15px; font-weight:700; letter-spacing:.08em; padding:16px 40px; min-height:50px; border-radius:9999px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s,transform .2s; text-decoration:none; border:none; }
   .btn-blue-lg:hover { background:#0771a5; transform:scale(1.02); }
-  .solutions-main { position:relative; height:600px; border-radius:20px; overflow:hidden; margin-bottom:-90px; box-shadow:0 10px 26px rgba(0,0,0,.14); }
-  .solutions-main img { width:100%; height:100%; object-fit:cover; display:block; }
-  .solutions-main__overlay { position:absolute; inset:0; background:rgba(4,31,93,.2); }
-  .solutions-infobox { position:absolute; bottom:122px; left:65px; background:#EBEBEB; border-radius:20px; padding:31px 51px; max-width:min(600px, calc(100% - 130px)); box-shadow:0 6px 14px rgba(0,0,0,.12); }
-  .solutions-infobox h3 { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; color:var(--navy); margin-bottom:18px; line-height:1; }
-  .solutions-infobox p { font-size:24px; font-weight:500; color:var(--sub); line-height:1.25; margin-bottom:24px; }
-  .solutions-bottom { display:flex; align-items:flex-end; gap:61px; position:relative; z-index:1; }
-  .solutions-nav { display:flex; flex-direction:column; gap:31px; align-items:flex-end; flex-shrink:0; padding-bottom:4px; }
-  .solutions-arrows { display:flex; gap:20px; }
-  .sol-arrow { background:none; border:none; padding:0; cursor:pointer; display:inline-flex; line-height:0; }
-  .sol-arrow svg rect { transition:fill .2s ease; }
-  .sol-arrow svg path { transition:stroke .2s ease; }
-  .sol-arrow:hover svg rect { fill:var(--blue); }
-  .sol-arrow:hover svg path { stroke:#fff; }
-  .solutions-progress { width:421px; height:16px; background:var(--gray-mid); border-radius:10px; overflow:hidden; }
-  .solutions-progress-fill { height:100%; background:var(--sub); border-radius:10px; transition:width .4s ease; }
-  .solutions-sub-cards { display:flex; gap:29px; flex:1; }
-  .sol-sub { display:flex; flex-direction:column; gap:27px; flex:1; cursor:pointer; }
-  .sol-sub img { width:100%; height:224px; object-fit:cover; border-radius:20px; box-shadow:0 4px 4px rgba(0,0,0,.1); transition:opacity .2s, transform .2s; }
-  .sol-sub p { font-family:'Google Sans Flex',sans-serif; font-size:20px; color:var(--sub); line-height:1.35; }
-  @media(max-width:768px){ .services-section{padding-bottom:0;} .solutions-main{height:400px;margin-bottom:24px;} .solutions-infobox{left:16px;right:16px;bottom:16px;max-width:none;padding:24px;} .solutions-infobox h3{font-size:24px;} .solutions-infobox p{font-size:18px;} .solutions-bottom{flex-direction:column;gap:24px;align-items:stretch;} .solutions-nav{width:100%;align-items:stretch;padding-bottom:0;} .solutions-arrows{justify-content:flex-start;} .solutions-progress{width:100%;max-width:none;} .solutions-sub-cards{flex-direction:column;width:100%;} .sol-sub img{height:180px;} .sol-sub p{font-size:18px;line-height:1.35;} }
-  @media(max-width:480px){ .solutions-main{height:300px;} .sol-arrow svg{width:72px;height:56px;} }
+  .svl-overview__inner { display:grid; grid-template-columns:minmax(0,386px) minmax(0,1fr); gap:56px; align-items:start; background:#fff; border:1px solid #353535; border-radius:30px; padding:40px; }
+  .svl-overview__list { display:flex; flex-direction:column; gap:36px; }
+  .svl-overview__list-item { appearance:none; background:transparent; border:0; width:100%; text-align:left; cursor:pointer; padding-bottom:24px; border-bottom:1px solid #353535; color:#585151; font-size:28px; font-weight:700; line-height:1.25; transition:color .2s ease-out, background .25s ease-out, padding .25s ease-out; }
+  .svl-overview__list-item:hover { color:var(--blue); }
+  .svl-overview__list-item--active,
+  .svl-overview__list-item--active:hover { padding:24px; border-radius:20px; border-bottom:0; background:var(--blue); color:#fff; }
+  .svl-overview__feature { position:relative; min-height:600px; border-radius:20px; overflow:hidden; background:#0c1b3d; display:flex; align-items:flex-end; padding:28px; }
+  .svl-overview__feature img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; transition:opacity .25s ease-out; }
+  .svl-overview__feature::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(9,130,197,.18) 0%, rgba(9,130,197,.88) 100%); }
+  .svl-overview__panel { position:relative; z-index:2; width:735px; max-width:100%; padding:28px; background:#fff; border-radius:10px; display:flex; flex-direction:column; gap:16px; align-items:flex-start; transition:opacity .25s ease-out, transform .25s ease-out; }
+  .svl-overview__panel.is-switching { opacity:0; transform:translateY(12px); }
+  .svl-overview__panel h3 { margin:0; color:#585151; font-size:24px; font-weight:600; line-height:1.25; }
+  .svl-overview__panel p { margin:0; color:#353535; font-size:18px; font-weight:400; line-height:1.55; }
+  @media(max-width:1200px){ .svl-overview__inner{ grid-template-columns:1fr; padding:24px; gap:32px; } .svl-overview__feature{ order:-1; } .svl-overview__list{ gap:24px; } }
+  @media(max-width:768px){ .svl-overview__feature{ min-height:480px; padding:16px; } .svl-overview__list-item{ font-size:22px; } .svl-overview__panel{ padding:20px; } }
 
   /* ── Figma-style Testimonials ───────────────────────────────── */
   .figma-testimonial { padding:80px var(--px); background:linear-gradient(91deg,rgba(241,244,249,.5) 0%,rgba(173,217,243,.5) 15%,rgba(160,182,229,.5) 33%,rgba(8,173,252,.2) 49%,rgba(160,182,229,.5) 68%,rgba(173,217,243,.5) 83%,rgba(245,248,253,.5) 100%); }
@@ -128,7 +121,7 @@
 
   @media(max-width:768px){
     .svcs-hero__content { gap:20px; }
-    .services-section__title { margin-bottom:24px; }
+    .svl-overview__title { margin-bottom:24px; }
   }
 
   @media(max-width:768px){
@@ -158,52 +151,56 @@
     </div>
   </section>
 
-  <!-- ======== SERVICES WE OFFER (hero + thumbnail slider) ======== -->
-  <section class="services-section animate-fade-up" aria-labelledby="svc-listing-h">
-    <h2 class="section-title services-section__title" id="svc-listing-h">Services We Offer</h2>
-    <div class="solutions-main">
-      <picture>
-        <source id="svc-hero-source" srcset="/images/unique/services-index-service-1.webp" type="image/webp">
-        <img id="svc-hero-img" src="/images/unique/services-index-service-1.jpg" alt="Network Consultancy" width="1440" height="600" loading="lazy">
-      </picture>
-      <div class="solutions-main__overlay"></div>
-      <div class="solutions-infobox">
-        <h3 id="svc-hero-title">Network Consultancy</h3>
-        <p id="svc-hero-desc">We design and deploy reliable infrastructure for sustainable enterprise growth. Our IT network consulting services assess, develop, and secure your business environment to prevent data breaches and costly downtime.</p>
-        <a id="svc-hero-cta" href="/services/network-consultancy.html" class="btn-blue-lg hover-btn">Get To Know More</a>
+  <!-- ======== SERVICES WE OFFER (bordered tab overview) ======== -->
+  <section class="svl-overview animate-fade-up" aria-labelledby="svc-listing-h">
+    <h2 class="section-title svl-overview__title" id="svc-listing-h">Services We Offer</h2>
+    <div class="svl-overview__inner">
+      <div class="svl-overview__list" role="tablist" aria-label="Services We Offer">
+        <button type="button" role="tab" aria-selected="true" class="svl-overview__list-item svl-overview__list-item--active"
+          data-title="Network Consultancy"
+          data-copy="We design and deploy reliable infrastructure for sustainable enterprise growth. Our IT network consulting services assess, develop, and secure your business environment to prevent data breaches and costly downtime."
+          data-webp="/images/unique/services-index-service-1.webp"
+          data-img="/images/unique/services-index-service-1.jpg"
+          data-alt="Network Consultancy"
+          data-href="/services/network-consultancy.html">Network Consultancy</button>
+        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
+          data-title="Network Advisory"
+          data-copy="Strategic guidance on network architecture, technology selection, and roadmaps aligned to your business goals — so every investment moves you forward."
+          data-webp="/images/unique/services-index-feature-2.webp"
+          data-img="/images/unique/services-index-feature-2.jpg"
+          data-alt="Network Advisory"
+          data-href="/services/network-design-deployment.html">Network Advisory</button>
+        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
+          data-title="Network Assistance"
+          data-copy="Responsive, hands-on support and troubleshooting that keeps your network secure and performing at its best, whenever you need us."
+          data-webp="/images/unique/services-index-service-3.webp"
+          data-img="/images/unique/services-index-service-3.jpg"
+          data-alt="Network Assistance"
+          data-href="/services/network-support.html">Network Assistance</button>
+        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
+          data-title="Design &amp; Implementation of Networks"
+          data-copy="End-to-end design and deployment of resilient, scalable network infrastructure tailored to your environment and future growth."
+          data-webp="/images/unique/services-index-service-2.webp"
+          data-img="/images/unique/services-index-service-2.jpg"
+          data-alt="Design and Implementation of Networks"
+          data-href="/services/network-installations.html">Design and Implementation of Networks</button>
       </div>
-    </div>
-    <div class="solutions-bottom">
-      <div class="solutions-nav">
-        <div class="solutions-arrows">
-          <button class="sol-arrow" id="svc-prev" aria-label="Previous">
-            <svg width="97" height="76" viewBox="0 0 60 47" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="47" rx="6.18557" fill="#EBEBEB"/><path d="M20.4116 16.2271L11.1333 25.5054L20.4116 34.7838M11.1333 25.5054H48.8652" stroke="black" stroke-width="3.09278" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="sol-arrow" id="svc-next" aria-label="Next">
-            <svg width="97" height="76" viewBox="0 0 65 51" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="65" height="50.9278" rx="6.70103" fill="#EBEBEB"/><path d="M42.887 15.4124L52.939 25.4639L42.887 35.5154M52.939 25.4639H12.062" stroke="black" stroke-width="3.35052" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="solutions-progress"><div class="solutions-progress-fill" id="svc-fill"></div></div>
-      </div>
-      <div class="solutions-sub-cards" id="svc-thumbs">
-        <div class="sol-sub">
-          <picture><source srcset="/images/unique/services-index-feature-2.webp" type="image/webp"><img src="/images/unique/services-index-feature-2.jpg" alt="Network Advisory" loading="lazy"></picture>
-          <p>Network Advisory</p>
-        </div>
-        <div class="sol-sub">
-          <picture><source srcset="/images/unique/services-index-service-3.webp" type="image/webp"><img src="/images/unique/services-index-service-3.jpg" alt="Network Assistance" loading="lazy"></picture>
-          <p>Network Assistance</p>
-        </div>
-        <div class="sol-sub">
-          <picture><source srcset="/images/unique/services-index-service-2.webp" type="image/webp"><img src="/images/unique/services-index-service-2.jpg" alt="Design and Implementation of Networks" loading="lazy"></picture>
-          <p>Design and Implementation of Networks</p>
+      <div class="svl-overview__feature">
+        <picture>
+          <source id="svl-feature-source" srcset="/images/unique/services-index-service-1.webp" type="image/webp">
+          <img id="svl-feature-img" src="/images/unique/services-index-service-1.jpg" alt="Network Consultancy" width="1440" height="600" loading="lazy">
+        </picture>
+        <div class="svl-overview__panel" role="tabpanel">
+          <h3 id="svl-overview-title">Network Consultancy</h3>
+          <p id="svl-overview-copy">We design and deploy reliable infrastructure for sustainable enterprise growth. Our IT network consulting services assess, develop, and secure your business environment to prevent data breaches and costly downtime.</p>
+          <a id="svl-overview-cta" href="/services/network-consultancy.html" class="btn-blue-lg hover-btn">Get To Know More</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ======== TESTIMONIALS ======== -->
-  <div data-cms="testimonials"></div>
+  <div data-cms="testimonials" data-title="What our client says"></div>
 
   <!-- ======== CTA BAND ======== -->
   <section class="svc-cta-band" aria-label="Network support CTA">
@@ -251,62 +248,43 @@
 
 
   <script>
-  /* Services We Offer — hero + thumbnail promote slider (matches Home/About) */
-  (function () {
+  /* Services We Offer — bordered tab overview (matches solutions family component) */
+  (function svlOverviewTabs() {
     'use strict';
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var slides = [
-      { srcset:'/images/unique/services-index-service-1.webp', src:'/images/unique/services-index-service-1.jpg', alt:'Network Consultancy',        title:'Network Consultancy',        desc:'We design and deploy reliable infrastructure for sustainable enterprise growth. Our IT network consulting services assess, develop, and secure your business environment to prevent data breaches and costly downtime.', ctaHref:'/services/network-consultancy.html',       label:'Network Consultancy' },
-      { srcset:'/images/unique/services-index-feature-2.webp', src:'/images/unique/services-index-feature-2.jpg', alt:'Network Advisory',           title:'Network Advisory',           desc:'Strategic guidance on network architecture, technology selection, and roadmaps aligned to your business goals — so every investment moves you forward.',                                                                    ctaHref:'/services/network-design-deployment.html', label:'Network Advisory' },
-      { srcset:'/images/unique/services-index-service-3.webp', src:'/images/unique/services-index-service-3.jpg', alt:'Network Assistance',         title:'Network Assistance',         desc:'Responsive, hands-on support and troubleshooting that keeps your network secure and performing at its best, whenever you need us.',                                                                                        ctaHref:'/services/network-support.html',           label:'Network Assistance' },
-      { srcset:'/images/unique/services-index-service-2.webp', src:'/images/unique/services-index-service-2.jpg', alt:'Design and Implementation of Networks', title:'Design & Implementation of Networks', desc:'End-to-end design and deployment of resilient, scalable network infrastructure tailored to your environment and future growth.',                                                        ctaHref:'/services/network-installations.html',     label:'Design and Implementation of Networks' }
-    ];
-    var total = slides.length, idx = 0, busy = false;
-    var section = document.querySelector('.services-section');
-    if (!section) return;
-    var heroSource = section.querySelector('.solutions-main source');
-    var heroImg    = section.querySelector('.solutions-main img');
-    var heroH3     = section.querySelector('.solutions-infobox h3');
-    var heroP      = section.querySelector('.solutions-infobox p');
-    var heroCta    = document.getElementById('svc-hero-cta');
-    var thumbs     = Array.prototype.slice.call(section.querySelectorAll('.sol-sub'));
-    var fill       = section.querySelector('.solutions-progress-fill');
-    var prevBtn    = document.getElementById('svc-prev');
-    var nextBtn    = document.getElementById('svc-next');
-    heroImg.style.transition = 'opacity .32s ease';
-    heroH3.style.transition  = 'opacity .28s ease';
-    heroP.style.transition   = 'opacity .28s ease';
-    function setThumb(el, slide) {
-      var src = el.querySelector('source'), img = el.querySelector('img'), lbl = el.querySelector('p');
-      if (src) src.srcset = slide.srcset;
-      img.src = slide.src; img.alt = slide.alt; lbl.textContent = slide.label;
-    }
-    function updateProgress() { fill.style.width = Math.round((idx / (total - 1)) * 100) + '%'; }
-    function goTo(n) {
-      if (busy) return; busy = true;
-      idx = ((n % total) + total) % total;
-      heroImg.style.opacity = heroH3.style.opacity = heroP.style.opacity = '0';
-      setTimeout(function () {
-        var s = slides[idx];
-        if (heroSource) heroSource.srcset = s.srcset;
-        heroImg.src = s.src; heroImg.alt = s.alt;
-        heroH3.textContent = s.title; heroP.textContent = s.desc;
-        if (heroCta) heroCta.href = s.ctaHref;
-        thumbs.forEach(function (t, i) { setThumb(t, slides[(idx + i + 1) % total]); });
-        updateProgress();
-        heroImg.style.opacity = heroH3.style.opacity = heroP.style.opacity = '1';
-        busy = false;
-      }, 300);
-    }
-    thumbs.forEach(function (thumb, i) {
-      thumb.addEventListener('click', function () { goTo(idx + i + 1); });
-      thumb.addEventListener('mouseenter', function () { var im=thumb.querySelector('img'); im.style.opacity='0.8'; im.style.transform='scale(1.03)'; });
-      thumb.addEventListener('mouseleave', function () { var im=thumb.querySelector('img'); im.style.opacity='1'; im.style.transform='scale(1)'; });
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.svl-overview__list-item'));
+    var panel = document.querySelector('.svl-overview__panel');
+    if (tabs.length === 0 || panel === null) return;
+    var title = document.getElementById('svl-overview-title');
+    var copy = document.getElementById('svl-overview-copy');
+    var cta = document.getElementById('svl-overview-cta');
+    var img = document.getElementById('svl-feature-img');
+    var source = document.getElementById('svl-feature-source');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        if (tab.classList.contains('svl-overview__list-item--active')) return;
+        tabs.forEach(function (t) {
+          t.classList.remove('svl-overview__list-item--active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('svl-overview__list-item--active');
+        tab.setAttribute('aria-selected', 'true');
+        panel.classList.add('is-switching');
+        if (img) img.style.opacity = '0';
+        setTimeout(function () {
+          title.textContent = tab.getAttribute('data-title');
+          copy.textContent = tab.getAttribute('data-copy');
+          if (cta) cta.href = tab.getAttribute('data-href');
+          if (source) source.srcset = tab.getAttribute('data-webp');
+          if (img) {
+            img.src = tab.getAttribute('data-img');
+            img.alt = tab.getAttribute('data-alt');
+            img.style.opacity = '1';
+          }
+          panel.classList.remove('is-switching');
+        }, 250);
+      });
     });
-    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(idx - 1); });
-    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(idx + 1); });
-    updateProgress();
-  }());
+  })();
   </script>
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>

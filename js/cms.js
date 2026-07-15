@@ -96,10 +96,12 @@
       ].join('\n');
     }).join('\n');
 
+    var testimonialsTitle = container.getAttribute('data-title') || 'Trusted by Families and Small Business';
+
     container.innerHTML = [
       '<section class="nd-trusted section-shell">',
       '  <div class="nd-trusted__head">',
-      '    <h2 class="nd-trusted__title">Trusted by Families and Small Business</h2>',
+      '    <h2 class="nd-trusted__title">' + escHtml(testimonialsTitle) + '</h2>',
       '    <div class="nd-trusted__controls">',
       '      <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial"><span aria-hidden="true">&#8249;</span></button>',
       '      <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial"><span aria-hidden="true">&#8250;</span></button>',
