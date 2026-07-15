@@ -1848,6 +1848,9 @@ body.industry-detail-page #main > #contact {
   margin-top: 4px;
 }
 @media (max-width: 1024px) {
+  /* Decorative-only industry arrows/progress (no slider JS) - hide on touch layouts */
+  .industry-arrows[aria-hidden="true"],
+  .industry-progress[aria-hidden="true"] { display: none; }
   .nd-faq { grid-template-columns: 1fr; padding: 32px 20px 28px; }
   .nd-faq__left, .nd-faq__right { min-width: 0; max-width: 100%; justify-self: stretch; }
   .nd-trusted__head { margin-bottom: 34px; }
