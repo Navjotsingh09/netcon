@@ -15,7 +15,13 @@
     .blog-detail {
       max-width: var(--section-w);
       margin: 0 auto;
-      padding: 0 var(--px) 0;
+      padding: 20px var(--px) 0;
+    }
+    main .nd-faq { margin-top: 100px; }
+    .nd-contact.section-shell { margin-top: 100px; }
+    @media (max-width: 768px) {
+      main .nd-faq { margin-top: 56px; }
+      .nd-contact.section-shell { margin-top: 56px; }
     }
     .blog-detail__frame {
       max-width: 1440px;
@@ -32,10 +38,19 @@
       align-items: start;
     }
     .blog-main__hero {
-      height: 653px;
       border-radius: 24px;
-      background: #a5a8b0;
+      overflow: hidden;
       margin-bottom: 50px;
+      min-height: 653px;
+      background: #a5a8b0;
+    }
+    .blog-main__hero picture,
+    .blog-main__hero img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 653px;
+      object-fit: cover;
     }
     .blog-main__meta {
       font-family: 'Google Sans Flex', sans-serif;
@@ -136,6 +151,7 @@
       align-items: center;
       min-height: 44px;
       gap: 10px;
+      text-transform: uppercase;
     }
     .cat-list a.active {
       color: var(--navy);
@@ -171,8 +187,10 @@
       .blog-detail__grid {
         grid-template-columns: 1fr 360px;
       }
-      .blog-main__hero {
-        height: 480px;
+      .blog-main__hero,
+      .blog-main__hero picture,
+      .blog-main__hero img {
+        min-height: 480px;
       }
     }
     @media (max-width: 1200px) {
@@ -186,8 +204,10 @@
         grid-template-columns: 1fr;
         gap: 24px;
       }
-      .blog-main__hero {
-        height: 340px;
+      .blog-main__hero,
+      .blog-main__hero picture,
+      .blog-main__hero img {
+        min-height: 340px;
         border-radius: 16px;
       }
       .blog-main h1 {
@@ -204,8 +224,10 @@
       }
     }
     @media (max-width: 768px) {
-      .blog-main__hero {
-        height: 220px;
+      .blog-main__hero,
+      .blog-main__hero picture,
+      .blog-main__hero img {
+        min-height: 220px;
       }
       .blog-main__meta,
       .blog-main p {
