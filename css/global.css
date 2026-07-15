@@ -1882,7 +1882,7 @@ body.industry-detail-page #main > #contact {
   .nd-contact__surface { padding: 32px 18px 24px; }
   .nd-contact__title { font-size: 34px; line-height: 1.08; }
   .nd-contact__subtitle { font-size: 16px; line-height: 28px; }
-  .nd-contact__tiles { grid-template-columns: 1fr; }
+  .nd-contact__tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 16px; }
   .nd-contact__tile { min-height: 0; }
   .nd-contact__form { padding: 20px 16px; }
   .nd-contact__row--split { grid-template-columns: 1fr; }
