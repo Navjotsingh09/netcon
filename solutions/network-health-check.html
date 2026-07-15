@@ -106,7 +106,7 @@
       max-width: var(--max-w);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, 822px) minmax(0, 386px);
+      grid-template-columns: minmax(0, 386px) minmax(0, 822px);
       gap: 56px;
       align-items: start;
     }
@@ -411,6 +411,10 @@
         justify-self: start;
       }
 
+      .nhc-overview__feature {
+        order: -1;
+      }
+
       .nhc-overview__list {
         gap: 24px;
       }
@@ -618,6 +622,14 @@
 
     <section class="nhc-overview" aria-labelledby="nhc-overview-title">
       <div class="nhc-overview__inner">
+        <div class="nhc-overview__list animate-fade-up">
+          <div class="nhc-overview__list-item nhc-overview__list-item--active">Network Health Check</div>
+          <div class="nhc-overview__list-item">Root Cause Analysis (RCA)</div>
+          <div class="nhc-overview__list-item">Bandwidth &amp; Traffic Review</div>
+          <div class="nhc-overview__list-item">Hardware &amp; Equipment Audit</div>
+          <div class="nhc-overview__list-item">Security Boundary Scan</div>
+          <div class="nhc-overview__list-item">Performance Recommendations by Testing Experts</div>
+        </div>
         <div class="nhc-overview__feature animate-fade-up">
           <picture>
             <source srcset="/images/pages/unique/solutions-network-health-check-nc-hero-person.webp" type="image/webp">
@@ -627,14 +639,6 @@
             <h2 id="nhc-overview-title">Network Health Check</h2>
             <p>A regular diagnostic scan across your entire IT infrastructure to find hidden system issues. This evaluation helps in finding and fixing performance flaws before they can slow down your daily business operations.</p>
           </div>
-        </div>
-        <div class="nhc-overview__list animate-fade-up">
-          <div class="nhc-overview__list-item nhc-overview__list-item--active">Network Health Check</div>
-          <div class="nhc-overview__list-item">Root Cause Analysis (RCA)</div>
-          <div class="nhc-overview__list-item">Bandwidth &amp; Traffic Review</div>
-          <div class="nhc-overview__list-item">Hardware &amp; Equipment Audit</div>
-          <div class="nhc-overview__list-item">Security Boundary Scan</div>
-          <div class="nhc-overview__list-item">Performance Recommendations by Testing Experts</div>
         </div>
       </div>
     </section>

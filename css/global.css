@@ -1701,7 +1701,7 @@ body.industry-detail-page #main > #contact {
 .nd-contact__tile-copy h3 {
   margin: 0;
   color: #141a28;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Google Sans Flex', sans-serif;
   font-size: 16px;
   line-height: 28px;
   font-weight: 500;
@@ -1709,7 +1709,7 @@ body.industry-detail-page #main > #contact {
 .nd-contact__tile-copy p {
   margin: 0;
   color: #0a0a0a;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Google Sans Flex', sans-serif;
   font-size: 14px;
   line-height: 24px;
   font-weight: 400;
@@ -1748,7 +1748,7 @@ body.industry-detail-page #main > #contact {
 .nd-contact__required,
 .nd-contact__agree,
 .nd-contact__agree-text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Google Sans Flex', sans-serif;
   font-size: 14px;
   line-height: 24px;
 }
@@ -1768,7 +1768,7 @@ body.industry-detail-page #main > #contact {
   border: 1px solid #d7dce2;
   background: #fff;
   color: #353535;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Google Sans Flex', sans-serif;
   font-size: 14px;
   line-height: 24px;
   font-weight: 400;
@@ -1838,7 +1838,7 @@ body.industry-detail-page #main > #contact {
   border-radius: 5px;
   background: #0982c5;
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Google Sans Flex', sans-serif;
   font-size: 16px;
   line-height: 28px;
   font-weight: 500;
