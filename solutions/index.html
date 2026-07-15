@@ -534,12 +534,31 @@
       .msol-cap {
         display: block; text-decoration: none; border-radius: 12px;
         background: linear-gradient(180deg, #b9c2c8 0%, #4aa3d4 45%, #0982c5 100%);
-        padding: 40px 20px 30px; margin-bottom: 20px; color: #fff;
+        padding: 26px 20px 28px; margin-bottom: 20px; color: #fff;
         transition: transform 0.2s ease;
       }
       .msol-cap:active { transform: scale(0.985); }
-      .msol-cap h3 { font-size: 19px; font-weight: 700; line-height: 1.3; margin: 0 0 14px; color: #fff; max-width: 24ch; }
-      .msol-cap p { font-size: 15.5px; line-height: 1.55; color: rgba(255,255,255,.95); margin: 0; }
+      .msol-cap__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 0; transition: margin-bottom 0.3s ease; }
+      .msol-cap h3 { font-size: 19px; font-weight: 700; line-height: 1.3; margin: 0; color: #fff; max-width: 24ch; }
+      .msol-cap__arrow {
+        font-size: 30px; line-height: 1; color: #fff; flex-shrink: 0;
+        display: inline-block; opacity: 0; transform: translate(-4px, 4px);
+        transition: opacity 0.25s ease, transform 0.3s ease;
+      }
+      .msol-cap p {
+        font-size: 15.5px; line-height: 1.55; color: rgba(255,255,255,.95); margin: 0;
+        max-height: 0; opacity: 0; overflow: hidden;
+        transition: max-height 0.4s ease, opacity 0.3s ease 0.05s;
+      }
+      .msol-cap:hover .msol-cap__top,
+      .msol-cap:focus-visible .msol-cap__top,
+      .msol-cap.is-open .msol-cap__top { margin-bottom: 14px; }
+      .msol-cap:hover .msol-cap__arrow,
+      .msol-cap:focus-visible .msol-cap__arrow,
+      .msol-cap.is-open .msol-cap__arrow { opacity: 1; transform: translate(0, 0) rotate(45deg); }
+      .msol-cap:hover p,
+      .msol-cap:focus-visible p,
+      .msol-cap.is-open p { max-height: 320px; opacity: 1; }
 
       /* FAQ: clean white accordion per design */
       .nd-faq { background: #fff; border: 0; padding: 6px 22px 10px; }
@@ -576,7 +595,7 @@
         <a href="/contact.html" class="msol-hero__btn" data-source-cta="solutions_landing_book_health_check">Book a Network Health Check</a>
       </section>
 
-      <section class="msol-sec">
+      <section class="msol-sec animate-fade-up">
         <h2 class="msol-h">What You'll Get From Us</h2>
         <p class="msol-p">Every business needs a strong network to stay connected, secure, and efficient. We deliver practical assessments that help you understand where your network can be improved and how to build a more dependable foundation for growth.</p>
         <a class="msol-tile" href="/solutions/network-health-check.html">
@@ -597,19 +616,19 @@
         </a>
       </section>
 
-      <section class="msol-sec">
+      <section class="msol-sec animate-fade-up">
         <h2 class="msol-h">Our Commitment to You</h2>
         <p class="msol-p">Supporting your every step with clarity, expertise, and confidence.</p>
-        <a class="msol-cap" href="/solutions/network-health-check.html"><h3>Comprehensive Infrastructure Review</h3><p>We assess your existing network infrastructure to identify areas for improvement, increase reliability, and ensure your systems can support your business as it grows.</p></a>
-        <a class="msol-cap" href="/solutions/network-health-check.html"><h3>Performance Assessment</h3><p>Traffic flows are analysed to determine whether routing, throughput, and prioritisation are creating avoidable bottlenecks across the network.</p></a>
-        <a class="msol-cap" href="/solutions/cyber-security-review.html"><h3>Security Assessment</h3><p>Security weaknesses at the network edge are reviewed to expose vulnerabilities before they become incidents or cause operational disruption.</p></a>
-        <a class="msol-cap" href="/solutions/network-health-check.html"><h3>Capacity Planning</h3><p>You receive practical recommendations that help your team know what to change first and why those improvements matter most.</p></a>
-        <a class="msol-cap" href="/solutions/network-health-check.html"><h3>Enhancing Network Reliability</h3><p>The final output provides clear, evidence-backed recommendations that help strengthen reliability and improve day-to-day system performance.</p></a>
-        <a class="msol-cap" href="/solutions/network-health-check.html"><h3>Network Device Review</h3><p>Routers, switches, and endpoint support hardware are checked to confirm they can sustain expected business load without degrading reliability.</p></a>
-        <a class="msol-cap" href="/solutions/cyber-security-review.html"><h3>Compliance and Best Practice Review</h3><p>Compliance-sensitive controls are reviewed to see where policy and practice may not align with requirements.</p></a>
-        <a class="msol-cap" href="/solutions/cyber-security-review.html"><h3>Wireless Network Assessment</h3><p>Our assessment highlights potential security risks and offers practical recommendations to help safeguard your systems, users, and business data.</p></a>
-        <a class="msol-cap" href="/solutions/ai-ready-infrastructure.html"><h3>Planning for Future Growth</h3><p>We evaluate whether your existing network and IT infrastructure are equipped to support modern AI tools and future technology demands, identifying any gaps that may require improvement.</p></a>
-        <a class="msol-cap" href="/solutions/network-health-check.html"><h3>Practical Recommendations</h3><p>The final output provides clear, evidence-backed recommendations that help strengthen reliability and improve day-to-day system performance.</p></a>
+        <a class="msol-cap" href="/solutions/network-health-check.html"><div class="msol-cap__top"><h3>Comprehensive Infrastructure Review</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>We assess your existing network infrastructure to identify areas for improvement, increase reliability, and ensure your systems can support your business as it grows.</p></a>
+        <a class="msol-cap" href="/solutions/network-health-check.html"><div class="msol-cap__top"><h3>Performance Assessment</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>Traffic flows are analysed to determine whether routing, throughput, and prioritisation are creating avoidable bottlenecks across the network.</p></a>
+        <a class="msol-cap" href="/solutions/cyber-security-review.html"><div class="msol-cap__top"><h3>Security Assessment</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>Security weaknesses at the network edge are reviewed to expose vulnerabilities before they become incidents or cause operational disruption.</p></a>
+        <a class="msol-cap" href="/solutions/network-health-check.html"><div class="msol-cap__top"><h3>Capacity Planning</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>You receive practical recommendations that help your team know what to change first and why those improvements matter most.</p></a>
+        <a class="msol-cap" href="/solutions/network-health-check.html"><div class="msol-cap__top"><h3>Enhancing Network Reliability</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>The final output provides clear, evidence-backed recommendations that help strengthen reliability and improve day-to-day system performance.</p></a>
+        <a class="msol-cap" href="/solutions/network-health-check.html"><div class="msol-cap__top"><h3>Network Device Review</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>Routers, switches, and endpoint support hardware are checked to confirm they can sustain expected business load without degrading reliability.</p></a>
+        <a class="msol-cap" href="/solutions/cyber-security-review.html"><div class="msol-cap__top"><h3>Compliance and Best Practice Review</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>Compliance-sensitive controls are reviewed to see where policy and practice may not align with requirements.</p></a>
+        <a class="msol-cap" href="/solutions/cyber-security-review.html"><div class="msol-cap__top"><h3>Wireless Network Assessment</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>Our assessment highlights potential security risks and offers practical recommendations to help safeguard your systems, users, and business data.</p></a>
+        <a class="msol-cap" href="/solutions/ai-ready-infrastructure.html"><div class="msol-cap__top"><h3>Planning for Future Growth</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>We evaluate whether your existing network and IT infrastructure are equipped to support modern AI tools and future technology demands, identifying any gaps that may require improvement.</p></a>
+        <a class="msol-cap" href="/solutions/network-health-check.html"><div class="msol-cap__top"><h3>Practical Recommendations</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>The final output provides clear, evidence-backed recommendations that help strengthen reliability and improve day-to-day system performance.</p></a>
       </section>
 
     </div>
@@ -1042,5 +1061,40 @@
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
+
+  <script>
+    (function msolUniform() {
+      var mq = window.matchMedia('(hover: none)');
+
+      var vp = document.querySelector('.nd-trusted__viewport');
+      var dots = Array.prototype.slice.call(document.querySelectorAll('.nd-trusted__dots .nd-trusted__dot'));
+      if (vp && dots.length > 0) {
+        var ticking = false;
+        function sync() {
+          ticking = false;
+          var card = vp.querySelector('.nd-t-card');
+          if (card === null) return;
+          var step = card.offsetWidth + 18;
+          var idx = Math.round(vp.scrollLeft / step);
+          idx = Math.max(0, Math.min(dots.length - 1, idx % dots.length));
+          dots.forEach(function (d, i) { d.classList.toggle('nd-trusted__dot--active', i === idx); });
+        }
+        vp.addEventListener('scroll', function () {
+          if (ticking === false) { ticking = true; requestAnimationFrame(sync); }
+        }, { passive: true });
+      }
+
+      if (mq.matches === false) return;
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.msol-cap'));
+      cards.forEach(function (card) {
+        card.addEventListener('click', function (e) {
+          if (card.classList.contains('is-open')) return;
+          e.preventDefault();
+          cards.forEach(function (c) { c.classList.remove('is-open'); });
+          card.classList.add('is-open');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
