@@ -21,73 +21,23 @@
     .blog-page {
       max-width: var(--section-w);
       margin: 0 auto;
-      padding: 20px var(--px) 0;
+      padding: 100px var(--px) 0;
     }
     .blog-page__inner {
       max-width: 1440px;
       margin: 0 auto;
     }
-    .blog-hero {
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 1440 / 620;
-      max-height: 620px;
-      margin-bottom: 100px;
-    }
-    .blog-hero picture {
-      display: block;
-      height: 100%;
-    }
-    .blog-hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .blog-hero__overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,.25) 34%, rgba(0,0,0,.04) 65%);
-    }
-    .blog-hero__copy {
-      position: absolute;
-      top: 56px;
-      left: 70px;
-      max-width: 560px;
-      color: #fff;
-      z-index: 2;
-    }
-    .blog-hero__copy h1 {
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 56px;
-      font-weight: 700;
-      line-height: 1.04;
-      margin-bottom: 16px;
-    }
-    .blog-hero__copy p {
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 16px;
-      line-height: 1.45;
-      color: rgba(255,255,255,.9);
-      margin-bottom: 20px;
-      max-width: 418px;
-    }
-    .blog-hero__cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 190px;
-      height: 44px;
-      border-radius: 999px;
-      background: var(--blue);
-      color: #fff;
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 0 18px;
-    }
+    /* ===== Hero — matched to services/solutions family ===== */
+    .nc-hero-wrap { padding: 0; }
+    .nc-hero { max-width: var(--section-w); margin: 0 auto; background: #13203f; padding: 132px var(--px) 54px; }
+    .nc-hero__content { max-width: var(--max-w); margin: 0 auto; width: 100%; position: relative; z-index: 2; padding: 0; }
+    .nc-hero__title { font-family: 'Google Sans Flex', sans-serif; font-size: 64px; font-weight: 600; color: #fff; line-height: 1.08; margin: 0 0 20px; max-width: 804px; }
+    .nc-hero__sub { font-family: 'Google Sans Flex', sans-serif; font-size: 20px; color: #fff; line-height: 1.35; margin: 0 0 20px; max-width: 640px; }
+    .page-hero__cta-btn { display: inline-flex; align-items: center; margin-top: 34px; background: #fff; color: #353535; border: 0; border-radius: 2px; font-family: 'Google Sans Flex', sans-serif; font-size: 20px; font-weight: 600; min-width: 170px; width: auto; min-height: 50px; padding: 0 12px; justify-content: center; white-space: nowrap; line-height: normal; transition: background .2s ease; }
+    .page-hero__cta-btn:hover { background: #f0f0f0; transform: none; }
+    @media (max-width: 1200px) { .nc-hero__title { font-size: 46px; } }
+    @media (max-width: 768px) { .nc-hero { padding: 108px var(--px) 44px; } .nc-hero__title { font-size: 42px; } .nc-hero__sub { font-size: 17px; } .page-hero__cta-btn { margin-top: 20px; font-size: 14px; min-height: 44px; min-width: 0; padding: 0 24px; } }
+    @media (max-width: 480px) { .nc-hero__title { font-size: 28px; } }
 
     .blog-intro,
     .blog-latest {
@@ -261,75 +211,17 @@
       background: #0771a5;
     }
 
-    .blog-consult {
-      max-width: var(--section-w);
-      margin: 0 auto 100px;
-      background: #0782c6;
-      padding: 44px var(--px);
-      position: relative;
-      overflow: hidden;
-    }
-    .blog-consult__inner {
-      max-width: 1440px;
-      margin: 0 auto;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 220px;
-    }
-    .blog-consult__pill {
-      position: absolute;
-      min-width: 96px;
-      height: 24px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.35);
-      color: #e8f6ff;
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 14px;
-      text-transform: uppercase;
-      letter-spacing: .03em;
-    }
-    .blog-consult__pill--l1 { left: 18px; top: 22px; }
-    .blog-consult__pill--l2 { left: 8px; top: 96px; }
-    .blog-consult__pill--l3 { left: 26px; bottom: 18px; }
-    .blog-consult__pill--r1 { right: 18px; top: 22px; }
-    .blog-consult__pill--r2 { right: 8px; top: 96px; }
-    .blog-consult__pill--r3 { right: 26px; bottom: 18px; }
-    .blog-consult__card {
-      width: min(620px, 100%);
-      background: #fff;
-      border-radius: 10px;
-      padding: 30px 38px;
-      text-align: center;
-      box-shadow: 0 10px 24px rgba(0,0,0,.1);
-    }
-    .blog-consult__card h3 {
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 34px;
-      color: #1f1f1f;
-      margin-bottom: 12px;
-    }
-    .blog-consult__card p {
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 14px;
-      line-height: 1.45;
-      color: #333;
-      margin-bottom: 16px;
-    }
-    .blog-consult__card .btn-dark {
-      min-height: 34px;
-      padding: 8px 20px;
-      border-radius: 6px;
-      font-size: 13px;
-      font-family: 'Google Sans Flex', sans-serif;
-      font-weight: 600;
-    }
+    /* ===== CTA band (shared with services family; global.js animates chips) ===== */
+    .svc-cta-band { background: var(--blue); padding: 80px 0; position: relative; overflow: hidden; margin: 0 auto 100px; max-width: var(--section-w); }
+    .svc-cta-band__tags { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 24px; padding: 0 var(--px); pointer-events: none; }
+    .svc-cta-band__row { display: flex; gap: 20px; flex-wrap: wrap; }
+    .svc-cta-band__row span { background: #fff; color: var(--blue); opacity: .5; font-family: 'Google Sans Flex', sans-serif; font-size: 18px; font-weight: 500; padding: 12px 32px; border-radius: 20px; white-space: nowrap; }
+    .svc-cta-band__card { position: relative; z-index: 2; background: #fff; border-radius: 20px; padding: 46px 84px; max-width: 660px; margin: 0 auto; text-align: center; }
+    .svc-cta-band__card h3 { font-family: 'Google Sans Flex', sans-serif; font-size: 34px; font-weight: 600; color: #1f1f1f; margin-bottom: 12px; }
+    .svc-cta-band__text { font-family: 'Google Sans Flex', sans-serif; font-size: 20px; font-weight: 500; color: var(--sub); line-height: 1.55; margin-bottom: 32px; }
+    .svc-cta-band__btn { display: inline-flex; align-items: center; justify-content: center; background: var(--navy); color: #fff; font-family: 'Google Sans Flex', sans-serif; font-size: 20px; font-weight: 500; padding: 16px 50px; border-radius: 20px; transition: background .2s; }
+    .svc-cta-band__btn:hover { background: #0f1c5a; }
+    @media (max-width: 768px) { .svc-cta-band__card { padding: 32px 28px; margin: 0 var(--px); } .svc-cta-band__text { font-size: 18px; } .svc-cta-band__card h3 { font-size: 24px; } .svc-cta-band__row span { white-space: normal; text-align: center; padding: 10px 20px; font-size: 16px; } }
 
     .faq-divider--hidden {
       display: none;
@@ -342,7 +234,6 @@
     }
 
     @media (max-width: 1600px) {
-      .blog-hero__copy h1,
       .blog-intro h2,
       .blog-latest h2 {
         font-size: 42px;
@@ -356,21 +247,8 @@
     }
     @media (max-width: 1200px) {
       .blog-page {
-        padding-top: 18px;
+        padding-top: 56px;
       }
-      .blog-hero {
-        max-height: none;
-        margin-bottom: 56px;
-      }
-      .blog-hero__copy {
-        top: 28px;
-        left: 34px;
-        max-width: 420px;
-      }
-      .blog-hero__copy h1 {
-        font-size: 42px;
-      }
-      .blog-hero__copy p,
       .blog-intro p,
       .blog-latest p,
       .blog-item__content p {
@@ -394,36 +272,8 @@
         width: 100%;
         height: 220px;
       }
-      .blog-consult {
-        padding: 34px var(--px);
-      }
-      .blog-consult__pill {
-        display: none;
-      }
-      .blog-consult__card {
-        padding: 24px;
-      }
     }
     @media (max-width: 768px) {
-      .blog-hero {
-        aspect-ratio: 16 / 8;
-      }
-      .blog-hero__copy {
-        top: 14px;
-        left: 20px;
-        right: 20px;
-      }
-      .blog-hero__copy h1 {
-        font-size: 28px;
-      }
-      .blog-hero__copy p {
-        font-size: 14px;
-      }
-      .blog-hero__cta {
-        min-height: 44px;
-        font-size: 14px;
-        padding: 10px 18px;
-      }
       .blog-intro,
       .blog-latest {
         margin-bottom: 56px;
@@ -451,14 +301,8 @@
       .blog-item__link {
         font-size: 15px;
       }
-      .blog-consult {
+      .svc-cta-band {
         margin-bottom: 56px;
-      }
-      .blog-consult__card h3 {
-        font-size: 24px;
-      }
-      .blog-consult__card p {
-        font-size: 13px;
       }
     }
   </style>
@@ -469,20 +313,18 @@
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
   <main id="main">
+    <section class="nc-hero-wrap" aria-label="Page hero">
+      <div class="nc-hero">
+        <div class="nc-hero__content">
+          <h1 class="nc-hero__title" id="blogs-heading">Networking &amp; IT Articles for Businesses</h1>
+          <p class="nc-hero__sub">Stay up to date with practical blogs and market updates on networking, cybersecurity, cloud solutions, and managed IT services.</p>
+          <a href="/contact.html" class="page-hero__cta-btn">Get a free consultation</a>
+        </div>
+      </div>
+    </section>
+
     <section class="blog-page" aria-labelledby="blogs-heading">
       <div class="blog-page__inner">
-        <article class="blog-hero animate-fade-up" aria-label="Blog hero">
-          <picture>
-            <source srcset="/images/pages/unique/resources-blog-index-professional.jpg" type="image/jpeg">
-            <img src="/images/pages/unique/resources-blog-index-professional.jpg" alt="Networking and IT articles" loading="eager" width="1440" height="420">
-          </picture>
-          <div class="blog-hero__overlay" aria-hidden="true"></div>
-          <div class="blog-hero__copy">
-            <h1 id="blogs-heading">Networking &amp; IT Articles for Businesses</h1>
-            <p>Stay up to date with practical blogs and market updates on networking, cybersecurity, cloud solutions, and managed IT services.</p>
-            <a class="blog-hero__cta" href="/contact.html">Get a free consultation</a>
-          </div>
-        </article>
 
         <section class="blog-intro animate-fade-up" aria-labelledby="decisions-heading">
           <h2 id="decisions-heading">Make Right Technology Decisions for a Better Tomorrow</h2>
@@ -573,20 +415,19 @@
       </div>
     </section>
 
-    <section class="blog-consult" aria-label="Need advice section">
-      <div class="blog-consult__inner">
-        <span class="blog-consult__pill blog-consult__pill--l1">Servers</span>
-        <span class="blog-consult__pill blog-consult__pill--l2">Switches</span>
-        <span class="blog-consult__pill blog-consult__pill--l3">Wireless</span>
-        <span class="blog-consult__pill blog-consult__pill--r1">Cloud</span>
-        <span class="blog-consult__pill blog-consult__pill--r2">VPN</span>
-        <span class="blog-consult__pill blog-consult__pill--r3">Security</span>
-
-        <div class="blog-consult__card animate-fade-up">
-          <h3>Need Advice on Your Network?</h3>
-          <p>Whether you are troubleshooting an existing environment, planning a new deployment or reviewing your security strategy, our experienced consultants are ready to help with practical recommendations tailored to your business.</p>
-          <a class="btn-dark" href="/contact.html">Book a Free Consultation</a>
+    <section class="svc-cta-band" aria-label="Need advice section">
+      <div class="svc-cta-band__tags" aria-hidden="true">
+        <div class="svc-cta-band__row">
+          <span>Servers</span><span>Switches</span><span>Wireless</span>
         </div>
+        <div class="svc-cta-band__row">
+          <span>Cloud</span><span>VPN</span><span>Security</span>
+        </div>
+      </div>
+      <div class="svc-cta-band__card animate-fade-up">
+        <h3>Need Advice on Your Network?</h3>
+        <p class="svc-cta-band__text">Whether you are troubleshooting an existing environment, planning a new deployment or reviewing your security strategy, our experienced consultants are ready to help with practical recommendations tailored to your business.</p>
+        <a class="svc-cta-band__btn" href="/contact.html">Book a Free Consultation</a>
       </div>
     </section>
 
