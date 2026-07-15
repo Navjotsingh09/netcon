@@ -34,7 +34,7 @@
       max-width: var(--max-w);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 735px;
+      grid-template-columns: minmax(0, 1fr);
       gap: 24px;
       align-items: end;
     }
@@ -321,14 +321,63 @@
       line-height: 1.35;
     }
 
-    .aif-risk,
+    .aif-risk {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 50px var(--px) 0;
+    }
+
+    .aif-risk__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      background: #0982c5;
+      border-radius: 30px;
+      padding: 64px 80px 80px;
+    }
+
+    .aif-risk__inner h2 {
+      margin: 0 0 64px;
+      color: #fff;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
+
+    .aif-risk__grid {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 96px;
+      align-items: center;
+    }
+
+    .aif-risk__media img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .aif-risk__copy p {
+      margin: 0 0 24px;
+      color: #fff;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .aif-risk__copy p:last-child {
+      margin-bottom: 0;
+    }
+
     .aif-why {
       max-width: var(--section-w);
       margin: 0 auto;
       padding: 50px var(--px) 0;
     }
 
-    .aif-risk__inner,
     .aif-why__inner {
       max-width: var(--max-w);
       margin: 0 auto;
@@ -338,7 +387,6 @@
       align-items: start;
     }
 
-    .aif-risk__copy h2,
     .aif-why__copy h2 {
       margin: 0 0 36px;
       color: #0982c5;
@@ -348,7 +396,6 @@
       line-height: 1.08;
     }
 
-    .aif-risk__copy p,
     .aif-why__copy p {
       margin: 0 0 18px;
       color: #585151;
@@ -358,7 +405,6 @@
       line-height: 1.35;
     }
 
-    .aif-risk__media img,
     .aif-why__media img {
       width: 100%;
       height: 517px;
@@ -419,9 +465,17 @@
       .aif-hero__inner,
       .aif-overview__inner,
       .aif-gains__inner,
-      .aif-risk__inner,
       .aif-why__inner {
         grid-template-columns: 1fr;
+      }
+
+      .aif-risk__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .aif-risk__inner {
+        padding: 40px 32px;
       }
 
       .aif-hero {
@@ -453,7 +507,7 @@
       .aif-hero__copy h1,
       .aif-overview__head h2,
       .aif-gains__intro h2,
-      .aif-risk__copy h2,
+      .aif-risk__inner h2,
       .aif-why__copy h2 {
         font-size: 36px;
       }
@@ -603,19 +657,19 @@
         <p class="maif-p">Our process evaluates how your current environment behaves under realistic pressure. We review connection speed, segmentation, hardware capability, storage retrieval, power reliability, and data protection.</p>
         <p class="maif-p">This gives you a clear picture of whether your foundations can support high-volume AI workloads without instability or performance loss.</p>
         <article class="maif-card"><h3>Bandwidth Capacity Testing</h3><p>Testing your internet and internal transfer speeds under pressure reveals whether large AI file operations will freeze or lag during real workloads.</p><span class="maif-card__count">1/5</span></article>
-        <article class="maif-card"><h3>Segmentation Stress Review</h3><p>We examine whether traffic can be isolated cleanly so important workloads are protected from competing demand across your network.</p><span class="maif-card__count">2/5</span></article>
-        <article class="maif-card"><h3>Hardware Readiness Assessment</h3><p>Routers, switches, and critical hardware are reviewed to confirm they can sustain increased AI-related throughput without degradation.</p><span class="maif-card__count">3/5</span></article>
-        <article class="maif-card"><h3>Storage and Retrieval Performance</h3><p>We test whether data can be accessed at the speed modern AI tools require without dragging application performance down.</p><span class="maif-card__count">4/5</span></article>
-        <article class="maif-card"><h3>Power and Protection Resilience</h3><p>Power reliability and firewall throughput are checked to make sure protection and uptime hold under sustained computational load.</p><span class="maif-card__count">5/5</span></article>
+        <article class="maif-card"><h3>Core Switch Evaluation</h3><p>Assessing your network switching infrastructure to ensure large volumes of data can be transferred reliably without impacting system performance.</p><span class="maif-card__count">2/5</span></article>
+        <article class="maif-card"><h3>Storage Latency Analysis</h3><p>Evaluating storage responsiveness to ensure business-critical applications operate smoothly and efficiently, even under heavy workloads.</p><span class="maif-card__count">3/5</span></article>
+        <article class="maif-card"><h3>Power Infrastructure Review</h3><p>Verifying that your power infrastructure can accommodate growing hardware demands without risking outages or operational disruptions.</p><span class="maif-card__count">4/5</span></article>
+        <article class="maif-card"><h3>Firewall Throughput Inspection</h3><p>Ensuring your firewall delivers strong threat protection without creating bottlenecks that slow business operations</p><span class="maif-card__count">5/5</span></article>
       </section>
 
       <section class="maif-sec animate-fade-up">
         <div class="maif-process">
           <h2>Business Impact of Ensuring AI-Ready Infrastructure</h2>
-          <img src="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg" alt="Business impact of AI-ready infrastructure" loading="lazy">
+          <img src="/images/pages/unique/solutions-ai-ready-infrastructure-managed-support.jpg" alt="Business impact of AI-ready infrastructure" loading="lazy">
           <p>Building an AI-ready infrastructure guarantees predictable operational costs and faster product delivery.</p>
-          <p>High-throughput networks transfer data more instantly to your applications without causing system lag or application timeouts.</p>
-          <p>This architecture stabilises your computing speed, protects client-facing server environments, and allows your enterprise to scale automated services safely without exponential cost increases.</p>
+          <p>High-throughput networks ensure data moves instantly to live applications without causing system lag or application timeouts.</p>
+          <p>This architecture stabilises your computing spend, protects client-facing service agreements, and allows your enterprise to scale automated services safely without exponential cost increases.</p>
         </div>
       </section>
 
@@ -636,16 +690,10 @@
           <p>Understand how your network is performing with a professional assessment that helps improve connectivity, strengthen resilience, and support future growth.</p>
           <a href="/contact.html" class="aif-hero__btn" data-source-cta="solution_hero_health_check">Book Health Check</a>
         </div>
-        <div class="aif-hero__art animate-fade-up">
-          <picture>
-            <source srcset="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.webp" type="image/webp">
-            <img src="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg" alt="AI-Ready Infrastructure review" width="735" height="332" loading="eager">
-          </picture>
-        </div>
       </div>
     </section>
 
-    <section class="aif-overview" aria-labelledby="aif-overview-title">
+    <section class="aif-overview" aria-labelledby="ai-pillars-h">
       <div class="aif-overview__head animate-fade-up">
         <h2 id="ai-pillars-h">Core Pillars of AI-Ready Infrastructure</h2>
         <p>The infrastructure that supports AI thrives on reliable connection speed and power. It requires bandwidth that can sustain heavy workloads, hardware that performs consistently, and protection that keeps data secure as systems evolve.</p>
@@ -658,15 +706,15 @@
             data-img="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg">Connection Speed (Bandwidth)</button>
           <button type="button" role="tab" aria-selected="false" class="aif-overview__list-item"
             data-title="Traffic Separation (Segmentation)"
-            data-copy="Segmentation keeps workloads isolated, reducing congestion and preventing less important traffic from slowing critical AI operations."
+            data-copy="A separate virtual network for AI applications ensures your primary business systems continue to operate reliably without disruption or resource contention."
             data-img="/images/pages/unique/solutions-ai-ready-infrastructure-technician.jpg">Traffic Separation (Segmentation)</button>
           <button type="button" role="tab" aria-selected="false" class="aif-overview__list-item"
             data-title="Hardware Capability (Routers &amp; Switches)"
-            data-copy="Routers and switches must be able to route large data volumes consistently without becoming the bottleneck under sustained load."
+            data-copy="Your core switches should be equipped with adequate uplink capacity to efficiently manage high volumes of network traffic and avoid performance bottlenecks."
             data-img="/images/pages/unique/solutions-ai-ready-infrastructure-servers.jpg">Hardware Capability (Routers &amp; Switches)</button>
           <button type="button" role="tab" aria-selected="false" class="aif-overview__list-item"
             data-title="File Retrieval Speed (Storage Access)"
-            data-copy="Fast retrieval allows models and automation tools to access the information they need without workflow interruptions or timeouts."
+            data-copy="Fast-performing storage systems with latency under 5ms ensure automated platforms can access and process large amounts of data without delays."
             data-img="/images/pages/unique/solutions-ai-ready-infrastructure-managed-support.jpg">File Retrieval Speed (Storage Access)</button>
           <button type="button" role="tab" aria-selected="false" class="aif-overview__list-item"
             data-title="Power Reliability (Electrical Capacity)"
@@ -674,7 +722,7 @@
             data-img="/images/pages/unique/solutions-ai-ready-infrastructure-professional.jpg">Power Reliability (Electrical Capacity)</button>
           <button type="button" role="tab" aria-selected="false" class="aif-overview__list-item"
             data-title="Data Protection (Firewall Throughput)"
-            data-copy="Security controls must protect high-volume traffic without choking performance or exposing sensitive information during AI operations."
+            data-copy="Effective security requires your firewall to continuously inspect all incoming data, ensuring confidential information remains protected at all times."
             data-img="/images/pages/unique/solutions-ai-ready-infrastructure-cyber-security.jpg">Data Protection (Firewall Throughput)</button>
         </div>
         <div class="aif-overview__feature animate-fade-up">
@@ -701,42 +749,41 @@
             <p>Testing your internet and internal transfer speeds under pressure reveals whether large AI file operations will freeze or lag during real workloads.</p>
           </article>
           <article class="aif-gains__card">
-            <h3>Segmentation Stress Review</h3>
+            <h3>Core Switch Evaluation</h3>
             <p class="aif-gains__count">2/5</p>
-            <p>We examine whether traffic can be isolated cleanly so important workloads are protected from competing demand across your network.</p>
+            <p>Assessing your network switching infrastructure to ensure large volumes of data can be transferred reliably without impacting system performance.</p>
           </article>
           <article class="aif-gains__card">
-            <h3>Hardware Readiness Assessment</h3>
+            <h3>Storage Latency Analysis</h3>
             <p class="aif-gains__count">3/5</p>
-            <p>Routers, switches, and critical hardware are reviewed to confirm they can sustain increased AI-related throughput without degradation.</p>
+            <p>Evaluating storage responsiveness to ensure business-critical applications operate smoothly and efficiently, even under heavy workloads.</p>
           </article>
           <article class="aif-gains__card">
-            <h3>Storage and Retrieval Performance</h3>
+            <h3>Power Infrastructure Review</h3>
             <p class="aif-gains__count">4/5</p>
-            <p>We test whether data can be accessed at the speed modern AI tools require without dragging application performance down.</p>
+            <p>Verifying that your power infrastructure can accommodate growing hardware demands without risking outages or operational disruptions.</p>
           </article>
           <article class="aif-gains__card">
-            <h3>Power and Protection Resilience</h3>
+            <h3>Firewall Throughput Inspection</h3>
             <p class="aif-gains__count">5/5</p>
-            <p>Power reliability and firewall throughput are checked to make sure protection and uptime hold under sustained computational load.</p>
+            <p>Ensuring your firewall delivers strong threat protection without creating bottlenecks that slow business operations</p>
           </article>
         </div>
       </div>
     </section>
 
     <section class="aif-risk" aria-labelledby="ai-banner-h">
-      <div class="aif-risk__inner">
-        <div class="aif-risk__copy animate-fade-up">
-          <h2 id="ai-banner-h">Business Impact of Ensuring AI-Ready Infrastructure</h2>
-          <p>Building an AI-ready infrastructure guarantees predictable operational costs and faster product delivery.</p>
-          <p>High-throughput networks transfer data more instantly to your applications without causing system lag or application timeouts.</p>
-          <p>This architecture stabilises your computing speed, protects client-facing server environments, and allows your enterprise to scale automated services safely without exponential cost increases.</p>
-        </div>
-        <div class="aif-risk__media animate-fade-up">
-          <picture>
-            <source srcset="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.webp" type="image/webp">
-            <img src="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg" alt="Business impact of AI-ready infrastructure" loading="lazy">
-          </picture>
+      <div class="aif-risk__inner animate-fade-up">
+        <h2 id="ai-banner-h">Business Impact of Ensuring AI-Ready Infrastructure</h2>
+        <div class="aif-risk__grid">
+          <div class="aif-risk__media">
+            <img src="/images/pages/unique/solutions-ai-ready-infrastructure-managed-support.jpg" alt="Business impact of AI-ready infrastructure" loading="lazy">
+          </div>
+          <div class="aif-risk__copy">
+            <p>Building an AI-ready infrastructure guarantees predictable operational costs and faster product delivery.</p>
+            <p>High-throughput networks ensure data moves instantly to live applications without causing system lag or application timeouts.</p>
+            <p>This architecture stabilises your computing spend, protects client-facing service agreements, and allows your enterprise to scale automated services safely without exponential cost increases.</p>
+          </div>
         </div>
       </div>
     </section>
