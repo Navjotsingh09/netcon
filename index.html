@@ -1531,14 +1531,16 @@
       /* Hero */
       .hero { padding: 0; }
       .hero__wrap { min-height: 320px; }
+      .hero__slides { min-height: 320px; }
+      .hero__slides article { min-height: 320px; }
       .hero__content { padding: 44px var(--px) 36px; max-width: 100%; }
       .hero__title { font-size: 34px; line-height: 1.06; }
-      .hero__sub { font-size: 16px; }
+      .hero__sub { font-size: 16px; width: 100%; max-width: 100%; }
       .hero__btn { width: auto; min-height: 44px; font-size: 15px; padding: 0 14px; }
       .hero-search-strip { padding: 0 var(--px); }
       .hero-search-strip { margin-top: -28px; }
-      .hero-search-strip > .hero-search-strip__inner { padding: 14px 0; }
-      .hero-search-strip__field { min-height: 48px; width: 100%; padding: 0 16px; font-size: 14px; }
+      .hero-search-strip > .hero-search-strip__inner { padding: 14px 16px; }
+      .hero-search-strip__field { min-height: 48px; padding: 0 16px; font-size: 14px; }
       .hero-search-strip__input { font-size: 16px; }
       /* Rotating hint collides with the prompt text on small screens */
       .hero-search-strip__hint { display: none; }
@@ -1697,13 +1699,15 @@
       .navbar__box { padding: 0 16px; height: 60px; }
       /* Hero */
       .hero__title { font-size: 28px; }
-      .hero__sub { font-size: 16px; }
+      .hero__sub { font-size: 16px; width: 100%; max-width: 100%; }
       .hero__btn { font-size: 14px; padding: 10px 14px; }
       .hero__wrap { min-height: 290px; }
+      .hero__slides { min-height: 290px; }
+      .hero__slides article { min-height: 290px; }
       .hero__content { padding: 36px var(--px) 28px; }
       .hero-search-strip { margin-top: -22px; }
-      .hero-search-strip > .hero-search-strip__inner { padding: 12px 0; }
-      .hero-search-strip__field { min-height: 44px; width: 100%; padding: 0 14px; }
+      .hero-search-strip > .hero-search-strip__inner { padding: 12px; }
+      .hero-search-strip__field { min-height: 44px; padding: 0 16px; }
       .hero-search-strip__results {
         left: 14px;
         right: 14px;
@@ -3318,6 +3322,10 @@ Edgbaston, B15 3BE</p>
       .nd-highlight__copy h3 { font-size: 38px; }
       .nd-highlight__media { min-height: 300px; }
       .nd-highlight__video { height: 300px; }
+      .nd-trusted {
+        padding-left: var(--px);
+        padding-right: var(--px);
+      }
       .nd-trusted__head {
         margin-bottom: 34px;
       }
@@ -3355,7 +3363,15 @@ Edgbaston, B15 3BE</p>
         grid-template-columns: 1fr;
         padding: 36px 28px;
         row-gap: 28px;
+        background: #162470;
+        border-color: #162470;
       }
+      .nd-figma-managed__title { color: #fff; }
+      .nd-figma-managed__copy,
+      .nd-figma-managed__copy p,
+      .nd-figma-managed__copy li { color: rgba(255,255,255,.92); }
+      .nd-figma-managed__bar { background: rgba(255,255,255,.35); }
+      .nd-figma-managed__bar.is-active { background: #fff; }
       .nd-figma-managed__title {
         width: auto;
         font-size: 40px;
