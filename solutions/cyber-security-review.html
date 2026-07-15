@@ -12,96 +12,535 @@
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
-    .sol-hero { max-width:var(--section-w); margin:0 auto; background:#13203f; padding:132px var(--px) 54px; }
-    .sol-hero__content { max-width:var(--max-w); margin:0 auto; max-width:760px; }
-    .sol-hero__title { font-family:"Google Sans Flex",sans-serif; font-size:64px; font-weight:600; color:#fff; line-height:1.08; margin-bottom:20px; }
-    .sol-hero__sub { font-family:"Google Sans Flex",sans-serif; font-size:24px; color:#fff; line-height:1.35; margin-bottom:20px; }
+    .csr-page {
+      width: 100%;
+      max-width: var(--section-w);
+      margin: 0 auto;
+    }
 
-    .audit { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
-    .audit__inner { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
-    .audit__left h2 { font-family:"Google Sans Flex",sans-serif; font-size:48px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:10px; }
-    .audit__left p { font-family:"Google Sans Flex",sans-serif; font-size:18px; color:var(--sub); line-height:1.6; margin-bottom:24px; }
-    .audit__nav { display:flex; flex-direction:column; gap:20px; align-items:flex-start; }
-    .audit__arrows { display:flex; gap:14px; }
-    .audit__arrow { width:58px; height:48px; border-radius:8px; border:1px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:22px; transition:background .2s; }
-    .audit__arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
-    .audit__bar { width:190px; height:10px; border-radius:10px; background:var(--gray-mid); overflow:hidden; }
-    .audit__bar-fill { height:100%; background:#4d4a4a; border-radius:10px; transition:width .35s ease; }
-    .audit__card { background:#859aba; border-radius:20px; padding:36px 36px 30px; color:#fff; min-height:260px; display:flex; flex-direction:column; justify-content:space-between; }
-    .audit__card p { font-family:"Google Sans Flex",sans-serif; font-size:18px; font-weight:400; line-height:1.38; }
-    .audit__count { font-family:"Google Sans Flex",sans-serif; font-size:36px; font-weight:600; margin-top:24px; }
+    .csr-page > section {
+      width: 100%;
+      align-self: stretch;
+    }
 
-    .beyond { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
-    .beyond__inner { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
-    .beyond__text h2 { font-family:"Google Sans Flex",sans-serif; font-size:48px; font-weight:600; color:var(--navy); line-height:1.15; margin-bottom:18px; }
-    .beyond__text p { font-family:"Google Sans Flex",sans-serif; font-size:18px; color:var(--sub); line-height:1.65; margin-bottom:14px; }
-    .beyond__image img { width:100%; height:340px; object-fit:cover; border-radius:16px; display:block; }
+    .csr-hero {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      background: #13203f;
+      padding: 135px var(--px) 48px;
+    }
 
-    .split-info { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
-    .split-info__inner { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
-    .split-info__text h2 { font-family:"Google Sans Flex",sans-serif; font-size:48px; font-weight:600; color:var(--navy); line-height:1.15; margin-bottom:18px; }
-    .split-info__text p { font-family:"Google Sans Flex",sans-serif; font-size:18px; color:var(--sub); line-height:1.65; margin-bottom:14px; }
-    .split-info__image img { width:100%; height:340px; object-fit:cover; border-radius:16px; display:block; }
+    .csr-hero__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
 
+    .csr-hero__copy {
+      max-width: 901px;
+    }
 
-    .sol-cta-band { background:var(--blue); padding:80px 0; position:relative; overflow:hidden; }
-    .sol-cta-band__tags { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; gap:24px; padding:0 var(--px); pointer-events:none; }
-    .sol-cta-band__row { display:flex; gap:20px; flex-wrap:nowrap; }
-    .sol-cta-band__row span { background:#fff; color:var(--blue); opacity:.45; font-family:"Google Sans Flex",sans-serif; font-size:18px; font-weight:500; padding:12px 32px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
-    .sol-cta-band__card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:44px 66px; max-width:580px; margin:0 auto; text-align:center; box-shadow:0 4px 24px rgba(0,0,0,.12); }
-    .sol-cta-band__text { font-family:"Google Sans Flex",sans-serif; font-size:18px; font-weight:400; color:var(--sub); line-height:1.55; margin-bottom:28px; }
+    .csr-hero__copy h1 {
+      margin: 0 0 15px;
+      max-width: 804px;
+      color: #fff;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 64px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
 
-    @media(max-width:1200px){ .sol-hero__title,.testi__left h2{font-size:46px;} .audit__inner,.beyond__inner,.split-info__inner,.testi__inner{display:block;} .testi__nav,.audit__nav{align-items:flex-start;margin-top:24px;} }
-    @media(max-width:768px){ .sol-hero{padding:108px var(--px) 44px;} .sol-hero__title{font-size:42px;} .sol-hero__sub{font-size:20px;} .audit__left h2,.beyond__text h2,.split-info__text h2{font-size:36px;} .sol-cta-band__card{padding:32px 28px;} }
-    @media(max-width:480px){ .sol-hero__title{font-size:28px;} }
+    .csr-hero__copy p {
+      margin: 0 0 16px;
+      max-width: 640px;
+      color: #fff;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .csr-hero__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+      min-height: 50px;
+      padding: 0 12px;
+      background: #fff;
+      color: #353535;
+      border-radius: 2px;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .csr-overview {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 48px var(--px) 0;
+    }
+
+    .csr-overview__head {
+      max-width: var(--max-w);
+      margin: 0 auto 32px;
+    }
+
+    .csr-overview__head h2 {
+      margin: 0 0 16px;
+      color: #0982c5;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
+
+    .csr-overview__head p {
+      margin: 0;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+      max-width: 980px;
+    }
+
+    .csr-overview__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 386px) minmax(0, 822px);
+      gap: 56px;
+      align-items: start;
+      background: #fff;
+      border: 1px solid #353535;
+      border-radius: 30px;
+      padding: 40px;
+    }
+
+    .csr-overview__feature {
+      position: relative;
+      min-height: 678px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #0c1b3d;
+      display: flex;
+      align-items: flex-end;
+      padding: 28px;
+    }
+
+    .csr-overview__feature img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .csr-overview__feature::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9,130,197,0.18) 0%, rgba(9,130,197,0.88) 100%);
+    }
+
+    .csr-overview__panel {
+      position: relative;
+      z-index: 2;
+      width: 735px;
+      max-width: 100%;
+      padding: 28px;
+      background: #fff;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+    }
+
+    .csr-overview__panel.is-switching {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .csr-overview__panel h2 {
+      margin: 0;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .csr-overview__panel p {
+      margin: 0;
+      color: #353535;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.55;
+    }
+
+    .csr-overview__list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .csr-overview__list-item {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #353535;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.25;
+      transition: color 0.2s ease-out, background 0.25s ease-out, padding 0.25s ease-out;
+    }
+
+    .csr-overview__list-item:hover {
+      color: #0982c5;
+    }
+
+    .csr-overview__list-item--active,
+    .csr-overview__list-item--active:hover {
+      padding: 24px;
+      border-radius: 20px;
+      border-bottom: 0;
+      background: #0982c5;
+      color: #fff;
+    }
+
+    .csr-why {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 50px var(--px) 0;
+    }
+
+    .csr-why__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 675px 689px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .csr-why__copy h2 {
+      margin: 0 0 36px;
+      color: #0982c5;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
+
+    .csr-why__copy p {
+      margin: 0 0 18px;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .csr-why__media img {
+      width: 100%;
+      height: 517px;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+    }
+
+    .csr-cta-band {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      background: #0982c5;
+      padding: 80px 140px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .csr-cta-band__grid {
+      max-width: 1552px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 24px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .csr-cta-band__chip {
+      padding: 16px 48px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.5);
+      color: #0982c5;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .csr-cta-band__card {
+      width: 658px;
+      margin: 40px auto 0;
+      padding: 46px 84px;
+      border-radius: 20px;
+      background: #fff;
+      text-align: center;
+    }
+
+    .csr-cta-band__card p {
+      margin: 0 0 28px;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 1200px) {
+      .csr-overview__inner,
+      .csr-why__inner {
+        grid-template-columns: 1fr;
+      }
+
+      .csr-hero {
+        padding-top: 112px;
+      }
+
+      .csr-overview__feature {
+        order: -1;
+      }
+
+      .csr-overview__inner {
+        padding: 24px;
+      }
+
+      .csr-overview__list {
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .csr-hero__copy h1,
+      .csr-overview__head h2,
+      .csr-why__copy h2 {
+        font-size: 36px;
+      }
+
+      .csr-hero__copy p {
+        font-size: 20px;
+      }
+
+      .csr-overview__head p,
+      .csr-why__copy p,
+      .csr-cta-band__card p {
+        font-size: 16px;
+      }
+
+      .csr-overview__feature {
+        min-height: 560px;
+      }
+
+      .csr-overview__list-item {
+        font-size: 22px;
+      }
+
+      .csr-why__media img {
+        min-height: 0;
+        height: auto;
+      }
+
+      .csr-cta-band {
+        padding: 48px 32px;
+      }
+
+      .csr-cta-band__card {
+        width: 100%;
+        padding: 32px 24px;
+      }
+    }
+
+    /* ===== Mobile CSR (Solutions mobile landing.png design) ===== */
+    .mcsr { display: none; }
+
+    @media (max-width: 768px) {
+      .mcsr { display: block; }
+      .csr-hero, .csr-overview, .csr-why { display: none; }
+
+      .mcsr-hero { background: #02172f; padding: 40px 22px; color: #fff; }
+      .mcsr-hero h1 { font-size: 26px; font-weight: 700; line-height: 1.2; margin: 0 0 14px; color: #fff; }
+      .mcsr-hero p { font-size: 17px; line-height: 1.5; color: rgba(255,255,255,.92); margin: 0 0 22px; }
+      .mcsr-hero__btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        background: #f2f2f2; color: #1c1c1c; font-size: 13px; font-weight: 600;
+        padding: 10px 24px; border-radius: 4px; min-height: 40px; text-decoration: none;
+      }
+
+      .mcsr-sec { padding: 26px 22px 6px; }
+      .mcsr-h { color: #0982c5; font-size: 22px; font-weight: 700; line-height: 1.25; margin: 0 0 12px; }
+      .mcsr-p { font-size: 16px; line-height: 1.6; color: #353535; margin: 0 0 16px; }
+      .mcsr-img { width: 100%; height: auto; border-radius: 12px; display: block; margin: 6px 0 12px; object-fit: cover; }
+
+      .mcsr-acc { border: 1px solid #e7e7e7; border-radius: 10px; overflow: hidden; }
+      .mcsr-acc__head {
+        background: #0982c5; color: #fff; font-size: 16px; font-weight: 600;
+        padding: 16px 18px; display: flex; justify-content: space-between; align-items: center;
+      }
+      .mcsr-acc__panel { padding: 18px; border-bottom: 1px solid #e7e7e7; }
+      .mcsr-acc__panel p { font-size: 14.5px; line-height: 1.6; color: #353535; margin: 0 0 12px; }
+      .mcsr-acc__panel img { width: 100%; height: auto; border-radius: 6px; display: block; }
+      .mcsr-acc__bar { margin-top: 12px; height: 4px; border-radius: 2px; background: #e0e0e0; overflow: hidden; }
+      .mcsr-acc__bar span { display: block; width: 25%; height: 100%; background: #0982c5; border-radius: 2px; }
+      .mcsr-acc__item {
+        padding: 16px 18px; font-size: 15px; font-weight: 600; color: #1c1c1c;
+        border-bottom: 1px solid #ececec; display: flex; justify-content: space-between; align-items: center;
+      }
+      .mcsr-acc__item:last-child { border-bottom: 0; }
+      .mcsr-acc__item span, .mcsr-acc__head span { color: currentColor; font-size: 18px; line-height: 1; }
+
+      .mcsr-card {
+        position: relative; background: #fff; border: 1px solid #e7e7e7; border-radius: 8px;
+        padding: 22px 18px 40px; margin-bottom: 18px;
+      }
+      .mcsr-card p { font-size: 15px; line-height: 1.55; color: #4a4a4a; margin: 0; }
+      .mcsr-card__count { position: absolute; left: 18px; bottom: 14px; font-size: 13px; font-weight: 600; color: #6d76a6; }
+
+      /* FAQ clean white accordion + trusted heading color per design */
+      .nd-faq { background: #fff; border: 0; padding: 6px 22px 10px; }
+      .nd-faq__left .section-title { color: #0982c5; font-size: 22px; font-weight: 700; }
+      .nd-faq__left p { font-size: 14px; color: #4a4a4a; margin-bottom: 14px; }
+      .nd-faq__cta { display: none; }
+      .nd-faq__item {
+        background: #fff; border: 0; border-bottom: 1px solid #e4e4e4;
+        padding: 18px 4px; text-align: left; font-size: 17px; font-weight: 500; color: #1c1c1c;
+      }
+      .nd-faq__item span { text-align: left; }
+      .nd-faq__item.is-open { background: #f5f5f6; border-bottom: 0; padding: 18px 14px 6px; }
+      .nd-faq__panel {
+        background: #f5f5f6; border: 0; padding: 0 14px 18px; margin-bottom: 6px;
+        font-size: 15.5px; line-height: 1.65; color: #4a4a4a;
+      }
+      .nd-trusted__title { color: #0982c5; }
+    }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
-  <main id="main" class="sol-detail-page">
+  <main id="main" class="sol-detail-page csr-page">
+    <div class="mcsr">
 
-    <section class="sol-hero" aria-label="Cyber Security Review hero">
-      <div class="sol-hero__content animate-fade-up">
-        <h1 class="sol-hero__title">Professional Network Assessments</h1>
-        <p class="sol-hero__sub">Understand how your network is performing with a professional assessment that helps improve connectivity, strengthen resilience.</p>
-        <a href="/contact.html" class="btn-blue" data-source-cta="solution_hero_health_check">Book Health Check</a>
+      <section class="mcsr-hero">
+        <h1>Strengthen Your Cyber Defences</h1>
+        <p>Understand your security risks through a structured cybersecurity review backed by expert consultancy.</p>
+        <a href="/contact.html" class="mcsr-hero__btn" data-source-cta="solution_hero_health_check">Book Health Check</a>
+      </section>
+
+      <section class="mcsr-sec animate-fade-up">
+        <h2 class="mcsr-h">Cyber Security Audit and Review</h2>
+        <p class="mcsr-p">Areas Covered During a Cyber Security Audit</p>
+        <div class="mcsr-acc">
+          <div class="mcsr-acc__head">Security Controls Review <span aria-hidden="true">&#94;</span></div>
+          <div class="mcsr-acc__panel">
+            <p>A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses.</p>
+            <img src="/images/pages/unique/solutions-cyber-security-review-nc-hero-person.jpg" alt="Cyber security review" loading="lazy">
+            <div class="mcsr-acc__bar" aria-hidden="true"><span></span></div>
+          </div>
+          <div class="mcsr-acc__item">Access &amp; Permissions Analysis <span aria-hidden="true">&#8964;</span></div>
+          <div class="mcsr-acc__item">Key Security Controls <span aria-hidden="true">&#8964;</span></div>
+          <div class="mcsr-acc__item">Configuration &amp; Exposure Assessment <span aria-hidden="true">&#8964;</span></div>
+          <div class="mcsr-acc__item">Service Disruption Risks <span aria-hidden="true">&#8964;</span></div>
+          <div class="mcsr-acc__item">Business Impact Ranking <span aria-hidden="true">&#8964;</span></div>
+          <div class="mcsr-acc__item">Framework-Aligned Recommendations <span aria-hidden="true">&#8964;</span></div>
+        </div>
+      </section>
+
+      <section class="mcsr-sec animate-fade-up">
+        <h2 class="mcsr-h">Why Choose Us</h2>
+        <p class="mcsr-p">Our cybersecurity review examines how your current security controls perform in day-to-day operations.</p>
+        <p class="mcsr-p">We identify security weaknesses that increase operational or compliance risk. Every cyber risk assessment reviews firewall configurations, network segmentation, user access, and infrastructure settings.</p>
+        <p class="mcsr-p">The findings explain which issues require immediate attention and which can be planned later. Recommendations are based on technical evidence and practical business impact.</p>
+        <p class="mcsr-p">Our team also provides ongoing cybersecurity consultancy whenever additional support is required.</p>
+        <img class="mcsr-img" src="/images/pages/unique/solutions-cyber-security-review-servers.jpg" alt="Security cabling and infrastructure" loading="lazy">
+      </section>
+
+    </div>
+
+    <section class="csr-hero" aria-label="Cyber Security Review hero">
+      <div class="csr-hero__inner">
+        <div class="csr-hero__copy animate-fade-up">
+          <h1>Strengthen Your Cyber Defences</h1>
+          <p>Understand your security risks through a structured cybersecurity review backed by expert consultancy.</p>
+          <a href="/contact.html" class="csr-hero__btn" data-source-cta="solution_hero_health_check">Book Health Check</a>
+        </div>
       </div>
     </section>
 
-    <section class="audit" aria-labelledby="csr-audit-h">
-      <div class="audit__inner">
-        <div class="audit__left animate-fade-up">
-          <h2 id="csr-audit-h">Cyber Security Audit and Review</h2>
-          <p>Areas Covered During a Cyber Security Audit</p>
-          <div class="audit__nav">
-            <div class="audit__arrows">
-              <button class="audit__arrow" id="csr-prev" aria-label="Previous">&#8592;</button>
-              <button class="audit__arrow" id="csr-next" aria-label="Next">&#8594;</button>
-            </div>
-            <div class="audit__bar"><div class="audit__bar-fill" id="csr-fill"></div></div>
+    <section class="csr-overview" aria-labelledby="csr-audit-h">
+      <div class="csr-overview__head animate-fade-up">
+        <h2 id="csr-audit-h">Cyber Security Audit and Review</h2>
+        <p>Areas Covered During a Cyber Security Audit</p>
+      </div>
+      <div class="csr-overview__inner">
+        <div class="csr-overview__list animate-fade-up" role="tablist" aria-label="Areas covered during a cyber security audit">
+          <button type="button" role="tab" aria-selected="true" class="csr-overview__list-item csr-overview__list-item--active"
+            data-title="Security Controls Review"
+            data-copy="A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses.">Security Controls Review</button>
+          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
+            data-title="Access &amp; Permissions Analysis"
+            data-copy="By analysing infrastructure security, user permissions, administrative access, and network services, the assessment uncovers potential weaknesses that could affect operational stability and resilience.">Access &amp; Permissions Analysis</button>
+          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
+            data-title="Key Security Controls"
+            data-copy="Key security controls - including firewall policies, network segmentation, user authentication, endpoint configurations, and privileged access - are reviewed to identify risks that could impact business operations.">Key Security Controls</button>
+          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
+            data-title="Configuration &amp; Exposure Assessment"
+            data-copy="Configuration drift, unnecessary system exposure, inherited permissions, and policy inconsistencies are assessed against operational and business risk.">Configuration &amp; Exposure Assessment</button>
+          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
+            data-title="Service Disruption Risks"
+            data-copy="The review identifies weaknesses that could disrupt critical services, increase attack paths, or delay incident containment during security events.">Service Disruption Risks</button>
+          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
+            data-title="Business Impact Ranking"
+            data-copy="Findings are ranked by business impact, allowing remediation work to focus on security issues with the highest operational and governance risk.">Business Impact Ranking</button>
+          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
+            data-title="Framework-Aligned Recommendations"
+            data-copy="Recommendations reflect recognised security frameworks, regulatory expectations, and implementation priorities suited to existing infrastructure constraints.">Framework-Aligned Recommendations</button>
+        </div>
+        <div class="csr-overview__feature animate-fade-up">
+          <picture>
+            <source srcset="/images/pages/unique/solutions-cyber-security-review-nc-hero-person.webp" type="image/webp">
+            <img src="/images/pages/unique/solutions-cyber-security-review-nc-hero-person.jpg" alt="Cyber security review" loading="lazy">
+          </picture>
+          <div class="csr-overview__panel" role="tabpanel">
+            <h2 id="csr-overview-title">Security Controls Review</h2>
+            <p>A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses.</p>
           </div>
         </div>
-        <div class="audit__card animate-fade-up">
-          <p id="csr-text">A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses.</p>
-          <div class="audit__count" id="csr-count">1 / 7</div>
-        </div>
       </div>
     </section>
 
-
-
-    <section class="split-info" aria-labelledby="csr-why-h">
-      <div class="split-info__inner animate-fade-up">
-        <div class="split-info__text">
+    <section class="csr-why" aria-labelledby="csr-why-h">
+      <div class="csr-why__inner">
+        <div class="csr-why__copy animate-fade-up">
           <h2 id="csr-why-h">Why Choose Us</h2>
           <p>Our cybersecurity review examines how your current security controls perform in day-to-day operations.</p>
           <p>We identify security weaknesses that increase operational or compliance risk. Every cyber risk assessment reviews firewall configurations, network segmentation, user access, and infrastructure settings.</p>
           <p>The findings explain which issues require immediate attention and which can be planned later. Recommendations are based on technical evidence and practical business impact.</p>
           <p>Our team also provides ongoing cybersecurity consultancy whenever additional support is required.</p>
         </div>
-        <div class="split-info__image">
+        <div class="csr-why__media animate-fade-up">
           <picture>
             <source srcset="/images/pages/unique/solutions-cyber-security-review-servers.webp" type="image/webp">
             <img src="/images/pages/unique/solutions-cyber-security-review-servers.jpg" alt="Security cabling and infrastructure" loading="lazy">
@@ -122,17 +561,19 @@
       <div class="nd-trusted__dots" aria-hidden="true"><span class="nd-trusted__dot nd-trusted__dot--active"></span><span class="nd-trusted__dot"></span><span class="nd-trusted__dot"></span></div></div>
     </section>
 
-    <section class="sol-cta-band" aria-label="Cyber Security CTA">
-      <div class="sol-cta-band__tags" aria-hidden="true">
-        <div class="sol-cta-band__row">
-          <span>Cyber Security Review</span><span>Network Health Check</span><span>Microsoft 365 &amp; Network</span><span>AI-Ready Infrastructure</span><span>Cyber Security Review</span><span>Network Health Check</span>
-        </div>
-        <div class="sol-cta-band__row">
-          <span>Network Health Check</span><span>AI-Ready Infrastructure</span><span>Cyber Security Review</span><span>Microsoft 365 &amp; Network</span><span>Network Health Check</span><span>AI-Ready Infrastructure</span>
-        </div>
+    <section class="csr-cta-band" aria-label="Cyber Security CTA">
+      <div class="csr-cta-band__grid" aria-hidden="true">
+        <span class="csr-cta-band__chip">Cyber Security Review</span>
+        <span class="csr-cta-band__chip">Network Health Check</span>
+        <span class="csr-cta-band__chip">Microsoft 365 &amp; Network</span>
+        <span class="csr-cta-band__chip">AI-Ready Infrastructure</span>
+        <span class="csr-cta-band__chip">Cyber Security Review</span>
+        <span class="csr-cta-band__chip">Network Health Check</span>
+        <span class="csr-cta-band__chip">Microsoft 365 &amp; Network</span>
+        <span class="csr-cta-band__chip">AI-Ready Infrastructure</span>
       </div>
-      <div class="sol-cta-band__card">
-        <p class="sol-cta-band__text">Identify security weaknesses before they become operational risks. Speak with our cybersecurity consultants and schedule your cyber risk assessment today.</p>
+      <div class="csr-cta-band__card">
+        <p>Identify security weaknesses before they become operational risks. Speak with our cybersecurity consultants and schedule your cyber risk assessment today.</p>
         <a href="/contact.html" class="btn-dark" data-source-cta="solution_secondary_review">Get Assessment</a>
       </div>
     </section>
@@ -149,25 +590,49 @@
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
   <script>
-    (function () {
-      var slides = [
-        "A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses.",
-        "Firewall rules are reviewed to confirm that critical services are protected without leaving avoidable access gaps.",
-        "Segmentation and user access are checked to ensure threats cannot move freely across internal systems.",
-        "Infrastructure settings are inspected for inherited weaknesses that could create unnecessary exposure.",
-        "Security logging and visibility are assessed to determine whether threats can be identified quickly when they occur.",
-        "Compliance-sensitive controls are reviewed to see where policy and practice may not align with requirements.",
-        "Recommendations are prioritised according to business impact so remediation is clear, practical, and achievable."
-      ];
-      var si = 0;
-      var st = document.getElementById("csr-text");
-      var sc = document.getElementById("csr-count");
-      var sf = document.getElementById("csr-fill");
-      function renderSlide() { st.textContent = slides[si]; sc.textContent = (si + 1) + " / " + slides.length; sf.style.width = (((si + 1) / slides.length) * 100) + "%"; }
-      document.getElementById("csr-prev").addEventListener("click", function () { si = (si - 1 + slides.length) % slides.length; renderSlide(); });
-      document.getElementById("csr-next").addEventListener("click", function () { si = (si + 1) % slides.length; renderSlide(); });
-      renderSlide();
-    }());
+    (function mcsrDots() {
+      var vp = document.querySelector('.nd-trusted__viewport');
+      var dots = Array.prototype.slice.call(document.querySelectorAll('.nd-trusted__dots .nd-trusted__dot'));
+      if (vp === null || dots.length === 0) return;
+      var ticking = false;
+      function sync() {
+        ticking = false;
+        var card = vp.querySelector('.nd-t-card');
+        if (card === null) return;
+        var step = card.offsetWidth + 18;
+        var idx = Math.round(vp.scrollLeft / step);
+        idx = Math.max(0, Math.min(dots.length - 1, idx % dots.length));
+        dots.forEach(function (d, i) { d.classList.toggle('nd-trusted__dot--active', i === idx); });
+      }
+      vp.addEventListener('scroll', function () {
+        if (ticking === false) { ticking = true; requestAnimationFrame(sync); }
+      }, { passive: true });
+    })();
+
+    (function csrOverviewTabs() {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.csr-overview__list-item'));
+      var panel = document.querySelector('.csr-overview__panel');
+      if (tabs.length === 0 || panel === null) return;
+      var title = panel.querySelector('h2');
+      var copy = panel.querySelector('p');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          if (tab.classList.contains('csr-overview__list-item--active')) return;
+          tabs.forEach(function (t) {
+            t.classList.remove('csr-overview__list-item--active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('csr-overview__list-item--active');
+          tab.setAttribute('aria-selected', 'true');
+          panel.classList.add('is-switching');
+          setTimeout(function () {
+            title.textContent = tab.getAttribute('data-title');
+            copy.textContent = tab.getAttribute('data-copy');
+            panel.classList.remove('is-switching');
+          }, 250);
+        });
+      });
+    })();
   </script>
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
