@@ -109,6 +109,10 @@
       grid-template-columns: minmax(0, 386px) minmax(0, 822px);
       gap: 56px;
       align-items: start;
+      background: #fff;
+      border: 1px solid #353535;
+      border-radius: 30px;
+      padding: 40px;
     }
 
     .nhc-overview__feature {
@@ -149,6 +153,12 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+      transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+    }
+
+    .nhc-overview__panel.is-switching {
+      opacity: 0;
+      transform: translateY(12px);
     }
 
     .nhc-overview__panel h2 {
@@ -177,6 +187,12 @@
     }
 
     .nhc-overview__list-item {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
       padding-bottom: 24px;
       border-bottom: 1px solid #353535;
       color: #585151;
@@ -184,9 +200,15 @@
       font-size: 28px;
       font-weight: 700;
       line-height: 1.25;
+      transition: color 0.2s ease-out, background 0.25s ease-out, padding 0.25s ease-out;
     }
 
-    .nhc-overview__list-item--active {
+    .nhc-overview__list-item:hover {
+      color: #0982c5;
+    }
+
+    .nhc-overview__list-item--active,
+    .nhc-overview__list-item--active:hover {
       padding: 24px;
       border-radius: 20px;
       border-bottom: 0;
@@ -211,7 +233,7 @@
 
     .nhc-gains__intro h2 {
       margin: 0 0 16px;
-      color: #162470;
+      color: #0982c5;
       font-family: "Google Sans Flex", sans-serif;
       font-size: 48px;
       font-weight: 600;
@@ -247,7 +269,7 @@
     .nhc-gains__card h3,
     .nhc-gains__card .nhc-gains__count {
       margin: 0;
-      color: #162470;
+      color: #0982c5;
       font-family: "Google Sans Flex", sans-serif;
       font-size: 20px;
       font-weight: 700;
@@ -283,7 +305,7 @@
     .nhc-risk__copy h2,
     .nhc-why__copy h2 {
       margin: 0 0 36px;
-      color: #162470;
+      color: #0982c5;
       font-family: "Google Sans Flex", sans-serif;
       font-size: 48px;
       font-weight: 600;
@@ -415,6 +437,10 @@
         order: -1;
       }
 
+      .nhc-overview__inner {
+        padding: 24px;
+      }
+
       .nhc-overview__list {
         gap: 24px;
       }
@@ -511,11 +537,11 @@
         position: relative; background: #fff; border: 1px solid #e7e7e7; border-radius: 8px;
         padding: 22px 18px 40px; margin-bottom: 18px;
       }
-      .mnhc-card h3 { color: #162470; font-size: 17px; font-weight: 700; margin: 0 0 10px; }
+      .mnhc-card h3 { color: #0982c5; font-size: 17px; font-weight: 700; margin: 0 0 10px; }
       .mnhc-card p { font-size: 15px; line-height: 1.55; color: #4a4a4a; margin: 0; }
       .mnhc-card__count { position: absolute; left: 18px; bottom: 14px; font-size: 13px; font-weight: 600; color: #6d76a6; }
 
-      .mnhc-process { background: #162470; border-radius: 12px; padding: 24px 18px; color: #fff; }
+      .mnhc-process { background: #0982c5; border-radius: 12px; padding: 24px 18px; color: #fff; }
       .mnhc-process h2 { color: #fff; font-size: 19px; font-weight: 700; line-height: 1.3; margin: 0 0 16px; }
       .mnhc-process img { width: 100%; height: auto; border-radius: 8px; display: block; margin-bottom: 16px; }
       .mnhc-process p { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.94); margin: 0 0 14px; }
@@ -622,20 +648,32 @@
 
     <section class="nhc-overview" aria-labelledby="nhc-overview-title">
       <div class="nhc-overview__inner">
-        <div class="nhc-overview__list animate-fade-up">
-          <div class="nhc-overview__list-item nhc-overview__list-item--active">Network Health Check</div>
-          <div class="nhc-overview__list-item">Root Cause Analysis (RCA)</div>
-          <div class="nhc-overview__list-item">Bandwidth &amp; Traffic Review</div>
-          <div class="nhc-overview__list-item">Hardware &amp; Equipment Audit</div>
-          <div class="nhc-overview__list-item">Security Boundary Scan</div>
-          <div class="nhc-overview__list-item">Performance Recommendations by Testing Experts</div>
+        <div class="nhc-overview__list animate-fade-up" role="tablist" aria-label="Network Health Check services">
+          <button type="button" role="tab" aria-selected="true" class="nhc-overview__list-item nhc-overview__list-item--active"
+            data-title="Network Health Check"
+            data-copy="A regular diagnostic scan across your entire IT infrastructure to find hidden system issues. This evaluation helps in finding and fixing performance flaws before they can slow down your daily business operations.">Network Health Check</button>
+          <button type="button" role="tab" aria-selected="false" class="nhc-overview__list-item"
+            data-title="Root Cause Analysis (RCA)"
+            data-copy="A structured investigation that traces recurring network problems back to their underlying cause. We fix the source of the issue rather than the symptoms, so the same faults stop coming back.">Root Cause Analysis (RCA)</button>
+          <button type="button" role="tab" aria-selected="false" class="nhc-overview__list-item"
+            data-title="Bandwidth &amp; Traffic Review"
+            data-copy="We analyse bandwidth usage across your infrastructure to identify performance bottlenecks. You get actionable recommendations to enhance speed, strengthen reliability, and keep your connection stable.">Bandwidth &amp; Traffic Review</button>
+          <button type="button" role="tab" aria-selected="false" class="nhc-overview__list-item"
+            data-title="Hardware &amp; Equipment Audit"
+            data-copy="We check your hardware to find the specific cables, switches, or equipment limiting your performance, and flag random upgrades that will not solve the real problem.">Hardware &amp; Equipment Audit</button>
+          <button type="button" role="tab" aria-selected="false" class="nhc-overview__list-item"
+            data-title="Security Boundary Scan"
+            data-copy="We review your network design, identify vulnerabilities, and analyse operational risks to assess your security posture and protect your data.">Security Boundary Scan</button>
+          <button type="button" role="tab" aria-selected="false" class="nhc-overview__list-item"
+            data-title="Performance Recommendations by Testing Experts"
+            data-copy="Our engineering experts translate complex infrastructure data into a clear, prioritised action plan — every recommendation designed to prevent costly downtime and keep your operations stable.">Performance Recommendations by Testing Experts</button>
         </div>
         <div class="nhc-overview__feature animate-fade-up">
           <picture>
             <source srcset="/images/pages/unique/solutions-network-health-check-nc-hero-person.webp" type="image/webp">
             <img src="/images/pages/unique/solutions-network-health-check-nc-hero-person.jpg" alt="Network Health Check" loading="lazy">
           </picture>
-          <div class="nhc-overview__panel">
+          <div class="nhc-overview__panel" role="tabpanel">
             <h2 id="nhc-overview-title">Network Health Check</h2>
             <p>A regular diagnostic scan across your entire IT infrastructure to find hidden system issues. This evaluation helps in finding and fixing performance flaws before they can slow down your daily business operations.</p>
           </div>
@@ -800,6 +838,31 @@
       vp.addEventListener('scroll', function () {
         if (ticking === false) { ticking = true; requestAnimationFrame(sync); }
       }, { passive: true });
+    })();
+
+    (function nhcOverviewTabs() {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.nhc-overview__list-item'));
+      var panel = document.querySelector('.nhc-overview__panel');
+      if (tabs.length === 0 || panel === null) return;
+      var title = panel.querySelector('h2');
+      var copy = panel.querySelector('p');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          if (tab.classList.contains('nhc-overview__list-item--active')) return;
+          tabs.forEach(function (t) {
+            t.classList.remove('nhc-overview__list-item--active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('nhc-overview__list-item--active');
+          tab.setAttribute('aria-selected', 'true');
+          panel.classList.add('is-switching');
+          setTimeout(function () {
+            title.textContent = tab.getAttribute('data-title');
+            copy.textContent = tab.getAttribute('data-copy');
+            panel.classList.remove('is-switching');
+          }, 250);
+        });
+      });
     })();
   </script>
 </body>
