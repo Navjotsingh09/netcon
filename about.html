@@ -37,11 +37,11 @@
     }
 
     :root {
-      --ab-type-heading-xl: clamp(2rem, 1.6vw + 1.45rem, 3rem);
-      --ab-type-heading-lg: clamp(1.75rem, 1.2vw + 1.35rem, 2.25rem);
-      --ab-type-heading-md: clamp(1.45rem, 0.85vw + 1.15rem, 1.9rem);
-      --ab-type-body: clamp(1rem, 0.25vw + 0.95rem, 1.125rem);
-      --ab-type-body-sm: clamp(0.95rem, 0.18vw + 0.9rem, 1rem);
+      --ab-type-heading-xl: clamp(1.9rem, 1.05vw + 1.5rem, 2.625rem);
+      --ab-type-heading-lg: clamp(1.6rem, 0.8vw + 1.28rem, 2.125rem);
+      --ab-type-heading-md: clamp(1.3rem, 0.55vw + 1.1rem, 1.625rem);
+      --ab-type-body: clamp(1rem, 0.14vw + 0.95rem, 1.0625rem);
+      --ab-type-body-sm: clamp(0.93rem, 0.12vw + 0.89rem, 0.98rem);
     }
 
     .ab-button {
@@ -53,7 +53,7 @@
       background: var(--blue);
       color: #fff;
       font-family: "Google Sans Flex", sans-serif;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 600;
       line-height: 1.1;
       text-decoration: none;
@@ -223,7 +223,7 @@
       font-family: "Google Sans Flex", sans-serif;
       font-size: var(--ab-type-heading-md);
       font-weight: 500;
-      line-height: 40px;
+      line-height: 1.25;
       max-width: 256px;
       opacity: 1;
       transform: none;
@@ -331,7 +331,7 @@
     }
 
     .ab-story > .ab-inner {
-      max-width: 1240px;
+      max-width: 1360px;
     }
 
     .ab-story-card {
@@ -360,11 +360,11 @@
     }
 
     .ab-story-card--blue .ab-story-card__media {
-      left: -235px;
+      left: -170px;
     }
 
     .ab-story-card--light .ab-story-card__media {
-      right: -235px;
+      right: -170px;
     }
 
     .ab-story-card__media img {
@@ -385,11 +385,11 @@
     }
 
     .ab-story-card--blue .ab-story-card__content {
-      padding-left: 310px;
+      padding-left: 360px;
     }
 
     .ab-story-card--light .ab-story-card__content {
-      padding-right: 270px;
+      padding-right: 360px;
     }
 
     .ab-story-card__title {
@@ -485,70 +485,135 @@
     }
 
     .ab-test {
-      padding: 0;
+      max-width: var(--max-w);
+      position: relative;
+      z-index: 3;
+      padding-left: 0;
+      padding-right: 0;
     }
 
     .ab-test__head {
-      margin-bottom: 30px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 2;
     }
 
     .ab-test__title {
       margin: 0;
+      max-width: 620px;
       color: var(--navy);
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--ab-type-heading-xl);
+      font-family: var(--font-display);
+      font-size: var(--home-type-heading-xl);
       font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .ab-test__controls {
+      display: flex;
+      gap: 16px;
+      padding-top: 2px;
+      flex-shrink: 0;
+      pointer-events: auto;
+    }
+
+    .ab-test__nav {
+      position: relative;
+      z-index: 6;
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      border: 1px solid #d2d2d2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
       line-height: 1;
-      max-width: 680px;
+      font-family: var(--font-heading);
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .ab-test__nav:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .ab-test__nav span { transform: translateY(-2px); }
+    .ab-test__nav--prev {
+      background: #f0f0f0;
+      color: #464646;
+    }
+
+    .ab-test__nav--next {
+      background: #000000;
+      border-color: #000000;
+      color: #ffffff;
+    }
+
+    .ab-test__viewport {
+      overflow: hidden;
+      width: 100%;
     }
 
     .ab-test__track {
       display: flex;
+      gap: 26px;
+      width: max-content;
+      transform: translateX(-175px);
+      transition: transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+      will-change: transform;
     }
 
     .ab-test-card {
-      border: 1px solid var(--blue);
-      background: #fff;
-      padding: 32px;
+      width: 420px;
+      min-height: 282px;
+      border: 1px solid #0982c5;
+      background: transparent;
+      padding: 30px 24px 24px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
-      min-height: 290px;
-      max-width: 620px;
-      width: 100%;
     }
 
     .ab-test-card__quote {
       margin: 0;
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--ab-type-body);
-      color: var(--dark);
+      color: #353535;
+      font-family: var(--font-heading);
+      font-size: var(--home-type-body);
+      font-weight: 400;
       line-height: 1.65;
-      max-width: 54ch;
+      max-width: 40ch;
     }
 
-    .ab-test-card__meta {
-      margin: 0;
-      color: var(--sub);
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--ab-type-body-sm);
+    .ab-test-card__sub {
+      margin: 16px 0 0;
+      color: #585151;
+      font-family: var(--font-body);
+      font-size: var(--home-type-body-sm);
+      font-weight: 400;
       line-height: 1.55;
     }
 
     .ab-test-card__person {
+      margin-top: auto;
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-top: auto;
+      gap: 16px;
+      padding-top: 24px;
     }
 
     .ab-test-card__avatar {
-      width: 56px;
-      height: 56px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       overflow: hidden;
-      border: 1px solid var(--gray-mid);
-      background: #f4f4f4;
+      border: 1px solid #e0e0e0;
+      background: #f5f5f5;
+      flex-shrink: 0;
     }
 
     .ab-test-card__avatar img {
@@ -558,22 +623,46 @@
       display: block;
     }
 
-    .ab-test-card__name,
-    .ab-test-card__role {
-      margin: 0;
-      font-family: "Google Sans Flex", sans-serif;
-      color: var(--dark);
-    }
-
     .ab-test-card__name {
+      margin: 0;
+      color: #141a28;
+      font-family: var(--font-body);
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 500;
+      line-height: 28px;
     }
 
     .ab-test-card__role {
+      margin: 4px 0 0;
+      color: #585151;
+      font-family: var(--font-body);
       font-size: 16px;
       font-weight: 400;
-      color: var(--sub);
+      line-height: 28px;
+    }
+
+    .ab-test__dots {
+      margin-top: 26px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .ab-test__dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #c6c6c6;
+      display: block;
+      opacity: 0.55;
+      transform: scale(0.9);
+      transition: background-color 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .ab-test__dot--active {
+      background: #0982c5;
+      opacity: 1;
+      transform: scale(1);
     }
 
     .ab-faq {
@@ -772,12 +861,12 @@
       .ab-test__title,
       .ab-faq__title,
       .ab-contact__title {
-        font-size: 48px;
+        font-size: 42px;
       }
 
       .ab-story-card__body,
       .ab-pro__body {
-        font-size: 26px;
+        font-size: 18px;
       }
     }
 
@@ -862,7 +951,7 @@
       .ab-faq__title,
       .ab-contact__title,
       .ab-intro__title {
-        font-size: 36px;
+        font-size: 32px;
       }
 
       .ab-hero__sub,
@@ -871,7 +960,7 @@
       .ab-story-card__body,
       .ab-pro__body,
       .ab-contact__sub {
-        font-size: 19px;
+        font-size: 17px;
       }
 
       .ab-intro,
@@ -908,7 +997,7 @@
 
       .ab-button {
         width: 100%;
-        font-size: 18px;
+        font-size: 17px;
       }
 
       .ab-contact__panel {
@@ -926,7 +1015,7 @@
       .ab-faq__title,
       .ab-contact__title,
       .ab-intro__title {
-        font-size: 30px;
+        font-size: 28px;
       }
 
       .ab-hero__sub,
@@ -935,7 +1024,7 @@
       .ab-story-card__body,
       .ab-pro__body,
       .ab-contact__sub {
-        font-size: 17px;
+        font-size: 16px;
       }
 
       .ab-cap-card {
@@ -943,7 +1032,7 @@
       }
 
       .ab-cap-card__title {
-        font-size: 26px;
+        font-size: 22px;
       }
 
       .ab-test-card__quote {
@@ -1122,28 +1211,79 @@
       </div>
     </section>
 
-    <section class="ab-shell ab-test" aria-label="Testimonials">
-      <div class="ab-inner">
-        <div class="ab-test__head">
-          <h2 class="ab-test__title">What Our Client Says</h2>
-        </div>
-
-        <div class="ab-test__viewport">
-          <div class="ab-test__track" id="ab-test-track">
-            <article class="ab-test-card">
-              <p class="ab-test-card__quote">The network consultancy services delivered by the team improved uptime across sites in London. Their network consultancy approach strengthened security and performance across hybrid systems. Highly recommended by CTO.</p>
-              <p class="ab-test-card__meta">Client feedback</p>
-              <div class="ab-test-card__person">
-                <div class="ab-test-card__avatar"><img src="/images/pages/about-testimonial-avatar.jpg" alt="Client feedback avatar" loading="lazy"></div>
-                <div>
-                  <p class="ab-test-card__name">Network Consultancy client</p>
-                  <p class="ab-test-card__role">CTO</p>
-                </div>
-              </div>
-            </article>
-          </div>
+    <section class="ab-shell ab-test section-shell">
+      <div class="ab-test__head">
+        <h2 class="ab-test__title">What our client says</h2>
+        <div class="ab-test__controls">
+          <button type="button" class="ab-test__nav ab-test__nav--prev" aria-label="Previous testimonial">
+            <span>&lsaquo;</span>
+          </button>
+          <button type="button" class="ab-test__nav ab-test__nav--next" aria-label="Next testimonial">
+            <span>&rsaquo;</span>
+          </button>
         </div>
       </div>
+
+      <div class="ab-test__viewport">
+        <div class="ab-test__track">
+          <article class="ab-test-card">
+            <p class="ab-test-card__quote">“Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.”</p>
+            <div class="ab-test-card__person">
+              <span class="ab-test-card__avatar" aria-hidden="true"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></span>
+              <div>
+                <p class="ab-test-card__name">Managing Director</p>
+                <p class="ab-test-card__role">Broadcasting Company, London</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="ab-test-card">
+            <p class="ab-test-card__quote">“Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.”</p>
+            <div class="ab-test-card__person">
+              <span class="ab-test-card__avatar" aria-hidden="true"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></span>
+              <div>
+                <p class="ab-test-card__name">IT Director</p>
+                <p class="ab-test-card__role">Professional Services Firm, London</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="ab-test-card">
+            <p class="ab-test-card__quote">“Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.”</p>
+            <div class="ab-test-card__person">
+              <span class="ab-test-card__avatar" aria-hidden="true"><img src="/images/services/service-1.jpg" alt="" loading="lazy"></span>
+              <div>
+                <p class="ab-test-card__name">Head of Operations</p>
+                <p class="ab-test-card__role">Healthcare Provider, Birmingham</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="ab-test-card">
+            <p class="ab-test-card__quote">“Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.”</p>
+            <div class="ab-test-card__person">
+              <span class="ab-test-card__avatar" aria-hidden="true"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></span>
+              <div>
+                <p class="ab-test-card__name">Managing Partner</p>
+                <p class="ab-test-card__role">Legal Firm, London</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="ab-test-card">
+            <p class="ab-test-card__quote">“Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.”</p>
+            <div class="ab-test-card__person">
+              <span class="ab-test-card__avatar" aria-hidden="true"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></span>
+              <div>
+                <p class="ab-test-card__name">Operations Director</p>
+                <p class="ab-test-card__role">Manufacturing Company, Midlands</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="ab-test__dots" aria-hidden="true"></div>
     </section>
 
     <section class="ab-shell ab-faq" aria-label="Frequently asked questions">
@@ -1263,6 +1403,155 @@
 
   <script>
     (function () {
+      var trusted = document.querySelector('.ab-test');
+      if (trusted) {
+        var track = trusted.querySelector('.ab-test__track');
+        var prevBtn = trusted.querySelector('.ab-test__nav--prev');
+        var nextBtn = trusted.querySelector('.ab-test__nav--next');
+        var dotsWrap = trusted.querySelector('.ab-test__dots');
+        if (track && prevBtn && nextBtn && dotsWrap) {
+          var desktopQuery = window.matchMedia('(min-width: 1025px)');
+          var baseTranslate = -175;
+          var step = 0;
+          var currentIndex = 0;
+          var cardCount = 0;
+          var dots = [];
+          var isAnimating = false;
+          var transitionMs = 420;
+          var isDesktop = desktopQuery.matches;
+
+          function updateDots() {
+            if (!dots.length || !cardCount) return;
+            var dotIndex = ((currentIndex % cardCount) + cardCount) % cardCount;
+            dots.forEach(function (dot, i) {
+              dot.classList.toggle('ab-test__dot--active', i === dotIndex);
+            });
+          }
+
+          function setDesktopState(enabled) {
+            isDesktop = enabled;
+            if (!isDesktop) {
+              isAnimating = false;
+              prevBtn.disabled = true;
+              nextBtn.disabled = true;
+              track.style.transition = '';
+              track.style.transform = '';
+              track.style.willChange = '';
+              currentIndex = 0;
+              updateDots();
+              return;
+            }
+
+            prevBtn.disabled = false;
+            nextBtn.disabled = false;
+            track.style.transition = 'transform ' + transitionMs + 'ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+            track.style.willChange = 'transform';
+            track.style.transform = 'translateX(' + baseTranslate + 'px)';
+            currentIndex = 0;
+            updateDots();
+          }
+
+          function recalcMetrics() {
+            var cards = Array.prototype.slice.call(track.querySelectorAll('.ab-test-card'));
+            cardCount = cards.length;
+            if (cardCount < 2) {
+              prevBtn.disabled = true;
+              nextBtn.disabled = true;
+              return;
+            }
+
+            var firstLeft = cards[0].offsetLeft;
+            var secondLeft = cards[1].offsetLeft;
+            step = Math.max(1, secondLeft - firstLeft);
+
+            if (!dots.length || dots.length !== cardCount) {
+              dotsWrap.innerHTML = '';
+              for (var i = 0; i < cardCount; i += 1) {
+                var dot = document.createElement('span');
+                dot.className = 'ab-test__dot';
+                dotsWrap.appendChild(dot);
+              }
+              dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.ab-test__dot'));
+            }
+          }
+
+          function onNext() {
+            if (!isDesktop || isAnimating || cardCount < 2) return;
+            isAnimating = true;
+            var done = false;
+
+            function finish() {
+              if (done) return;
+              done = true;
+              track.removeEventListener('transitionend', onEnd);
+              var first = track.firstElementChild;
+              if (first) track.appendChild(first);
+              track.style.transition = 'none';
+              track.style.transform = 'translateX(' + baseTranslate + 'px)';
+              track.offsetHeight;
+              track.style.transition = 'transform ' + transitionMs + 'ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+              isAnimating = false;
+              currentIndex = (currentIndex + 1) % cardCount;
+              updateDots();
+            }
+
+            function onEnd(e) {
+              if (e.target !== track || e.propertyName !== 'transform') return;
+              finish();
+            }
+
+            track.addEventListener('transitionend', onEnd);
+            track.style.transform = 'translateX(' + (baseTranslate - step) + 'px)';
+
+            window.setTimeout(finish, transitionMs + 80);
+          }
+
+          function onPrev() {
+            if (!isDesktop || isAnimating || cardCount < 2) return;
+            isAnimating = true;
+            var done = false;
+
+            function finish() {
+              if (done) return;
+              done = true;
+              track.removeEventListener('transitionend', onEnd);
+              var last = track.lastElementChild;
+              if (last) track.insertBefore(last, track.firstElementChild);
+              track.style.transition = 'none';
+              track.style.transform = 'translateX(' + (baseTranslate - step) + 'px)';
+              track.offsetHeight;
+              track.style.transition = 'transform ' + transitionMs + 'ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+              track.style.transform = 'translateX(' + baseTranslate + 'px)';
+              isAnimating = false;
+              currentIndex = (currentIndex - 1 + cardCount) % cardCount;
+              updateDots();
+            }
+
+            function onEnd(e) {
+              if (e.target !== track || e.propertyName !== 'transform') return;
+              finish();
+            }
+
+            track.addEventListener('transitionend', onEnd);
+            track.style.transform = 'translateX(' + (baseTranslate - step) + 'px)';
+
+            window.setTimeout(finish, transitionMs + 80);
+          }
+
+          function refresh() {
+            recalcMetrics();
+            setDesktopState(desktopQuery.matches);
+          }
+
+          prevBtn.addEventListener('click', onPrev);
+          nextBtn.addEventListener('click', onNext);
+          desktopQuery.addEventListener('change', refresh);
+          window.addEventListener('resize', refresh);
+
+          refresh();
+        }
+      }
+
       var list = document.getElementById("ab-faq-list");
       if (!list) {
         return;
