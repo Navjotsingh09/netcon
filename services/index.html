@@ -129,6 +129,46 @@
     #site-contact select,
     #site-contact textarea { min-height:44px; }
   }
+
+  /* ===== Mobile — solutions-family treatment (≤768px) ===== */
+  .svl-overview__caret, .svl-overview__bar { display:none; }
+  @media(max-width:768px){
+    #main { gap:40px; }
+    /* Hero */
+    .svcs-hero__wrap { height:auto; min-height:0; }
+    .svcs-hero__content { padding:48px var(--px) 56px; gap:18px; }
+    .svcs-hero__title { font-size:26px; font-weight:700; line-height:1.22; }
+    .svcs-hero__sub { font-size:16.5px; font-weight:400; line-height:1.5; }
+    .svcs-hero__cta { font-size:14px; min-height:44px; min-width:0; padding:0 24px; }
+    /* Services We Offer — tap-to-expand accordion */
+    .svl-overview__title { font-size:22px; font-weight:700; margin-bottom:18px; }
+    .svl-overview__inner { display:block; padding:0; border:1px solid #e7e7e7; border-radius:10px; overflow:hidden; }
+    .svl-overview__list { display:block; }
+    .svl-overview__list-item { font-size:15px; font-weight:600; color:#1c1c1c; line-height:1.3; padding:16px 18px; border-bottom:1px solid #ececec; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .svl-overview__list-item:hover { color:#1c1c1c; }
+    .svl-overview__list-item--active,
+    .svl-overview__list-item--active:hover { background:var(--blue); color:#fff; padding:16px 18px; border-radius:0; font-size:16px; border-bottom:1px solid #ececec; }
+    .svl-overview__list > :last-child { border-bottom:0; }
+    .svl-overview__feature { min-height:0; padding:18px; border-radius:0; background:#fff; display:block; border-bottom:1px solid #ececec; order:0; }
+    .svl-overview__feature picture, .svl-overview__feature img { display:none; }
+    .svl-overview__feature::after { display:none; }
+    .svl-overview__panel { width:100%; padding:0; gap:12px; }
+    .svl-overview__panel h3 { display:none; }
+    .svl-overview__panel p { font-size:15.5px; color:#4a4a4a; line-height:1.65; }
+    .btn-blue-lg { font-size:13px; padding:12px 28px; min-height:44px; }
+    .svl-overview__caret { display:inline-block; font-size:18px; line-height:1; color:currentColor; }
+    .svl-overview__bar { display:block; margin-top:14px; height:4px; border-radius:2px; background:#e0e0e0; overflow:hidden; width:100%; }
+    .svl-overview__bar span { display:block; height:100%; background:var(--blue); border-radius:2px; transition:width .3s ease; }
+    /* CTA band */
+    .svc-cta-band { padding:56px 0; }
+    .svc-cta-band__text { font-size:16px; margin-bottom:24px; }
+    .svc-cta-band__btn { font-size:16px; padding:13px 34px; border-radius:14px; }
+    /* FAQ heading — family scale */
+    .nd-faq__title { font-size:22px; color:var(--blue); font-weight:700; }
+  }
+  @media(max-width:480px){
+    .svcs-hero__title { font-size:26px; }
+  }
   </style>
 </head>
 <body>
@@ -284,6 +324,50 @@
         }, 250);
       });
     });
+  })();
+
+  /* Services We Offer — mobile accordion (feature panel follows active item, caret, progress) */
+  (function svlMobile() {
+    var inner = document.querySelector('.svl-overview__inner');
+    if (!inner) return;
+    var list = inner.querySelector('.svl-overview__list');
+    var items = Array.prototype.slice.call(inner.querySelectorAll('.svl-overview__list-item'));
+    var feature = inner.querySelector('.svl-overview__feature');
+    var panel = inner.querySelector('.svl-overview__panel');
+    if (!list || !items.length || !feature || !panel) return;
+    items.forEach(function (t) {
+      var c = document.createElement('span');
+      c.className = 'svl-overview__caret';
+      c.setAttribute('aria-hidden', 'true');
+      c.textContent = '\u2304';
+      t.appendChild(c);
+    });
+    var bar = document.createElement('div');
+    bar.className = 'svl-overview__bar';
+    bar.setAttribute('aria-hidden', 'true');
+    var fill = document.createElement('span');
+    bar.appendChild(fill);
+    panel.appendChild(bar);
+    var mq = window.matchMedia('(max-width: 768px)');
+    function sync() {
+      var i = 0;
+      items.forEach(function (t, j) { if (t.classList.contains('svl-overview__list-item--active')) i = j; });
+      items.forEach(function (t, j) {
+        var c = t.querySelector('.svl-overview__caret');
+        if (c) c.textContent = j === i ? '^' : '\u2304';
+      });
+      fill.style.width = (((i + 1) / items.length) * 100) + '%';
+      if (mq.matches) {
+        items[i].insertAdjacentElement('afterend', feature);
+      } else if (feature.parentElement === list) {
+        inner.appendChild(feature);
+      }
+    }
+    items.forEach(function (t) {
+      t.addEventListener('click', function () { window.setTimeout(sync, 0); });
+    });
+    if (mq.addEventListener) { mq.addEventListener('change', sync); } else { mq.addListener(sync); }
+    sync();
   })();
   </script>
   <script src="/js/animations.js" defer></script>

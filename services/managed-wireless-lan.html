@@ -120,6 +120,73 @@
   .svc-cta-band__btn { display:inline-flex; align-items:center; justify-content:center; background:var(--navy); color:#fff; font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; padding:16px 50px; border-radius:20px; transition:background .2s; }
   .svc-cta-band__btn:hover { background:#0f1c5a; }
   @media(max-width:768px){ .svc-cta-band__card{padding:32px 28px; margin:0 var(--px);} .svc-cta-band__text{font-size:18px;} .svc-cta-band__row span{white-space:normal;text-align:center;padding:10px 20px;font-size:16px;} }
+
+  /* ===== Mobile — solutions-family treatment (≤768px) ===== */
+  .ksa__caret, .ksa__bar { display:none; }
+  @media(max-width:768px){
+    .nc-hero { padding:108px var(--px) 36px; }
+    .nc-hero__title { font-size:26px; font-weight:700; line-height:1.22; margin-bottom:12px; }
+    .nc-hero__sub { font-size:16.5px; line-height:1.5; }
+    .page-hero__cta-btn { margin-top:20px; font-size:14px; min-height:44px; min-width:0; padding:0 24px; }
+    .sd-section { padding:34px var(--px); }
+    .sd-head { margin-bottom:22px; }
+    .sd-head h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:10px; }
+    .sd-head p { font-size:15.5px; font-weight:400; line-height:1.6; }
+    /* Key Solution Areas — tap-to-expand accordion */
+    .ksa__card { flex-direction:column; gap:0; padding:0; border:1px solid #e7e7e7; border-radius:10px; box-shadow:none; overflow:hidden; }
+    .ksa__tabs { flex-basis:auto; }
+    .ksa__tab { display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:15px; font-weight:600; color:#1c1c1c; padding:16px 18px; border-top:0; border-bottom:1px solid #ececec; }
+    .ksa__tab.active { background:var(--blue); color:#fff; border-radius:0; margin:0; padding:16px 18px; font-size:16px; }
+    .ksa__tabs > :last-child { border-bottom:0; }
+    .ksa__caret { display:inline-block; font-size:18px; line-height:1; color:currentColor; }
+    .ksa__panel { min-height:0; padding:18px; display:block; border-bottom:1px solid #ececec; border-radius:0; }
+    .ksa__panel > img { display:none; }
+    .ksa__panel-card { padding:0; border-radius:0; }
+    .ksa__panel-card h3 { display:none; }
+    .ksa__panel-card p { font-size:15.5px; font-weight:400; color:#4a4a4a; line-height:1.65; }
+    .ksa__bar { display:block; margin-top:14px; height:4px; border-radius:2px; background:#e0e0e0; overflow:hidden; }
+    .ksa__bar span { display:block; height:100%; background:var(--blue); border-radius:2px; transition:width .3s ease; }
+    /* Who We Serve */
+    .wws__grid { gap:20px; }
+    .wws__item { font-size:15.5px; padding:13px 0; }
+    .wws__img { height:240px; border-radius:12px; }
+    /* Business impact slider */
+    .biz { gap:26px; }
+    .biz-lead h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:10px; }
+    .biz-lead p { font-size:15.5px; line-height:1.6; margin-bottom:24px; }
+    .biz__left h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; }
+    .biz__left p { font-size:15.5px; line-height:1.6; margin-bottom:22px; }
+    .biz__arrow { width:40px; height:40px; font-size:18px; }
+    .biz__card { padding:26px 20px 30px; min-height:0; }
+    .biz__card h3 { font-size:20px; margin-bottom:12px; }
+    .biz__card p { font-size:15.5px; line-height:1.55; margin-bottom:18px; }
+    .biz__card .biz__num { font-size:22px; }
+    /* Problems masonry */
+    .prob { height:200px; }
+    .prob__label { font-size:16px; left:18px; bottom:16px; }
+    /* Testimonials */
+    .tst { gap:22px; }
+    .tst__left h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:16px; }
+    .tst__left h2 br { display:none; }
+    .tst__arrow { width:44px; height:44px; border-radius:10px; font-size:18px; }
+    .tst__bar { height:8px; }
+    .tst__card { padding:26px 20px; border-radius:16px; }
+    .tst__stars { font-size:20px; letter-spacing:3px; margin-bottom:14px; }
+    .tst__quote { font-size:15.5px; line-height:1.65; margin-bottom:18px; max-width:100%; }
+    .tst__avatar { width:44px; height:44px; }
+    .tst__meta strong { font-size:15px; }
+    .tst__meta span { font-size:13px; }
+    .tst__qmark { font-size:60px; right:20px; bottom:14px; }
+    /* CTA band */
+    .svc-cta-band { padding:56px 0; }
+    .svc-cta-band__text { font-size:16px; margin-bottom:24px; }
+    .svc-cta-band__btn { width:100%; max-width:420px; font-size:16px; padding:13px 34px; border-radius:14px; }
+    /* FAQ heading — family scale */
+    .nd-faq__title { font-size:22px; color:var(--blue); font-weight:700; }
+  }
+  @media(max-width:480px){
+    .nc-hero__title { font-size:26px; }
+  }
   </style>
 </head>
 <body>
@@ -389,6 +456,51 @@
   </script>
 
   <script src="/js/cms.js"></script>
+  <script>
+  /* Key Solution Areas — mobile accordion (panel follows active tab, caret, progress) */
+  (function ksaMobile() {
+    var ksa = document.getElementById('ksa');
+    if (!ksa) return;
+    var tabs = Array.prototype.slice.call(ksa.querySelectorAll('.ksa__tab'));
+    var tabsWrap = ksa.querySelector('.ksa__tabs');
+    var panel = ksa.querySelector('.ksa__panel');
+    var card = ksa.querySelector('.ksa__panel-card');
+    if (!tabs.length || !tabsWrap || !panel || !card) return;
+    tabs.forEach(function (t) {
+      var c = document.createElement('span');
+      c.className = 'ksa__caret';
+      c.setAttribute('aria-hidden', 'true');
+      c.textContent = '\u2304';
+      t.appendChild(c);
+    });
+    var bar = document.createElement('div');
+    bar.className = 'ksa__bar';
+    bar.setAttribute('aria-hidden', 'true');
+    var fill = document.createElement('span');
+    bar.appendChild(fill);
+    card.appendChild(bar);
+    var mq = window.matchMedia('(max-width: 768px)');
+    function sync() {
+      var i = 0;
+      tabs.forEach(function (t, j) { if (t.classList.contains('active')) i = j; });
+      tabs.forEach(function (t, j) {
+        var c = t.querySelector('.ksa__caret');
+        if (c) c.textContent = j === i ? '^' : '\u2304';
+      });
+      fill.style.width = (((i + 1) / tabs.length) * 100) + '%';
+      if (mq.matches) {
+        tabs[i].insertAdjacentElement('afterend', panel);
+      } else if (panel.parentElement === tabsWrap) {
+        ksa.appendChild(panel);
+      }
+    }
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () { window.setTimeout(sync, 0); });
+    });
+    if (mq.addEventListener) { mq.addEventListener('change', sync); } else { mq.addListener(sync); }
+    sync();
+  })();
+  </script>
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
