@@ -13,7 +13,12 @@
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
   /* ===== Service detail — shared section styles (template) ===== */
-  .sd-section { padding:80px var(--px); max-width:var(--section-w); margin:0 auto; }
+  /* 100px rhythm between sections (home pattern); adjacent margins collapse */
+  .sd-section { padding:0 var(--px); margin:100px auto; max-width:var(--section-w); }
+  .sd-section--tint { background:#f7f9fc; padding:80px var(--px); }
+  .svc-cta-band { margin-top:100px; }
+  main .nd-faq { margin-top:100px; }
+  .nd-contact.section-shell { margin-top:100px; }
   .sd-wrap { max-width:var(--max-w); margin:0 auto; }
   .sd-head { text-align:center; max-width:820px; margin:0 auto 48px; }
   .sd-head h2 { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:16px; }
@@ -47,23 +52,9 @@
   .acct__card p { font-family:'Google Sans Flex',sans-serif; font-size:15px; font-weight:400; color:rgba(255,255,255,.9); line-height:1.6; }
   @media(max-width:900px){ .acct__grid{grid-template-columns:1fr;gap:32px;} .acct__head{font-size:32px;} }
 
-  /* ===== Testimonials — What our client says ===== */
-  .tst { display:grid; grid-template-columns:1fr 1.35fr; gap:64px; align-items:center; }
-  .tst__left h2 { font-family:'Google Sans Flex',sans-serif; font-size:48px; font-weight:600; color:var(--navy); line-height:1.05; margin-bottom:48px; }
-  .tst__nav { display:flex; align-items:center; gap:24px; }
-  .tst__arrow { width:56px; height:56px; border-radius:12px; border:1.5px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:20px; color:var(--dark); transition:background .2s,color .2s,border-color .2s; }
-  .tst__arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
-  .tst__bar { flex:1; max-width:200px; height:14px; background:var(--gray-mid); border-radius:10px; overflow:hidden; }
-  .tst__bar-fill { height:100%; width:33%; background:var(--sub); border-radius:10px; transition:width .4s ease; }
-  .tst__card { background:#fff; border-radius:24px; padding:48px 52px; box-shadow:0 10px 40px rgba(9,130,197,.08); position:relative; }
-  .tst__stars { color:#f5a623; font-size:26px; letter-spacing:4px; margin-bottom:24px; }
-  .tst__quote { font-family:'Google Sans Flex',sans-serif; font-size:18px; font-weight:400; color:var(--dark); line-height:1.65; margin-bottom:28px; max-width:88%; transition:opacity .3s; }
-  .tst__person { display:flex; align-items:center; gap:16px; }
-  .tst__avatar { width:56px; height:56px; border-radius:50%; object-fit:cover; background:var(--gray-mid); flex-shrink:0; }
-  .tst__meta strong { display:block; font-family:'Google Sans Flex',sans-serif; font-size:17px; font-weight:600; color:var(--navy); }
-  .tst__meta span { font-family:'Google Sans Flex',sans-serif; font-size:14px; color:var(--sub); }
-  .tst__qmark { position:absolute; right:48px; bottom:36px; font-family:Georgia,serif; font-size:96px; color:var(--gray-mid); line-height:1; pointer-events:none; }
-  @media(max-width:900px){ .tst{grid-template-columns:1fr;gap:36px;} .tst__left h2{font-size:38px;margin-bottom:28px;} .tst__card{padding:32px 28px;} .tst__quote{max-width:100%;} }
+  /* ===== Testimonials (nd-trusted) — 3 cards: start track at ~0 so
+     global.js doesn't apply its 5-card -175px peek fallback ===== */
+  .nd-trusted__track { transform: translateX(-1px); }
 
   /* ===== Key Solution Areas — tabs + image card ===== */
   .ksa__card { display:flex; gap:36px; background:#fff; border:0.2px solid #353535; border-radius:30px; box-shadow:0 4px 4px rgba(0,0,0,.1); padding:40px; }
@@ -78,27 +69,30 @@
   .ksa__panel-card p { font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; color:#353535; line-height:1.25; }
   @media(max-width:900px){ .ksa__card{flex-direction:column;} .ksa__tabs{flex-basis:auto;} .ksa__panel{min-height:420px;} .ksa__panel-card h3{font-size:24px;} }
 
-  /* ===== Who We Serve — two columns + centre image ===== */
-  .wws__grid { display:grid; grid-template-columns:1fr auto 1fr; gap:56px; align-items:center; }
-  .wws__col { display:flex; flex-direction:column; }
-  .wws__col--left { text-align:left; }
-  .wws__col--right { text-align:left; }
-  .wws__item { font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; color:var(--navy); padding:26px 0; border-bottom:1px solid rgba(9,130,197,.18); }
-  .wws__item:last-child { border-bottom:none; }
-  .wws__media { display:flex; justify-content:center; }
-  .wws__img { width:400px; height:540px; object-fit:cover; border-radius:20px; display:block; }
-  @media(max-width:900px){ .wws__grid{grid-template-columns:1fr;} .wws__col--left,.wws__col--right{text-align:left;} .wws__img{width:100%;max-width:360px;height:340px;} .wws__media{order:-1;} .wws__item{font-size:18px;padding:18px 0;} }
+  /* ===== Who We Serve — photo card + bordered tile grid (nd-t-card idiom) ===== */
+  .wws__layout { display:grid; grid-template-columns:440px 1fr; gap:48px; align-items:stretch; }
+  .wws__media { border-radius:16px; overflow:hidden; }
+  .wws__media picture { display:block; width:100%; height:100%; }
+  .wws__img { width:100%; height:100%; min-height:420px; object-fit:cover; display:block; }
+  .wws__tiles { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .wws__item { display:flex; align-items:center; background:#fff; border:1px solid var(--blue); border-radius:6px; padding:22px 26px; font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; color:#353535; transition:background .2s ease, box-shadow .2s ease, transform .2s ease; }
+  .wws__item:hover { background:rgba(9,130,197,.05); box-shadow:0 10px 24px rgba(19,32,63,.10); transform:translateY(-3px); }
+  @media(prefers-reduced-motion:reduce){ .wws__item, .wws__item:hover { transition:none; transform:none; } }
+  @media(max-width:1200px){ .wws__layout{grid-template-columns:360px 1fr;gap:32px;} .wws__item{font-size:18px;padding:18px 20px;} }
+  @media(max-width:900px){ .wws__layout{grid-template-columns:1fr;} .wws__img{min-height:300px;} }
+  @media(max-width:560px){ .wws__tiles{grid-template-columns:1fr;} }
 
   /* ===== Business Impact — text + blue card slider ===== */
   .biz { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
   .biz__left h2 { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:18px; }
   .biz__left p { font-family:'Google Sans Flex',sans-serif; font-size:20px; color:var(--sub); line-height:1.5; margin-bottom:40px; }
-  .biz__nav { display:flex; align-items:center; gap:24px; }
-  .biz__arrow { width:56px; height:56px; border-radius:12px; border:1.5px solid var(--gray-mid); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:20px; color:var(--dark); transition:background .2s,color .2s,border-color .2s; }
-  .biz__arrow:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
-  .biz__bar { flex:1; max-width:240px; height:14px; background:var(--gray-mid); border-radius:10px; overflow:hidden; }
-  .biz__bar-fill { height:100%; width:20%; background:var(--sub); border-radius:10px; transition:width .4s ease; }
-  .biz__card { background:#859aba; border-radius:30px; padding:50px 43px 52px; min-height:360px; color:#fff; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 4px 2px rgba(0,0,0,.1); }
+  .biz__nav { display:flex; align-items:center; gap:16px; }
+  .biz__arrow { width:48px; height:48px; border-radius:6px; border:1px solid #d2d2d2; background:#f0f0f0; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:22px; color:#464646; transition:background .2s,color .2s,border-color .2s; }
+  .biz__arrow:last-of-type { background:#000; border-color:#000; color:#fff; }
+  .biz__arrow:hover { background:var(--blue); color:#fff; border-color:var(--blue); }
+  .biz__bar { flex:1; max-width:240px; height:6px; margin-left:8px; background:#e4e4e4; border-radius:4px; overflow:hidden; }
+  .biz__bar-fill { height:100%; width:20%; background:var(--blue); border-radius:4px; transition:width .4s ease; }
+  .biz__card { background:#13203f; border-radius:16px; padding:50px 43px 52px; min-height:360px; color:#fff; display:flex; flex-direction:column; justify-content:space-between; }
   .biz__card h3 { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; line-height:1.05; margin-bottom:20px; transition:opacity .3s; }
   .biz__card p { font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; line-height:1.35; letter-spacing:.02em; color:rgba(255,255,255,.95); transition:opacity .3s; margin-bottom:28px; }
   .biz__card .biz__num { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; }
@@ -137,7 +131,11 @@
     .nc-hero__title { font-size:26px; font-weight:700; line-height:1.22; margin-bottom:12px; }
     .nc-hero__sub { font-size:16.5px; line-height:1.5; }
     .page-hero__cta-btn { margin-top:20px; font-size:14px; min-height:44px; min-width:0; padding:0 24px; }
-    .sd-section { padding:34px var(--px); }
+    .sd-section { padding:0 var(--px); margin:56px auto; }
+    .sd-section--tint { padding:34px var(--px); }
+    .svc-cta-band { margin-top:56px; }
+    main .nd-faq { margin-top:56px; }
+    .nd-contact.section-shell { margin-top:56px; }
     .sd-head { margin-bottom:22px; }
     .sd-head h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:10px; }
     .sd-head p { font-size:15.5px; font-weight:400; line-height:1.6; }
@@ -163,9 +161,10 @@
     .ksa__bar { display:block; margin-top:14px; height:4px; border-radius:2px; background:#e0e0e0; overflow:hidden; }
     .ksa__bar span { display:block; height:100%; background:var(--blue); border-radius:2px; transition:width .3s ease; }
     /* Who We Serve */
-    .wws__grid { gap:20px; }
-    .wws__item { font-size:15.5px; padding:13px 0; }
-    .wws__img { height:240px; border-radius:12px; }
+    .wws__layout { gap:20px; }
+    .wws__item { font-size:15.5px; padding:14px 16px; }
+    .wws__img { min-height:0; height:240px; }
+    .wws__media { border-radius:12px; }
     /* Business impact slider */
     .biz { gap:26px; }
     .biz__left h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; }
@@ -180,17 +179,6 @@
     .prob__label { font-size:16px; left:18px; bottom:16px; }
     /* Testimonials */
     .tst { gap:22px; }
-    .tst__left h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:16px; }
-    .tst__left h2 br { display:none; }
-    .tst__arrow { width:44px; height:44px; border-radius:10px; font-size:18px; }
-    .tst__bar { height:8px; }
-    .tst__card { padding:26px 20px; border-radius:16px; }
-    .tst__stars { font-size:20px; letter-spacing:3px; margin-bottom:14px; }
-    .tst__quote { font-size:15.5px; line-height:1.65; margin-bottom:18px; max-width:100%; }
-    .tst__avatar { width:44px; height:44px; }
-    .tst__meta strong { font-size:15px; }
-    .tst__meta span { font-size:13px; }
-    .tst__qmark { font-size:60px; right:20px; bottom:14px; }
     /* CTA band */
     .svc-cta-band { padding:56px 0; }
     .svc-cta-band__text { font-size:16px; margin-bottom:24px; }
@@ -272,27 +260,25 @@
   </section>
 
   <!-- ===== WHO WE SERVE ===== -->
-  <section class="sd-section" style="background:linear-gradient(91deg,rgba(241,244,249,.5) 0%,rgba(173,217,243,.5) 15%,rgba(160,182,229,.5) 33%,rgba(8,173,252,.2) 49%,rgba(160,182,229,.5) 68%,rgba(173,217,243,.5) 83%,rgba(245,248,253,.5) 100%);" aria-labelledby="wws-h">
+  <section class="sd-section sd-section--tint" aria-labelledby="wws-h">
     <div class="sd-wrap">
       <div class="sd-head" style="text-align:left;margin-left:0;">
         <h2 id="wws-h">Who We Serve</h2>
         <p>We design our services for organisations that are transforming and need completely stable, secure connectivity to protect daily operations.</p>
       </div>
-      <div class="wws__grid">
-        <div class="wws__col wws__col--left">
-          <div class="wws__item">Small and medium-sized businesses</div>
-          <div class="wws__item">Multi-site organisations</div>
-          <div class="wws__item">Professional service firms</div>
-          <div class="wws__item">Retail organisations</div>
-        </div>
+      <div class="wws__layout animate-fade-up">
         <div class="wws__media">
           <picture><source srcset="/images/pages/unique/services-managed-network-support-nc-wws-person.webp" type="image/webp"><img class="wws__img" src="/images/pages/unique/services-managed-network-support-nc-wws-person.jpg" alt="Managed network support engineer" loading="lazy"></picture>
         </div>
-        <div class="wws__col wws__col--right">
-          <div class="wws__item">Healthcare providers</div>
-          <div class="wws__item">Educational institutions</div>
-          <div class="wws__item">Manufacturing businesses</div>
-          <div class="wws__item">Remote and hybrid workforces</div>
+        <div class="wws__tiles stagger-children">
+          <div class="wws__item animate-fade-up">Small and medium-sized businesses</div>
+          <div class="wws__item animate-fade-up">Healthcare providers</div>
+          <div class="wws__item animate-fade-up">Multi-site organisations</div>
+          <div class="wws__item animate-fade-up">Educational institutions</div>
+          <div class="wws__item animate-fade-up">Professional service firms</div>
+          <div class="wws__item animate-fade-up">Manufacturing businesses</div>
+          <div class="wws__item animate-fade-up">Retail organisations</div>
+          <div class="wws__item animate-fade-up">Remote and hybrid workforces</div>
         </div>
       </div>
     </div>
@@ -348,25 +334,56 @@
   </section>
 
   <!-- ===== TESTIMONIALS ===== -->
-  <section class="sd-section" style="background:linear-gradient(91deg,rgba(241,244,249,.5) 0%,rgba(173,217,243,.5) 15%,rgba(160,182,229,.5) 33%,rgba(8,173,252,.2) 49%,rgba(160,182,229,.5) 68%,rgba(173,217,243,.5) 83%,rgba(245,248,253,.5) 100%);" aria-labelledby="tst-h">
+  <section class="sd-section" aria-labelledby="tst-h">
     <div class="sd-wrap">
-      <div class="tst" id="tst">
-        <div class="tst__left">
-          <h2 id="tst-h">What our<br>client says</h2>
-          <div class="tst__nav">
-            <button class="tst__arrow" id="tst-prev" aria-label="Previous testimonial">&#8592;</button>
-            <button class="tst__arrow" id="tst-next" aria-label="Next testimonial">&#8594;</button>
-            <div class="tst__bar"><div class="tst__bar-fill" id="tst-fill"></div></div>
+      <div class="nd-trusted">
+        <div class="nd-trusted__head">
+          <h2 class="nd-trusted__title" id="tst-h">What our clients say</h2>
+          <div class="nd-trusted__controls">
+            <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
+              <span aria-hidden="true">&#8249;</span>
+            </button>
+            <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial">
+              <span aria-hidden="true">&#8250;</span>
+            </button>
           </div>
         </div>
-        <div class="tst__card">
-          <div class="tst__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="tst__quote" id="tst-quote">Our operations were completely revolutionised by their fully managed IT support. Managed network solutions supported safe, uninterrupted operations and business continuity by guaranteeing uptime and security.</p>
-          <div class="tst__person">
-            <div class="tst__avatar" aria-hidden="true"></div>
-            <div class="tst__meta"><strong id="tst-name">James Thornton</strong><span id="tst-role">IT Manager, Logistics Ltd, Manchester</span></div>
+        <div class="nd-trusted__viewport">
+          <div class="nd-trusted__track">
+            <article class="nd-t-card">
+              <p class="nd-t-card__quote">&ldquo;Our operations were completely revolutionised by their fully managed IT support. Managed network solutions supported safe, uninterrupted operations and business continuity by guaranteeing uptime and security.&rdquo;</p>
+              <div class="nd-t-card__person">
+                <span class="nd-t-card__avatar" aria-hidden="true"></span>
+                <div>
+                  <p class="nd-t-card__name">James Thornton</p>
+                  <p class="nd-t-card__role">IT Manager, Logistics Ltd, Manchester</p>
+                </div>
+              </div>
+            </article>
+            <article class="nd-t-card">
+              <p class="nd-t-card__quote">&ldquo;Handing our network over to their managed team was the best decision we made. Everything just works, and issues are handled before we even notice.&rdquo;</p>
+              <div class="nd-t-card__person">
+                <span class="nd-t-card__avatar" aria-hidden="true"></span>
+                <div>
+                  <p class="nd-t-card__name">Operations Director</p>
+                  <p class="nd-t-card__role">Professional Services Firm, London</p>
+                </div>
+              </div>
+            </article>
+            <article class="nd-t-card">
+              <p class="nd-t-card__quote">&ldquo;Predictable costs, proactive support, and a team that truly owns our uptime. Our internal staff can finally focus on the business.&rdquo;</p>
+              <div class="nd-t-card__person">
+                <span class="nd-t-card__avatar" aria-hidden="true"></span>
+                <div>
+                  <p class="nd-t-card__name">Head of IT</p>
+                  <p class="nd-t-card__role">Manufacturing Company, Midlands</p>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="tst__qmark" aria-hidden="true">&rdquo;</div>
+        </div>
+        <div class="nd-trusted__dots" aria-hidden="true">
+          <span class="nd-trusted__dot nd-trusted__dot--active"></span>
         </div>
       </div>
     </div>
@@ -465,31 +482,6 @@
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
   })();
 
-  /* Testimonials — slider */
-  (function () {
-    var tst = document.getElementById('tst');
-    if (!tst) return;
-    var items = [
-      { quote:'Our operations were completely revolutionised by their fully managed IT support. Managed network solutions supported safe, uninterrupted operations and business continuity by guaranteeing uptime and security.', name:'James Thornton', role:'IT Manager, Logistics Ltd, Manchester' },
-      { quote:'Handing our network over to their managed team was the best decision we made. Everything just works, and issues are handled before we even notice.', name:'Operations Director', role:'Professional Services Firm, London' },
-      { quote:'Predictable costs, proactive support, and a team that truly owns our uptime. Our internal staff can finally focus on the business.', name:'Head of IT', role:'Manufacturing Company, Midlands' }
-    ];
-    var i = 0, total = items.length;
-    var quote = document.getElementById('tst-quote');
-    var name = document.getElementById('tst-name');
-    var role = document.getElementById('tst-role');
-    var fill = document.getElementById('tst-fill');
-    function render() {
-      quote.style.opacity = '0';
-      setTimeout(function () {
-        quote.textContent = items[i].quote; name.textContent = items[i].name; role.textContent = items[i].role;
-        fill.style.width = ((i + 1) / total * 100) + '%';
-        quote.style.opacity = '1';
-      }, 200);
-    }
-    document.getElementById('tst-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
-    document.getElementById('tst-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
-  })();
   </script>
 
   <script src="/js/cms.js"></script>
