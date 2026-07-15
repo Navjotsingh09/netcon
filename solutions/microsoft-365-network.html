@@ -12,120 +12,709 @@
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
-    .sol-hero { max-width:var(--section-w); margin:0 auto; background:#13203f; padding:132px var(--px) 54px; }
-    .sol-hero__content { max-width:var(--max-w); margin:0 auto; max-width:760px; }
-    .sol-hero__title { font-family:"Google Sans Flex",sans-serif; font-size:64px; font-weight:600; color:#fff; line-height:1.08; margin-bottom:20px; }
-    .sol-hero__sub { font-family:"Google Sans Flex",sans-serif; font-size:24px; color:#fff; line-height:1.35; margin-bottom:20px; }
+    .m365-page {
+      width: 100%;
+      max-width: var(--section-w);
+      margin: 0 auto;
+    }
 
-    .feature-band { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
-    .feature-band__inner { max-width:1440px; margin:0 auto; background:linear-gradient(91deg,rgba(241,244,249,.72) 0%,rgba(173,217,243,.58) 17%,rgba(160,182,229,.52) 35%,rgba(8,173,252,.18) 49%,rgba(160,182,229,.52) 68%,rgba(173,217,243,.55) 83%,rgba(245,248,253,.72) 100%); border-radius:20px; padding:44px 40px; }
-    .feature-band__inner h2 { font-family:"Google Sans Flex",sans-serif; font-size:48px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:36px; max-width:600px; }
-    .feature-band__grid { display:grid; grid-template-columns:1fr 300px 1fr; gap:36px; align-items:center; }
-    .feature-band__list { display:flex; flex-direction:column; gap:20px; }
-    .feature-band__item { display:flex; align-items:flex-start; gap:14px; }
-    .feature-band__dot { width:8px; height:8px; border-radius:50%; background:var(--blue); margin-top:6px; flex-shrink:0; }
-    .feature-band__item p { font-family:"Google Sans Flex",sans-serif; font-size:18px; color:#353535; line-height:1.6; margin:0; }
-    .feature-band__image img { width:100%; height:300px; object-fit:cover; border-radius:16px; display:block; }
+    .m365-page > section {
+      width: 100%;
+      align-self: stretch;
+    }
 
-    .dark-banner { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
-    .dark-banner__wrap { position:relative; max-width:1440px; margin:0 auto; min-height:540px; border-radius:20px; overflow:hidden; }
-    .dark-banner__wrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-    .dark-banner__overlay { position:absolute; inset:0; background:linear-gradient(90deg,rgba(17,27,58,.92) 0%,rgba(17,27,58,.76) 44%,rgba(17,27,58,.2) 72%,rgba(17,27,58,0) 88%); }
-    .dark-banner__content { position:relative; z-index:2; max-width:640px; padding:72px 0 0 56px; }
-    .dark-banner__content h2 { font-family:"Google Sans Flex",sans-serif; font-size:48px; font-weight:600; color:#fff; line-height:1.08; margin-bottom:22px; }
-    .dark-banner__content p { font-family:"Google Sans Flex",sans-serif; font-size:18px; color:rgba(255,255,255,.9); line-height:1.65; margin-bottom:14px; }
+    .m365-hero {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      background: #13203f;
+      padding: 135px var(--px) 48px;
+    }
 
-    .split-info { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
-    .split-info__inner { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
-    .split-info__text h2 { font-family:"Google Sans Flex",sans-serif; font-size:48px; font-weight:600; color:var(--navy); line-height:1.15; margin-bottom:18px; }
-    .split-info__text p { font-family:"Google Sans Flex",sans-serif; font-size:18px; color:var(--sub); line-height:1.65; margin-bottom:14px; }
-    .split-info__image img { width:100%; height:340px; object-fit:cover; border-radius:16px; display:block; }
+    .m365-hero__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
 
-    .benefits { padding:0 var(--px) 84px; max-width:var(--section-w); margin:0 auto; }
-    .benefits__inner { max-width:1440px; margin:0 auto; }
-    .benefits__inner h2 { font-family:"Google Sans Flex",sans-serif; font-size:48px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:14px; }
-    .benefits__intro { font-family:"Google Sans Flex",sans-serif; font-size:18px; color:var(--sub); line-height:1.65; max-width:860px; margin-bottom:36px; }
-    .benefits__grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-    .benefits__card { background:#f5f7fb; border-radius:16px; padding:28px 28px 24px; }
-    .benefits__card h3 { font-family:"Google Sans Flex",sans-serif; font-size:22px; font-weight:600; color:var(--navy); margin-bottom:10px; }
-    .benefits__card p { font-family:"Google Sans Flex",sans-serif; font-size:18px; color:var(--sub); line-height:1.6; }
+    .m365-hero__copy {
+      max-width: 901px;
+    }
 
+    .m365-hero__copy h1 {
+      margin: 0 0 15px;
+      max-width: 804px;
+      color: #fff;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 64px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
 
-    .sol-cta-band { background:var(--blue); padding:80px 0; position:relative; overflow:hidden; }
-    .sol-cta-band__tags { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; gap:24px; padding:0 var(--px); pointer-events:none; }
-    .sol-cta-band__row { display:flex; gap:20px; flex-wrap:nowrap; }
-    .sol-cta-band__row span { background:#fff; color:var(--blue); opacity:.45; font-family:"Google Sans Flex",sans-serif; font-size:18px; font-weight:500; padding:12px 32px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
-    .sol-cta-band__card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:44px 66px; max-width:580px; margin:0 auto; text-align:center; box-shadow:0 4px 24px rgba(0,0,0,.12); }
-    .sol-cta-band__text { font-family:"Google Sans Flex",sans-serif; font-size:18px; font-weight:400; color:var(--sub); line-height:1.55; margin-bottom:28px; }
+    .m365-hero__copy p {
+      margin: 0 0 16px;
+      max-width: 640px;
+      color: #fff;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
 
-    @media(max-width:1200px){ .sol-hero__title,.testi__left h2{font-size:46px;} .feature-band__grid,.split-info__inner,.testi__inner{display:block;} .testi__nav{align-items:flex-start;margin-top:24px;} .feature-band__inner h2{font-size:40px;} .benefits__grid{grid-template-columns:1fr 1fr;} }
-    @media(max-width:768px){ .sol-hero{padding:108px var(--px) 44px;} .sol-hero__title{font-size:42px;} .sol-hero__sub{font-size:20px;} .feature-band__inner{padding:28px 22px;} .feature-band__inner h2,.dark-banner__content h2,.split-info__text h2,.benefits__inner h2{font-size:36px;} .sol-cta-band__card{padding:32px 28px;} .benefits__grid{grid-template-columns:1fr;} }
-    @media(max-width:480px){ .sol-hero__title{font-size:28px;} }
+    .m365-hero__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+      min-height: 50px;
+      padding: 0 12px;
+      background: #fff;
+      color: #353535;
+      border-radius: 2px;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .m365-overview {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 48px var(--px) 0;
+    }
+
+    .m365-overview__head {
+      max-width: var(--max-w);
+      margin: 0 auto 32px;
+    }
+
+    .m365-overview__head h2 {
+      margin: 0 0 16px;
+      color: #0982c5;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
+
+    .m365-overview__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 386px) minmax(0, 822px);
+      gap: 56px;
+      align-items: start;
+      background: #fff;
+      border: 1px solid #353535;
+      border-radius: 30px;
+      padding: 40px;
+    }
+
+    .m365-overview__feature {
+      position: relative;
+      min-height: 678px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #0c1b3d;
+      display: flex;
+      align-items: flex-end;
+      padding: 28px;
+    }
+
+    .m365-overview__feature img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .m365-overview__feature::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9,130,197,0.18) 0%, rgba(9,130,197,0.88) 100%);
+    }
+
+    .m365-overview__panel {
+      position: relative;
+      z-index: 2;
+      width: 735px;
+      max-width: 100%;
+      padding: 28px;
+      background: #fff;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+    }
+
+    .m365-overview__panel.is-switching {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .m365-overview__panel h2 {
+      margin: 0;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .m365-overview__panel p {
+      margin: 0;
+      color: #353535;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.55;
+    }
+
+    .m365-overview__list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .m365-overview__list-item {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #353535;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.25;
+      transition: color 0.2s ease-out, background 0.25s ease-out, padding 0.25s ease-out;
+    }
+
+    .m365-overview__list-item:hover {
+      color: #0982c5;
+    }
+
+    .m365-overview__list-item--active,
+    .m365-overview__list-item--active:hover {
+      padding: 24px;
+      border-radius: 20px;
+      border-bottom: 0;
+      background: #0982c5;
+      color: #fff;
+    }
+
+    .m365-band {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 50px var(--px) 0;
+    }
+
+    .m365-band__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      background: #0982c5;
+      border-radius: 30px;
+      padding: 64px 80px 80px;
+    }
+
+    .m365-band__inner h2 {
+      margin: 0 0 64px;
+      color: #fff;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
+
+    .m365-band__grid {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 96px;
+      align-items: center;
+    }
+
+    .m365-band__media img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .m365-band__copy p {
+      margin: 0 0 24px;
+      color: #fff;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .m365-band__copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .m365-why {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 50px var(--px) 0;
+    }
+
+    .m365-why__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 675px 689px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .m365-why__copy h2 {
+      margin: 0 0 36px;
+      color: #0982c5;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
+
+    .m365-why__copy p {
+      margin: 0 0 18px;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .m365-why__media img {
+      width: 100%;
+      height: 517px;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+    }
+
+    .m365-gains {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding: 50px var(--px) 0;
+    }
+
+    .m365-gains__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 680px 680px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .m365-gains__intro {
+      position: sticky;
+      top: 140px;
+    }
+
+    .m365-gains__intro h2 {
+      margin: 0 0 16px;
+      color: #0982c5;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.08;
+    }
+
+    .m365-gains__intro p {
+      margin: 0 0 14px;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .m365-gains__stack {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .m365-gains__card {
+      position: sticky;
+      padding: 28px;
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      background: #fff;
+      min-height: 266px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      box-shadow: 0 -14px 32px -12px rgba(0, 0, 0, 0.14);
+    }
+
+    .m365-gains__card:nth-child(1) { top: 140px; z-index: 1; }
+    .m365-gains__card:nth-child(2) { top: 168px; z-index: 2; margin-top: 150px; }
+    .m365-gains__card:nth-child(3) { top: 196px; z-index: 3; margin-top: 150px; }
+
+    .m365-gains__card h3,
+    .m365-gains__card .m365-gains__count {
+      margin: 0;
+      color: #0982c5;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .m365-gains__card p {
+      margin: 0;
+      color: #353535;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .m365-cta-band {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      background: #0982c5;
+      padding: 80px 140px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .m365-cta-band__grid {
+      max-width: 1552px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 24px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .m365-cta-band__chip {
+      padding: 16px 48px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.5);
+      color: #0982c5;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .m365-cta-band__card {
+      width: 658px;
+      margin: 40px auto 0;
+      padding: 46px 84px;
+      border-radius: 20px;
+      background: #fff;
+      text-align: center;
+    }
+
+    .m365-cta-band__card p {
+      margin: 0 0 28px;
+      color: #585151;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 1200px) {
+      .m365-overview__inner,
+      .m365-why__inner,
+      .m365-gains__inner {
+        grid-template-columns: 1fr;
+      }
+
+      .m365-hero {
+        padding-top: 112px;
+      }
+
+      .m365-overview__feature {
+        order: -1;
+      }
+
+      .m365-overview__inner {
+        padding: 24px;
+      }
+
+      .m365-overview__list {
+        gap: 24px;
+      }
+
+      .m365-band__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .m365-band__inner {
+        padding: 40px 32px;
+      }
+
+      .m365-gains__intro {
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .m365-hero__copy h1,
+      .m365-overview__head h2,
+      .m365-band__inner h2,
+      .m365-why__copy h2,
+      .m365-gains__intro h2 {
+        font-size: 36px;
+      }
+
+      .m365-hero__copy p {
+        font-size: 20px;
+      }
+
+      .m365-why__copy p,
+      .m365-gains__intro p,
+      .m365-gains__card p,
+      .m365-cta-band__card p {
+        font-size: 16px;
+      }
+
+      .m365-overview__feature {
+        min-height: 560px;
+      }
+
+      .m365-overview__list-item {
+        font-size: 22px;
+      }
+
+      .m365-gains__card,
+      .m365-why__media img {
+        min-height: 0;
+        height: auto;
+      }
+
+      .m365-cta-band {
+        padding: 48px 32px;
+      }
+
+      .m365-cta-band__card {
+        width: 100%;
+        padding: 32px 24px;
+      }
+    }
+
+    /* ===== Mobile M365 (Solutions mobile landing.png design) ===== */
+    .mm365 { display: none; }
+
+    @media (max-width: 768px) {
+      .mm365 { display: block; }
+      .m365-hero, .m365-overview, .m365-band, .m365-why, .m365-gains { display: none; }
+
+      .mm365-hero { background: #02172f; padding: 40px 22px; color: #fff; }
+      .mm365-hero h1 { font-size: 26px; font-weight: 700; line-height: 1.2; margin: 0 0 14px; color: #fff; }
+      .mm365-hero p { font-size: 17px; line-height: 1.5; color: rgba(255,255,255,.92); margin: 0 0 22px; }
+      .mm365-hero__btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        background: #f2f2f2; color: #1c1c1c; font-size: 13px; font-weight: 600;
+        padding: 10px 24px; border-radius: 4px; min-height: 40px; text-decoration: none;
+      }
+
+      .mm365-sec { padding: 26px 22px 6px; }
+      .mm365-h { color: #0982c5; font-size: 22px; font-weight: 700; line-height: 1.25; margin: 0 0 12px; }
+      .mm365-p { font-size: 16px; line-height: 1.6; color: #353535; margin: 0 0 16px; }
+      .mm365-img { width: 100%; height: auto; border-radius: 12px; display: block; margin: 6px 0 12px; object-fit: cover; }
+
+      .mm365-acc { border: 1px solid #e7e7e7; border-radius: 10px; overflow: hidden; }
+      .mm365-acc__head {
+        background: #0982c5; color: #fff; font-size: 16px; font-weight: 600;
+        padding: 16px 18px; display: flex; justify-content: space-between; align-items: center;
+      }
+      .mm365-acc__panel { padding: 18px; border-bottom: 1px solid #e7e7e7; }
+      .mm365-acc__panel p { font-size: 14.5px; line-height: 1.6; color: #353535; margin: 0 0 12px; }
+      .mm365-acc__panel img { width: 100%; height: auto; border-radius: 6px; display: block; }
+      .mm365-acc__bar { margin-top: 12px; height: 4px; border-radius: 2px; background: #e0e0e0; overflow: hidden; }
+      .mm365-acc__bar span { display: block; width: 25%; height: 100%; background: #0982c5; border-radius: 2px; }
+      .mm365-acc__item {
+        padding: 16px 18px; font-size: 15px; font-weight: 600; color: #1c1c1c;
+        border-bottom: 1px solid #ececec; display: flex; justify-content: space-between; align-items: center;
+      }
+      .mm365-acc__item:last-child { border-bottom: 0; }
+      .mm365-acc__item span, .mm365-acc__head span { color: currentColor; font-size: 18px; line-height: 1; }
+
+      .mm365-card {
+        position: relative; background: #fff; border: 1px solid #e7e7e7; border-radius: 8px;
+        padding: 22px 18px 40px; margin-bottom: 18px;
+      }
+      .mm365-card h3 { color: #0982c5; font-size: 17px; font-weight: 700; margin: 0 0 10px; }
+      .mm365-card p { font-size: 15px; line-height: 1.55; color: #4a4a4a; margin: 0; }
+      .mm365-card__count { position: absolute; left: 18px; bottom: 14px; font-size: 13px; font-weight: 600; color: #6d76a6; }
+
+      .mm365-process { background: #0982c5; border-radius: 12px; padding: 24px 18px; color: #fff; }
+      .mm365-process h2 { color: #fff; font-size: 19px; font-weight: 700; line-height: 1.3; margin: 0 0 16px; }
+      .mm365-process img { width: 100%; height: auto; border-radius: 8px; display: block; margin-bottom: 16px; }
+      .mm365-process p { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.94); margin: 0 0 14px; }
+      .mm365-process p:last-child { margin-bottom: 0; }
+
+      /* FAQ clean white accordion + trusted heading color per design */
+      .nd-faq { background: #fff; border: 0; padding: 6px 22px 10px; }
+      .nd-faq__left .section-title { color: #0982c5; font-size: 22px; font-weight: 700; }
+      .nd-faq__left p { font-size: 14px; color: #4a4a4a; margin-bottom: 14px; }
+      .nd-faq__cta { display: none; }
+      .nd-faq__item {
+        background: #fff; border: 0; border-bottom: 1px solid #e4e4e4;
+        padding: 18px 4px; text-align: left; font-size: 17px; font-weight: 500; color: #1c1c1c;
+      }
+      .nd-faq__item span { text-align: left; }
+      .nd-faq__item.is-open { background: #f5f5f6; border-bottom: 0; padding: 18px 14px 6px; }
+      .nd-faq__panel {
+        background: #f5f5f6; border: 0; padding: 0 14px 18px; margin-bottom: 6px;
+        font-size: 15.5px; line-height: 1.65; color: #4a4a4a;
+      }
+      .nd-trusted__title { color: #0982c5; }
+    }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
-  <main id="main" class="sol-detail-page">
+  <main id="main" class="sol-detail-page m365-page">
+    <div class="mm365">
 
-    <section class="sol-hero" aria-label="Microsoft 365 Readiness hero">
-      <div class="sol-hero__content animate-fade-up">
-        <h1 class="sol-hero__title">Professional Network Assessments</h1>
-        <p class="sol-hero__sub">Understand how your network is performing with a professional assessment that helps improve connectivity, strengthen resilience.</p>
-        <a href="/contact.html" class="btn-blue" data-source-cta="solution_hero_health_check">Book Health Check</a>
-      </div>
-    </section>
+      <section class="mm365-hero">
+        <h1>Microsoft 365 Assessment</h1>
+        <p>Identify infrastructure issues before they affect your Microsoft 365 deployment</p>
+        <a href="/contact.html" class="mm365-hero__btn" data-source-cta="solution_hero_health_check">Book Health Check</a>
+      </section>
 
-    <section class="feature-band" aria-labelledby="m365-features-h">
-      <div class="feature-band__inner animate-fade-up">
-        <h2 id="m365-features-h">What's Included in the Microsoft 365 Readiness Assessment</h2>
-        <div class="feature-band__grid">
-          <div class="feature-band__list">
-            <div class="feature-band__item"><div class="feature-band__dot"></div><p>Evaluates whether your infrastructure can support Microsoft 365 production workloads reliably.</p></div>
-            <div class="feature-band__item"><div class="feature-band__dot"></div><p>Reviews network latency, routing paths, bandwidth allocation, and internet performance.</p></div>
-            <div class="feature-band__item"><div class="feature-band__dot"></div><p>Assesses whether existing endpoints can reliably support Microsoft 365 workloads across the business.</p></div>
+      <section class="mm365-sec animate-fade-up">
+        <h2 class="mm365-h">What's Included in the Microsoft 365 Readiness Assessment</h2>
+        <div class="mm365-acc">
+          <div class="mm365-acc__head">Infrastructure Workload Support <span aria-hidden="true">&#94;</span></div>
+          <div class="mm365-acc__panel">
+            <p>Evaluates whether your infrastructure can support Microsoft 365 production workloads.</p>
+            <img src="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.jpg" alt="Microsoft 365 assessment consultant" loading="lazy">
+            <div class="mm365-acc__bar" aria-hidden="true"><span></span></div>
           </div>
-          <div class="feature-band__image">
-            <picture>
-              <source srcset="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.webp" type="image/webp">
-              <img src="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.jpg" alt="Microsoft 365 assessment consultant" loading="lazy">
-            </picture>
-          </div>
-          <div class="feature-band__list">
-            <div class="feature-band__item"><div class="feature-band__dot"></div><p>Validates connectivity for Microsoft Teams, Exchange Online, SharePoint, and OneDrive.</p></div>
-            <div class="feature-band__item"><div class="feature-band__dot"></div><p>Examines identity services, authentication policies, security controls, and compliance settings.</p></div>
-            <div class="feature-band__item"><div class="feature-band__dot"></div><p>Identifies technical risks before deployment and provides prioritised remediation recommendations.</p></div>
-          </div>
+          <div class="mm365-acc__item">Latency &amp; Bandwidth Review <span aria-hidden="true">&#8964;</span></div>
+          <div class="mm365-acc__item">Endpoint Readiness <span aria-hidden="true">&#8964;</span></div>
+          <div class="mm365-acc__item">Teams, Exchange &amp; SharePoint Connectivity <span aria-hidden="true">&#8964;</span></div>
+          <div class="mm365-acc__item">Identity &amp; Security Controls <span aria-hidden="true">&#8964;</span></div>
+          <div class="mm365-acc__item">Risk &amp; Remediation Recommendations <span aria-hidden="true">&#8964;</span></div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="dark-banner" aria-labelledby="m365-banner-h">
-      <div class="dark-banner__wrap animate-fade-up">
-        <picture>
-          <source srcset="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.webp" type="image/webp">
-          <img src="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.jpg" alt="" loading="lazy">
-        </picture>
-        <div class="dark-banner__overlay"></div>
-        <div class="dark-banner__content">
-          <h2 id="m365-banner-h">Here's What a Thorough Office 365 Readiness Assessment Involves</h2>
+      <section class="mm365-sec animate-fade-up">
+        <div class="mm365-process">
+          <h2>Here's What a Thorough Office 365 Readiness Assessment Involves</h2>
+          <img src="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.jpg" alt="Office 365 readiness assessment" loading="lazy">
           <p>Network design, connectivity, bandwidth, latency, endpoint performance, and security controls are examined during an Office 365 Readiness Assessment.</p>
           <p>Consultants assess traffic flows, routing, firewalls, configurations, and authentication methods. User behaviour and application usage are reviewed to identify issues before deployment causes disruption.</p>
           <p>The evaluation provides reports with risk analysis, optimisation recommendations, and actionable steps for reliable Microsoft 365 operations.</p>
         </div>
+      </section>
+
+      <section class="mm365-sec animate-fade-up">
+        <h2 class="mm365-h">Our Office 365 Readiness Assessment Services</h2>
+        <p class="mm365-p">Our Microsoft 365 Readiness Assessment service examines the infrastructure supporting your migration plans.</p>
+        <p class="mm365-p">We assess network performance, endpoint capability, identity configuration, security controls, and internet connectivity before deployment.</p>
+        <p class="mm365-p">The assessment highlights technical issues likely to affect Microsoft 365 workloads. Our consultants provide practical remediation guidance that improves service reliability, deployment confidence, and long-term operational performance.</p>
+        <img class="mm365-img" src="/images/pages/unique/solutions-microsoft-365-network-servers.jpg" alt="Office 365 readiness infrastructure review" loading="lazy">
+      </section>
+
+      <section class="mm365-sec animate-fade-up">
+        <h2 class="mm365-h">Benefits of a Microsoft 365 Readiness Assessment</h2>
+        <p class="mm365-p">A Microsoft 365 Readiness Assessment enhances user experience and operational efficiency while reducing implementation risks. It enables better planning, helping teams prioritise changes, optimise connectivity, improve security, and ensure smoother cloud adoption.</p>
+        <article class="mm365-card"><h3>Reduced Deployment Risk</h3><p>Identify and resolve infrastructure issues before go-live to prevent disruptions like poor call quality and application failures.</p><span class="mm365-card__count">1/3</span></article>
+        <article class="mm365-card"><h3>Improved Performance</h3><p>Optimise bandwidth, routing, and endpoint readiness so Microsoft 365 applications perform reliably across all sites.</p><span class="mm365-card__count">2/3</span></article>
+        <article class="mm365-card"><h3>Stronger Security Posture</h3><p>Validate identity services, authentication policies, and compliance controls before users are exposed to cloud workloads.</p><span class="mm365-card__count">3/3</span></article>
+      </section>
+
+    </div>
+
+    <section class="m365-hero" aria-label="Microsoft 365 Readiness hero">
+      <div class="m365-hero__inner">
+        <div class="m365-hero__copy animate-fade-up">
+          <h1>Microsoft 365 Assessment</h1>
+          <p>Identify infrastructure issues before they affect your Microsoft 365 deployment</p>
+          <a href="/contact.html" class="m365-hero__btn" data-source-cta="solution_hero_health_check">Book Health Check</a>
+        </div>
       </div>
     </section>
 
-    <section class="split-info" aria-labelledby="m365-service-h">
-      <div class="split-info__inner animate-fade-up">
-        <div class="split-info__text">
+    <section class="m365-overview" aria-labelledby="m365-features-h">
+      <div class="m365-overview__head animate-fade-up">
+        <h2 id="m365-features-h">What's Included in the Microsoft 365 Readiness Assessment</h2>
+      </div>
+      <div class="m365-overview__inner">
+        <div class="m365-overview__list animate-fade-up" role="tablist" aria-label="What's included in the Microsoft 365 readiness assessment">
+          <button type="button" role="tab" aria-selected="true" class="m365-overview__list-item m365-overview__list-item--active"
+            data-title="Infrastructure Workload Support"
+            data-copy="Evaluates whether your infrastructure can support Microsoft 365 production workloads.">Infrastructure Workload Support</button>
+          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
+            data-title="Latency &amp; Bandwidth Review"
+            data-copy="Reviews network latency, routing paths, bandwidth utilisation, and internet performance.">Latency &amp; Bandwidth Review</button>
+          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
+            data-title="Endpoint Readiness"
+            data-copy="Assesses whether existing endpoints can reliably support Microsoft 365 workloads.">Endpoint Readiness</button>
+          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
+            data-title="Teams, Exchange &amp; SharePoint Connectivity"
+            data-copy="Validates connectivity for Microsoft Teams, Exchange Online, SharePoint, and OneDrive.">Teams, Exchange &amp; SharePoint Connectivity</button>
+          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
+            data-title="Identity &amp; Security Controls"
+            data-copy="Examines identity services, authentication policies, security controls, and compliance settings.">Identity &amp; Security Controls</button>
+          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
+            data-title="Risk &amp; Remediation Recommendations"
+            data-copy="Identifies technical risks before deployment and provides prioritised remediation recommendations.">Risk &amp; Remediation Recommendations</button>
+        </div>
+        <div class="m365-overview__feature animate-fade-up">
+          <picture>
+            <source srcset="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.webp" type="image/webp">
+            <img src="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.jpg" alt="Microsoft 365 assessment consultant" loading="lazy">
+          </picture>
+          <div class="m365-overview__panel" role="tabpanel">
+            <h2 id="m365-overview-title">Infrastructure Workload Support</h2>
+            <p>Evaluates whether your infrastructure can support Microsoft 365 production workloads.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="m365-band" aria-labelledby="m365-banner-h">
+      <div class="m365-band__inner animate-fade-up">
+        <h2 id="m365-banner-h">Here's What a Thorough Office 365 Readiness Assessment Involves</h2>
+        <div class="m365-band__grid">
+          <div class="m365-band__media">
+            <picture>
+              <source srcset="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.webp" type="image/webp">
+              <img src="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.jpg" alt="Office 365 readiness assessment" loading="lazy">
+            </picture>
+          </div>
+          <div class="m365-band__copy">
+            <p>Network design, connectivity, bandwidth, latency, endpoint performance, and security controls are examined during an Office 365 Readiness Assessment.</p>
+            <p>Consultants assess traffic flows, routing, firewalls, configurations, and authentication methods. User behaviour and application usage are reviewed to identify issues before deployment causes disruption.</p>
+            <p>The evaluation provides reports with risk analysis, optimisation recommendations, and actionable steps for reliable Microsoft 365 operations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="m365-why" aria-labelledby="m365-service-h">
+      <div class="m365-why__inner">
+        <div class="m365-why__copy animate-fade-up">
           <h2 id="m365-service-h">Our Office 365 Readiness Assessment Services</h2>
           <p>Our Microsoft 365 Readiness Assessment service examines the infrastructure supporting your migration plans.</p>
           <p>We assess network performance, endpoint capability, identity configuration, security controls, and internet connectivity before deployment.</p>
           <p>The assessment highlights technical issues likely to affect Microsoft 365 workloads. Our consultants provide practical remediation guidance that improves service reliability, deployment confidence, and long-term operational performance.</p>
         </div>
-        <div class="split-info__image">
+        <div class="m365-why__media animate-fade-up">
           <picture>
             <source srcset="/images/pages/unique/solutions-microsoft-365-network-servers.webp" type="image/webp">
             <img src="/images/pages/unique/solutions-microsoft-365-network-servers.jpg" alt="Office 365 readiness infrastructure review" loading="lazy">
@@ -134,40 +723,47 @@
       </div>
     </section>
 
-    <section class="benefits" aria-labelledby="m365-benefits-h">
-      <div class="benefits__inner animate-fade-up">
-        <h2 id="m365-benefits-h">Benefits of a Microsoft 365 Readiness Assessment</h2>
-        <p class="benefits__intro">A Microsoft 365 Readiness Assessment enhances user experience and operational efficiency while reducing implementation risks. It enables better planning, helping teams prioritise changes, optimise connectivity, improve security, and ensure smoother cloud adoption.</p>
-        <div class="benefits__grid">
-          <div class="benefits__card">
+    <section class="m365-gains" aria-labelledby="m365-benefits-h">
+      <div class="m365-gains__inner">
+        <div class="m365-gains__intro animate-fade-up">
+          <h2 id="m365-benefits-h">Benefits of a Microsoft 365 Readiness Assessment</h2>
+          <p>A Microsoft 365 Readiness Assessment enhances user experience and operational efficiency while reducing implementation risks. It enables better planning, helping teams prioritise changes, optimise connectivity, improve security, and ensure smoother cloud adoption.</p>
+        </div>
+        <div class="m365-gains__stack animate-fade-up">
+          <article class="m365-gains__card">
             <h3>Reduced Deployment Risk</h3>
+            <p class="m365-gains__count">1/3</p>
             <p>Identify and resolve infrastructure issues before go-live to prevent disruptions like poor call quality and application failures.</p>
-          </div>
-          <div class="benefits__card">
+          </article>
+          <article class="m365-gains__card">
             <h3>Improved Performance</h3>
+            <p class="m365-gains__count">2/3</p>
             <p>Optimise bandwidth, routing, and endpoint readiness so Microsoft 365 applications perform reliably across all sites.</p>
-          </div>
-          <div class="benefits__card">
+          </article>
+          <article class="m365-gains__card">
             <h3>Stronger Security Posture</h3>
+            <p class="m365-gains__count">3/3</p>
             <p>Validate identity services, authentication policies, and compliance controls before users are exposed to cloud workloads.</p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="section-shell"><div class="nd-trusted"><div class="nd-trusted__head"><h2 class="nd-trusted__title">What our clients say</h2><div class="nd-trusted__controls"><button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial"><span aria-hidden="true">&#8249;</span></button><button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial"><span aria-hidden="true">&#8250;</span></button></div></div><div class="nd-trusted__viewport"><div class="nd-trusted__track"><article class="nd-t-card"><p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p><div class="nd-t-card__person"><span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/features/feature-1.jpg" alt="" loading="lazy"></span><div><p class="nd-t-card__name">Managing Director</p><p class="nd-t-card__role">Broadcasting Company, London</p></div></div></article><article class="nd-t-card"><p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p><div class="nd-t-card__person"><span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/features/feature-2.jpg" alt="" loading="lazy"></span><div><p class="nd-t-card__name">IT Director</p><p class="nd-t-card__role">Professional Services Firm, London</p></div></div></article><article class="nd-t-card"><p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p><div class="nd-t-card__person"><span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/services/service-1.jpg" alt="" loading="lazy"></span><div><p class="nd-t-card__name">Head of Operations</p><p class="nd-t-card__role">Healthcare Provider, Birmingham</p></div></div></article><article class="nd-t-card"><p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p><div class="nd-t-card__person"><span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/services/service-2.jpg" alt="" loading="lazy"></span><div><p class="nd-t-card__name">Managing Partner</p><p class="nd-t-card__role">Legal Firm, London</p></div></div></article><article class="nd-t-card"><p class="nd-t-card__quote">&ldquo;The network consultancy team transformed our aging infrastructure into a fast, secure environment. Their assessment identified hidden bottlenecks and improved connectivity across every department. We&rsquo;ve experienced fewer outages and better productivity since implementation.&rdquo;</p><div class="nd-t-card__person"><span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/services/service-3.jpg" alt="" loading="lazy"></span><div><p class="nd-t-card__name">Operations Director</p><p class="nd-t-card__role">Manufacturing Company, Midlands</p></div></div></article></div></div><div class="nd-trusted__dots" aria-hidden="true"><span class="nd-trusted__dot nd-trusted__dot--active"></span><span class="nd-trusted__dot"></span><span class="nd-trusted__dot"></span></div></div></section>
 
-    <section class="sol-cta-band" aria-label="Microsoft 365 CTA">
-      <div class="sol-cta-band__tags" aria-hidden="true">
-        <div class="sol-cta-band__row">
-          <span>Microsoft 365 &amp; Network</span><span>Network Health Check</span><span>Cyber Security Review</span><span>AI-Ready Infrastructure</span><span>Microsoft 365 &amp; Network</span><span>Network Health Check</span>
-        </div>
-        <div class="sol-cta-band__row">
-          <span>Network Health Check</span><span>Cyber Security Review</span><span>Microsoft 365 &amp; Network</span><span>AI-Ready Infrastructure</span><span>Network Health Check</span><span>Cyber Security Review</span>
-        </div>
+    <section class="m365-cta-band" aria-label="Microsoft 365 CTA">
+      <div class="m365-cta-band__grid" aria-hidden="true">
+        <span class="m365-cta-band__chip">Microsoft 365 &amp; Network</span>
+        <span class="m365-cta-band__chip">Network Health Check</span>
+        <span class="m365-cta-band__chip">Cyber Security Review</span>
+        <span class="m365-cta-band__chip">AI-Ready Infrastructure</span>
+        <span class="m365-cta-band__chip">Microsoft 365 &amp; Network</span>
+        <span class="m365-cta-band__chip">Network Health Check</span>
+        <span class="m365-cta-band__chip">Cyber Security Review</span>
+        <span class="m365-cta-band__chip">AI-Ready Infrastructure</span>
       </div>
-      <div class="sol-cta-band__card">
-        <p class="sol-cta-band__text">Book an IT infrastructure assessment to validate Microsoft 365 readiness, network performance, endpoint health, routing design, and security configuration before deployment.</p>
+      <div class="m365-cta-band__card">
+        <p>Book an IT infrastructure assessment to validate Microsoft 365 readiness, network performance, endpoint health, routing design, and security configuration before deployment.</p>
         <a href="/contact.html" class="btn-dark" data-source-cta="solution_secondary_readiness">Assess Microsoft 365 Readiness</a>
       </div>
     </section>
@@ -186,5 +782,51 @@
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
+
+  <script>
+    (function mm365Dots() {
+      var vp = document.querySelector('.nd-trusted__viewport');
+      var dots = Array.prototype.slice.call(document.querySelectorAll('.nd-trusted__dots .nd-trusted__dot'));
+      if (vp === null || dots.length === 0) return;
+      var ticking = false;
+      function sync() {
+        ticking = false;
+        var card = vp.querySelector('.nd-t-card');
+        if (card === null) return;
+        var step = card.offsetWidth + 18;
+        var idx = Math.round(vp.scrollLeft / step);
+        idx = Math.max(0, Math.min(dots.length - 1, idx % dots.length));
+        dots.forEach(function (d, i) { d.classList.toggle('nd-trusted__dot--active', i === idx); });
+      }
+      vp.addEventListener('scroll', function () {
+        if (ticking === false) { ticking = true; requestAnimationFrame(sync); }
+      }, { passive: true });
+    })();
+
+    (function m365OverviewTabs() {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.m365-overview__list-item'));
+      var panel = document.querySelector('.m365-overview__panel');
+      if (tabs.length === 0 || panel === null) return;
+      var title = panel.querySelector('h2');
+      var copy = panel.querySelector('p');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          if (tab.classList.contains('m365-overview__list-item--active')) return;
+          tabs.forEach(function (t) {
+            t.classList.remove('m365-overview__list-item--active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('m365-overview__list-item--active');
+          tab.setAttribute('aria-selected', 'true');
+          panel.classList.add('is-switching');
+          setTimeout(function () {
+            title.textContent = tab.getAttribute('data-title');
+            copy.textContent = tab.getAttribute('data-copy');
+            panel.classList.remove('is-switching');
+          }, 250);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
