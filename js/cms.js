@@ -315,26 +315,10 @@
     ].join('\n');
 
     revealAnimatedContent(container);
-
-    var list = container.querySelector('[data-faq-list]');
-    if (!list) return;
-    var btns = list.querySelectorAll('.nd-faq__item');
-    btns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var panel = btn.nextElementSibling;
-        var open = btn.classList.contains('is-open');
-        btns.forEach(function (b) {
-          b.classList.remove('is-open');
-          b.querySelector('strong').textContent = '+';
-          if (b.nextElementSibling) b.nextElementSibling.hidden = true;
-        });
-        if (!open) {
-          btn.classList.add('is-open');
-          btn.querySelector('strong').textContent = '\u2212';
-          if (panel) panel.hidden = false;
-        }
-      });
-    });
+    /* Click handling for .nd-faq__item is handled globally via event
+       delegation in js/global.js, which works for both static HTML and
+       CMS-injected FAQs. Do not attach a second listener here — doing so
+       causes each click to fire twice (open, then immediately close). */
   }
 
   /* ── HTML escaping ─────────────────────────────────────────── */
