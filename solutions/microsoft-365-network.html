@@ -542,10 +542,12 @@
       .mm365-acc__bar { margin-top: 12px; height: 4px; border-radius: 2px; background: #e0e0e0; overflow: hidden; }
       .mm365-acc__bar span { display: block; width: 25%; height: 100%; background: #0982c5; border-radius: 2px; }
       .mm365-acc__item {
+        appearance: none; border: 0; background: #fff; width: 100%; text-align: left; cursor: pointer;
         padding: 16px 18px; font-size: 15px; font-weight: 600; color: #1c1c1c;
         border-bottom: 1px solid #ececec; display: flex; justify-content: space-between; align-items: center;
       }
       .mm365-acc__item:last-child { border-bottom: 0; }
+      .mm365-acc__item--active { background: #0982c5; color: #fff; font-size: 16px; }
       .mm365-acc__item span, .mm365-acc__head span { color: currentColor; font-size: 18px; line-height: 1; }
 
       .mm365-card {
@@ -597,17 +599,17 @@
       <section class="mm365-sec animate-fade-up">
         <h2 class="mm365-h">What's Included in the Microsoft 365 Readiness Assessment</h2>
         <div class="mm365-acc">
-          <div class="mm365-acc__head">Infrastructure Workload Support <span aria-hidden="true">&#94;</span></div>
+          <button type="button" class="mm365-acc__item mm365-acc__item--active" aria-expanded="true" data-copy="Evaluates whether your infrastructure can support Microsoft 365 production workloads.">Infrastructure Workload Support <span aria-hidden="true">&#94;</span></button>
           <div class="mm365-acc__panel">
             <p>Evaluates whether your infrastructure can support Microsoft 365 production workloads.</p>
             <img src="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.jpg" alt="Microsoft 365 assessment consultant" loading="lazy">
             <div class="mm365-acc__bar" aria-hidden="true"><span></span></div>
           </div>
-          <div class="mm365-acc__item">Latency &amp; Bandwidth Review <span aria-hidden="true">&#8964;</span></div>
-          <div class="mm365-acc__item">Endpoint Readiness <span aria-hidden="true">&#8964;</span></div>
-          <div class="mm365-acc__item">Teams, Exchange &amp; SharePoint Connectivity <span aria-hidden="true">&#8964;</span></div>
-          <div class="mm365-acc__item">Identity &amp; Security Controls <span aria-hidden="true">&#8964;</span></div>
-          <div class="mm365-acc__item">Risk &amp; Remediation Recommendations <span aria-hidden="true">&#8964;</span></div>
+          <button type="button" class="mm365-acc__item" aria-expanded="false" data-copy="Reviews network latency, routing paths, bandwidth utilisation, and internet performance.">Latency &amp; Bandwidth Review <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="mm365-acc__item" aria-expanded="false" data-copy="Assesses whether existing endpoints can reliably support Microsoft 365 workloads.">Endpoint Readiness <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="mm365-acc__item" aria-expanded="false" data-copy="Validates connectivity for Microsoft Teams, Exchange Online, SharePoint, and OneDrive.">Teams, Exchange &amp; SharePoint Connectivity <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="mm365-acc__item" aria-expanded="false" data-copy="Examines identity services, authentication policies, security controls, and compliance settings.">Identity &amp; Security Controls <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="mm365-acc__item" aria-expanded="false" data-copy="Identifies technical risks before deployment and provides prioritised remediation recommendations.">Risk &amp; Remediation Recommendations <span aria-hidden="true">&#8964;</span></button>
         </div>
       </section>
 
@@ -824,6 +826,39 @@
             copy.textContent = tab.getAttribute('data-copy');
             panel.classList.remove('is-switching');
           }, 250);
+        });
+      });
+    })();
+
+    (function mm365Accordion() {
+      var acc = document.querySelector('.mm365-acc');
+      if (acc === null) return;
+      var items = Array.prototype.slice.call(acc.querySelectorAll('.mm365-acc__item'));
+      var panel = acc.querySelector('.mm365-acc__panel');
+      if (items.length === 0 || panel === null) return;
+      var copy = panel.querySelector('p');
+      var img = panel.querySelector('img');
+      var fill = panel.querySelector('.mm365-acc__bar span');
+      function setFill(i) { if (fill) fill.style.width = (((i + 1) / items.length) * 100) + '%'; }
+      setFill(0);
+      items.forEach(function (item, i) {
+        item.addEventListener('click', function () {
+          if (item.classList.contains('mm365-acc__item--active')) return;
+          items.forEach(function (t) {
+            t.classList.remove('mm365-acc__item--active');
+            t.setAttribute('aria-expanded', 'false');
+            var s = t.querySelector('span');
+            if (s) s.textContent = '\u2304';
+          });
+          item.classList.add('mm365-acc__item--active');
+          item.setAttribute('aria-expanded', 'true');
+          var s = item.querySelector('span');
+          if (s) s.textContent = '^';
+          copy.textContent = item.getAttribute('data-copy');
+          var di = item.getAttribute('data-img');
+          if (img && di) { img.src = di; img.alt = item.getAttribute('data-title') || img.alt; }
+          item.insertAdjacentElement('afterend', panel);
+          setFill(i);
         });
       });
     })();

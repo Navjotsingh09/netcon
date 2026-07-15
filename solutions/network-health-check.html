@@ -547,10 +547,12 @@
       .mnhc-acc__bar { margin-top: 12px; height: 4px; border-radius: 2px; background: #e0e0e0; overflow: hidden; }
       .mnhc-acc__bar span { display: block; width: 25%; height: 100%; background: #0982c5; border-radius: 2px; }
       .mnhc-acc__item {
+        appearance: none; border: 0; background: #fff; width: 100%; text-align: left; cursor: pointer;
         padding: 16px 18px; font-size: 15px; font-weight: 600; color: #1c1c1c;
         border-bottom: 1px solid #ececec; display: flex; justify-content: space-between; align-items: center;
       }
       .mnhc-acc__item:last-child { border-bottom: 0; }
+      .mnhc-acc__item--active { background: #0982c5; color: #fff; font-size: 16px; }
       .mnhc-acc__item span, .mnhc-acc__head span { color: currentColor; font-size: 18px; line-height: 1; }
 
       .mnhc-card {
@@ -601,18 +603,17 @@
 
       <section class="mnhc-sec animate-fade-up">
         <div class="mnhc-acc">
-          <div class="mnhc-acc__head">Network Health Check <span aria-hidden="true">&#94;</span></div>
+          <button type="button" class="mnhc-acc__item mnhc-acc__item--active" aria-expanded="true" data-copy="A regular diagnostic scan across your entire IT infrastructure to find hidden system issues. This evaluation helps in finding and fixing performance flaws before they can slow down your daily business operations.">Network Health Check <span aria-hidden="true">&#94;</span></button>
           <div class="mnhc-acc__panel">
-            <p>A regular diagnostic scan across your entire IT infrastructure to find hidden system issues.</p>
-            <p>This evaluation helps in finding and fixing performance flaws before they can slow down your daily business operations.</p>
+            <p>A regular diagnostic scan across your entire IT infrastructure to find hidden system issues. This evaluation helps in finding and fixing performance flaws before they can slow down your daily business operations.</p>
             <img src="/images/pages/unique/solutions-network-health-check-nc-hero-person.jpg" alt="Network Health Check assessment" loading="lazy">
             <div class="mnhc-acc__bar" aria-hidden="true"><span></span></div>
           </div>
-          <div class="mnhc-acc__item">Root Cause Analysis (RCA) <span aria-hidden="true">&#8964;</span></div>
-          <div class="mnhc-acc__item">Bandwidth &amp; Traffic Review <span aria-hidden="true">&#8964;</span></div>
-          <div class="mnhc-acc__item">Hardware &amp; Equipment Audit <span aria-hidden="true">&#8964;</span></div>
-          <div class="mnhc-acc__item">Security Boundary Scan <span aria-hidden="true">&#8964;</span></div>
-          <div class="mnhc-acc__item">Performance Recommendations by Testing Experts <span aria-hidden="true">&#8964;</span></div>
+          <button type="button" class="mnhc-acc__item" aria-expanded="false" data-copy="A structured investigation that traces recurring network problems back to their underlying cause. We fix the source of the issue rather than the symptoms, so the same faults stop coming back.">Root Cause Analysis (RCA) <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="mnhc-acc__item" aria-expanded="false" data-copy="We analyse bandwidth usage across your infrastructure to identify performance bottlenecks. You get actionable recommendations to enhance speed, strengthen reliability, and keep your connection stable.">Bandwidth &amp; Traffic Review <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="mnhc-acc__item" aria-expanded="false" data-copy="We check your hardware to find the specific cables, switches, or equipment limiting your performance, and flag random upgrades that will not solve the real problem.">Hardware &amp; Equipment Audit <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="mnhc-acc__item" aria-expanded="false" data-copy="We review your network design, identify vulnerabilities, and analyse operational risks to assess your security posture and protect your data.">Security Boundary Scan <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="mnhc-acc__item" aria-expanded="false" data-copy="Our engineering experts translate complex infrastructure data into a clear, prioritised action plan — every recommendation designed to prevent costly downtime and keep your operations stable.">Performance Recommendations by Testing Experts <span aria-hidden="true">&#8964;</span></button>
         </div>
       </section>
 
@@ -881,6 +882,39 @@
             copy.textContent = tab.getAttribute('data-copy');
             panel.classList.remove('is-switching');
           }, 250);
+        });
+      });
+    })();
+
+    (function mnhcAccordion() {
+      var acc = document.querySelector('.mnhc-acc');
+      if (acc === null) return;
+      var items = Array.prototype.slice.call(acc.querySelectorAll('.mnhc-acc__item'));
+      var panel = acc.querySelector('.mnhc-acc__panel');
+      if (items.length === 0 || panel === null) return;
+      var copy = panel.querySelector('p');
+      var img = panel.querySelector('img');
+      var fill = panel.querySelector('.mnhc-acc__bar span');
+      function setFill(i) { if (fill) fill.style.width = (((i + 1) / items.length) * 100) + '%'; }
+      setFill(0);
+      items.forEach(function (item, i) {
+        item.addEventListener('click', function () {
+          if (item.classList.contains('mnhc-acc__item--active')) return;
+          items.forEach(function (t) {
+            t.classList.remove('mnhc-acc__item--active');
+            t.setAttribute('aria-expanded', 'false');
+            var s = t.querySelector('span');
+            if (s) s.textContent = '\u2304';
+          });
+          item.classList.add('mnhc-acc__item--active');
+          item.setAttribute('aria-expanded', 'true');
+          var s = item.querySelector('span');
+          if (s) s.textContent = '^';
+          copy.textContent = item.getAttribute('data-copy');
+          var di = item.getAttribute('data-img');
+          if (img && di) { img.src = di; img.alt = item.getAttribute('data-title') || img.alt; }
+          item.insertAdjacentElement('afterend', panel);
+          setFill(i);
         });
       });
     })();

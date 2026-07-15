@@ -582,10 +582,12 @@
       .maif-acc__bar { margin-top: 12px; height: 4px; border-radius: 2px; background: #e0e0e0; overflow: hidden; }
       .maif-acc__bar span { display: block; width: 25%; height: 100%; background: #0982c5; border-radius: 2px; }
       .maif-acc__item {
+        appearance: none; border: 0; background: #fff; width: 100%; text-align: left; cursor: pointer;
         padding: 16px 18px; font-size: 15px; font-weight: 600; color: #1c1c1c;
         border-bottom: 1px solid #ececec; display: flex; justify-content: space-between; align-items: center;
       }
       .maif-acc__item:last-child { border-bottom: 0; }
+      .maif-acc__item--active { background: #0982c5; color: #fff; font-size: 16px; }
       .maif-acc__item span, .maif-acc__head span { color: currentColor; font-size: 18px; line-height: 1; }
 
       .maif-card {
@@ -638,17 +640,17 @@
         <h2 class="maif-h">Core Pillars of AI-Ready Infrastructure</h2>
         <p class="maif-p">The infrastructure that supports AI thrives on reliable connection speed and power. It requires bandwidth that can sustain heavy workloads, hardware that performs consistently, and protection that keeps data secure as systems evolve.</p>
         <div class="maif-acc">
-          <div class="maif-acc__head">Connection Speed (Bandwidth) <span aria-hidden="true">&#94;</span></div>
+          <button type="button" class="maif-acc__item maif-acc__item--active" aria-expanded="true" data-title="Connection Speed (Bandwidth)" data-copy="Your file operations need sustained throughput. Stable transfer speeds let applications and tools process data quickly without delay." data-img="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg">Connection Speed (Bandwidth) <span aria-hidden="true">&#94;</span></button>
           <div class="maif-acc__panel">
             <p>Your file operations need sustained throughput. Stable transfer speeds let applications and tools process data quickly without delay.</p>
             <img src="/images/pages/unique/solutions-ai-ready-infrastructure-nc-hero-person.jpg" alt="Connection Speed (Bandwidth)" loading="lazy">
             <div class="maif-acc__bar" aria-hidden="true"><span></span></div>
           </div>
-          <div class="maif-acc__item">Traffic Separation (Segmentation) <span aria-hidden="true">&#8964;</span></div>
-          <div class="maif-acc__item">Hardware Capability (Routers &amp; Switches) <span aria-hidden="true">&#8964;</span></div>
-          <div class="maif-acc__item">File Retrieval Speed (Storage Access) <span aria-hidden="true">&#8964;</span></div>
-          <div class="maif-acc__item">Power Reliability (Electrical Capacity) <span aria-hidden="true">&#8964;</span></div>
-          <div class="maif-acc__item">Data Protection (Firewall Throughput) <span aria-hidden="true">&#8964;</span></div>
+          <button type="button" class="maif-acc__item" aria-expanded="false" data-title="Traffic Separation (Segmentation)" data-copy="A separate virtual network for AI applications ensures your primary business systems continue to operate reliably without disruption or resource contention." data-img="/images/pages/unique/solutions-ai-ready-infrastructure-technician.jpg">Traffic Separation (Segmentation) <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="maif-acc__item" aria-expanded="false" data-title="Hardware Capability (Routers &amp; Switches)" data-copy="Your core switches should be equipped with adequate uplink capacity to efficiently manage high volumes of network traffic and avoid performance bottlenecks." data-img="/images/pages/unique/solutions-ai-ready-infrastructure-servers.jpg">Hardware Capability (Routers &amp; Switches) <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="maif-acc__item" aria-expanded="false" data-title="File Retrieval Speed (Storage Access)" data-copy="Fast-performing storage systems with latency under 5ms ensure automated platforms can access and process large amounts of data without delays." data-img="/images/pages/unique/solutions-ai-ready-infrastructure-managed-support.jpg">File Retrieval Speed (Storage Access) <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="maif-acc__item" aria-expanded="false" data-title="Power Reliability (Electrical Capacity)" data-copy="Reliable power and clean failover keep systems stable when high computational demand increases infrastructure stress." data-img="/images/pages/unique/solutions-ai-ready-infrastructure-professional.jpg">Power Reliability (Electrical Capacity) <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="maif-acc__item" aria-expanded="false" data-title="Data Protection (Firewall Throughput)" data-copy="Effective security requires your firewall to continuously inspect all incoming data, ensuring confidential information remains protected at all times." data-img="/images/pages/unique/solutions-ai-ready-infrastructure-cyber-security.jpg">Data Protection (Firewall Throughput) <span aria-hidden="true">&#8964;</span></button>
         </div>
       </section>
 
@@ -881,6 +883,39 @@
             }
             panel.classList.remove('is-switching');
           }, 250);
+        });
+      });
+    })();
+
+    (function maifAccordion() {
+      var acc = document.querySelector('.maif-acc');
+      if (acc === null) return;
+      var items = Array.prototype.slice.call(acc.querySelectorAll('.maif-acc__item'));
+      var panel = acc.querySelector('.maif-acc__panel');
+      if (items.length === 0 || panel === null) return;
+      var copy = panel.querySelector('p');
+      var img = panel.querySelector('img');
+      var fill = panel.querySelector('.maif-acc__bar span');
+      function setFill(i) { if (fill) fill.style.width = (((i + 1) / items.length) * 100) + '%'; }
+      setFill(0);
+      items.forEach(function (item, i) {
+        item.addEventListener('click', function () {
+          if (item.classList.contains('maif-acc__item--active')) return;
+          items.forEach(function (t) {
+            t.classList.remove('maif-acc__item--active');
+            t.setAttribute('aria-expanded', 'false');
+            var s = t.querySelector('span');
+            if (s) s.textContent = '\u2304';
+          });
+          item.classList.add('maif-acc__item--active');
+          item.setAttribute('aria-expanded', 'true');
+          var s = item.querySelector('span');
+          if (s) s.textContent = '^';
+          copy.textContent = item.getAttribute('data-copy');
+          var di = item.getAttribute('data-img');
+          if (img && di) { img.src = di; img.alt = item.getAttribute('data-title') || img.alt; }
+          item.insertAdjacentElement('afterend', panel);
+          setFill(i);
         });
       });
     })();

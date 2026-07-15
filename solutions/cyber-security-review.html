@@ -404,10 +404,12 @@
       .mcsr-acc__bar { margin-top: 12px; height: 4px; border-radius: 2px; background: #e0e0e0; overflow: hidden; }
       .mcsr-acc__bar span { display: block; width: 25%; height: 100%; background: #0982c5; border-radius: 2px; }
       .mcsr-acc__item {
+        appearance: none; border: 0; background: #fff; width: 100%; text-align: left; cursor: pointer;
         padding: 16px 18px; font-size: 15px; font-weight: 600; color: #1c1c1c;
         border-bottom: 1px solid #ececec; display: flex; justify-content: space-between; align-items: center;
       }
       .mcsr-acc__item:last-child { border-bottom: 0; }
+      .mcsr-acc__item--active { background: #0982c5; color: #fff; font-size: 16px; }
       .mcsr-acc__item span, .mcsr-acc__head span { color: currentColor; font-size: 18px; line-height: 1; }
 
       .mcsr-card {
@@ -453,18 +455,18 @@
         <h2 class="mcsr-h">Cyber Security Audit and Review</h2>
         <p class="mcsr-p">Areas Covered During a Cyber Security Audit</p>
         <div class="mcsr-acc">
-          <div class="mcsr-acc__head">Security Controls Review <span aria-hidden="true">&#94;</span></div>
+          <button type="button" class="mcsr-acc__item mcsr-acc__item--active" aria-expanded="true" data-copy="A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses.">Security Controls Review <span aria-hidden="true">&#94;</span></button>
           <div class="mcsr-acc__panel">
             <p>A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses.</p>
             <img src="/images/pages/unique/solutions-cyber-security-review-nc-hero-person.jpg" alt="Cyber security review" loading="lazy">
             <div class="mcsr-acc__bar" aria-hidden="true"><span></span></div>
           </div>
-          <div class="mcsr-acc__item">Access &amp; Permissions Analysis <span aria-hidden="true">&#8964;</span></div>
-          <div class="mcsr-acc__item">Key Security Controls <span aria-hidden="true">&#8964;</span></div>
-          <div class="mcsr-acc__item">Configuration &amp; Exposure Assessment <span aria-hidden="true">&#8964;</span></div>
-          <div class="mcsr-acc__item">Service Disruption Risks <span aria-hidden="true">&#8964;</span></div>
-          <div class="mcsr-acc__item">Business Impact Ranking <span aria-hidden="true">&#8964;</span></div>
-          <div class="mcsr-acc__item">Framework-Aligned Recommendations <span aria-hidden="true">&#8964;</span></div>
+          <button type="button" class="mcsr-acc__item" aria-expanded="false" data-copy="By analysing infrastructure security, user permissions, administrative access, and network services, the assessment uncovers potential weaknesses that could affect operational stability and resilience.">Access &amp; Permissions Analysis <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="mcsr-acc__item" aria-expanded="false" data-copy="Key security controls - including firewall policies, network segmentation, user authentication, endpoint configurations, and privileged access - are reviewed to identify risks that could impact business operations.">Key Security Controls <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="mcsr-acc__item" aria-expanded="false" data-copy="Configuration drift, unnecessary system exposure, inherited permissions, and policy inconsistencies are assessed against operational and business risk.">Configuration &amp; Exposure Assessment <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="mcsr-acc__item" aria-expanded="false" data-copy="The review identifies weaknesses that could disrupt critical services, increase attack paths, or delay incident containment during security events.">Service Disruption Risks <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="mcsr-acc__item" aria-expanded="false" data-copy="Findings are ranked by business impact, allowing remediation work to focus on security issues with the highest operational and governance risk.">Business Impact Ranking <span aria-hidden="true">&#8964;</span></button>
+          <button type="button" class="mcsr-acc__item" aria-expanded="false" data-copy="Recommendations reflect recognised security frameworks, regulatory expectations, and implementation priorities suited to existing infrastructure constraints.">Framework-Aligned Recommendations <span aria-hidden="true">&#8964;</span></button>
         </div>
       </section>
 
@@ -630,6 +632,39 @@
             copy.textContent = tab.getAttribute('data-copy');
             panel.classList.remove('is-switching');
           }, 250);
+        });
+      });
+    })();
+
+    (function mcsrAccordion() {
+      var acc = document.querySelector('.mcsr-acc');
+      if (acc === null) return;
+      var items = Array.prototype.slice.call(acc.querySelectorAll('.mcsr-acc__item'));
+      var panel = acc.querySelector('.mcsr-acc__panel');
+      if (items.length === 0 || panel === null) return;
+      var copy = panel.querySelector('p');
+      var img = panel.querySelector('img');
+      var fill = panel.querySelector('.mcsr-acc__bar span');
+      function setFill(i) { if (fill) fill.style.width = (((i + 1) / items.length) * 100) + '%'; }
+      setFill(0);
+      items.forEach(function (item, i) {
+        item.addEventListener('click', function () {
+          if (item.classList.contains('mcsr-acc__item--active')) return;
+          items.forEach(function (t) {
+            t.classList.remove('mcsr-acc__item--active');
+            t.setAttribute('aria-expanded', 'false');
+            var s = t.querySelector('span');
+            if (s) s.textContent = '\u2304';
+          });
+          item.classList.add('mcsr-acc__item--active');
+          item.setAttribute('aria-expanded', 'true');
+          var s = item.querySelector('span');
+          if (s) s.textContent = '^';
+          copy.textContent = item.getAttribute('data-copy');
+          var di = item.getAttribute('data-img');
+          if (img && di) { img.src = di; img.alt = item.getAttribute('data-title') || img.alt; }
+          item.insertAdjacentElement('afterend', panel);
+          setFill(i);
         });
       });
     })();
