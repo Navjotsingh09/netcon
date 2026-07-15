@@ -1537,8 +1537,8 @@
       .hero__btn { width: auto; min-height: 44px; font-size: 15px; padding: 0 14px; }
       .hero-search-strip { padding: 0 var(--px); }
       .hero-search-strip { margin-top: -28px; }
-      .hero-search-strip > .hero-search-strip__inner { padding: 14px 16px; }
-      .hero-search-strip__field { min-height: 48px; padding: 0 16px; font-size: 14px; }
+      .hero-search-strip > .hero-search-strip__inner { padding: 14px 0; }
+      .hero-search-strip__field { min-height: 48px; width: 100%; padding: 0 16px; font-size: 14px; }
       .hero-search-strip__input { font-size: 16px; }
       /* Rotating hint collides with the prompt text on small screens */
       .hero-search-strip__hint { display: none; }
@@ -1702,8 +1702,8 @@
       .hero__wrap { min-height: 290px; }
       .hero__content { padding: 36px var(--px) 28px; }
       .hero-search-strip { margin-top: -22px; }
-      .hero-search-strip > .hero-search-strip__inner { padding: 12px; }
-      .hero-search-strip__field { min-height: 44px; padding: 0 16px; }
+      .hero-search-strip > .hero-search-strip__inner { padding: 12px 0; }
+      .hero-search-strip__field { min-height: 44px; width: 100%; padding: 0 14px; }
       .hero-search-strip__results {
         left: 14px;
         right: 14px;
@@ -3659,24 +3659,19 @@ Edgbaston, B15 3BE</p>
           ]
         },
         {
-          title: 'Network Consultancy Services',
-          intro: 'Our consultancy-led approach helps you make confident technical decisions before implementation. We assess your existing estate, align designs with business goals, and create a practical delivery plan your internal team can trust.',
+          title: 'NETWORK CONSULTANCY SERVICES',
+          intro: 'Our network consultants provide specialised guidance across your core setups:',
           points: [
-            'Infrastructure and topology audits',
-            'Capacity, resilience, and performance planning',
-            'Architecture recommendations for hybrid and multi-site environments',
-            'Phased delivery roadmaps with minimal business disruption'
+            'Cisco Hardware Consultancy: We configure and deploy your physical routers and switches.',
+            'Microsoft 365 Readiness: We audit your infrastructure to ensure secure cloud access.',
+            'Managed Wireless LAN: We engineer high-performance wireless networks with no coverage gaps.',
+            'Remote Access & VPNs: We implement reliable connectivity for your hybrid team.'
           ]
         },
         {
-          title: 'Secure Network Operations',
-          intro: 'From daily operations through long-term optimisation, Network Consultancy provides responsive engineering support that keeps your network stable, secure, and ready for change across offices, data centres, and cloud-connected environments.',
-          points: [
-            'Proactive incident prevention and rapid issue resolution',
-            'Ongoing monitoring with clear operational reporting',
-            'Support for policy, access, and segmentation controls',
-            'Continuous service improvements driven by operational insights'
-          ]
+          title: 'Network Consultancy Services',
+          intro: 'Our Network Consultancy services are for businesses that need assistance scaling without experiencing severe office network lag. We step in to resolve long-standing internet dropouts and stop you from wasting hours chasing unresponsive vendors. Need a stronger, future-ready infrastructure with expert network consultancy? Conduct a thorough evaluation of your current network environment with our experts.',
+          points: []
         }
       ];
 
@@ -3707,13 +3702,15 @@ Edgbaston, B15 3BE</p>
         paragraph.textContent = slide.intro;
         copyEl.appendChild(paragraph);
 
-        var list = document.createElement('ul');
-        slide.points.forEach(function(point) {
-          var item = document.createElement('li');
-          item.textContent = point;
-          list.appendChild(item);
-        });
-        copyEl.appendChild(list);
+        if (Array.isArray(slide.points) && slide.points.length) {
+          var list = document.createElement('ul');
+          slide.points.forEach(function(point) {
+            var item = document.createElement('li');
+            item.textContent = point;
+            list.appendChild(item);
+          });
+          copyEl.appendChild(list);
+        }
 
         bars.forEach(function(bar, barIndex) {
           bar.classList.toggle('nd-figma-managed__bar--active', barIndex === safeIndex);
