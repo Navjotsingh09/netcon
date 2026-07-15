@@ -460,6 +460,76 @@
         padding: 32px 24px;
       }
     }
+
+    /* ===== Mobile NHC (Solutions mobile landing.png design) ===== */
+    .mnhc { display: none; }
+
+    @media (max-width: 768px) {
+      .mnhc { display: block; }
+      .nhc-hero, .nhc-overview, .nhc-gains, .nhc-risk, .nhc-process, .nhc-why { display: none; }
+
+      .mnhc-hero { background: #02172f; padding: 40px 22px; color: #fff; }
+      .mnhc-hero h1 { font-size: 26px; font-weight: 700; line-height: 1.2; margin: 0 0 14px; color: #fff; }
+      .mnhc-hero p { font-size: 17px; line-height: 1.5; color: rgba(255,255,255,.92); margin: 0 0 22px; }
+      .mnhc-hero__btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        background: #f2f2f2; color: #1c1c1c; font-size: 13px; font-weight: 600;
+        padding: 10px 24px; border-radius: 4px; min-height: 40px; text-decoration: none;
+      }
+
+      .mnhc-sec { padding: 26px 22px 6px; }
+      .mnhc-h { color: #0982c5; font-size: 22px; font-weight: 700; line-height: 1.25; margin: 0 0 12px; }
+      .mnhc-p { font-size: 16px; line-height: 1.6; color: #353535; margin: 0 0 16px; }
+      .mnhc-img { width: 100%; height: auto; border-radius: 12px; display: block; margin: 6px 0 12px; object-fit: cover; }
+
+      .mnhc-acc { border: 1px solid #e7e7e7; border-radius: 10px; overflow: hidden; }
+      .mnhc-acc__head {
+        background: #0982c5; color: #fff; font-size: 16px; font-weight: 600;
+        padding: 16px 18px; display: flex; justify-content: space-between; align-items: center;
+      }
+      .mnhc-acc__panel { padding: 18px; border-bottom: 1px solid #e7e7e7; }
+      .mnhc-acc__panel p { font-size: 14.5px; line-height: 1.6; color: #353535; margin: 0 0 12px; }
+      .mnhc-acc__panel img { width: 100%; height: auto; border-radius: 6px; display: block; }
+      .mnhc-acc__bar { margin-top: 12px; height: 4px; border-radius: 2px; background: #e0e0e0; overflow: hidden; }
+      .mnhc-acc__bar span { display: block; width: 25%; height: 100%; background: #0982c5; border-radius: 2px; }
+      .mnhc-acc__item {
+        padding: 16px 18px; font-size: 15px; font-weight: 600; color: #1c1c1c;
+        border-bottom: 1px solid #ececec; display: flex; justify-content: space-between; align-items: center;
+      }
+      .mnhc-acc__item:last-child { border-bottom: 0; }
+      .mnhc-acc__item span, .mnhc-acc__head span { color: currentColor; font-size: 18px; line-height: 1; }
+
+      .mnhc-card {
+        position: relative; background: #fff; border: 1px solid #e7e7e7; border-radius: 8px;
+        padding: 22px 18px 40px; margin-bottom: 18px;
+      }
+      .mnhc-card h3 { color: #162470; font-size: 17px; font-weight: 700; margin: 0 0 10px; }
+      .mnhc-card p { font-size: 15px; line-height: 1.55; color: #4a4a4a; margin: 0; }
+      .mnhc-card__count { position: absolute; left: 18px; bottom: 14px; font-size: 13px; font-weight: 600; color: #6d76a6; }
+
+      .mnhc-process { background: #162470; border-radius: 12px; padding: 24px 18px; color: #fff; }
+      .mnhc-process h2 { color: #fff; font-size: 19px; font-weight: 700; line-height: 1.3; margin: 0 0 16px; }
+      .mnhc-process img { width: 100%; height: auto; border-radius: 8px; display: block; margin-bottom: 16px; }
+      .mnhc-process p { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.94); margin: 0 0 14px; }
+      .mnhc-process p:last-child { margin-bottom: 0; }
+
+      /* FAQ clean white accordion + trusted heading color per design */
+      .nd-faq { background: #fff; border: 0; padding: 6px 22px 10px; }
+      .nd-faq__left .section-title { color: #0982c5; font-size: 22px; font-weight: 700; }
+      .nd-faq__left p { font-size: 14px; color: #4a4a4a; margin-bottom: 14px; }
+      .nd-faq__cta { display: none; }
+      .nd-faq__item {
+        background: #fff; border: 0; border-bottom: 1px solid #e4e4e4;
+        padding: 18px 4px; text-align: left; font-size: 17px; font-weight: 500; color: #1c1c1c;
+      }
+      .nd-faq__item span { text-align: left; }
+      .nd-faq__item.is-open { background: #f5f5f6; border-bottom: 0; padding: 18px 14px 6px; }
+      .nd-faq__panel {
+        background: #f5f5f6; border: 0; padding: 0 14px 18px; margin-bottom: 6px;
+        font-size: 15.5px; line-height: 1.65; color: #4a4a4a;
+      }
+      .nd-trusted__title { color: #0982c5; }
+    }
   </style>
 </head>
 <body>
@@ -467,6 +537,64 @@
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
   <main id="main" class="sol-detail-page nhc-page">
+    <div class="mnhc">
+
+      <section class="mnhc-hero">
+        <h1>Professional Network Assessments</h1>
+        <p>Understand how your network is performing with a professional assessment that helps improve connectivity, strengthen resilience, and support future growth.</p>
+        <a href="/contact.html" class="mnhc-hero__btn" data-source-cta="solution_hero_health_check">Book Health Check</a>
+      </section>
+
+      <section class="mnhc-sec animate-fade-up">
+        <div class="mnhc-acc">
+          <div class="mnhc-acc__head">Network Health Check <span aria-hidden="true">&#94;</span></div>
+          <div class="mnhc-acc__panel">
+            <p>A regular diagnostic scan across your entire IT infrastructure to find hidden system issues.</p>
+            <p>This evaluation helps in finding and fixing performance flaws before they can slow down your daily business operations.</p>
+            <img src="/images/pages/unique/solutions-network-health-check-nc-hero-person.jpg" alt="Network Health Check assessment" loading="lazy">
+            <div class="mnhc-acc__bar" aria-hidden="true"><span></span></div>
+          </div>
+          <div class="mnhc-acc__item">Root Cause Analysis (RCA) <span aria-hidden="true">&#8964;</span></div>
+          <div class="mnhc-acc__item">Bandwidth &amp; Traffic Review <span aria-hidden="true">&#8964;</span></div>
+          <div class="mnhc-acc__item">Hardware &amp; Equipment Audit <span aria-hidden="true">&#8964;</span></div>
+          <div class="mnhc-acc__item">Security Boundary Scan <span aria-hidden="true">&#8964;</span></div>
+          <div class="mnhc-acc__item">Performance Recommendations by Testing Experts <span aria-hidden="true">&#8964;</span></div>
+        </div>
+      </section>
+
+      <section class="mnhc-sec animate-fade-up">
+        <h2 class="mnhc-h">What you'll gain</h2>
+        <p class="mnhc-p">Our thorough network audit provides deeper insights into your infrastructure performance, stability for future expansions, and security posture.</p>
+        <article class="mnhc-card"><h3>Guaranteed System Resilience</h3><p>Your network gains the capacity to handle heavy data loads without crashing.</p><span class="mnhc-card__count">1/3</span></article>
+        <article class="mnhc-card"><h3>Simplified Supportability</h3><p>Your internal IT team can easily manage, monitor, and troubleshoot the entire solution.</p><span class="mnhc-card__count">2/3</span></article>
+        <article class="mnhc-card"><h3>Predictable Technology Growth</h3><p>Gain the accurate insights needed to confidently plan and support future office expansions or renovations.</p><span class="mnhc-card__count">3/3</span></article>
+      </section>
+
+      <section class="mnhc-sec animate-fade-up">
+        <h2 class="mnhc-h">Operating Without a Network Health Check in 2026 is Risky</h2>
+        <p class="mnhc-p">Cisco warns that the cost of operating blind without a network health assessment is staggering. A report from Splunk shows that unexpected network disruptions cost Global 2000 companies an average of $15,000 per minute in lost productivity and downtime.</p>
+        <p class="mnhc-p">Common operational failures include wasted staff hours when the network drops or lags, hidden configuration mistakes that trigger outages, and random hardware upgrades that do not solve the real problem.</p>
+        <img class="mnhc-img" src="/images/pages/unique/solutions-network-health-check-servers.jpg" alt="Network infrastructure review" loading="lazy">
+      </section>
+
+      <section class="mnhc-sec animate-fade-up">
+        <div class="mnhc-process">
+          <h2>How the Network Performance Optimisation Works</h2>
+          <img src="/images/pages/unique/solutions-network-health-check-technician.jpg" alt="Network performance optimisation" loading="lazy">
+          <p>Network Consultancy reviews your infrastructure to identify where your connection slows down. We check your hardware to find the specific cables or switches limiting your speed.</p>
+          <p>Once identified, our engineering experts initiate a Network Performance Optimisation Review to adjust your router settings, resolve traffic issues, and keep your connection stable.</p>
+        </div>
+      </section>
+
+      <section class="mnhc-sec animate-fade-up">
+        <h2 class="mnhc-h">Why Choose Us</h2>
+        <p class="mnhc-p">Most IT providers just hand you a 100-page automated report full of technical jargon you don&rsquo;t have time to read. We do things differently.</p>
+        <p class="mnhc-p">We translate complex infrastructure data into a clear, prioritised action plan. Every recommendation we provide is designed to ensure your business growth.</p>
+        <p class="mnhc-p">This includes preventing costly downtime, protecting your data, and keeping your operations stable.</p>
+        <img class="mnhc-img" src="/images/pages/unique/solutions-network-health-check-professional.jpg" alt="Network Health Check expertise" loading="lazy">
+      </section>
+
+    </div>
 
     <section class="nhc-hero" aria-label="Network Health Check hero">
       <div class="nhc-hero__inner">
@@ -645,5 +773,26 @@
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
+
+  <script>
+    (function mnhcDots() {
+      var vp = document.querySelector('.nd-trusted__viewport');
+      var dots = Array.prototype.slice.call(document.querySelectorAll('.nd-trusted__dots .nd-trusted__dot'));
+      if (vp === null || dots.length === 0) return;
+      var ticking = false;
+      function sync() {
+        ticking = false;
+        var card = vp.querySelector('.nd-t-card');
+        if (card === null) return;
+        var step = card.offsetWidth + 18;
+        var idx = Math.round(vp.scrollLeft / step);
+        idx = Math.max(0, Math.min(dots.length - 1, idx % dots.length));
+        dots.forEach(function (d, i) { d.classList.toggle('nd-trusted__dot--active', i === idx); });
+      }
+      vp.addEventListener('scroll', function () {
+        if (ticking === false) { ticking = true; requestAnimationFrame(sync); }
+      }, { passive: true });
+    })();
+  </script>
 </body>
 </html>
