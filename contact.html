@@ -51,6 +51,33 @@
     .ctu-contact-value a { color: inherit; text-decoration: none; }
     .ctu-contact-value a:hover { text-decoration: underline; }
 
+    /* ── Interaction polish: hover, focus, motion ───────── */
+    .ctu-card { transition: transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .3s ease, border-color .3s ease, background-color .3s ease; }
+    .ctu-icon, .ctu-contact-icon { transition: transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .3s ease; }
+    .ctu-num { transition: color .3s ease, transform .3s ease; }
+
+    .ctu-card:hover,
+    .ctu-card:focus-within { transform: translateY(-6px); box-shadow: 0 18px 40px -14px rgba(22,36,112,.3); border-color: var(--blue); }
+    .ctu-card:hover .ctu-icon,
+    .ctu-card:focus-within .ctu-icon { transform: translateY(-3px) scale(1.07); }
+    .ctu-card:hover .ctu-num,
+    .ctu-card:focus-within .ctu-num { color: var(--blue); transform: scale(1.08); }
+
+    .ctu-contact-icon--email { transition: transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .3s ease, background-color .3s ease; }
+    .ctu-contact-item:hover .ctu-contact-icon { transform: translateY(-5px) scale(1.05); box-shadow: 0 14px 26px -14px rgba(22,36,112,.35); }
+    .ctu-contact-item:hover .ctu-contact-icon--email { background: #0a6699; }
+    .ctu-contact-value a { transition: color .2s ease; }
+    .ctu-contact-item:hover .ctu-contact-value a { color: var(--blue); }
+    .ctu-contact-value a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 3px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ctu-card, .ctu-icon, .ctu-contact-icon, .ctu-contact-icon--email, .ctu-num, .ctu-contact-value a { transition: none; }
+      .ctu-card:hover, .ctu-card:focus-within,
+      .ctu-card:hover .ctu-icon, .ctu-card:focus-within .ctu-icon,
+      .ctu-card:hover .ctu-num, .ctu-card:focus-within .ctu-num,
+      .ctu-contact-item:hover .ctu-contact-icon { transform: none; }
+    }
+
     @media (max-width: 1200px) {
       .ctu-title { font-size: 36px; }
       .ctu-body { font-size: 20px; }
@@ -87,7 +114,7 @@
   <section class="ctu-cards" aria-label="Contact inquiry types">
     <div class="ctu-grid stagger-children">
 
-      <div class="ctu-card ctu-card--active">
+      <div class="ctu-card ctu-card--active animate-fade-up">
         <span class="ctu-num" aria-hidden="true">01</span>
         <div class="ctu-icon">
           <img src="/images/pages/contact-icon-general.svg" alt="" loading="lazy" width="85" height="85">
@@ -97,7 +124,7 @@
         <p class="ctu-desc">For initial discussions, partnership talks, or inquiries about our offerings.</p>
       </div>
 
-      <div class="ctu-card">
+      <div class="ctu-card animate-fade-up">
         <span class="ctu-num" aria-hidden="true">02</span>
         <div class="ctu-icon">
           <img src="/images/pages/contact-icon-support.svg" alt="" loading="lazy" width="85" height="85">
@@ -107,7 +134,7 @@
         <p class="ctu-desc">Raise a ticket for service requests, operational support, or immediate assistance with network problems.</p>
       </div>
 
-      <div class="ctu-card">
+      <div class="ctu-card animate-fade-up">
         <span class="ctu-num" aria-hidden="true">03</span>
         <div class="ctu-icon ctu-icon--projects">
           <img src="/images/pages/contact-icon-projects.svg" alt="" loading="lazy" width="85" height="85">
@@ -120,7 +147,7 @@
         <p class="ctu-desc">For engineering initiatives: networks, hardware, firewalls, infrastructure upgrades.</p>
       </div>
 
-      <div class="ctu-card">
+      <div class="ctu-card animate-fade-up">
         <span class="ctu-num" aria-hidden="true">04</span>
         <div class="ctu-icon ctu-icon--composite">
           <img class="ctu-icon-bg" src="/images/pages/contact-icon-appt-bg.svg" alt="" loading="lazy" width="85" height="85">
@@ -134,7 +161,7 @@
         <p class="ctu-desc">Schedule an inspection of network performance, security vulnerabilities, and configuration flaws.</p>
       </div>
 
-      <div class="ctu-card">
+      <div class="ctu-card animate-fade-up">
         <span class="ctu-num" aria-hidden="true">05</span>
         <div class="ctu-icon ctu-icon--composite">
           <img class="ctu-icon-bg" src="/images/pages/contact-icon-assist-bg.svg" alt="" loading="lazy" width="85" height="85">
@@ -148,7 +175,7 @@
         <p class="ctu-desc">Get immediate, on-demand engineering support to resolve critical network downtime and outages.</p>
       </div>
 
-      <div class="ctu-card">
+      <div class="ctu-card animate-fade-up">
         <span class="ctu-num" aria-hidden="true">06</span>
         <div class="ctu-icon">
           <img src="/images/pages/contact-icon-consulting.svg" alt="" loading="lazy" width="85" height="85">
@@ -162,9 +189,9 @@
   </section>
 
   <section class="ctu-contact-info" aria-label="Contact information">
-    <div class="ctu-contact-inner">
+    <div class="ctu-contact-inner stagger-children">
 
-      <div class="ctu-contact-item">
+      <div class="ctu-contact-item animate-fade-up">
         <div class="ctu-contact-icon">
           <img src="/images/pages/contact-phone-icon.svg" alt="Phone" loading="lazy" width="121" height="118">
         </div>
@@ -174,7 +201,7 @@
         </div>
       </div>
 
-      <div class="ctu-contact-item">
+      <div class="ctu-contact-item animate-fade-up">
         <div class="ctu-contact-icon">
           <img src="/images/pages/contact-address-icon.svg" alt="Address" loading="lazy" width="121" height="118">
         </div>
@@ -184,7 +211,7 @@
         </div>
       </div>
 
-      <div class="ctu-contact-item">
+      <div class="ctu-contact-item animate-fade-up">
         <div class="ctu-contact-icon ctu-contact-icon--email">
           <img src="/images/pages/contact-email-icon.svg" alt="Email" loading="lazy" width="54" height="38">
         </div>
