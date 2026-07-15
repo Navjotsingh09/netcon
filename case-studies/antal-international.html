@@ -33,10 +33,6 @@
 
     .csd-cta-band { margin-top: 42px; background: #0982c5; padding: 52px var(--px); }
     .csd-cta-inner { max-width: 1440px; margin: 0 auto; position: relative; min-height: 200px; display: flex; align-items: center; justify-content: center; }
-    .csd-pill-list { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
-    .csd-pill-list[hidden] { display: none; }
-    .csd-pill-col { display: flex; flex-direction: column; gap: 26px; }
-    .csd-pill { background: rgba(255,255,255,.45); color: #0982c5; border-radius: 16px; min-width: 140px; text-align: center; padding: 7px 18px; font-family: 'Google Sans Flex', sans-serif; font-size: 16px; font-weight: 500; }
     .csd-cta-card { width: min(100%, 760px); background: #ebebeb; border-radius: 20px; padding: 34px 40px; text-align: center; position: relative; z-index: 1; }
     .csd-cta-card h3 { margin: 0 0 12px; color: #353535; font-family: 'Google Sans Flex', sans-serif; font-size: 33px; font-weight: 500; line-height: 1.2; }
     .csd-cta-card p { margin: 0 0 18px; color: #353535; font-family: 'Google Sans Flex', sans-serif; font-size: 18px; font-weight: 400; line-height: 1.2; }
@@ -50,7 +46,6 @@
       .csd-section-title { font-size: 38px; }
       .csd-cta-card h3 { font-size: 28px; }
       .csd-cta-card p { font-size: 18px; }
-      .csd-pill-list { display: none; }
     }
     @media (max-width: 768px) {
       .csd-page { padding-top: 12px; }
@@ -145,13 +140,8 @@
       </section>
     </div>
 
-    <section class="csd-cta-band" aria-label="Call to action" data-current-service="service-1">
+    <section class="csd-cta-band" aria-label="Call to action" data-current-service="Remote Access &amp; VPN">
       <div class="csd-cta-inner">
-        <div class="csd-pill-list" aria-hidden="true">
-          <div class="csd-pill-col"><span class="csd-pill">service 6</span><span class="csd-pill">service 4</span></div>
-          <div class="csd-pill-col"><span class="csd-pill">service 5</span><span class="csd-pill">service 2</span></div>
-          <div class="csd-pill-col"><span class="csd-pill">service 1</span><span class="csd-pill">service 3</span></div>
-        </div>
         <div class="csd-cta-card">
           <h3>Modernise your global network infrastructure.</h3>
           <p>Get in touch to discuss how a cloud-based network model could simplify security across your locations.</p>

@@ -1072,8 +1072,6 @@ body.industry-detail-page #main > #contact {
 }
 .cs-blue-inner,
 .csd-cta-inner { position:relative; overflow:hidden; }
-.cs-blue-inner .nc-service-floater,
-.csd-cta-inner .nc-service-floater { width:100%; }
 .cs-center-panel,
 .csd-cta-card { position:relative; z-index:2; }
 .nc-service-lane { overflow:hidden; animation:nc-float-bob-a 4.8s ease-in-out infinite; }
