@@ -1261,7 +1261,7 @@ body.industry-detail-page #main > #contact {
     letter-spacing:0.08em;
   }
   .blog-filter__chip {
-    min-height:40px;
+    min-height:44px;
     padding-top:8px;
     padding-bottom:8px;
   }
@@ -1272,7 +1272,7 @@ body.industry-detail-page #main > #contact {
   .blog-filter__reset,
   .blog-side__more,
   .ctf-add-more {
-    min-height:40px;
+    min-height:44px;
     display:inline-flex;
     align-items:center;
   }
@@ -1777,7 +1777,7 @@ body.industry-detail-page #main > #contact {
 }
 .nd-contact__field > input,
 .nd-contact__field > select {
-  height: 40px;
+  height: 44px;
 }
 .nd-contact__field > textarea {
   min-height: 128px;
