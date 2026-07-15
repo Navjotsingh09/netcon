@@ -19,8 +19,8 @@
     .ctu-body p + p { margin-top: 4px; }
 
     .ctu-cards { padding: 40px var(--px); max-width: var(--section-w); margin: 0 auto; }
-    .ctu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1440px; margin: 0 auto; }
-    .ctu-card { background: #fff; border: 1px solid var(--gray-mid); border-radius: 20px; box-shadow: 0 4px 4px rgba(0,0,0,.1); padding: 43px 40px 40px; position: relative; display: flex; flex-direction: column; gap: 20px; min-height: 393px; }
+    .ctu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1440px; margin: 0 auto; align-items: start; }
+    .ctu-card { background: #fff; border: 1px solid var(--gray-mid); border-radius: 20px; box-shadow: 0 4px 4px rgba(0,0,0,.1); padding: 43px 40px 40px; position: relative; display: flex; flex-direction: column; gap: 20px; min-height: 232px; }
     .ctu-card--active { background: rgba(133,154,186,.5); }
     .ctu-num { position: absolute; top: 35px; right: 40px; font-family: 'Google Sans Flex', sans-serif; font-size: 20px; color: #000; line-height: 1.25; }
     .ctu-icon { width: 85px; height: 85px; position: relative; flex-shrink: 0; }
@@ -36,6 +36,7 @@
     .ctu-cat { font-family: 'Google Sans Flex', sans-serif; font-weight: 700; font-size: 24px; color: var(--dark); line-height: normal; }
     .ctu-card-title { font-family: 'Google Sans Flex', sans-serif; font-weight: 700; font-size: 24px; color: var(--dark); line-height: normal; }
     .ctu-desc { font-family: 'Google Sans Flex', sans-serif; font-weight: 500; font-size: 24px; color: var(--dark); line-height: 30px; }
+    .ctu-card-reveal { display: flex; flex-direction: column; gap: 20px; }
 
     .ctu-contact-info { padding: 40px var(--px) 80px; max-width: var(--section-w); margin: 0 auto; }
     .ctu-contact-inner { display: flex; justify-content: space-between; align-items: flex-start; max-width: 1440px; margin: 0 auto; padding-top: 40px; }
@@ -82,24 +83,20 @@
           title + description appear on hover/focus. Mouse devices only —
           touch devices (hover:none) always show full content. ─────────── */
     @media (hover: hover) {
-      .ctu-card-title,
-      .ctu-desc {
+      .ctu-card-reveal {
+        max-height: 0;
         opacity: 0;
-        transform: translateY(10px);
-        transition: opacity .3s ease, transform .3s ease;
+        overflow: hidden;
+        transition: max-height .38s cubic-bezier(.22,.61,.36,1), opacity .3s ease;
       }
-      .ctu-desc { transition-delay: .04s; }
-      .ctu-card:hover .ctu-card-title,
-      .ctu-card:focus-within .ctu-card-title,
-      .ctu-card:hover .ctu-desc,
-      .ctu-card:focus-within .ctu-desc {
+      .ctu-card:hover .ctu-card-reveal,
+      .ctu-card:focus-within .ctu-card-reveal {
+        max-height: 260px;
         opacity: 1;
-        transform: translateY(0);
       }
     }
     @media (hover: hover) and (prefers-reduced-motion: reduce) {
-      .ctu-card-title,
-      .ctu-desc { transition: none; transform: none; }
+      .ctu-card-reveal { transition: opacity .2s ease; }
     }
 
     @media (max-width: 1200px) {
@@ -144,8 +141,10 @@
           <img src="/images/pages/contact-icon-general.svg" alt="" loading="lazy" width="85" height="85">
         </div>
         <p class="ctu-cat">General</p>
-        <h2 class="ctu-card-title">General Inquiry</h2>
-        <p class="ctu-desc">For initial discussions, partnership talks, or inquiries about our offerings.</p>
+        <div class="ctu-card-reveal">
+          <h2 class="ctu-card-title">General Inquiry</h2>
+          <p class="ctu-desc">For initial discussions, partnership talks, or inquiries about our offerings.</p>
+        </div>
       </div>
 
       <div class="ctu-card animate-fade-up" tabindex="0">
@@ -154,8 +153,10 @@
           <img src="/images/pages/contact-icon-support.svg" alt="" loading="lazy" width="85" height="85">
         </div>
         <p class="ctu-cat">Support</p>
-        <h2 class="ctu-card-title">Network Support Request</h2>
-        <p class="ctu-desc">Raise a ticket for service requests, operational support, or immediate assistance with network problems.</p>
+        <div class="ctu-card-reveal">
+          <h2 class="ctu-card-title">Network Support Request</h2>
+          <p class="ctu-desc">Raise a ticket for service requests, operational support, or immediate assistance with network problems.</p>
+        </div>
       </div>
 
       <div class="ctu-card animate-fade-up" tabindex="0">
@@ -167,8 +168,10 @@
           </div>
         </div>
         <p class="ctu-cat">Projects</p>
-        <h2 class="ctu-card-title">Project inquiry</h2>
-        <p class="ctu-desc">For engineering initiatives: networks, hardware, firewalls, infrastructure upgrades.</p>
+        <div class="ctu-card-reveal">
+          <h2 class="ctu-card-title">Project inquiry</h2>
+          <p class="ctu-desc">For engineering initiatives: networks, hardware, firewalls, infrastructure upgrades.</p>
+        </div>
       </div>
 
       <div class="ctu-card animate-fade-up" tabindex="0">
@@ -181,8 +184,10 @@
           </div>
         </div>
         <p class="ctu-cat">Appointment</p>
-        <h2 class="ctu-card-title">Book a network health check</h2>
-        <p class="ctu-desc">Schedule an inspection of network performance, security vulnerabilities, and configuration flaws.</p>
+        <div class="ctu-card-reveal">
+          <h2 class="ctu-card-title">Book a network health check</h2>
+          <p class="ctu-desc">Schedule an inspection of network performance, security vulnerabilities, and configuration flaws.</p>
+        </div>
       </div>
 
       <div class="ctu-card animate-fade-up" tabindex="0">
@@ -195,8 +200,10 @@
           </div>
         </div>
         <p class="ctu-cat">Assistance</p>
-        <h2 class="ctu-card-title">Network assistance</h2>
-        <p class="ctu-desc">Get immediate, on-demand engineering support to resolve critical network downtime and outages.</p>
+        <div class="ctu-card-reveal">
+          <h2 class="ctu-card-title">Network assistance</h2>
+          <p class="ctu-desc">Get immediate, on-demand engineering support to resolve critical network downtime and outages.</p>
+        </div>
       </div>
 
       <div class="ctu-card animate-fade-up" tabindex="0">
@@ -205,8 +212,10 @@
           <img src="/images/pages/contact-icon-consulting.svg" alt="" loading="lazy" width="85" height="85">
         </div>
         <p class="ctu-cat">Consulting</p>
-        <h2 class="ctu-card-title">Technical consultation</h2>
-        <p class="ctu-desc">Speak directly with senior network architects for in-depth advice on complex infrastructure changes and hardware scaling.</p>
+        <div class="ctu-card-reveal">
+          <h2 class="ctu-card-title">Technical consultation</h2>
+          <p class="ctu-desc">Speak directly with senior network architects for in-depth advice on complex infrastructure changes and hardware scaling.</p>
+        </div>
       </div>
 
     </div>
