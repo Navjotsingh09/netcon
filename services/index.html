@@ -13,36 +13,68 @@
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
   /* ── Page Section Rhythm ────────────────────────────────────── */
-  #main { display:flex; flex-direction:column; gap:100px; }
-  #main > .svcs-hero { padding-bottom:0; }
+  #main { display:flex; flex-direction:column; gap:clamp(72px, 7vw, 100px); }
+  #main > .svcs-hero { padding-bottom:0; width:100%; margin-left:0; margin-right:0; align-self:stretch; }
   #main > .services-section { margin:0 auto; }
   #main > .svc-cta-band,
   #main > [data-cms],
   #main > #site-contact { margin:0; }
 
   /* ── Services Landing Hero ─────────────────────────────────── */
-  .svcs-hero { padding:36px var(--px) 60px; }
-  .svcs-hero__wrap { position:relative; height:618px; border-radius:10px; overflow:hidden; }
-  .svcs-hero__bg { position:absolute; top:-15%; left:0; right:0; width:100%; height:130%; object-fit:cover; will-change:transform; }
-  .svcs-hero__overlay { position:absolute; inset:0; background:rgba(4,31,93,.8); opacity:.4; }
-  .svcs-hero__content { position:relative; z-index:2; padding:117px 145px 178px 75px; max-width:908px; display:flex; flex-direction:column; gap:51px; align-items:flex-start; }
-  .svcs-hero__text { display:flex; flex-direction:column; gap:24px; }
-  .svcs-hero__title { font-family:'Google Sans Flex',sans-serif; font-size:60px; font-weight:600; color:#fff; line-height:normal; }
-  .svcs-hero__sub { font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; line-height:1.45; color:#fff; }
-  .svcs-hero__cta { border-radius:20px !important; }
-  @media(max-width:1200px){ .svcs-hero__title{font-size:48px;} .svcs-hero__content{padding:80px 60px;} }
-  @media(max-width:768px){ .svcs-hero__wrap{height:480px;} .svcs-hero__title{font-size:36px;} .svcs-hero__sub{font-size:17px;} .svcs-hero__content{padding:60px 32px;} }
-  @media(max-width:480px){ .svcs-hero__wrap{height:400px;} .svcs-hero__title{font-size:28px;} }
+  .svcs-hero { padding:0; }
+  main#main > section.svcs-hero > .svcs-hero__wrap {
+    max-width:none;
+    width:100%;
+    margin:0;
+  }
+  .svcs-hero__wrap { position:relative; width:100%; max-width:none; height:467px; min-height:467px; margin:0; border-radius:0; overflow:hidden; background:#02172F; }
+  .svcs-hero__bg,
+  .svcs-hero__overlay { display:none; }
+  main#main > section.svcs-hero > .svcs-hero__wrap > .svcs-hero__content {
+    max-width:none;
+    width:100%;
+  }
+  .svcs-hero__content { position:relative; z-index:2; padding:117px 145px 178px var(--px); width:100%; min-width:100%; max-width:none; display:flex; flex-direction:column; gap:24px; align-items:flex-start; }
+  .svcs-hero__text { display:flex; flex-direction:column; gap:16px; max-width:908px; }
+  .svcs-hero__title { font-family:'Google Sans Flex',sans-serif; font-size:64px; font-weight:600; color:#fff; line-height:1.08; }
+  .svcs-hero__sub { font-family:'Google Sans Flex',sans-serif; font-size:24px; font-weight:500; line-height:1.35; color:#fff; }
+  .svcs-hero__cta {
+    margin-top:0;
+    background:#fff !important;
+    color:#353535 !important;
+    border:0;
+    border-radius:2px !important;
+    font-family:'Google Sans Flex',sans-serif;
+    font-size:20px;
+    font-style:normal;
+    font-weight:600;
+    letter-spacing:0;
+    text-transform:none;
+    min-width:170px;
+    width:auto;
+    min-height:50px;
+    padding:0 12px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    white-space:nowrap;
+    line-height:normal;
+    transition:background .2s ease;
+  }
+  .svcs-hero__cta:hover { background:#f0f0f0 !important; transform:none; }
+  @media(max-width:1200px){ .svcs-hero__title{font-size:46px;} .svcs-hero__content{padding:80px 60px 120px var(--px);} }
+  @media(max-width:768px){ .svcs-hero__title{font-size:42px;} .svcs-hero__sub{font-size:20px;} .svcs-hero__content{padding:60px var(--px) 80px var(--px);} }
+  @media(max-width:480px){ .svcs-hero__title{font-size:28px;} }
 
   /* Services We Offer — hero + thumbnail slider (shared component: Home "IT Networking Solutions", About "Our Capabilities") */
-  .services-section { width: calc(100% - (var(--px) * 2)); max-width:1440px; margin:0 auto; padding-bottom:20px; }
+  .services-section { width: calc(100% - (var(--px) * 2)); max-width:var(--max-w); margin:0 auto; padding-bottom:20px; }
   .services-section__title { margin:0 0 40px; color:var(--navy); }
-  .btn-blue-lg { background:var(--blue); color:#fff; font-family:'Google Sans Flex',sans-serif; font-size:15px; font-weight:700; letter-spacing:.08em; padding:16px 40px; border-radius:9999px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s,transform .2s; text-decoration:none; border:none; }
+  .btn-blue-lg { background:var(--blue); color:#fff; font-family:'Google Sans Flex',sans-serif; font-size:15px; font-weight:700; letter-spacing:.08em; padding:16px 40px; min-height:50px; border-radius:9999px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s,transform .2s; text-decoration:none; border:none; }
   .btn-blue-lg:hover { background:#0771a5; transform:scale(1.02); }
-  .solutions-main { position:relative; height:600px; border-radius:20px; overflow:hidden; margin-bottom:-90px; }
+  .solutions-main { position:relative; height:600px; border-radius:20px; overflow:hidden; margin-bottom:-90px; box-shadow:0 10px 26px rgba(0,0,0,.14); }
   .solutions-main img { width:100%; height:100%; object-fit:cover; display:block; }
   .solutions-main__overlay { position:absolute; inset:0; background:rgba(4,31,93,.2); }
-  .solutions-infobox { position:absolute; bottom:122px; left:65px; background:#EBEBEB; border-radius:20px; padding:31px 51px; max-width:600px; }
+  .solutions-infobox { position:absolute; bottom:122px; left:65px; background:#EBEBEB; border-radius:20px; padding:31px 51px; max-width:min(600px, calc(100% - 130px)); box-shadow:0 6px 14px rgba(0,0,0,.12); }
   .solutions-infobox h3 { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; color:var(--navy); margin-bottom:18px; line-height:1; }
   .solutions-infobox p { font-size:24px; font-weight:500; color:var(--sub); line-height:1.25; margin-bottom:24px; }
   .solutions-bottom { display:flex; align-items:flex-end; gap:61px; position:relative; z-index:1; }
@@ -58,7 +90,7 @@
   .solutions-sub-cards { display:flex; gap:29px; flex:1; }
   .sol-sub { display:flex; flex-direction:column; gap:27px; flex:1; cursor:pointer; }
   .sol-sub img { width:100%; height:224px; object-fit:cover; border-radius:20px; box-shadow:0 4px 4px rgba(0,0,0,.1); transition:opacity .2s, transform .2s; }
-  .sol-sub p { font-family:'Google Sans Flex',sans-serif; font-size:20px; color:var(--sub); }
+  .sol-sub p { font-family:'Google Sans Flex',sans-serif; font-size:20px; color:var(--sub); line-height:1.35; }
   @media(max-width:768px){ .services-section{padding-bottom:0;} .solutions-main{height:400px;margin-bottom:24px;} .solutions-infobox{left:16px;right:16px;bottom:16px;max-width:none;padding:24px;} .solutions-infobox h3{font-size:24px;} .solutions-infobox p{font-size:18px;} .solutions-bottom{flex-direction:column;gap:24px;align-items:stretch;} .solutions-nav{width:100%;align-items:stretch;padding-bottom:0;} .solutions-arrows{justify-content:flex-start;} .solutions-progress{width:100%;max-width:none;} .solutions-sub-cards{flex-direction:column;width:100%;} .sol-sub img{height:180px;} .sol-sub p{font-size:18px;line-height:1.35;} }
   @media(max-width:480px){ .solutions-main{height:300px;} .sol-arrow svg{width:72px;height:56px;} }
 
@@ -88,15 +120,14 @@
   .svc-cta-band__tags { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; gap:24px; padding:0 var(--px); pointer-events:none; }
   .svc-cta-band__row { display:flex; gap:20px; flex-wrap:wrap; }
   .svc-cta-band__row span { background:#fff; color:var(--blue); opacity:.5; font-family:'Google Sans Flex',sans-serif; font-size:18px; font-weight:500; padding:12px 32px; border-radius:20px; white-space:nowrap; }
-  .svc-cta-band__card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:46px 84px; max-width:660px; margin:0 auto; text-align:center; }
+  .svc-cta-band__card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:46px 84px; max-width:660px; margin:0 auto; text-align:center; box-shadow:0 10px 24px rgba(7, 63, 111, .22); }
   .svc-cta-band__text { font-family:'Google Sans Flex',sans-serif; font-size:22px; font-weight:500; color:var(--sub); line-height:1.55; margin-bottom:32px; }
-  .svc-cta-band__btn { display:inline-flex; align-items:center; justify-content:center; background:var(--navy); color:#fff; font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; padding:16px 50px; border-radius:20px; transition:background .2s; }
-  .svc-cta-band__btn:hover { background:#0f1c5a; }
+  .svc-cta-band__btn { display:inline-flex; align-items:center; justify-content:center; background:var(--navy); color:#fff; font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; padding:16px 50px; border-radius:20px; transition:background .2s, transform .2s; }
+  .svc-cta-band__btn:hover { background:#0f1c5a; transform:translateY(-1px); }
   @media(max-width:768px){ .svc-cta-band__card{padding:32px 28px; margin:0 var(--px);} .svc-cta-band__text{font-size:18px;} .svc-cta-band__row span{white-space:normal;text-align:center;padding:10px 20px;font-size:16px;} .svc-cta-band__btn{width:100%;max-width:420px;} }
 
   @media(max-width:768px){
-    .svcs-hero { padding:24px var(--px) 0; }
-    .svcs-hero__content { gap:28px; }
+    .svcs-hero__content { gap:20px; }
     .services-section__title { margin-bottom:24px; }
   }
 
@@ -117,17 +148,12 @@
   <!-- ======== HERO ======== -->
   <section class="svcs-hero" aria-label="Services hero">
     <div class="svcs-hero__wrap">
-      <picture>
-        <source srcset="/images/pages/unique/services-index-about-hero.webp" type="image/webp">
-        <img src="/images/pages/unique/services-index-about-hero.jpg" alt="" class="svcs-hero__bg" width="1920" height="618" loading="eager">
-      </picture>
-      <div class="svcs-hero__overlay" aria-hidden="true"></div>
       <div class="svcs-hero__content">
         <div class="svcs-hero__text">
           <h1 class="svcs-hero__title animate-fade-up">Network Solutions for Modern Businesses</h1>
           <p class="svcs-hero__sub animate-fade-up">Designed to Improve Connectivity, Security &amp; Operational Performance by optimising your networks and IT systems.</p>
         </div>
-        <a href="/contact.html" class="btn-blue svcs-hero__cta animate-fade-up">BOOK A NETWORK HEALTH CHECK</a>
+        <a href="/contact.html" class="btn-blue svcs-hero__cta animate-fade-up">Book a Network Health Check</a>
       </div>
     </div>
   </section>

@@ -16,13 +16,6 @@
       --sol-gap: 24px;
       --sol-radius: 10px;
       --sol-card-radius: 24px;
-      --sol-type-display: clamp(2.125rem, 4vw, 3.25rem);
-      --sol-type-hero-sub: clamp(1.0625rem, 1.9vw, 1.5rem);
-      --sol-type-section-title: clamp(1.75rem, 2.7vw, 2.35rem);
-      --sol-type-card-title: clamp(1.25rem, 1.9vw, 1.85rem);
-      --sol-type-body-lg: clamp(1rem, 1.1vw, 1.125rem);
-      --sol-type-body: clamp(0.9375rem, 0.95vw, 1rem);
-      --sol-type-btn: clamp(0.95rem, 0.92vw, 1rem);
     }
 
     .sol-page {
@@ -59,9 +52,9 @@
     .sol-hero-landing h1 {
       color: #ffffff;
       font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--sol-type-display);
+      font-size: 64px;
       font-weight: 600;
-      line-height: 1.08;
+      line-height: 1;
       margin: 0 0 14px;
       max-width: 804px;
     }
@@ -69,9 +62,9 @@
     .sol-hero-landing p {
       color: #ffffff;
       font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--sol-type-hero-sub);
+      font-size: 32px;
       font-weight: 500;
-      line-height: 1.25;
+      line-height: 1;
       max-width: 640px;
       margin: 0 0 24px;
     }
@@ -98,8 +91,7 @@
       background: #d9d9d9;
       color: #353535;
       font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--sol-type-btn);
-      line-height: 1.2;
+      font-size: 20px;
       font-weight: 600;
       padding: 12px 24px;
       border-radius: 0;
@@ -127,22 +119,22 @@
     }
 
     .sol-commit__head h2 {
-      color: #0982c5;
+      color: #162470;
       font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--sol-type-section-title);
+      font-size: 48px;
       font-weight: 600;
-      line-height: 1.08;
+      line-height: 1;
       margin: 0;
     }
 
     .sol-commit__head p {
       margin: 18px 0 28px;
       color: #585151;
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--sol-type-body-lg);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 20px;
       font-weight: 400;
-      line-height: 1.6;
-      max-width: 72ch;
+      line-height: 1.2;
+      max-width: 994px;
     }
 
     .sol-commit__line {
@@ -206,19 +198,19 @@
     .sol-card h3 {
       margin: 0;
       font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--sol-type-card-title);
+      font-size: 40px;
       font-weight: 600;
-      line-height: 1.12;
-      max-width: 16ch;
+      line-height: 1;
+      max-width: 320px;
     }
 
     .sol-card p {
       margin: 12px 0 0;
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--sol-type-body);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 18px;
       font-weight: 400;
-      line-height: 1.55;
-      max-width: 34ch;
+      line-height: 1.45;
+      max-width: 340px;
       opacity: 0;
       max-height: 0;
       overflow: hidden;
@@ -297,21 +289,21 @@
 
     .sol-benefits h2 {
       margin: 0;
-      color: #0982c5;
+      color: #162470;
       font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--sol-type-section-title);
+      font-size: 48px;
       font-weight: 600;
-      line-height: 1.08;
+      line-height: 1;
     }
 
     .sol-benefits p {
       margin: 16px 0 0;
       color: #585151;
       font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--sol-type-body);
+      font-size: 18px;
       font-weight: 400;
-      line-height: 1.6;
-      max-width: 78ch;
+      line-height: 1.45;
+      max-width: 1120px;
     }
 
     .sol-benefits__mosaic {
@@ -370,9 +362,9 @@
     .sol-benefits .sol-benefit-tile__label {
       color: #fff;
       font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--sol-type-card-title);
+      font-size: 38px;
       font-weight: 500;
-      line-height: 1.12;
+      line-height: 1.02;
       letter-spacing: 0.01em;
       margin: 0;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
@@ -381,8 +373,8 @@
     .sol-benefits .sol-benefit-tile__body {
       margin: 12px 0 0;
       font-family: "Google Sans Flex", sans-serif;
-      font-size: var(--sol-type-body);
-      line-height: 1.55;
+      font-size: 18px;
+      line-height: 1.45;
       color: #fff;
       text-shadow: 0 1px 6px rgba(0, 0, 0, 0.65);
       max-width: 540px;
@@ -400,49 +392,11 @@
       transform: translateY(0);
     }
 
-    .sol-page .nd-trusted__title {
-      font-size: clamp(1.75rem, 2.45vw, 2.25rem);
-      line-height: 1.1;
-      max-width: 18ch;
-    }
-
-    .sol-page .nd-t-card__quote {
-      font-size: clamp(0.9375rem, 0.9vw, 1rem);
-      line-height: 1.55;
-      max-width: 34ch;
-    }
-
-    .sol-page .nd-t-card__name,
-    .sol-page .nd-t-card__role {
-      font-size: clamp(0.875rem, 0.85vw, 0.95rem);
-      line-height: 1.45;
-    }
-
-    .sol-page .nd-faq__left .section-title {
-      font-size: clamp(1.75rem, 2.45vw, 2.25rem);
-      line-height: 1.1;
-      letter-spacing: 0;
-    }
-
-    .sol-page .nd-faq__left p {
-      font-size: clamp(0.9375rem, 0.9vw, 1rem);
-      line-height: 1.55;
-      max-width: 36ch;
-    }
-
-    .sol-page .nd-faq__item {
-      font-size: clamp(0.9375rem, 0.9vw, 1rem);
-      line-height: 1.4;
-    }
-
-    .sol-page .nd-faq__panel {
-      font-size: clamp(0.9rem, 0.86vw, 0.98rem);
-      line-height: 1.6;
-    }
-
     @media (max-width: 1440px) {
-      .sol-hero-landing h1 { max-width: 16ch; }
-      .sol-hero-landing p { max-width: 34ch; }
+      .sol-hero-landing h1 { font-size: 56px; }
+      .sol-hero-landing p { font-size: 28px; }
+      .sol-card h3 { font-size: 34px; }
+      .sol-benefit-tile__label { font-size: 34px; }
     }
 
     @media (max-width: 1200px) {
@@ -476,12 +430,23 @@
       .sol-hero-landing {
         padding-top: 104px;
       }
+      .sol-hero-landing h1 {
+        font-size: 42px;
+      }
+      .sol-hero-landing p {
+        font-size: 22px;
+        line-height: 1.15;
+      }
       .sol-hero-landing__art {
         height: 240px;
       }
       .sol-commit,
       .sol-benefits {
         padding-top: 36px;
+      }
+      .sol-commit__head h2,
+      .sol-benefits h2 {
+        font-size: 38px;
       }
       .sol-card-row,
       .sol-card-row--single {
@@ -496,22 +461,39 @@
       .sol-card {
         min-height: 380px;
       }
+      .sol-card h3 {
+        font-size: 30px;
+      }
+      .sol-card p {
+        font-size: 16px;
+      }
       .sol-benefit-tile {
         min-height: 300px;
       }
-
-      .sol-page .nd-trusted__title,
-      .sol-page .nd-faq__left .section-title {
-        max-width: 100%;
+      .sol-benefit-tile__label {
+        font-size: 30px;
       }
     }
 
     @media (max-width: 480px) {
+      .sol-hero-landing h1 {
+        font-size: 34px;
+      }
+      .sol-hero-landing p {
+        font-size: 18px;
+      }
       .sol-hero-landing__btn {
         width: 100%;
       }
-      .sol-card__content {
-        padding: 22px;
+      .sol-commit__head h2,
+      .sol-benefits h2 {
+        font-size: 32px;
+      }
+      .sol-card h3 {
+        font-size: 26px;
+      }
+      .sol-benefit-tile__label {
+        font-size: 26px;
       }
     }
   </style>
@@ -525,62 +507,9 @@
     <section class="sol-hero-landing" aria-labelledby="sol-hero-title">
       <div class="sol-hero-landing__inner">
         <div>
-          <h1 id="sol-hero-title">Professional Network Assessments for Better Outcomes</h1>
-          <p>Helping businesses build stronger, faster, and more secure networks by evaluating capabilities.</p>
+          <h1 id="sol-hero-title">Professional Network Assessments for Better Business Performance</h1>
+          <p>Understand how your network is performing with a professional assessment that helps improve connectivity, strengthen security, and support the long-term needs of your business.</p>
           <a href="/contact.html" class="sol-hero-landing__btn" data-source-cta="solutions_landing_book_health_check">Book a Network Health Check</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="sol-benefits" aria-labelledby="sol-benefits-title">
-      <div class="sol-benefits__inner">
-        <h2 id="sol-benefits-title">What you'll get from us...</h2>
-        <p>Every business needs a strong network to stay connected, secure, and efficient. We deliver practical assessments that help you understand where your network can be improved and how to build a more dependable foundation for growth.</p>
-
-        <div class="sol-benefits__mosaic animate-fade-up">
-          <a class="sol-benefit-tile" href="/solutions/network-health-check.html">
-            <picture>
-              <source srcset="/images/pages/unique/solutions-index-managed-support.webp" type="image/webp">
-              <img src="/images/pages/unique/solutions-index-managed-support.jpg" alt="Network Health Check" loading="lazy">
-            </picture>
-            <div class="sol-benefit-tile__content">
-              <span class="sol-benefit-tile__label">Network Health Check</span>
-              <p class="sol-benefit-tile__body">We assess the overall health of your network, pinpoint performance issues, and identify opportunities to improve stability and reliability.</p>
-            </div>
-          </a>
-          <a class="sol-benefit-tile" href="/solutions/cyber-security-review.html">
-            <picture>
-              <source srcset="/images/pages/unique/solutions-index-cyber-security.jpg" type="image/jpeg">
-              <img src="/images/pages/unique/solutions-index-cyber-security.jpg" alt="Cyber Security Review" loading="lazy">
-            </picture>
-            <div class="sol-benefit-tile__content">
-              <span class="sol-benefit-tile__label">Cyber Security Review</span>
-              <p class="sol-benefit-tile__body">Our assessment highlights potential security risks and offers practical recommendations to help safeguard your systems, users, and business data.</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="sol-benefits__mosaic sol-benefits__mosaic--second animate-fade-up">
-          <a class="sol-benefit-tile" href="/solutions/microsoft-365-network.html">
-            <picture>
-              <source srcset="/images/pages/unique/solutions-index-professional.jpg" type="image/jpeg">
-              <img src="/images/pages/unique/solutions-index-professional.jpg" alt="Microsoft 365 and Network Readiness" loading="lazy">
-            </picture>
-            <div class="sol-benefit-tile__content">
-              <span class="sol-benefit-tile__label">Microsoft 365 and Network Readiness</span>
-              <p class="sol-benefit-tile__body">We assess your network's readiness for Microsoft 365 services, helping ensure consistent performance, secure access, and seamless collaboration across your organisation.</p>
-            </div>
-          </a>
-          <a class="sol-benefit-tile" href="/solutions/ai-ready-infrastructure.html">
-            <picture>
-              <source srcset="/images/pages/unique/solutions-index-technician.jpg" type="image/jpeg">
-              <img src="/images/pages/unique/solutions-index-technician.jpg" alt="AI ready Infrastructure Review" loading="lazy">
-            </picture>
-            <div class="sol-benefit-tile__content">
-              <span class="sol-benefit-tile__label">AI-Ready Infrastructure Review</span>
-              <p class="sol-benefit-tile__body">We evaluate whether your existing network and IT infrastructure are equipped to support modern AI tools and future technology demands, identifying any gaps that may require improvement.</p>
-            </div>
-          </a>
         </div>
       </div>
     </section>
@@ -789,6 +718,59 @@
       </div>
     </section>
 
+    <section class="sol-benefits" aria-labelledby="sol-benefits-title">
+      <div class="sol-benefits__inner">
+        <h2 id="sol-benefits-title">WHAT YOU'LL GET FROM US...</h2>
+        <p>Every business needs a strong network to stay connected, secure, and efficient. We deliver practical assessments that help you understand where your network can be improved and how to build a more dependable foundation for growth.</p>
+
+        <div class="sol-benefits__mosaic animate-fade-up">
+          <a class="sol-benefit-tile" href="/solutions/network-health-check.html">
+            <picture>
+              <source srcset="/images/pages/unique/solutions-index-managed-support.webp" type="image/webp">
+              <img src="/images/pages/unique/solutions-index-managed-support.jpg" alt="Network Health Check" loading="lazy">
+            </picture>
+            <div class="sol-benefit-tile__content">
+              <span class="sol-benefit-tile__label">Network Health Check</span>
+              <p class="sol-benefit-tile__body">We assess the overall health of your network, pinpoint performance issues, and identify opportunities to improve stability and reliability.</p>
+            </div>
+          </a>
+          <a class="sol-benefit-tile" href="/solutions/cyber-security-review.html">
+            <picture>
+              <source srcset="/images/pages/unique/solutions-index-cyber-security.jpg" type="image/jpeg">
+              <img src="/images/pages/unique/solutions-index-cyber-security.jpg" alt="Cyber Security Review" loading="lazy">
+            </picture>
+            <div class="sol-benefit-tile__content">
+              <span class="sol-benefit-tile__label">Cyber Security Review</span>
+              <p class="sol-benefit-tile__body">Our assessment highlights potential security risks and offers practical recommendations to help safeguard your systems, users, and business data.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="sol-benefits__mosaic sol-benefits__mosaic--second animate-fade-up">
+          <a class="sol-benefit-tile" href="/solutions/microsoft-365-network.html">
+            <picture>
+              <source srcset="/images/pages/unique/solutions-index-professional.jpg" type="image/jpeg">
+              <img src="/images/pages/unique/solutions-index-professional.jpg" alt="Microsoft 365 and Network Readiness" loading="lazy">
+            </picture>
+            <div class="sol-benefit-tile__content">
+              <span class="sol-benefit-tile__label">Microsoft 365 and Network Readiness</span>
+              <p class="sol-benefit-tile__body">We assess your network's readiness for Microsoft 365 services, helping ensure consistent performance, secure access, and seamless collaboration across your organisation.</p>
+            </div>
+          </a>
+          <a class="sol-benefit-tile" href="/solutions/ai-ready-infrastructure.html">
+            <picture>
+              <source srcset="/images/pages/unique/solutions-index-technician.jpg" type="image/jpeg">
+              <img src="/images/pages/unique/solutions-index-technician.jpg" alt="AI ready Infrastructure Review" loading="lazy">
+            </picture>
+            <div class="sol-benefit-tile__content">
+              <span class="sol-benefit-tile__label">AI-Ready Infrastructure Review</span>
+              <p class="sol-benefit-tile__body">We evaluate whether your existing network and IT infrastructure are equipped to support modern AI tools and future technology demands, identifying any gaps that may require improvement.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section class="section-shell">
       <div class="nd-trusted">
       <div class="nd-trusted__head">
@@ -867,7 +849,7 @@
     <section class="section-shell">
       <div class="nd-faq">
       <div class="nd-faq__left">
-          <h2 class="section-title">Frequently asked questions</h2>
+          <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
         <p>Still have questions? Get connected to our support team.</p>
         <a href="/contact.html" class="nd-faq__cta">Contact us</a>
       </div>
@@ -892,10 +874,29 @@
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
   <script>
-    /* Click handling for .nd-faq__item is done globally via event
-       delegation in js/global.js (loaded below). Do not attach a second
-       listener here, or each click fires twice: open, then immediately
-       close again. */
+    (function () {
+      var list = document.getElementById('nd-faq-list');
+      if (!list) return;
+      var items = list.querySelectorAll('.nd-faq__item');
+      items.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var panel = btn.nextElementSibling;
+          var open = btn.classList.contains('is-open');
+          items.forEach(function (item) {
+            item.classList.remove('is-open');
+            var mark = item.querySelector('strong');
+            if (mark) mark.textContent = '+';
+            if (item.nextElementSibling) item.nextElementSibling.hidden = true;
+          });
+          if (!open) {
+            btn.classList.add('is-open');
+            var activeMark = btn.querySelector('strong');
+            if (activeMark) activeMark.textContent = '−';
+            if (panel) panel.hidden = false;
+          }
+        });
+      });
+    }());
 
     (function () {
       var cards = document.querySelectorAll('.sol-card');
