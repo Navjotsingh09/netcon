@@ -37,9 +37,9 @@
     }
 
     :root {
-      --ab-type-heading-xl: clamp(1.9rem, 1.05vw + 1.5rem, 2.625rem);
-      --ab-type-heading-lg: clamp(1.6rem, 0.8vw + 1.28rem, 2.125rem);
-      --ab-type-heading-md: clamp(1.3rem, 0.55vw + 1.1rem, 1.625rem);
+      --ab-type-heading-xl: clamp(1.8rem, 0.9vw + 1.45rem, 2.4rem);
+      --ab-type-heading-lg: clamp(1.5rem, 0.65vw + 1.24rem, 1.95rem);
+      --ab-type-heading-md: clamp(1.2rem, 0.4vw + 1.05rem, 1.45rem);
       --ab-type-body: clamp(1rem, 0.14vw + 0.95rem, 1.0625rem);
       --ab-type-body-sm: clamp(0.93rem, 0.12vw + 0.89rem, 0.98rem);
     }
@@ -53,7 +53,7 @@
       background: var(--blue);
       color: #fff;
       font-family: "Google Sans Flex", sans-serif;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 600;
       line-height: 1.1;
       text-decoration: none;
@@ -88,8 +88,7 @@
       font-family: "Google Sans Flex", sans-serif;
       font-size: var(--ab-type-heading-xl);
       font-weight: 600;
-      line-height: 0.95;
-      text-transform: uppercase;
+      line-height: 1.02;
     }
 
     .ab-hero__sub {
@@ -682,7 +681,7 @@
 
     .nd-faq__left .section-title {
       color: var(--navy);
-      font-size: var(--home-type-heading-xl);
+      font-size: clamp(1.75rem, 0.9vw + 1.4rem, 2.3rem);
       font-weight: 600;
       font-family: var(--font-display);
       line-height: 1.1;
@@ -736,7 +735,7 @@
       padding: 15px 20px;
       margin: 0;
       font-family: var(--font-body);
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 400;
     }
 
@@ -746,7 +745,7 @@
 
     .nd-faq__item strong {
       font-family: var(--font-heading);
-      font-size: 23px;
+      font-size: 20px;
       line-height: 1;
       font-weight: 400;
       color: #353535;
@@ -760,7 +759,7 @@
       margin: 0;
       padding: 0 20px 18px;
       font-family: var(--font-body);
-      font-size: 17px;
+      font-size: 16px;
       color: #585151;
       line-height: 1.55;
     }
@@ -794,7 +793,7 @@
       margin: 0;
       color: #353535;
       font-family: 'Google Sans Flex', sans-serif;
-      font-size: clamp(2rem, 2vw + 1.35rem, 3rem);
+      font-size: clamp(1.85rem, 1.2vw + 1.4rem, 2.45rem);
       line-height: 1.12;
       font-weight: 700;
       letter-spacing: -0.01em;
@@ -806,7 +805,7 @@
       max-width: 588px;
       color: #000;
       font-family: 'Google Sans Flex', sans-serif;
-      font-size: var(--home-type-body);
+      font-size: var(--ab-type-body-sm);
       line-height: 1.6;
       font-weight: 400;
     }
@@ -863,8 +862,8 @@
       margin: 0;
       color: #141a28;
       font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 28px;
+      font-size: 15px;
+      line-height: 1.5;
       font-weight: 500;
     }
 
@@ -872,8 +871,8 @@
       margin: 0;
       color: #0a0a0a;
       font-family: var(--font-body);
-      font-size: 14px;
-      line-height: 24px;
+      font-size: 13px;
+      line-height: 1.55;
       font-weight: 400;
       white-space: pre-line;
     }
@@ -916,8 +915,8 @@
     .nd-contact__agree,
     .nd-contact__agree-text {
       font-family: var(--font-body);
-      font-size: 14px;
-      line-height: 24px;
+      font-size: 13px;
+      line-height: 1.5;
     }
 
     .nd-contact__field-label {
@@ -938,8 +937,8 @@
       background: #fff;
       color: #353535;
       font-family: var(--font-body);
-      font-size: 14px;
-      line-height: 24px;
+      font-size: 13px;
+      line-height: 1.5;
       font-weight: 400;
       padding: 10px 12px;
       outline: none;
@@ -1018,7 +1017,7 @@
       background: #0982c5;
       color: #fff;
       font-family: var(--font-body);
-      font-size: 16px;
+      font-size: 15px;
       line-height: 28px;
       font-weight: 500;
       display: inline-flex;
@@ -1035,7 +1034,7 @@
       .ab-pro__title,
       .ab-test__title,
       .ab-contact__title {
-        font-size: 42px;
+        font-size: 38px;
       }
 
       .ab-story-card__body,
@@ -1123,7 +1122,7 @@
       .ab-test__title,
       .ab-contact__title,
       .ab-intro__title {
-        font-size: 32px;
+        font-size: 29px;
       }
 
       .ab-hero__sub,
@@ -1132,7 +1131,7 @@
       .ab-story-card__body,
       .ab-pro__body,
       .ab-contact__sub {
-        font-size: 17px;
+        font-size: 16px;
       }
 
       .ab-intro,
@@ -1167,7 +1166,7 @@
 
       .ab-button {
         width: 100%;
-        font-size: 17px;
+        font-size: 16px;
       }
 
       .ab-contact__panel {
@@ -1184,7 +1183,7 @@
       .ab-test__title,
       .ab-contact__title,
       .ab-intro__title {
-        font-size: 28px;
+        font-size: 25px;
       }
 
       .ab-hero__sub,
@@ -1193,7 +1192,7 @@
       .ab-story-card__body,
       .ab-pro__body,
       .ab-contact__sub {
-        font-size: 16px;
+        font-size: 15px;
       }
 
       .ab-cap-card {
@@ -1201,11 +1200,11 @@
       }
 
       .ab-cap-card__title {
-        font-size: 22px;
+        font-size: 20px;
       }
 
       .ab-test-card__quote {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 1.6;
       }
 
@@ -1453,7 +1452,7 @@
     <section class="ab-shell">
       <div class="ab-inner nd-faq">
         <div class="nd-faq__left">
-          <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+          <h2 class="section-title">Frequently asked questions</h2>
           <p>Still have questions? Get connected to our support team.</p>
           <a href="/contact.html" class="nd-faq__cta">Contact us</a>
         </div>
