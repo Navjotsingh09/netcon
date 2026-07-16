@@ -1004,28 +1004,31 @@ body.industry-detail-page #main > #contact {
 .industry-highlight__content {
   position:absolute;
   z-index:2;
-  left:26px;
-  top:28px;
-  max-width:430px;
+  left:48px;
+  top:50%;
+  transform:translateY(-50%);
+  max-width:760px;
+  padding-right:32px;
 }
 .industry-highlight__title {
   font-family:'Google Sans Flex',sans-serif;
-  font-size:46px;
-  line-height:1.05;
+  font-size:40px;
+  line-height:1.22;
   color:#fff;
-  margin-bottom:12px;
+  margin-bottom:24px;
+  max-width:16em;
 }
 .industry-highlight__list {
   margin-bottom:10px;
 }
 .industry-highlight__list li {
   font-family:'Google Sans Flex',sans-serif;
-  font-size:15px;
-  color:rgba(255,255,255,.88);
-  line-height:1.5;
-  margin-bottom:6px;
+  font-size:18px;
+  color:rgba(255,255,255,.9);
+  line-height:1.65;
+  margin-bottom:14px;
   list-style:disc;
-  margin-left:18px;
+  margin-left:20px;
 }
 
 .industry-challenge {
@@ -1194,7 +1197,7 @@ body.industry-detail-page #main > #contact {
   .industry-hero-card__title { font-size:30px; }
   .industry-carousel__thumbs { grid-template-columns:1fr; }
   .industry-highlight { min-height:320px; height:auto; }
-  .industry-highlight__content { position:relative; left:0; top:0; padding:24px 20px; }
+  .industry-highlight__content { position:relative; left:0; top:0; transform:none; padding:24px 20px; }
   .industry-highlight__title { font-size:34px; }
   .industry-challenge { grid-template-columns:1fr; }
   .industry-challenge__title { font-size:32px; }
