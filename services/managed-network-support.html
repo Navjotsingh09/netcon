@@ -44,15 +44,34 @@
   @media(max-width:480px){ .nc-hero__title{font-size:28px;} }
 
 
-  /* ===== Accountable — blue-grey intro + 2 cards ===== */
-  .acct-section { background:#859aba; }
-  .acct__head { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; color:#fff; line-height:1.1; margin-bottom:40px; }
-  .acct__grid { display:grid; grid-template-columns:0.9fr 1fr 1fr; gap:40px; align-items:start; }
-  .acct__intro { font-family:'Google Sans Flex',sans-serif; font-size:17px; font-weight:500; color:rgba(255,255,255,.92); line-height:1.65; }
-  .acct__card img { width:100%; height:210px; object-fit:cover; border-radius:16px; margin-bottom:22px; display:block; }
-  .acct__card h3 { font-family:'Google Sans Flex',sans-serif; font-size:23px; font-weight:600; color:#fff; line-height:1.2; margin-bottom:14px; }
-  .acct__card p { font-family:'Google Sans Flex',sans-serif; font-size:15px; font-weight:400; color:rgba(255,255,255,.9); line-height:1.6; }
-  @media(max-width:900px){ .acct__grid{grid-template-columns:1fr;gap:32px;} .acct__head{font-size:32px;} }
+  /* ===== Accountable — navy brand panel + glass cards ===== */
+  .acct-section { background:#13203f; padding-top:88px; padding-bottom:88px; position:relative; overflow:hidden; }
+  .acct-section::before { content:''; position:absolute; top:-220px; right:-160px; width:640px; height:640px; border-radius:50%; background:radial-gradient(circle, rgba(9,130,197,.28) 0%, rgba(9,130,197,0) 68%); pointer-events:none; }
+  .acct-section::after { content:''; position:absolute; bottom:-260px; left:-180px; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle, rgba(9,130,197,.16) 0%, rgba(9,130,197,0) 70%); pointer-events:none; }
+  .acct-section .sd-wrap { position:relative; z-index:2; }
+  .acct__eyebrow { display:inline-flex; align-items:center; gap:10px; font-family:'Google Sans Flex',sans-serif; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#7cc4e8; margin-bottom:16px; }
+  .acct__eyebrow::before { content:''; width:28px; height:2px; background:var(--blue); border-radius:2px; }
+  .acct__head { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; color:#fff; line-height:1.1; margin-bottom:48px; max-width:820px; }
+  .acct__grid { display:grid; grid-template-columns:0.9fr 1fr 1fr; gap:32px; align-items:stretch; }
+  .acct__intro { font-family:'Google Sans Flex',sans-serif; font-size:17px; font-weight:400; color:rgba(255,255,255,.88); line-height:1.7; padding-right:16px; display:flex; flex-direction:column; }
+  .acct__intro p + p { margin-top:16px; }
+  .acct__cta { display:inline-flex; align-items:center; gap:10px; margin-top:auto; padding-top:28px; align-self:flex-start; font-family:'Google Sans Flex',sans-serif; font-size:16px; font-weight:600; color:#fff; background:var(--blue); border-radius:10px; padding:14px 28px; transition:background .2s ease, transform .2s ease; }
+  .acct__cta:hover { background:#0771a5; transform:translateY(-2px); }
+  .acct__cta svg { transition:transform .2s ease; }
+  .acct__cta:hover svg { transform:translateX(4px); }
+  .acct__card { background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.14); border-radius:20px; overflow:hidden; display:flex; flex-direction:column; transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+  .acct__card:hover { transform:translateY(-6px); border-color:rgba(9,130,197,.65); box-shadow:0 24px 48px rgba(0,0,0,.35); }
+  .acct__media { position:relative; }
+  .acct__card img { width:100%; height:210px; object-fit:cover; display:block; transition:transform .5s ease; }
+  .acct__card:hover img { transform:scale(1.05); }
+  .acct__media::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(19,32,63,.55) 0%, rgba(19,32,63,0) 45%); pointer-events:none; }
+  .acct__num { position:absolute; z-index:2; left:24px; bottom:-22px; width:44px; height:44px; border-radius:12px; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Google Sans Flex',sans-serif; font-size:19px; font-weight:700; box-shadow:0 8px 18px rgba(9,130,197,.45); }
+  .acct__body { padding:40px 26px 30px; }
+  .acct__card h3 { font-family:'Google Sans Flex',sans-serif; font-size:22px; font-weight:600; color:#fff; line-height:1.25; margin-bottom:12px; }
+  .acct__card p { font-family:'Google Sans Flex',sans-serif; font-size:15px; font-weight:400; color:rgba(255,255,255,.82); line-height:1.65; }
+  @media(prefers-reduced-motion:reduce){ .acct__card, .acct__card:hover, .acct__card img, .acct__card:hover img, .acct__cta, .acct__cta:hover { transition:none; transform:none; } }
+  @media(max-width:1200px){ .acct__grid{grid-template-columns:1fr 1fr;} .acct__intro{grid-column:1 / -1; padding-right:0; max-width:760px;} }
+  @media(max-width:900px){ .acct__grid{grid-template-columns:1fr;gap:28px;} .acct__head{font-size:32px;} }
 
   /* ===== Testimonials (nd-trusted) — 3 cards: start track at ~0 so
      global.js doesn't apply its 5-card -175px peek fallback ===== */
@@ -142,10 +161,15 @@
     .sd-head h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:10px; }
     .sd-head p { font-size:15.5px; font-weight:400; line-height:1.6; }
     /* Accountability section */
+    .acct-section { padding-top:44px; padding-bottom:48px; }
+    .acct__eyebrow { font-size:11.5px; margin-bottom:10px; }
     .acct__head { font-size:22px; font-weight:700; margin-bottom:22px; }
-    .acct__grid { gap:24px; }
+    .acct__grid { gap:22px; }
     .acct__intro { font-size:15.5px; }
-    .acct__card img { height:180px; border-radius:12px; margin-bottom:14px; }
+    .acct__cta { padding:12px 22px; font-size:15px; padding-top:12px; margin-top:20px; }
+    .acct__card img { height:180px; }
+    .acct__num { left:18px; bottom:-20px; width:40px; height:40px; font-size:17px; }
+    .acct__body { padding:34px 18px 24px; }
     .acct__card h3 { font-size:18px; margin-bottom:10px; }
     .acct__card p { font-size:14.5px; }
     /* Key Solution Areas — tap-to-expand accordion */
@@ -214,22 +238,34 @@
   <!-- ===== A MANAGED SERVICE THAT IS TRULY ACCOUNTABLE ===== -->
   <section class="sd-section acct-section" aria-labelledby="acct-h">
     <div class="sd-wrap">
+      <span class="acct__eyebrow">Managed Network Support</span>
       <h2 class="acct__head" id="acct-h">A Managed Service That is Truly Accountable</h2>
       <div class="acct__grid">
         <div class="acct__intro">
           <p>In addition to managing your infrastructure and security, Network Consultancy provides technical direction to keep your business online. We do not sell rigid service packages.</p>
-          <p style="margin-top:18px;">Instead, we adapt our support to what your business actually needs, whether you want us to run everything or assist your internal team.</p>
-          <p style="margin-top:18px;">Our managed network solutions provide direct communication access, regular reviews of your system performance, and clear engineering advice to maintain operational stability as you scale.</p>
+          <p>Instead, we adapt our support to what your business actually needs, whether you want us to run everything or assist your internal team.</p>
+          <p>Our managed network solutions provide direct communication access, regular reviews of your system performance, and clear engineering advice to maintain operational stability as you scale.</p>
+          <a class="acct__cta" href="/contact.html">Talk to an Engineer <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
         <div class="acct__card">
-          <img src="/images/pages/unique/services-managed-network-support-nc-hero-person.jpg" alt="Daily network operations">
-          <h3>1. Daily Network Operations &amp; Incident Response</h3>
-          <p>We look after the daily stability of your routers, switches, and firewalls. Our engineers monitor live traffic to catch and fix performance drops or security risks before they cause downtime. We handle all routine updates, apply critical patches, and keep verified backups of your configurations so you can recover instantly if a device fails.</p>
+          <div class="acct__media">
+            <img src="/images/pages/unique/services-managed-network-support-nc-hero-person.jpg" alt="Daily network operations">
+            <span class="acct__num" aria-hidden="true">1</span>
+          </div>
+          <div class="acct__body">
+            <h3>Daily Network Operations &amp; Incident Response</h3>
+            <p>We look after the daily stability of your routers, switches, and firewalls. Our engineers monitor live traffic to catch and fix performance drops or security risks before they cause downtime. We handle all routine updates, apply critical patches, and keep verified backups of your configurations so you can recover instantly if a device fails.</p>
+          </div>
         </div>
         <div class="acct__card">
-          <img src="/images/pages/unique/services-managed-network-support-nc-wws-person.jpg" alt="Governance and reporting">
-          <h3>2. Governance, Reporting &amp; Service Improvement</h3>
-          <p>We keep your network changes organised and documented. Every update goes through a strict approval process so changes do not break your live environment. You get clear reports on your actual network performance and straightforward recommendations from our engineers to help you make smart infrastructure decisions.</p>
+          <div class="acct__media">
+            <img src="/images/pages/unique/services-managed-network-support-nc-wws-person.jpg" alt="Governance and reporting">
+            <span class="acct__num" aria-hidden="true">2</span>
+          </div>
+          <div class="acct__body">
+            <h3>Governance, Reporting &amp; Service Improvement</h3>
+            <p>We keep your network changes organised and documented. Every update goes through a strict approval process so changes do not break your live environment. You get clear reports on your actual network performance and straightforward recommendations from our engineers to help you make smart infrastructure decisions.</p>
+          </div>
         </div>
       </div>
     </div>
