@@ -445,47 +445,8 @@
       width: 100%;
     }
 
-    .fin-testimonial {
-      padding-top: 62px;
-      padding-bottom: 62px;
-      background: #d6eafa;
-    }
-    .fin-testimonial .industry-testimonial__inner {
-      grid-template-columns: 236px 1fr;
-      gap: 28px;
-      align-items: end;
-    }
-    .fin-testimonial .industry-testimonial__title {
-      font-size: 50px;
-      line-height: 0.95;
-      max-width: 220px;
-    }
-    .fin-testimonial__left {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      min-height: 260px;
-    }
-    .fin-testimonial__controls {
-      margin-top: 34px;
-    }
-    .fin-testimonial__controls .industry-progress {
-      width: 108px;
-      height: 8px;
-      margin-top: 0;
-    }
-    .fin-testimonial__controls .industry-arrows {
-      margin-top: 14px;
-    }
-    .fin-testimonial .industry-testimonial__card {
-      border-radius: 8px;
-      padding: 26px 30px;
-      max-width: 760px;
-    }
-    .fin-testimonial .industry-testimonial__quote {
-      font-size: 22px;
-      line-height: 1.55;
-    }
+    /* CMS testimonials: neutralise the 5-card -175px peek fallback */
+    .nd-trusted__track { transform: translateX(-1px); }
 
     .fin-cta {
       padding-top: 40px;
@@ -542,15 +503,6 @@
       .fin-banner .industry-banner__title {
         font-size: 44px;
       }
-      .fin-testimonial .industry-testimonial__inner {
-        grid-template-columns: 1fr;
-      }
-      .fin-testimonial .industry-testimonial__title {
-        max-width: none;
-      }
-      .fin-testimonial__left {
-        min-height: 0;
-      }
       .sd-section {
         margin: 56px auto;
       }
@@ -576,10 +528,6 @@
     }
 
     @media (max-width: 768px) {
-      /* Decorative-only arrows (no slider JS) — hide on touch layouts */
-      .fin-testimonial__controls {
-        display: none;
-      }
       .sd-section {
         margin: 56px auto;
       }
@@ -644,7 +592,6 @@
       }
 
       .fin-why,
-      .fin-testimonial,
       .fin-cta {
         padding-top: 52px;
         padding-bottom: 52px;
@@ -974,6 +921,7 @@
   <div id="site-footer"></div>
   <script src="/js/footer.js"></script>
 
+  <script src="/js/cms.js" defer></script>
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
@@ -1008,34 +956,6 @@
     }
     document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
-  })();
-  </script>
-  <script>
-  /* Testimonial slider */
-  (function () {
-    var quote = document.getElementById('fin-t-quote');
-    var meta = document.getElementById('fin-t-meta');
-    var fill = document.getElementById('fin-t-fill');
-    if (!quote || !meta) return;
-    var items = [
-      { quote: quote.textContent, meta: meta.textContent },
-      { quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.', meta: 'Managing Director, Broadcasting Company, London' },
-      { quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.', meta: 'IT Director, Professional Services Firm, London' },
-      { quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.', meta: 'Head of Operations, Healthcare Provider, Birmingham' },
-      { quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.', meta: 'Managing Partner, Legal Firm, London' },
-      { quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.', meta: 'Operations Director, Manufacturing Company, Midlands' }
-    ];
-    var i = 0, total = items.length;
-    function render() {
-      quote.style.opacity = '0'; meta.style.opacity = '0';
-      setTimeout(function () {
-        quote.textContent = items[i].quote; meta.textContent = items[i].meta;
-        if (fill) fill.style.width = ((i + 1) / total * 100) + '%';
-        quote.style.opacity = '1'; meta.style.opacity = '1';
-      }, 200);
-    }
-    document.getElementById('fin-t-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
-    document.getElementById('fin-t-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
   })();
   </script>
 </body>
