@@ -366,11 +366,15 @@
     .fin-banner .industry-banner__inner {
       min-height: 520px;
       border-radius: 10px;
+      background: #0982c5;
     }
-    .fin-banner .industry-banner__bg picture {
-      display: block;
-      width: 100%;
-      height: 100%;
+    .fin-banner .industry-banner__title,
+    .fin-banner .industry-banner__text {
+      transition: opacity .25s ease-out;
+    }
+    .fin-banner.is-switching .industry-banner__title,
+    .fin-banner.is-switching .industry-banner__text {
+      opacity: 0;
     }
     .fin-banner .industry-banner__content {
       max-width: 720px;
@@ -397,7 +401,14 @@
       width: 26px;
       height: 4px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.55);
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+    .fin-banner__dot:hover {
+      background: rgba(255,255,255,0.85);
     }
     .fin-banner__dot.is-active {
       background: #08adfc;
@@ -806,25 +817,67 @@
 
   <section class="industry-banner animate-fade-up fin-banner" aria-labelledby="fin-banner-h">
     <div class="industry-banner__inner">
-      <div class="industry-banner__bg">
-        <picture>
-          <source srcset="/images/pages/unique/generated/financial-services-hero-photoonly.jpg" type="image/jpeg">
-          <img src="/images/pages/unique/generated/financial-services-hero-photoonly.jpg" alt="Financial services network support" loading="lazy">
-        </picture>
-      </div>
-      <div class="industry-banner__overlay" aria-hidden="true"></div>
       <div class="industry-banner__content">
         <span class="industry-banner__eyebrow">Cyber Threats</span>
         <h2 class="industry-banner__title" id="fin-banner-h">Common Types of Cyber Attacks Financial Systems Face</h2>
-        <p class="industry-banner__text">Attackers look for weaknesses in software, poorly secured APIs, and weak passwords. They use techniques like ransomware, phishing and distributed denial-of-service attacks, as well as credential stuffing and man-in-the-middle attacks to compromise accounts or intercept data.</p>
+        <p class="industry-banner__text" id="fin-banner-text">Attackers look for weaknesses in software, poorly secured APIs, and weak passwords. They use techniques like ransomware, phishing and distributed denial-of-service attacks, as well as credential stuffing and man-in-the-middle attacks to compromise accounts or intercept data.</p>
       </div>
-      <div class="fin-banner__dots" aria-hidden="true">
-        <span class="fin-banner__dot is-active"></span>
-        <span class="fin-banner__dot"></span>
-        <span class="fin-banner__dot"></span>
+      <div class="fin-banner__dots" role="tablist" aria-label="Cyber threat slides">
+        <button type="button" class="fin-banner__dot is-active" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+        <button type="button" class="fin-banner__dot" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+        <button type="button" class="fin-banner__dot" role="tab" aria-selected="false" aria-label="Slide 3"></button>
       </div>
     </div>
   </section>
+
+  <script>
+  (function finBannerSlides() {
+    'use strict';
+    var slides = [
+      {
+        title: 'Common Types of Cyber Attacks Financial Systems Face',
+        text: 'Attackers look for weaknesses in software, poorly secured APIs, and weak passwords. They use techniques like ransomware, phishing and distributed denial-of-service attacks, as well as credential stuffing and man-in-the-middle attacks to compromise accounts or intercept data.'
+      },
+      {
+        title: 'Ransomware and Denial-of-Service Disruption',
+        text: 'Ransomware can lock teams out of critical systems, while distributed denial-of-service attacks overwhelm networks and interrupt customer-facing services. Resilient architecture, network segmentation and tested recovery plans keep operations running when incidents occur.'
+      },
+      {
+        title: 'Credential Stuffing and Account Takeover',
+        text: 'Stolen or reused passwords are used to gain access to accounts and internal systems. Strong access controls, multi-factor authentication and continuous monitoring help detect and block unauthorised activity before sensitive data is exposed.'
+      }
+    ];
+    var title = document.getElementById('fin-banner-h');
+    var text = document.getElementById('fin-banner-text');
+    var dots = Array.prototype.slice.call(document.querySelectorAll('.fin-banner__dot'));
+    var banner = document.querySelector('.fin-banner');
+    if (!title || !text || dots.length === 0) return;
+    var current = 0;
+    var timer = null;
+    function show(index) {
+      if (index === current) return;
+      current = index;
+      banner.classList.add('is-switching');
+      setTimeout(function () {
+        title.textContent = slides[current].title;
+        text.textContent = slides[current].text;
+        dots.forEach(function (d, i) {
+          d.classList.toggle('is-active', i === current);
+          d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+        });
+        banner.classList.remove('is-switching');
+      }, 250);
+    }
+    function startAuto() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(function () { show((current + 1) % slides.length); }, 6000);
+    }
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { show(i); startAuto(); });
+    });
+    startAuto();
+  })();
+  </script>
 
   <section class="section animate-fade-up fin-why" aria-labelledby="fin-why-h">
     <div class="split split--3-2">
@@ -843,25 +896,47 @@
       </picture>
     </div>
   </section>
-  <section class="industry-testimonial fin-testimonial" aria-label="Client testimonial">
-    <div class="industry-testimonial__inner animate-fade-up">
-      <div class="fin-testimonial__left">
-        <h2 class="industry-testimonial__title">What our client says</h2>
-        <div class="fin-testimonial__controls">
-          <div class="industry-progress"><div id="fin-t-fill" style="height:100%;width:16.6%;background:var(--blue);border-radius:inherit;transition:width .3s ease"></div></div>
-          <div class="industry-arrows">
-            <button class="industry-arrow" id="fin-t-prev" type="button" aria-label="Previous testimonial"><span>&larr;</span></button>
-            <button class="industry-arrow" id="fin-t-next" type="button" aria-label="Next testimonial"><span>&rarr;</span></button>
-          </div>
-        </div>
-      </div>
-      <article class="industry-testimonial__card">
-        <div class="industry-testimonial__stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote class="industry-testimonial__quote" id="fin-t-quote">The improvements to our network have made a real difference. Our systems are more reliable, and we have greater confidence that sensitive financial data is properly protected.</blockquote>
-        <p class="industry-testimonial__meta" id="fin-t-meta">James Carter, IT Director, London</p>
-      </article>
-    </div>
-  </section>
+  <script>
+  window.PAGE_TESTIMONIALS = [
+    {
+      quote: 'The improvements to our network have made a real difference. Our systems are more reliable, and we have greater confidence that sensitive financial data is properly protected.',
+      name: 'James Carter',
+      role: 'IT Director, London',
+      avatar: '/images/misc/testimonial-avatar.svg'
+    },
+    {
+      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
+      name: 'Managing Director',
+      role: 'Broadcasting Company, London',
+      avatar: '/images/misc/avatars/testimonial-avatar-managing-director.jpg'
+    },
+    {
+      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
+      name: 'IT Director',
+      role: 'Professional Services Firm, London',
+      avatar: '/images/misc/avatars/testimonial-avatar-it-director.jpg'
+    },
+    {
+      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
+      name: 'Head of Operations',
+      role: 'Healthcare Provider, Birmingham',
+      avatar: '/images/misc/avatars/testimonial-avatar-head-of-operations.jpg'
+    },
+    {
+      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
+      name: 'Managing Partner',
+      role: 'Legal Firm, London',
+      avatar: '/images/misc/avatars/testimonial-avatar-managing-partner.jpg'
+    },
+    {
+      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
+      name: 'Operations Director',
+      role: 'Manufacturing Company, Midlands',
+      avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
+    }
+  ];
+  </script>
+  <div data-cms="testimonials" data-title="What our client says"></div>
 
   <section class="industry-cta animate-fade-up fin-cta" aria-label="Call to action">
     <div class="industry-cta__inner">
