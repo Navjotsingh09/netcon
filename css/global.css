@@ -730,11 +730,11 @@ body.industry-detail-page .page-hero .page-hero__cta {
 }
 .industry-banner__title {
   font-family:'Google Sans Flex',sans-serif;
-  font-size:56px;
+  font-size:44px;
   font-weight:500;
   color:#fff;
-  line-height:1.05;
-  margin-bottom:16px;
+  line-height:1.18;
+  margin-bottom:18px;
 }
 .industry-banner__text {
   font-family:'Google Sans Flex',sans-serif;
@@ -984,6 +984,12 @@ body.industry-detail-page #main > #contact {
   overflow:hidden;
   position:relative;
   min-height:340px;
+  height:440px;
+}
+.industry-highlight picture {
+  position:absolute;
+  inset:0;
+  display:block;
 }
 .industry-highlight img {
   width:100%;
@@ -1169,7 +1175,7 @@ body.industry-detail-page #main > #contact {
   .industry-insight__title { font-size:30px; }
   .industry-banner__inner { min-height:400px; }
   .industry-banner__content { padding:28px 24px; max-width:100%; }
-  .industry-banner__title { font-size:42px; }
+  .industry-banner__title { font-size:36px; }
   .industry-banner__text { font-size:18px; }
   .industry-testimonial__inner { grid-template-columns:1fr; }
   .industry-testimonial__title { font-size:44px; }
@@ -1187,7 +1193,8 @@ body.industry-detail-page #main > #contact {
   }
   .industry-hero-card__title { font-size:30px; }
   .industry-carousel__thumbs { grid-template-columns:1fr; }
-  .industry-highlight { min-height:320px; }
+  .industry-highlight { min-height:320px; height:auto; }
+  .industry-highlight__content { position:relative; left:0; top:0; padding:24px 20px; }
   .industry-highlight__title { font-size:34px; }
   .industry-challenge { grid-template-columns:1fr; }
   .industry-challenge__title { font-size:32px; }
@@ -1306,7 +1313,7 @@ body.industry-detail-page #main > #contact {
   .section-title { font-size:26px; }
   .btn-blue, .btn-dark, .btn-outline { font-size:15px; padding:12px 20px; }
   .icon-grid { grid-template-columns:1fr; }
-  .industry-banner__title { font-size:34px; }
+  .industry-banner__title { font-size:30px; }
   .industry-banner__text { font-size:16px; }
   .industry-testimonial { padding:52px var(--px); }
   .industry-testimonial__title { font-size:34px; }
