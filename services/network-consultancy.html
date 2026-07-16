@@ -122,7 +122,7 @@
   .prob:hover .prob__overlay { background:linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.46) 54%, rgba(0,0,0,.16) 100%); }
   .prob:hover .prob__label { transform:translateY(-4px); }
   @media(hover:none){ .prob:hover{transform:none;box-shadow:none;} .prob:hover img{transform:none;} .prob:hover .prob__overlay{background:linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,.3) 50%, rgba(0,0,0,.1) 100%);} .prob:hover .prob__label{transform:none;} }
-  @media(max-width:900px){ .probs__row{flex-wrap:wrap;} .prob{flex-basis:calc(50% - 8px);flex-grow:1;height:220px;} .prob__label{left:22px;bottom:20px;font-size:18px;} }
+  @media(max-width:900px){ .probs__row{flex-wrap:wrap;} .prob{flex-basis:calc(50% - 8px);flex-grow:1;height:220px;} .prob img{object-position:center 25%;} .prob__label{left:22px;bottom:20px;font-size:18px;} }
   @media(max-width:560px){ .prob{flex-basis:100%;} }
 
   /* ===== CTA band (shared with services landing) ===== */
@@ -168,7 +168,7 @@
     /* Who We Serve */
     .wws__layout { gap:20px; }
     .wws__item { font-size:15.5px; padding:14px 16px; }
-    .wws__img { min-height:0; height:240px; }
+    .wws__img { min-height:0; height:280px; object-position:top center; }
     .wws__media { border-radius:12px; }
     /* Business impact slider */
     .biz { gap:26px; }
@@ -322,12 +322,12 @@
           <div class="prob" style="flex-grow:588"><img src="/images/unique/services-network-consultancy-feature-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Wi-Fi dead zones</div></div>
         </div>
         <div class="probs__row">
-          <div class="prob" style="flex-grow:349"><img src="/images/unique/services-network-consultancy-service-3.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Network congestion slowdowns</div></div>
+          <div class="prob" style="flex-grow:349"><img src="/images/misc/it-networking.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Network congestion slowdowns</div></div>
           <div class="prob" style="flex-grow:469"><img src="/images/unique/services-network-consultancy-service-4.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Insecure visitor access</div></div>
-          <div class="prob" style="flex-grow:596"><img src="/images/unique/services-network-consultancy-feature-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Disconnected warehouse scanners</div></div>
+          <div class="prob" style="flex-grow:596"><img src="/images/services/service-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Disconnected warehouse scanners</div></div>
         </div>
         <div class="probs__row">
-          <div class="prob" style="flex-grow:580"><img src="/images/unique/services-network-consultancy-service-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Undetected network glitches</div></div>
+          <div class="prob" style="flex-grow:580"><img src="/images/features/feature-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Undetected network glitches</div></div>
           <div class="prob" style="flex-grow:835"><img src="/images/unique/services-network-consultancy-scroll-banner-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Inconsistent multi-site security</div></div>
         </div>
       </div>
