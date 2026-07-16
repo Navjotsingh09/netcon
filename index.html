@@ -819,6 +819,23 @@
     }
     .svc-card:hover .svc-card__label { margin-bottom: 10px; }
     .svc-card:hover .svc-card__desc { max-height: 150px; opacity: 1; }
+    .svc-card__more {
+      display: inline-block;
+      font-size: 14px; font-weight: 600;
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      margin-top: 0;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    }
+    .svc-card:hover .svc-card__more { max-height: 30px; opacity: 1; margin-top: 8px; }
+    .svc-card__more:hover { color: var(--blue); }
+    @media (hover: none) {
+      .svc-card__more { max-height: 30px; opacity: 1; margin-top: 8px; }
+    }
 
     /* ===== VIDEO BANNER ===== */
     .video-banner { padding: 40px var(--px); max-width: 1920px; margin: 0 auto; }
@@ -1912,6 +1929,7 @@
           <div class="svc-card__info">
             <span class="svc-card__label">Network<br>Consultancy</span>
             <p class="svc-card__desc">Strategic guidance from assessment through implementation — networks built around your business goals.</p>
+            <a class="svc-card__more" href="/services/network-consultancy.html" aria-label="Know more about Network Consultancy">Know More</a>
           </div>
         </div>
         <div class="svc-card hover-lift">
@@ -1920,6 +1938,7 @@
           <div class="svc-card__info">
             <span class="svc-card__label">Network<br>Support</span>
             <p class="svc-card__desc">Network support services designed to reduce downtime and improve performance across your infrastructure.</p>
+            <a class="svc-card__more" href="/services/network-support.html" aria-label="Know more about Network Support">Know More</a>
           </div>
         </div>
         <div class="svc-card hover-lift">
@@ -1928,6 +1947,7 @@
           <div class="svc-card__info">
             <span class="svc-card__label">Managed Network<br>Support</span>
             <p class="svc-card__desc">A fully managed service designed to reduce internal burden and keep your environment secure, stable and optimised.</p>
+            <a class="svc-card__more" href="/services/managed-network-support.html" aria-label="Know more about Managed Network Support">Know More</a>
           </div>
         </div>
       </div>
@@ -1939,6 +1959,7 @@
           <div class="svc-card__info">
             <span class="svc-card__label">Network Design<br>&amp; Deployment</span>
             <p class="svc-card__desc">Expert consultancy for secure, high-performing, and scalable network architectures.</p>
+            <a class="svc-card__more" href="/services/network-design-deployment.html" aria-label="Know more about Network Design and Deployment">Know More</a>
           </div>
         </div>
         <div class="svc-card hover-lift">
@@ -1947,6 +1968,7 @@
           <div class="svc-card__info">
             <span class="svc-card__label">Firewall &amp; Network Security</span>
             <p class="svc-card__desc">Smarter, more practical network protection that fits how your business actually works.</p>
+            <a class="svc-card__more" href="/services/firewall-network-security.html" aria-label="Know more about Firewall and Network Security">Know More</a>
           </div>
         </div>
         <div class="svc-card hover-lift">
@@ -1955,12 +1977,27 @@
           <div class="svc-card__info">
             <span class="svc-card__label">Business Continuity<br>&amp; Resilience</span>
             <p class="svc-card__desc">Secure, resilient networks that keep critical business operations running — even in the face of disruptions.</p>
+            <a class="svc-card__more" href="/services/business-continuity.html" aria-label="Know more about Business Continuity and Resilience">Know More</a>
           </div>
         </div>
       </div>
     </div>
     <a href="/contact.html" class="btn-blue main-services__cta main-services__cta--mobile" data-source-cta="main_services_book_call">Book a free call</a>
   </section>
+
+  <script>
+  (function svcCardLinks() {
+    'use strict';
+    document.querySelectorAll('.svc-card').forEach(function (card) {
+      var link = card.querySelector('.svc-card__more');
+      if (!link) return;
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+        window.location.href = link.getAttribute('href');
+      });
+    });
+  })();
+  </script>
 
   <section class="nd-highlight section-shell">
     <div class="nd-highlight__inner">
