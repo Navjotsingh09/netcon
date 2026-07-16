@@ -81,7 +81,9 @@
   }
 
   function renderTestimonials(container) {
-    var cards = TESTIMONIALS.map(function (t) {
+    var testimonialsSource = (typeof window !== 'undefined' && Array.isArray(window.PAGE_TESTIMONIALS) && window.PAGE_TESTIMONIALS.length) ? window.PAGE_TESTIMONIALS : TESTIMONIALS;
+
+    var cards = testimonialsSource.map(function (t) {
       return [
         '<article class="nd-t-card">',
         '  <p class="nd-t-card__quote">\u201c' + escHtml(t.quote) + '\u201d</p>',
