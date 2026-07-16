@@ -680,7 +680,7 @@
     <div class="svcs-hero__wrap">
       <div class="svcs-hero__content">
         <div class="svcs-hero__text">
-          <h1 class="svcs-hero__title animate-fade-up">High-Performance Networking and Security for Financial Organisations</h1>
+          <h1 class="svcs-hero__title animate-fade-up">High-Performance Networks for Financial Organisations</h1>
           <p class="svcs-hero__sub animate-fade-up">We design secure IT networks for banks and financial institutions to protect data.</p>
         </div>
         <a href="/contact.html" class="btn-blue svcs-hero__cta animate-fade-up" data-source-cta="industry_health_check">Book a Network Health Check</a>
@@ -848,18 +848,18 @@
     <div class="industry-testimonial__inner animate-fade-up">
       <div class="fin-testimonial__left">
         <h2 class="industry-testimonial__title">What our client says</h2>
-        <div class="fin-testimonial__controls" aria-hidden="true">
-          <div class="industry-progress"></div>
+        <div class="fin-testimonial__controls">
+          <div class="industry-progress"><div id="fin-t-fill" style="height:100%;width:16.6%;background:var(--blue);border-radius:inherit;transition:width .3s ease"></div></div>
           <div class="industry-arrows">
-            <button class="industry-arrow" type="button" tabindex="-1"><span>&larr;</span></button>
-            <button class="industry-arrow" type="button" tabindex="-1"><span>&rarr;</span></button>
+            <button class="industry-arrow" id="fin-t-prev" type="button" aria-label="Previous testimonial"><span>&larr;</span></button>
+            <button class="industry-arrow" id="fin-t-next" type="button" aria-label="Next testimonial"><span>&rarr;</span></button>
           </div>
         </div>
       </div>
       <article class="industry-testimonial__card">
         <div class="industry-testimonial__stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote class="industry-testimonial__quote">The improvements to our network have made a real difference. Our systems are more reliable, and we have greater confidence that sensitive financial data is properly protected.</blockquote>
-        <p class="industry-testimonial__meta">James Carter, IT Director, London</p>
+        <blockquote class="industry-testimonial__quote" id="fin-t-quote">The improvements to our network have made a real difference. Our systems are more reliable, and we have greater confidence that sensitive financial data is properly protected.</blockquote>
+        <p class="industry-testimonial__meta" id="fin-t-meta">James Carter, IT Director, London</p>
       </article>
     </div>
   </section>
@@ -934,6 +934,34 @@
     }
     document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+  })();
+  </script>
+  <script>
+  /* Testimonial slider */
+  (function () {
+    var quote = document.getElementById('fin-t-quote');
+    var meta = document.getElementById('fin-t-meta');
+    var fill = document.getElementById('fin-t-fill');
+    if (!quote || !meta) return;
+    var items = [
+      { quote: quote.textContent, meta: meta.textContent },
+      { quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.', meta: 'Managing Director, Broadcasting Company, London' },
+      { quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.', meta: 'IT Director, Professional Services Firm, London' },
+      { quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.', meta: 'Head of Operations, Healthcare Provider, Birmingham' },
+      { quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.', meta: 'Managing Partner, Legal Firm, London' },
+      { quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.', meta: 'Operations Director, Manufacturing Company, Midlands' }
+    ];
+    var i = 0, total = items.length;
+    function render() {
+      quote.style.opacity = '0'; meta.style.opacity = '0';
+      setTimeout(function () {
+        quote.textContent = items[i].quote; meta.textContent = items[i].meta;
+        if (fill) fill.style.width = ((i + 1) / total * 100) + '%';
+        quote.style.opacity = '1'; meta.style.opacity = '1';
+      }, 200);
+    }
+    document.getElementById('fin-t-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
+    document.getElementById('fin-t-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
   })();
   </script>
 </body>
