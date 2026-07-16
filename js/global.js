@@ -271,6 +271,7 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
       var btn = form.querySelector('[type="submit"]');
       if (btn && !btn.dataset.originalText) btn.dataset.originalText = btn.textContent;
       if (error && !error.dataset.defaultMessage) error.dataset.defaultMessage = error.textContent;
@@ -300,6 +301,8 @@
         document.getElementById('cf-lead-status').value = sourceData.lead_status;
         document.getElementById('cf-action-required').value = sourceData.action_required;
         document.getElementById('cf-routing-team').value = sourceData.routing_team;
+        var subjectField = document.getElementById('cf-subject');
+        if (subjectField) subjectField.value = 'NetCon website enquiry \u2014 ' + sourceData.source_page + ' (' + sourceData.source_cta + ')';
       }
 
       fetch(form.action, {

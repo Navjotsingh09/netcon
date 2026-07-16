@@ -2,7 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/misc/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/misc/favicon-180.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://network-consultancy.com/solutions">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://network-consultancy.com/solutions">
+  <meta property="og:title" content="Solutions | Network Consultancy">
+  <meta property="og:description" content="Professional network assessments and practical recommendations for performance, resilience, and long-term business growth.">
+  <meta property="og:site_name" content="Network Consultancy">
+  <meta property="og:image" content="https://network-consultancy.com/images/misc/it-networking.jpg">
   <title>Solutions | Network Consultancy</title>
   <meta name="description" content="Professional network assessments and practical recommendations for performance, resilience, and long-term business growth.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,9 +71,9 @@
     .sol-hero-landing p {
       color: #ffffff;
       font-family: "Google Sans Flex", sans-serif;
-      font-size: 24px;
-      font-weight: 400;
-      line-height: 1.35;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1;
       max-width: 640px;
       margin: 0 0 24px;
     }
@@ -119,7 +128,7 @@
     }
 
     .sol-commit__head h2 {
-      color: #0982c5;
+      color: #162470;
       font-family: "Google Sans Flex", sans-serif;
       font-size: 48px;
       font-weight: 600;
@@ -130,8 +139,8 @@
     .sol-commit__head p {
       margin: 18px 0 28px;
       color: #585151;
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: 18px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 20px;
       font-weight: 400;
       line-height: 1.2;
       max-width: 994px;
@@ -206,7 +215,7 @@
 
     .sol-card p {
       margin: 12px 0 0;
-      font-family: "Google Sans Flex", sans-serif;
+      font-family: "Plus Jakarta Sans", sans-serif;
       font-size: 18px;
       font-weight: 400;
       line-height: 1.45;
@@ -289,7 +298,7 @@
 
     .sol-benefits h2 {
       margin: 0;
-      color: #0982c5;
+      color: #162470;
       font-family: "Google Sans Flex", sans-serif;
       font-size: 48px;
       font-weight: 600;
@@ -394,6 +403,7 @@
 
     @media (max-width: 1440px) {
       .sol-hero-landing h1 { font-size: 56px; }
+      .sol-hero-landing p { font-size: 28px; }
       .sol-card h3 { font-size: 34px; }
       .sol-benefit-tile__label { font-size: 34px; }
     }
@@ -433,7 +443,7 @@
         font-size: 42px;
       }
       .sol-hero-landing p {
-        font-size: 20px;
+        font-size: 22px;
         line-height: 1.15;
       }
       .sol-hero-landing__art {
@@ -495,89 +505,6 @@
         font-size: 26px;
       }
     }
-
-    /* ===== Mobile Solutions landing (Figma: Solutions mobile landing.png) ===== */
-    .msol { display: none; }
-
-    @media (max-width: 768px) {
-      .msol { display: block; }
-      .sol-hero-landing, .sol-commit, .sol-benefits { display: none; }
-
-      .msol-hero { background: #02172f; padding: 40px 22px; color: #fff; }
-      .msol-hero h1 { font-size: 26px; font-weight: 700; line-height: 1.2; margin: 0 0 14px; color: #fff; }
-      .msol-hero p { font-size: 17px; line-height: 1.5; color: rgba(255,255,255,.92); margin: 0 0 22px; }
-      .msol-hero__btn {
-        display: inline-flex; align-items: center; justify-content: center;
-        background: #f2f2f2; color: #1c1c1c; font-size: 13px; font-weight: 600;
-        padding: 10px 24px; border-radius: 4px; min-height: 40px; text-decoration: none;
-      }
-
-      .msol-sec { padding: 26px 22px 6px; }
-      .msol-h { color: #0982c5; font-size: 22px; font-weight: 700; margin: 0 0 12px; }
-      .msol-p { font-size: 16px; line-height: 1.6; color: #353535; margin: 0 0 20px; }
-
-      .msol-tile {
-        position: relative; display: block; border-radius: 12px; overflow: hidden;
-        margin-bottom: 22px; min-height: 340px;
-      }
-      .msol-tile img { width: 100%; height: 340px; object-fit: cover; display: block; }
-      .msol-tile::after {
-        content: ""; position: absolute; inset: 0;
-        background: linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.25) 40%, rgba(0,0,0,.08) 100%);
-      }
-      .msol-tile span {
-        position: absolute; left: 22px; bottom: 22px; z-index: 2;
-        color: #fff; font-size: 18px; font-weight: 600; line-height: 1.3; max-width: 20ch;
-      }
-
-      .msol-cap {
-        display: block; text-decoration: none; border-radius: 12px;
-        background: linear-gradient(180deg, #b9c2c8 0%, #4aa3d4 45%, #0982c5 100%);
-        padding: 26px 20px 28px; margin-bottom: 20px; color: #fff;
-        transition: transform 0.2s ease;
-      }
-      .msol-cap:active { transform: scale(0.985); }
-      .msol-cap__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 0; transition: margin-bottom 0.3s ease; }
-      .msol-cap h3 { font-size: 19px; font-weight: 700; line-height: 1.3; margin: 0; color: #fff; max-width: 24ch; }
-      .msol-cap__arrow {
-        font-size: 30px; line-height: 1; color: #fff; flex-shrink: 0;
-        display: inline-block; opacity: 0; transform: translate(-4px, 4px);
-        transition: opacity 0.25s ease, transform 0.3s ease;
-      }
-      .msol-cap p {
-        font-size: 15.5px; line-height: 1.55; color: rgba(255,255,255,.95); margin: 0;
-        max-height: 0; opacity: 0; overflow: hidden;
-        transition: max-height 0.4s ease, opacity 0.3s ease 0.05s;
-      }
-      .msol-cap:hover .msol-cap__top,
-      .msol-cap:focus-visible .msol-cap__top,
-      .msol-cap.is-open .msol-cap__top { margin-bottom: 14px; }
-      .msol-cap:hover .msol-cap__arrow,
-      .msol-cap:focus-visible .msol-cap__arrow,
-      .msol-cap.is-open .msol-cap__arrow { opacity: 1; transform: translate(0, 0) rotate(45deg); }
-      .msol-cap:hover p,
-      .msol-cap:focus-visible p,
-      .msol-cap.is-open p { max-height: 320px; opacity: 1; }
-
-      /* FAQ: clean white accordion per design */
-      .nd-faq { background: #fff; border: 0; padding: 6px 22px 10px; }
-      .nd-faq__left .section-title { color: #0982c5; font-size: 22px; font-weight: 700; }
-      .nd-faq__left p { font-size: 14px; color: #4a4a4a; margin-bottom: 14px; }
-      .nd-faq__cta { display: none; }
-      .nd-faq__item {
-        background: #fff; border: 0; border-bottom: 1px solid #e4e4e4;
-        padding: 18px 4px; text-align: left; font-size: 17px; font-weight: 500; color: #1c1c1c;
-      }
-      .nd-faq__item span { text-align: left; }
-      .nd-faq__item.is-open { background: #f5f5f6; border-bottom: 0; padding: 18px 14px 6px; }
-      .nd-faq__panel {
-        background: #f5f5f6; border: 0; padding: 0 14px 18px; margin-bottom: 6px;
-        font-size: 15.5px; line-height: 1.65; color: #4a4a4a;
-      }
-
-      /* Trusted heading color per design */
-      .nd-trusted__title { color: #0982c5; }
-    }
   </style>
 </head>
 <body>
@@ -586,110 +513,12 @@
   <script src="/js/navbar.js"></script>
 
   <main id="main" class="sol-page">
-    <div class="msol">
-
-      <section class="msol-hero">
-        <h1>Professional Network Assessments for Better Business Performance</h1>
-        <p>Understand how your network is performing with a professional assessment that helps improve connectivity, strengthen security, and support the long-term needs of your business.</p>
-        <a href="/contact.html" class="msol-hero__btn" data-source-cta="solutions_landing_book_health_check">Book A Network Health Check</a>
-      </section>
-
-      <section class="msol-sec animate-fade-up">
-        <h2 class="msol-h">What You Will Get From Us</h2>
-        <p class="msol-p">Every business needs a strong network to stay connected, secure, and efficient. We deliver practical assessments that help you understand where your network can be improved and how to build a more dependable foundation for growth.</p>
-        <a class="msol-tile" href="/solutions/network-health-check.html">
-          <img src="/images/pages/unique/solutions-index-managed-support.jpg" alt="Network Health Check" loading="lazy">
-          <span>Network Health Check</span>
-        </a>
-        <a class="msol-tile" href="/solutions/cyber-security-review.html">
-          <img src="/images/pages/unique/solutions-index-cyber-security.jpg" alt="Cyber Security Review" loading="lazy">
-          <span>Cyber Security Review</span>
-        </a>
-        <a class="msol-tile" href="/solutions/microsoft-365-network.html">
-          <img src="/images/pages/unique/solutions-index-professional.jpg" alt="Microsoft 365 and Network Readiness" loading="lazy">
-          <span>Microsoft 365 and Network Readiness</span>
-        </a>
-        <a class="msol-tile" href="/solutions/ai-ready-infrastructure.html">
-          <img src="/images/pages/unique/solutions-index-technician.jpg" alt="AI-Ready Infrastructure Review" loading="lazy">
-          <span>AI-Ready Infrastructure Review</span>
-        </a>
-      </section>
-
-      <section class="msol-sec animate-fade-up">
-        <h2 class="msol-h">Our Capabilities</h2>
-        <p class="msol-p">Supporting your every step with the right network solutions and expert guidance.</p>
-        <a class="msol-cap" href="/solutions/network-health-check.html"><div class="msol-cap__top"><h3>Comprehensive Infrastructure Review</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>We assess your existing network infrastructure to identify areas for improvement, increase reliability, and ensure your systems can support your business as it grows.</p></a>
-        <a class="msol-cap" href="/solutions/network-health-check.html"><div class="msol-cap__top"><h3>Performance Assessment</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>Traffic flows are analysed to determine whether routing, throughput, and prioritisation are creating avoidable bottlenecks across the network.</p></a>
-        <a class="msol-cap" href="/solutions/cyber-security-review.html"><div class="msol-cap__top"><h3>Security Assessment</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>Security weaknesses at the network edge are reviewed to expose vulnerabilities before they become incidents or cause operational disruption.</p></a>
-        <a class="msol-cap" href="/solutions/network-health-check.html"><div class="msol-cap__top"><h3>Performance Review</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>You receive practical recommendations that help your team know what to change first and why those improvements matter most.</p></a>
-        <a class="msol-cap" href="/solutions/network-health-check.html"><div class="msol-cap__top"><h3>Enhancing Network Reliability</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>The final output provides clear, evidence-backed recommendations that help strengthen reliability and improve day-to-day system performance.</p></a>
-        <a class="msol-cap" href="/solutions/network-health-check.html"><div class="msol-cap__top"><h3>Network Device Review</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>Routers, switches, and endpoint support hardware are checked to confirm they can sustain expected business load without degrading reliability.</p></a>
-        <a class="msol-cap" href="/solutions/cyber-security-review.html"><div class="msol-cap__top"><h3>Compliance and Best Practice Review</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>Compliance-sensitive controls are reviewed to see where policy and practice may not align with requirements.</p></a>
-        <a class="msol-cap" href="/solutions/cyber-security-review.html"><div class="msol-cap__top"><h3>Wireless Network Review</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>Our assessment highlights potential security risks and offers practical recommendations to help safeguard your systems, users, and business data.</p></a>
-        <a class="msol-cap" href="/solutions/ai-ready-infrastructure.html"><div class="msol-cap__top"><h3>Planning for Future Growth</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>We evaluate whether your existing network and IT infrastructure are equipped to support modern AI tools and future technology demands, identifying any gaps that may require improvement.</p></a>
-        <a class="msol-cap" href="/solutions/network-health-check.html"><div class="msol-cap__top"><h3>Practical Insights</h3><span class="msol-cap__arrow" aria-hidden="true">&#8599;</span></div><p>The final output provides clear, evidence-backed recommendations that help strengthen reliability and improve day-to-day system performance.</p></a>
-      </section>
-
-    </div>
     <section class="sol-hero-landing" aria-labelledby="sol-hero-title">
       <div class="sol-hero-landing__inner">
         <div>
           <h1 id="sol-hero-title">Professional Network Assessments for Better Business Performance</h1>
           <p>Understand how your network is performing with a professional assessment that helps improve connectivity, strengthen security, and support the long-term needs of your business.</p>
           <a href="/contact.html" class="sol-hero-landing__btn" data-source-cta="solutions_landing_book_health_check">Book a Network Health Check</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="sol-benefits" aria-labelledby="sol-benefits-title">
-      <div class="sol-benefits__inner">
-        <h2 id="sol-benefits-title">What You'll Get From Us...</h2>
-        <p>Every business needs a strong network to stay connected, secure, and efficient. We deliver practical assessments that help you understand where your network can be improved and how to build a more dependable foundation for growth.</p>
-
-        <div class="sol-benefits__mosaic animate-fade-up">
-          <a class="sol-benefit-tile" href="/solutions/network-health-check.html">
-            <picture>
-              <source srcset="/images/pages/unique/solutions-index-managed-support.webp" type="image/webp">
-              <img src="/images/pages/unique/solutions-index-managed-support.jpg" alt="Network Health Check" loading="lazy">
-            </picture>
-            <div class="sol-benefit-tile__content">
-              <span class="sol-benefit-tile__label">Network Health Check</span>
-              <p class="sol-benefit-tile__body">We assess the overall health of your network, pinpoint performance issues, and identify opportunities to improve stability and reliability.</p>
-            </div>
-          </a>
-          <a class="sol-benefit-tile" href="/solutions/cyber-security-review.html">
-            <picture>
-              <source srcset="/images/pages/unique/solutions-index-cyber-security.jpg" type="image/jpeg">
-              <img src="/images/pages/unique/solutions-index-cyber-security.jpg" alt="Cyber Security Review" loading="lazy">
-            </picture>
-            <div class="sol-benefit-tile__content">
-              <span class="sol-benefit-tile__label">Cyber Security Review</span>
-              <p class="sol-benefit-tile__body">Our assessment highlights potential security risks and offers practical recommendations to help safeguard your systems, users, and business data.</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="sol-benefits__mosaic sol-benefits__mosaic--second animate-fade-up">
-          <a class="sol-benefit-tile" href="/solutions/microsoft-365-network.html">
-            <picture>
-              <source srcset="/images/pages/unique/solutions-index-professional.jpg" type="image/jpeg">
-              <img src="/images/pages/unique/solutions-index-professional.jpg" alt="Microsoft 365 and Network Readiness" loading="lazy">
-            </picture>
-            <div class="sol-benefit-tile__content">
-              <span class="sol-benefit-tile__label">Microsoft 365 and Network Readiness</span>
-              <p class="sol-benefit-tile__body">We assess your network's readiness for Microsoft 365 services, helping ensure consistent performance, secure access, and seamless collaboration across your organisation.</p>
-            </div>
-          </a>
-          <a class="sol-benefit-tile" href="/solutions/ai-ready-infrastructure.html">
-            <picture>
-              <source srcset="/images/pages/unique/solutions-index-technician.jpg" type="image/jpeg">
-              <img src="/images/pages/unique/solutions-index-technician.jpg" alt="AI ready Infrastructure Review" loading="lazy">
-            </picture>
-            <div class="sol-benefit-tile__content">
-              <span class="sol-benefit-tile__label">AI-Ready Infrastructure Review</span>
-              <p class="sol-benefit-tile__body">We evaluate whether your existing network and IT infrastructure are equipped to support modern AI tools and future technology demands, identifying any gaps that may require improvement.</p>
-            </div>
-          </a>
         </div>
       </div>
     </section>
@@ -898,6 +727,59 @@
       </div>
     </section>
 
+    <section class="sol-benefits" aria-labelledby="sol-benefits-title">
+      <div class="sol-benefits__inner">
+        <h2 id="sol-benefits-title">WHAT YOU'LL GET FROM US...</h2>
+        <p>Every business needs a strong network to stay connected, secure, and efficient. We deliver practical assessments that help you understand where your network can be improved and how to build a more dependable foundation for growth.</p>
+
+        <div class="sol-benefits__mosaic animate-fade-up">
+          <a class="sol-benefit-tile" href="/solutions/network-health-check.html">
+            <picture>
+              <source srcset="/images/pages/unique/solutions-index-managed-support.webp" type="image/webp">
+              <img src="/images/pages/unique/solutions-index-managed-support.jpg" alt="Network Health Check" loading="lazy">
+            </picture>
+            <div class="sol-benefit-tile__content">
+              <span class="sol-benefit-tile__label">Network Health Check</span>
+              <p class="sol-benefit-tile__body">We assess the overall health of your network, pinpoint performance issues, and identify opportunities to improve stability and reliability.</p>
+            </div>
+          </a>
+          <a class="sol-benefit-tile" href="/solutions/cyber-security-review.html">
+            <picture>
+              <source srcset="/images/pages/unique/solutions-index-cyber-security.jpg" type="image/jpeg">
+              <img src="/images/pages/unique/solutions-index-cyber-security.jpg" alt="Cyber Security Review" loading="lazy">
+            </picture>
+            <div class="sol-benefit-tile__content">
+              <span class="sol-benefit-tile__label">Cyber Security Review</span>
+              <p class="sol-benefit-tile__body">Our assessment highlights potential security risks and offers practical recommendations to help safeguard your systems, users, and business data.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="sol-benefits__mosaic sol-benefits__mosaic--second animate-fade-up">
+          <a class="sol-benefit-tile" href="/solutions/microsoft-365-network.html">
+            <picture>
+              <source srcset="/images/pages/unique/solutions-index-professional.jpg" type="image/jpeg">
+              <img src="/images/pages/unique/solutions-index-professional.jpg" alt="Microsoft 365 and Network Readiness" loading="lazy">
+            </picture>
+            <div class="sol-benefit-tile__content">
+              <span class="sol-benefit-tile__label">Microsoft 365 and Network Readiness</span>
+              <p class="sol-benefit-tile__body">We assess your network's readiness for Microsoft 365 services, helping ensure consistent performance, secure access, and seamless collaboration across your organisation.</p>
+            </div>
+          </a>
+          <a class="sol-benefit-tile" href="/solutions/ai-ready-infrastructure.html">
+            <picture>
+              <source srcset="/images/pages/unique/solutions-index-technician.jpg" type="image/jpeg">
+              <img src="/images/pages/unique/solutions-index-technician.jpg" alt="AI ready Infrastructure Review" loading="lazy">
+            </picture>
+            <div class="sol-benefit-tile__content">
+              <span class="sol-benefit-tile__label">AI-Ready Infrastructure Review</span>
+              <p class="sol-benefit-tile__body">We evaluate whether your existing network and IT infrastructure are equipped to support modern AI tools and future technology demands, identifying any gaps that may require improvement.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section class="section-shell">
       <div class="nd-trusted">
       <div class="nd-trusted__head">
@@ -976,7 +858,7 @@
     <section class="section-shell">
       <div class="nd-faq">
       <div class="nd-faq__left">
-          <h2 class="section-title">Frequently Asked Questions</h2>
+          <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
         <p>Still have questions? Get connected to our support team.</p>
         <a href="/contact.html" class="nd-faq__cta">Contact us</a>
       </div>
@@ -1060,40 +942,5 @@
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
-
-  <script>
-    (function msolUniform() {
-      var mq = window.matchMedia('(hover: none)');
-
-      var vp = document.querySelector('.nd-trusted__viewport');
-      var dots = Array.prototype.slice.call(document.querySelectorAll('.nd-trusted__dots .nd-trusted__dot'));
-      if (vp && dots.length > 0) {
-        var ticking = false;
-        function sync() {
-          ticking = false;
-          var card = vp.querySelector('.nd-t-card');
-          if (card === null) return;
-          var step = card.offsetWidth + 18;
-          var idx = Math.round(vp.scrollLeft / step);
-          idx = Math.max(0, Math.min(dots.length - 1, idx % dots.length));
-          dots.forEach(function (d, i) { d.classList.toggle('nd-trusted__dot--active', i === idx); });
-        }
-        vp.addEventListener('scroll', function () {
-          if (ticking === false) { ticking = true; requestAnimationFrame(sync); }
-        }, { passive: true });
-      }
-
-      if (mq.matches === false) return;
-      var cards = Array.prototype.slice.call(document.querySelectorAll('.msol-cap'));
-      cards.forEach(function (card) {
-        card.addEventListener('click', function (e) {
-          if (card.classList.contains('is-open')) return;
-          e.preventDefault();
-          cards.forEach(function (c) { c.classList.remove('is-open'); });
-          card.classList.add('is-open');
-        });
-      });
-    })();
-  </script>
 </body>
 </html>

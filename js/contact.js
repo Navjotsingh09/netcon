@@ -51,6 +51,8 @@ Edgbaston, B15 3BE</p>
 
         <form class="nd-contact__form" id="contact-form" method="post" action="https://api.web3forms.com/submit" novalidate>
           <input type="hidden" name="access_key" value="fbcd4bae-c2e9-4e0c-9bf1-9576bef8625b">
+          <input type="hidden" name="subject" id="cf-subject" value="NetCon website enquiry">
+          <input type="checkbox" name="botcheck" tabindex="-1" aria-hidden="true" style="display:none">
           <div class="nd-contact__row nd-contact__row--split">
             <label class="nd-contact__field">
               <span class="nd-contact__field-head"><span class="nd-contact__field-label">First Name</span><span class="nd-contact__required">*</span></span>
@@ -63,8 +65,8 @@ Edgbaston, B15 3BE</p>
           </div>
           <div class="nd-contact__row nd-contact__row--split">
             <label class="nd-contact__field">
-              <span class="nd-contact__field-head"><span class="nd-contact__field-label">Phone Number</span></span>
-              <input id="cf-phone" type="tel" name="phone" autocomplete="tel" placeholder="Phone Number">
+              <span class="nd-contact__field-head"><span class="nd-contact__field-label">Phone Number</span><span class="nd-contact__required">*</span></span>
+              <input id="cf-phone" type="tel" name="phone" autocomplete="tel" placeholder="Phone Number" required>
             </label>
             <label class="nd-contact__field">
               <span class="nd-contact__field-head"><span class="nd-contact__field-label">Company Name</span></span>
@@ -139,12 +141,15 @@ Edgbaston, B15 3BE</p>
     document.getElementById('cf-lead-status').value = sourceData.lead_status;
     document.getElementById('cf-action-required').value = sourceData.action_required;
     document.getElementById('cf-routing-team').value = sourceData.routing_team;
+    var subj = document.getElementById('cf-subject');
+    if (subj) subj.value = 'NetCon website enquiry \u2014 ' + sourceData.source_page + ' (' + sourceData.source_cta + ')';
   }
 
   form.addEventListener('submit', function (e) {
     if (window.__netconGlobalFormHandler) return;
     if (!form.action) return;
     e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
     if (err && !err.dataset.defaultMessage) err.dataset.defaultMessage = err.textContent;
     var requiredConsents = form.querySelectorAll('input[type="checkbox"][required]');
     for (var i = 0; i < requiredConsents.length; i++) {

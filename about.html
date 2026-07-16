@@ -2,7 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/misc/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/misc/favicon-180.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://network-consultancy.com/about">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://network-consultancy.com/about">
+  <meta property="og:title" content="About Us | Network Consultancy">
+  <meta property="og:description" content="Learn how Network Consultancy supports UK SMEs with consultancy, support, and managed network engineering.">
+  <meta property="og:site_name" content="Network Consultancy">
+  <meta property="og:image" content="https://network-consultancy.com/images/misc/it-networking.jpg">
   <title>About Us | Network Consultancy</title>
   <meta name="description" content="Learn how Network Consultancy supports UK SMEs with consultancy, support, and managed network engineering.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,35 +79,47 @@
       background: #0771ab;
     }
 
-    .ab-hero__btn {
+    /* Hero CTA matches home .hero__btn (white pill, radius 2px) */
+    .ab-hero .ab-button {
+      background: #fff;
+      color: #353535;
+      border: 0;
+      border-radius: 2px;
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+      min-width: 170px;
+      width: auto;
+      min-height: 50px;
+      padding: 0 24px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: auto;
-      min-width: 226px;
-      min-height: 50px;
-      padding: 0 16px;
-      border-radius: 2px;
-      background: #fff;
-      color: #353535;
-      font-family: "Google Sans Flex", sans-serif;
-      font-size: 20px;
-      font-weight: 600;
-      line-height: normal;
-      text-decoration: none;
-      border: 0;
       white-space: nowrap;
-      transition: background 0.2s ease;
+      line-height: normal;
+      transition: background .2s ease;
     }
 
-    .ab-hero__btn:hover {
+    .ab-hero .ab-button:hover {
       background: #f0f0f0;
+    }
+
+    .ab-shell--hero {
+      padding: 0;
+    }
+
+    /* Beats global `main > section > [class*="-wrap"]` max-w cap for full-bleed hero */
+    .ab-shell--hero .ab-hero-wrap {
+      max-width: none;
     }
 
     .ab-hero-wrap {
       background: #0f172a;
-      margin-top: 24px;
-      border-radius: 10px;
+      margin-top: 0;
+      border-radius: 0;
       overflow: hidden;
     }
 
@@ -108,7 +129,13 @@
       grid-template-columns: 1fr;
       align-items: center;
       gap: 0;
-      padding: 42px 52px;
+      padding: 42px var(--px);
+    }
+
+    .ab-hero > div {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
     }
 
     .ab-hero__kicker {
@@ -151,6 +178,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: 50% 12%;
       display: block;
     }
 
@@ -221,8 +249,6 @@
       display: flex;
       align-items: flex-end;
       padding: 26px;
-      text-decoration: none;
-      color: inherit;
     }
 
     .ab-cap-card img {
@@ -507,31 +533,20 @@
       position: relative;
       border-radius: 10px;
       overflow: hidden;
-      min-height: 300px;
-      background: #000;
+      height: 300px;
+    }
+
+    .ab-pro__video picture {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
     .ab-pro__video img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.82;
       display: block;
-    }
-
-    .ab-pro__play {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      border: 0;
-      background: rgba(9, 130, 197, 0.9);
-      color: #fff;
-      font-size: 24px;
-      cursor: pointer;
     }
 
     .ab-pro__title {
@@ -1219,13 +1234,30 @@
         padding: 0 var(--px);
       }
 
+      /* Hero stays full-bleed on mobile like other page heros */
+      .ab-shell--hero {
+        padding: 0;
+      }
+
       .ab-hero-wrap {
-        margin-top: 16px;
+        margin-top: 0;
       }
 
       .ab-hero {
         min-height: 0;
-        padding: 28px 20px;
+        padding: 40px var(--px);
+      }
+
+      /* Hero CTA: prevent nowrap 20px button overflowing the viewport */
+      .ab-hero .ab-button {
+        width: auto;
+        max-width: 100%;
+        min-width: 0;
+        white-space: normal;
+        text-align: center;
+        font-size: 16px;
+        min-height: 44px;
+        padding: 10px 20px;
       }
 
       .ab-hero__kicker,
@@ -1248,13 +1280,14 @@
         font-size: 16px;
       }
 
+      /* Keep gutters so text/cards never touch screen edges */
       .ab-intro,
       .ab-cap,
       .ab-story,
       .ab-pro,
       .ab-test,
       .ab-contact {
-        padding: 0;
+        padding: 0 var(--px);
       }
 
       .ab-cap__row,
@@ -1319,6 +1352,29 @@
         padding: 24px;
       }
 
+      /* Beat the two-class desktop override (0 48px 48px) */
+      .ab-story-card--blue .ab-story-card__content,
+      .ab-story-card--light .ab-story-card__content {
+        padding: 0 24px 32px;
+      }
+
+      .ab-story-card__media {
+        min-height: 0;
+        padding: 0 20px 24px;
+      }
+
+      /* Pro video: fill the frame instead of letterboxing */
+      .ab-pro__video {
+        min-height: 0;
+        height: 220px;
+      }
+
+      .ab-pro__video picture {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
       .ab-highlight__row {
         flex-direction: column;
         align-items: flex-start;
@@ -1380,131 +1436,6 @@
         padding: 20px;
       }
     }
-
-    /* ===== Mobile About (Figma node 2727:29998) — mobile only ===== */
-    .mab { display: none; }
-
-    @media (max-width: 768px) {
-      .mab { display: block; }
-      main.ab-page > section.ab-shell { display: none; }
-      main.ab-page > section.ab-shell.mab-keep { display: block; }
-
-      .mab-hero {
-        background: #02172f;
-        padding: 40px 22px 40px;
-        color: #fff;
-      }
-      .mab-hero h1 { font-size: 26px; font-weight: 700; line-height: 1.15; margin: 0 0 14px; color: #fff; }
-      .mab-hero p { font-size: 17px; line-height: 1.5; color: rgba(255,255,255,.92); margin: 0 0 22px; max-width: 386px; }
-      .mab-hero__btn {
-        display: inline-flex; align-items: center; justify-content: center;
-        background: #f2f2f2; color: #1c1c1c; font-size: 13px; font-weight: 600;
-        padding: 10px 24px; border-radius: 4px; min-height: 40px; text-decoration: none;
-      }
-
-      .mab-sec { padding: 26px 22px 6px; }
-      .mab-h { color: #0982c5; font-size: 22px; font-weight: 700; margin: 0 0 16px; }
-      .mab-p { font-size: 16px; line-height: 1.6; color: #353535; margin: 0 0 16px; }
-      .mab-p a { color: #353535; text-decoration: underline; text-underline-offset: 2px; }
-      .mab-img { width: 100%; height: auto; border-radius: 12px; display: block; margin: 6px 0 10px; object-fit: cover; }
-
-      .mab-cap {
-        display: block;
-        background: linear-gradient(180deg, #b9c2c8 0%, #4aa3d4 45%, #0982c5 100%);
-        border-radius: 12px; padding: 26px 20px 28px; color: #fff; margin-bottom: 18px;
-        text-decoration: none;
-      }
-      .mab-cap__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
-      .mab-cap__top h3 { font-size: 19px; font-weight: 700; line-height: 1.25; margin: 0; color: #fff; max-width: 26ch; }
-      .mab-cap { display: block; color: #fff; text-decoration: none; transition: transform 0.2s ease; }
-      .mab-cap:active { transform: scale(0.985); }
-      .mab-cap__top { margin-bottom: 0; transition: margin-bottom 0.3s ease; }
-      .mab-cap__arrow {
-        font-size: 30px; line-height: 1; color: #fff; flex-shrink: 0;
-        display: inline-block; opacity: 0; transform: translate(-4px, 4px);
-        transition: opacity 0.25s ease, transform 0.3s ease;
-      }
-      .mab-cap p {
-        max-height: 0; opacity: 0; overflow: hidden;
-        transition: max-height 0.4s ease, opacity 0.3s ease 0.05s;
-      }
-      .mab-cap:hover .mab-cap__top,
-      .mab-cap:focus-visible .mab-cap__top,
-      .mab-cap.is-open .mab-cap__top { margin-bottom: 14px; }
-      .mab-cap:hover .mab-cap__arrow,
-      .mab-cap:focus-visible .mab-cap__arrow,
-      .mab-cap.is-open .mab-cap__arrow { opacity: 1; transform: translate(0, 0) rotate(45deg); }
-      .mab-cap:hover p,
-      .mab-cap:focus-visible p,
-      .mab-cap.is-open p { max-height: 320px; opacity: 1; }
-      .mab-cap p { font-size: 15.5px; line-height: 1.55; color: rgba(255,255,255,.95); margin: 0; }
-
-      .mab-story { margin-bottom: 26px; }
-      .mab-story__img { width: 100%; height: auto; border-radius: 12px; display: block; position: relative; z-index: 2; object-fit: cover; }
-      .mab-story__panel { border-radius: 12px; margin-top: -70px; padding: 92px 20px 26px; position: relative; z-index: 1; }
-      .mab-story--blue .mab-story__panel { background: #0982c5; color: #fff; }
-      .mab-story--blue .mab-story__panel h2 { color: #fff; }
-      .mab-story--gray .mab-story__panel { background: #ebebeb; color: #353535; }
-      .mab-story--gray .mab-story__panel h2 { color: #1c1c1c; }
-      .mab-story__panel h2 { font-size: 18px; font-weight: 700; margin: 0 0 12px; }
-      .mab-story__panel p { font-size: 15px; line-height: 1.6; margin: 0 0 14px; }
-      .mab-story__panel p:last-child { margin-bottom: 0; }
-
-      .mab-seeall { text-align: center; padding: 6px 0 8px; }
-      .mab-seeall__btn {
-        display: inline-flex; align-items: center; justify-content: center;
-        background: #0982c5; color: #fff; font-size: 15px; font-weight: 600;
-        padding: 13px 34px; border-radius: 8px; min-height: 46px; text-decoration: none;
-      }
-
-      .mab-eng { background: #0982c5; border-radius: 12px; padding: 24px 18px 22px; color: #fff; }
-      .mab-eng h2 { font-size: 18px; font-weight: 700; color: #fff; margin: 0 0 16px; }
-      .mab-eng__img { width: 100%; height: auto; border-radius: 8px; display: block; margin-bottom: 18px; object-fit: cover; }
-      .mab-eng p { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.94); margin: 0 0 14px; }
-      .mab-eng__bars { display: flex; gap: 14px; margin-top: 18px; }
-      .mab-eng__bars span { width: 52px; height: 3px; border-radius: 2px; background: rgba(255,255,255,.35); }
-      .mab-eng__bars span.is-on { background: #fff; }
-
-      .mab-test__viewport {
-        overflow-x: auto; -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px;
-      }
-      .mab-test__viewport::-webkit-scrollbar { display: none; }
-      .mab-test__track { display: flex; gap: 16px; width: max-content; }
-      .mab-test__card {
-        width: calc(100vw - 44px); max-width: 386px; scroll-snap-align: start;
-        background: #fff; border: 1px solid #0982c5; padding: 24px 24px 22px;
-        display: flex; flex-direction: column;
-      }
-      .mab-test__quote { font-size: 18px; line-height: 1.5; color: #353535; margin: 0 0 18px; }
-      .mab-test__person { display: flex; align-items: center; gap: 12px; margin-top: auto; }
-      .mab-test__person img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
-      .mab-test__person strong { display: block; font-size: 16px; font-weight: 600; color: #141a28; }
-      .mab-test__person span { display: block; font-size: 15px; color: #585151; }
-      .mab-test__dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
-      .mab-test__dots span { width: 10px; height: 10px; border-radius: 50%; background: #c6c6c6; }
-      .mab-test__dots span.is-on { background: #0982c5; }
-
-      /* FAQ matches Figma mobile: clean white accordion */
-      .mab-keep .nd-faq { background: #fff; border: 0; padding: 6px 22px 10px; display: block; }
-      .mab-keep .nd-faq__left .section-title { color: #0982c5; font-size: 22px; font-weight: 700; }
-      .mab-keep .nd-faq__left p { font-size: 14px; color: #4a4a4a; margin-bottom: 14px; }
-      .mab-keep .nd-faq__cta { display: none; }
-      .mab-keep .nd-faq__item {
-        background: #fff; border: 0; border-bottom: 1px solid #e4e4e4;
-        padding: 18px 4px; text-align: left; font-size: 17px; font-weight: 500; color: #1c1c1c;
-      }
-      .mab-keep .nd-faq__item span { text-align: left; }
-      .mab-keep .nd-faq__item.is-open { background: #f5f5f6; border-bottom: 0; padding: 18px 14px 6px; }
-      .mab-keep .nd-faq__panel {
-        background: #f5f5f6; border: 0; padding: 0 14px 18px; margin-bottom: 6px;
-        font-size: 15.5px; line-height: 1.65; color: #4a4a4a;
-      }
-
-      /* Contact tiles 2-col like Figma */
-      .nd-contact__tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 14px; }
-      .nd-contact__tile { background: transparent; border: 0; box-shadow: none; padding: 0; min-height: 0; gap: 14px; overflow: visible; }
-    }
   </style>
 </head>
 <body>
@@ -1513,110 +1444,13 @@
   <script src="/js/navbar.js"></script>
 
   <main id="main" class="ab-page">
-    <div class="mab" aria-hidden="false">
-
-      <section class="mab-hero">
-        <h1>About Network Consultancy</h1>
-        <p>Providing enterprise-level network consultancy services to small and medium-sized enterprises (SMEs).</p>
-        <a href="/contact.html" class="mab-hero__btn" data-source-cta="about_hero_action">Book a Network Health Check</a>
-      </section>
-
-      <section class="mab-sec animate-fade-up">
-        <h2 class="mab-h">About us</h2>
-        <p class="mab-p">By asking the right questions, our experienced consultants resolve complex network, security and communications issues. This insight is essential to provide a complete end-to-end service &ndash; a service designed to meet specific business objectives, not merely address individual components.</p>
-        <p class="mab-p"><a href="https://network-consultancy.com/">Network Consultancy</a> provide services around three pillars. These are Consultancy, Support and Managed Services. We provide a full lifecycle of services from initially assessing the requirement, right through to fully managing the Client&rsquo;s network environment. We also offer a 24x7 hr onsite break/fix hardware replacement service to ensure our Client&rsquo;s have total peace of mind.</p>
-        <img class="mab-img" src="/images/pages/about-team.jpg" alt="Two Network Consultancy specialists discussing a network migration" loading="lazy" width="386" height="301">
-      </section>
-
-      <section class="mab-sec animate-fade-up">
-        <h2 class="mab-h">Our Capabilities</h2>
-        <a class="mab-cap" href="/services/network-consultancy.html">
-          <div class="mab-cap__top"><h3>Flexible Network Consultancy</h3><span class="mab-cap__arrow" aria-hidden="true">&#8599;</span></div>
-          <p>We supply senior engineering support exactly when your project demands it. Whether you need remote troubleshooting billed by the hour to fix a routing issue or hands-on onsite engineers on a day rate to deploy new infrastructure, we integrate with your timeline.</p>
-        </a>
-        <a class="mab-cap" href="/services/managed-network-support.html">
-          <div class="mab-cap__top"><h3>Cost-Effective Smartnet Alternatives</h3><span class="mab-cap__arrow" aria-hidden="true">&#8599;</span></div>
-          <p>With Network Consultancy, you can maintain enterprise hardware reliability without paying premium manufacturer contract prices. We offer a direct alternative to traditional Cisco Smartnet agreements, delivering critical software updates and full on-site hardware replacements at competitive rates.</p>
-        </a>
-        <a class="mab-cap" href="/services/network-design-deployment.html">
-          <div class="mab-cap__top"><h3>Enterprise-Grade Expertise</h3><span class="mab-cap__arrow" aria-hidden="true">&#8599;</span></div>
-          <p>Our engineers are fully Cisco-certified with real-world experience across high-stakes sectors. Having designed and deployed complex architectures within FTSE 100 environments, we bring the same level of technical expertise to every client.</p>
-        </a>
-      </section>
-
-      <section class="mab-sec animate-fade-up">
-        <h2 class="mab-h">Network Consultancy Overview</h2>
-        <p class="mab-p">We deliver hands-on, security-led IT Network Support and Expert Cisco Consultancy Solutions with 24/7 support, combining practical end-to-end delivery and close collaboration to ensure resilient, high-performing operations.</p>
-      </section>
-
-      <section class="mab-sec animate-fade-up">
-        <div class="mab-story mab-story--blue">
-          <img class="mab-story__img" src="/images/pages/about-origin.jpg" alt="Historic collaboration image representing Network Consultancy origins" loading="lazy" width="386" height="301">
-          <div class="mab-story__panel">
-            <h2>The Origin of Network Consultancy</h2>
-            <p>Since 1995, Network Consultancy has operated as a specialised IT and network engineering brand. We built this company to bring mid-sized businesses out of basic infrastructure and cybersecurity limitations to enterprise-level technical expertise at a price that doesn't restrict their growth.</p>
-            <p>From the public to the private sectors across the UK, our deep expertise in networks, security, and infrastructure supports operations to eliminate downtime and vulnerabilities that disrupt daily business.</p>
-          </div>
-        </div>
-        <div class="mab-story mab-story--gray">
-          <img class="mab-story__img" src="/images/pages/about-operate.jpg" alt="Operations workshop on secure network delivery" loading="lazy" width="386" height="301">
-          <div class="mab-story__panel">
-            <h2>How We Operate</h2>
-            <p>Our company operates with a business-focused mindset to give clients a partner-like experience rather than ticketing queues.</p>
-            <p>We approach your network with:<br>1) Consultancy that is backed by Cisco-certified engineers, assessing network, design, and vulnerability audits.<br>2) 24/7 Senior-engineer support access, where you can run exactly when network emergencies hit.<br>3) Managed engineering where the accountability of your system uptime rests entirely on our team.</p>
-          </div>
-        </div>
-        <div class="mab-seeall"><a href="/services/index.html" class="mab-seeall__btn" data-source-cta="about_services">See All Services</a></div>
-      </section>
-
-      <section class="mab-sec animate-fade-up">
-        <div class="mab-eng">
-          <h2>Our Engineers' Proficiency</h2>
-          <img class="mab-eng__img" src="/images/pages/about-engineer.jpg" alt="Network engineers reviewing infrastructure" loading="lazy" width="350" height="185">
-          <p>We believe strong engineering is necessary for achieving stronger results. Our team of Cisco-certified engineers has practical designing and deployment experience within the UK's top 100 companies.</p>
-          <p>We apply this enterprise-level discipline to your daily infrastructure, resolving complex routing issues, managing hardware upgrades, and securing your data perimeters.</p>
-          <div class="mab-eng__bars" aria-hidden="true"><span class="is-on"></span><span></span><span></span></div>
-        </div>
-      </section>
-
-      <section class="mab-sec animate-fade-up">
-        <h2 class="mab-h">Trusted by Families and Small Business</h2>
-        <div class="mab-test__viewport" data-mab-test>
-          <div class="mab-test__track">
-            <article class="mab-test__card">
-              <p class="mab-test__quote">&ldquo;Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.&rdquo;</p>
-              <div class="mab-test__person">
-                <img src="/images/features/feature-1.jpg" alt="" loading="lazy">
-                <div><strong>Managing Director</strong><span>Broadcasting Company, London</span></div>
-              </div>
-            </article>
-            <article class="mab-test__card">
-              <p class="mab-test__quote">&ldquo;Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.&rdquo;</p>
-              <div class="mab-test__person">
-                <img src="/images/features/feature-2.jpg" alt="" loading="lazy">
-                <div><strong>IT Director</strong><span>Professional Services Firm, London</span></div>
-              </div>
-            </article>
-            <article class="mab-test__card">
-              <p class="mab-test__quote">&ldquo;Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.&rdquo;</p>
-              <div class="mab-test__person">
-                <img src="/images/services/service-1.jpg" alt="" loading="lazy">
-                <div><strong>Operations Director</strong><span>Manufacturing Business, Midlands</span></div>
-              </div>
-            </article>
-          </div>
-        </div>
-        <div class="mab-test__dots" aria-hidden="true"><span class="is-on"></span><span></span><span></span></div>
-      </section>
-
-    </div>
-    <section class="ab-shell">
-      <div class="ab-inner ab-hero-wrap animate-fade-up">
+    <section class="ab-shell ab-shell--hero">
+      <div class="ab-hero-wrap animate-fade-up">
         <div class="ab-hero">
           <div>
             <h1 class="ab-hero__kicker">About Network Consultancy</h1>
             <p class="ab-hero__sub">for Modern Businesses</p>
-            <a href="/contact.html" class="ab-hero__btn" data-source-cta="about_hero_action">Book a Network Health Check</a>
+            <a href="/contact.html" class="ab-button" data-source-cta="about_hero_action">Book a Network Health Check</a>
           </div>
         </div>
       </div>
@@ -1643,14 +1477,14 @@
         <h2 class="ab-cap__head animate-fade-up">Our Capabilities</h2>
         <div class="ab-cap__rule animate-fade-up" aria-hidden="true"></div>
         <div class="ab-cap__row stagger-children">
-          <a class="ab-cap-card animate-fade-up" href="/services/network-consultancy.html">
+          <article class="ab-cap-card animate-fade-up" tabindex="0">
             <picture>
               <source srcset="/images/pages/about-origin.webp" type="image/webp">
               <img src="/images/pages/about-origin.jpg" alt="Consultancy workshop session" loading="lazy" width="472" height="378">
             </picture>
             <div class="ab-cap-card__content">
               <div class="ab-cap-card__top">
-                <h3 class="ab-cap-card__title">Flexible Network Consultancy</h3>
+                <h3 class="ab-cap-card__title">Consultancy</h3>
                 <span class="ab-cap-card__arrow" aria-hidden="true">
                   <svg viewBox="0 0 24 24" focusable="false">
                     <path d="M5 12H19" />
@@ -1658,18 +1492,18 @@
                   </svg>
                 </span>
               </div>
-              <p class="ab-cap-card__body">We supply senior engineering support exactly when your project demands it. Whether you need remote troubleshooting billed by the hour to fix a routing issue or hands-on onsite engineers on a day rate to deploy new infrastructure, we integrate with your timeline.</p>
+              <p class="ab-cap-card__body">Flexible Services: managed, on-site or remote projects.</p>
             </div>
-          </a>
+          </article>
 
-          <a class="ab-cap-card animate-fade-up" href="/services/managed-network-support.html">
+          <article class="ab-cap-card animate-fade-up" tabindex="0">
             <picture>
               <source srcset="/images/pages/about-engineer.webp" type="image/webp">
               <img src="/images/pages/about-engineer.jpg" alt="Network support engineer in front of infrastructure racks" loading="lazy" width="457" height="378">
             </picture>
             <div class="ab-cap-card__content">
               <div class="ab-cap-card__top">
-                <h3 class="ab-cap-card__title">Cost-Effective Smartnet Alternatives</h3>
+                <h3 class="ab-cap-card__title">Support</h3>
                 <span class="ab-cap-card__arrow" aria-hidden="true">
                   <svg viewBox="0 0 24 24" focusable="false">
                     <path d="M5 12H19" />
@@ -1677,18 +1511,18 @@
                   </svg>
                 </span>
               </div>
-              <p class="ab-cap-card__body">With Network Consultancy, you can maintain enterprise hardware reliability without paying premium manufacturer contract prices. We offer a direct alternative to traditional Cisco Smartnet agreements, delivering critical software updates and full on-site hardware replacements at competitive rates.</p>
+              <p class="ab-cap-card__body">Practical support that keeps your network moving when your team needs help most.</p>
             </div>
-          </a>
+          </article>
 
-          <a class="ab-cap-card animate-fade-up" href="/services/network-design-deployment.html">
+          <article class="ab-cap-card animate-fade-up" tabindex="0">
             <picture>
               <source srcset="/images/pages/about-operate.webp" type="image/webp">
               <img src="/images/pages/about-operate.jpg" alt="Managed engineering team discussing service performance" loading="lazy" width="458" height="378">
             </picture>
             <div class="ab-cap-card__content">
               <div class="ab-cap-card__top">
-                <h3 class="ab-cap-card__title">Enterprise-Grade Expertise</h3>
+                <h3 class="ab-cap-card__title">Managed Services</h3>
                 <span class="ab-cap-card__arrow" aria-hidden="true">
                   <svg viewBox="0 0 24 24" focusable="false">
                     <path d="M5 12H19" />
@@ -1696,9 +1530,9 @@
                   </svg>
                 </span>
               </div>
-              <p class="ab-cap-card__body">Our engineers are fully Cisco-certified with real-world experience across high-stakes sectors. Having designed and deployed complex architectures within FTSE 100 environments, we bring the same level of technical expertise to every client.</p>
+              <p class="ab-cap-card__body">Managed services that move you from assessment to implementation and ongoing support.</p>
             </div>
-          </a>
+          </article>
         </div>
       </div>
     </section>
@@ -1750,12 +1584,11 @@
 
     <section class="ab-shell ab-pro">
       <div class="ab-inner ab-pro__card animate-fade-up">
-        <div class="ab-pro__video" aria-hidden="true">
+        <div class="ab-pro__video">
           <picture>
             <source srcset="/images/pages/about-engineer.webp" type="image/webp">
-            <img src="/images/pages/about-engineer.jpg" alt="" loading="lazy" width="384" height="288">
+            <img src="/images/pages/about-engineer.jpg" alt="Network Consultancy engineer working on infrastructure racks" loading="lazy" width="384" height="288">
           </picture>
-          <button type="button" class="ab-pro__play" tabindex="-1" aria-hidden="true">&#9658;</button>
         </div>
         <div>
           <h2 class="ab-pro__title">Our Engineers' Proficiency</h2>
@@ -1840,7 +1673,7 @@
       <div class="ab-test__dots" aria-hidden="true"></div>
     </section>
 
-    <section class="ab-shell mab-keep">
+    <section class="ab-shell">
       <div class="ab-inner nd-faq">
         <div class="nd-faq__left">
           <h2 class="section-title">Frequently asked questions</h2>
@@ -1902,7 +1735,17 @@ Edgbaston, B15 3BE</p>
             </article>
           </div>
 
-          <form class="nd-contact__form" action="#" method="post">
+          <form class="nd-contact__form" id="contact-form" method="post" action="https://api.web3forms.com/submit" novalidate>
+            <input type="hidden" name="access_key" value="fbcd4bae-c2e9-4e0c-9bf1-9576bef8625b">
+            <input type="hidden" name="subject" id="cf-subject" value="NetCon website enquiry">
+            <input type="checkbox" name="botcheck" tabindex="-1" aria-hidden="true" style="display:none">
+            <input type="hidden" name="source_page" id="cf-source-page" value="about">
+            <input type="hidden" name="source_family" id="cf-source-family" value="about">
+            <input type="hidden" name="source_cta" id="cf-source-cta" value="shared_footer_form">
+            <input type="hidden" name="inquiry_type" id="cf-inquiry-type" value="general_inquiry">
+            <input type="hidden" name="lead_status" id="cf-lead-status" value="non_lead">
+            <input type="hidden" name="action_required" id="cf-action-required" value="review_only">
+            <input type="hidden" name="routing_team" id="cf-routing-team" value="admin">
             <div class="nd-contact__row nd-contact__row--split">
               <label class="nd-contact__field">
                 <span class="nd-contact__field-head"><span class="nd-contact__field-label">First Name</span><span class="nd-contact__required">*</span></span>
@@ -1920,6 +1763,11 @@ Edgbaston, B15 3BE</p>
             </label>
 
             <label class="nd-contact__field">
+              <span class="nd-contact__field-head"><span class="nd-contact__field-label">Phone Number</span><span class="nd-contact__required">*</span></span>
+              <input type="tel" name="phone" autocomplete="tel" placeholder="Phone Number" required>
+            </label>
+
+            <label class="nd-contact__field">
               <span class="nd-contact__field-head"><span class="nd-contact__field-label">Your Address</span><span class="nd-contact__required">*</span></span>
               <input type="text" name="address" autocomplete="street-address" placeholder="Enter Address" required>
             </label>
@@ -1931,13 +1779,15 @@ Edgbaston, B15 3BE</p>
 
             <label class="nd-contact__agree">
               <span class="nd-contact__checkbox">
-                <input type="checkbox" name="agree" required>
+                <input type="checkbox" name="consent_privacy" value="yes" required>
                 <span class="nd-contact__checkbox-box" aria-hidden="true"></span>
               </span>
               <span class="nd-contact__agree-text">I agree with <a href="/privacy-policy.html">Privacy Policy</a> and <a href="/terms-of-service.html">Terms of Conditions</a></span>
             </label>
 
             <button class="nd-contact__submit" type="submit">Submit</button>
+            <div id="form-success" class="form-success" role="status" aria-live="polite">Thank you for your enquiry &mdash; we will be in touch shortly.</div>
+            <div id="form-error" class="form-error" role="alert" aria-live="assertive">Something went wrong. Please try again or call us directly on +44 (0) 203 150 1401.</div>
           </form>
         </div>
       </div>
@@ -2115,40 +1965,5 @@ Edgbaston, B15 3BE</p>
   <script src="/js/accessibility.js" defer></script>
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
-
-  <script>
-    (function mabTestDots() {
-      var vp = document.querySelector('[data-mab-test]');
-      var dots = document.querySelectorAll('.mab-test__dots span');
-      if (vp === null || dots.length === 0) return;
-      var ticking = false;
-      function sync() {
-        ticking = false;
-        var card = vp.querySelector('.mab-test__card');
-        if (card === null) return;
-        var step = card.offsetWidth + 16;
-        var idx = Math.round(vp.scrollLeft / step);
-        idx = Math.max(0, Math.min(dots.length - 1, idx));
-        dots.forEach(function (d, i) { d.classList.toggle('is-on', i === idx); });
-      }
-      vp.addEventListener('scroll', function () {
-        if (ticking === false) { ticking = true; requestAnimationFrame(sync); }
-      }, { passive: true });
-    })();
-
-    (function mabCapReveal() {
-      var isTouch = window.matchMedia('(hover: none)').matches;
-      if (isTouch === false) return;
-      var cards = Array.prototype.slice.call(document.querySelectorAll('.mab-cap'));
-      cards.forEach(function (card) {
-        card.addEventListener('click', function (e) {
-          if (card.classList.contains('is-open')) return;
-          e.preventDefault();
-          cards.forEach(function (c) { c.classList.remove('is-open'); });
-          card.classList.add('is-open');
-        });
-      });
-    })();
-  </script>
 </body>
 </html>

@@ -82,3 +82,87 @@
   applyParallax();
 
 }());
+
+/**
+ * Stacked-deck parallax for .nd-figma-stack cards (home page).
+ *
+ * CSS pins each .nd-figma-card with position:sticky (staggered top offsets).
+ * As the next card scrolls up and covers a pinned card, this script scales
+ * the pinned card back (1 → 0.94) and dims it slightly, creating depth.
+ *
+ * progress per card: 0 when the covering element's top is at the pinned
+ * card's bottom edge, 1 when it reaches the 18px peek strip.
+ * Disabled below 769px (cards are static there) and for reduced motion.
+ */
+(function () {
+  'use strict';
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var stack = document.querySelector('.nd-figma-stack');
+  if (!stack) return;
+
+  var cards = Array.prototype.slice.call(stack.querySelectorAll('.nd-figma-card'));
+  if (!cards.length) return;
+
+  /* Each card is covered by its next sibling (card or managed banner) */
+  var pairs = cards
+    .map(function (card) {
+      return { card: card, next: card.nextElementSibling };
+    })
+    .filter(function (p) { return p.next; });
+
+  var MAX_SCALE_DROP = 0.06;
+  var MAX_DIM = 0.25;
+  var PEEK = 18;
+  var ticking = false;
+
+  function applyDeck() {
+    if (window.innerWidth < 769) {
+      pairs.forEach(function (p) {
+        p.card.style.transform = '';
+        p.card.style.opacity = '';
+      });
+      ticking = false;
+      return;
+    }
+
+    var vpH = window.innerHeight;
+
+    pairs.forEach(function (p) {
+      var cardRect = p.card.getBoundingClientRect();
+      var nextTop = p.next.getBoundingClientRect().top;
+      var height = p.card.offsetHeight; /* layout height, unaffected by scale */
+
+      /* Skip work when the pair is far off-screen */
+      if (cardRect.top > vpH || nextTop < -height) return;
+
+      var range = height - PEEK;
+      var progress = (cardRect.top + height - nextTop) / range;
+      progress = Math.max(0, Math.min(1, progress));
+
+      if (progress === 0) {
+        p.card.style.transform = '';
+        p.card.style.opacity = '';
+      } else {
+        p.card.style.transform = 'scale(' + (1 - progress * MAX_SCALE_DROP).toFixed(4) + ')';
+        p.card.style.opacity = (1 - progress * MAX_DIM).toFixed(3);
+      }
+    });
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(applyDeck);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener('resize', function () {
+    requestAnimationFrame(applyDeck);
+  });
+
+  applyDeck();
+}());
