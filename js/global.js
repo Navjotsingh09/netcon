@@ -6,7 +6,17 @@
  */
 (function () {
   'use strict';
-
+  /* ── Phone inputs: allow only digits, + - ( ) and spaces ────── */
+  document.addEventListener('input', function (e) {
+    var el = e.target;
+    if (!el || el.type !== 'tel') return;
+    var cleaned = el.value.replace(/[^0-9+\-()\s]/g, '');
+    if (cleaned !== el.value) {
+      var pos = el.selectionStart - (el.value.length - cleaned.length);
+      el.value = cleaned;
+      if (pos >= 0) el.setSelectionRange(pos, pos);
+    }
+  });
   /* ── FAQ Accordion ─────────────────────────────────────────── */
   /* Event delegation: works for both static HTML and CMS-injected FAQs */
   document.addEventListener('click', function (e) {

@@ -66,7 +66,7 @@ Edgbaston, B15 3BE</p>
           <div class="nd-contact__row nd-contact__row--split">
             <label class="nd-contact__field">
               <span class="nd-contact__field-head"><span class="nd-contact__field-label">Phone Number</span><span class="nd-contact__required">*</span></span>
-              <input id="cf-phone" type="tel" name="phone" autocomplete="tel" placeholder="Phone Number" required>
+              <input id="cf-phone" type="tel" name="phone" autocomplete="tel" placeholder="Phone Number" required pattern="^\\+?[\\s\\(\\)\\-]*([0-9][\\s\\(\\)\\-]*){7,15}$" title="Numbers only — you may use + - ( ) and spaces">
             </label>
             <label class="nd-contact__field">
               <span class="nd-contact__field-head"><span class="nd-contact__field-label">Company Name</span></span>
