@@ -233,9 +233,9 @@
           <h2 id="biz-h">Resolving Your Healthcare IT Risks and System Downtime</h2>
           <p>Every healthcare provider needs dependable infrastructure so digital patient records, diagnostics and collaboration tools remain available.</p>
           <p></p>
-          <div class="biz__nav" aria-hidden="true">
-            <button class="biz__arrow" id="biz-prev" type="button" tabindex="-1" aria-label="Previous">&#8592;</button>
-            <button class="biz__arrow" id="biz-next" type="button" tabindex="-1" aria-label="Next">&#8594;</button>
+          <div class="biz__nav">
+            <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
+            <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
             <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
           </div>
         </div>
@@ -363,5 +363,35 @@
 
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
+  <script>
+  /* Business impact card slider */
+  (function () {
+    var biz = document.getElementById('biz');
+    if (!biz) return;
+    var title = document.getElementById('biz-title');
+    var desc = document.getElementById('biz-desc');
+    var count = document.getElementById('biz-count');
+    var fill = document.getElementById('biz-fill');
+    var slides = [
+      { title: title.textContent, desc: desc.textContent },
+      { title: 'Preventing System Downtime', desc: 'Redundant architecture and proactive monitoring keep patient records, diagnostics and clinical tools available when they are needed.' },
+      { title: 'Securing Patient Data', desc: 'Access controls and encrypted connections help protect confidential records and support healthcare compliance obligations.' },
+      { title: 'Supporting Clinical Collaboration', desc: 'Reliable connectivity keeps clinical teams, departments and sites working together without interruption.' },
+      { title: 'Planning for Growth', desc: 'Scalable infrastructure supports new services, devices and locations without compromising performance.' }
+    ];
+    var i = 0, total = slides.length;
+    function render() {
+      title.style.opacity = '0'; desc.style.opacity = '0';
+      setTimeout(function () {
+        title.textContent = slides[i].title; desc.textContent = slides[i].desc;
+        count.textContent = (i + 1) + '/' + total;
+        if (fill) fill.style.width = ((i + 1) / total * 100) + '%';
+        title.style.opacity = '1'; desc.style.opacity = '1';
+      }, 200);
+    }
+    document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
+    document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+  })();
+  </script>
 </body>
 </html>

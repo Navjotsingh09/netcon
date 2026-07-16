@@ -235,9 +235,9 @@
           <h2 id="biz-h">When Recruitment Agencies Networks Need Immediate Attention</h2>
           <p>If teams are seeing recurring slowdowns, unstable connectivity, or rising security risk, your network may need structured remediation rather than patch fixes.</p>
           <p>We stabilise critical routes first, then improve observability and resilience so your operations run with fewer interruptions.</p>
-          <div class="biz__nav" aria-hidden="true">
-            <button class="biz__arrow" id="biz-prev" type="button" tabindex="-1" aria-label="Previous">&#8592;</button>
-            <button class="biz__arrow" id="biz-next" type="button" tabindex="-1" aria-label="Next">&#8594;</button>
+          <div class="biz__nav">
+            <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
+            <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
             <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
           </div>
         </div>
@@ -345,5 +345,35 @@
 
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
+  <script>
+  /* Business impact card slider */
+  (function () {
+    var biz = document.getElementById('biz');
+    if (!biz) return;
+    var title = document.getElementById('biz-title');
+    var desc = document.getElementById('biz-desc');
+    var count = document.getElementById('biz-count');
+    var fill = document.getElementById('biz-fill');
+    var slides = [
+      { title: title.textContent, desc: desc.textContent },
+      { title: 'Keeping Consultants Connected', desc: 'Stable connectivity keeps CRM, job boards and communication tools responsive through peak recruiting hours.' },
+      { title: 'Safeguarding Candidate Data', desc: 'Access controls and encryption protect candidate and client records in line with data protection obligations.' },
+      { title: 'Reliable Remote Access', desc: 'Consultants get secure, consistent access to systems whether working from the office, home or on-site.' },
+      { title: 'Scaling Through Busy Periods', desc: 'Infrastructure absorbs seasonal hiring surges and new desk growth without slowdowns.' }
+    ];
+    var i = 0, total = slides.length;
+    function render() {
+      title.style.opacity = '0'; desc.style.opacity = '0';
+      setTimeout(function () {
+        title.textContent = slides[i].title; desc.textContent = slides[i].desc;
+        count.textContent = (i + 1) + '/' + total;
+        if (fill) fill.style.width = ((i + 1) / total * 100) + '%';
+        title.style.opacity = '1'; desc.style.opacity = '1';
+      }, 200);
+    }
+    document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
+    document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+  })();
+  </script>
 </body>
 </html>

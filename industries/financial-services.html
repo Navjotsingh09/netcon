@@ -787,9 +787,9 @@
           <h2 id="biz-h">Primary Cyber Threats and Vulnerabilities for Financial Services</h2>
           <p>Understanding the most common threats is an important part of protecting your network and maintaining business continuity.</p>
           <p>Fraudulent emails, messages and websites are used to trick employees or customers into revealing login details or other sensitive information while attackers target financial systems.</p>
-          <div class="biz__nav" aria-hidden="true">
-            <button class="biz__arrow" id="biz-prev" type="button" tabindex="-1" aria-label="Previous">&#8592;</button>
-            <button class="biz__arrow" id="biz-next" type="button" tabindex="-1" aria-label="Next">&#8594;</button>
+          <div class="biz__nav">
+            <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
+            <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
             <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
           </div>
         </div>
@@ -906,5 +906,35 @@
 
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
+  <script>
+  /* Business impact card slider */
+  (function () {
+    var biz = document.getElementById('biz');
+    if (!biz) return;
+    var title = document.getElementById('biz-title');
+    var desc = document.getElementById('biz-desc');
+    var count = document.getElementById('biz-count');
+    var fill = document.getElementById('biz-fill');
+    var slides = [
+      { title: title.textContent, desc: desc.textContent },
+      { title: 'Ransomware and malware', desc: 'Malicious software can lock critical systems and demand payment. Layered defences, patching and tested backups limit the damage and speed up recovery.' },
+      { title: 'Insider threats', desc: 'Accidental or deliberate misuse of access from within the organisation. Role-based permissions and activity monitoring reduce exposure.' },
+      { title: 'DDoS attacks', desc: 'Attackers flood systems with traffic to knock services offline. Resilient architecture and traffic filtering keep customer-facing services available.' },
+      { title: 'Third-party and supply chain risk', desc: 'Vendors and integrations can introduce vulnerabilities into your environment. Due diligence and network segmentation contain the risk.' }
+    ];
+    var i = 0, total = slides.length;
+    function render() {
+      title.style.opacity = '0'; desc.style.opacity = '0';
+      setTimeout(function () {
+        title.textContent = slides[i].title; desc.textContent = slides[i].desc;
+        count.textContent = (i + 1) + '/' + total;
+        if (fill) fill.style.width = ((i + 1) / total * 100) + '%';
+        title.style.opacity = '1'; desc.style.opacity = '1';
+      }, 200);
+    }
+    document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
+    document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+  })();
+  </script>
 </body>
 </html>

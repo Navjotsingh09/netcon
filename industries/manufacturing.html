@@ -435,9 +435,9 @@
           <h2 id="biz-h">How We Help Manufacturing Industries Drive Growth Through IT Support</h2>
           <p>To scale production smoothly and stay on top of orders, your operations must be able to run without interruption. IT support creates the stable foundation your production teams need to increase output capacity, stay organised, and grow without bottlenecks.</p>
           <p></p>
-          <div class="biz__nav" aria-hidden="true">
-            <button class="biz__arrow" id="biz-prev" type="button" tabindex="-1" aria-label="Previous">&#8592;</button>
-            <button class="biz__arrow" id="biz-next" type="button" tabindex="-1" aria-label="Next">&#8594;</button>
+          <div class="biz__nav">
+            <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
+            <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
             <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
           </div>
         </div>
@@ -545,5 +545,35 @@
 
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
+  <script>
+  /* Business impact card slider */
+  (function () {
+    var biz = document.getElementById('biz');
+    if (!biz) return;
+    var title = document.getElementById('biz-title');
+    var desc = document.getElementById('biz-desc');
+    var count = document.getElementById('biz-count');
+    var fill = document.getElementById('biz-fill');
+    var slides = [
+      { title: title.textContent, desc: desc.textContent },
+      { title: 'Reducing Production Downtime', desc: 'Proactive monitoring and rapid response keep production lines, scanners and control systems online through the working day.' },
+      { title: 'Connecting Floor to Office', desc: 'Dependable connectivity links production, warehouse and office systems so orders and schedules stay in sync.' },
+      { title: 'Securing Industrial Systems', desc: 'Segmentation and access controls protect operational technology from threats without slowing production.' },
+      { title: 'Scaling With Your Output', desc: 'Infrastructure planning supports new lines, sites and equipment as production capacity grows.' }
+    ];
+    var i = 0, total = slides.length;
+    function render() {
+      title.style.opacity = '0'; desc.style.opacity = '0';
+      setTimeout(function () {
+        title.textContent = slides[i].title; desc.textContent = slides[i].desc;
+        count.textContent = (i + 1) + '/' + total;
+        if (fill) fill.style.width = ((i + 1) / total * 100) + '%';
+        title.style.opacity = '1'; desc.style.opacity = '1';
+      }, 200);
+    }
+    document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
+    document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+  })();
+  </script>
 </body>
 </html>

@@ -235,9 +235,9 @@
           <h2 id="biz-h">IT Installation and Deployment for Law Firms</h2>
           <p>Strong implementation for law firms requires planning for secure access, reliable connectivity, and legal workflow continuity from day one. The network must support your teams, clients, and courtroom preparation without delays.</p>
           <p>That is why advanced consultancy for legal IT systems helps firms align infrastructure with confidentiality requirements and operational discipline.</p>
-          <div class="biz__nav" aria-hidden="true">
-            <button class="biz__arrow" id="biz-prev" type="button" tabindex="-1" aria-label="Previous">&#8592;</button>
-            <button class="biz__arrow" id="biz-next" type="button" tabindex="-1" aria-label="Next">&#8594;</button>
+          <div class="biz__nav">
+            <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
+            <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
             <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
           </div>
         </div>
@@ -356,5 +356,35 @@
 
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
+  <script>
+  /* Business impact card slider */
+  (function () {
+    var biz = document.getElementById('biz');
+    if (!biz) return;
+    var title = document.getElementById('biz-title');
+    var desc = document.getElementById('biz-desc');
+    var count = document.getElementById('biz-count');
+    var fill = document.getElementById('biz-fill');
+    var slides = [
+      { title: title.textContent, desc: desc.textContent },
+      { title: 'Secure access from day one', desc: 'Deployment is planned around confidential systems, so fee earners get reliable, controlled access to case files from the start.' },
+      { title: 'Connectivity without disruption', desc: 'Structured rollouts and staged cutovers keep teams, clients and courtroom preparation running during implementation.' },
+      { title: 'Protection for client data', desc: 'Segmentation, encryption and access controls are built into the network design to safeguard privileged information.' },
+      { title: 'A platform that scales', desc: 'The network is designed to support new practice areas, offices and hybrid working without re-engineering.' }
+    ];
+    var i = 0, total = slides.length;
+    function render() {
+      title.style.opacity = '0'; desc.style.opacity = '0';
+      setTimeout(function () {
+        title.textContent = slides[i].title; desc.textContent = slides[i].desc;
+        count.textContent = (i + 1) + '/' + total;
+        if (fill) fill.style.width = ((i + 1) / total * 100) + '%';
+        title.style.opacity = '1'; desc.style.opacity = '1';
+      }, 200);
+    }
+    document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
+    document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+  })();
+  </script>
 </body>
 </html>
