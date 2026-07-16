@@ -34,6 +34,9 @@
       align-self: stretch;
     }
     .svcs-hero { padding: 0; }
+    /* picture{display:contents} in global.css promotes <source> to a phantom grid/flex item; hide it */
+    picture source { display: none; }
+
     /* CMS testimonials: neutralise the 5-card -175px peek fallback */
     .nd-trusted__track { transform: translateX(-1px); }
 
