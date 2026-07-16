@@ -22,31 +22,31 @@
       quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
       name:    'Managing Director',
       role:    'Broadcasting Company, London',
-      avatar:  '/images/features/feature-1.jpg'
+      avatar:  '/images/misc/avatars/testimonial-avatar-managing-director.jpg'
     },
     {
       quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
       name:    'IT Director',
       role:    'Professional Services Firm, London',
-      avatar:  '/images/features/feature-2.jpg'
+      avatar:  '/images/misc/avatars/testimonial-avatar-it-director.jpg'
     },
     {
       quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
       name:    'Head of Operations',
       role:    'Healthcare Provider, Birmingham',
-      avatar:  '/images/services/service-1.jpg'
+      avatar:  '/images/misc/avatars/testimonial-avatar-head-of-operations.jpg'
     },
     {
       quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
       name:    'Managing Partner',
       role:    'Legal Firm, London',
-      avatar:  '/images/services/service-2.jpg'
+      avatar:  '/images/misc/avatars/testimonial-avatar-managing-partner.jpg'
     },
     {
       quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
       name:    'Operations Director',
       role:    'Manufacturing Company, Midlands',
-      avatar:  '/images/services/service-3.jpg'
+      avatar:  '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
     }
   ];
 
