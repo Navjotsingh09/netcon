@@ -1,8 +1,17 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/misc/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/misc/favicon-180.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://network-consultancy.com/industries/financial-services">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://network-consultancy.com/industries/financial-services">
+  <meta property="og:title" content="Financial Services IT Network Solutions | Network Consultancy">
+  <meta property="og:description" content="Security-led network infrastructure for financial services organisations — robust connectivity, compliance, and cyber protection.">
+  <meta property="og:site_name" content="Network Consultancy">
+  <meta property="og:image" content="https://network-consultancy.com/images/misc/it-networking.jpg">
   <title>Financial Services IT Network Solutions | Network Consultancy</title>
   <meta name="description" content="Security-led network infrastructure for financial services organisations — robust connectivity, compliance, and cyber protection.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,120 +25,342 @@
     body.industry-detail-page #main > section + section { margin-top: 40px !important; }
     body.industry-detail-page #main > #contact { margin-top: 40px !important; }
 
-    /* Financial services hero matches JPEG card-style treatment */
-    .page-hero.page-hero--financial {
-      max-width: var(--max-w);
-      min-height: 430px;
-      margin: 16px auto 0;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .page-hero.page-hero--financial .page-hero__overlay {
-      background: linear-gradient(98deg, rgba(18, 32, 84, 0.9) 0%, rgba(18, 32, 84, 0.72) 44%, rgba(18, 32, 84, 0.35) 100%);
-    }
-    .page-hero.page-hero--financial .page-hero__bg picture {
-      display: block;
+    #main > .svcs-hero {
+      padding-bottom: 0;
       width: 100%;
-      height: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      align-self: stretch;
     }
-    .page-hero.page-hero--financial .page-hero__content {
-      padding: 74px 62px;
-      max-width: 760px;
+
+    .svcs-hero {
+      padding: 0;
+    }
+
+    main#main > section.svcs-hero > .svcs-hero__wrap {
+      max-width: none;
+      width: 100%;
       margin: 0;
     }
-    .page-hero.page-hero--financial .breadcrumb {
-      display: none;
-    }
-    .page-hero.page-hero--financial .page-hero__title {
-      font-size: 56px;
-      line-height: 1.03;
-      max-width: 620px;
-      margin-bottom: 16px;
-    }
-    .page-hero.page-hero--financial .page-hero__sub {
-      font-size: 18px;
-      line-height: 1.45;
-      max-width: 520px;
-      color: rgba(255, 255, 255, 0.9);
-    }
-    .page-hero.page-hero--financial .page-hero__cta {
-      margin-top: 24px;
+
+    .svcs-hero__wrap {
+      position: relative;
+      width: 100%;
+      max-width: none;
+      height: 467px;
+      min-height: 467px;
+      margin: 0;
+      border-radius: 0;
+      overflow: hidden;
+      background: #02172F;
     }
 
-    /* Financial page section-specific parity tweaks */
-    .fin-intro {
-      padding-top: 72px;
-      padding-bottom: 72px;
-    }
-    .fin-intro .heading-xl {
-      max-width: 980px;
-      margin-bottom: 14px;
-    }
-    .fin-intro .body-lg {
-      max-width: 1080px;
-    }
-    .fin-intro .industry-panel {
-      margin-top: 22px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .fin-intro .industry-panel__caption {
+    .svcs-hero__bg,
+    .svcs-hero__overlay {
       display: none;
     }
-    .fin-intro .industry-panel__visual {
-      overflow: hidden;
-      border-radius: 8px;
-    }
-    .fin-intro .industry-panel__visual picture {
-      display: block;
+
+    main#main > section.svcs-hero > .svcs-hero__wrap > .svcs-hero__content {
+      max-width: none;
       width: 100%;
-      height: 100%;
-    }
-    .fin-intro .industry-panel__visual img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
 
-    .fin-cyber {
-      padding-top: 66px;
-      padding-bottom: 62px;
+    .svcs-hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 117px 145px 178px var(--px);
+      width: 100%;
+      min-width: 100%;
+      max-width: none;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: flex-start;
     }
-    .fin-cyber .split {
-      align-items: start;
-      gap: 54px;
+
+    .svcs-hero__text {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 908px;
     }
-    .fin-cyber .body-lg {
-      max-width: 760px;
+
+    .svcs-hero__title {
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 64px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.08;
     }
-    .fin-cyber .industry-progress {
-      width: 174px;
-      height: 8px;
-      margin-top: 34px;
+
+    .svcs-hero__sub {
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.35;
+      color: #fff;
     }
-    .fin-cyber .industry-arrows {
-      margin-top: 14px;
-      gap: 12px;
-    }
-    .fin-cyber .industry-arrow,
-    .fin-testimonial .industry-arrow {
-      width: 44px;
-      height: 40px;
-      border: 1px solid var(--gray-mid);
-      background: #fff;
-      color: var(--dark);
+
+    .svcs-hero__cta {
+      margin-top: 0;
+      background: #fff !important;
+      color: #353535 !important;
+      border: 0;
+      border-radius: 2px !important;
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+      min-width: 170px;
+      width: auto;
+      min-height: 50px;
+      padding: 0 12px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      white-space: nowrap;
+      line-height: normal;
+      transition: background .2s ease;
     }
-    .fin-cyber .industry-insight {
-      border-radius: 8px;
-      min-height: 220px;
-      padding: 20px 22px;
+
+    .svcs-hero__cta:hover {
+      background: #f0f0f0 !important;
+      transform: none;
     }
-    .fin-cyber .industry-insight__count {
-      margin-top: 18px;
+
+    /* Financial page section-specific parity tweaks */
+    .svl-overview {
+      width: calc(100% - (var(--px) * 2));
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+
+    .svl-overview__title {
+      margin: 0 0 14px;
+      max-width: 980px;
+    }
+
+    .svl-overview__lead {
+      max-width: 1080px;
+      margin-bottom: 22px;
+    }
+
+    .svl-overview__inner {
+      display: grid;
+      grid-template-columns: minmax(0, 386px) minmax(0, 1fr);
+      gap: 56px;
+      align-items: start;
+      background: #fff;
+      border: 1px solid #353535;
+      border-radius: 30px;
+      padding: 40px;
+    }
+
+    .svl-overview__list {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .svl-overview__list-item {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #353535;
+      color: #585151;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.25;
+      transition: color .2s ease-out, background .25s ease-out, padding .25s ease-out;
+    }
+
+    .svl-overview__list-item:hover {
+      color: var(--blue);
+    }
+
+    .svl-overview__list-item--active,
+    .svl-overview__list-item--active:hover {
+      padding: 24px;
+      border-radius: 20px;
+      border-bottom: 0;
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .svl-overview__feature {
+      position: relative;
+      min-height: 678px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #0c1b3d;
+      display: flex;
+      align-items: flex-end;
+      padding: 28px;
+    }
+
+    .svl-overview__feature img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity .25s ease-out;
+    }
+
+    .svl-overview__feature::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9,130,197,0.18) 0%, rgba(9,130,197,0.88) 100%);
+    }
+
+    .svl-overview__panel {
+      position: relative;
+      z-index: 2;
+      width: 735px;
+      max-width: 100%;
+      padding: 28px;
+      background: #fff;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+      transition: opacity .25s ease-out, transform .25s ease-out;
+    }
+
+    .svl-overview__panel.is-switching {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .svl-overview__panel h3 {
+      margin: 0;
+      color: #585151;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .svl-overview__panel p {
+      margin: 0;
+      color: #353535;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.55;
+    }
+
+    .sd-section {
+      padding: 0 var(--px);
+      margin: 100px auto;
+      max-width: var(--section-w);
+    }
+    .sd-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .biz {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .biz__left h2 {
+      margin: 0 0 18px;
+      color: var(--navy);
+      font-size: 42px;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+    .biz__left p {
+      margin: 0 0 16px;
+      color: var(--sub);
+      font-size: 20px;
+      line-height: 1.5;
+    }
+    .biz__left p:last-of-type {
+      margin-bottom: 40px;
+    }
+    .biz__nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .biz__arrow {
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      border: 1px solid #d2d2d2;
+      background: #f0f0f0;
+      color: #464646;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .biz__arrow:last-of-type {
+      background: #000;
+      border-color: #000;
+      color: #fff;
+    }
+    .biz__arrow:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+    .biz__bar {
+      flex: 1;
+      max-width: 240px;
+      height: 6px;
+      margin-left: 8px;
+      background: #e4e4e4;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .biz__bar-fill {
+      width: 33.33%;
+      height: 100%;
+      background: var(--blue);
+      border-radius: 4px;
+    }
+    .biz__card {
+      background: #13203f;
+      border-radius: 16px;
+      padding: 50px 43px 52px;
+      min-height: 360px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .biz__card h3 {
+      margin: 0 0 20px;
+      font-size: 42px;
+      font-weight: 600;
+      line-height: 1.05;
+    }
+    .biz__card p {
+      margin: 0 0 28px;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.35;
+      color: rgba(255,255,255,.95);
+    }
+    .biz__num {
+      font-size: 42px;
+      font-weight: 600;
     }
 
     .fin-banner .industry-banner__inner {
@@ -290,16 +521,11 @@
     }
 
     @media (max-width: 1200px) {
-      .page-hero.page-hero--financial {
-        margin-top: 10px;
+      .svcs-hero__title {
+        font-size: 46px;
       }
-      .page-hero.page-hero--financial .page-hero__content {
-        padding: 52px 36px;
-        max-width: 100%;
-      }
-      .page-hero.page-hero--financial .page-hero__title {
-        font-size: 44px;
-        max-width: 560px;
+      .svcs-hero__content {
+        padding: 80px 60px 120px var(--px);
       }
 
       .fin-banner .industry-banner__title {
@@ -314,6 +540,20 @@
       .fin-testimonial__left {
         min-height: 0;
       }
+      .sd-section {
+        margin: 56px auto;
+      }
+      .svl-overview__inner {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 32px;
+      }
+      .svl-overview__feature {
+        order: -1;
+      }
+      .svl-overview__list {
+        gap: 24px;
+      }
       .fin-why .split {
         display: grid;
       }
@@ -326,27 +566,72 @@
 
     @media (max-width: 768px) {
       /* Decorative-only arrows (no slider JS) — hide on touch layouts */
-      .fin-cyber .industry-arrows,
-      .fin-cyber .industry-progress,
       .fin-testimonial__controls {
         display: none;
       }
-      .page-hero.page-hero--financial {
-        border-radius: 0;
-        margin-top: 0;
+      .sd-section {
+        margin: 56px auto;
       }
-      .page-hero.page-hero--financial .page-hero__content {
-        padding: 42px 24px;
+      .biz {
+        grid-template-columns: 1fr;
+        gap: 26px;
       }
-      .page-hero.page-hero--financial .page-hero__title {
-        font-size: 34px;
+      .biz__left h2 {
+        font-size: 22px;
+        line-height: 1.25;
       }
-      .page-hero.page-hero--financial .page-hero__sub {
-        font-size: 16px;
+      .biz__left p {
+        font-size: 15.5px;
+        line-height: 1.6;
+      }
+      .biz__left p:last-of-type {
+        margin-bottom: 22px;
+      }
+      .biz__arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+      .biz__card {
+        min-height: 0;
+        padding: 26px 20px 30px;
+      }
+      .biz__card h3 {
+        font-size: 20px;
+        margin-bottom: 12px;
+      }
+      .biz__card p {
+        font-size: 15.5px;
+        line-height: 1.55;
+        margin-bottom: 18px;
+      }
+      .biz__num {
+        font-size: 22px;
+      }
+      .svl-overview {
+        padding-top: 52px;
+        padding-bottom: 52px;
+      }
+      .svl-overview__feature {
+        min-height: 480px;
+        padding: 16px;
+      }
+      .svl-overview__list-item {
+        font-size: 22px;
+      }
+      .svl-overview__panel {
+        padding: 20px;
+      }
+      .svcs-hero__title {
+        font-size: 42px;
+      }
+      .svcs-hero__sub {
+        font-size: 20px;
+      }
+      .svcs-hero__content {
+        padding: 60px var(--px) 80px var(--px);
       }
 
-      .fin-intro,
-      .fin-cyber,
       .fin-why,
       .fin-testimonial,
       .fin-cta {
@@ -370,6 +655,19 @@
         display: none;
       }
     }
+
+    @media (max-width: 480px) {
+      .svcs-hero__title {
+        font-size: 28px;
+      }
+      .svcs-hero__cta {
+        margin-top: 20px;
+        font-size: 14px;
+        min-height: 44px;
+        min-width: 0;
+        padding: 0 24px;
+      }
+    }
   </style>
 </head>
 <body class="industry-detail-page">
@@ -378,74 +676,130 @@
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
   <main id="main">
-
-  <section class="page-hero page-hero--financial" aria-label="Page hero">
-    <div class="page-hero__bg">
-      <picture>
-        <source srcset="/images/pages/unique/generated/financial-services-hero-photoonly.jpg" type="image/jpeg">
-        <img src="/images/pages/unique/generated/financial-services-hero-photoonly.jpg" alt="Financial services professional in a modern office" loading="eager" width="820" height="620">
-      </picture>
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-    </div>
-    <div class="page-hero__content animate-fade-up">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span class="bc-sep" aria-hidden="true">&#8250;</span><a href="/industries/">Industries</a><span class="bc-sep" aria-hidden="true">&#8250;</span><span>Financial Services</span></nav>
-      <h1 class="page-hero__title">High-Availability Networking and Security for Financial Organisations</h1>
-      <p class="page-hero__sub">Network Consultancy designs secure IT networks for banks and financial institutions to protect data, meet compliance, and prevent irreversible downtime.</p>
-      <div class="page-hero__cta">
-        <a href="/contact.html" class="btn-blue" data-source-cta="industry_health_check">Book a Network Health Check</a>
+  <section class="svcs-hero" aria-label="Industries hero">
+    <div class="svcs-hero__wrap">
+      <div class="svcs-hero__content">
+        <div class="svcs-hero__text">
+          <h1 class="svcs-hero__title animate-fade-up">High-Performance Networking and Security for Financial Organisations</h1>
+          <p class="svcs-hero__sub animate-fade-up">We design secure IT networks for banks and financial institutions to protect data.</p>
+        </div>
+        <a href="/contact.html" class="btn-blue svcs-hero__cta animate-fade-up" data-source-cta="industry_health_check">Book a Network Health Check</a>
       </div>
     </div>
   </section>
 
-  <section class="section section--gradient animate-fade-up fin-intro" aria-labelledby="fin-intro-h">
-    <div class="stack-lg">
-      <div>
-        <h2 class="heading-xl" id="fin-intro-h">Engineer the Future of Financial Services with a Modern Network</h2>
-        <div class="body-lg"><p>Every financial organisation needs a dependable network. We engineer zero-latency core IT security networks and layered security controls to protect transaction pathways and maintain regulatory compliance.</p></div>
+  <section class="svl-overview animate-fade-up" aria-labelledby="fin-intro-h">
+    <h2 class="heading-xl svl-overview__title" id="fin-intro-h">Engineer the Future of Financial Services with a Modern Network</h2>
+    <div class="body-lg svl-overview__lead"><p>Every financial organisation needs a dependable network. We engineer zero-latency core IT security networks and layered security controls to protect transaction pathways and maintain regulatory compliance.</p></div>
+    <div class="svl-overview__inner">
+      <div class="svl-overview__list" role="tablist" aria-label="Financial services focus areas">
+        <button type="button" role="tab" aria-selected="true" class="svl-overview__list-item svl-overview__list-item--active"
+          data-title="Planning and Assessment"
+          data-copy="We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements."
+          data-srcset="/images/pages/unique/generated/young-creative-businesswoman-working-on-new-projec-2026-03-16-03-31-54-utc.jpg"
+          data-img="/images/pages/unique/generated/young-creative-businesswoman-working-on-new-projec-2026-03-16-03-31-54-utc.jpg"
+          data-alt="Planning and assessment for financial network services">Planning and Assessment</button>
+        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
+          data-title="Secure Network Design and Deployment"
+          data-copy="We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements."
+          data-srcset="/images/pages/unique/services-network-design-deployment-nc-hero-person.jpg"
+          data-img="/images/pages/unique/services-network-design-deployment-nc-hero-person.jpg"
+          data-alt="Secure network design and deployment for financial services">Secure Network Design and Deployment</button>
+        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
+          data-title="Continuous Monitoring and Threat Detection"
+          data-copy="We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements."
+          data-srcset="/images/pages/unique/generated/back-view-of-african-american-security-operator-us-2026-03-25-22-43-01-utc.jpg"
+          data-img="/images/pages/unique/generated/back-view-of-african-american-security-operator-us-2026-03-25-22-43-01-utc.jpg"
+          data-alt="Continuous monitoring and threat detection for financial services">Continuous Monitoring and Threat Detection</button>
+        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
+          data-title="Performance Optimisation and Ongoing Management"
+          data-copy="We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements."
+          data-srcset="/images/pages/unique/industries-financial-services-managed-support.jpg"
+          data-img="/images/pages/unique/industries-financial-services-managed-support.jpg"
+          data-alt="Performance optimisation and ongoing management for financial services">Performance Optimisation and Ongoing Management</button>
+        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
+          data-title="Compliance and Governance"
+          data-copy="We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements."
+          data-srcset="/images/pages/unique/services-firewall-network-security-cyber-security.jpg"
+          data-img="/images/pages/unique/services-firewall-network-security-cyber-security.jpg"
+          data-alt="Compliance and governance for financial services">Compliance and Governance</button>
+        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
+          data-title="Backup and Disaster Recovery"
+          data-copy="We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements."
+          data-srcset="/images/pages/unique/services-business-continuity-servers.jpg"
+          data-img="/images/pages/unique/services-business-continuity-servers.jpg"
+          data-alt="Backup and disaster recovery for financial services">Backup and Disaster Recovery</button>
       </div>
-
-      <div class="industry-panel">
-        <div class="industry-panel__grid">
-          <div class="industry-panel__nav" aria-label="Financial services focus areas">
-            <div class="industry-panel__nav-item is-active">Planning and Assessment</div>
-            <div class="industry-panel__nav-item">Secure Network Design and Deployment</div>
-            <div class="industry-panel__nav-item">Continuous Monitoring and Threat Detection</div>
-            <div class="industry-panel__nav-item">Performance Optimisation and Ongoing Management</div>
-            <div class="industry-panel__nav-item">Compliance and Governance</div>
-            <div class="industry-panel__nav-item">Backup and Disaster Recovery</div>
-          </div>
-          <div class="industry-panel__visual">
-            <picture>
-              <source srcset="/images/pages/unique/generated/financial-services-panel-photoonly.jpg" type="image/jpeg">
-              <img src="/images/pages/unique/generated/financial-services-panel-photoonly.jpg" alt="Planning and assessment for financial network services" loading="lazy">
-            </picture>
-            <div class="industry-panel__caption">
-              <h3>Planning and Assessment</h3>
-              <p>We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements.</p>
-            </div>
-          </div>
+      <div class="svl-overview__feature">
+        <picture>
+          <source id="svl-feature-source" srcset="/images/pages/unique/generated/young-creative-businesswoman-working-on-new-projec-2026-03-16-03-31-54-utc.jpg" type="image/jpeg">
+          <img id="svl-feature-img" src="/images/pages/unique/generated/young-creative-businesswoman-working-on-new-projec-2026-03-16-03-31-54-utc.jpg" alt="Planning and assessment for financial network services" loading="lazy">
+        </picture>
+        <div class="svl-overview__panel" role="tabpanel">
+          <h3 id="svl-overview-title">Planning and Assessment</h3>
+          <p id="svl-overview-copy">We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section animate-fade-up fin-cyber" aria-labelledby="fin-panel-h">
-    <div class="split split--3-2">
-      <div>
-        <h2 class="heading-lg" id="fin-panel-h">Primary Cyber Threats and Vulnerabilities for Financial Services</h2>
-        <div class="body-lg"><p>Understanding the most common threats is an important part of protecting your network and maintaining business continuity.</p><p>Fraudulent emails, messages and websites are used to trick employees or customers into revealing login details or other sensitive information while attackers target financial systems.</p></div>
-        <div class="industry-progress" aria-hidden="true"></div>
-        <div class="industry-arrows" aria-hidden="true">
-          <button class="industry-arrow" type="button" tabindex="-1"><span>&larr;</span></button>
-          <button class="industry-arrow" type="button" tabindex="-1"><span>&rarr;</span></button>
+  <script>
+  (function svlOverviewTabs() {
+    'use strict';
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.svl-overview__list-item'));
+    var panel = document.querySelector('.svl-overview__panel');
+    if (tabs.length === 0 || panel === null) return;
+    var title = document.getElementById('svl-overview-title');
+    var copy = document.getElementById('svl-overview-copy');
+    var img = document.getElementById('svl-feature-img');
+    var source = document.getElementById('svl-feature-source');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        if (tab.classList.contains('svl-overview__list-item--active')) return;
+        tabs.forEach(function (t) {
+          t.classList.remove('svl-overview__list-item--active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('svl-overview__list-item--active');
+        tab.setAttribute('aria-selected', 'true');
+        panel.classList.add('is-switching');
+        if (img) img.style.opacity = '0';
+        setTimeout(function () {
+          title.textContent = tab.getAttribute('data-title');
+          copy.textContent = tab.getAttribute('data-copy');
+          if (source) source.srcset = tab.getAttribute('data-srcset');
+          if (img) {
+            img.src = tab.getAttribute('data-img');
+            img.alt = tab.getAttribute('data-alt');
+            img.style.opacity = '1';
+          }
+          panel.classList.remove('is-switching');
+        }, 250);
+      });
+    });
+  })();
+  </script>
+
+  <section class="sd-section" aria-labelledby="biz-h">
+    <div class="sd-wrap">
+      <div class="biz" id="biz">
+        <div class="biz__left">
+          <h2 id="biz-h">Primary Cyber Threats and Vulnerabilities for Financial Services</h2>
+          <p>Understanding the most common threats is an important part of protecting your network and maintaining business continuity.</p>
+          <p>Fraudulent emails, messages and websites are used to trick employees or customers into revealing login details or other sensitive information while attackers target financial systems.</p>
+          <div class="biz__nav" aria-hidden="true">
+            <button class="biz__arrow" id="biz-prev" type="button" tabindex="-1" aria-label="Previous">&#8592;</button>
+            <button class="biz__arrow" id="biz-next" type="button" tabindex="-1" aria-label="Next">&#8594;</button>
+            <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
+          </div>
         </div>
-      </div>
-      <div class="industry-insight">
-        <div>
-          <div class="industry-insight__title">Phishing attacks</div>
-          <div class="industry-insight__copy">Fraudulent emails, messages and websites are used to trick users into revealing login details and other sensitive information.</div>
+        <div class="biz__card">
+          <div>
+            <h3 id="biz-title">Phishing attacks</h3>
+            <p id="biz-desc">Fraudulent emails, messages and websites are used to trick users into revealing login details and other sensitive information.</p>
+          </div>
+          <div class="biz__num" id="biz-count">1/3</div>
         </div>
-        <div class="industry-insight__count">1/3</div>
       </div>
     </div>
   </section>
