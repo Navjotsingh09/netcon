@@ -165,11 +165,14 @@
       position: relative;
       overflow: hidden;
     }
-    .blog-item__media::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: #a5a8b0;
+    .blog-item__media picture,
+    .blog-item__media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .blog-item__media img {
+      object-fit: cover;
     }
     .blog-item__date {
       position: absolute;
@@ -354,17 +357,13 @@
           <h2 class="sr-only" id="results-heading">Blog results</h2>
           <div class="blog-filter" role="group" aria-label="Blog filters">
             <span class="blog-filter__label">Filter</span>
-            <div class="blog-filter__chips">
-              <button class="blog-filter__chip is-active" type="button">INDUSTRIES</button>
-              <button class="blog-filter__chip" type="button">SERVICES</button>
-              <button class="blog-filter__chip" type="button">SOLUTIONS</button>
-            </div>
-            <button class="blog-filter__reset" type="button">Reset</button>
+            <div class="blog-filter__chips" id="blog-filter-chips"></div>
+            <button class="blog-filter__reset" id="blog-filter-reset" type="button">Reset</button>
           </div>
 
-          <p class="blog-results__meta">Here are your results for blogs showing 1-10 of results</p>
+          <p class="blog-results__meta" id="blog-results-meta">Here are your results for blogs showing 1-10 of results</p>
 
-          <div class="blog-list stagger-children">
+          <div class="blog-list stagger-children" id="blog-list">
             <article class="blog-item animate-fade-up">
               <div class="blog-item__media">
                 <span class="blog-item__date">00/00/00</span>
@@ -469,6 +468,7 @@
   <script src="/js/accessibility.js" defer></script>
 
   <script src="/js/search-index.js" defer></script>
+  <script src="/js/blog-cms.js" defer></script>
   <script src="/js/search.js" defer></script>
 </body>
 </html>
