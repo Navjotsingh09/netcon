@@ -230,7 +230,7 @@
       audience: ['non-technical', 'manager', 'technical'],
       intents: ['learn']
     },
-    { title: 'Blog', url: '/resources/blog/', category: 'resources', keywords: ['blog', 'articles'], audience: ['non-technical', 'manager', 'technical'], intents: ['learn'] },
+
     { title: 'Downloads', url: '/resources/downloads.html', category: 'resources', keywords: ['download', 'templates'], audience: ['manager'], intents: ['learn'] },
     { title: 'Guides', url: '/resources/guides.html', category: 'resources', keywords: ['guide', 'playbook'], audience: ['non-technical', 'manager'], intents: ['learn'] },
 

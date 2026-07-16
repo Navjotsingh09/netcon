@@ -79,7 +79,6 @@
     '        <h4 class="mt">Resources</h4>',
     '        <ul>',
     '          <li><a href="/case-studies/index.html">Case Studies</a></li>',
-    '          <li><a href="/resources/blog/index.html">Blog</a></li>',
     '        </ul>',
     '      </div>',
     '    </div>',
