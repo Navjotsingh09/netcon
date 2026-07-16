@@ -3,153 +3,153 @@
     {
       slug: "post-01",
       title: "Why Your Business Network Needs a Health Check in 2025",
-      excerpt: "Most business networks evolve over time. A structured health check helps identify hidden risk, performance bottlenecks, and upgrade priorities before issues impact operations.",
-      dateLabel: "10 Dec 2026",
-      category: "Strategy",
+      excerpt: "Most businesses run on networks that have grown organically over time. Learn why regular health checks are essential.",
+      dateLabel: "10/12/2026",
+      category: "Services",
       image: "/images/pages/network-abstract.jpg"
     },
     {
       slug: "post-02",
-      title: "Key Elements of an Effective Firewall Strategy",
-      excerpt: "A firewall is only as effective as its configuration. Build layered controls, tighten policy design, and continuously review traffic posture to reduce risk.",
-      dateLabel: "08 Jun 2025",
-      category: "Security",
-      image: "/images/pages/cyber-security.jpg"
+      title: "Key Elements of a Resilient Network",
+      excerpt: "Build a network that withstands failures. Learn the four key factors every organisation needs to design genuine resilience into their infrastructure.",
+      dateLabel: "10/12/2026",
+      category: "Services",
+      image: "/images/pages/servers.jpg"
     },
     {
       slug: "post-03",
-      title: "The Rise of Managed Network Services for UK SMEs",
-      excerpt: "Managed support gives SMEs access to proactive monitoring, specialist engineering, and predictable service outcomes without expanding internal headcount.",
-      dateLabel: "01 Jun 2025",
-      category: "Managed Services",
-      image: "/images/pages/professional.jpg"
+      title: "Wireless vs Wired Networks",
+      excerpt: "Wireless and wired networks each have distinct advantages. Understand the trade-offs to make the right choice for your office environment.",
+      dateLabel: "10/12/2026",
+      category: "Services",
+      image: "/images/pages/technician.jpg"
     },
     {
       slug: "post-04",
-      title: "Understanding Network Segmentation and Why It Matters",
-      excerpt: "Segmentation reduces lateral threat movement and simplifies policy enforcement, helping organisations protect critical systems more effectively.",
-      dateLabel: "25 May 2025",
-      category: "Security",
+      title: "A Guide to Wireless Security Solutions",
+      excerpt: "Wireless security is essential for modern businesses. Explore five practical solutions to protect your wireless network from threats.",
+      dateLabel: "10/12/2026",
+      category: "Solutions",
       image: "/images/pages/cyber-security.jpg"
     },
     {
       slug: "post-05",
-      title: "How to Prepare Your Network for Microsoft 365",
-      excerpt: "Successful Microsoft 365 adoption requires baseline analysis, bandwidth planning, secure identity controls, and continuous user-experience monitoring.",
-      dateLabel: "18 May 2025",
-      category: "Cloud",
+      title: "Why Your Business Needs Cloud Networking",
+      excerpt: "Cloud networking is transforming how businesses operate. Discover the key benefits and how to implement it effectively in your organisation.",
+      dateLabel: "10/12/2026",
+      category: "Solutions",
       image: "/images/pages/professional.jpg"
     },
     {
       slug: "post-06",
-      title: "What is Zero Trust Network Access and Should Your Business Use It?",
-      excerpt: "ZTNA modernises remote access by enforcing identity-driven policy decisions and limiting trust boundaries around users, devices, and applications.",
-      dateLabel: "11 May 2025",
-      category: "Security",
-      image: "/images/pages/cyber-security.jpg"
+      title: "Network Validation: Everything You Need To Know",
+      excerpt: "WLANs are central to modern connectivity. A comprehensive guide to everything you need to know about wireless local area networks.",
+      dateLabel: "10/12/2026",
+      category: "Services",
+      image: "/images/pages/network-abstract.jpg"
     },
     {
       slug: "post-07",
-      title: "Network Cabling Best Practices for Modern Offices",
-      excerpt: "Well-planned cabling enables scalable performance, cleaner maintenance, and future upgrades across fast-growing office environments.",
-      dateLabel: "04 May 2025",
-      category: "Infrastructure",
-      image: "/images/pages/servers.jpg"
-    },
-    {
-      slug: "post-08",
-      title: "Business Continuity Planning: How Your Network Affects Recovery Time",
-      excerpt: "Recovery performance depends on resilient architecture, tested failover design, and clear operational playbooks during disruption.",
-      dateLabel: "27 Apr 2025",
-      category: "Continuity",
-      image: "/images/pages/network-abstract.jpg"
-    },
-    {
-      slug: "post-09",
-      title: "The Pros and Cons of Cloud-Managed Wireless Networks",
-      excerpt: "Cloud-managed wireless improves visibility and control, but design, security, and governance choices still determine long-term outcomes.",
-      dateLabel: "20 Apr 2025",
-      category: "Cloud",
-      image: "/images/pages/technician.jpg"
-    },
-    {
-      slug: "post-10",
-      title: "How to Choose a Managed Network Support Provider",
-      excerpt: "Selecting a provider means evaluating service scope, SLA commitments, governance quality, and engineering depth, not just cost.",
-      dateLabel: "13 Apr 2025",
-      category: "Managed Services",
+      title: "Leveraging Cloud Networking for Business Efficiency",
+      excerpt: "Cloud networking unlocks new levels of efficiency and agility. Explore how to leverage cloud-based networking to drive business performance.",
+      dateLabel: "10/12/2026",
+      category: "Solutions",
       image: "/images/pages/professional.jpg"
     },
     {
-      slug: "post-11",
-      title: "What is SD-WAN and Is It Right for Your Business?",
-      excerpt: "SD-WAN can improve application performance and branch connectivity, but suitability depends on traffic patterns, cloud usage, and policy requirements.",
-      dateLabel: "06 Apr 2025",
-      category: "Infrastructure",
+      slug: "post-08",
+      title: "Key Benefits of Cloud Networking",
+      excerpt: "Cloud networking delivers flexibility, scalability, and cost savings. Learn the key benefits and how they apply to growing businesses.",
+      dateLabel: "10/12/2026",
+      category: "Solutions",
+      image: "/images/pages/servers.jpg"
+    },
+    {
+      slug: "post-09",
+      title: "The Value of Professional IT Services",
+      excerpt: "Professional IT services deliver more than fixes. Understand the full value of working with expert consultants and network specialists.",
+      dateLabel: "10/12/2026",
+      category: "Services",
+      image: "/images/pages/professional.jpg"
+    },
+    {
+      slug: "post-10",
+      title: "The Different Types of IT Networks",
+      excerpt: "Different IT networks suit different business needs. An overview of LAN, WAN, VPN, and other network types to help you choose wisely.",
+      dateLabel: "10/12/2026",
+      category: "Services",
       image: "/images/pages/network-abstract.jpg"
     },
     {
+      slug: "post-11",
+      title: "Proactive Defence: Why Continuous Monitoring is Critical",
+      excerpt: "Continuous monitoring provides proactive defence against cyber threats. Learn why reactive security is no longer enough for modern businesses.",
+      dateLabel: "10/12/2026",
+      category: "Solutions",
+      image: "/images/pages/cyber-security.jpg"
+    },
+    {
       slug: "post-12",
-      title: "Cybersecurity Essentials Every Business Should Have in Place",
-      excerpt: "Baseline controls such as MFA, endpoint policy, segmentation, and logging provide a practical security foundation for most organisations.",
-      dateLabel: "30 Mar 2025",
-      category: "Security",
+      title: "Top Network Security Management Solutions for Remote Working",
+      excerpt: "Remote working creates new network security challenges. Discover the top management solutions to keep distributed teams secure in 2025.",
+      dateLabel: "10/12/2026",
+      category: "Solutions",
       image: "/images/pages/cyber-security.jpg"
     },
     {
       slug: "post-13",
-      title: "Network Performance Monitoring: Why Reactive Support Is Not Enough",
-      excerpt: "Reactive troubleshooting misses weak signals. Continuous monitoring helps teams prevent downtime and improve service quality before incidents escalate.",
-      dateLabel: "23 Mar 2025",
-      category: "Managed Services",
-      image: "/images/pages/network-abstract.jpg"
-    },
-    {
-      slug: "post-14",
-      title: "Remote Working Security: Protecting Your Network Beyond the Office",
-      excerpt: "Remote and hybrid teams need identity-aware access, device posture checks, and policy consistency beyond perimeter-based security models.",
-      dateLabel: "16 Mar 2025",
-      category: "Security",
-      image: "/images/pages/cyber-security.jpg"
-    },
-    {
-      slug: "post-15",
-      title: "How AI is Changing IT Infrastructure Requirements",
-      excerpt: "AI workloads raise new demands around compute density, storage throughput, latency tolerance, and network observability across environments.",
-      dateLabel: "09 Mar 2025",
-      category: "Infrastructure",
+      title: "Creating a Secure Hybrid Workspace",
+      excerpt: "Hybrid workplaces depend on secure, reliable networks. Three practical steps to build a secure hybrid workspace using your IT infrastructure.",
+      dateLabel: "10/12/2026",
+      category: "Solutions",
       image: "/images/pages/technician.jpg"
     },
     {
-      slug: "post-16",
-      title: "The Hidden Costs of Outdated Network Infrastructure",
-      excerpt: "Legacy environments create invisible cost through support overhead, downtime exposure, security debt, and limited agility.",
-      dateLabel: "02 Mar 2025",
-      category: "Infrastructure",
+      slug: "post-14",
+      title: "Is Your SME Network Holding Your Business Back?",
+      excerpt: "Is your SME network limiting your growth? Explore the common network challenges facing small businesses and how a consultant can help.",
+      dateLabel: "10/12/2026",
+      category: "Industries",
+      image: "/images/pages/professional.jpg"
+    },
+    {
+      slug: "post-15",
+      title: "How Network Consultancy Services Strengthen Business Infrastructure",
+      excerpt: "Expert network consultancy services deliver stronger, more reliable business infrastructure. Understand the real-world impact on modern organisations.",
+      dateLabel: "10/12/2026",
+      category: "Services",
       image: "/images/pages/servers.jpg"
     },
     {
+      slug: "post-16",
+      title: "Reasons to Upgrade Your Network",
+      excerpt: "Outdated network infrastructure costs more than you think. Explore the performance, security, and reliability benefits of upgrading your network.",
+      dateLabel: "10/12/2026",
+      category: "Services",
+      image: "/images/pages/network-abstract.jpg"
+    },
+    {
       slug: "post-17",
-      title: "VPN vs SASE: Which is Right for Your Remote Workforce?",
-      excerpt: "Choosing between VPN and SASE depends on scale, user distribution, application mix, and long-term security posture.",
-      dateLabel: "23 Feb 2025",
-      category: "Cloud",
+      title: "Cisco Network Convergence System",
+      excerpt: "Cisco Network Convergence System delivers petabit-scale performance for global service providers. Learn about the breakthroughs powering next-generation networks.",
+      dateLabel: "10/12/2026",
+      category: "Industries",
       image: "/images/pages/technician.jpg"
     },
     {
       slug: "post-18",
-      title: "Network Design Principles for High-Growth Businesses",
-      excerpt: "Growth-ready design prioritises modular architecture, standards-based operations, security-by-design, and predictable capacity planning.",
-      dateLabel: "16 Feb 2025",
-      category: "Infrastructure",
-      image: "/images/pages/servers.jpg"
+      title: "Cisco Security Solutions",
+      excerpt: "Cisco security services protect your business from threats. From cloud storage to firewall management, discover how Cisco solutions keep you secure.",
+      dateLabel: "10/12/2026",
+      category: "Solutions",
+      image: "/images/pages/cyber-security.jpg"
     },
     {
       slug: "post-19",
-      title: "How to Build a Business Case for IT Network Investment",
-      excerpt: "Strong business cases connect technical upgrades to financial value, risk reduction, service quality, and measurable operational impact.",
-      dateLabel: "09 Feb 2025",
-      category: "Strategy",
+      title: "Why Your Business Needs a Network Consultant Partner",
+      excerpt: "A strategic network consultant partner delivers more than IT fixes. Learn why businesses need expert consultancy to future-proof their infrastructure.",
+      dateLabel: "10/12/2026",
+      category: "Services",
       image: "/images/pages/professional.jpg"
     }
   ];
@@ -186,7 +186,7 @@
 
     var activeCategory = "All";
     var pageSize = 10;
-    var shuffled = shuffle(BLOG_POSTS);
+    var shuffled = BLOG_POSTS.slice();
 
     var categories = BLOG_POSTS
       .map(function (post) { return post.category; })
@@ -255,7 +255,7 @@
     if (resetBtn) {
       resetBtn.addEventListener("click", function () {
         activeCategory = "All";
-        shuffled = shuffle(BLOG_POSTS);
+        shuffled = BLOG_POSTS.slice();
         setActiveChip();
         renderPosts();
       });
