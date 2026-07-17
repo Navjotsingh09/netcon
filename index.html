@@ -427,6 +427,9 @@
       transform-origin: center;
       animation: heroBgZoom 8s cubic-bezier(0.33, 1, 0.68, 1) both;
     }
+    video.hero__bg {
+      animation: none;
+    }
     .hero__overlay {
       position: absolute;
       inset: 0;
@@ -1831,9 +1834,9 @@
     <div class="hero__wrap">
       <div class="hero__slides" data-hero-slides>
         <article class="hero__slide is-active" data-hero-slide="0">
-          <picture>
-            <img class="hero__bg" src="/images/hero/hero-slide-1.png" alt="" width="1920" height="700" loading="eager">
-          </picture>
+          <video class="hero__bg" autoplay muted loop playsinline preload="auto" poster="/images/hero/hero-slide-1.png" aria-hidden="true">
+            <source src="/videos/hero-slide-1-cisco.mp4" type="video/mp4">
+          </video>
           <div class="hero__overlay"></div>
           <div class="hero__content hero__content--anim">
             <div class="hero__text">
