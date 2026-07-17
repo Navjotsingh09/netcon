@@ -86,7 +86,7 @@
     },
     {
       title: 'Network Design & Deployment',
-      url: '/services/network-design-deployment.html',
+      url: '/services/network-design-and-deployment.html',
       category: 'services',
       summary: 'Plan and deploy reliable network architecture for growth.',
       keywords: ['design', 'deployment', 'implementation'],
@@ -131,7 +131,7 @@
     },
     {
       title: 'Firewall & Network Security',
-      url: '/services/firewall-network-security.html',
+      url: '/services/firewall-and-network-security.html',
       category: 'services',
       summary: 'Protection against threats through modern firewall and security controls.',
       keywords: ['firewall', 'security', 'cyber', 'threat prevention'],
@@ -140,7 +140,7 @@
     },
     {
       title: 'Remote Access & VPN',
-      url: '/services/remote-access-vpn.html',
+      url: '/services/remote-working-solutions.html',
       category: 'services',
       summary: 'Secure remote connectivity for distributed teams and offices.',
       keywords: ['vpn', 'remote access', 'work from home'],
@@ -149,7 +149,7 @@
     },
     {
       title: 'Business Continuity & Resilience',
-      url: '/services/business-continuity.html',
+      url: '/services/business-continuity-and-network-resilience.html',
       category: 'services',
       summary: 'Reduce downtime with resilient network architecture and recovery planning.',
       keywords: ['business continuity', 'resilience', 'downtime', 'disaster recovery'],
@@ -177,7 +177,7 @@
     },
     {
       title: 'AI-Ready Infrastructure',
-      url: '/solutions/ai-ready-infrastructure.html',
+      url: '/solutions/ai-ready-infrastructure-review.html',
       category: 'solutions',
       summary: 'Evaluate readiness for AI workloads across infrastructure, security, and operations.',
       keywords: ['ai readiness', 'ai infrastructure', 'compute readiness'],
@@ -195,7 +195,7 @@
     },
     {
       title: 'Microsoft 365 & Network',
-      url: '/solutions/microsoft-365-network.html',
+      url: '/solutions/microsoft-365-and-network-readiness.html',
       category: 'solutions',
       summary: 'Prepare network performance and reliability for Microsoft 365 workloads.',
       keywords: ['microsoft 365', 'm365 slow', 'office 365 network'],
@@ -213,7 +213,7 @@
       intents: ['discover']
     },
     { title: 'Financial Services', url: '/industries/financial-services.html', category: 'industries', keywords: ['finance', 'regulated'], audience: ['manager'], intents: ['discover', 'risk'] },
-    { title: 'Healthcare & Clinics', url: '/industries/healthcare-clinics.html', category: 'industries', keywords: ['healthcare', 'clinic'], audience: ['manager'], intents: ['discover', 'risk'] },
+    { title: 'Healthcare & Clinics', url: '/industries/healthcare-and-clinics.html', category: 'industries', keywords: ['healthcare', 'clinic'], audience: ['manager'], intents: ['discover', 'risk'] },
     { title: 'Internal IT Teams', url: '/industries/internal-it-teams.html', category: 'industries', keywords: ['co-managed it', 'internal team'], audience: ['technical', 'manager'], intents: ['discover', 'support'] },
     { title: 'Legal Firms', url: '/industries/legal-firms.html', category: 'industries', keywords: ['legal', 'law firm'], audience: ['manager'], intents: ['discover', 'risk'] },
     { title: 'Manufacturing', url: '/industries/manufacturing.html', category: 'industries', keywords: ['manufacturing', 'plant network'], audience: ['manager'], intents: ['discover', 'support'] },
@@ -251,26 +251,26 @@
 
     {
       title: 'Blog',
-      url: '/resources/blog/',
+      url: '/resources/blogs/',
       category: 'blog',
       summary: 'Practical articles on network infrastructure, cybersecurity, cloud connectivity and managed IT services.',
       keywords: ['blog', 'articles', 'insights'],
       audience: ['non-technical', 'manager', 'technical'],
       intents: ['learn']
     },
-    { title: 'All You Need to Know About Network Design & Implementation', url: '/resources/blog/post-01.html', category: 'blog', keywords: ['network design', 'implementation', 'network diagram'], audience: ['manager', 'technical'], intents: ['learn'] },
-    { title: 'Wireless vs Wired Networks', url: '/resources/blog/post-03.html', category: 'blog', keywords: ['wireless', 'wired', 'wifi vs ethernet'], audience: ['non-technical', 'manager', 'technical'], intents: ['learn'] },
-    { title: 'A Guide to Wireless Security Solutions', url: '/resources/blog/post-04.html', category: 'blog', keywords: ['wireless security', 'wifi security', 'wpa'], audience: ['manager', 'technical'], intents: ['learn', 'security'] },
-    { title: 'Why Your Business Needs Cloud Networking', url: '/resources/blog/post-05.html', category: 'blog', keywords: ['cloud networking', 'cloud benefits'], audience: ['manager'], intents: ['learn'] },
-    { title: 'Network Validation: Everything You Need To Know', url: '/resources/blog/post-06.html', category: 'blog', keywords: ['network validation', 'authentication', 'network audit'], audience: ['manager', 'technical'], intents: ['learn', 'security'] },
-    { title: 'Leveraging Cloud Networking for Business Efficiency', url: '/resources/blog/post-07.html', category: 'blog', keywords: ['cloud efficiency', 'cloud collaboration'], audience: ['manager'], intents: ['learn'] },
-    { title: 'The Value of Professional IT Services', url: '/resources/blog/post-09.html', category: 'blog', keywords: ['it consultant', 'network consulting services'], audience: ['manager'], intents: ['learn'] },
-    { title: 'Everything You Need to Know About WLANs', url: '/resources/blog/post-10.html', category: 'blog', keywords: ['wlan', 'managed wireless', 'wireless lan'], audience: ['manager', 'technical'], intents: ['learn'] },
-    { title: 'How AI is Reducing Network Downtime and IT Costs', url: '/resources/blog/post-11.html', category: 'blog', keywords: ['ai networking', 'predictive monitoring', 'downtime'], audience: ['manager', 'technical'], intents: ['learn', 'ai'] },
-    { title: 'Top Network Security Management Solutions for Remote Working', url: '/resources/blog/post-12.html', category: 'blog', keywords: ['remote work security', 'endpoint security', 'zero trust'], audience: ['manager', 'technical'], intents: ['learn', 'security'] },
-    { title: 'Optimising Your Network with Network Consultancy', url: '/resources/blog/post-15.html', category: 'blog', keywords: ['network optimisation', 'redundancy', 'data protection'], audience: ['manager', 'technical'], intents: ['learn'] },
-    { title: 'Cisco Network Convergence System', url: '/resources/blog/post-17.html', category: 'blog', keywords: ['cisco', 'ncs', 'industry news'], audience: ['technical'], intents: ['learn'] },
-    { title: 'Virtualised Networks Designed & Installed by Us', url: '/resources/blog/post-18.html', category: 'blog', keywords: ['cisco', 'vmware', 'virtualisation'], audience: ['technical'], intents: ['learn'] },
-    { title: 'Why Your Business Needs a Network Consultant Partner', url: '/resources/blog/post-19.html', category: 'blog', keywords: ['network consultant', 'strategic partner', 'managed support'], audience: ['manager'], intents: ['learn'] }
+    { title: 'All You Need to Know About Network Design & Implementation', url: '/resources/blogs/network-design-implementation', category: 'blog', keywords: ['network design', 'implementation', 'network diagram'], audience: ['manager', 'technical'], intents: ['learn'] },
+    { title: 'Wireless vs Wired Networks', url: '/resources/blogs/wireless-vs-wired-networks', category: 'blog', keywords: ['wireless', 'wired', 'wifi vs ethernet'], audience: ['non-technical', 'manager', 'technical'], intents: ['learn'] },
+    { title: 'A Guide to Wireless Security Solutions', url: '/resources/blogs/wireless-security-solutions', category: 'blog', keywords: ['wireless security', 'wifi security', 'wpa'], audience: ['manager', 'technical'], intents: ['learn', 'security'] },
+    { title: 'Why Your Business Needs Cloud Networking', url: '/resources/blogs/cloud-networking-benefits', category: 'blog', keywords: ['cloud networking', 'cloud benefits'], audience: ['manager'], intents: ['learn'] },
+    { title: 'Network Validation: Everything You Need To Know', url: '/resources/blogs/network-validation', category: 'blog', keywords: ['network validation', 'authentication', 'network audit'], audience: ['manager', 'technical'], intents: ['learn', 'security'] },
+    { title: 'Leveraging Cloud Networking for Business Efficiency', url: '/resources/blogs/cloud-networking-efficiency', category: 'blog', keywords: ['cloud efficiency', 'cloud collaboration'], audience: ['manager'], intents: ['learn'] },
+    { title: 'The Value of Professional IT Services', url: '/resources/blogs/professional-it-services', category: 'blog', keywords: ['it consultant', 'network consulting services'], audience: ['manager'], intents: ['learn'] },
+    { title: 'Everything You Need to Know About WLANs', url: '/resources/blogs/wlan-guide', category: 'blog', keywords: ['wlan', 'managed wireless', 'wireless lan'], audience: ['manager', 'technical'], intents: ['learn'] },
+    { title: 'How AI is Reducing Network Downtime and IT Costs', url: '/resources/blogs/continuous-network-monitoring', category: 'blog', keywords: ['ai networking', 'predictive monitoring', 'downtime'], audience: ['manager', 'technical'], intents: ['learn', 'ai'] },
+    { title: 'Top Network Security Management Solutions for Remote Working', url: '/resources/blogs/remote-work-network-security', category: 'blog', keywords: ['remote work security', 'endpoint security', 'zero trust'], audience: ['manager', 'technical'], intents: ['learn', 'security'] },
+    { title: 'Optimising Your Network with Network Consultancy', url: '/resources/blogs/network-consultancy-services', category: 'blog', keywords: ['network optimisation', 'redundancy', 'data protection'], audience: ['manager', 'technical'], intents: ['learn'] },
+    { title: 'Cisco Network Convergence System', url: '/resources/blogs/cisco-network-convergence-system', category: 'blog', keywords: ['cisco', 'ncs', 'industry news'], audience: ['technical'], intents: ['learn'] },
+    { title: 'Virtualised Networks Designed & Installed by Us', url: '/resources/blogs/cisco-security-solutions', category: 'blog', keywords: ['cisco', 'vmware', 'virtualisation'], audience: ['technical'], intents: ['learn'] },
+    { title: 'Why Your Business Needs a Network Consultant Partner', url: '/resources/blogs/network-consultant-benefits', category: 'blog', keywords: ['network consultant', 'strategic partner', 'managed support'], audience: ['manager'], intents: ['learn'] }
   ];
 })();

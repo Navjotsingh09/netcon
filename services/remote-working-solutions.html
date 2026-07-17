@@ -5,8 +5,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/misc/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/misc/favicon-180.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Network Design &amp; Deployment | Network Consultancy</title>
-  <meta name="description" content="Scalable network design and deployment — low-latency infrastructure, security hardware, and multi-site rollouts built for growing enterprises.">
+  <title>Secure Remote Working Solutions for Businesses UK</title>
+  <meta name="description" content="Enable productive and secure remote work with reliable connectivity, access controls, and network security solutions.">
+  <link rel="canonical" href="https://network-consultancy.com/services/remote-working-solutions">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
@@ -15,7 +16,6 @@
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
   /* ===== Service detail — shared section styles (template) ===== */
-  /* 1920 section canvas + --px padding → 1440 content, matching home */
   /* 100px rhythm between sections (home pattern); adjacent margins collapse */
   .sd-section { padding:0 var(--px); margin:100px auto; max-width:var(--section-w); }
   .sd-section--tint { background:#f7f9fc; padding:80px var(--px); }
@@ -52,9 +52,9 @@
   /* ===== Key Solution Areas — tabs + image card ===== */
   .ksa__card { display:flex; gap:36px; background:#fff; border:0.2px solid #353535; border-radius:30px; box-shadow:0 4px 4px rgba(0,0,0,.1); padding:40px; }
   .ksa__tabs { flex:0 0 32%; display:flex; flex-direction:column; }
-  .ksa__tab { text-align:left; background:none; border:none; font-family:'Google Sans Flex',sans-serif; font-size:24px; font-weight:600; color:#585151; padding:26px 4px; cursor:pointer; border-top:1px solid var(--gray-mid); transition:color .2s; }
+  .ksa__tab { text-align:left; background:none; border:none; font-family:'Google Sans Flex',sans-serif; font-size:24px; font-weight:600; color:#585151; padding:22px 4px; cursor:pointer; border-top:1px solid var(--gray-mid); transition:color .2s; }
   .ksa__tab:first-child { border-top:none; }
-  .ksa__tab.active { background:var(--blue); color:#fff; border-radius:20px; border-top:none; padding:26px 24px; margin:6px 0; }
+  .ksa__tab.active { background:var(--blue); color:#fff; border-radius:20px; border-top:none; padding:22px 24px; margin:6px 0; }
   .ksa__panel { flex:1; position:relative; border-radius:20px; overflow:hidden; min-height:600px; display:flex; align-items:flex-end; justify-content:center; padding:33px 29px; }
   .ksa__panel > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .ksa__panel-card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:24px 29px; width:100%; }
@@ -74,6 +74,15 @@
   @media(max-width:1200px){ .wws__layout{grid-template-columns:360px 1fr;gap:32px;} .wws__item{font-size:18px;padding:18px 20px;} }
   @media(max-width:900px){ .wws__layout{grid-template-columns:1fr;} .wws__img{min-height:300px;} }
   @media(max-width:560px){ .wws__tiles{grid-template-columns:1fr;} }
+
+  /* ===== Remote Access value — dual text + image ===== */
+  .rav { display:grid; grid-template-columns:1.1fr 1fr; gap:64px; align-items:start; }
+  .rav__text h3 { font-family:'Google Sans Flex',sans-serif; font-size:32px; font-weight:600; color:var(--navy); line-height:1.15; margin-bottom:16px; }
+  .rav__text h3:not(:first-child) { margin-top:36px; }
+  .rav__text p { font-family:'Google Sans Flex',sans-serif; font-size:17px; font-weight:400; color:var(--sub); line-height:1.65; margin-bottom:14px; }
+  .rav__media { position:sticky; top:120px; }
+  .rav__media img { width:100%; height:420px; object-fit:cover; border-radius:20px; display:block; }
+  @media(max-width:900px){ .rav{grid-template-columns:1fr;gap:32px;} .rav__media{position:static;} .rav__media img{height:280px;} }
 
   /* ===== Business Impact — text + blue card slider ===== */
   .biz { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
@@ -106,7 +115,7 @@
   @media(max-width:900px){ .probs__row{flex-wrap:wrap;} .prob{flex-basis:calc(50% - 8px);flex-grow:1;height:220px;} .prob__label{left:22px;bottom:20px;font-size:18px;} }
   @media(max-width:560px){ .prob{flex-basis:100%;} }
 
-  /* ===== CTA band (shared with services landing) ===== */
+  /* ===== CTA band ===== */
   .svc-cta-band { background:var(--blue); padding:80px 0; position:relative; overflow:hidden; }
   .svc-cta-band__tags { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; gap:24px; padding:0 var(--px); pointer-events:none; }
   .svc-cta-band__row { display:flex; gap:20px; flex-wrap:wrap; }
@@ -151,6 +160,12 @@
     .wws__item { font-size:15.5px; padding:14px 16px; }
     .wws__img { min-height:0; height:240px; }
     .wws__media { border-radius:12px; }
+    /* Remote access section */
+    .rav { gap:22px; }
+    .rav__text h3 { font-size:20px; font-weight:700; color:var(--blue); margin-bottom:12px; }
+    .rav__text h3:not(:first-child) { margin-top:24px; }
+    .rav__text p { font-size:15.5px; line-height:1.6; }
+    .rav__media img { height:240px; border-radius:12px; }
     /* Business impact slider */
     .biz { gap:26px; }
     .biz__left h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; }
@@ -188,8 +203,8 @@
   <section class="nc-hero-wrap" aria-label="Page hero">
     <div class="nc-hero">
       <div class="nc-hero__content">
-        <h1 class="nc-hero__title">Network Design &amp; Deployment: Built for Performance and Growth</h1>
-        <p class="nc-hero__sub">Expert Network Consultancy for Secure, High-Performing, and Scalable Networks</p>
+        <h1 class="nc-hero__title">VPN and Secure Remote Access Options for Distributed and Hybrid Teams</h1>
+        <p class="nc-hero__sub">Secure VPN Solutions for Hybrid and Remote Workforces</p>
         <a href="#contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Book a Network Health Check</a>
       </div>
     </div>
@@ -199,22 +214,24 @@
   <section class="sd-section" aria-labelledby="ksa-h">
     <div class="sd-wrap">
       <div class="sd-head" style="text-align:left;margin-left:0;">
-        <h2 id="ksa-h">Network Design &amp; Infrastructure Solutions</h2>
-        <p>Building networking architectures for businesses that are ready to meet modern security challenges and deploy AI-driven technology.</p>
+        <h2 id="ksa-h">Secure Remote Access Solutions</h2>
+        <p>From multi-factor authentication to encrypted data pathways, we set up safe, seamless connectivity for your hybrid and remote teams.</p>
       </div>
       <div class="ksa__card" id="ksa">
         <div class="ksa__tabs" role="tablist">
-          <button class="ksa__tab active" role="tab" aria-selected="true">Infrastructure Planning and Lifecycle Management</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Scalable Architecture Design</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Hybrid Connectivity and Cloud Gateways</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Multi-Site Deployment Support</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Managed Deployment Services</button>
+          <button class="ksa__tab active" role="tab" aria-selected="true">Business VPN Deployment</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Secure Remote Access Configuration</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Multi-Factor Authentication (MFA)</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Secure Site-to-Site Connectivity</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Flexible &amp; Secure Remote Working</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Remote Traffic Monitoring</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Secure Cloud Connectivity</button>
         </div>
         <div class="ksa__panel">
-          <img id="ksa-img" src="/images/pages/unique/services-network-design-deployment-nc-hero-person.jpg" alt="Network engineer">
+          <img id="ksa-img" src="/images/pages/unique/services-remote-access-vpn-nc-hero-person.jpg" alt="Remote access engineer">
           <div class="ksa__panel-card">
-            <h3 id="ksa-title">Infrastructure Planning and Lifecycle Management</h3>
-            <p id="ksa-desc">Auditing your office layout enables engineers to map where new routers and cables should go. We replace ageing switches before old software causes sudden connection drops.</p>
+            <h3 id="ksa-title">Business VPN Deployment</h3>
+            <p id="ksa-desc">Installing encrypted connection software on laptops and smartphones gives remote staff secure access to office files. We isolate data traffic that keeps central company databases safe from public internet exposure.</p>
           </div>
         </div>
       </div>
@@ -230,7 +247,7 @@
       </div>
       <div class="wws__layout animate-fade-up">
         <div class="wws__media">
-          <picture><source srcset="/images/pages/unique/services-network-design-deployment-nc-wws-person.webp" type="image/webp"><img class="wws__img" src="/images/pages/unique/services-network-design-deployment-nc-wws-person.jpg" alt="Network engineer" loading="lazy"></picture>
+          <picture><source srcset="/images/pages/unique/services-remote-access-vpn-nc-wws-person.webp" type="image/webp"><img class="wws__img" src="/images/pages/unique/services-remote-access-vpn-nc-wws-person.jpg" alt="Remote access engineer" loading="lazy"></picture>
         </div>
         <div class="wws__tiles stagger-children">
           <div class="wws__item animate-fade-up">Small and medium-sized businesses</div>
@@ -246,13 +263,33 @@
     </div>
   </section>
 
+  <!-- ===== REMOTE ACCESS VALUE (dual text + image) ===== -->
+  <section class="sd-section" aria-label="Remote access value">
+    <div class="sd-wrap">
+      <div class="rav">
+        <div class="rav__text">
+          <h3>Keep Your Business Running Through Unexpected Disruptions</h3>
+          <p>Bad weather, power cuts, or office closures can freeze your daily operations. We set up backup remote connections so your entire team can log in from home immediately.</p>
+          <p>Moving your staff to safe home setups keeps your daily work moving and protects your sales from sudden local halts.</p>
+          <h3>Secure Your Company Data Across All Staff Locations</h3>
+          <p>As remote and hybrid working become a permanent part of modern business operations, organisations need secure connection pathways to keep employees connected without risking data leaks.</p>
+          <p>We combine stable VPN technology and access verification tools to protect your private company records while supporting daily staff output.</p>
+          <p>Whether your teams work from home, on the move, or across multiple sites, we deliver reliable connectivity that&rsquo;s flexible and built for long-term business resilience.</p>
+        </div>
+        <div class="rav__media">
+          <img src="/images/unique/services-remote-access-vpn-feature-2.jpg" alt="Remote working setup" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== BUSINESS IMPACT (slider) ===== -->
   <section class="sd-section" aria-labelledby="biz-h">
     <div class="sd-wrap">
       <div class="biz" id="biz">
         <div class="biz__left">
-          <h2 id="biz-h">Find Out the Business Value of our Network Design &amp; Deployment</h2>
-          <p>Network Consultancy removes the constant IT headaches that slow productivity in growing businesses. When your office network is set up right from the start, your team can work without interruption, saving you from lost sales, wasted staff hours, and expensive emergency bills.</p>
+          <h2 id="biz-h">Find Out the Commercial Value of our Solutions</h2>
+          <p>We eliminate IT bottlenecks and streamline your day-to-day operations by providing proven network expertise and secure infrastructure. Our commercial services proactively reduce downtime, protect sensitive files, and lower operational overhead.</p>
           <div class="biz__nav">
             <button class="biz__arrow" id="biz-prev" aria-label="Previous">&#8592;</button>
             <button class="biz__arrow" id="biz-next" aria-label="Next">&#8594;</button>
@@ -261,8 +298,8 @@
         </div>
         <div class="biz__card">
           <div>
-            <h3 id="biz-title">Multi-Vendor Flexibility</h3>
-            <p id="biz-desc">We build custom packages and flexible SLAs. You can mix and match different hardware brands, as we support far more than just Cisco solutions.</p>
+            <h3 id="biz-title">Proven Network Expertise</h3>
+            <p id="biz-desc">We configure your office routers, switches, and access points to guarantee stable Wi-Fi and fast file sharing.</p>
           </div>
           <div class="biz__num" id="biz-count">1/6</div>
         </div>
@@ -279,17 +316,17 @@
       </div>
       <div class="probs__masonry">
         <div class="probs__row">
-          <div class="prob" style="flex-grow:832"><img src="/images/unique/services-network-design-deployment-service-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Dropped video calls</div></div>
-          <div class="prob" style="flex-grow:588"><img src="/images/unique/services-network-design-deployment-feature-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Wi-Fi dead zones</div></div>
+          <div class="prob" style="flex-grow:832"><img src="/images/unique/services-remote-access-vpn-service-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Dropped video calls</div></div>
+          <div class="prob" style="flex-grow:588"><img src="/images/unique/services-remote-access-vpn-feature-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Wi-Fi dead zones</div></div>
         </div>
         <div class="probs__row">
-          <div class="prob" style="flex-grow:349"><img src="/images/pages/unique/solutions-cyber-security-review-servers.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Network congestion slowdowns</div></div>
-          <div class="prob" style="flex-grow:469"><img src="/images/unique/services-network-design-deployment-service-4.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Insecure visitor access</div></div>
-          <div class="prob" style="flex-grow:596"><img src="/images/unique/services-network-design-deployment-feature-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Disconnected warehouse scanners</div></div>
+          <div class="prob" style="flex-grow:349"><img src="/images/pages/unique/solutions-microsoft-365-network-servers.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Network congestion slowdowns</div></div>
+          <div class="prob" style="flex-grow:469"><img src="/images/unique/services-remote-access-vpn-service-4.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Insecure visitor access</div></div>
+          <div class="prob" style="flex-grow:596"><img src="/images/unique/services-remote-access-vpn-feature-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Disconnected warehouse scanners</div></div>
         </div>
         <div class="probs__row">
-          <div class="prob" style="flex-grow:580"><img src="/images/unique/services-network-design-deployment-service-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Undetected network glitches</div></div>
-          <div class="prob" style="flex-grow:835"><img src="/images/unique/services-network-design-deployment-scroll-banner-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Inconsistent multi-site security</div></div>
+          <div class="prob" style="flex-grow:580"><img src="/images/unique/services-remote-access-vpn-service-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Undetected network glitches</div></div>
+          <div class="prob" style="flex-grow:835"><img src="/images/unique/services-remote-access-vpn-scroll-banner-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Inconsistent multi-site security</div></div>
         </div>
       </div>
     </div>
@@ -313,7 +350,7 @@
         <div class="nd-trusted__viewport">
           <div class="nd-trusted__track">
             <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;NetCon’s network design services produced a very robust infrastructure. The implementation process enhanced our logistics operations’ multi-site connectivity and uptime.&rdquo;</p>
+              <p class="nd-t-card__quote">&ldquo;The remote working security solutions and cloud-managed networks deployment improved multi-site performance. VPN and secure remote access solutions strengthened security and enabled seamless hybrid working across branches.&rdquo;</p>
               <div class="nd-t-card__person">
                 <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-m1.jpg" alt="" loading="lazy"></span>
                 <div>
@@ -323,22 +360,22 @@
               </div>
             </article>
             <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;They mapped our entire multi-site setup and delivered a network that scales with us. Rollout was smooth and downtime was minimal throughout.&rdquo;</p>
+              <p class="nd-t-card__quote">&ldquo;Our staff now log in securely from anywhere, and IT no longer worries about data leaks. The rollout was smooth and the support has been first class.&rdquo;</p>
               <div class="nd-t-card__person">
                 <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-operations-director.jpg" alt="" loading="lazy"></span>
                 <div>
                   <p class="nd-t-card__name">Operations Director</p>
-                  <p class="nd-t-card__role">Retail Group, Midlands</p>
+                  <p class="nd-t-card__role">Professional Services Firm, London</p>
                 </div>
               </div>
             </article>
             <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;The design phase caught problems we did not even know we had. Our new infrastructure is faster, tidier, and far easier to manage.&rdquo;</p>
+              <p class="nd-t-card__quote">&ldquo;Multi-factor access and encrypted tunnels give us real peace of mind. Hybrid working finally feels safe and effortless.&rdquo;</p>
               <div class="nd-t-card__person">
                 <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy"></span>
                 <div>
                   <p class="nd-t-card__name">Head of IT</p>
-                  <p class="nd-t-card__role">Professional Services Firm, London</p>
+                  <p class="nd-t-card__role">Healthcare Provider, Birmingham</p>
                 </div>
               </div>
             </article>
@@ -352,7 +389,7 @@
   </section>
 
   <!-- ===== CTA BAND ===== -->
-  <section class="svc-cta-band" aria-label="Network design and deployment CTA">
+  <section class="svc-cta-band" aria-label="Remote access and VPN CTA">
     <div class="svc-cta-band__tags" aria-hidden="true">
       <div class="svc-cta-band__row">
         <span>Network Consultancy</span><span>Network Support</span><span>Managed Network Support</span><span>Managed Wireless LAN</span><span>Network Installations</span>
@@ -363,16 +400,16 @@
     </div>
     <div class="svc-cta-band__card">
       <p class="svc-cta-band__text">Eliminate unexpected downtime before it costs you money. Our prompt response secures your connections and keeps your team online, free from disruptions.</p>
-      <a href="#contact" class="svc-cta-band__btn">Make a Network Designing Request</a>
+      <a href="#contact" class="svc-cta-band__btn">Make a Remote Access Request</a>
     </div>
   </section>
 
   <!-- ===== FAQ (CMS with page-specific items) ===== -->
   <script>
   window.PAGE_FAQ = [
-    { question:'What are network design services, and how do they benefit my business?', answer:'It is the planning phase before you buy hardware or run cables. It ensures your equipment matches your office layout. This upfront blueprint prevents immediate system crashes and saves you from paying double contractor fees to fix bad wiring.', open:true },
-    { question:'How do you design a future-ready network?', answer:'We design with headroom built in — scalable switching, structured cabling, and modular wireless — so your network can absorb new users, sites, and applications without a costly rebuild later.', open:false },
-    { question:'How can network design improve cybersecurity?', answer:'A well-designed network segments critical systems, controls access at every layer, and removes the weak points attackers exploit, giving you a stronger security posture from the ground up.', open:false }
+    { question:'What is Zero Trust Network Access (ZTNA)?', answer:'ZTNA checks the user\u2019s identity and device security before granting access. It blocks lateral movement by limiting user access to specific required applications, rather than the entire corporate network.', open:true },
+    { question:'Is remote access secure?', answer:'Yes. We combine encrypted VPN tunnels, multi-factor authentication, and continuous monitoring so your staff connect safely from anywhere without exposing your data.', open:false },
+    { question:'Can secure remote access solutions support hybrid and multi-site businesses?', answer:'Absolutely. Our solutions scale across home workers, mobile staff, and multiple offices, giving every location fast, secure, and consistent access to your systems.', open:false }
   ];
   </script>
   <div data-cms="faq"></div>
@@ -395,11 +432,13 @@
     var title = document.getElementById('ksa-title');
     var desc = document.getElementById('ksa-desc');
     var data = [
-      { img:'/images/pages/unique/services-network-design-deployment-nc-hero-person.jpg', title:'Infrastructure Planning and Lifecycle Management', desc:'Auditing your office layout enables engineers to map where new routers and cables should go. We replace ageing switches before old software causes sudden connection drops.' },
-      { img:'/images/unique/services-network-design-deployment-feature-1.jpg', title:'Scalable Architecture Design', desc:'We design network architectures that grow with your business, using modular switching and routing that scales cleanly as you add users, sites, and applications.' },
-      { img:'/images/unique/services-network-design-deployment-service-2.jpg', title:'Hybrid Connectivity and Cloud Gateways', desc:'We connect your on-site network to cloud and hybrid platforms with secure gateways, giving your teams fast, reliable access to the tools they rely on.' },
-      { img:'/images/unique/services-network-design-deployment-feature-2.jpg', title:'Multi-Site Deployment Support', desc:'We plan and coordinate rollouts across every location, keeping configuration, security, and performance consistent from head office to branch.' },
-      { img:'/images/unique/services-network-design-deployment-service-3.jpg', title:'Managed Deployment Services', desc:'We handle the full deployment lifecycle — from procurement and configuration to installation and testing — so your network goes live without disruption.' }
+      { img:'/images/pages/unique/services-remote-access-vpn-nc-hero-person.jpg', title:'Business VPN Deployment', desc:'Installing encrypted connection software on laptops and smartphones gives remote staff secure access to office files. We isolate data traffic that keeps central company databases safe from public internet exposure.' },
+      { img:'/images/unique/services-remote-access-vpn-feature-1.jpg', title:'Secure Remote Access Configuration', desc:'We configure and harden your remote access so only authorised staff and devices can connect, keeping your network protected from the outside.' },
+      { img:'/images/unique/services-remote-access-vpn-service-2.jpg', title:'Multi-Factor Authentication (MFA)', desc:'We add a second layer of verification to every login, so a stolen password alone can never give an attacker access to your systems.' },
+      { img:'/images/unique/services-remote-access-vpn-feature-2.jpg', title:'Secure Site-to-Site Connectivity', desc:'We link your offices with encrypted tunnels, so every location shares data securely as if they were on the same private network.' },
+      { img:'/images/unique/services-remote-access-vpn-service-3.jpg', title:'Flexible & Secure Remote Working', desc:'We give your teams the freedom to work from anywhere with connectivity that stays fast, stable, and secure wherever they are.' },
+      { img:'/images/unique/services-remote-access-vpn-service-4.jpg', title:'Remote Traffic Monitoring', desc:'We watch remote connections for unusual activity, catching and containing threats before they can reach your core systems.' },
+      { img:'/images/unique/services-remote-access-vpn-feature-1.jpg', title:'Secure Cloud Connectivity', desc:'We connect your teams to cloud platforms with security built in, so productivity never comes at the cost of protection.' }
     ];
     tabs.forEach(function (tab, i) {
       tab.addEventListener('click', function () {
@@ -419,12 +458,12 @@
     var biz = document.getElementById('biz');
     if (!biz) return;
     var slides = [
-      { title:'Multi-Vendor Flexibility', desc:'We build custom packages and flexible SLAs. You can mix and match different hardware brands, as we support far more than just Cisco solutions.' },
-      { title:'Structured Cabling Design', desc:'We plan clean, standards-based cabling that keeps your network fast, tidy, and easy to maintain as your office grows.' },
-      { title:'Core Switching and Routing', desc:'We build a resilient core with the right switching and routing to move traffic quickly and reliably across your business.' },
-      { title:'Scalable Wireless Rollout', desc:'We roll out enterprise wireless with full coverage and capacity, so every corner of your workplace stays connected.' },
-      { title:'Network Security Hardening', desc:'We build security into the design from day one — segmentation, firewalls, and access controls that protect your data.' },
-      { title:'Documentation and Handover', desc:'We hand over clear documentation and diagrams so your team always knows exactly how your network is built.' }
+      { title:'Proven Network Expertise', desc:'We configure your office routers, switches, and access points to guarantee stable Wi-Fi and fast file sharing.' },
+      { title:'Reduced Downtime', desc:'Backup remote connections keep your team working through outages, protecting your revenue from local disruptions.' },
+      { title:'Protected Sensitive Data', desc:'Encrypted tunnels and access controls keep your private company records safe across every location.' },
+      { title:'Lower Operational Overhead', desc:'Streamlined, secure remote infrastructure cuts wasted IT time and reduces your ongoing running costs.' },
+      { title:'Business Resilience', desc:'Flexible connectivity keeps your operations running whatever happens, from bad weather to office closures.' },
+      { title:'Seamless Hybrid Working', desc:'Your teams move between home, office, and travel without losing access, security, or productivity.' }
     ];
     var i = 0, total = slides.length;
     var title = document.getElementById('biz-title');

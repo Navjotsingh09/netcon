@@ -43,24 +43,24 @@
   /* ── Menu data ───────────────────────────────────────────── */
   var SERVICES = [
     { href: '/services/network-consultancy.html',       icon: 'bulb',    title: 'Network Consultancy',            desc: 'Independent advice on network strategy' },
-    { href: '/services/network-design-deployment.html', icon: 'nodes',   title: 'Network Design & Deployment',    desc: 'Plan, design and roll out with confidence' },
+    { href: '/services/network-design-and-deployment.html', icon: 'nodes',   title: 'Network Design & Deployment',    desc: 'Plan, design and roll out with confidence' },
     { href: '/services/network-installations.html',     icon: 'tool',    title: 'Network Installations',          desc: 'Professional on-site installation work' },
     { href: '/services/network-support.html',           icon: 'headset', title: 'Network Support',                desc: 'Fast, expert help when issues strike' },
     { href: '/services/managed-network-support.html',   icon: 'gauge',   title: 'Managed Network Support',        desc: 'Proactive monitoring and management' },
     { href: '/services/managed-wireless-lan.html',      icon: 'wifi',    title: 'Managed Wireless LAN',           desc: 'Business-grade Wi-Fi, managed for you' },
-    { href: '/services/firewall-network-security.html', icon: 'shield',  title: 'Firewall & Network Security',    desc: 'Protect your perimeter, users and data' },
-    { href: '/services/remote-access-vpn.html',         icon: 'lock',    title: 'Remote Access & VPN',            desc: 'Secure access for remote and hybrid teams' },
-    { href: '/services/business-continuity.html',       icon: 'refresh', title: 'Business Continuity',            desc: 'Resilient networks that keep you running' }
+    { href: '/services/firewall-and-network-security.html', icon: 'shield',  title: 'Firewall & Network Security',    desc: 'Protect your perimeter, users and data' },
+    { href: '/services/remote-working-solutions.html',         icon: 'lock',    title: 'Remote Access & VPN',            desc: 'Secure access for remote and hybrid teams' },
+    { href: '/services/business-continuity-and-network-resilience.html',       icon: 'refresh', title: 'Business Continuity',            desc: 'Resilient networks that keep you running' }
   ];
   var SOLUTIONS = [
     { href: '/solutions/network-health-check.html',    icon: 'pulse',  title: 'Network Health Check',    desc: 'A comprehensive review of your network to identify weaknesses and opportunities.' },
-    { href: '/solutions/ai-ready-infrastructure.html', icon: 'chip',   title: 'AI-Ready Infrastructure', desc: 'Assess whether your infrastructure can support AI-driven business demands.' },
+    { href: '/solutions/ai-ready-infrastructure-review.html', icon: 'chip',   title: 'AI-Ready Infrastructure', desc: 'Assess whether your infrastructure can support AI-driven business demands.' },
     { href: '/solutions/cyber-security-review.html',   icon: 'search', title: 'Cyber Security Review',   desc: 'Identify vulnerabilities and close security gaps with expert analysis.' },
-    { href: '/solutions/microsoft-365-network.html',   icon: 'grid',   title: 'Microsoft 365 & Network', desc: 'Ensure seamless Microsoft 365 performance before you deploy.' }
+    { href: '/solutions/microsoft-365-and-network-readiness.html',   icon: 'grid',   title: 'Microsoft 365 & Network', desc: 'Ensure seamless Microsoft 365 performance before you deploy.' }
   ];
   var INDUSTRIES = [
     { href: '/industries/financial-services.html',    icon: 'bank',      title: 'Financial Services' },
-    { href: '/industries/healthcare-clinics.html',    icon: 'medical',   title: 'Healthcare & Clinics' },
+    { href: '/industries/healthcare-and-clinics.html',    icon: 'medical',   title: 'Healthcare & Clinics' },
     { href: '/industries/legal-firms.html',           icon: 'scales',    title: 'Legal Firms' },
     { href: '/industries/manufacturing.html',         icon: 'factory',   title: 'Manufacturing' },
     { href: '/industries/multi-site-businesses.html', icon: 'buildings', title: 'Multi-Site Businesses' },
@@ -159,7 +159,7 @@
           '<div class="has-mega">' + trigger('Solutions', 'mega-solutions') + solutionsMega + '</div>' +
           '<div class="has-mega">' + trigger('Industries', 'mega-industries') + industriesMega + '</div>' +
           '<a href="/case-studies/" class="nav-link">Case Studies</a>' +
-          '<a href="/resources/blog/" class="nav-link">Blog</a>' +
+          '<a href="/resources/blogs/" class="nav-link">Blog</a>' +
         '</div>' +
         '<button type="button" class="nav-icon" data-search-trigger aria-label="Open site search"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>' +
         '<a href="/contact.html" class="btn-blue">Enquire Here</a>' +
@@ -178,7 +178,7 @@
       drawerGroup('Solutions', '/solutions/', SOLUTIONS) +
       drawerGroup('Industries', '/industries/', INDUSTRIES) +
       '<a href="/case-studies/" class="nav-mobile__link">Case Studies</a>' +
-      '<a href="/resources/blog/" class="nav-mobile__link">Blog</a>' +
+      '<a href="/resources/blogs/" class="nav-mobile__link">Blog</a>' +
       '<a href="/contact.html" class="nav-mobile__link">Contact</a>' +
     '</nav>' +
     '<a href="/contact.html" class="btn-blue">Enquire Here</a>' +

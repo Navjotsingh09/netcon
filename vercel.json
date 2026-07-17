@@ -1,25 +1,366 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/blog/network-design-implementation-guide", "destination": "/resources/blog/post-01" },
-    { "source": "/blog/key-elements-resilient-network", "destination": "/resources/blog/post-02" },
-    { "source": "/blog/wireless-vs-wired-networks", "destination": "/resources/blog/post-03" },
-    { "source": "/blog/guide-to-wireless-security-solutions", "destination": "/resources/blog/post-04" },
-    { "source": "/blog/why-business-needs-cloud-networking", "destination": "/resources/blog/post-05" },
-    { "source": "/blog/network-validation-everything-you-need-to-know", "destination": "/resources/blog/post-06" },
-    { "source": "/blog/leveraging-cloud-networking-business-efficiency", "destination": "/resources/blog/post-07" },
-    { "source": "/blog/key-benefits-cloud-networking", "destination": "/resources/blog/post-08" },
-    { "source": "/blog/value-of-professional-it-services", "destination": "/resources/blog/post-09" },
-    { "source": "/blog/everything-you-need-to-know-about-wlans", "destination": "/resources/blog/post-10" },
-    { "source": "/blog/how-ai-reducing-network-downtime-it-costs", "destination": "/resources/blog/post-11" },
-    { "source": "/blog/network-security-solutions-remote-working", "destination": "/resources/blog/post-12" },
-    { "source": "/blog/creating-secure-hybrid-workspace", "destination": "/resources/blog/post-13" },
-    { "source": "/blog/is-your-sme-network-holding-business-back", "destination": "/resources/blog/post-14" },
-    { "source": "/blog/optimising-network-with-network-consultancy", "destination": "/resources/blog/post-15" },
-    { "source": "/blog/reasons-to-upgrade-your-network", "destination": "/resources/blog/post-16" },
-    { "source": "/blog/cisco-network-convergence-system", "destination": "/resources/blog/post-17" },
-    { "source": "/blog/virtualised-networks-designed-installed", "destination": "/resources/blog/post-18" },
-    { "source": "/blog/why-business-needs-network-consultant-partner", "destination": "/resources/blog/post-19" }
+  "redirects": [
+    {
+      "source": "/services/managed-network-maintenance-support",
+      "destination": "/services/managed-network-support",
+      "permanent": false
+    },
+    {
+      "source": "/blog",
+      "destination": "/resources/blogs",
+      "permanent": false
+    },
+    {
+      "source": "/faqs",
+      "destination": "/about",
+      "permanent": false
+    },
+    {
+      "source": "/blog/overview-of-network-design-implementation",
+      "destination": "/resources/blogs/network-design-implementation",
+      "permanent": false
+    },
+    {
+      "source": "/blog/key-elements-of-a-resilient-network",
+      "destination": "/resources/blogs/resilient-network-design",
+      "permanent": false
+    },
+    {
+      "source": "/blog/wireless-vs-wired-networks",
+      "destination": "/resources/blogs/wireless-vs-wired-networks",
+      "permanent": false
+    },
+    {
+      "source": "/blog/a-guide-to-wireless-security-solutions",
+      "destination": "/resources/blogs/wireless-security-solutions",
+      "permanent": false
+    },
+    {
+      "source": "/blog/why-your-business-needs-cloud-networking-key-benefits-and-implementation-strategies",
+      "destination": "/resources/blogs/cloud-networking-benefits",
+      "permanent": false
+    },
+    {
+      "source": "/blog/everything-you-need-to-know-about-wlans",
+      "destination": "/resources/blogs/wlan-guide",
+      "permanent": false
+    },
+    {
+      "source": "/blog/network-validation-everything-you-need-to-know",
+      "destination": "/resources/blogs/network-validation",
+      "permanent": false
+    },
+    {
+      "source": "/blog/how-can-a-network-consultant-transform-your-it-infrastructure",
+      "destination": "/resources/blogs/network-consultant-benefits",
+      "permanent": false
+    },
+    {
+      "source": "/blog/leveraging-cloud-networking-for-business-efficiency",
+      "destination": "/resources/blogs/cloud-networking-efficiency",
+      "permanent": false
+    },
+    {
+      "source": "/blog/the-value-of-professional-it-services-from-it-consultant-to-network-consulting-services",
+      "destination": "/resources/blogs/professional-it-services",
+      "permanent": false
+    },
+    {
+      "source": "/blog/the-different-types-of-it-networks",
+      "destination": "/resources/blogs",
+      "permanent": false
+    },
+    {
+      "source": "/blog/proactive-defence-why-continuous-monitoring-is-critical",
+      "destination": "/resources/blogs/continuous-network-monitoring",
+      "permanent": false
+    },
+    {
+      "source": "/blog/top-network-security-solutions-for-remote-work-2025-tips",
+      "destination": "/resources/blogs/remote-work-network-security",
+      "permanent": false
+    },
+    {
+      "source": "/blog/3-steps-to-creating-a-secure-hybrid-workspace-using-your-network",
+      "destination": "/resources/blogs/secure-hybrid-workspace",
+      "permanent": false
+    },
+    {
+      "source": "/blog/is-your-sme-network-holding-your-business-back-heres-what-a-consultant-can-fix",
+      "destination": "/resources/blogs/sme-network-consultancy",
+      "permanent": false
+    },
+    {
+      "source": "/blog/how-professional-network-consultancy-services-strengthen-modern-business-infrastructure",
+      "destination": "/resources/blogs/network-consultancy-services",
+      "permanent": false
+    },
+    {
+      "source": "/blog/reasons-to-upgrade-your-network",
+      "destination": "/resources/blogs/network-upgrade-benefits",
+      "permanent": false
+    },
+    {
+      "source": "/blog/cisco-delivers-network-convergence-system-to-power-internet-of-everything",
+      "destination": "/resources/blogs/cisco-network-convergence-system",
+      "permanent": false
+    },
+    {
+      "source": "/blog/how-do-it-network-support-services-improve-business-continuity",
+      "destination": "/resources/blogs/remote-work-network-security",
+      "permanent": false
+    },
+    {
+      "source": "/blog/saas-essentials-what-you-must-know-for-business-excellence",
+      "destination": "/resources/blogs/remote-work-network-security",
+      "permanent": false
+    },
+    {
+      "source": "/blog/3-networking-trends-for-2022",
+      "destination": "/resources/blogs/remote-work-network-security",
+      "permanent": false
+    },
+    {
+      "source": "/blog/essential-network-support-for-secure-and-reliable-infrastructure",
+      "destination": "/resources/blogs/resilient-network-design",
+      "permanent": false
+    },
+    {
+      "source": "/blog/securing-your-network-comprehensive-solutions-for-modern-threats",
+      "destination": "/resources/blogs/network-upgrade-benefits",
+      "permanent": false
+    },
+    {
+      "source": "/blog/secure-connectivity-unveiling-the-robust-capabilities-of-sase",
+      "destination": "/resources/blogs/sme-network-consultancy",
+      "permanent": false
+    },
+    {
+      "source": "/blog/we-are-specialists-in-juniper-technology-secure-your-data-centre",
+      "destination": "/resources/blogs/network-consultancy-services",
+      "permanent": false
+    },
+    {
+      "source": "/blog/optimising-your-network-with-network-consultancy",
+      "destination": "/resources/blogs/network-consultancy-services",
+      "permanent": false
+    },
+    {
+      "source": "/blog/guarding-your-digital-fortress-a-comprehensive-guide-to-defending-against-5-common-network-security-threats",
+      "destination": "/resources/blogs/network-upgrade-benefits",
+      "permanent": false
+    },
+    {
+      "source": "/blog/virtualised-networks-designed-installed-by-us",
+      "destination": "/resources/blogs/cloud-networking-efficiency",
+      "permanent": false
+    },
+    {
+      "source": "/blog/cisco-security-solutions",
+      "destination": "/resources/blogs/cisco-network-convergence-system",
+      "permanent": false
+    },
+    {
+      "source": "/blog/network-design-implementation-guide",
+      "destination": "/resources/blogs/network-design-implementation",
+      "permanent": false
+    },
+    {
+      "source": "/blog/key-elements-resilient-network",
+      "destination": "/resources/blogs/resilient-network-design",
+      "permanent": false
+    },
+    {
+      "source": "/blog/guide-to-wireless-security-solutions",
+      "destination": "/resources/blogs/wireless-security-solutions",
+      "permanent": false
+    },
+    {
+      "source": "/blog/why-business-needs-cloud-networking",
+      "destination": "/resources/blogs/cloud-networking-benefits",
+      "permanent": false
+    },
+    {
+      "source": "/blog/leveraging-cloud-networking-business-efficiency",
+      "destination": "/resources/blogs/cloud-networking-efficiency",
+      "permanent": false
+    },
+    {
+      "source": "/blog/key-benefits-cloud-networking",
+      "destination": "/resources/blogs",
+      "permanent": false
+    },
+    {
+      "source": "/blog/value-of-professional-it-services",
+      "destination": "/resources/blogs/professional-it-services",
+      "permanent": false
+    },
+    {
+      "source": "/blog/how-ai-reducing-network-downtime-it-costs",
+      "destination": "/resources/blogs/continuous-network-monitoring",
+      "permanent": false
+    },
+    {
+      "source": "/blog/network-security-solutions-remote-working",
+      "destination": "/resources/blogs/remote-work-network-security",
+      "permanent": false
+    },
+    {
+      "source": "/blog/creating-secure-hybrid-workspace",
+      "destination": "/resources/blogs/secure-hybrid-workspace",
+      "permanent": false
+    },
+    {
+      "source": "/blog/is-your-sme-network-holding-business-back",
+      "destination": "/resources/blogs/sme-network-consultancy",
+      "permanent": false
+    },
+    {
+      "source": "/blog/virtualised-networks-designed-installed",
+      "destination": "/resources/blogs/cisco-security-solutions",
+      "permanent": false
+    },
+    {
+      "source": "/blog/why-business-needs-network-consultant-partner",
+      "destination": "/resources/blogs/network-consultant-benefits",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog",
+      "destination": "/resources/blogs",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-01",
+      "destination": "/resources/blogs/network-design-implementation",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-02",
+      "destination": "/resources/blogs/resilient-network-design",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-03",
+      "destination": "/resources/blogs/wireless-vs-wired-networks",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-04",
+      "destination": "/resources/blogs/wireless-security-solutions",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-05",
+      "destination": "/resources/blogs/cloud-networking-benefits",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-06",
+      "destination": "/resources/blogs/network-validation",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-07",
+      "destination": "/resources/blogs/cloud-networking-efficiency",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-08",
+      "destination": "/resources/blogs",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-09",
+      "destination": "/resources/blogs/professional-it-services",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-10",
+      "destination": "/resources/blogs/wlan-guide",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-11",
+      "destination": "/resources/blogs/continuous-network-monitoring",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-12",
+      "destination": "/resources/blogs/remote-work-network-security",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-13",
+      "destination": "/resources/blogs/secure-hybrid-workspace",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-14",
+      "destination": "/resources/blogs/sme-network-consultancy",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-15",
+      "destination": "/resources/blogs/network-consultancy-services",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-16",
+      "destination": "/resources/blogs/network-upgrade-benefits",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-17",
+      "destination": "/resources/blogs/cisco-network-convergence-system",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-18",
+      "destination": "/resources/blogs/cisco-security-solutions",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blog/post-19",
+      "destination": "/resources/blogs/network-consultant-benefits",
+      "permanent": false
+    },
+    {
+      "source": "/services/business-continuity",
+      "destination": "/services/business-continuity-and-network-resilience",
+      "permanent": false
+    },
+    {
+      "source": "/services/firewall-network-security",
+      "destination": "/services/firewall-and-network-security",
+      "permanent": false
+    },
+    {
+      "source": "/services/network-design-deployment",
+      "destination": "/services/network-design-and-deployment",
+      "permanent": false
+    },
+    {
+      "source": "/services/remote-access-vpn",
+      "destination": "/services/remote-working-solutions",
+      "permanent": false
+    },
+    {
+      "source": "/solutions/microsoft-365-network",
+      "destination": "/solutions/microsoft-365-and-network-readiness",
+      "permanent": false
+    },
+    {
+      "source": "/solutions/ai-ready-infrastructure",
+      "destination": "/solutions/ai-ready-infrastructure-review",
+      "permanent": false
+    },
+    {
+      "source": "/industries/healthcare-clinics",
+      "destination": "/industries/healthcare-and-clinics",
+      "permanent": false
+    }
   ]
 }

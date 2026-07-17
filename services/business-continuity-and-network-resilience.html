@@ -5,8 +5,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/misc/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/misc/favicon-180.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Remote Access &amp; VPN | Network Consultancy</title>
-  <meta name="description" content="Secure remote access and VPN — encrypted, multi-factor connectivity that lets your hybrid and distributed teams work safely from anywhere.">
+  <title>Business Continuity &amp; Network Resilience Services</title>
+  <meta name="description" content="Reduce downtime and strengthen resilience with business continuity planning and robust network infrastructure solutions.">
+  <link rel="canonical" href="https://network-consultancy.com/services/business-continuity-and-network-resilience">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
@@ -51,9 +52,9 @@
   /* ===== Key Solution Areas — tabs + image card ===== */
   .ksa__card { display:flex; gap:36px; background:#fff; border:0.2px solid #353535; border-radius:30px; box-shadow:0 4px 4px rgba(0,0,0,.1); padding:40px; }
   .ksa__tabs { flex:0 0 32%; display:flex; flex-direction:column; }
-  .ksa__tab { text-align:left; background:none; border:none; font-family:'Google Sans Flex',sans-serif; font-size:24px; font-weight:600; color:#585151; padding:22px 4px; cursor:pointer; border-top:1px solid var(--gray-mid); transition:color .2s; }
+  .ksa__tab { text-align:left; background:none; border:none; font-family:'Google Sans Flex',sans-serif; font-size:24px; font-weight:600; color:#585151; padding:24px 4px; cursor:pointer; border-top:1px solid var(--gray-mid); transition:color .2s; }
   .ksa__tab:first-child { border-top:none; }
-  .ksa__tab.active { background:var(--blue); color:#fff; border-radius:20px; border-top:none; padding:22px 24px; margin:6px 0; }
+  .ksa__tab.active { background:var(--blue); color:#fff; border-radius:20px; border-top:none; padding:24px 24px; margin:6px 0; }
   .ksa__panel { flex:1; position:relative; border-radius:20px; overflow:hidden; min-height:600px; display:flex; align-items:flex-end; justify-content:center; padding:33px 29px; }
   .ksa__panel > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .ksa__panel-card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:24px 29px; width:100%; }
@@ -74,32 +75,24 @@
   @media(max-width:900px){ .wws__layout{grid-template-columns:1fr;} .wws__img{min-height:300px;} }
   @media(max-width:560px){ .wws__tiles{grid-template-columns:1fr;} }
 
-  /* ===== Remote Access value — dual text + image ===== */
-  .rav { display:grid; grid-template-columns:1.1fr 1fr; gap:64px; align-items:start; }
-  .rav__text h3 { font-family:'Google Sans Flex',sans-serif; font-size:32px; font-weight:600; color:var(--navy); line-height:1.15; margin-bottom:16px; }
-  .rav__text h3:not(:first-child) { margin-top:36px; }
-  .rav__text p { font-family:'Google Sans Flex',sans-serif; font-size:17px; font-weight:400; color:var(--sub); line-height:1.65; margin-bottom:14px; }
-  .rav__media { position:sticky; top:120px; }
-  .rav__media img { width:100%; height:420px; object-fit:cover; border-radius:20px; display:block; }
-  @media(max-width:900px){ .rav{grid-template-columns:1fr;gap:32px;} .rav__media{position:static;} .rav__media img{height:280px;} }
-
   /* ===== Business Impact — text + blue card slider ===== */
+  .biz-lead h2 { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:44px; }
   .biz { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
-  .biz__left h2 { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:18px; }
-  .biz__left p { font-family:'Google Sans Flex',sans-serif; font-size:20px; color:var(--sub); line-height:1.5; margin-bottom:40px; }
+  .biz__left h2 { font-family:'Google Sans Flex',sans-serif; font-size:34px; font-weight:600; color:var(--navy); line-height:1.15; margin-bottom:18px; }
+  .biz__left p { font-family:'Google Sans Flex',sans-serif; font-size:18px; color:var(--sub); line-height:1.55; margin-bottom:40px; }
   .biz__nav { display:flex; align-items:center; gap:16px; }
   .biz__arrow { width:48px; height:48px; border-radius:6px; border:1px solid #d2d2d2; background:#f0f0f0; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:22px; color:#464646; transition:background .2s,color .2s,border-color .2s; }
   .biz__arrow:last-of-type { background:#000; border-color:#000; color:#fff; }
   .biz__arrow:hover { background:var(--blue); color:#fff; border-color:var(--blue); }
   .biz__bar { flex:1; max-width:240px; height:6px; margin-left:8px; background:#e4e4e4; border-radius:4px; overflow:hidden; }
-  .biz__bar-fill { height:100%; width:16.6%; background:var(--blue); border-radius:4px; transition:width .4s ease; }
+  .biz__bar-fill { height:100%; width:25%; background:var(--blue); border-radius:4px; transition:width .4s ease; }
   .biz__card { background:#13203f; border-radius:16px; padding:50px 43px 52px; min-height:360px; color:#fff; display:flex; flex-direction:column; justify-content:space-between; }
-  .biz__card h3 { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; line-height:1.05; margin-bottom:20px; transition:opacity .3s; }
+  .biz__card h3 { font-family:'Google Sans Flex',sans-serif; font-size:34px; font-weight:600; line-height:1.1; margin-bottom:20px; transition:opacity .3s; }
   .biz__card p { font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; line-height:1.35; letter-spacing:.02em; color:rgba(255,255,255,.95); transition:opacity .3s; margin-bottom:28px; }
   .biz__card .biz__num { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; }
-  @media(max-width:900px){ .biz{grid-template-columns:1fr;gap:40px;} .biz__card{min-width:0;padding:36px 24px 40px;} .biz__card h3{font-size:30px;overflow-wrap:break-word;} .biz__card p{font-size:18px;} .biz__card .biz__num{font-size:30px;} }
+  @media(max-width:900px){ .biz{grid-template-columns:1fr;gap:40px;} .biz-lead h2{font-size:32px;} .biz__card{min-width:0;padding:36px 24px 40px;} .biz__card h3{font-size:30px;overflow-wrap:break-word;} .biz__card p{font-size:18px;} .biz__card .biz__num{font-size:30px;} }
 
-  /* ===== Common Problems — masonry image tile grid ===== */
+  /* ===== Masonry image tile grid (work process + common problems) ===== */
   .probs__masonry { display:flex; flex-direction:column; gap:16px; }
   .probs__row { display:flex; gap:16px; }
   .prob { position:relative; height:340px; border-radius:20px; overflow:hidden; flex-grow:1; flex-basis:0; min-width:0; transform:translateY(0); transition:transform .35s ease, box-shadow .35s ease; }
@@ -114,12 +107,19 @@
   @media(max-width:900px){ .probs__row{flex-wrap:wrap;} .prob{flex-basis:calc(50% - 8px);flex-grow:1;height:220px;} .prob__label{left:22px;bottom:20px;font-size:18px;} }
   @media(max-width:560px){ .prob{flex-basis:100%;} }
 
+  /* ===== Cost stat — text + image ===== */
+  .cissues { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+  .cissues__text h2 { font-family:'Google Sans Flex',sans-serif; font-size:34px; font-weight:600; color:var(--navy); line-height:1.15; margin-bottom:20px; text-transform:none; }
+  .cissues__text p { font-family:'Google Sans Flex',sans-serif; font-size:17px; color:var(--sub); line-height:1.65; margin-bottom:16px; }
+  .cissues__media img { width:100%; height:440px; object-fit:cover; border-radius:20px; display:block; }
+  @media(max-width:900px){ .cissues{grid-template-columns:1fr;gap:32px;} .cissues__media{order:-1;} .cissues__media img{height:280px;} }
+
   /* ===== CTA band ===== */
   .svc-cta-band { background:var(--blue); padding:80px 0; position:relative; overflow:hidden; }
   .svc-cta-band__tags { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; gap:24px; padding:0 var(--px); pointer-events:none; }
   .svc-cta-band__row { display:flex; gap:20px; flex-wrap:wrap; }
   .svc-cta-band__row span { background:#fff; color:var(--blue); opacity:.5; font-family:'Google Sans Flex',sans-serif; font-size:18px; font-weight:500; padding:12px 32px; border-radius:20px; white-space:nowrap; }
-  .svc-cta-band__card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:46px 84px; max-width:660px; margin:0 auto; text-align:center; }
+  .svc-cta-band__card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:46px 84px; max-width:680px; margin:0 auto; text-align:center; }
   .svc-cta-band__text { font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; color:var(--sub); line-height:1.55; margin-bottom:32px; }
   .svc-cta-band__btn { display:inline-flex; align-items:center; justify-content:center; background:var(--navy); color:#fff; font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; padding:16px 50px; border-radius:20px; transition:background .2s; }
   .svc-cta-band__btn:hover { background:#0f1c5a; }
@@ -159,14 +159,10 @@
     .wws__item { font-size:15.5px; padding:14px 16px; }
     .wws__img { min-height:0; height:240px; }
     .wws__media { border-radius:12px; }
-    /* Remote access section */
-    .rav { gap:22px; }
-    .rav__text h3 { font-size:20px; font-weight:700; color:var(--blue); margin-bottom:12px; }
-    .rav__text h3:not(:first-child) { margin-top:24px; }
-    .rav__text p { font-size:15.5px; line-height:1.6; }
-    .rav__media img { height:240px; border-radius:12px; }
     /* Business impact slider */
     .biz { gap:26px; }
+    .biz-lead h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:10px; }
+    .biz-lead p { font-size:15.5px; line-height:1.6; margin-bottom:24px; }
     .biz__left h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; }
     .biz__left p { font-size:15.5px; line-height:1.6; margin-bottom:22px; }
     .biz__arrow { width:40px; height:40px; font-size:18px; }
@@ -174,6 +170,11 @@
     .biz__card h3 { font-size:20px; margin-bottom:12px; }
     .biz__card p { font-size:15.5px; line-height:1.55; margin-bottom:18px; }
     .biz__card .biz__num { font-size:22px; }
+    /* Common issues */
+    .cissues { gap:18px; }
+    .cissues__text h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:12px; }
+    .cissues__text p { font-size:15.5px; line-height:1.6; }
+    .cissues__media img { height:220px; border-radius:12px; }
     /* Problems masonry */
     .prob { height:200px; }
     .prob__label { font-size:16px; left:18px; bottom:16px; }
@@ -202,8 +203,8 @@
   <section class="nc-hero-wrap" aria-label="Page hero">
     <div class="nc-hero">
       <div class="nc-hero__content">
-        <h1 class="nc-hero__title">VPN and Secure Remote Access Options for Distributed and Hybrid Teams</h1>
-        <p class="nc-hero__sub">Secure VPN Solutions for Hybrid and Remote Workforces</p>
+        <h1 class="nc-hero__title">Network Resilience and Continuity to Safeguard Operations</h1>
+        <p class="nc-hero__sub">Secure, resilient networks that enable critical business operations let you stay productive even in the face of disruptions.</p>
         <a href="#contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Book a Network Health Check</a>
       </div>
     </div>
@@ -213,82 +214,39 @@
   <section class="sd-section" aria-labelledby="ksa-h">
     <div class="sd-wrap">
       <div class="sd-head" style="text-align:left;margin-left:0;">
-        <h2 id="ksa-h">Secure Remote Access Solutions</h2>
-        <p>From multi-factor authentication to encrypted data pathways, we set up safe, seamless connectivity for your hybrid and remote teams.</p>
+        <h2 id="ksa-h">Business Continuity Solutions</h2>
+        <p>From proactive continuity planning and resilience-focused IT policies to automated failover strategies, our solutions minimise downtime that costs you revenue.</p>
       </div>
       <div class="ksa__card" id="ksa">
         <div class="ksa__tabs" role="tablist">
-          <button class="ksa__tab active" role="tab" aria-selected="true">Business VPN Deployment</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Secure Remote Access Configuration</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Multi-Factor Authentication (MFA)</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Secure Site-to-Site Connectivity</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Flexible &amp; Secure Remote Working</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Remote Traffic Monitoring</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Secure Cloud Connectivity</button>
+          <button class="ksa__tab active" role="tab" aria-selected="true">Disaster Recovery Strategy &amp; Testing</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Automated Cloud Backup &amp; Replication</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Automated Secondary Network Failover</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Power Redundancy &amp; UPS Deployment</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Endpoint Backup &amp; Remote Protection</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Rapid Hardware Replacement Protocols</button>
         </div>
         <div class="ksa__panel">
-          <img id="ksa-img" src="/images/pages/unique/services-remote-access-vpn-nc-hero-person.jpg" alt="Remote access engineer">
+          <img id="ksa-img" src="/images/pages/unique/services-business-continuity-nc-hero-person.jpg" alt="Business continuity engineer">
           <div class="ksa__panel-card">
-            <h3 id="ksa-title">Business VPN Deployment</h3>
-            <p id="ksa-desc">Installing encrypted connection software on laptops and smartphones gives remote staff secure access to office files. We isolate data traffic that keeps central company databases safe from public internet exposure.</p>
+            <h3 id="ksa-title">Disaster Recovery Strategy &amp; Testing</h3>
+            <p id="ksa-desc">Our team builds and simulates step-by-step recovery playbooks for your business. We verify that your backup systems deploy instantly during unexpected operational blackouts.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== WHO WE SERVE ===== -->
-  <section class="sd-section sd-section--tint" aria-labelledby="wws-h">
-    <div class="sd-wrap">
-      <div class="sd-head" style="text-align:left;margin-left:0;">
-        <h2 id="wws-h">Who We Serve</h2>
-        <p>We design our services for organisations that are transforming and need completely stable, secure connectivity to protect daily operations.</p>
-      </div>
-      <div class="wws__layout animate-fade-up">
-        <div class="wws__media">
-          <picture><source srcset="/images/pages/unique/services-remote-access-vpn-nc-wws-person.webp" type="image/webp"><img class="wws__img" src="/images/pages/unique/services-remote-access-vpn-nc-wws-person.jpg" alt="Remote access engineer" loading="lazy"></picture>
-        </div>
-        <div class="wws__tiles stagger-children">
-          <div class="wws__item animate-fade-up">Small and medium-sized businesses</div>
-          <div class="wws__item animate-fade-up">Healthcare providers</div>
-          <div class="wws__item animate-fade-up">Multi-site organisations</div>
-          <div class="wws__item animate-fade-up">Educational institutions</div>
-          <div class="wws__item animate-fade-up">Professional service firms</div>
-          <div class="wws__item animate-fade-up">Manufacturing businesses</div>
-          <div class="wws__item animate-fade-up">Retail organisations</div>
-          <div class="wws__item animate-fade-up">Remote and hybrid workforces</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== REMOTE ACCESS VALUE (dual text + image) ===== -->
-  <section class="sd-section" aria-label="Remote access value">
-    <div class="sd-wrap">
-      <div class="rav">
-        <div class="rav__text">
-          <h3>Keep Your Business Running Through Unexpected Disruptions</h3>
-          <p>Bad weather, power cuts, or office closures can freeze your daily operations. We set up backup remote connections so your entire team can log in from home immediately.</p>
-          <p>Moving your staff to safe home setups keeps your daily work moving and protects your sales from sudden local halts.</p>
-          <h3>Secure Your Company Data Across All Staff Locations</h3>
-          <p>As remote and hybrid working become a permanent part of modern business operations, organisations need secure connection pathways to keep employees connected without risking data leaks.</p>
-          <p>We combine stable VPN technology and access verification tools to protect your private company records while supporting daily staff output.</p>
-          <p>Whether your teams work from home, on the move, or across multiple sites, we deliver reliable connectivity that&rsquo;s flexible and built for long-term business resilience.</p>
-        </div>
-        <div class="rav__media">
-          <img src="/images/unique/services-remote-access-vpn-feature-2.jpg" alt="Remote working setup" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== BUSINESS IMPACT (slider) ===== -->
-  <section class="sd-section" aria-labelledby="biz-h">
+  <section class="sd-section" aria-labelledby="biz-lead-h">
     <div class="sd-wrap">
+      <div class="biz-lead">
+        <h2 id="biz-lead-h">Find Out What Powers Our Network Resilience &amp; Business Continuity</h2>
+      </div>
       <div class="biz" id="biz">
         <div class="biz__left">
-          <h2 id="biz-h">Find Out the Commercial Value of our Solutions</h2>
-          <p>We eliminate IT bottlenecks and streamline your day-to-day operations by providing proven network expertise and secure infrastructure. Our commercial services proactively reduce downtime, protect sensitive files, and lower operational overhead.</p>
+          <h2 id="biz-h">The Results for Your Business</h2>
+          <p>Network Consultancy handles your network resilience on three core principles. (1) A plan that identifies and reduces operational risks. (2) Network infrastructure that incorporates automated backups and secondary lines. (3) Knowledgeable technical support that connects you directly to engineers for immediate technical response.</p>
           <div class="biz__nav">
             <button class="biz__arrow" id="biz-prev" aria-label="Previous">&#8592;</button>
             <button class="biz__arrow" id="biz-next" aria-label="Next">&#8594;</button>
@@ -297,10 +255,46 @@
         </div>
         <div class="biz__card">
           <div>
-            <h3 id="biz-title">Proven Network Expertise</h3>
-            <p id="biz-desc">We configure your office routers, switches, and access points to guarantee stable Wi-Fi and fast file sharing.</p>
+            <h3 id="biz-title">Constant operational stability</h3>
+            <p id="biz-desc">Our wireless design accounts for building materials and structural elements, ensuring complete coverage and removing connectivity blind spots.</p>
           </div>
-          <div class="biz__num" id="biz-count">1/6</div>
+          <div class="biz__num" id="biz-count">1/4</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OUR WORK PROCESS (masonry) ===== -->
+  <section class="sd-section" aria-labelledby="work-h">
+    <div class="sd-wrap">
+      <div class="sd-head" style="text-align:left;margin-left:0;">
+        <h2 id="work-h">Our work process</h2>
+      </div>
+      <div class="probs__masonry">
+        <div class="probs__row">
+          <div class="prob" style="flex-grow:832"><img src="/images/unique/services-business-continuity-service-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Operational Priority Assessment</div></div>
+          <div class="prob" style="flex-grow:588"><img src="/images/unique/services-business-continuity-feature-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Risk &amp; Vulnerability Analysis</div></div>
+        </div>
+        <div class="probs__row">
+          <div class="prob" style="flex-grow:1"><img src="/images/unique/services-business-continuity-service-3.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Resilience Strategy Development</div></div>
+          <div class="prob" style="flex-grow:1"><img src="/images/unique/services-business-continuity-service-4.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Disaster Recovery Planning</div></div>
+          <div class="prob" style="flex-grow:1"><img src="/images/unique/services-business-continuity-feature-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Testing &amp; Continuous Improvement</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COST STAT (text + image) ===== -->
+  <section class="sd-section" aria-labelledby="cost-h">
+    <div class="sd-wrap">
+      <div class="cissues">
+        <div class="cissues__text">
+          <h2 id="cost-h">Operational Disruptions Cost UK Businesses &pound;10,000 Average.</h2>
+          <p>The Cyber Security Breaches Survey from GOV.UK shows that one network incident costs UK businesses an average of &pound;10,000. The number seems staggering because work stops. Staff cannot access their files, and customers cannot buy or get support. The reality is that most office networks rely on a single internet line or a single server room.</p>
+          <p>If a local power cut or supplier outage hits that single point, the whole company goes offline. Our business continuity consultancy finds these weak points in your current setup. Through operational resilience consulting, we install automatic backup links and secondary power systems. If your primary line fails, the network switches to the backup line instantly. Results: your business stays online, and you avoid the cost of an outage.</p>
+        </div>
+        <div class="cissues__media">
+          <picture><source srcset="/images/pages/unique/services-business-continuity-servers.webp" type="image/webp"><img src="/images/pages/unique/services-business-continuity-servers.jpg" alt="Resilient server infrastructure" loading="lazy"></picture>
         </div>
       </div>
     </div>
@@ -315,17 +309,42 @@
       </div>
       <div class="probs__masonry">
         <div class="probs__row">
-          <div class="prob" style="flex-grow:832"><img src="/images/unique/services-remote-access-vpn-service-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Dropped video calls</div></div>
-          <div class="prob" style="flex-grow:588"><img src="/images/unique/services-remote-access-vpn-feature-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Wi-Fi dead zones</div></div>
+          <div class="prob" style="flex-grow:832"><img src="/images/unique/services-business-continuity-service-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Dropped video calls</div></div>
+          <div class="prob" style="flex-grow:588"><img src="/images/unique/services-business-continuity-feature-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Wi-Fi dead zones</div></div>
         </div>
         <div class="probs__row">
-          <div class="prob" style="flex-grow:349"><img src="/images/pages/unique/solutions-microsoft-365-network-servers.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Network congestion slowdowns</div></div>
-          <div class="prob" style="flex-grow:469"><img src="/images/unique/services-remote-access-vpn-service-4.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Insecure visitor access</div></div>
-          <div class="prob" style="flex-grow:596"><img src="/images/unique/services-remote-access-vpn-feature-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Disconnected warehouse scanners</div></div>
+          <div class="prob" style="flex-grow:349"><img src="/images/services/service-3.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Network congestion slowdowns</div></div>
+          <div class="prob" style="flex-grow:469"><img src="/images/unique/services-business-continuity-service-4.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Insecure visitor access</div></div>
+          <div class="prob" style="flex-grow:596"><img src="/images/unique/services-business-continuity-feature-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Disconnected warehouse scanners</div></div>
         </div>
         <div class="probs__row">
-          <div class="prob" style="flex-grow:580"><img src="/images/unique/services-remote-access-vpn-service-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Undetected network glitches</div></div>
-          <div class="prob" style="flex-grow:835"><img src="/images/unique/services-remote-access-vpn-scroll-banner-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Inconsistent multi-site security</div></div>
+          <div class="prob" style="flex-grow:580"><img src="/images/unique/services-business-continuity-service-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Undetected network glitches</div></div>
+          <div class="prob" style="flex-grow:835"><img src="/images/unique/services-business-continuity-scroll-banner-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Inconsistent multi-site security</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHO WE SERVE ===== -->
+  <section class="sd-section sd-section--tint" aria-labelledby="wws-h">
+    <div class="sd-wrap">
+      <div class="sd-head" style="text-align:left;margin-left:0;">
+        <h2 id="wws-h">Who We Serve</h2>
+        <p>We design our services for organisations that are transforming and need completely stable, secure connectivity to protect daily operations.</p>
+      </div>
+      <div class="wws__layout animate-fade-up">
+        <div class="wws__media">
+          <picture><source srcset="/images/pages/unique/services-business-continuity-nc-wws-person.webp" type="image/webp"><img class="wws__img" src="/images/pages/unique/services-business-continuity-nc-wws-person.jpg" alt="Business continuity engineer" loading="lazy"></picture>
+        </div>
+        <div class="wws__tiles stagger-children">
+          <div class="wws__item animate-fade-up">Small and medium-sized businesses</div>
+          <div class="wws__item animate-fade-up">Healthcare providers</div>
+          <div class="wws__item animate-fade-up">Multi-site organisations</div>
+          <div class="wws__item animate-fade-up">Educational institutions</div>
+          <div class="wws__item animate-fade-up">Professional service firms</div>
+          <div class="wws__item animate-fade-up">Manufacturing businesses</div>
+          <div class="wws__item animate-fade-up">Retail organisations</div>
+          <div class="wws__item animate-fade-up">Remote and hybrid workforces</div>
         </div>
       </div>
     </div>
@@ -349,32 +368,32 @@
         <div class="nd-trusted__viewport">
           <div class="nd-trusted__track">
             <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;The remote working security solutions and cloud-managed networks deployment improved multi-site performance. VPN and secure remote access solutions strengthened security and enabled seamless hybrid working across branches.&rdquo;</p>
+              <p class="nd-t-card__quote">&ldquo;Our readiness was revolutionised by their Business Continuity &amp; Network Resilience plan. Our vital activities remained stable during unforeseen disruptions, recovery methods became more transparent, and downtime risks were greatly decreased.&rdquo;</p>
               <div class="nd-t-card__person">
                 <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-m1.jpg" alt="" loading="lazy"></span>
                 <div>
                   <p class="nd-t-card__name">James Thornton</p>
-                  <p class="nd-t-card__role">IT Manager, Logistics Ltd, Manchester</p>
+                  <p class="nd-t-card__role">Director of Operations, Birmingham, England</p>
                 </div>
               </div>
             </article>
             <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;Our staff now log in securely from anywhere, and IT no longer worries about data leaks. The rollout was smooth and the support has been first class.&rdquo;</p>
+              <p class="nd-t-card__quote">&ldquo;When our primary line went down, failover kicked in instantly and our staff never noticed. The peace of mind their plan gives us is worth every penny.&rdquo;</p>
               <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-operations-director.jpg" alt="" loading="lazy"></span>
+                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy"></span>
                 <div>
-                  <p class="nd-t-card__name">Operations Director</p>
+                  <p class="nd-t-card__name">IT Manager</p>
+                  <p class="nd-t-card__role">Manufacturing Company, Midlands</p>
+                </div>
+              </div>
+            </article>
+            <article class="nd-t-card">
+              <p class="nd-t-card__quote">&ldquo;Their disaster recovery testing found gaps we never knew we had. We are now genuinely prepared for anything, and our downtime risk has plummeted.&rdquo;</p>
+              <div class="nd-t-card__person">
+                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-head-of-operations.jpg" alt="" loading="lazy"></span>
+                <div>
+                  <p class="nd-t-card__name">Head of Operations</p>
                   <p class="nd-t-card__role">Professional Services Firm, London</p>
-                </div>
-              </div>
-            </article>
-            <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;Multi-factor access and encrypted tunnels give us real peace of mind. Hybrid working finally feels safe and effortless.&rdquo;</p>
-              <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy"></span>
-                <div>
-                  <p class="nd-t-card__name">Head of IT</p>
-                  <p class="nd-t-card__role">Healthcare Provider, Birmingham</p>
                 </div>
               </div>
             </article>
@@ -388,7 +407,7 @@
   </section>
 
   <!-- ===== CTA BAND ===== -->
-  <section class="svc-cta-band" aria-label="Remote access and VPN CTA">
+  <section class="svc-cta-band" aria-label="Business continuity CTA">
     <div class="svc-cta-band__tags" aria-hidden="true">
       <div class="svc-cta-band__row">
         <span>Network Consultancy</span><span>Network Support</span><span>Managed Network Support</span><span>Managed Wireless LAN</span><span>Network Installations</span>
@@ -399,16 +418,16 @@
     </div>
     <div class="svc-cta-band__card">
       <p class="svc-cta-band__text">Eliminate unexpected downtime before it costs you money. Our prompt response secures your connections and keeps your team online, free from disruptions.</p>
-      <a href="#contact" class="svc-cta-band__btn">Make a Remote Access Request</a>
+      <a href="#contact" class="svc-cta-band__btn">Make a Network Business Continuity Consultancy Request</a>
     </div>
   </section>
 
   <!-- ===== FAQ (CMS with page-specific items) ===== -->
   <script>
   window.PAGE_FAQ = [
-    { question:'What is Zero Trust Network Access (ZTNA)?', answer:'ZTNA checks the user\u2019s identity and device security before granting access. It blocks lateral movement by limiting user access to specific required applications, rather than the entire corporate network.', open:true },
-    { question:'Is remote access secure?', answer:'Yes. We combine encrypted VPN tunnels, multi-factor authentication, and continuous monitoring so your staff connect safely from anywhere without exposing your data.', open:false },
-    { question:'Can secure remote access solutions support hybrid and multi-site businesses?', answer:'Absolutely. Our solutions scale across home workers, mobile staff, and multiple offices, giving every location fast, secure, and consistent access to your systems.', open:false }
+    { question:'What makes network resilience crucial to business continuity?', answer:'If your network fails, your business stops. Resilience means having backup hardware, like a second internet line from a different provider. If your main link goes down, your traffic switches over automatically so your staff can keep working.', open:true },
+    { question:'What are the components of a network resilience and business continuity strategy?', answer:'A strong strategy combines risk assessment, automated backups, secondary internet and power lines, disaster recovery playbooks, and regular testing, so every weak point has a reliable fallback.', open:false },
+    { question:'In what ways may business continuity consulting enhance organisational preparedness?', answer:'We identify your single points of failure, build and test recovery plans, and put automated failover in place, so your team knows exactly what happens and stays productive when disruption strikes.', open:false }
   ];
   </script>
   <div data-cms="faq"></div>
@@ -431,13 +450,12 @@
     var title = document.getElementById('ksa-title');
     var desc = document.getElementById('ksa-desc');
     var data = [
-      { img:'/images/pages/unique/services-remote-access-vpn-nc-hero-person.jpg', title:'Business VPN Deployment', desc:'Installing encrypted connection software on laptops and smartphones gives remote staff secure access to office files. We isolate data traffic that keeps central company databases safe from public internet exposure.' },
-      { img:'/images/unique/services-remote-access-vpn-feature-1.jpg', title:'Secure Remote Access Configuration', desc:'We configure and harden your remote access so only authorised staff and devices can connect, keeping your network protected from the outside.' },
-      { img:'/images/unique/services-remote-access-vpn-service-2.jpg', title:'Multi-Factor Authentication (MFA)', desc:'We add a second layer of verification to every login, so a stolen password alone can never give an attacker access to your systems.' },
-      { img:'/images/unique/services-remote-access-vpn-feature-2.jpg', title:'Secure Site-to-Site Connectivity', desc:'We link your offices with encrypted tunnels, so every location shares data securely as if they were on the same private network.' },
-      { img:'/images/unique/services-remote-access-vpn-service-3.jpg', title:'Flexible & Secure Remote Working', desc:'We give your teams the freedom to work from anywhere with connectivity that stays fast, stable, and secure wherever they are.' },
-      { img:'/images/unique/services-remote-access-vpn-service-4.jpg', title:'Remote Traffic Monitoring', desc:'We watch remote connections for unusual activity, catching and containing threats before they can reach your core systems.' },
-      { img:'/images/unique/services-remote-access-vpn-feature-1.jpg', title:'Secure Cloud Connectivity', desc:'We connect your teams to cloud platforms with security built in, so productivity never comes at the cost of protection.' }
+      { img:'/images/pages/unique/services-business-continuity-nc-hero-person.jpg', title:'Disaster Recovery Strategy & Testing', desc:'Our team builds and simulates step-by-step recovery playbooks for your business. We verify that your backup systems deploy instantly during unexpected operational blackouts.' },
+      { img:'/images/unique/services-business-continuity-feature-1.jpg', title:'Automated Cloud Backup & Replication', desc:'We back up and replicate your data to the cloud automatically, so a copy of everything is always safe and ready to restore in minutes.' },
+      { img:'/images/unique/services-business-continuity-service-2.jpg', title:'Automated Secondary Network Failover', desc:'If your primary line fails, traffic switches instantly to a secondary connection, keeping your team online without interruption.' },
+      { img:'/images/unique/services-business-continuity-feature-2.jpg', title:'Power Redundancy & UPS Deployment', desc:'We deploy backup power and UPS systems so a power cut never takes your critical infrastructure offline.' },
+      { img:'/images/unique/services-business-continuity-service-3.jpg', title:'Endpoint Backup & Remote Protection', desc:'We protect and back up staff devices wherever they work, so no data is ever lost, even outside the office.' },
+      { img:'/images/unique/services-business-continuity-service-4.jpg', title:'Rapid Hardware Replacement Protocols', desc:'When hardware fails, our replacement protocols get you back up and running fast, minimising costly downtime.' }
     ];
     tabs.forEach(function (tab, i) {
       tab.addEventListener('click', function () {
@@ -457,12 +475,10 @@
     var biz = document.getElementById('biz');
     if (!biz) return;
     var slides = [
-      { title:'Proven Network Expertise', desc:'We configure your office routers, switches, and access points to guarantee stable Wi-Fi and fast file sharing.' },
-      { title:'Reduced Downtime', desc:'Backup remote connections keep your team working through outages, protecting your revenue from local disruptions.' },
-      { title:'Protected Sensitive Data', desc:'Encrypted tunnels and access controls keep your private company records safe across every location.' },
-      { title:'Lower Operational Overhead', desc:'Streamlined, secure remote infrastructure cuts wasted IT time and reduces your ongoing running costs.' },
-      { title:'Business Resilience', desc:'Flexible connectivity keeps your operations running whatever happens, from bad weather to office closures.' },
-      { title:'Seamless Hybrid Working', desc:'Your teams move between home, office, and travel without losing access, security, or productivity.' }
+      { title:'Constant operational stability', desc:'Our resilience design keeps your business running through outages, so your operations never grind to a halt.' },
+      { title:'Instant automated failover', desc:'If your primary line fails, traffic switches to a backup connection automatically, with no action needed from your team.' },
+      { title:'Rapid data recovery', desc:'Automated backups mean your files and systems can be restored in minutes, not days, after any incident.' },
+      { title:'Avoided outage costs', desc:'Staying online through disruption protects you from the average £10,000 cost of a single network incident.' }
     ];
     var i = 0, total = slides.length;
     var title = document.getElementById('biz-title');
