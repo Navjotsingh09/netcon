@@ -69,12 +69,12 @@
     },
     {
       "source": "/blog/the-different-types-of-it-networks",
-      "destination": "/resources/blogs",
+      "destination": "/resources/blogs/professional-it-services",
       "permanent": false
     },
     {
       "source": "/blog/proactive-defence-why-continuous-monitoring-is-critical",
-      "destination": "/resources/blogs/continuous-network-monitoring",
+      "destination": "/resources/blogs/cloud-networking-benefits",
       "permanent": false
     },
     {
@@ -94,7 +94,7 @@
     },
     {
       "source": "/blog/how-professional-network-consultancy-services-strengthen-modern-business-infrastructure",
-      "destination": "/resources/blogs/network-consultancy-services",
+      "destination": "/resources/blogs/professional-it-services",
       "permanent": false
     },
     {
@@ -189,7 +189,7 @@
     },
     {
       "source": "/blog/key-benefits-cloud-networking",
-      "destination": "/resources/blogs",
+      "destination": "/resources/blogs/cloud-networking-benefits",
       "permanent": false
     },
     {
@@ -360,6 +360,11 @@
     {
       "source": "/industries/healthcare-clinics",
       "destination": "/industries/healthcare-and-clinics",
+      "permanent": false
+    },
+    {
+      "source": "/resources/blogs/types-of-it-networks",
+      "destination": "/resources/blogs/cloud-networking-benefits",
       "permanent": false
     }
   ]

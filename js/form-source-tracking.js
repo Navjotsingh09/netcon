@@ -52,7 +52,6 @@
     '/resources/blogs/cloud-networking-benefits.html': { family: 'resources', page: 'blog_post', cta: 'shared_footer_form' },
     '/resources/blogs/network-validation.html': { family: 'resources', page: 'blog_post', cta: 'shared_footer_form' },
     '/resources/blogs/cloud-networking-efficiency.html': { family: 'resources', page: 'blog_post', cta: 'shared_footer_form' },
-    '/resources/blogs/types-of-it-networks.html': { family: 'resources', page: 'blog_post', cta: 'shared_footer_form' },
     '/resources/blogs/professional-it-services.html': { family: 'resources', page: 'blog_post', cta: 'shared_footer_form' },
     '/resources/blogs/wlan-guide.html': { family: 'resources', page: 'blog_post', cta: 'shared_footer_form' },
     '/resources/blogs/continuous-network-monitoring.html': { family: 'resources', page: 'blog_post', cta: 'shared_footer_form' },
