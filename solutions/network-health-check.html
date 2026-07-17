@@ -35,7 +35,9 @@
     .nhc-hero {
       max-width: var(--section-w);
       margin: 0 auto;
-      background: #13203f;
+      background-color: #13203f;
+      background-image: url(/images/pages/unique/solutions-banner.webp);
+      background-repeat: no-repeat; background-position: right center; background-size: cover;
       padding: 135px var(--px) 48px;
     }
 
@@ -43,7 +45,7 @@
       max-width: var(--max-w);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 735px;
+      grid-template-columns: minmax(0, 1fr);
       gap: 24px;
       align-items: end;
     }
@@ -87,22 +89,6 @@
       font-weight: 600;
       text-decoration: none;
       white-space: nowrap;
-    }
-
-    .nhc-hero__art {
-      width: 735px;
-      max-width: 100%;
-      height: 332px;
-      border-radius: 10px;
-      overflow: hidden;
-      justify-self: end;
-    }
-
-    .nhc-hero__art img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
     }
 
     .nhc-overview {
@@ -448,10 +434,6 @@
         padding-top: 112px;
       }
 
-      .nhc-hero__art {
-        justify-self: start;
-      }
-
       .nhc-overview__feature {
         order: -1;
       }
@@ -531,7 +513,7 @@
       .mnhc { display: block; }
       .nhc-hero, .nhc-overview, .nhc-gains, .nhc-risk, .nhc-process, .nhc-why { display: none; }
 
-      .mnhc-hero { background: #02172f; padding: 40px 22px; color: #fff; }
+      .mnhc-hero { background-color: #02172f; background-image: linear-gradient(to right, rgba(19,32,63,.97) 0%, rgba(19,32,63,.92) 42%, rgba(19,32,63,.55) 62%, rgba(19,32,63,.1) 82%), url(/images/pages/unique/solutions-banner.webp); background-repeat: no-repeat; background-position: 56% center; background-size: cover; padding: 40px 22px; color: #fff; }
       .mnhc-hero h1 { font-size: 26px; font-weight: 700; line-height: 1.2; margin: 0 0 14px; color: #fff; }
       .mnhc-hero p { font-size: 17px; line-height: 1.5; color: rgba(255,255,255,.92); margin: 0 0 22px; }
       .mnhc-hero__btn {
@@ -665,12 +647,6 @@
           <h1>Professional Network Assessments</h1>
           <p>Understand how your network is performing with a professional assessment that helps improve connectivity, strengthen resilience, and support future growth.</p>
           <a href="/contact.html" class="nhc-hero__btn" data-source-cta="solution_hero_health_check">Book Health Check</a>
-        </div>
-        <div class="nhc-hero__art animate-fade-up">
-          <picture>
-            <source srcset="/images/pages/unique/solutions-network-health-check-nc-hero-person.webp" type="image/webp">
-            <img src="/images/pages/unique/solutions-network-health-check-nc-hero-person.jpg" alt="Professional network assessments" width="735" height="332" loading="eager">
-          </picture>
         </div>
       </div>
     </section>
