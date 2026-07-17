@@ -276,6 +276,56 @@
     renderPosts();
   }
 
+  // Populates the "Latest Blog" sidebar card on individual post detail
+  // pages with real thumbnails, titles and links — excludes whichever
+  // post is currently being viewed. Safe no-op on pages without this card.
+  function renderLatestSidebar() {
+    var card = null;
+    document.querySelectorAll(".blog-side__card").forEach(function (candidate) {
+      var heading = candidate.querySelector("h3");
+      if (heading && heading.textContent.trim() === "Latest Blog") {
+        card = candidate;
+      }
+    });
+
+    var existingItems = card ? card.querySelectorAll(".latest-item") : [];
+    if (!card || !existingItems.length) {
+      return;
+    }
+
+    var slugMatch = window.location.pathname.match(/post-\d+/);
+    var currentSlug = slugMatch ? slugMatch[0] : null;
+    var moreLink = card.querySelector(".blog-side__more");
+
+    var picks = BLOG_POSTS
+      .filter(function (post) { return post.slug !== currentSlug; })
+      .slice(0, 3);
+
+    existingItems.forEach(function (item) { item.remove(); });
+
+    picks.forEach(function (post) {
+      var link = document.createElement("a");
+      link.className = "latest-item";
+      link.href = "/resources/blog/" + post.slug + ".html";
+      link.innerHTML =
+        "<div class=\"latest-item__thumb\">" +
+        "<img src=\"" + escapeHtml(post.image) + "\" alt=\"\" loading=\"lazy\" width=\"80\" height=\"71\">" +
+        "</div>" +
+        "<div>" +
+        "<p>" + escapeHtml(post.title) + "</p>" +
+        "<time>" + escapeHtml(post.dateLabel) + "</time>" +
+        "</div>";
+      if (moreLink) {
+        card.insertBefore(link, moreLink);
+      } else {
+        card.appendChild(link);
+      }
+    });
+  }
+
   window.NETCON_BLOG_POSTS = BLOG_POSTS;
-  document.addEventListener("DOMContentLoaded", renderBlogIndex);
+  document.addEventListener("DOMContentLoaded", function () {
+    renderBlogIndex();
+    renderLatestSidebar();
+  });
 })();
