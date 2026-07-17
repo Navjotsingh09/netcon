@@ -366,6 +366,16 @@
       "source": "/resources/blogs/types-of-it-networks",
       "destination": "/resources/blogs/cloud-networking-benefits",
       "permanent": false
+    },
+    {
+      "source": "/services/remote-access-solution",
+      "destination": "/services/remote-working-solutions",
+      "permanent": false
+    },
+    {
+      "source": "/efficient-network-management",
+      "destination": "/",
+      "permanent": false
     }
   ]
 }
