@@ -56,6 +56,25 @@
     targets.forEach(function (el) {
       observer.observe(el);
     });
+
+    // Expose a hook so scripts that inject content AFTER page load
+    // (e.g. blog-cms.js rendering blog cards) can register their new
+    // elements with the same observer instead of staying stuck at
+    // opacity: 0 forever. Pass an element or a container to scan within.
+    window.NCObserveAnimations = function (root) {
+      if (!root) return;
+      var scope = root.querySelectorAll
+        ? root
+        : document;
+      var els = scope.matches && scope.matches('.animate-fade-up, .animate-fade-in')
+        ? [scope]
+        : Array.prototype.slice.call(scope.querySelectorAll('.animate-fade-up, .animate-fade-in'));
+      els.forEach(function (el) {
+        if (!el.classList.contains('is-visible')) {
+          observer.observe(el);
+        }
+      });
+    };
   }
 
   // Run after the DOM is fully parsed

@@ -159,6 +159,7 @@
           '<div class="has-mega">' + trigger('Solutions', 'mega-solutions') + solutionsMega + '</div>' +
           '<div class="has-mega">' + trigger('Industries', 'mega-industries') + industriesMega + '</div>' +
           '<a href="/case-studies/" class="nav-link">Case Studies</a>' +
+          '<a href="/resources/blog/" class="nav-link">Blog</a>' +
         '</div>' +
         '<button type="button" class="nav-icon" data-search-trigger aria-label="Open site search"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>' +
         '<a href="/contact.html" class="btn-blue">Enquire Here</a>' +
@@ -177,6 +178,7 @@
       drawerGroup('Solutions', '/solutions/', SOLUTIONS) +
       drawerGroup('Industries', '/industries/', INDUSTRIES) +
       '<a href="/case-studies/" class="nav-mobile__link">Case Studies</a>' +
+      '<a href="/resources/blog/" class="nav-mobile__link">Blog</a>' +
       '<a href="/contact.html" class="nav-mobile__link">Contact</a>' +
     '</nav>' +
     '<a href="/contact.html" class="btn-blue">Enquire Here</a>' +

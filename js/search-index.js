@@ -247,6 +247,30 @@
     { title: 'Auriga Networks Case Study', url: '/case-studies/auriga-networks.html', category: 'proof', keywords: ['ongoing support', 'media network'], audience: ['manager', 'technical'], intents: ['proof'] },
     { title: 'Harry Dobbs Design Case Study', url: '/case-studies/harry-dobbs-design.html', category: 'proof', keywords: ['modernization', 'small business'], audience: ['non-technical', 'manager'], intents: ['proof'] },
     { title: 'NTA Core Network Upgrade Case Study', url: '/case-studies/nta-core-network-upgrade.html', category: 'proof', keywords: ['core upgrade', 'isp'], audience: ['technical', 'manager'], intents: ['proof'] },
-    { title: 'Senate Computers Case Study', url: '/case-studies/senate-computers.html', category: 'proof', keywords: ['multi-site security', 'ipsec'], audience: ['technical', 'manager'], intents: ['proof'] }
+    { title: 'Senate Computers Case Study', url: '/case-studies/senate-computers.html', category: 'proof', keywords: ['multi-site security', 'ipsec'], audience: ['technical', 'manager'], intents: ['proof'] },
+
+    {
+      title: 'Blog',
+      url: '/resources/blog/',
+      category: 'blog',
+      summary: 'Practical articles on network infrastructure, cybersecurity, cloud connectivity and managed IT services.',
+      keywords: ['blog', 'articles', 'insights'],
+      audience: ['non-technical', 'manager', 'technical'],
+      intents: ['learn']
+    },
+    { title: 'All You Need to Know About Network Design & Implementation', url: '/resources/blog/post-01.html', category: 'blog', keywords: ['network design', 'implementation', 'network diagram'], audience: ['manager', 'technical'], intents: ['learn'] },
+    { title: 'Wireless vs Wired Networks', url: '/resources/blog/post-03.html', category: 'blog', keywords: ['wireless', 'wired', 'wifi vs ethernet'], audience: ['non-technical', 'manager', 'technical'], intents: ['learn'] },
+    { title: 'A Guide to Wireless Security Solutions', url: '/resources/blog/post-04.html', category: 'blog', keywords: ['wireless security', 'wifi security', 'wpa'], audience: ['manager', 'technical'], intents: ['learn', 'security'] },
+    { title: 'Why Your Business Needs Cloud Networking', url: '/resources/blog/post-05.html', category: 'blog', keywords: ['cloud networking', 'cloud benefits'], audience: ['manager'], intents: ['learn'] },
+    { title: 'Network Validation: Everything You Need To Know', url: '/resources/blog/post-06.html', category: 'blog', keywords: ['network validation', 'authentication', 'network audit'], audience: ['manager', 'technical'], intents: ['learn', 'security'] },
+    { title: 'Leveraging Cloud Networking for Business Efficiency', url: '/resources/blog/post-07.html', category: 'blog', keywords: ['cloud efficiency', 'cloud collaboration'], audience: ['manager'], intents: ['learn'] },
+    { title: 'The Value of Professional IT Services', url: '/resources/blog/post-09.html', category: 'blog', keywords: ['it consultant', 'network consulting services'], audience: ['manager'], intents: ['learn'] },
+    { title: 'Everything You Need to Know About WLANs', url: '/resources/blog/post-10.html', category: 'blog', keywords: ['wlan', 'managed wireless', 'wireless lan'], audience: ['manager', 'technical'], intents: ['learn'] },
+    { title: 'How AI is Reducing Network Downtime and IT Costs', url: '/resources/blog/post-11.html', category: 'blog', keywords: ['ai networking', 'predictive monitoring', 'downtime'], audience: ['manager', 'technical'], intents: ['learn', 'ai'] },
+    { title: 'Top Network Security Management Solutions for Remote Working', url: '/resources/blog/post-12.html', category: 'blog', keywords: ['remote work security', 'endpoint security', 'zero trust'], audience: ['manager', 'technical'], intents: ['learn', 'security'] },
+    { title: 'Optimising Your Network with Network Consultancy', url: '/resources/blog/post-15.html', category: 'blog', keywords: ['network optimisation', 'redundancy', 'data protection'], audience: ['manager', 'technical'], intents: ['learn'] },
+    { title: 'Cisco Network Convergence System', url: '/resources/blog/post-17.html', category: 'blog', keywords: ['cisco', 'ncs', 'industry news'], audience: ['technical'], intents: ['learn'] },
+    { title: 'Virtualised Networks Designed & Installed by Us', url: '/resources/blog/post-18.html', category: 'blog', keywords: ['cisco', 'vmware', 'virtualisation'], audience: ['technical'], intents: ['learn'] },
+    { title: 'Why Your Business Needs a Network Consultant Partner', url: '/resources/blog/post-19.html', category: 'blog', keywords: ['network consultant', 'strategic partner', 'managed support'], audience: ['manager'], intents: ['learn'] }
   ];
 })();

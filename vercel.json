@@ -2,10 +2,19 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    {
-      "source": "/resources/blog/:path*",
-      "destination": "/resources",
-      "permanent": false
-    }
+    { "source": "/blog/overview-of-network-design-implementation", "destination": "/resources/blog/post-01", "permanent": false },
+    { "source": "/blog/wireless-vs-wired-networks", "destination": "/resources/blog/post-03", "permanent": false },
+    { "source": "/blog/a-guide-to-wireless-security-solutions", "destination": "/resources/blog/post-04", "permanent": false },
+    { "source": "/blog/why-your-business-needs-cloud-networking-key-benefits-and-implementation-strategies", "destination": "/resources/blog/post-05", "permanent": false },
+    { "source": "/blog/network-validation-everything-you-need-to-know", "destination": "/resources/blog/post-06", "permanent": false },
+    { "source": "/blog/leveraging-cloud-networking-for-business-efficiency", "destination": "/resources/blog/post-07", "permanent": false },
+    { "source": "/blog/the-value-of-professional-it-services-from-it-consultant-to-network-consulting-services", "destination": "/resources/blog/post-09", "permanent": false },
+    { "source": "/blog/everything-you-need-to-know-about-wlans", "destination": "/resources/blog/post-10", "permanent": false },
+    { "source": "/blog/how-ai-is-revolutionising-network-operations-cost-control", "destination": "/resources/blog/post-11", "permanent": false },
+    { "source": "/blog/top-network-security-solutions-for-remote-work-2025-tips", "destination": "/resources/blog/post-12", "permanent": false },
+    { "source": "/blog/optimising-your-network-with-network-consultancy", "destination": "/resources/blog/post-15", "permanent": false },
+    { "source": "/blog/cisco-delivers-network-convergence-system-to-power-internet-of-everything", "destination": "/resources/blog/post-17", "permanent": false },
+    { "source": "/blog/virtualised-networks-designed-installed-by-us", "destination": "/resources/blog/post-18", "permanent": false },
+    { "source": "/blog/how-can-a-network-consultant-transform-your-it-infrastructure", "destination": "/resources/blog/post-19", "permanent": false }
   ]
 }

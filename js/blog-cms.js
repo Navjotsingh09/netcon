@@ -2,11 +2,11 @@
   var BLOG_POSTS = [
     {
       slug: "post-01",
-      title: "Why Your Business Network Needs a Health Check in 2025",
-      excerpt: "Most businesses run on networks that have grown organically over time. Learn why regular health checks are essential.",
+      title: "All You Need to Know About Network Design & Implementation",
+      excerpt: "A breakdown of the process behind designing and implementing a business network, from consultation and diagramming through to installation and testing.",
       dateLabel: "10/12/2026",
-      category: "Services",
-      image: "/images/pages/network-abstract.jpg"
+      category: "Infrastructure",
+      image: "/images/pages/unique/resources-blog-post-01-resources.jpg"
     },
     {
       slug: "post-02",
@@ -21,40 +21,40 @@
       title: "Wireless vs Wired Networks",
       excerpt: "Wireless and wired networks each have distinct advantages. Understand the trade-offs to make the right choice for your office environment.",
       dateLabel: "10/12/2026",
-      category: "Services",
-      image: "/images/pages/technician.jpg"
+      category: "Infrastructure",
+      image: "/images/pages/unique/resources-blog-post-03-resources.jpg"
     },
     {
       slug: "post-04",
       title: "A Guide to Wireless Security Solutions",
       excerpt: "Wireless security is essential for modern businesses. Explore five practical solutions to protect your wireless network from threats.",
       dateLabel: "10/12/2026",
-      category: "Solutions",
-      image: "/images/pages/cyber-security.jpg"
+      category: "Security",
+      image: "/images/pages/unique/resources-blog-post-04-resources.jpg"
     },
     {
       slug: "post-05",
       title: "Why Your Business Needs Cloud Networking",
       excerpt: "Cloud networking is transforming how businesses operate. Discover the key benefits and how to implement it effectively in your organisation.",
       dateLabel: "10/12/2026",
-      category: "Solutions",
-      image: "/images/pages/professional.jpg"
+      category: "Cloud",
+      image: "/images/pages/unique/resources-blog-post-05-resources.png"
     },
     {
       slug: "post-06",
       title: "Network Validation: Everything You Need To Know",
-      excerpt: "WLANs are central to modern connectivity. A comprehensive guide to everything you need to know about wireless local area networks.",
+      excerpt: "Ensure your secure wireless network is trustworthy. Learn the key authentication methods and why proactive network validation beats reactive fixes.",
       dateLabel: "10/12/2026",
-      category: "Services",
-      image: "/images/pages/network-abstract.jpg"
+      category: "Security",
+      image: "/images/pages/unique/resources-blog-post-06-resources.jpg"
     },
     {
       slug: "post-07",
       title: "Leveraging Cloud Networking for Business Efficiency",
       excerpt: "Cloud networking unlocks new levels of efficiency and agility. Explore how to leverage cloud-based networking to drive business performance.",
       dateLabel: "10/12/2026",
-      category: "Solutions",
-      image: "/images/pages/professional.jpg"
+      category: "Cloud",
+      image: "/images/pages/unique/resources-blog-post-07-resources.jpg"
     },
     {
       slug: "post-08",
@@ -69,32 +69,32 @@
       title: "The Value of Professional IT Services",
       excerpt: "Professional IT services deliver more than fixes. Understand the full value of working with expert consultants and network specialists.",
       dateLabel: "10/12/2026",
-      category: "Services",
-      image: "/images/pages/professional.jpg"
+      category: "Managed Services",
+      image: "/images/pages/unique/resources-blog-post-09-resources.png"
     },
     {
       slug: "post-10",
-      title: "The Different Types of IT Networks",
-      excerpt: "Different IT networks suit different business needs. An overview of LAN, WAN, VPN, and other network types to help you choose wisely.",
+      title: "Everything You Need to Know About WLANs",
+      excerpt: "WLANs are central to modern connectivity. A comprehensive guide to everything you need to know about wireless local area networks.",
       dateLabel: "10/12/2026",
-      category: "Services",
-      image: "/images/pages/network-abstract.jpg"
+      category: "Infrastructure",
+      image: "/images/pages/unique/resources-blog-post-10-resources.jpg"
     },
     {
       slug: "post-11",
-      title: "Proactive Defence: Why Continuous Monitoring is Critical",
-      excerpt: "Continuous monitoring provides proactive defence against cyber threats. Learn why reactive security is no longer enough for modern businesses.",
+      title: "How AI is Reducing Network Downtime and IT Costs",
+      excerpt: "Artificial intelligence is changing network management by enabling predictive maintenance, anomaly detection, and intelligent resource allocation.",
       dateLabel: "10/12/2026",
-      category: "Solutions",
-      image: "/images/pages/cyber-security.jpg"
+      category: "Infrastructure",
+      image: "/images/pages/unique/resources-blog-post-11-resources.jpg"
     },
     {
       slug: "post-12",
       title: "Top Network Security Management Solutions for Remote Working",
       excerpt: "Remote working creates new network security challenges. Discover the top management solutions to keep distributed teams secure in 2025.",
       dateLabel: "10/12/2026",
-      category: "Solutions",
-      image: "/images/pages/cyber-security.jpg"
+      category: "Security",
+      image: "/images/pages/unique/resources-blog-post-12-resources.png"
     },
     {
       slug: "post-13",
@@ -114,11 +114,11 @@
     },
     {
       slug: "post-15",
-      title: "How Network Consultancy Services Strengthen Business Infrastructure",
-      excerpt: "Expert network consultancy services deliver stronger, more reliable business infrastructure. Understand the real-world impact on modern organisations.",
+      title: "Optimising Your Network with Network Consultancy",
+      excerpt: "A well-designed network is crucial for smooth data flow and robust security. Learn how strategic optimisation and redundancy strengthen infrastructure.",
       dateLabel: "10/12/2026",
-      category: "Services",
-      image: "/images/pages/servers.jpg"
+      category: "Managed Services",
+      image: "/images/pages/unique/resources-blog-post-15-resources.jpg"
     },
     {
       slug: "post-16",
@@ -133,24 +133,24 @@
       title: "Cisco Network Convergence System",
       excerpt: "Cisco Network Convergence System delivers petabit-scale performance for global service providers. Learn about the breakthroughs powering next-generation networks.",
       dateLabel: "10/12/2026",
-      category: "Industries",
-      image: "/images/pages/technician.jpg"
+      category: "Industry News",
+      image: "/images/pages/unique/resources-blog-post-17-resources.jpg"
     },
     {
       slug: "post-18",
-      title: "Cisco Security Solutions",
-      excerpt: "Cisco security services protect your business from threats. From cloud storage to firewall management, discover how Cisco solutions keep you secure.",
+      title: "Virtualised Networks Designed & Installed by Us",
+      excerpt: "Organisations transform their business with integrated technology from Cisco and VMware. See how converged compute, storage, and virtualisation accelerate IT agility.",
       dateLabel: "10/12/2026",
-      category: "Solutions",
-      image: "/images/pages/cyber-security.jpg"
+      category: "Industry News",
+      image: "/images/pages/unique/resources-blog-post-18-resources.jpg"
     },
     {
       slug: "post-19",
       title: "Why Your Business Needs a Network Consultant Partner",
       excerpt: "A strategic network consultant partner delivers more than IT fixes. Learn why businesses need expert consultancy to future-proof their infrastructure.",
       dateLabel: "10/12/2026",
-      category: "Services",
-      image: "/images/pages/professional.jpg"
+      category: "Strategy",
+      image: "/images/pages/unique/resources-blog-post-19-resources.jpg"
     }
   ];
 
@@ -216,10 +216,11 @@
 
       var visible = filtered.slice(0, pageSize);
       list.innerHTML = visible.map(function (post) {
+        var mime = /\.png$/i.test(post.image) ? "image/png" : "image/jpeg";
         return "<article class=\"blog-item animate-fade-up\">" +
           "<div class=\"blog-item__media\">" +
           "<picture>" +
-          "<source srcset=\"" + escapeHtml(post.image) + "\" type=\"image/jpeg\">" +
+          "<source srcset=\"" + escapeHtml(post.image) + "\" type=\"" + mime + "\">" +
           "<img src=\"" + escapeHtml(post.image) + "\" alt=\"" + escapeHtml(post.title) + "\" loading=\"lazy\" width=\"451\" height=\"312\">" +
           "</picture>" +
           "<span class=\"blog-item__cat\">" + escapeHtml(post.category) + "</span>" +
@@ -240,6 +241,16 @@
       } else {
         meta.textContent = "Showing 1-" + shownEnd + " of " + total + " article" + (total === 1 ? "" : "s") + " in " + activeCategory + ".";
       }
+
+      // The blog cards above are injected after the page's initial
+      // IntersectionObserver scan (js/animations.js) has already run, so
+      // scroll-triggered reveal is unreliable for them (never observed,
+      // or dependent on scroll position/cache state of animations.js).
+      // Reveal them directly and synchronously instead — no rAF/timers,
+      // since those can also be suspended on backgrounded/inactive tabs.
+      list.querySelectorAll(".animate-fade-up, .animate-fade-in").forEach(function (el) {
+        el.classList.add("is-visible");
+      });
     }
 
     chipsWrap.addEventListener("click", function (event) {
