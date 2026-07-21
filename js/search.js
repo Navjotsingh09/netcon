@@ -148,7 +148,7 @@
       '      <div class="search-support-title">Didn\'t find what you need?</div>',
       '      <div class="search-support-text">Still stuck? Send your issue and our team will help.</div>',
       '      <div class="search-support-actions">',
-      '        <a class="search-support-link primary" href="/contact.html" data-search-contact>Book Network Assessment</a>',
+      '        <a class="search-support-link primary" href="/contact" data-search-contact>Book Network Assessment</a>',
       '        <a class="search-support-link secondary" href="mailto:info@network-consultancy.com?subject=Support%20Request" data-search-email>Email Support Team</a>',
       '      </div>',
       '      <input class="search-help-input" type="text" placeholder="Example: Our remote users are getting frequent VPN disconnects" aria-label="Describe what you could not find">',
@@ -318,7 +318,7 @@
     }
 
     if (contactLink) {
-      contactLink.setAttribute('href', '/contact.html?query=' + encodeURIComponent(query || 'Network support enquiry'));
+      contactLink.setAttribute('href', '/contact?query=' + encodeURIComponent(query || 'Network support enquiry'));
     }
     if (emailLink) {
       emailLink.setAttribute('href', 'mailto:info@network-consultancy.com?subject=' + encodeURIComponent('Support Request') + '&body=' + encodeURIComponent('User profile: ' + audienceLabels[activeAudience] + '\n\nQuestion: ' + (query || 'No query provided')));
@@ -434,7 +434,7 @@
       var raw = userText ? userText.value.trim() : '';
       var current = q('#site-search-modal .search-input');
       var queryText = raw || (current ? current.value.trim() : '') || 'Support request';
-      window.location.href = '/contact.html?query=' + encodeURIComponent(queryText) + '&audience=' + encodeURIComponent(activeAudience);
+      window.location.href = '/contact?query=' + encodeURIComponent(queryText) + '&audience=' + encodeURIComponent(activeAudience);
     }
   });
 

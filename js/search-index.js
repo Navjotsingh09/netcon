@@ -13,7 +13,7 @@
     },
     {
       title: 'About Us',
-      url: '/about.html',
+      url: '/about',
       category: 'core',
       summary: 'Who we are, how we work, and why businesses trust our network specialists.',
       keywords: ['about network consultancy', 'company profile', 'who we are'],
@@ -22,7 +22,7 @@
     },
     {
       title: 'Contact',
-      url: '/contact.html',
+      url: '/contact',
       category: 'core',
       summary: 'Get in touch with our engineers for consultation, support, or project discussions.',
       keywords: ['contact', 'book consultation', 'speak to support', 'enquire'],
@@ -31,7 +31,7 @@
     },
     {
       title: 'Privacy Policy',
-      url: '/privacy-policy.html',
+      url: '/privacy-policy',
       category: 'legal',
       summary: 'How personal and operational data is handled and protected.',
       keywords: ['privacy', 'data policy', 'gdpr'],
@@ -40,7 +40,7 @@
     },
     {
       title: 'Terms of Service',
-      url: '/terms-of-service.html',
+      url: '/terms-of-service',
       category: 'legal',
       summary: 'Service terms, responsibilities, and contractual conditions.',
       keywords: ['terms', 'service agreement', 'sla terms'],
@@ -49,7 +49,7 @@
     },
     {
       title: 'Cookie Policy',
-      url: '/cookie-policy.html',
+      url: '/cookie-policy',
       category: 'legal',
       summary: 'Cookie usage details and browser control options.',
       keywords: ['cookies', 'tracking policy'],
@@ -58,7 +58,7 @@
     },
     {
       title: 'Complaint Form',
-      url: '/complaint-form.html',
+      url: '/complaint-form',
       category: 'legal',
       summary: 'Raise service concerns for review and resolution.',
       keywords: ['complaint', 'issue', 'raise concern'],
@@ -77,7 +77,7 @@
     },
     {
       title: 'Network Consultancy',
-      url: '/services/network-consultancy.html',
+      url: '/services/network-consultancy',
       category: 'services',
       summary: 'Strategic guidance for designing and improving business networks.',
       keywords: ['consultancy', 'network strategy', 'advice'],
@@ -86,7 +86,7 @@
     },
     {
       title: 'Network Design & Deployment',
-      url: '/services/network-design-and-deployment.html',
+      url: '/services/network-design-and-deployment',
       category: 'services',
       summary: 'Plan and deploy reliable network architecture for growth.',
       keywords: ['design', 'deployment', 'implementation'],
@@ -95,7 +95,7 @@
     },
     {
       title: 'Network Installations',
-      url: '/services/network-installations.html',
+      url: '/services/network-installations',
       category: 'services',
       summary: 'On-site installations for dependable connectivity and performance.',
       keywords: ['install', 'cabling', 'network setup'],
@@ -104,7 +104,7 @@
     },
     {
       title: 'Network Support',
-      url: '/services/network-support.html',
+      url: '/services/network-support',
       category: 'services',
       summary: 'Responsive support for incidents, outages, and performance problems.',
       keywords: ['support', 'help desk', 'fix network', 'network down'],
@@ -113,7 +113,7 @@
     },
     {
       title: 'Managed Network Support',
-      url: '/services/managed-network-support.html',
+      url: '/services/managed-network-support',
       category: 'services',
       summary: 'Proactive monitoring and management for business continuity.',
       keywords: ['managed support', 'outsourced it', '24x7 monitoring'],
@@ -122,7 +122,7 @@
     },
     {
       title: 'Managed Wireless LAN',
-      url: '/services/managed-wireless-lan.html',
+      url: '/services/managed-wireless-lan',
       category: 'services',
       summary: 'Business Wi-Fi planning, optimization, and maintenance.',
       keywords: ['wifi', 'wireless', 'slow wifi', 'office wifi'],
@@ -131,7 +131,7 @@
     },
     {
       title: 'Firewall & Network Security',
-      url: '/services/firewall-and-network-security.html',
+      url: '/services/firewall-and-network-security',
       category: 'services',
       summary: 'Protection against threats through modern firewall and security controls.',
       keywords: ['firewall', 'security', 'cyber', 'threat prevention'],
@@ -140,7 +140,7 @@
     },
     {
       title: 'Remote Access & VPN',
-      url: '/services/remote-working-solutions.html',
+      url: '/services/remote-working-solutions',
       category: 'services',
       summary: 'Secure remote connectivity for distributed teams and offices.',
       keywords: ['vpn', 'remote access', 'work from home'],
@@ -149,7 +149,7 @@
     },
     {
       title: 'Business Continuity & Resilience',
-      url: '/services/business-continuity-and-network-resilience.html',
+      url: '/services/business-continuity-and-network-resilience',
       category: 'services',
       summary: 'Reduce downtime with resilient network architecture and recovery planning.',
       keywords: ['business continuity', 'resilience', 'downtime', 'disaster recovery'],
@@ -168,7 +168,7 @@
     },
     {
       title: 'Network Health Check',
-      url: '/solutions/network-health-check.html',
+      url: '/solutions/network-health-check',
       category: 'solutions',
       summary: 'Structured assessment of network weaknesses and practical improvement priorities.',
       keywords: ['health check', 'assessment', 'slow network'],
@@ -177,7 +177,7 @@
     },
     {
       title: 'AI-Ready Infrastructure',
-      url: '/solutions/ai-ready-infrastructure-review.html',
+      url: '/solutions/ai-ready-infrastructure-review',
       category: 'solutions',
       summary: 'Evaluate readiness for AI workloads across infrastructure, security, and operations.',
       keywords: ['ai readiness', 'ai infrastructure', 'compute readiness'],
@@ -186,7 +186,7 @@
     },
     {
       title: 'Cyber Security Review',
-      url: '/solutions/cyber-security-review.html',
+      url: '/solutions/cyber-security-review',
       category: 'solutions',
       summary: 'Identify vulnerabilities and close security gaps before incidents occur.',
       keywords: ['cyber review', 'security audit', 'vulnerability'],
@@ -195,7 +195,7 @@
     },
     {
       title: 'Microsoft 365 & Network',
-      url: '/solutions/microsoft-365-and-network-readiness.html',
+      url: '/solutions/microsoft-365-and-network-readiness',
       category: 'solutions',
       summary: 'Prepare network performance and reliability for Microsoft 365 workloads.',
       keywords: ['microsoft 365', 'm365 slow', 'office 365 network'],
@@ -212,14 +212,14 @@
       audience: ['manager'],
       intents: ['discover']
     },
-    { title: 'Financial Services', url: '/industries/financial-services.html', category: 'industries', keywords: ['finance', 'regulated'], audience: ['manager'], intents: ['discover', 'risk'] },
-    { title: 'Healthcare & Clinics', url: '/industries/healthcare-and-clinics.html', category: 'industries', keywords: ['healthcare', 'clinic'], audience: ['manager'], intents: ['discover', 'risk'] },
-    { title: 'Internal IT Teams', url: '/industries/internal-it-teams.html', category: 'industries', keywords: ['co-managed it', 'internal team'], audience: ['technical', 'manager'], intents: ['discover', 'support'] },
-    { title: 'Legal Firms', url: '/industries/legal-firms.html', category: 'industries', keywords: ['legal', 'law firm'], audience: ['manager'], intents: ['discover', 'risk'] },
-    { title: 'Manufacturing', url: '/industries/manufacturing.html', category: 'industries', keywords: ['manufacturing', 'plant network'], audience: ['manager'], intents: ['discover', 'support'] },
-    { title: 'Multi-Site Businesses', url: '/industries/multi-site-businesses.html', category: 'industries', keywords: ['multi-site', 'multiple offices'], audience: ['manager', 'technical'], intents: ['discover', 'upgrade'] },
-    { title: 'Professional Services', url: '/industries/professional-services.html', category: 'industries', keywords: ['professional services'], audience: ['manager'], intents: ['discover'] },
-    { title: 'Recruitment Agencies', url: '/industries/recruitment-agencies.html', category: 'industries', keywords: ['recruitment'], audience: ['manager'], intents: ['discover'] },
+    { title: 'Financial Services', url: '/industries/financial-services', category: 'industries', keywords: ['finance', 'regulated'], audience: ['manager'], intents: ['discover', 'risk'] },
+    { title: 'Healthcare & Clinics', url: '/industries/healthcare-and-clinics', category: 'industries', keywords: ['healthcare', 'clinic'], audience: ['manager'], intents: ['discover', 'risk'] },
+    { title: 'Internal IT Teams', url: '/industries/internal-it-teams', category: 'industries', keywords: ['co-managed it', 'internal team'], audience: ['technical', 'manager'], intents: ['discover', 'support'] },
+    { title: 'Legal Firms', url: '/industries/legal-firms', category: 'industries', keywords: ['legal', 'law firm'], audience: ['manager'], intents: ['discover', 'risk'] },
+    { title: 'Manufacturing', url: '/industries/manufacturing', category: 'industries', keywords: ['manufacturing', 'plant network'], audience: ['manager'], intents: ['discover', 'support'] },
+    { title: 'Multi-Site Businesses', url: '/industries/multi-site-businesses', category: 'industries', keywords: ['multi-site', 'multiple offices'], audience: ['manager', 'technical'], intents: ['discover', 'upgrade'] },
+    { title: 'Professional Services', url: '/industries/professional-services', category: 'industries', keywords: ['professional services'], audience: ['manager'], intents: ['discover'] },
+    { title: 'Recruitment Agencies', url: '/industries/recruitment-agencies', category: 'industries', keywords: ['recruitment'], audience: ['manager'], intents: ['discover'] },
 
     {
       title: 'Resources',
@@ -231,8 +231,8 @@
       intents: ['learn']
     },
 
-    { title: 'Downloads', url: '/resources/downloads.html', category: 'resources', keywords: ['download', 'templates'], audience: ['manager'], intents: ['learn'] },
-    { title: 'Guides', url: '/resources/guides.html', category: 'resources', keywords: ['guide', 'playbook'], audience: ['non-technical', 'manager'], intents: ['learn'] },
+    { title: 'Downloads', url: '/resources/downloads', category: 'resources', keywords: ['download', 'templates'], audience: ['manager'], intents: ['learn'] },
+    { title: 'Guides', url: '/resources/guides', category: 'resources', keywords: ['guide', 'playbook'], audience: ['non-technical', 'manager'], intents: ['learn'] },
 
     {
       title: 'Case Studies',
@@ -243,11 +243,11 @@
       audience: ['manager', 'technical'],
       intents: ['proof']
     },
-    { title: 'Antal International Case Study', url: '/case-studies/antal-international.html', category: 'proof', keywords: ['sase', 'global network'], audience: ['manager', 'technical'], intents: ['proof'] },
-    { title: 'Auriga Networks Case Study', url: '/case-studies/auriga-networks.html', category: 'proof', keywords: ['ongoing support', 'media network'], audience: ['manager', 'technical'], intents: ['proof'] },
-    { title: 'Harry Dobbs Design Case Study', url: '/case-studies/harry-dobbs-design.html', category: 'proof', keywords: ['modernization', 'small business'], audience: ['non-technical', 'manager'], intents: ['proof'] },
-    { title: 'NTA Core Network Upgrade Case Study', url: '/case-studies/nta-core-network-upgrade.html', category: 'proof', keywords: ['core upgrade', 'isp'], audience: ['technical', 'manager'], intents: ['proof'] },
-    { title: 'Senate Computers Case Study', url: '/case-studies/senate-computers.html', category: 'proof', keywords: ['multi-site security', 'ipsec'], audience: ['technical', 'manager'], intents: ['proof'] },
+    { title: 'Antal International Case Study', url: '/case-studies/antal-international', category: 'proof', keywords: ['sase', 'global network'], audience: ['manager', 'technical'], intents: ['proof'] },
+    { title: 'Auriga Networks Case Study', url: '/case-studies/auriga-networks', category: 'proof', keywords: ['ongoing support', 'media network'], audience: ['manager', 'technical'], intents: ['proof'] },
+    { title: 'Harry Dobbs Design Case Study', url: '/case-studies/harry-dobbs-design', category: 'proof', keywords: ['modernization', 'small business'], audience: ['non-technical', 'manager'], intents: ['proof'] },
+    { title: 'NTA Core Network Upgrade Case Study', url: '/case-studies/nta-core-network-upgrade', category: 'proof', keywords: ['core upgrade', 'isp'], audience: ['technical', 'manager'], intents: ['proof'] },
+    { title: 'Senate Computers Case Study', url: '/case-studies/senate-computers', category: 'proof', keywords: ['multi-site security', 'ipsec'], audience: ['technical', 'manager'], intents: ['proof'] },
 
     {
       title: 'Blog',

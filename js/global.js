@@ -269,7 +269,7 @@
         consentBlock.innerHTML = '' +
           '<div class="form-consent">' +
             '<input id="cf-consent-privacy" type="checkbox" name="consent_privacy" value="yes" required>' +
-            '<label for="cf-consent-privacy">By submitting this form, you agree to our processing of your corporate details in accordance with our <a href="/privacy-policy.html">Privacy Policy</a>.</label>' +
+            '<label for="cf-consent-privacy">By submitting this form, you agree to our processing of your corporate details in accordance with our <a href="/privacy-policy">Privacy Policy</a>.</label>' +
           '</div>' +
           '<div class="form-consent">' +
             '<input id="cf-consent-marketing" type="checkbox" name="consent_marketing" value="yes">' +

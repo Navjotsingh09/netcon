@@ -108,7 +108,7 @@ Edgbaston, B15 3BE</p>
               <input id="cf-consent-privacy" type="checkbox" name="consent_privacy" value="yes" required>
               <span class="nd-contact__checkbox-box" aria-hidden="true"></span>
             </span>
-            <span class="nd-contact__agree-text">By submitting this form, you agree to our processing of your corporate details in accordance with our <a href="/privacy-policy.html">Privacy Policy</a>.</span>
+            <span class="nd-contact__agree-text">By submitting this form, you agree to our processing of your corporate details in accordance with our <a href="/privacy-policy">Privacy Policy</a>.</span>
           </label>
           <label class="nd-contact__agree">
             <span class="nd-contact__checkbox">

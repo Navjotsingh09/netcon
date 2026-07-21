@@ -310,7 +310,7 @@
       '  <div class="nd-faq__left">',
       '    <h2 class="section-title">Frequently Asked Questions</h2>',
       '    <p>Still have questions? Get connected to our support team.</p>',
-      '    <a href="/contact.html" class="nd-faq__cta">Contact us</a>',
+      '    <a href="/contact" class="nd-faq__cta">Contact us</a>',
       '  </div>',
       '  <div class="nd-faq__right" data-faq-list>',
       items,
