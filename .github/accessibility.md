@@ -197,7 +197,7 @@ A floating accessibility button appears on every page (bottom-right corner).
 | **Pause Animations** | Sets all animation and transition durations to 0.001s |
 | **Reset All** | Clears all overrides and localStorage |
 
-**Persistence:** All settings saved to `localStorage` key `nc_a11y_v1` — survive page navigation.
+**Persistence:** All settings saved to `localStorage` key `nc_a11y_v2` — survive page navigation.
 
 ---
 

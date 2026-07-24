@@ -161,6 +161,15 @@
       dateLabel: "31/05/2026",
       category: "Strategy",
       image: "/images/pages/unique/resources-blog-post-19-resources.jpg"
+    },
+    {
+      slug: "post-20",
+      urlSlug: "business-network-components",
+      title: "10 Essential Components of a Modern Business Network",
+      excerpt: "From reliable connectivity and next-generation firewalls to cloud networking and professional design, explore the ten components every modern business network needs.",
+      dateLabel: "21/07/2026",
+      category: "Infrastructure",
+      image: "/images/pages/unique/resources-blog-business-network-components.jpg"
     }
   ];
 

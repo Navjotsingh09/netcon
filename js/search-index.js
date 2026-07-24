@@ -271,6 +271,7 @@
     { title: 'Optimising Your Network with Network Consultancy', url: '/resources/blogs/network-consultancy-services', category: 'blog', keywords: ['network optimisation', 'redundancy', 'data protection'], audience: ['manager', 'technical'], intents: ['learn'] },
     { title: 'Cisco Network Convergence System', url: '/resources/blogs/cisco-network-convergence-system', category: 'blog', keywords: ['cisco', 'ncs', 'industry news'], audience: ['technical'], intents: ['learn'] },
     { title: 'Virtualised Networks Designed & Installed by Us', url: '/resources/blogs/cisco-security-solutions', category: 'blog', keywords: ['cisco', 'vmware', 'virtualisation'], audience: ['technical'], intents: ['learn'] },
-    { title: 'Why Your Business Needs a Network Consultant Partner', url: '/resources/blogs/network-consultant-benefits', category: 'blog', keywords: ['network consultant', 'strategic partner', 'managed support'], audience: ['manager'], intents: ['learn'] }
+    { title: 'Why Your Business Needs a Network Consultant Partner', url: '/resources/blogs/network-consultant-benefits', category: 'blog', keywords: ['network consultant', 'strategic partner', 'managed support'], audience: ['manager'], intents: ['learn'] },
+    { title: '10 Essential Components of a Modern Business Network', url: '/resources/blogs/business-network-components', category: 'blog', keywords: ['business network services', 'network design consulting', 'network management company', 'network installation'], audience: ['manager', 'technical'], intents: ['learn'] }
   ];
 })();

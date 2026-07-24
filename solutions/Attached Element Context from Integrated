@@ -1,0 +1,69 @@
+Attached Element Context from Integrated Browser
+
+Element: section.csd-cta-band
+
+URL: http://127.0.0.1:4173/case-studies/antal-international.html
+
+HTML Path: main#main > section.csd-cta-band
+
+Outer HTML:
+```html
+<section class="csd-cta-band" aria-label="Call to action" data-current-service="service-1">
+      <div class="csd-cta-inner">
+        <div class="csd-pill-list" aria-hidden="true" hidden="hidden">
+          <div class="csd-pill-col"><span class="csd-pill">service 6</span><span class="csd-pill">service 4</span></div>
+          <div class="csd-pill-col"><span class="csd-pill">service 5</span><span class="csd-pill">service 2</span></div>
+          <div class="csd-pill-col"><span class="csd-pill">service 1</span><span class="csd-pill">service 3</span></div>
+        </div>
+        <div class="csd-cta-card">
+          <h3>Modernise your global network infrastructure.</h3>
+          <p>Get in touch to discuss how a cloud-based network model could simplify security across your locations.</p>
+          <a href="/contact.html" data-source-cta="case_study_detail_assessment">Book Your Network Assessment</a>
+        </div>
+      <div class="nc-service-floater" aria-hidden="true"><div class="nc-service-lane"><div class="nc-service-track"><span class="nc-service-chip">service 2</span><span class="nc-service-chip">service 4</span><span class="nc-service-chip">service 6</span><span class="nc-service-chip">service 2</span><span class="nc-service-chip">service 4</span><span class="nc-service-chip">service 6</span><span class="nc-service-chip">service 2</span><span class="nc-service-chip">service 4</span><span class="nc-service-chip">service 6</span><span class="nc-service-chip">service 2</span><span class="nc-service-chip">service 4</span><span class="nc-service-chip">service 6</span><span class="nc-service-chip">service 2</span><span class="nc-service-chip">service 4</span><span class="nc-service-chip">service 6</span><span class="nc-service-chip">service 2</span><span class="nc-service-chip">service 4</span><span class="nc-service-chip">service 6</span><span class="nc-service-chip">service 2</span><span class="nc-service-chip">service 4</span><span class="nc-service-chip">service 6</span><span class="nc-service-chip">service 2</span><span class="nc-service-chip">service 4</span><span class="nc-service-chip">service 6</span><span class="nc-service-chip">service 2</span><span class="nc-service-chip">service 4</span><span class="nc-service-chip">service 6</span><span class="nc-service-chip">service 2</span><span class="nc-service-chip">service 4</span><span class="nc-service-chip">service 6</span><span class="nc-service-chip">service 2</span><span class="nc-service-chip">service 4</span><span class="nc-service-chip">service 6</span><span class="nc-service-chip">service 2</span><span class="nc-service-chip">service 4</span><span class="nc-service-chip">service 6</span></div></div><div class="nc-service-lane is-reverse"><div class="nc-service-track"><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span><span class="nc-service-chip">service 3</span><span class="nc-service-chip">service 5</span></div></div></div></div>
+    </section>
+```
+
+Dimensions:
+- top: 525px
+- left: 0px
+- width: 1886px
+- height: 418px
+
+CSS:
+```css
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body > main, body > nav, body > footer, body > section, main > section, main > div, main > article, main > aside { max-width: var(--section-w);
+  margin-left: auto;
+  margin-right: auto; }
+.csd-cta-band { margin-top: 42px; background: #0982c5; padding: 52px var(--px); }
+
+/* Inherited */
+body { font-family: 'Google Sans Flex', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; color: #353535 }
+body, button, input, textarea, select, option, label, h1, h2, h3, h4, h5, h6, p, li, a, span, div { font-family: 'Google Sans Flex', 'Helvetica Neue', Helvetica, Arial, sans-serif !important }
+
+/* Resolved values */
+margin: 42px 0px 0px;
+padding: 52px 240px;
+background-attachment: scroll;
+background-clip: border-box;
+background-color: rgb(9, 130, 197);
+background-image: none;
+background-origin: padding-box;
+background-position-x: 0%;
+background-position-y: 0%;
+background-repeat: repeat;
+background-size: auto;
+box-sizing: border-box;
+color: rgb(53, 53, 53);
+display: block;
+font-family: "Google Sans Flex", "Helvetica Neue", Helvetica, Arial, sans-serif;
+height: 376.375px;
+max-width: 1920px;
+unicode-bidi: isolate /*UA*/;
+width: 1886px;
+
+/* CSS variables */
+--section-w: 1920px;
+--px: 240px;
+```

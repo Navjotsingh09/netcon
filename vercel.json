@@ -69,12 +69,12 @@
     },
     {
       "source": "/blog/the-different-types-of-it-networks",
-      "destination": "/resources/blogs/professional-it-services",
+      "destination": "/resources/blogs/types-of-it-networks",
       "permanent": false
     },
     {
       "source": "/blog/proactive-defence-why-continuous-monitoring-is-critical",
-      "destination": "/resources/blogs/cloud-networking-benefits",
+      "destination": "/resources/blogs/continuous-network-monitoring",
       "permanent": false
     },
     {
@@ -94,7 +94,7 @@
     },
     {
       "source": "/blog/how-professional-network-consultancy-services-strengthen-modern-business-infrastructure",
-      "destination": "/resources/blogs/professional-it-services",
+      "destination": "/resources/blogs/network-consultancy-services",
       "permanent": false
     },
     {
@@ -109,52 +109,57 @@
     },
     {
       "source": "/blog/how-do-it-network-support-services-improve-business-continuity",
-      "destination": "/resources/blogs/remote-work-network-security",
+      "destination": "/resources/blogs",
       "permanent": false
     },
     {
       "source": "/blog/saas-essentials-what-you-must-know-for-business-excellence",
-      "destination": "/resources/blogs/remote-work-network-security",
+      "destination": "/resources/blogs",
       "permanent": false
     },
     {
       "source": "/blog/3-networking-trends-for-2022",
-      "destination": "/resources/blogs/remote-work-network-security",
+      "destination": "/resources/blogs",
       "permanent": false
     },
     {
       "source": "/blog/essential-network-support-for-secure-and-reliable-infrastructure",
-      "destination": "/resources/blogs/resilient-network-design",
+      "destination": "/resources/blogs",
       "permanent": false
     },
     {
       "source": "/blog/securing-your-network-comprehensive-solutions-for-modern-threats",
-      "destination": "/resources/blogs/network-upgrade-benefits",
+      "destination": "/resources/blogs",
       "permanent": false
     },
     {
       "source": "/blog/secure-connectivity-unveiling-the-robust-capabilities-of-sase",
-      "destination": "/resources/blogs/sme-network-consultancy",
+      "destination": "/resources/blogs",
       "permanent": false
     },
     {
       "source": "/blog/we-are-specialists-in-juniper-technology-secure-your-data-centre",
-      "destination": "/resources/blogs/network-consultancy-services",
+      "destination": "/resources/blogs",
       "permanent": false
     },
     {
       "source": "/blog/optimising-your-network-with-network-consultancy",
-      "destination": "/resources/blogs/network-consultancy-services",
+      "destination": "/resources/blogs",
       "permanent": false
     },
     {
       "source": "/blog/guarding-your-digital-fortress-a-comprehensive-guide-to-defending-against-5-common-network-security-threats",
-      "destination": "/resources/blogs/network-upgrade-benefits",
+      "destination": "/resources/blogs",
       "permanent": false
     },
     {
       "source": "/blog/virtualised-networks-designed-installed-by-us",
-      "destination": "/resources/blogs/cloud-networking-efficiency",
+      "destination": "/resources/blogs",
+      "permanent": false
+    },
+    {
+      "source": "/blog/how-ai-is-revolutionising-network-operations-cost-control",
+      "destination": "/resources/blogs",
       "permanent": false
     },
     {
@@ -360,11 +365,6 @@
     {
       "source": "/industries/healthcare-clinics",
       "destination": "/industries/healthcare-and-clinics",
-      "permanent": false
-    },
-    {
-      "source": "/resources/blogs/types-of-it-networks",
-      "destination": "/resources/blogs/cloud-networking-benefits",
       "permanent": false
     },
     {

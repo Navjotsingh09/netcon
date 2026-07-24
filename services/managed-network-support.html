@@ -233,9 +233,36 @@
   <section class="nc-hero-wrap" aria-label="Page hero">
     <div class="nc-hero">
       <div class="nc-hero__content">
-        <h1 class="nc-hero__title">Managed Network Support for Safe, Continuous Operations</h1>
-        <p class="nc-hero__sub">Strengthening Infrastructure for Long-Term Success</p>
-        <a href="#contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Book a Network Health Check</a>
+        <h1 class="nc-hero__title">Managed Network Support</h1>
+        <p class="nc-hero__sub">Network Consultancy strengthens your IT infrastructure with reliable, managed network support that positions your business for long-term growth.</p>
+        <a href="#contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Book Health Check</a>
+      </div>
+    </div>
+  </section>
+
+  
+<!-- ===== KEY SOLUTION AREAS (tabs) ===== -->
+  <section class="sd-section" aria-labelledby="ksa-h">
+    <div class="sd-wrap">
+      <div class="sd-head" style="text-align:left;margin-left:0;">
+        <h2 id="ksa-h">Our Comprehensive Network Services</h2>
+      </div>
+      <div class="ksa__card" id="ksa">
+        <div class="ksa__tabs" role="tablist">
+          <button class="ksa__tab active" role="tab" aria-selected="true">Proactive Network Monitoring</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Network Maintenance &amp; Patch Management</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Incident Response &amp; Fault Resolution</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Hardware Lifecycle &amp; Vendor Management</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">Network Security Management</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">On-Site &amp; Remote Technical Support</button>
+        </div>
+        <div class="ksa__panel">
+          <img id="ksa-img" src="/images/pages/unique/services-managed-network-support-nc-hero-person.jpg" alt="Managed network support engineer">
+          <div class="ksa__panel-card">
+            <h3 id="ksa-title">Proactive Network Monitoring</h3>
+            <p id="ksa-desc">Monitoring network performance 24/7 to identify potential issues before they affect your working day productivity. You get consistently maintained connectivity, zero downtime and your business never shuts for a moment.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -276,31 +303,7 @@
     </div>
   </section>
 
-  <!-- ===== KEY SOLUTION AREAS (tabs) ===== -->
-  <section class="sd-section" aria-labelledby="ksa-h">
-    <div class="sd-wrap">
-      <div class="sd-head" style="text-align:left;margin-left:0;">
-        <h2 id="ksa-h">Our Comprehensive Network Services</h2>
-      </div>
-      <div class="ksa__card" id="ksa">
-        <div class="ksa__tabs" role="tablist">
-          <button class="ksa__tab active" role="tab" aria-selected="true">Proactive Network Monitoring</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Network Maintenance &amp; Patch Management</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Incident Response &amp; Fault Resolution</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Hardware Lifecycle &amp; Vendor Management</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">Network Security Management</button>
-          <button class="ksa__tab" role="tab" aria-selected="false">On-Site &amp; Remote Technical Support</button>
-        </div>
-        <div class="ksa__panel">
-          <img id="ksa-img" src="/images/pages/unique/services-managed-network-support-nc-hero-person.jpg" alt="Managed network support engineer">
-          <div class="ksa__panel-card">
-            <h3 id="ksa-title">Proactive Network Monitoring</h3>
-            <p id="ksa-desc">Monitoring network performance 24/7 to identify potential issues before they affect your working day productivity. You get consistently maintained connectivity, zero downtime and your business never shuts for a moment.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ===== WHO WE SERVE ===== -->
   <section class="sd-section sd-section--tint" aria-labelledby="wws-h">
@@ -477,11 +480,31 @@
     var desc = document.getElementById('ksa-desc');
     var data = [
       { img:'/images/pages/unique/services-managed-network-support-nc-hero-person.jpg', title:'Proactive Network Monitoring', desc:'Monitoring network performance 24/7 to identify potential issues before they affect your working day productivity. You get consistently maintained connectivity, zero downtime and your business never shuts for a moment.' },
-      { img:'/images/unique/services-managed-network-support-feature-1.jpg', title:'Network Maintenance & Patch Management', desc:'We keep your infrastructure current with scheduled maintenance and timely patching, closing security gaps and keeping performance at its best.' },
-      { img:'/images/unique/services-managed-network-support-service-2.jpg', title:'Incident Response & Fault Resolution', desc:'When issues arise, our engineers respond fast, isolate the root cause, and restore service cleanly before it disrupts your business.' },
-      { img:'/images/unique/services-managed-network-support-feature-2.jpg', title:'Hardware Lifecycle & Vendor Management', desc:'We track, refresh, and manage your hardware and vendor relationships, so ageing equipment never becomes a costly surprise.' },
-      { img:'/images/unique/services-managed-network-support-service-3.jpg', title:'Network Security Management', desc:'We manage firewalls, access controls, and monitoring to keep your network protected against evolving threats.' },
-      { img:'/images/unique/services-managed-network-support-service-4.jpg', title:'On-Site & Remote Technical Support', desc:'Whether remote or on site, our engineers are on hand to resolve issues quickly and keep your teams productive.' }
+      {
+    img: '/images/unique/services-managed-network-support-feature-1.jpg',
+    title: 'Network Maintenance & Patch Management',
+    desc: 'While you focus on running your business, we work behind the scenes to keep your systems secure, stable, and performing at their best through regular maintenance, updates, and security enhancements.'
+  },
+  {
+    img: '/images/unique/services-managed-network-support-service-2.jpg',
+    title: 'Incident Response & Fault Resolution',
+    desc: 'Network Consultancy provides immediate access to experienced engineers whenever an issue arises. We quickly diagnose the problem and restore service, minimising disruption and keeping your business running smoothly.'
+  },
+  {
+    img: '/images/unique/services-managed-network-support-feature-2.jpg',
+    title: 'Hardware Lifecycle & Vendor Management',
+    desc: 'Our team handles the sourcing, setup, and vendor coordination for your IT hardware, making it easy to provide your employees with the tools they need while avoiding the hassle of managing multiple technology providers.'
+  },
+  {
+    img: '/images/unique/services-managed-network-support-service-3.jpg',
+    title: 'Network Security Management',
+    desc: 'Protect your critical business data with continuous monitoring and proactive security management. We identify and remediate vulnerabilities, helping to safeguard your systems against threats and maintain a secure operating environment.'
+  },
+  {
+    img: '/images/unique/services-managed-network-support-service-4.jpg',
+    title: 'On-Site & Remote Technical Support',
+    desc: 'We provide responsive IT support whenever issues arise. Whether assistance can be delivered remotely or requires an on-site engineer, we work quickly to resolve problems and keep your business running smoothly.'
+  }
     ];
     tabs.forEach(function (tab, i) {
       tab.addEventListener('click', function () {

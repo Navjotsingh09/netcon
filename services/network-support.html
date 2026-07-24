@@ -53,7 +53,10 @@
 
   /* ===== Key Solution Areas — tabs + image card ===== */
   .ksa__card { display:flex; gap:36px; background:#fff; border:0.2px solid #353535; border-radius:30px; box-shadow:0 4px 4px rgba(0,0,0,.1); padding:40px; }
-  .ksa__tabs { flex:0 0 32%; display:flex; flex-direction:column; }
+  .ksa__tabs { flex:0 0 32%; display:flex; flex-direction:column; gap:12px; max-height:520px; min-height:0; overflow-y:auto; overflow-x:hidden; padding-right:6px; scrollbar-width:thin; }
+  .ksa__tabs::-webkit-scrollbar { width:6px; }
+  .ksa__tabs::-webkit-scrollbar-thumb { background:#c7c7c7; border-radius:10px; }
+  .ksa__tabs::-webkit-scrollbar-track { background:transparent; }
   .ksa__tab { text-align:left; background:none; border:none; font-family:'Google Sans Flex',sans-serif; font-size:24px; font-weight:600; color:#585151; padding:26px 4px; cursor:pointer; border-top:1px solid var(--gray-mid); transition:color .2s; }
   .ksa__tab:first-child { border-top:none; }
   .ksa__tab.active { background:var(--blue); color:#fff; border-radius:20px; border-top:none; padding:26px 24px; margin:6px 0; }
@@ -62,7 +65,7 @@
   .ksa__panel-card { position:relative; z-index:2; background:#fff; border-radius:20px; padding:24px 29px; width:100%; }
   .ksa__panel-card h3 { font-family:'Google Sans Flex',sans-serif; font-size:32px; font-weight:600; color:#585151; margin-bottom:14px; }
   .ksa__panel-card p { font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; color:#353535; line-height:1.25; }
-  @media(max-width:900px){ .ksa__card{flex-direction:column;} .ksa__tabs{flex-basis:auto;} .ksa__panel{min-height:420px;} .ksa__panel-card h3{font-size:24px;} }
+  @media(max-width:900px){ .ksa__card{flex-direction:column;} .ksa__tabs{flex-basis:auto;max-height:420px;} .ksa__panel{min-height:420px;} .ksa__panel-card h3{font-size:24px;} }
 
   /* ===== Who We Serve — photo card + bordered tile grid (nd-t-card idiom) ===== */
   .wws__layout { display:grid; grid-template-columns:440px 1fr; gap:48px; align-items:stretch; }
@@ -149,7 +152,7 @@
     .sd-head p { font-size:15.5px; font-weight:400; line-height:1.6; }
     /* Key Solution Areas — tap-to-expand accordion */
     .ksa__card { flex-direction:column; gap:0; padding:0; border:1px solid #e7e7e7; border-radius:10px; box-shadow:none; overflow:hidden; }
-    .ksa__tabs { flex-basis:auto; }
+    .ksa__tabs { flex-basis:auto; max-height:none; overflow:visible; padding-right:0; }
     .ksa__tab { display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:15px; font-weight:600; color:#1c1c1c; padding:16px 18px; border-top:0; border-bottom:1px solid #ececec; }
     .ksa__tab.active { background:var(--blue); color:#fff; border-radius:0; margin:0; padding:16px 18px; font-size:16px; }
     .ksa__tabs > :last-child { border-bottom:0; }
@@ -210,9 +213,9 @@
   <section class="nc-hero-wrap" aria-label="Page hero">
     <div class="nc-hero">
       <div class="nc-hero__content">
-        <h1 class="nc-hero__title">Proactive Network Assistance to Preserve Productivity</h1>
-        <p class="nc-hero__sub">Network support services designed to reduce downtime &amp; improve performance</p>
-        <a href="#contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Book a Network Health Check</a>
+        <h1 class="nc-hero__title">Proactive Network Support</h1>
+        <p class="nc-hero__sub">Prevent costly disruptions through network support services that are automated, active 24/7 to secure continuous business productivity.</p>
+        <a href="#contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Book Health Check</a>
       </div>
     </div>
   </section>
@@ -232,6 +235,22 @@
           <button class="ksa__tab" role="tab" aria-selected="false">Remote Network Support</button>
           <button class="ksa__tab" role="tab" aria-selected="false">On-Site Network Support</button>
           <button class="ksa__tab" role="tab" aria-selected="false">Network Performance Optimisation</button>
+          <button class="ksa__tab" role="tab" aria-selected="false">
+            Network Security Support
+            <span class="ksa__caret" aria-hidden="true">⌄</span>
+          </button>
+          <button class="ksa__tab" role="tab" aria-selected="false">
+            Wi-Fi Support &amp; Optimisation
+            <span class="ksa__caret" aria-hidden="true">⌄</span>
+          </button>
+          <button class="ksa__tab" role="tab" aria-selected="false">
+            Network Device Management
+            <span class="ksa__caret" aria-hidden="true">⌄</span>
+          </button>
+          <button class="ksa__tab" role="tab" aria-selected="false">
+            Backup &amp; Disaster Recovery Support
+            <span class="ksa__caret" aria-hidden="true">⌄</span>
+          </button>
         </div>
         <div class="ksa__panel">
           <img id="ksa-img" src="/images/pages/unique/services-network-support-nc-hero-person.jpg" alt="Network support engineer">
@@ -340,59 +359,105 @@
 
   <!-- ===== TESTIMONIALS ===== -->
   <section class="sd-section" aria-labelledby="tst-h">
-    <div class="sd-wrap">
-      <div class="nd-trusted">
-        <div class="nd-trusted__head">
-          <h2 class="nd-trusted__title" id="tst-h">What our clients say</h2>
-          <div class="nd-trusted__controls">
-            <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
-              <span aria-hidden="true">&#8249;</span>
-            </button>
-            <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial">
-              <span aria-hidden="true">&#8250;</span>
-            </button>
-          </div>
-        </div>
-        <div class="nd-trusted__viewport">
-          <div class="nd-trusted__track">
-            <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;The network support services delivered have significantly improved uptime. Proactive monitoring and fast fault resolution keep our logistics systems running smoothly without disruption.&rdquo;</p>
-              <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-m2.jpg" alt="" loading="lazy"></span>
-                <div>
-                  <p class="nd-t-card__name">James Carter</p>
-                  <p class="nd-t-card__role">IT Manager, Logistics Ltd, Manchester</p>
-                </div>
-              </div>
-            </article>
-            <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;Their support desk resolves issues before we even notice them. Response times are excellent and the team genuinely understands our setup.&rdquo;</p>
-              <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy"></span>
-                <div>
-                  <p class="nd-t-card__name">Operations Manager</p>
-                  <p class="nd-t-card__role">Professional Services Firm, London</p>
-                </div>
-              </div>
-            </article>
-            <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;Having a dedicated support partner has taken the pressure off our internal team. Our network has never been more reliable.&rdquo;</p>
-              <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy"></span>
-                <div>
-                  <p class="nd-t-card__name">Head of IT</p>
-                  <p class="nd-t-card__role">Healthcare Provider, Birmingham</p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-        <div class="nd-trusted__dots" aria-hidden="true">
-          <span class="nd-trusted__dot nd-trusted__dot--active"></span>
+  <div class="sd-wrap">
+    <div class="nd-trusted">
+      <div class="nd-trusted__head">
+        <h2 class="nd-trusted__title" id="tst-h">What our clients say</h2>
+
+        <div class="nd-trusted__controls">
+          <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
+            <span aria-hidden="true">&#8249;</span>
+          </button>
+          <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial">
+            <span aria-hidden="true">&#8250;</span>
+          </button>
         </div>
       </div>
+
+      <div class="nd-trusted__viewport">
+        <div class="nd-trusted__track">
+
+          <!-- Slide 1 -->
+          <article class="nd-t-card">
+            <p class="nd-t-card__quote">
+              &ldquo;Our network support company ensured seamless connectivity across healthcare systems. Rapid troubleshooting reduced downtime and improved the reliability of patient access.&rdquo;
+            </p>
+
+            <div class="nd-t-card__person">
+              <span class="nd-t-card__avatar" aria-hidden="true">
+                <img src="/images/misc/avatars/testimonial-avatar-m2.jpg" alt="" loading="lazy">
+              </span>
+
+              <div>
+                <p class="nd-t-card__name">Sophie Williams</p>
+                <p class="nd-t-card__role">Head of Operations, Birmingham</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 2 -->
+          <article class="nd-t-card">
+            <p class="nd-t-card__quote">
+              &ldquo;Reliable network support services helped stabilise our production systems. Regular maintenance and optimisation significantly improved performance across multiple factory sites.&rdquo;
+            </p>
+
+            <div class="nd-t-card__person">
+              <span class="nd-t-card__avatar" aria-hidden="true">
+                <img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy">
+              </span>
+
+              <div>
+                <p class="nd-t-card__name">Daniel Hughes</p>
+                <p class="nd-t-card__role">Network Administrator, Leeds Ltd</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 3 -->
+          <article class="nd-t-card">
+            <p class="nd-t-card__quote">
+              &ldquo;Exceptional remote and on-site support kept our trading platforms secure. Network support services ensured the prompt resolution of connectivity issues.&rdquo;
+            </p>
+
+            <div class="nd-t-card__person">
+              <span class="nd-t-card__avatar" aria-hidden="true">
+                <img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy">
+              </span>
+
+              <div>
+                <p class="nd-t-card__name">Emily Brown</p>
+                <p class="nd-t-card__role">IT Director, London</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 4 -->
+          <article class="nd-t-card">
+            <p class="nd-t-card__quote">
+              &ldquo;Proactive monitoring and Wi-Fi optimisation improved overall network stability. A dependable network support company ensuring continuous business operations and security.&rdquo;
+            </p>
+
+            <div class="nd-t-card__person">
+              <span class="nd-t-card__avatar" aria-hidden="true">
+                <img src="/images/misc/avatars/testimonial-avatar-m2.jpg" alt="" loading="lazy">
+              </span>
+
+              <div>
+                <p class="nd-t-card__name">Oliver Smith</p>
+                <p class="nd-t-card__role">Systems Manager, Bristol</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="nd-trusted__dots" aria-hidden="true">
+        <span class="nd-trusted__dot nd-trusted__dot--active"></span>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- ===== CTA BAND ===== -->
   <section class="svc-cta-band" aria-label="Network support CTA">
@@ -414,8 +479,8 @@
   <script>
   window.PAGE_FAQ = [
     { question:'How fast do Network Consultancy engineers respond to a critical network outage?', answer:'We treat a complete office drop as an emergency. A senior engineer investigates your ticket immediately and begins remote diagnostics within minutes to restore your connection.', open:true },
-    { question:'Can you take over our network management without disrupting our workday?', answer:'Yes. We onboard in the background and phase the transition around your operations, so your team keeps working while we take ownership of monitoring and support.', open:false },
-    { question:'What happens if our main internet line goes down completely?', answer:'We diagnose the fault immediately, liaise with your provider, and where failover is in place we switch you to a backup connection to keep critical systems online.', open:false }
+    { question:'Can you take over our network management without disrupting our workday?', answer:'Absolutely. Our team completes onboarding audits, device configurations, and system updates during off-hours, allowing your employees to continue working without downtime, interruptions, or connection issues throughout the transition.', open:false },
+    { question:'What happens if our main internet line goes down completely?', answer:'We implement automated failover connectivity to keep your business online at all times. If your primary internet service experiences an outage, your network automatically switches to a backup connection, ensuring uninterrupted operations.', open:false }
   ];
   </script>
   <div data-cms="faq"></div>
@@ -434,27 +499,75 @@
     var ksa = document.getElementById('ksa');
     if (!ksa) return;
     var tabs = Array.prototype.slice.call(ksa.querySelectorAll('.ksa__tab'));
+    var tabsWrap = ksa.querySelector('.ksa__tabs');
     var img = document.getElementById('ksa-img');
     var title = document.getElementById('ksa-title');
     var desc = document.getElementById('ksa-desc');
     var data = [
       { img:'/images/pages/unique/services-network-support-nc-hero-person.jpg', title:'Proactive Network Monitoring', desc:'The staff at Network Consultancy monitor your network 24/7 to ensure continuous, uninterrupted connectivity. We catch hidden technical issues early, so your team never suffers from sudden downtimes that cause lost focus.' },
-      { img:'/images/unique/services-network-support-feature-1.jpg', title:'Network Troubleshooting & Fault Resolution', desc:'When faults appear, our engineers isolate the root cause fast and resolve it cleanly, restoring performance before it disrupts your business.' },
-      { img:'/images/unique/services-network-support-service-2.jpg', title:'Network Maintenance & Health Checks', desc:'Regular maintenance and health checks keep your infrastructure current, secure, and running at its best, preventing problems before they start.' },
-      { img:'/images/unique/services-network-support-feature-2.jpg', title:'Remote Network Support', desc:'Our remote team resolves the majority of issues instantly from our support desk, keeping your teams productive without waiting for a site visit.' },
-      { img:'/images/unique/services-network-support-service-3.jpg', title:'On-Site Network Support', desc:'When hands-on work is needed, our engineers attend your site to fix hardware, cabling, and complex faults quickly and thoroughly.' },
-      { img:'/images/unique/services-network-support-service-4.jpg', title:'Network Performance Optimisation', desc:'We continuously tune your network to remove bottlenecks and keep your critical applications fast and reliable as your usage grows.' }
+       {
+    img: '/images/unique/services-network-support-feature-1.jpg',
+    title: 'Network Troubleshooting & Fault Resolution',
+    desc: 'Our engineers act immediately when a connection drops, quickly identifying and resolving the issue. This minimises downtime, ensuring employees remain productive and billable hours are not lost to urgent project deadlines.'
+  },
+  {
+    img: '/images/unique/services-network-support-service-2.jpg',
+    title: 'Network Maintenance & Health Checks',
+    desc: 'Our team performs all system updates outside of business hours, eliminating midday slowdowns and unexpected restarts that can disrupt productivity.'
+  },
+  {
+    img: '/images/unique/services-network-support-feature-2.jpg',
+    title: 'Remote Network Support',
+    desc: 'When your staff reports an issue, a technician securely connects to the affected workstation right away, providing rapid troubleshooting and resolution without the wait for an on-site visit.'
+  },
+  {
+    img: '/images/unique/services-network-support-service-3.jpg',
+    title: 'On-Site Network Support',
+    desc: 'Network Consultancy dispatches experienced engineers to your workplace for hardware installations and upgrades, handling the entire setup process with minimal disruption to your staff.'
+  },
+  {
+    img: '/images/unique/services-network-support-service-4.jpg',
+    title: 'Network Performance Optimisation',
+    desc: 'We identify and eliminate network bottlenecks that can degrade call quality and disrupt video conferencing, ensuring a reliable connection during important client meetings and presentations.'
+  },
+  {
+    img: '/images/unique/services-network-support-feature-3.jpg',
+    title: 'Network Security Support',
+    desc: 'Network Consultancy protects your business by preventing unauthorised access attempts before they can compromise your systems. Our proactive security measures help safeguard critical data and reduce the risk of disruptive cyberattacks.'
+  },
+  {
+    img: '/images/unique/services-network-support-service-5.jpg',
+    title: 'Wi-Fi Support & Optimisation',
+    desc: 'Our team optimises and maintains your wireless network, strategically positioning access points to deliver reliable coverage throughout your office, including meeting rooms and hard-to-reach areas. This enables employees to move freely without interrupting active calls or connections.'
+  },
+  {
+    img: '/images/unique/services-network-support-feature-4.jpg',
+    title: 'Network Device Management',
+    desc: 'Our team manages the complete setup, configuration, and ongoing maintenance of your routers and switches. Should a device fail, our Network Consultancy handles the replacement process from start to finish, ensuring minimal disruption to your operations.'
+  },
+  {
+    img: '/images/unique/services-network-support-service-6.jpg',
+    title: 'Backup & Disaster Recovery Support',
+    desc: 'We continuously back up your critical business data to secure off-site locations, ensuring it remains protected and recoverable. In the event of a power outage or unexpected disruption, our team can quickly restore your files and minimise downtime.'
+  }
     ];
+    function keepActiveTabInView(tab) {
+      if (!tabsWrap || !tab || window.matchMedia('(max-width: 768px)').matches) return;
+      tab.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
     tabs.forEach(function (tab, i) {
       tab.addEventListener('click', function () {
         tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
         tab.classList.add('active'); tab.setAttribute('aria-selected','true');
+        keepActiveTabInView(tab);
         var d = data[i];
         img.style.opacity = '0';
         setTimeout(function () { img.src = d.img; img.style.opacity = '1'; }, 150);
         title.textContent = d.title; desc.textContent = d.desc;
       });
     });
+    keepActiveTabInView(ksa.querySelector('.ksa__tab.active'));
     img.style.transition = 'opacity .3s ease';
   })();
 
@@ -464,11 +577,26 @@
     if (!biz) return;
     var slides = [
       { title:'Systematic Cisco IT Support', desc:'Systematic Cisco IT support throughout the contracted period.' },
-      { title:'Rapid Response Times', desc:'Priority response and clear escalation so critical issues are handled the moment they arise.' },
-      { title:'Full Accountability', desc:'We own your network outcomes end to end, so nothing falls through the cracks.' },
-      { title:'Proactive Monitoring', desc:'Round-the-clock monitoring catches issues early, before they impact your business.' },
-      { title:'Predictable Costs', desc:'Fixed, transparent support plans that remove surprise IT bills from your budget.' },
-      { title:'Expert Engineering', desc:'Senior, certified engineers on hand whenever your business needs them.' }
+      {
+  title: 'Cisco Network Engineers',
+  desc: 'Support from qualified and highly experienced Cisco Network Engineers.'
+},
+{
+  title: 'Cost-Effective Support',
+  desc: 'More cost-effective than maintaining an in-house team.'
+},
+{
+  title: 'Fast Issue Resolution',
+  desc: 'Quicker resolution time due to our extensive industry experience.'
+},
+{
+  title: 'Remote Support Services',
+  desc: 'Remote support when you need it by phone, email and remote connection.'
+},
+{
+  title: 'Custom Cisco Support',
+  desc: 'Our Cisco Support contract can be customised to include Hardware & Software, Cisco Network Support and Maintenance, Hardware Recommendations, Network Configuration, 3rd-Line Support, Troubleshooting, Change Management, and Consultation.'
+}
     ];
     var i = 0, total = slides.length;
     var title = document.getElementById('biz-title');
@@ -502,11 +630,13 @@
     var card = ksa.querySelector('.ksa__panel-card');
     if (!tabs.length || !tabsWrap || !panel || !card) return;
     tabs.forEach(function (t) {
-      var c = document.createElement('span');
-      c.className = 'ksa__caret';
-      c.setAttribute('aria-hidden', 'true');
-      c.textContent = '\u2304';
-      t.appendChild(c);
+      if (!t.querySelector('.ksa__caret')) {
+        var c = document.createElement('span');
+        c.className = 'ksa__caret';
+        c.setAttribute('aria-hidden', 'true');
+        c.textContent = '\u2304';
+        t.appendChild(c);
+      }
     });
     var bar = document.createElement('div');
     bar.className = 'ksa__bar';

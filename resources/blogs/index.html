@@ -55,6 +55,9 @@
     .blog-latest {
       margin-bottom: 100px;
     }
+    .blog-featured {
+      margin-bottom: 100px;
+    }
     .blog-intro h2,
     .blog-latest h2 {
       font-family: 'Google Sans Flex', sans-serif;
@@ -72,6 +75,86 @@
       color: #323232;
       margin-bottom: 12px;
       max-width: 1380px;
+    }
+    .blog-featured__card {
+      display: grid;
+      grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+      gap: 24px;
+      border: 1px solid #dce8f0;
+      border-radius: 12px;
+      background: #ffffff;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .blog-featured__card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(19,32,63,.12);
+    }
+    .blog-featured__media {
+      min-height: 320px;
+      background: #a5a8b0;
+      overflow: hidden;
+    }
+    .blog-featured__media picture,
+    .blog-featured__media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .blog-featured__media img {
+      object-fit: cover;
+    }
+    .blog-featured__content {
+      padding: 30px 30px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .blog-featured__eyebrow {
+      margin: 0 0 8px;
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .blog-featured__meta {
+      margin: 0;
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      color: #5a5a5a;
+    }
+    .blog-featured__title {
+      margin: 12px 0 10px;
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.12;
+      color: var(--navy);
+    }
+    .blog-featured__text {
+      margin: 0;
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #4f4f4f;
+      max-width: 62ch;
+    }
+    .blog-featured__cta {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blue);
     }
 
     .blog-results {
@@ -309,9 +392,13 @@
       .blog-latest h2 {
         font-size: 42px;
       }
+      .blog-featured__title {
+        font-size: 32px;
+      }
       .blog-item__content p,
       .blog-intro p,
       .blog-latest p,
+      .blog-featured__text,
       .blog-results__meta {
         font-size: 18px;
       }
@@ -324,6 +411,18 @@
       .blog-latest p,
       .blog-item__content p {
         font-size: 16px;
+      }
+      .blog-featured__card {
+        grid-template-columns: 1fr;
+      }
+      .blog-featured__media {
+        min-height: 260px;
+      }
+      .blog-featured__content {
+        padding: 24px;
+      }
+      .blog-featured__title {
+        font-size: 30px;
       }
       .blog-intro h2,
       .blog-latest h2 {
@@ -346,13 +445,26 @@
     }
     @media (max-width: 768px) {
       .blog-intro,
-      .blog-latest {
+      .blog-latest,
+      .blog-featured {
         margin-bottom: 56px;
       }
       .blog-intro h2,
       .blog-latest h2,
       .blog-results__meta {
         font-size: 26px;
+      }
+      .blog-featured__content {
+        padding: 18px 16px 20px;
+      }
+      .blog-featured__title {
+        font-size: 24px;
+      }
+      .blog-featured__text {
+        font-size: 14px;
+      }
+      .blog-featured__cta {
+        font-size: 15px;
       }
       .blog-item__content h3 {
         font-size: 22px;
@@ -421,6 +533,24 @@
           <p>From network design and cloud connectivity to cybersecurity, managed support, and AI-ready infrastructure, our articles explain complex topics in a way you can understand and trust.</p>
           <p>Whether you are maintaining existing systems, preparing for expansion or evaluating new technologies, you will find informed insights that support business and IT decisions.</p>
           <p>Every article is written by experienced consultants and focuses on real-world challenges, proven approaches and best practices that organisations can apply across their IT environments.</p>
+        </section>
+
+        <section class="blog-featured animate-fade-up" aria-labelledby="featured-article-heading">
+          <a class="blog-featured__card" href="/resources/blogs/business-network-components">
+            <div class="blog-featured__media">
+              <picture>
+                <source srcset="/images/pages/unique/resources-blog-business-network-components.webp" type="image/webp">
+                <img src="/images/pages/unique/resources-blog-business-network-components.jpg" alt="Expert business network services trusted by ambitious UK firms, your #1 nationwide business networking service" loading="lazy" width="1800" height="1200">
+              </picture>
+            </div>
+            <div class="blog-featured__content">
+              <p class="blog-featured__eyebrow">Featured Article</p>
+              <p class="blog-featured__meta">21/07/2026 • Infrastructure</p>
+              <h2 class="blog-featured__title" id="featured-article-heading">10 Essential Components of a Modern Business Network</h2>
+              <p class="blog-featured__text">A practical guide covering business network services, network design consulting, network installation planning, and the role of a specialist network management company in long-term resilience.</p>
+              <span class="blog-featured__cta">Read featured article &rarr;</span>
+            </div>
+          </a>
         </section>
 
         <section class="blog-latest animate-fade-up" aria-labelledby="latest-heading">

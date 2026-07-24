@@ -78,7 +78,18 @@
   .btn-blue-lg { background:var(--blue); color:#fff; font-family:'Google Sans Flex',sans-serif; font-size:15px; font-weight:700; letter-spacing:.08em; padding:16px 40px; min-height:50px; border-radius:9999px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s,transform .2s; text-decoration:none; border:none; }
   .btn-blue-lg:hover { background:#0771a5; transform:scale(1.02); }
   .svl-overview__inner { display:grid; grid-template-columns:minmax(0,386px) minmax(0,1fr); gap:56px; align-items:start; background:#fff; border:1px solid #353535; border-radius:30px; padding:40px; }
-  .svl-overview__list { display:flex; flex-direction:column; gap:36px; }
+  .svl-overview__list {
+    display:flex;
+    flex-direction:column;
+    gap:36px;
+    max-height:600px;
+    overflow-y:auto;
+    padding-right:10px;
+  }
+  .svl-overview__list::-webkit-scrollbar { width:8px; }
+  .svl-overview__list::-webkit-scrollbar-track { background:transparent; }
+  .svl-overview__list::-webkit-scrollbar-thumb { background:#b7b7b7; border-radius:999px; }
+  .svl-overview__list::-webkit-scrollbar-thumb:hover { background:#9f9f9f; }
   .svl-overview__list-item { appearance:none; background:transparent; border:0; width:100%; text-align:left; cursor:pointer; padding-bottom:24px; border-bottom:1px solid #353535; color:#585151; font-size:28px; font-weight:700; line-height:1.25; transition:color .2s ease-out, background .25s ease-out, padding .25s ease-out; }
   .svl-overview__list-item:hover { color:var(--blue); }
   .svl-overview__list-item--active,
@@ -90,7 +101,7 @@
   .svl-overview__panel.is-switching { opacity:0; transform:translateY(12px); }
   .svl-overview__panel h3 { margin:0; color:#585151; font-size:24px; font-weight:600; line-height:1.25; }
   .svl-overview__panel p { margin:0; color:#353535; font-size:18px; font-weight:400; line-height:1.55; }
-  @media(max-width:1200px){ .svl-overview__inner{ grid-template-columns:1fr; padding:24px; gap:32px; } .svl-overview__feature{ order:-1; } .svl-overview__list{ gap:24px; } }
+  @media(max-width:1200px){ .svl-overview__inner{ grid-template-columns:1fr; padding:24px; gap:32px; } .svl-overview__feature{ order:-1; } .svl-overview__list{ gap:24px; max-height:none; overflow:visible; padding-right:0; } }
   @media(max-width:768px){ .svl-overview__feature{ min-height:480px; padding:16px; } .svl-overview__list-item{ font-size:22px; } .svl-overview__panel{ padding:20px; } }
 
   /* ── Figma-style Testimonials ───────────────────────────────── */
@@ -191,7 +202,7 @@
     <div class="svcs-hero__wrap">
       <div class="svcs-hero__content">
         <div class="svcs-hero__text">
-          <h1 class="svcs-hero__title animate-fade-up">Network Solutions for Modern Businesses</h1>
+          <h1 class="svcs-hero__title animate-fade-up">Scalable Business Networks</h1>
           <p class="svcs-hero__sub animate-fade-up">Designed to Improve Connectivity, Security &amp; Operational Performance by optimising your networks and IT systems.</p>
         </div>
         <a href="/contact" class="btn-blue svcs-hero__cta animate-fade-up">Book a Network Health Check</a>
@@ -213,25 +224,60 @@
           data-href="/services/network-consultancy">Network Consultancy</button>
         <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
           data-title="Network Advisory"
-          data-copy="Strategic guidance on network architecture, technology selection, and roadmaps aligned to your business goals — so every investment moves you forward."
+          data-copy="Providing specialised planning and professionally vetted roadmaps. Network Consultancy designs scalable infrastructure solutions that resist modern cyber fraud and ensure long-term operational performance."
           data-webp="/images/unique/services-index-feature-2.webp"
           data-img="/images/unique/services-index-feature-2.jpg"
           data-alt="Network Advisory"
           data-href="/services/network-design-and-deployment">Network Advisory</button>
         <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
           data-title="Network Assistance"
-          data-copy="Responsive, hands-on support and troubleshooting that keeps your network secure and performing at its best, whenever you need us."
+          data-copy="Maintain network reliability with prompt networking support. We keep your crucial company processes running smoothly and stop sudden IT glitches from freezing your operations."
           data-webp="/images/unique/services-index-service-3.webp"
           data-img="/images/unique/services-index-service-3.jpg"
           data-alt="Network Assistance"
           data-href="/services/network-support">Network Assistance</button>
         <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Design &amp; Implementation of Networks"
-          data-copy="End-to-end design and deployment of resilient, scalable network infrastructure tailored to your environment and future growth."
+          data-title="Design and Implementation of Networks"
+          data-copy="We build safe, adaptable environments to handle your company's growth and changing needs. Our engineers map out and deploy a stable setup from day one."
+          data-webp="/images/unique/services-index-feature-2.webp"
+          data-img="/images/unique/services-index-feature-2.jpg"
+          data-alt="Design and Implementation of Networks"
+          data-href="/services/network-design-and-deployment">Design and Implementation of Networks</button>
+        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
+          data-title="Installations of Networks"
+          data-copy="We set up your hardware and software without stopping your business. Our expert installation services stop workday connection errors by testing everything before deployment."
           data-webp="/images/unique/services-index-service-2.webp"
           data-img="/images/unique/services-index-service-2.jpg"
-          data-alt="Design and Implementation of Networks"
-          data-href="/services/network-installations">Design and Implementation of Networks</button>
+          data-alt="Installations of Networks"
+          data-href="/services/network-installations">Installations of Networks</button>
+        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
+          data-title="Network security and firewalls"
+          data-copy="Network Consultancy blocks unauthorised access to your sensitive data before an attempt is made. Our advanced security measures prevent hackers from accessing your systems or stealing client files."
+          data-webp="/images/unique/services-index-service-3.webp"
+          data-img="/images/unique/services-index-service-3.jpg"
+          data-alt="Network security and firewalls"
+          data-href="/services/firewall-and-network-security">Network security and firewalls</button>
+        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
+          data-title="VPN &amp; Remote Access Solutions"
+          data-copy="Your employees can log in safely from any home office or remote location. We build secure, encrypted connections that stop data leaks on public Wi-Fi and prevent outsiders from invading your main corporate network."
+          data-webp="/images/unique/services-index-service-1.webp"
+          data-img="/images/unique/services-index-service-1.jpg"
+          data-alt="VPN and Remote Access Solutions"
+          data-href="/services/remote-working-solutions">VPN &amp; Remote Access Solutions</button>
+        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
+          data-title="Controlled Wireless LAN"
+          data-copy="We keep your entire office connected with fast, dependable Wi-Fi. Our centralised setup eliminates annoying wireless dead zones, stops dropped video calls, and completely blocks office guests from viewing your private company files."
+          data-webp="/images/unique/services-index-service-2.webp"
+          data-img="/images/unique/services-index-service-2.jpg"
+          data-alt="Controlled Wireless LAN"
+          data-href="/services/managed-wireless-lan">Controlled Wireless LAN</button>
+        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
+          data-title="Network Resilience &amp; Business Continuity"
+          data-copy="Strengthen operational stability through proactive infrastructure design and resilient recovery techniques. Our automated failover protection safeguards your critical business services and prevents unexpected power outages."
+          data-webp="/images/unique/services-index-feature-2.webp"
+          data-img="/images/unique/services-index-feature-2.jpg"
+          data-alt="Network Resilience and Business Continuity"
+          data-href="/services/business-continuity-and-network-resilience">Network Resilience &amp; Business Continuity</button>
       </div>
       <div class="svl-overview__feature">
         <picture>
@@ -277,8 +323,8 @@
   <script>
   window.PAGE_FAQ = [
     { question:'What is included in a network support service?', answer:'Network support typically includes monitoring, troubleshooting, maintenance, security checks, performance optimisation and technical assistance to keep your network running smoothly and securely.', open:true },
-    { question:'What is SASE, and how does it differ from a VPN?', answer:'SASE combines networking and security into a cloud-delivered service, while a VPN mainly provides encrypted remote connectivity. SASE gives broader, policy-based protection for users, devices, and applications.', open:false },
-    { question:'Can you support hybrid and remote work environments?', answer:'Yes. We design and support secure, high-performance connectivity for office, home, and multi-site teams so staff can work reliably from anywhere.', open:false }
+    { question:'What is SASE, and how does it differ from a VPN?', answer:'A traditional VPN only connects remote workers back to your office server. SASE is a cloud-delivered system that protects your data wherever it is, preventing network slowdowns and blocking data leaks from any location.', open:false },
+    { question:'Can you support hybrid and remote work environments?', answer:'Yes. We set up encrypted connections for office, remote, and hybrid teams. This stops data leaks on public Wi-Fi and prevents unauthorised outsiders from hacking into your company files.', open:false }
   ];
   </script>
   <div data-cms="faq"></div>
