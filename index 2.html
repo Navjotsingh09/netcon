@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Network Consultancy — Secure IT Networking Services for UK SMEs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Plus+Jakarta+Sans:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/accessibility.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <style>
+    :root {
+      --navy: #162470;
+      --blue: #0982c5;
+      --dark: #353535;
+      --gray-bg: #ebebeb;
+      --gray-mid: #d9d9d9;
+      --sub: #585151;
+      --max-w: 1440px;
+      --section-w: 1920px;
+      --px: 240px;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --surface: #f4f4f4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      background: #ffffff;
+      color: var(--dark);
+      font-family: "Barlow", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .section {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      width: 100%;
+      padding-left: var(--px);
+      padding-right: var(--px);
+    }
+
+    .section-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-title {
+      font-family: "Roboto Condensed", sans-serif;
+      font-size: 46px;
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--navy);
+    }
+
+    .btn-blue {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue);
+      color: #fff;
+      font-family: "Barlow", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1;
+      padding: 13px 24px;
+      border-radius: 10px;
+      border: 0;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .btn-blue:hover {
+      background: #0872ac;
+      transform: translateY(-1px);
+    }
+
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #111111;
+      color: #fff;
+      border: 0;
+      border-radius: 8px;
+      min-height: 44px;
+      padding: 10px 20px;
+      font-family: "Barlow", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    #site-navbar,
+    #site-footer {
+      max-width: var(--section-w);
+      margin: 0 auto;
+    }
+
+    .navbar {
+      background: transparent;
+      border-bottom: 0;
+      box-shadow: none;
+    }
+
+    .navbar__box {
+      max-width: 1440px;
+      min-height: 114px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: 1px solid #e6e6e6;
+      background: #ffffff;
+      padding-left: 42px;
+      padding-right: 42px;
+    }
+
+    .home-main {
+      padding-top: 0;
+    }
+
+    .hero {
+      max-width: var(--section-w);
+      margin: 0 auto;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 0;
+      overflow: hidden;
+      width: 100%;
+      min-height: 615px;
+      background: linear-gradient(120deg, #001640 0%, #031a4d 42%, #08215b 100%);
+    }
+
+    .hero-layout {
+      position: relative;
+      min-height: 615px;
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .hero-layout::before,
+    .hero-layout::after {
+      content: "";
+      position: absolute;
+      width: 680px;
+      height: 680px;
+      border-radius: 50%;
+      border: 1px solid rgba(141, 182, 255, 0.18);
+      pointer-events: none;
+    }
+
+    .hero-layout::before {
+      right: -230px;
+      top: -245px;
+    }
+
+    .hero-layout::after {
+      width: 620px;
+      height: 620px;
+      right: -160px;
+      bottom: -300px;
+      border-color: rgba(255, 61, 160, 0.25);
+    }
+
+    .hero-content {
+      position: absolute;
+      z-index: 2;
+      left: 68px;
+      top: 188px;
+      max-width: 612px;
+      color: #ffffff;
+    }
+
+    .hero-title {
+      font-family: "Inter", "Roboto Condensed", sans-serif;
+      font-size: 60px;
+      line-height: 1.02;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-family: "Plus Jakarta Sans", "Barlow", sans-serif;
+      font-size: 24px;
+      line-height: 24px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 53px;
+      max-width: 612px;
+      letter-spacing: 0;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border-radius: 0;
+      background: #e0e0e0;
+      color: #353535;
+      border: 0;
+      padding: 12px 24px;
+      font-family: "Barlow", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+
+    .partner-strip {
+      padding-top: 20px;
+      padding-bottom: 34px;
+    }
+
+    .partner-list {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 26px;
+      align-items: center;
+      justify-items: center;
+      list-style: none;
+    }
+
+    .partner-mark {
+      width: 24px;
+      height: 32px;
+      position: relative;
+    }
+
+    .partner-mark span {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .partner-mark span:nth-child(1) { top: 0; left: 0; background: #ff6250; }
+    .partner-mark span:nth-child(2) { top: 0; right: 0; background: #3b82f6; }
+    .partner-mark span:nth-child(3) { top: 11px; left: 0; background: #f59e0b; }
+    .partner-mark span:nth-child(4) { top: 11px; right: 0; background: #10b981; }
+    .partner-mark span:nth-child(5) { bottom: 0; left: 50%; transform: translateX(-50%); background: #0ea5e9; }
+
+    .search-row {
+      max-width: var(--section-w);
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: -18px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .search-row .section-inner {
+      position: relative;
+      width: 100%;
+      max-width: 1440px;
+      height: 164px;
+      margin: 0 auto;
+      background: #ebebeb;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .search-bar {
+      position: absolute;
+      left: 67px;
+      top: 40px;
+      display: flex;
+      align-items: center;
+      width: 1303px;
+      height: 80px;
+      border-radius: 24px;
+      border: 1px solid #000000;
+      background: #ffffff;
+      padding: 0 78px 0 126px;
+      gap: 0;
+      box-shadow: none;
+      isolation: isolate;
+    }
+
+    .search-bar::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 24px;
+      pointer-events: none;
+      z-index: 0;
+      animation: search-led-glow 3.4s ease-in-out infinite;
+    }
+
+    .search-bar::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      border-radius: 24px;
+      border: 2px dashed #d946ef;
+      pointer-events: none;
+      opacity: 1;
+      z-index: 1;
+      animation: search-led-outline 3.4s ease-in-out infinite;
+    }
+
+    .search-bar img {
+      position: absolute;
+      left: 76px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 32px;
+    }
+
+    .search-bar input {
+      position: relative;
+      z-index: 1;
+      border: 0;
+      outline: none;
+      flex: 1;
+      min-width: 0;
+      font-family: "Barlow", sans-serif;
+      font-size: 15px;
+      color: #1b1b1b;
+      background: transparent;
+    }
+
+    .search-bar input::placeholder {
+      color: #717171;
+    }
+
+    .search-bar button {
+      position: absolute;
+      right: 70px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      border: 0;
+      background: transparent;
+      color: #6f6f6f;
+      font-family: "Roboto Condensed", sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 32px;
+      cursor: pointer;
+      padding: 0;
+      white-space: nowrap;
+    }
+
+    @keyframes search-led-glow {
+      0%,
+      100% {
+        box-shadow:
+          0 0 0 0 rgba(9, 130, 197, 0),
+          0 0 0 0 rgba(217, 70, 239, 0);
+      }
+      45% {
+        box-shadow:
+          0 0 0 1px rgba(9, 130, 197, 0.34),
+          0 0 16px rgba(9, 130, 197, 0.18);
+      }
+      65% {
+        box-shadow:
+          0 0 0 1px rgba(217, 70, 239, 0.28),
+          0 0 14px rgba(217, 70, 239, 0.14);
+      }
+    }
+
+    @keyframes search-led-outline {
+      0%,
+      100% {
+        border-color: rgba(217, 70, 239, 0.7);
+      }
+      50% {
+        border-color: rgba(9, 130, 197, 0.82);
+      }
+    }
+
+    .search-bar:focus-within::before,
+    .search-bar:hover::before {
+      animation-duration: 2.4s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .search-bar::before,
+      .search-bar::after {
+        animation: none;
+      }
+    }
+
+    .services {
+      padding-bottom: 50px;
+    }
+
+    .services-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 22px;
+    }
+
+    .services-head p {
+      max-width: 76ch;
+      color: #575757;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-top: 12px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .service-card {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 220px;
+      isolation: isolate;
+    }
+
+    .service-card picture,
+    .service-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.86) 0%, rgba(0, 0, 0, 0.18) 60%, rgba(0, 0, 0, 0.04) 100%);
+      z-index: 1;
+    }
+
+    .service-card h3 {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      z-index: 2;
+      color: #fff;
+      font-family: "Roboto Condensed", sans-serif;
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 500;
+      margin: 0;
+      max-width: 10ch;
+    }
+
+    .highlight {
+      padding-bottom: 64px;
+    }
+
+    .highlight-panel {
+      background: var(--surface);
+      border-radius: 6px;
+      padding: 44px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .highlight-panel h2 {
+      font-family: "Roboto Condensed", sans-serif;
+      font-size: 58px;
+      line-height: 0.95;
+      color: #151515;
+      margin-bottom: 14px;
+      max-width: 12ch;
+    }
+
+    .highlight-panel p {
+      font-size: 16px;
+      line-height: 1.55;
+      color: #5a5a5a;
+      max-width: 58ch;
+      margin-bottom: 16px;
+    }
+
+    .highlight-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .highlight-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      color: #2a2a2a;
+    }
+
+    .highlight-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #0f172a;
+      flex: 0 0 8px;
+    }
+
+    .highlight-media {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      min-height: 280px;
+    }
+
+    .highlight-media picture,
+    .highlight-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .play-dot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 0;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.22);
+    }
+
+    .play-dot::before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 12px solid #111;
+      margin-left: 3px;
+    }
+
+    .why {
+      padding-bottom: 56px;
+    }
+
+    .why h2 {
+      margin-bottom: 18px;
+    }
+
+    .why-layout {
+      border: 1px solid var(--gray-mid);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .why-row {
+      display: grid;
+      grid-template-columns: 300px 1fr 180px;
+      min-height: 74px;
+      border-bottom: 1px solid var(--gray-mid);
+    }
+
+    .why-row:last-child {
+      border-bottom: 0;
+    }
+
+    .why-label,
+    .why-detail,
+    .why-toggle {
+      padding: 18px;
+      display: flex;
+      align-items: center;
+    }
+
+    .why-label {
+      font-family: "Roboto Condensed", sans-serif;
+      font-size: 22px;
+      color: #11206b;
+      border-right: 1px solid var(--gray-mid);
+    }
+
+    .why-detail {
+      font-size: 14px;
+      color: #4f4f4f;
+      border-right: 1px solid var(--gray-mid);
+      line-height: 1.5;
+    }
+
+    .why-toggle {
+      justify-content: flex-end;
+    }
+
+    .why-toggle button {
+      border: 0;
+      background: transparent;
+      color: #666;
+      font-size: 20px;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      line-height: 1;
+    }
+
+    .why-layout .why-row:first-child {
+      min-height: 164px;
+      grid-template-columns: 300px 1fr 220px;
+      align-items: stretch;
+    }
+
+    .why-label--lead {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .why-label--lead .btn-blue {
+      min-height: 30px;
+      font-size: 12px;
+      padding: 6px 13px;
+      border-radius: 5px;
+    }
+
+    .why-layout .why-row:first-child .why-media {
+      border-left: 1px solid var(--gray-mid);
+      position: relative;
+      overflow: hidden;
+      min-height: 164px;
+    }
+
+    .why-layout .why-row:first-child .why-media picture,
+    .why-layout .why-row:first-child .why-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .why-layout .why-row:first-child .why-media .play-dot {
+      width: 44px;
+      height: 44px;
+    }
+
+    .testimonials {
+      padding-bottom: 56px;
+      background: transparent !important;
+    }
+
+    .security-band {
+      padding-bottom: 56px;
+    }
+
+    .security-wrap {
+      background: #efefef;
+      border-radius: 4px;
+      padding: 36px 28px;
+      display: grid;
+      grid-template-columns: 390px 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .security-wrap h2 {
+      font-family: "Roboto Condensed", sans-serif;
+      font-size: 44px;
+      line-height: 0.95;
+      color: #2f2f2f;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+      max-width: 10ch;
+    }
+
+    .security-media {
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      min-height: 190px;
+    }
+
+    .security-media picture,
+    .security-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .security-bars {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .security-bars span {
+      display: inline-block;
+      width: 60px;
+      height: 4px;
+      border-radius: 999px;
+      background: #c5c5c5;
+    }
+
+    .security-bars span.active {
+      background: #0982c5;
+    }
+
+    .security-copy p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #262626;
+      margin-bottom: 14px;
+      max-width: 64ch;
+    }
+
+    .security-copy ul {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 10px;
+      color: #262626;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .testimonials-wrap {
+      background: #efefef;
+      border-radius: 4px;
+      padding: 34px 28px 26px;
+    }
+
+    .testimonials-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .testimonials-head h2 {
+      font-family: "Roboto Condensed", sans-serif;
+      font-size: 44px;
+      line-height: 0.95;
+      color: #1a1a1a;
+      max-width: 18ch;
+    }
+
+    .carousel-arrows {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .carousel-arrows button {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      border: 0;
+      background: #ffffff;
+      color: #333;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .carousel-arrows button:last-child {
+      background: #111;
+      color: #fff;
+    }
+
+    .testimonials-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .testimonial {
+      background: #ffffff;
+      border-top: 2px solid #2f9ddb;
+      padding: 16px;
+      min-height: 170px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .testimonial p {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #4c4c4c;
+      margin-bottom: 14px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .testimonial-author img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-author strong {
+      display: block;
+      font-size: 12px;
+      color: #1e1e1e;
+    }
+
+    .testimonial-author span {
+      display: block;
+      font-size: 11px;
+      color: #777;
+    }
+
+    .carousel-dots {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .carousel-dots i {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #b3b3b3;
+    }
+
+    .carousel-dots i.active {
+      background: #0982c5;
+    }
+
+    .faq {
+      padding-bottom: 54px;
+      background: transparent !important;
+    }
+
+    .faq-shell {
+      background: #efefef;
+      border-radius: 4px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 26px;
+    }
+
+    .faq-intro h2 {
+      font-family: "Roboto Condensed", sans-serif;
+      font-size: 44px;
+      line-height: 0.95;
+      color: #111;
+      margin-bottom: 12px;
+      max-width: 12ch;
+    }
+
+    .faq-intro p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 18px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 0;
+      background: #ffffff;
+      border: 1px solid #dfdfdf;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #dfdfdf;
+    }
+
+    .faq-item:last-child {
+      border-bottom: 0;
+    }
+
+    .faq-header {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      min-height: 52px;
+      padding: 0 16px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: #1d1d1d;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .faq-arrow {
+      color: #666;
+      font-size: 18px;
+      flex: 0 0 auto;
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+
+    .faq-content p {
+      padding: 0 16px 16px;
+      color: #5b5b5b;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .faq-divider {
+      display: none;
+    }
+
+    .faq-item.open .faq-content {
+      max-height: 220px;
+    }
+
+    .faq-item.open .faq-arrow {
+      transform: rotate(180deg);
+    }
+
+    .contact-cta {
+      padding-bottom: 78px;
+      background: transparent !important;
+    }
+
+    .contact-cta h2 {
+      font-family: "Roboto Condensed", sans-serif;
+      font-size: 50px;
+      line-height: 0.95;
+      color: #171717;
+      margin-bottom: 12px;
+      max-width: 14ch;
+    }
+
+    .contact-cta > .section-inner > p {
+      font-size: 14px;
+      color: #575757;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      max-width: 70ch;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .contact-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-info-item {
+      border: 1px solid #e1e1e1;
+      border-radius: 8px;
+      padding: 16px;
+      background: #ffffff;
+      min-height: 150px;
+    }
+
+    .contact-info-item img {
+      width: 26px;
+      height: 26px;
+      margin-bottom: 11px;
+    }
+
+    .contact-info-item h3 {
+      font-family: "Roboto Condensed", sans-serif;
+      font-size: 24px;
+      color: #1f1f1f;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .contact-info-item p,
+    .contact-info-item a {
+      font-size: 13px;
+      color: #525252;
+      line-height: 1.5;
+      text-decoration: none;
+    }
+
+    .contact-form-wrap {
+      border: 1px solid #e2e2e2;
+      border-radius: 6px;
+      background: #ffffff;
+      padding: 18px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .contact-field label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 11px;
+      color: #3e3e3e;
+    }
+
+    .contact-field input,
+    .contact-field textarea {
+      width: 100%;
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+      min-height: 38px;
+      padding: 8px 10px;
+      font-family: "Barlow", sans-serif;
+      font-size: 13px;
+      color: #202020;
+      outline: none;
+      background: #ffffff;
+    }
+
+    .contact-field textarea {
+      min-height: 92px;
+      resize: vertical;
+    }
+
+    .contact-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 11px;
+      line-height: 1.4;
+      color: #595959;
+    }
+
+    .contact-consent input {
+      margin-top: 2px;
+      width: 14px;
+      height: 14px;
+      flex: 0 0 14px;
+    }
+
+    .contact-submit {
+      width: 100%;
+      min-height: 38px;
+      border-radius: 3px;
+      border: 0;
+      background: var(--blue);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .form-success,
+    .form-error {
+      display: none;
+      font-size: 12px;
+      line-height: 1.4;
+      border-radius: 4px;
+      padding: 8px 10px;
+    }
+
+    .form-success {
+      background: #ecfdf3;
+      color: #086b3a;
+      border: 1px solid #b7eccd;
+    }
+
+    .form-error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    @media (max-width: 1600px) {
+      :root { --px: 120px; }
+      .navbar__box {
+        min-height: 100px;
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+      .hero-content { left: 52px; top: 150px; }
+      .hero-title { font-size: 50px; }
+      .section-title { font-size: 40px; }
+      .highlight-panel h2 { font-size: 48px; }
+      .why-row,
+      .why-layout .why-row:first-child {
+        grid-template-columns: 240px 1fr 170px;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      :root { --px: 80px; }
+      .navbar__box {
+        min-height: 82px;
+        margin-top: 8px;
+      }
+      .hero-card { min-height: 470px; }
+      .hero-layout { min-height: 470px; }
+      .hero-content { left: 40px; top: 120px; max-width: 520px; }
+      .hero-title { font-size: 50px; }
+      .hero-sub { font-size: 22px; line-height: 1.32; max-width: 460px; }
+      .hero-cta { min-height: 46px; font-size: 17px; }
+      .search-row { margin-top: 0; }
+      .search-row .section-inner {
+        height: 128px;
+      }
+      .search-bar {
+        left: 24px;
+        top: 24px;
+        width: calc(100% - 48px);
+      }
+      .search-bar img {
+        left: 28px;
+      }
+      .search-bar button {
+        right: 28px;
+        font-size: 16px;
+      }
+      .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .highlight-panel { grid-template-columns: 1fr; }
+      .why-row,
+      .why-layout .why-row:first-child {
+        grid-template-columns: 220px 1fr 150px;
+      }
+      .testimonials-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .faq-shell { grid-template-columns: 1fr; }
+      .partner-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .security-wrap { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --px: 32px; }
+      .navbar__box {
+        border-radius: 0;
+        min-height: 74px;
+      }
+      .hero { padding-top: 12px; }
+      .hero-card { min-height: 360px; }
+      .hero-layout { min-height: 360px; }
+      .hero-content {
+        position: relative;
+        left: 0;
+        top: 0;
+        padding: 72px 24px 0;
+        max-width: 100%;
+      }
+      .hero-title { font-size: 36px; }
+      .hero-sub { font-size: 15px; }
+      .hero-visual,
+      .hero-layout::before,
+      .hero-layout::after {
+        display: none;
+      }
+      .search-row { margin-top: 0; }
+      .search-row .section-inner {
+        height: 104px;
+      }
+      .search-bar {
+        left: 16px;
+        top: 12px;
+        width: calc(100% - 32px);
+        height: 80px;
+        padding: 0 18px 0 54px;
+      }
+      .search-bar img {
+        left: 16px;
+      }
+      .search-bar button {
+        right: 16px;
+        font-size: 14px;
+        line-height: 1.2;
+      }
+      .services-head { flex-direction: column; align-items: flex-start; }
+      .services-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 34px; }
+      .highlight-panel { padding: 30px 22px; }
+      .highlight-panel h2 { font-size: 38px; }
+      .why-layout,
+      .why-row,
+      .why-layout .why-row:first-child {
+        display: block;
+      }
+      .why-label,
+      .why-detail,
+      .why-toggle {
+        border-right: 0;
+      }
+      .why-row {
+        border-bottom: 1px solid var(--gray-mid);
+      }
+      .why-layout .why-row:first-child .why-media {
+        min-height: 180px;
+        border-left: 0;
+        border-top: 1px solid var(--gray-mid);
+      }
+      .testimonials-wrap {
+        padding: 24px 18px;
+      }
+      .testimonials-head h2 { font-size: 34px; }
+      .testimonials-list { grid-template-columns: 1fr; }
+      .faq-shell { padding: 24px 18px; }
+      .faq-intro h2 { font-size: 34px; }
+      .contact-info-grid,
+      .contact-row {
+        grid-template-columns: 1fr;
+      }
+      .contact-cta h2 { font-size: 36px; }
+    }
+
+    @media (max-width: 480px) {
+      :root { --px: 20px; }
+      .hero-content { padding: 62px 18px 0; }
+      .hero-title { font-size: 31px; }
+      .section-title { font-size: 30px; }
+      .partner-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+      .search-row .section-inner {
+        height: 92px;
+      }
+      .search-bar {
+        left: 10px;
+        top: 10px;
+        width: calc(100% - 20px);
+        height: 72px;
+        padding: 0 12px 0 48px;
+      }
+      .search-bar img {
+        left: 14px;
+        width: 28px;
+        height: 25px;
+      }
+      .search-bar button {
+        right: 12px;
+        font-size: 12px;
+      }
+      .highlight-panel h2 { font-size: 32px; }
+      .security-wrap,
+      .contact-form-wrap {
+        padding: 18px 14px;
+      }
+      .contact-cta h2 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-navbar"></div>
+
+  <main class="home-main">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-layout">
+          <div class="hero-content">
+            <h1 class="hero-title">Cisco solutions</h1>
+            <p class="hero-sub">Have tech questions? Our AI Answer <br>engine can help.</p>
+            <a class="hero-cta" href="/contact.html">Action Button</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="search-row">
+      <div class="section-inner">
+        <form class="search-bar" action="/resources/blog/index.html" method="get" role="search">
+          <img src="/images/icons/figma-nav-home-2026/search-bar-icon.svg" alt="" aria-hidden="true" width="35" height="32" loading="lazy">
+          <input type="search" name="q" placeholder="" aria-label="Search the site">
+          <button type="submit">Please ask your question here</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section partner-strip">
+      <div class="section-inner">
+        <ul class="partner-list" aria-label="Technology partners">
+          <li class="partner-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></li>
+          <li class="partner-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></li>
+          <li class="partner-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></li>
+          <li class="partner-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></li>
+          <li class="partner-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></li>
+          <li class="partner-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></li>
+          <li class="partner-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></li>
+          <li class="partner-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section services">
+      <div class="section-inner">
+        <div class="services-head animate-fade-up">
+          <div>
+            <h2 class="section-title">Main Focusing Services</h2>
+            <p>Network Consultancy offers fully managed IT networking support and specialist consultancy services for UK SMEs, from implementation and troubleshooting through to proactive monitoring and resilience planning.</p>
+          </div>
+          <a class="btn-blue" href="/services/index.html">See All Services</a>
+        </div>
+
+        <div class="services-grid stagger-children" data-stagger="90">
+          <a class="service-card" href="/services/network-consultancy.html">
+            <picture>
+              <source srcset="/images/unique/index-service-1.webp" type="image/webp">
+              <img src="/images/unique/index-service-1.jpg" alt="Network Consultancy service" loading="lazy" width="640" height="420">
+            </picture>
+            <h3>Network Consultancy</h3>
+          </a>
+          <a class="service-card" href="/services/network-support.html">
+            <picture>
+              <source srcset="/images/unique/index-service-2.webp" type="image/webp">
+              <img src="/images/unique/index-service-2.jpg" alt="Network Support service" loading="lazy" width="640" height="420">
+            </picture>
+            <h3>Network Support</h3>
+          </a>
+          <a class="service-card" href="/services/managed-network-support.html">
+            <picture>
+              <source srcset="/images/unique/index-service-3.webp" type="image/webp">
+              <img src="/images/unique/index-service-3.jpg" alt="Managed Network Support service" loading="lazy" width="640" height="420">
+            </picture>
+            <h3>Managed Network Support</h3>
+          </a>
+          <a class="service-card" href="/services/network-design-deployment.html">
+            <picture>
+              <source srcset="/images/unique/services-index-service-1.webp" type="image/webp">
+              <img src="/images/unique/services-index-service-1.jpg" alt="Network Design and Deployment service" loading="lazy" width="640" height="420">
+            </picture>
+            <h3>Network Design &amp; Deployment</h3>
+          </a>
+          <a class="service-card" href="/services/firewall-network-security.html">
+            <picture>
+              <source srcset="/images/unique/services-index-service-2.webp" type="image/webp">
+              <img src="/images/unique/services-index-service-2.jpg" alt="Firewall and Network Security service" loading="lazy" width="640" height="420">
+            </picture>
+            <h3>Firewall &amp; Network Security</h3>
+          </a>
+          <a class="service-card" href="/services/business-continuity.html">
+            <picture>
+              <source srcset="/images/unique/services-index-service-3.webp" type="image/webp">
+              <img src="/images/unique/services-index-service-3.jpg" alt="Business Continuity and Resilience service" loading="lazy" width="640" height="420">
+            </picture>
+            <h3>Business Continuity &amp; Resilience</h3>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section highlight">
+      <div class="section-inner highlight-panel animate-fade-up">
+        <div>
+          <h2>Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus ligula id nibh porta, a dictum sem posuere. Integer tincidunt orci in diam fermentum tempus.</p>
+          <ul class="highlight-list">
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum consectetur</li>
+            <li>Lorem ipsum dolor sit amet</li>
+          </ul>
+        </div>
+        <div class="highlight-media">
+          <picture>
+            <source srcset="/images/pages/unique/services-index-about-hero.webp" type="image/webp">
+            <img src="/images/pages/unique/services-index-about-hero.jpg" alt="Consultants discussing network strategy in a meeting" loading="lazy" width="840" height="520">
+          </picture>
+          <button class="play-dot" type="button" aria-label="Play overview video"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why">
+      <div class="section-inner animate-fade-up">
+        <h2 class="section-title">Why Organisations Choose Network Consultancy</h2>
+        <div class="why-layout">
+          <article class="why-row">
+            <div class="why-label why-label--lead">
+              <h3>Trusted Network experts</h3>
+              <a class="btn-blue" href="/case-studies/index.html">View Details</a>
+            </div>
+            <p class="why-detail">Our team has delivered complex IT networking projects across legal, healthcare, finance and manufacturing sectors. We focus on practical, secure solutions tailored to your goals.</p>
+            <div class="why-media">
+              <picture>
+                <source srcset="/images/pages/unique/solutions-index-nc-hero-person.webp" type="image/webp">
+                <img src="/images/pages/unique/solutions-index-nc-hero-person.jpg" alt="Network consultancy specialist reviewing infrastructure" loading="lazy" width="520" height="300">
+              </picture>
+            </div>
+          </article>
+          <article class="why-row">
+            <h3 class="why-label">Issue prevention</h3>
+            <p class="why-detail">Proactive monitoring and maintenance reduce downtime before it affects your users.</p>
+            <div class="why-toggle"><button type="button" aria-label="Expand issue prevention">+</button></div>
+          </article>
+          <article class="why-row">
+            <h3 class="why-label">Technical mastery</h3>
+            <p class="why-detail">From wireless estates to secure remote access, we architect infrastructure that scales.</p>
+            <div class="why-toggle"><button type="button" aria-label="Expand technical mastery">+</button></div>
+          </article>
+          <article class="why-row">
+            <h3 class="why-label">IT partnership</h3>
+            <p class="why-detail">We work as an extension of your team to support strategic and day-to-day IT needs.</p>
+            <div class="why-toggle"><button type="button" aria-label="Expand IT partnership">+</button></div>
+          </article>
+          <article class="why-row">
+            <h3 class="why-label">Total solutions</h3>
+            <p class="why-detail">Consultancy, design, deployment and managed support under one trusted provider.</p>
+            <div class="why-toggle"><button type="button" aria-label="Expand total solutions">+</button></div>
+          </article>
+          <article class="why-row">
+            <h3 class="why-label">Security Monitoring</h3>
+            <p class="why-detail">Advanced visibility and layered controls to protect users, devices and business data.</p>
+            <div class="why-toggle"><button type="button" aria-label="Expand security monitoring">+</button></div>
+          </article>
+          <article class="why-row">
+            <h3 class="why-label">Tailored solutions</h3>
+            <p class="why-detail">Every recommendation is shaped around your environment, budget and growth roadmap.</p>
+            <div class="why-toggle"><button type="button" aria-label="Expand tailored solutions">+</button></div>
+          </article>
+          <article class="why-row">
+            <h3 class="why-label">Security resilience</h3>
+            <p class="why-detail">Resilient networking foundations and tested plans to keep operations running smoothly.</p>
+            <div class="why-toggle"><button type="button" aria-label="Expand security resilience">+</button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section security-band">
+      <div class="section-inner security-wrap animate-fade-up">
+        <div>
+          <h2>Managed Network Security</h2>
+          <div class="security-media">
+            <img src="/images/pages/unique/industries-index-team-office.jpg" alt="Managed network security consultation" loading="lazy" width="720" height="420">
+          </div>
+          <div class="security-bars" aria-hidden="true">
+            <span class="active"></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="security-copy">
+          <p>When it comes to enhancing your business's IT infrastructure, Network Consultancy builds a custom roadmap that ensures zero disruption to your daily operations. From your initial infrastructure design to enabling live threat monitoring and daily network management, our reliable UK engineering team will handle your entire network ecosystem seamlessly.</p>
+          <ul>
+            <li>24/7 Firewall Administration and Intrusion Detection</li>
+            <li>Regular Software and Firmware Updates</li>
+            <li>AI-Driven Threat Intelligence &amp; Monitoring</li>
+            <li>Continuous compliance with UK GDPR, the Data Protection Act 2018, ISO 27001, Cyber Essentials, and broader cybersecurity standards</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials">
+      <div class="section-inner testimonials-wrap animate-fade-up">
+        <div class="testimonials-head">
+          <h2>Trusted by Families and Small Business</h2>
+          <div class="carousel-arrows" aria-hidden="true">
+            <button type="button">&#8249;</button>
+            <button type="button">&#8250;</button>
+          </div>
+        </div>
+        <div class="testimonials-list">
+          <article class="testimonial">
+            <p>"Lorem ipsum dolor sit amet consectetur, lectus massa, sed adipiscing nibh arcu sed erat."</p>
+            <div class="testimonial-author">
+              <img src="/images/unique/index-feature-1.jpg" alt="Client portrait one" loading="lazy" width="60" height="60">
+              <div><strong>Jane W.</strong><span>Operations Manager</span></div>
+            </div>
+          </article>
+          <article class="testimonial">
+            <p>"Lorem ipsum dolor sit amet consectetur, lectus massa, adipisicing elit. Dolor earum facilis hic."</p>
+            <div class="testimonial-author">
+              <img src="/images/unique/index-feature-2.jpg" alt="Client portrait two" loading="lazy" width="60" height="60">
+              <div><strong>Jay M.</strong><span>Finance Director</span></div>
+            </div>
+          </article>
+          <article class="testimonial">
+            <p>"Lorem ipsum dolor sit amet consectetur, lectus massa, architecto voluptatem sed adipisicing elit."</p>
+            <div class="testimonial-author">
+              <img src="/images/pages/unique/services-index-about-hero.jpg" alt="Client portrait three" loading="lazy" width="60" height="60">
+              <div><strong>Ray A.</strong><span>Head of IT</span></div>
+            </div>
+          </article>
+          <article class="testimonial">
+            <p>"Lorem ipsum consectetur, lectus massa, adipisicing elit laboriosam illo pariatur."</p>
+            <div class="testimonial-author">
+              <img src="/images/pages/unique/solutions-index-technician.jpg" alt="Client portrait four" loading="lazy" width="60" height="60">
+              <div><strong>Sam G.</strong><span>Senior Analyst</span></div>
+            </div>
+          </article>
+        </div>
+        <div class="carousel-dots" aria-hidden="true">
+          <i class="active"></i><i></i><i></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq">
+      <div class="section-inner faq-shell animate-fade-up">
+        <aside class="faq-intro">
+          <h2>Frequently Asked Questions</h2>
+          <p>Still have questions? Get connected to our support team.</p>
+          <a class="btn-dark" href="/contact.html">Enquire</a>
+        </aside>
+
+        <div class="faq-list" role="list">
+          <article class="faq-item open" role="listitem">
+            <button class="faq-header" type="button" aria-expanded="true">
+              <span>How often should I review my network infrastructure?</span>
+              <span class="faq-arrow">&#8963;</span>
+            </button>
+            <div class="faq-content">
+              <p>Most SMEs should complete a formal review at least once per year, with lighter quarterly checks for security, performance and remote access stability.</p>
+            </div>
+            <div class="faq-divider"></div>
+          </article>
+          <article class="faq-item closed" role="listitem">
+            <button class="faq-header" type="button" aria-expanded="false">
+              <span>What can a network health check uncover?</span>
+              <span class="faq-arrow">&#8963;</span>
+            </button>
+            <div class="faq-content">
+              <p>A health check highlights bottlenecks, misconfigurations, security gaps and resilience risks so you can prioritise improvements.</p>
+            </div>
+            <div class="faq-divider"></div>
+          </article>
+          <article class="faq-item closed" role="listitem">
+            <button class="faq-header" type="button" aria-expanded="false">
+              <span>Can I change provider after finding network issues?</span>
+              <span class="faq-arrow">&#8963;</span>
+            </button>
+            <div class="faq-content">
+              <p>Yes. We can support transition planning, documentation handover and staged migration to reduce business disruption.</p>
+            </div>
+            <div class="faq-divider"></div>
+          </article>
+          <article class="faq-item closed" role="listitem">
+            <button class="faq-header" type="button" aria-expanded="false">
+              <span>How long does implementation usually take?</span>
+              <span class="faq-arrow">&#8963;</span>
+            </button>
+            <div class="faq-content">
+              <p>Timelines depend on scope, but many SMEs can complete targeted upgrades in weeks rather than months.</p>
+            </div>
+            <div class="faq-divider"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-cta" id="contact">
+      <div class="section-inner animate-fade-up">
+        <h2>Contact us today for a free consultation</h2>
+        <p>We pride ourselves on delivering a flexible engagement style to meet your requirements. Contact us for your free network assessment.</p>
+
+        <div class="contact-grid">
+          <div class="contact-info-grid">
+            <article class="contact-info-item">
+              <img src="/images/icons/figma-nav-home-2026/contact-icon-1.svg" alt="" aria-hidden="true" loading="lazy" width="26" height="26">
+              <h3>Our customer services</h3>
+              <p><a href="tel:+442031501401">+44 (0) 203 150 1401</a></p>
+            </article>
+            <article class="contact-info-item">
+              <img src="/images/icons/figma-nav-home-2026/contact-icon-2.svg" alt="" aria-hidden="true" loading="lazy" width="26" height="26">
+              <h3>Chat to our sales</h3>
+              <p><a href="mailto:info@network-consultancy.com">info@network-consultancy.com</a></p>
+            </article>
+            <article class="contact-info-item">
+              <img src="/images/icons/figma-nav-home-2026/contact-icon-3.svg" alt="" aria-hidden="true" loading="lazy" width="26" height="26">
+              <h3>Address</h3>
+              <p>London<br>20-22 Wenlock Rd<br>London N1 7GU</p>
+            </article>
+            <article class="contact-info-item">
+              <img src="/images/icons/figma-nav-home-2026/contact-icon-4.svg" alt="" aria-hidden="true" loading="lazy" width="26" height="26">
+              <h3>Address</h3>
+              <p>Birmingham<br>Beech House, Greenfield Crescent<br>Edgbaston, B15 3BE</p>
+            </article>
+          </div>
+
+          <div class="contact-form-wrap">
+            <form id="contact-form" class="contact-form" method="post" action="https://api.web3forms.com/submit" novalidate>
+              <input type="hidden" name="access_key" value="fbcd4bae-c2e9-4e0c-9bf1-9576bef8625b">
+              <div class="contact-row">
+                <div class="contact-field">
+                  <label for="cf-fname">First Name</label>
+                  <input id="cf-fname" name="first_name" type="text" placeholder="First name" autocomplete="given-name" required>
+                </div>
+                <div class="contact-field">
+                  <label for="cf-lname">Last Name</label>
+                  <input id="cf-lname" name="last_name" type="text" placeholder="Last name" autocomplete="family-name">
+                </div>
+              </div>
+              <div class="contact-row">
+                <div class="contact-field">
+                  <label for="cf-email">Your Email</label>
+                  <input id="cf-email" name="email" type="email" placeholder="Your email" autocomplete="email" required>
+                </div>
+                <div class="contact-field">
+                  <label for="cf-phone">Phone Number</label>
+                  <input id="cf-phone" name="phone" type="tel" placeholder="Phone Number" autocomplete="tel">
+                </div>
+              </div>
+              <div class="contact-field">
+                <label for="cf-message">Message</label>
+                <textarea id="cf-message" name="message" placeholder="Your Message..." required></textarea>
+              </div>
+
+              <input type="hidden" name="source_page" id="cf-source-page">
+              <input type="hidden" name="source_family" id="cf-source-family">
+              <input type="hidden" name="source_cta" id="cf-source-cta">
+              <input type="hidden" name="inquiry_type" id="cf-inquiry-type">
+              <input type="hidden" name="lead_status" id="cf-lead-status">
+              <input type="hidden" name="action_required" id="cf-action-required">
+              <input type="hidden" name="routing_team" id="cf-routing-team">
+
+              <label class="contact-consent" for="cf-consent-privacy">
+                <input id="cf-consent-privacy" type="checkbox" name="consent_privacy" value="yes" required>
+                <span>I agree with the <a href="/privacy-policy.html">Privacy Policy</a> and Terms and Conditions</span>
+              </label>
+              <button class="contact-submit" type="submit">Submit</button>
+              <div id="form-success" class="form-success" role="status" aria-live="polite">Thank you for your enquiry. We will be in touch shortly.</div>
+              <div id="form-error" class="form-error" role="alert" aria-live="assertive">Something went wrong. Please try again or call us on +44 (0) 203 150 1401.</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/js/navbar.js" defer></script>
+  <script src="/js/footer.js" defer></script>
+  <script src="/js/search.js" defer></script>
+  <script src="/js/form-source-tracking.js" defer></script>
+  <script src="/js/global.js" defer></script>
+  <script src="/js/animations.js" defer></script>
+  <script src="/js/parallax.js" defer></script>
+  <script src="/js/accessibility.js" defer></script>
+</body>
+</html>
