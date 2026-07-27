@@ -61,6 +61,7 @@
   var INDUSTRIES = [
     { href: '/industries/financial-services',    icon: 'bank',      title: 'Financial Services' },
     { href: '/industries/healthcare-and-clinics',    icon: 'medical',   title: 'Healthcare & Clinics' },
+    { href: '/industries/charity',               icon: 'users',     title: 'Charity' },
     { href: '/industries/legal-firms',           icon: 'scales',    title: 'Legal Firms' },
     { href: '/industries/manufacturing',         icon: 'factory',   title: 'Manufacturing' },
     { href: '/industries/multi-site-businesses', icon: 'buildings', title: 'Multi-Site Businesses' },
