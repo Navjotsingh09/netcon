@@ -191,21 +191,28 @@
     var timestamp = new Date(year, month, day).getTime();
     return Number.isFinite(timestamp) ? timestamp : 0;
   }
-  
 
-  function shuffle(array) {
-    var copy = array.slice();
-    for (var i = copy.length - 1; i > 0; i -= 1) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = copy[i];
-      copy[i] = copy[j];
-      copy[j] = temp;
-    }
-    return copy;
+  // Sort the master list once, newest first. Every place that reads
+  // BLOG_POSTS (listing grid, sidebar, search) inherits this order,
+  // so new posts always surface correctly regardless of where they
+  // were added in the array above.
+  BLOG_POSTS.sort(function (a, b) {
+    return parseDateLabel(b.dateLabel) - parseDateLabel(a.dateLabel);
+  });
+
+  // A post is "NEW" if published within the last 7 days (relative to
+  // the most recent post's own date, so this stays accurate even if
+  // the site isn't visited for a while).
+  var NEW_BADGE_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
+  function isNewPost(post) {
+    if (!BLOG_POSTS.length) return false;
+    var mostRecent = parseDateLabel(BLOG_POSTS[0].dateLabel);
+    var reference = Math.max(mostRecent, Date.now());
+    return reference - parseDateLabel(post.dateLabel) <= NEW_BADGE_WINDOW_MS;
   }
 
   function escapeHtml(value) {
-    return value
+    return String(value)
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
@@ -219,15 +226,16 @@
     var resetBtn = document.getElementById("blog-filter-reset");
     var meta = document.getElementById("blog-results-meta");
     var paginationWrap = document.getElementById("blog-pagination");
+    var searchInput = document.getElementById("blog-search-input");
 
     if (!list || !chipsWrap || !meta) {
       return;
     }
 
     var activeCategory = "All";
+    var searchTerm = "";
     var pageSize = 6;
     var currentPage = 1;
-    var shuffled = BLOG_POSTS.slice();
 
     var categories = BLOG_POSTS
       .map(function (post) { return post.category; })
@@ -259,7 +267,6 @@
       paginationWrap.style.display = "flex";
       paginationWrap.innerHTML = "";
 
-      // Previous button
       var prevBtn = document.createElement("button");
       prevBtn.type = "button";
       prevBtn.className = "blog-pagination__btn";
@@ -273,33 +280,31 @@
       });
       paginationWrap.appendChild(prevBtn);
 
-      // Page numbers
       var pageNumbers = document.createElement("div");
       pageNumbers.className = "blog-pagination__numbers";
-      
+
       for (var i = 1; i <= totalPages; i++) {
         var pageBtn = document.createElement("button");
         pageBtn.type = "button";
         pageBtn.className = "blog-pagination__page";
         pageBtn.textContent = i;
         pageBtn.setAttribute("data-page", i);
-        
+
         if (i === currentPage) {
           pageBtn.classList.add("is-active");
         }
-        
-        (function(pageNum) {
+
+        (function (pageNum) {
           pageBtn.addEventListener("click", function () {
             currentPage = pageNum;
             renderPosts();
           });
         })(i);
-        
+
         pageNumbers.appendChild(pageBtn);
       }
       paginationWrap.appendChild(pageNumbers);
 
-      // Next button
       var nextBtn = document.createElement("button");
       nextBtn.type = "button";
       nextBtn.className = "blog-pagination__btn";
@@ -314,25 +319,39 @@
       paginationWrap.appendChild(nextBtn);
     }
 
+    function matchesSearch(post, term) {
+      if (!term) return true;
+      var haystack = (post.title + " " + post.excerpt + " " + post.category).toLowerCase();
+      return haystack.indexOf(term) > -1;
+    }
+
     function renderPosts() {
-      var filtered = shuffled.filter(function (post) {
-        return activeCategory === "All" || post.category === activeCategory;
+      var term = searchTerm.trim().toLowerCase();
+
+      var filtered = BLOG_POSTS.filter(function (post) {
+        var categoryOk = activeCategory === "All" || post.category === activeCategory;
+        return categoryOk && matchesSearch(post, term);
       });
 
       var total = filtered.length;
-      var totalPages = Math.ceil(total / pageSize);
+      var totalPages = Math.max(1, Math.ceil(total / pageSize));
+      if (currentPage > totalPages) currentPage = totalPages;
       var startIndex = (currentPage - 1) * pageSize;
       var endIndex = Math.min(startIndex + pageSize, total);
       var visible = filtered.slice(startIndex, endIndex);
 
       list.innerHTML = visible.map(function (post) {
         var mime = /\.png$/i.test(post.image) ? "image/png" : "image/jpeg";
+        var newBadge = isNewPost(post)
+          ? "<span class=\"blog-item__new\">New</span>"
+          : "";
         return "<article class=\"blog-item animate-fade-up\">" +
           "<div class=\"blog-item__media\">" +
           "<picture>" +
           "<source srcset=\"" + escapeHtml(post.image) + "\" type=\"" + mime + "\">" +
           "<img src=\"" + escapeHtml(post.image) + "\" alt=\"" + escapeHtml(post.title) + "\" loading=\"lazy\" width=\"451\" height=\"312\">" +
           "</picture>" +
+          newBadge +
           "<span class=\"blog-item__cat\">" + escapeHtml(post.category) + "</span>" +
           "<span class=\"blog-item__date\">" + escapeHtml(post.dateLabel) + "</span>" +
           "</div>" +
@@ -345,24 +364,22 @@
       }).join("");
 
       if (total === 0) {
-        meta.textContent = "No articles found for this category.";
+        meta.textContent = term
+          ? "No articles found matching \"" + searchTerm.trim() + "\"."
+          : "No articles found for this category.";
       } else {
-        meta.textContent = "Showing " + (startIndex + 1) + "-" + endIndex + " of " + total + " article" + (total === 1 ? "" : "s") + (activeCategory !== "All" ? " in " + activeCategory : "") + ".";
+        meta.textContent = "Showing " + (startIndex + 1) + "-" + endIndex + " of " + total +
+          " article" + (total === 1 ? "" : "s") +
+          (activeCategory !== "All" ? " in " + activeCategory : "") +
+          (term ? " matching \"" + searchTerm.trim() + "\"" : "") + ".";
       }
 
       renderPagination(totalPages);
 
-      // The blog cards above are injected after the page's initial
-      // IntersectionObserver scan (js/animations.js) has already run, so
-      // scroll-triggered reveal is unreliable for them (never observed,
-      // or dependent on scroll position/cache state of animations.js).
-      // Reveal them directly and synchronously instead — no rAF/timers,
-      // since those can also be suspended on backgrounded/inactive tabs.
       list.querySelectorAll(".animate-fade-up, .animate-fade-in").forEach(function (el) {
         el.classList.add("is-visible");
       });
 
-      // Scroll to top of results smoothly
       if (list) {
         var rect = list.getBoundingClientRect();
         if (rect.top < 0) {
@@ -377,7 +394,7 @@
         return;
       }
       activeCategory = button.getAttribute("data-category") || "All";
-      currentPage = 1; // Reset to first page when changing category
+      currentPage = 1;
       setActiveChip();
       renderPosts();
     });
@@ -385,10 +402,23 @@
     if (resetBtn) {
       resetBtn.addEventListener("click", function () {
         activeCategory = "All";
-        currentPage = 1; // Reset to first page when resetting
-        shuffled = BLOG_POSTS.slice();
+        searchTerm = "";
+        if (searchInput) searchInput.value = "";
+        currentPage = 1;
         setActiveChip();
         renderPosts();
+      });
+    }
+
+    if (searchInput) {
+      var searchDebounce = null;
+      searchInput.addEventListener("input", function () {
+        clearTimeout(searchDebounce);
+        searchDebounce = setTimeout(function () {
+          searchTerm = searchInput.value;
+          currentPage = 1;
+          renderPosts();
+        }, 200);
       });
     }
 
@@ -418,10 +448,6 @@
     var moreLink = card.querySelector(".blog-side__more");
 
     var picks = BLOG_POSTS
-      .slice()
-      .sort(function (a, b) {
-        return parseDateLabel(b.dateLabel) - parseDateLabel(a.dateLabel);
-      })
       .filter(function (post) { return post.urlSlug !== currentUrlSlug; })
       .slice(0, 3);
 
