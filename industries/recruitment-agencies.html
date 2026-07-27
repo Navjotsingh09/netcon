@@ -1,36 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  "<script type=""application/ld+json"">
-{
-  ""@context"": ""https://schema.org"",
-  ""@type"": ""BreadcrumbList"",
-  ""itemListElement"": [
-    {
-      ""@type"": ""ListItem"",
-      ""position"": 1,
-      ""name"": ""Home"",
-      ""item"": ""https://network-consultancy.com/""
-    },
-    {
-      ""@type"": ""ListItem"",
-      ""position"": 2,
-      ""name"": ""Industries"",
-      ""item"": ""https://network-consultancy.com/industries""
-    },
-    {
-      ""@type"": ""ListItem"",
-      ""position"": 3,
-      ""name"": ""Recruitment Agencies"",
-      ""item"": ""https://network-consultancy.com/industries/recruitment-agencies""
-    }
-  ]
-}
-</script>"
-    <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://network-consultancy.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://network-consultancy.com/industries" },
+      { "@type": "ListItem", "position": 3, "name": "Recruitment Agencies", "item": "https://network-consultancy.com/industries/recruitment-agencies" }
+    ]
+  }
+  </script>
+
+  <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PVKBZV7');</script>
 
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/misc/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/misc/favicon-180.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,26 +36,16 @@
   <script src="/js/schema.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+
   <style>
-    /* industry-detail-spacing */
     body.industry-detail-page #main > section + section { margin-top: 40px !important; }
     body.industry-detail-page #main > #contact { margin-top: 40px !important; }
   </style>
 
-  
   <style>
-    #main > .svcs-hero {
-      padding-bottom: 0;
-      width: 100%;
-      margin-left: 0;
-      margin-right: 0;
-      align-self: stretch;
-    }
+    #main > .svcs-hero { padding-bottom: 0; width: 100%; margin-left: 0; margin-right: 0; align-self: stretch; }
     .svcs-hero { padding: 0; }
-    /* picture{display:contents} in global.css promotes <source> to a phantom grid/flex item; hide it */
     picture source { display: none; }
-
-    /* CMS testimonials: neutralise the 5-card -175px peek fallback */
     .nd-trusted__track { transform: translateX(-1px); }
 
     main#main > section.svcs-hero > .svcs-hero__wrap { max-width: none; width: 100%; margin: 0; }
@@ -83,11 +59,13 @@
     .svcs-hero__cta { margin-top: 0; background: #fff !important; color: #353535 !important; border: 0; border-radius: 2px !important; font-family: 'Google Sans Flex', sans-serif; font-size: 20px; font-style: normal; font-weight: 600; letter-spacing: 0; text-transform: none; min-width: 170px; width: auto; min-height: 50px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; line-height: normal; transition: background .2s ease; }
     .svcs-hero__cta:hover { background: #f0f0f0 !important; transform: none; }
 
+    /* Tab overview */
     .svl-overview { width: calc(100% - (var(--px) * 2)); max-width: var(--max-w); margin: 0 auto; padding-top: 72px; padding-bottom: 72px; }
     .svl-overview__title { margin: 0 0 14px; max-width: 980px; }
     .svl-overview__lead { max-width: 1080px; margin-bottom: 22px; }
     .svl-overview__inner { display: grid; grid-template-columns: minmax(0, 386px) minmax(0, 1fr); gap: 56px; align-items: start; background: #fff; border: 1px solid #353535; border-radius: 30px; padding: 40px; }
-    .svl-overview__list { display: flex; flex-direction: column; gap: 36px; }
+    .svl-overview__list { display: flex; flex-direction: column; gap: 36px; overflow-y: auto; max-height: 620px; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; }
+    .svl-overview__list::-webkit-scrollbar { display: none; }
     .svl-overview__list-item { appearance: none; background: transparent; border: 0; width: 100%; text-align: left; cursor: pointer; padding-bottom: 24px; border-bottom: 1px solid #353535; color: #585151; font-size: 28px; font-weight: 700; line-height: 1.25; transition: color .2s ease-out, background .25s ease-out, padding .25s ease-out; }
     .svl-overview__list-item:hover { color: var(--blue); }
     .svl-overview__list-item--active, .svl-overview__list-item--active:hover { padding: 24px; border-radius: 20px; border-bottom: 0; background: var(--blue); color: #fff; }
@@ -99,6 +77,7 @@
     .svl-overview__panel h3 { margin: 0; color: #585151; font-size: 24px; font-weight: 600; line-height: 1.25; }
     .svl-overview__panel p { margin: 0; color: #353535; font-size: 18px; font-weight: 400; line-height: 1.55; }
 
+    /* Biz slider */
     .sd-section { padding: 0 var(--px); margin: 100px auto; max-width: var(--section-w); }
     .sd-wrap { max-width: var(--max-w); margin: 0 auto; }
     .biz { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -106,10 +85,11 @@
     .biz__left p { margin: 0 0 16px; color: var(--sub); font-size: 20px; line-height: 1.5; }
     .biz__left p:last-of-type { margin-bottom: 40px; }
     .biz__nav { display: flex; align-items: center; gap: 16px; }
-    .biz__arrow { width: 48px; height: 48px; border-radius: 6px; border: 1px solid #d2d2d2; background: #f0f0f0; color: #464646; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; }
+    .biz__arrow { width: 48px; height: 48px; border-radius: 6px; border: 1px solid #d2d2d2; background: #f0f0f0; color: #464646; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
     .biz__arrow:last-of-type { background: #000; border-color: #000; color: #fff; }
+    .biz__arrow:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
     .biz__bar { flex: 1; max-width: 240px; height: 6px; margin-left: 8px; background: #e4e4e4; border-radius: 4px; overflow: hidden; }
-    .biz__bar-fill { width: 20%; height: 100%; background: var(--blue); border-radius: 4px; }
+    .biz__bar-fill { width: 50%; height: 100%; background: var(--blue); border-radius: 4px; }
     .biz__card { background: #13203f; border-radius: 16px; padding: 50px 43px 52px; min-height: 360px; color: #fff; display: flex; flex-direction: column; justify-content: space-between; }
     .biz__card h3 { margin: 0 0 20px; font-size: 42px; font-weight: 600; line-height: 1.05; }
     .biz__card p { margin: 0 0 28px; font-size: 20px; font-weight: 500; line-height: 1.35; color: rgba(255,255,255,.95); }
@@ -121,10 +101,10 @@
       .sd-section { margin: 56px auto; }
       .svl-overview__inner { grid-template-columns: 1fr; padding: 24px; gap: 32px; }
       .svl-overview__feature { order: -1; min-height: 480px; }
-      .svl-overview__list { gap: 24px; }
+      .svl-overview__list { gap: 24px; max-height: 480px; }
     }
     @media (max-width: 768px) {
-      .svcs-hero__wrap { background-image:url(/images/pages/unique/banner-icons/industries-icon.svg); background-repeat:no-repeat; background-size:250px auto; background-position:right -24px top -24px; height: auto; min-height: 0; }
+      .svcs-hero__wrap { background-image: url(/images/pages/unique/banner-icons/industries-icon.svg); background-repeat: no-repeat; background-size: 250px auto; background-position: right -24px top -24px; height: auto; min-height: 0; }
       .sd-section { margin: 56px auto; }
       .biz { grid-template-columns: 1fr; gap: 26px; }
       .biz__left h2 { font-size: 22px; line-height: 1.25; }
@@ -138,6 +118,7 @@
       .svl-overview { padding-top: 52px; padding-bottom: 52px; }
       .svl-overview__feature { min-height: 480px; padding: 16px; }
       .svl-overview__list-item { font-size: 22px; }
+      .svl-overview__list { max-height: 360px; }
       .svl-overview__panel { padding: 20px; }
       .svcs-hero__title { font-size: 42px; }
       .svcs-hero__sub { font-size: 20px; }
@@ -150,296 +131,359 @@
   </style>
 </head>
 <body class="industry-detail-page">
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVKBZV7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVKBZV7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<a class="skip-link" href="#main">Skip to main content</a>
-
+  <a class="skip-link" href="#main">Skip to main content</a>
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
+
   <main id="main">
 
-  <section class="svcs-hero" aria-label="Industries hero">
-    <div class="svcs-hero__wrap">
-      <div class="svcs-hero__content">
-        <div class="svcs-hero__text">
-          <h1 class="svcs-hero__title animate-fade-up">Recruitment Network Security</h1>
-          <p class="svcs-hero__sub animate-fade-up">Network Consultancy delivers secure IT networks for recruitment firms, protecting candidate data and keeping offices and remote teams connected.</p>
-        </div>
-        <a href="/contact" class="btn-blue svcs-hero__cta animate-fade-up" data-source-cta="industry_health_check">Book Health Check</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="svl-overview animate-fade-up" aria-labelledby="intro-h">
-    <h2 class="heading-xl svl-overview__title" id="intro-h">What Recruitment Agencies Teams Need from IT Infrastructure</h2>
-    <div class="body-lg svl-overview__lead"><p>Strong network foundations keep Recruitment Agencies operations stable, secure, and ready for growth. We design practical infrastructure that supports day-to-day productivity while reducing avoidable disruption.</p><p>Our approach balances performance, cyber resilience, and governance so your systems remain dependable as operational demand changes.</p></div>
-    <div class="svl-overview__inner">
-      <div class="svl-overview__list" role="tablist" aria-label="Industry focus areas">
-        <button type="button" role="tab" aria-selected="true" class="svl-overview__list-item svl-overview__list-item--active"
-          data-title="Planning and Assessment"
-          data-copy="We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency."
-          data-srcset="/images/pages/unique/industries-recruitment-agencies-cyber-security.jpg"
-          data-img="/images/pages/unique/industries-recruitment-agencies-cyber-security.jpg"
-          data-alt="Planning and Assessment — Recruitment Agencies">Planning and Assessment</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Secure Network Design and Deployment"
-          data-copy="We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency."
-          data-srcset="/images/pages/unique/industries-index-network-abstract.jpg"
-          data-img="/images/pages/unique/industries-index-network-abstract.jpg"
-          data-alt="Secure Network Design and Deployment — Recruitment Agencies">Secure Network Design and Deployment</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Monitoring and Threat Detection"
-          data-copy="We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency."
-          data-srcset="/images/pages/unique/industries-index-about-team.jpg"
-          data-img="/images/pages/unique/industries-index-about-team.jpg"
-          data-alt="Monitoring and Threat Detection — Recruitment Agencies">Monitoring and Threat Detection</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Performance Tuning and Management"
-          data-copy="We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency."
-          data-srcset="/images/pages/unique/industries-index-results.jpg"
-          data-img="/images/pages/unique/industries-index-results.jpg"
-          data-alt="Performance Tuning and Management — Recruitment Agencies">Performance Tuning and Management</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Compliance and Governance Support"
-          data-copy="We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency."
-          data-srcset="/images/pages/unique/industries-index-team-office.jpg"
-          data-img="/images/pages/unique/industries-index-team-office.jpg"
-          data-alt="Compliance and Governance Support — Recruitment Agencies">Compliance and Governance Support</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Backup and Recovery Readiness"
-          data-copy="We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency."
-          data-srcset="/images/pages/unique/industries-index-technician.jpg"
-          data-img="/images/pages/unique/industries-index-technician.jpg"
-          data-alt="Backup and Recovery Readiness — Recruitment Agencies">Backup and Recovery Readiness</button>
-      </div>
-      <div class="svl-overview__feature">
-        <picture>
-          <source id="svl-feature-source" srcset="/images/pages/unique/industries-recruitment-agencies-cyber-security.jpg" type="image/jpeg">
-          <img id="svl-feature-img" src="/images/pages/unique/industries-recruitment-agencies-cyber-security.jpg" alt="Planning and Assessment — Recruitment Agencies" loading="lazy">
-        </picture>
-        <div class="svl-overview__panel" role="tabpanel">
-          <h3 id="svl-overview-title">How We Deliver Results</h3>
-          <p id="svl-overview-copy">We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-  (function svlOverviewTabs() {
-    'use strict';
-    var tabs = Array.prototype.slice.call(document.querySelectorAll('.svl-overview__list-item'));
-    var panel = document.querySelector('.svl-overview__panel');
-    if (tabs.length === 0 || panel === null) return;
-    var title = document.getElementById('svl-overview-title');
-    var copy = document.getElementById('svl-overview-copy');
-    var img = document.getElementById('svl-feature-img');
-    var source = document.getElementById('svl-feature-source');
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        if (tab.classList.contains('svl-overview__list-item--active')) return;
-        tabs.forEach(function (t) {
-          t.classList.remove('svl-overview__list-item--active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        tab.classList.add('svl-overview__list-item--active');
-        tab.setAttribute('aria-selected', 'true');
-        panel.classList.add('is-switching');
-        if (img) img.style.opacity = '0';
-        setTimeout(function () {
-          title.textContent = tab.getAttribute('data-title');
-          copy.textContent = tab.getAttribute('data-copy');
-          if (source) source.srcset = tab.getAttribute('data-srcset');
-          if (img) {
-            img.src = tab.getAttribute('data-img');
-            img.alt = tab.getAttribute('data-alt');
-            img.style.opacity = '1';
-          }
-          panel.classList.remove('is-switching');
-        }, 250);
-      });
-    });
-  })();
-  </script>
-
-  
-
-  <section class="sd-section" aria-labelledby="biz-h">
-    <div class="sd-wrap">
-      <div class="biz" id="biz">
-        <div class="biz__left">
-          <h2 id="biz-h">When Recruitment Agencies Networks Need Immediate Attention</h2>
-          <p>If teams are seeing recurring slowdowns, unstable connectivity, or rising security risk, your network may need structured remediation rather than patch fixes.</p>
-          <p>We stabilise critical routes first, then improve observability and resilience so your operations run with fewer interruptions.</p>
-          <div class="biz__nav">
-            <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
-            <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
-            <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
+    <!-- HERO -->
+    <section class="svcs-hero" aria-label="Industries hero">
+      <div class="svcs-hero__wrap">
+        <div class="svcs-hero__content">
+          <div class="svcs-hero__text">
+            <h1 class="svcs-hero__title animate-fade-up">Recruitment Network Security</h1>
+            <p class="svcs-hero__sub animate-fade-up">Network Consultancy delivers secure IT networks for recruitment firms, protecting candidate data and keeping offices and remote teams connected.</p>
           </div>
+          <a href="/contact" class="btn-blue svcs-hero__cta animate-fade-up" data-source-cta="industry_health_check">Book Health Check</a>
         </div>
-        <div class="biz__card">
-          <div>
-            <h3 id="biz-title">Service Pressure Points</h3>
-            <p id="biz-desc">Teams often report endpoint congestion, inconsistent remote access, and delayed issue detection. We prioritise these risks to restore confidence quickly.</p>
+      </div>
+    </section>
+
+    <!-- TAB OVERVIEW -->
+    <section class="svl-overview animate-fade-up" aria-labelledby="intro-h">
+      <h2 class="heading-xl svl-overview__title" id="intro-h">What Recruitment Agencies Teams Need from IT Infrastructure</h2>
+      <div class="body-lg svl-overview__lead">
+        <p>Strong network foundations keep recruitment agency operations stable, secure, and ready for growth. We design practical infrastructure that supports day-to-day productivity while reducing avoidable disruption.</p>
+        <p>Our approach balances performance, cyber resilience, and governance so your systems remain dependable as operational demand changes.</p>
+      </div>
+      <div class="svl-overview__inner">
+        <div class="svl-overview__list" role="tablist" aria-label="Industry focus areas">
+
+          <!-- Tab 1 -->
+          <button type="button" role="tab" aria-selected="true"
+            class="svl-overview__list-item svl-overview__list-item--active"
+            data-title="Scalable Recruitment Infrastructure"
+            data-copy="Build a scalable network that supports recruitment software, cloud platforms and day-to-day communication across your business."
+            data-img="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Scalable recruitment infrastructure — modern office network">
+            Scalable Recruitment Infrastructure
+          </button>
+
+          <!-- Tab 2 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Optimised Application Performance"
+            data-copy="Improve network performance to support video interviews, applicant tracking systems, customer relationship management platforms and collaboration tools without delays."
+            data-img="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Optimised application performance — video interviews and collaboration tools">
+            Optimised Application Performance
+          </button>
+
+          <!-- Tab 3 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Advanced Network Security"
+            data-copy="Protect candidate and client information with firewalls, encrypted connections, multi-factor authentication and regular security monitoring."
+            data-img="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Advanced network security — protecting candidate data">
+            Advanced Network Security
+          </button>
+
+          <!-- Tab 4 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Business Continuity and Resilience"
+            data-copy="Use automated backups and proactive maintenance to reduce downtime and keep business systems available when your team needs them."
+            data-img="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Business continuity and resilience — server infrastructure">
+            Business Continuity and Resilience
+          </button>
+
+          <!-- Tab 5 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Compliance and Governance Support"
+            data-copy="We align your network with data protection obligations, implement clear access controls, and maintain documented security policies to keep your recruitment operations audit-ready."
+            data-img="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Compliance and governance support — documentation and policy">
+            Compliance and Governance Support
+          </button>
+
+          <!-- Tab 6 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Backup and Recovery Readiness"
+            data-copy="We implement reliable backup routines and tested recovery plans so your business can recover quickly from system failures, data loss or unexpected incidents."
+            data-img="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Backup and recovery readiness — data centre infrastructure">
+            Backup and Recovery Readiness
+          </button>
+
+        </div><!-- /.svl-overview__list -->
+
+        <div class="svl-overview__feature">
+          <picture>
+            <source id="svl-feature-source" srcset="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1440&q=80&auto=format&fit=crop" type="image/jpeg">
+            <img id="svl-feature-img"
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1440&q=80&auto=format&fit=crop"
+              alt="Scalable recruitment infrastructure — modern office network"
+              loading="lazy">
+          </picture>
+          <div class="svl-overview__panel" role="tabpanel">
+            <h3 id="svl-overview-title">Scalable Recruitment Infrastructure</h3>
+            <p id="svl-overview-copy">Build a scalable network that supports recruitment software, cloud platforms and day-to-day communication across your business.</p>
           </div>
-          <div class="biz__num" id="biz-count">1/5</div>
-        </div>
-      </div>
-    </div>
-  </section>
+        </div><!-- /.svl-overview__feature -->
 
-  <section class="industry-banner animate-fade-up" aria-labelledby="why-h">
-    <div class="industry-banner__inner">
-      <div class="industry-banner__bg">
-        <picture>
-          <source srcset="/images/pages/unique/industries-recruitment-agencies-cyber-security.jpg" type="image/jpeg">
-          <img src="/images/pages/unique/industries-recruitment-agencies-cyber-security.jpg" alt="Recruitment Agencies support delivery" loading="lazy">
-        </picture>
-      </div>
-      <div class="industry-banner__overlay" aria-hidden="true"></div>
-      <div class="industry-banner__content">
-        <span class="industry-banner__eyebrow">Why Choose Us</span>
-        <h2 class="industry-banner__title" id="why-h">Why Organisations in Recruitment Agencies Choose Network Consultancy</h2>
-        <p class="industry-banner__text">We combine consultancy and managed support to solve operational network issues with clear accountability, practical action plans, and measurable service improvements.</p>
-      </div>
-    </div>
-  </section>
+      </div><!-- /.svl-overview__inner -->
+    </section>
 
-  <section class="section animate-fade-up" aria-labelledby="what-h">
-    <div class="split split--3-2 split--reverse">
-      <div>
-        <span class="eyebrow">What You Get</span>
-        <h2 class="heading-lg" id="what-h">What Better Network Operations Look Like</h2>
-        <div class="body-lg"><p>Teams get faster access to core tools, fewer recurring incidents, and stronger confidence in security controls. We focus on outcomes your users can feel every day.</p></div>
-        <ul class="check-list">
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">More predictable network performance across sites and teams</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Earlier issue detection and faster remediation paths</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Security controls aligned with real operational workflows</span></li>
-        </ul>
-      </div>
-      <picture>
-        <source srcset="/images/pages/unique/industries-recruitment-agencies-managed-support.jpg" type="image/jpeg">
-        <img class="split__img split__img--med" src="/images/pages/unique/industries-recruitment-agencies-managed-support.jpg" alt="Recruitment Agencies network equipment" width="600" height="380" loading="lazy">
-      </picture>
-    </div>
-  </section>
-
+    <!-- TAB SCRIPT -->
     <script>
-  window.PAGE_TESTIMONIALS = [
-    {
-      quote: 'Network performance and reliability improved quickly, giving our team a stronger operational baseline and fewer service interruptions.',
-      name: 'Client feedback from a recent Recruitment Agencies engagement',
-      role: '',
-      avatar: '/images/misc/avatars/testimonial-avatar-m3.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Managing Director',
-      role: 'Broadcasting Company, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-managing-director.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'IT Director',
-      role: 'Professional Services Firm, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-it-director.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Head of Operations',
-      role: 'Healthcare Provider, Birmingham',
-      avatar: '/images/misc/avatars/testimonial-avatar-head-of-operations.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Managing Partner',
-      role: 'Legal Firm, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-managing-partner.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Operations Director',
-      role: 'Manufacturing Company, Midlands',
-      avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
-    }
-  ];
-  </script>
-  <div data-cms="testimonials" data-title="What our client says"></div>
+    (function svlOverviewTabs() {
+      'use strict';
+      var tabs   = Array.prototype.slice.call(document.querySelectorAll('.svl-overview__list-item'));
+      var panel  = document.querySelector('.svl-overview__panel');
+      if (tabs.length === 0 || panel === null) return;
+      var title  = document.getElementById('svl-overview-title');
+      var copy   = document.getElementById('svl-overview-copy');
+      var img    = document.getElementById('svl-feature-img');
+      var source = document.getElementById('svl-feature-source');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          if (tab.classList.contains('svl-overview__list-item--active')) return;
+          tabs.forEach(function (t) {
+            t.classList.remove('svl-overview__list-item--active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('svl-overview__list-item--active');
+          tab.setAttribute('aria-selected', 'true');
+          tab.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          panel.classList.add('is-switching');
+          if (img) img.style.opacity = '0';
+          setTimeout(function () {
+            if (title)  title.textContent  = tab.getAttribute('data-title');
+            if (copy)   copy.textContent   = tab.getAttribute('data-copy');
+            if (source) source.srcset      = tab.getAttribute('data-img');
+            if (img) {
+              img.src           = tab.getAttribute('data-img');
+              img.alt           = tab.getAttribute('data-alt');
+              img.style.opacity = '1';
+            }
+            panel.classList.remove('is-switching');
+          }, 250);
+        });
+      });
+    })();
+    </script>
 
-  <section class="industry-cta animate-fade-up" aria-label="Call to action">
-    <div class="industry-cta__inner">
-      <div class="industry-cta__chips" aria-hidden="true">
-        <span class="industry-cta__chip">Network Consultancy</span><span class="industry-cta__chip">Network Support</span><span class="industry-cta__chip">Managed Network Support</span><span class="industry-cta__chip">Managed Wireless LAN</span><span class="industry-cta__chip">Network Installations</span><span class="industry-cta__chip">Network Design &amp; Deployment</span><span class="industry-cta__chip">Firewall &amp; Network Security</span><span class="industry-cta__chip">Remote Access &amp; VPN</span>
+    <!-- BIZ SLIDER -->
+    <section class="sd-section" aria-labelledby="biz-h">
+      <div class="sd-wrap">
+        <div class="biz" id="biz">
+          <div class="biz__left">
+            <h2 id="biz-h">When Recruitment Agencies Networks Need Immediate Attention</h2>
+            <p>If teams are seeing recurring slowdowns, unstable connectivity, or rising security risk, your network may need structured remediation rather than patch fixes.</p>
+            <p>We stabilise critical routes first, then improve observability and resilience so your operations run with fewer interruptions.</p>
+            <div class="biz__nav">
+              <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
+              <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
+              <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
+            </div>
+          </div>
+          <div class="biz__card">
+            <div>
+              <h3 id="biz-title">Service Pressure Points</h3>
+              <p id="biz-desc">Teams often report endpoint congestion, inconsistent remote access, and delayed issue detection. We prioritise these risks to restore confidence quickly.</p>
+            </div>
+            <div class="biz__num" id="biz-count">1/2</div>
+          </div>
+        </div>
       </div>
-      <div class="industry-cta__card">
-        <h2 class="industry-cta__title">Ready to Strengthen Your Network</h2>
-        <p class="industry-cta__text">Speak with our consultants to review current network risk, performance bottlenecks, and practical next steps for your organisation.</p>
-        <a href="/contact" class="btn-dark">Book Your Assessment</a>
+    </section>
+
+    <!-- INDUSTRY BANNER -->
+    <section class="industry-banner animate-fade-up" aria-labelledby="why-h">
+      <div class="industry-banner__inner">
+        <div class="industry-banner__bg">
+          <picture>
+            <source srcset="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&q=80&auto=format&fit=crop" type="image/jpeg">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&q=80&auto=format&fit=crop" alt="Recruitment agency team at work" loading="lazy">
+          </picture>
+        </div>
+        <div class="industry-banner__overlay" aria-hidden="true"></div>
+        <div class="industry-banner__content">
+          <span class="industry-banner__eyebrow">Why Choose Us</span>
+          <h2 class="industry-banner__title" id="why-h">Why Recruitment Agencies Choose Network Consultancy</h2>
+          <p class="industry-banner__text">We combine consultancy and managed support to solve operational network issues with clear accountability, practical action plans, and measurable service improvements.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="nd-faq section-shell animate-fade-up" aria-labelledby="faq-h">
-  <div class="nd-faq__left">
-    <h2 class="section-title" id="faq-h">Frequently asked questions</h2>
-    <p>Still have questions? Get connected to our support team.</p>
-    <a href="../contact" class="nd-faq__cta">Contact us</a>
-  </div>
-  <div class="nd-faq__right">
-    <button class="nd-faq__item is-open"><span>Why is network consultancy important for Recruitment Agencies organisations?</span><strong>−</strong></button>
-    <div class="nd-faq__panel">Consultancy helps align infrastructure with operational goals so teams have dependable connectivity, clearer security controls, and fewer recurring incidents.</div>
-    <button class="nd-faq__item"><span>How do you reduce downtime and service disruption?</span><strong>+</strong></button>
-    <div class="nd-faq__panel" hidden>We prioritise critical network paths, improve monitoring, and implement resilient configurations so faults are detected and resolved faster.</div>
-    <button class="nd-faq__item"><span>Can you work alongside an internal IT team?</span><strong>+</strong></button>
-    <div class="nd-faq__panel" hidden>Yes. We often act as an extension of internal teams, providing specialist network capability while your team retains operational ownership.</div>
-  </div>
-</section>
+    <!-- WHAT YOU GET -->
+    <section class="section animate-fade-up" aria-labelledby="what-h">
+      <div class="split split--3-2 split--reverse">
+        <div>
+          <span class="eyebrow">What You Get</span>
+          <h2 class="heading-lg" id="what-h">What Better Network Operations Look Like</h2>
+          <div class="body-lg">
+            <p>Teams get faster access to core tools, fewer recurring incidents, and stronger confidence in security controls. We focus on outcomes your users can feel every day.</p>
+          </div>
+          <ul class="check-list">
+            <li class="check-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="check-text">More predictable network performance across sites and teams</span>
+            </li>
+            <li class="check-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="check-text">Earlier issue detection and faster remediation paths</span>
+            </li>
+            <li class="check-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="check-text">Security controls aligned with real operational workflows</span>
+            </li>
+          </ul>
+        </div>
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80&auto=format&fit=crop" type="image/jpeg">
+          <img class="split__img split__img--med"
+            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80&auto=format&fit=crop"
+            alt="Recruitment team collaborating in modern office"
+            width="600" height="380" loading="lazy">
+        </picture>
+      </div>
+    </section>
 
-  <div id="site-contact"></div>
-  <script src="/js/form-source-tracking.js"></script>
-  <script src="/js/contact.js"></script>
+    <!-- TESTIMONIALS -->
+    <script>
+    window.PAGE_TESTIMONIALS = [
+      {
+        quote: 'The team modernised our infrastructure and strengthened security. We can confidently manage candidate data while supporting hybrid working across multiple offices.',
+        name: 'JAMES WALKER',
+        role: 'Operations Manager — Birmingham, England',
+        avatar: '/images/misc/avatars/testimonial-avatar-it-director.jpg'
+      },
+      {
+        quote: 'The proactive support and monitoring have greatly reduced downtime. Their network consultancy expertise helped us improve communication, streamline recruitment processes, and deliver a better experience for clients and candidates. We have seen measurable improvements in productivity, reliability, and overall operational efficiency.',
+        name: 'REBECCA COLLINS',
+        role: 'Managing Consultant — Leeds, England',
+        avatar: '/images/misc/avatars/testimonial-avatar-f2.jpg'
+      },
+      {
+        quote: 'Our network stability and security improved noticeably after the consultancy work. System downtime has reduced, and our teams can collaborate seamlessly across different locations without delays or connectivity issues.',
+        name: 'DANIEL HUGHES',
+        role: 'IT Manager — London, England',
+        avatar: '/images/misc/avatars/testimonial-avatar-managing-director.jpg'
+      },
+      {
+        quote: 'The upgraded infrastructure and ongoing support have transformed how we operate. Data access is faster, communication tools are more reliable, and our recruitment workflow is now far more efficient and scalable.',
+        name: 'EMILY ROBERTS',
+        role: 'Head of Talent Acquisition — Bristol, England',
+        avatar: '/images/misc/avatars/testimonial-avatar-head-of-operations.jpg'
+      },
+      {
+        quote: 'Network performance and reliability improved quickly, giving our team a stronger operational baseline and fewer service interruptions.',
+        name: 'MANAGING PARTNER',
+        role: 'Legal Firm — London',
+        avatar: '/images/misc/avatars/testimonial-avatar-managing-partner.jpg'
+      },
+      {
+        quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
+        name: 'OPERATIONS DIRECTOR',
+        role: 'Manufacturing Company — Midlands',
+        avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
+      }
+    ];
+    </script>
+    <div data-cms="testimonials" data-title="What our client says"></div>
+
+    <!-- CTA -->
+    <section class="industry-cta animate-fade-up" aria-label="Call to action">
+      <div class="industry-cta__inner">
+        <div class="industry-cta__chips" aria-hidden="true">
+          <span class="industry-cta__chip">Network Consultancy</span><span class="industry-cta__chip">Network Support</span><span class="industry-cta__chip">Managed Network Support</span><span class="industry-cta__chip">Managed Wireless LAN</span><span class="industry-cta__chip">Network Installations</span><span class="industry-cta__chip">Network Design &amp; Deployment</span><span class="industry-cta__chip">Firewall &amp; Network Security</span><span class="industry-cta__chip">Remote Access &amp; VPN</span>
+        </div>
+        <div class="industry-cta__card">
+          <h2 class="industry-cta__title">Ready to Strengthen Your Network</h2>
+          <p class="industry-cta__text">Speak with our consultants to review current network risk, performance bottlenecks, and practical next steps for your organisation.</p>
+          <a href="/contact" class="btn-dark">Book Your Assessment</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="nd-faq section-shell animate-fade-up" aria-labelledby="faq-h">
+      <div class="nd-faq__left">
+        <h2 class="section-title" id="faq-h">Frequently asked questions</h2>
+        <p>Still have questions? Get connected to our support team.</p>
+        <a href="../contact" class="nd-faq__cta">Contact us</a>
+      </div>
+      <div class="nd-faq__right">
+        <button class="nd-faq__item is-open"><span>Why is network consultancy important for recruitment agencies?</span><strong>−</strong></button>
+        <div class="nd-faq__panel">Consultancy helps align infrastructure with operational goals so teams have dependable connectivity, clearer security controls, and fewer recurring incidents.</div>
+
+        <button class="nd-faq__item"><span>How do you reduce downtime and service disruption?</span><strong>+</strong></button>
+        <div class="nd-faq__panel" hidden>We prioritise critical network paths, improve monitoring, and implement resilient configurations so faults are detected and resolved faster.</div>
+
+        <button class="nd-faq__item"><span>Can you work alongside an internal IT team?</span><strong>+</strong></button>
+        <div class="nd-faq__panel" hidden>Yes. We often act as an extension of internal teams, providing specialist network capability while your team retains operational ownership.</div>
+      </div>
+    </section>
+
+    <div id="site-contact"></div>
+    <script src="/js/form-source-tracking.js"></script>
+    <script src="/js/contact.js"></script>
+
   </main>
 
   <div id="site-footer"></div>
   <script src="/js/footer.js"></script>
-
   <script src="/js/cms.js" defer></script>
-
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
-
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
+
+  <!-- BIZ SLIDER SCRIPT -->
   <script>
-  /* Business impact card slider */
   (function () {
     var biz = document.getElementById('biz');
     if (!biz) return;
     var title = document.getElementById('biz-title');
-    var desc = document.getElementById('biz-desc');
+    var desc  = document.getElementById('biz-desc');
     var count = document.getElementById('biz-count');
-    var fill = document.getElementById('biz-fill');
+    var fill  = document.getElementById('biz-fill');
     var slides = [
-      { title: title.textContent, desc: desc.textContent },
-      { title: 'Keeping Consultants Connected', desc: 'Stable connectivity keeps CRM, job boards and communication tools responsive through peak recruiting hours.' },
-      { title: 'Safeguarding Candidate Data', desc: 'Access controls and encryption protect candidate and client records in line with data protection obligations.' },
-      { title: 'Reliable Remote Access', desc: 'Consultants get secure, consistent access to systems whether working from the office, home or on-site.' },
-      { title: 'Scaling Through Busy Periods', desc: 'Infrastructure absorbs seasonal hiring surges and new desk growth without slowdowns.' }
+      {
+        title: 'Service Pressure Points',
+        desc:  'Teams often report endpoint congestion, inconsistent remote access, and delayed issue detection. We prioritise these risks to restore confidence quickly.'
+      },
+      {
+        title: 'Maintaining Reliable Operations',
+        desc:  'Good bandwidth management, automated backups, and robust cybersecurity measures help minimise downtime and service interruptions, enabling reliable access to critical systems and continued service delivery.'
+      }
     ];
     var i = 0, total = slides.length;
     function render() {
-      title.style.opacity = '0'; desc.style.opacity = '0';
+      title.style.opacity = '0';
+      desc.style.opacity  = '0';
       setTimeout(function () {
-        title.textContent = slides[i].title; desc.textContent = slides[i].desc;
+        title.textContent = slides[i].title;
+        desc.textContent  = slides[i].desc;
         count.textContent = (i + 1) + '/' + total;
         if (fill) fill.style.width = ((i + 1) / total * 100) + '%';
-        title.style.opacity = '1'; desc.style.opacity = '1';
+        title.style.opacity = '1';
+        desc.style.opacity  = '1';
       }, 200);
     }
     document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
   })();
   </script>
+
 </body>
 </html>
