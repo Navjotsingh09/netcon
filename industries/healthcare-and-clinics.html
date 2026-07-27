@@ -1,42 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  "<script type=""application/ld+json"">
-{
-  ""@context"": ""https://schema.org"",
-  ""@type"": ""BreadcrumbList"",
-  ""itemListElement"": [
-    {
-      ""@type"": ""ListItem"",
-      ""position"": 1,
-      ""name"": ""Home"",
-      ""item"": ""https://network-consultancy.com/""
-    },
-    {
-      ""@type"": ""ListItem"",
-      ""position"": 2,
-      ""name"": ""Industries"",
-      ""item"": ""https://network-consultancy.com/industries""
-    },
-    {
-      ""@type"": ""ListItem"",
-      ""position"": 3,
-      ""name"": ""Healthcare & Clinics"",
-      ""item"": ""https://network-consultancy.com/industries/healthcare-and-clinics""
-    }
-  ]
-}
-</script>"
-    <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://network-consultancy.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://network-consultancy.com/industries" },
+      { "@type": "ListItem", "position": 3, "name": "Healthcare & Clinics", "item": "https://network-consultancy.com/industries/healthcare-and-clinics" }
+    ]
+  }
+  </script>
+
+  <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PVKBZV7');</script>
 
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/misc/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/misc/favicon-180.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://network-consultancy.com/industries/healthcare-and-clinics">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://network-consultancy.com/industries/healthcare-clinics">
+  <meta property="og:url" content="https://network-consultancy.com/industries/healthcare-and-clinics">
   <meta property="og:title" content="Healthcare IT Infrastructure & Network Support | Network Consultancy">
   <meta property="og:description" content="Secure and resilient network support for healthcare and clinic environments.">
   <meta property="og:site_name" content="Network Consultancy">
@@ -50,26 +36,16 @@
   <script src="/js/schema.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+
   <style>
-    /* industry-detail-spacing */
     body.industry-detail-page #main > section + section { margin-top: 40px !important; }
     body.industry-detail-page #main > #contact { margin-top: 40px !important; }
   </style>
 
-  
   <style>
-    #main > .svcs-hero {
-      padding-bottom: 0;
-      width: 100%;
-      margin-left: 0;
-      margin-right: 0;
-      align-self: stretch;
-    }
+    #main > .svcs-hero { padding-bottom: 0; width: 100%; margin-left: 0; margin-right: 0; align-self: stretch; }
     .svcs-hero { padding: 0; }
-    /* picture{display:contents} in global.css promotes <source> to a phantom grid/flex item; hide it */
     picture source { display: none; }
-
-    /* CMS testimonials: neutralise the 5-card -175px peek fallback */
     .nd-trusted__track { transform: translateX(-1px); }
 
     main#main > section.svcs-hero > .svcs-hero__wrap { max-width: none; width: 100%; margin: 0; }
@@ -83,11 +59,13 @@
     .svcs-hero__cta { margin-top: 0; background: #fff !important; color: #353535 !important; border: 0; border-radius: 2px !important; font-family: 'Google Sans Flex', sans-serif; font-size: 20px; font-style: normal; font-weight: 600; letter-spacing: 0; text-transform: none; min-width: 170px; width: auto; min-height: 50px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; line-height: normal; transition: background .2s ease; }
     .svcs-hero__cta:hover { background: #f0f0f0 !important; transform: none; }
 
+    /* Tab overview */
     .svl-overview { width: calc(100% - (var(--px) * 2)); max-width: var(--max-w); margin: 0 auto; padding-top: 72px; padding-bottom: 72px; }
     .svl-overview__title { margin: 0 0 14px; max-width: 980px; }
     .svl-overview__lead { max-width: 1080px; margin-bottom: 22px; }
     .svl-overview__inner { display: grid; grid-template-columns: minmax(0, 386px) minmax(0, 1fr); gap: 56px; align-items: start; background: #fff; border: 1px solid #353535; border-radius: 30px; padding: 40px; }
-    .svl-overview__list { display: flex; flex-direction: column; gap: 36px; }
+    .svl-overview__list { display: flex; flex-direction: column; gap: 36px; overflow-y: auto; max-height: 620px; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; }
+    .svl-overview__list::-webkit-scrollbar { display: none; }
     .svl-overview__list-item { appearance: none; background: transparent; border: 0; width: 100%; text-align: left; cursor: pointer; padding-bottom: 24px; border-bottom: 1px solid #353535; color: #585151; font-size: 28px; font-weight: 700; line-height: 1.25; transition: color .2s ease-out, background .25s ease-out, padding .25s ease-out; }
     .svl-overview__list-item:hover { color: var(--blue); }
     .svl-overview__list-item--active, .svl-overview__list-item--active:hover { padding: 24px; border-radius: 20px; border-bottom: 0; background: var(--blue); color: #fff; }
@@ -99,6 +77,7 @@
     .svl-overview__panel h3 { margin: 0; color: #585151; font-size: 24px; font-weight: 600; line-height: 1.25; }
     .svl-overview__panel p { margin: 0; color: #353535; font-size: 18px; font-weight: 400; line-height: 1.55; }
 
+    /* Biz slider */
     .sd-section { padding: 0 var(--px); margin: 100px auto; max-width: var(--section-w); }
     .sd-wrap { max-width: var(--max-w); margin: 0 auto; }
     .biz { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -106,8 +85,9 @@
     .biz__left p { margin: 0 0 16px; color: var(--sub); font-size: 20px; line-height: 1.5; }
     .biz__left p:last-of-type { margin-bottom: 40px; }
     .biz__nav { display: flex; align-items: center; gap: 16px; }
-    .biz__arrow { width: 48px; height: 48px; border-radius: 6px; border: 1px solid #d2d2d2; background: #f0f0f0; color: #464646; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; }
+    .biz__arrow { width: 48px; height: 48px; border-radius: 6px; border: 1px solid #d2d2d2; background: #f0f0f0; color: #464646; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
     .biz__arrow:last-of-type { background: #000; border-color: #000; color: #fff; }
+    .biz__arrow:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
     .biz__bar { flex: 1; max-width: 240px; height: 6px; margin-left: 8px; background: #e4e4e4; border-radius: 4px; overflow: hidden; }
     .biz__bar-fill { width: 20%; height: 100%; background: var(--blue); border-radius: 4px; }
     .biz__card { background: #13203f; border-radius: 16px; padding: 50px 43px 52px; min-height: 360px; color: #fff; display: flex; flex-direction: column; justify-content: space-between; }
@@ -115,16 +95,33 @@
     .biz__card p { margin: 0 0 28px; font-size: 20px; font-weight: 500; line-height: 1.35; color: rgba(255,255,255,.95); }
     .biz__num { font-size: 42px; font-weight: 600; }
 
+    /* Healthcare banner slideshow */
+    .hc-banner { position: relative; overflow: hidden; }
+    .hc-banner .industry-banner__inner { min-height: 520px; border-radius: 10px; background: #0c1b3d; position: relative; overflow: hidden; }
+    .hc-banner__bg { position: absolute; inset: 0; z-index: 0; }
+    .hc-banner__bg img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.28; transition: opacity .4s ease; }
+    .hc-banner__overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(135deg, rgba(9,24,63,0.92) 0%, rgba(9,130,197,0.55) 100%); }
+    .hc-banner .industry-banner__content { position: relative; z-index: 2; max-width: 720px; padding: 60px 52px; }
+    .hc-banner .industry-banner__eyebrow { display: inline-block; background: rgba(255,255,255,0.12); color: #7dd3fc; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; margin-bottom: 20px; }
+    .hc-banner .industry-banner__title { font-size: 48px; font-weight: 700; line-height: 1.07; color: #fff; margin: 0 0 20px; transition: opacity .25s ease-out; }
+    .hc-banner .industry-banner__text { font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.88); max-width: 620px; transition: opacity .25s ease-out; }
+    .hc-banner.is-switching .industry-banner__title,
+    .hc-banner.is-switching .industry-banner__text { opacity: 0; }
+    .hc-banner__dots { position: absolute; left: 52px; bottom: 36px; z-index: 3; display: flex; gap: 10px; }
+    .hc-banner__dot { width: 32px; height: 4px; border-radius: 999px; background: rgba(255,255,255,0.35); border: 0; padding: 0; cursor: pointer; transition: background .2s ease, width .2s ease; }
+    .hc-banner__dot.is-active { background: #38bdf8; width: 48px; }
+    .hc-banner__dot:hover { background: rgba(255,255,255,0.7); }
+
     @media (max-width: 1200px) {
       .svcs-hero__title { font-size: 46px; }
       .svcs-hero__content { padding: 80px 60px 120px var(--px); }
       .sd-section { margin: 56px auto; }
       .svl-overview__inner { grid-template-columns: 1fr; padding: 24px; gap: 32px; }
       .svl-overview__feature { order: -1; min-height: 480px; }
-      .svl-overview__list { gap: 24px; }
+      .svl-overview__list { gap: 24px; max-height: 480px; }
     }
     @media (max-width: 768px) {
-      .svcs-hero__wrap { background-image:url(/images/pages/unique/banner-icons/industries-icon.svg); background-repeat:no-repeat; background-size:250px auto; background-position:right -24px top -24px; height: auto; min-height: 0; }
+      .svcs-hero__wrap { background-image: url(/images/pages/unique/banner-icons/industries-icon.svg); background-repeat: no-repeat; background-size: 250px auto; background-position: right -24px top -24px; height: auto; min-height: 0; }
       .sd-section { margin: 56px auto; }
       .biz { grid-template-columns: 1fr; gap: 26px; }
       .biz__left h2 { font-size: 22px; line-height: 1.25; }
@@ -138,10 +135,14 @@
       .svl-overview { padding-top: 52px; padding-bottom: 52px; }
       .svl-overview__feature { min-height: 480px; padding: 16px; }
       .svl-overview__list-item { font-size: 22px; }
+      .svl-overview__list { max-height: 360px; }
       .svl-overview__panel { padding: 20px; }
       .svcs-hero__title { font-size: 42px; }
       .svcs-hero__sub { font-size: 20px; }
       .svcs-hero__content { padding: 60px var(--px) 80px var(--px); }
+      .hc-banner .industry-banner__content { padding: 36px 28px 72px; }
+      .hc-banner .industry-banner__title { font-size: 30px; }
+      .hc-banner__dots { left: 28px; bottom: 22px; }
     }
     @media (max-width: 480px) {
       .svcs-hero__title { font-size: 28px; }
@@ -150,311 +151,439 @@
   </style>
 </head>
 <body class="industry-detail-page">
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVKBZV7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVKBZV7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<a class="skip-link" href="#main">Skip to main content</a>
-
+  <a class="skip-link" href="#main">Skip to main content</a>
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
+
   <main id="main">
 
-  <section class="svcs-hero" aria-label="Industries hero">
-    <div class="svcs-hero__wrap">
-      <div class="svcs-hero__content">
-        <div class="svcs-hero__text">
-          <h1 class="svcs-hero__title animate-fade-up">Healthcare Network Security</h1>
-          <p class="svcs-hero__sub animate-fade-up">Network Consultancy delivers secure IT infrastructure for healthcare providers, protecting patient data, supporting compliance, and keeping systems connected.</p>
-        </div>
-        <a href="/contact" class="btn-blue svcs-hero__cta animate-fade-up" data-source-cta="industry_health_check">Book Health Check</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="svl-overview animate-fade-up" aria-labelledby="intro-h">
-    <h2 class="heading-xl svl-overview__title" id="intro-h">The Core IT Infrastructure We Build for Healthcare</h2>
-    <div class="body-lg svl-overview__lead"><p>We provide the essential IT frameworks healthcare organisations need to support patient care, enhance clinical operations, and reduce system disruption.</p></div>
-    <div class="svl-overview__inner">
-      <div class="svl-overview__list" role="tablist" aria-label="Healthcare focus areas">
-        <button type="button" role="tab" aria-selected="true" class="svl-overview__list-item svl-overview__list-item--active"
-          data-title="Fast Networks"
-          data-copy="We provide the essential IT frameworks healthcare organisations need to support patient care, enhance clinical operations, and reduce system disruption."
-          data-srcset="/images/pages/unique/industries-healthcare-clinics-managed-support.jpg"
-          data-img="/images/pages/unique/industries-healthcare-clinics-managed-support.jpg"
-          data-alt="Fast Networks — Healthcare & Clinics">Fast Networks</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Focus on Data Security"
-          data-copy="We provide the essential IT frameworks healthcare organisations need to support patient care, enhance clinical operations, and reduce system disruption."
-          data-srcset="/images/pages/unique/industries-index-about-team.jpg"
-          data-img="/images/pages/unique/industries-index-about-team.jpg"
-          data-alt="Focus on Data Security — Healthcare & Clinics">Focus on Data Security</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Scalability and Management"
-          data-copy="We provide the essential IT frameworks healthcare organisations need to support patient care, enhance clinical operations, and reduce system disruption."
-          data-srcset="/images/pages/unique/industries-index-technician.jpg"
-          data-img="/images/pages/unique/industries-index-technician.jpg"
-          data-alt="Scalability and Management — Healthcare & Clinics">Scalability and Management</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Reliable Healthcare Connection"
-          data-copy="We provide the essential IT frameworks healthcare organisations need to support patient care, enhance clinical operations, and reduce system disruption."
-          data-srcset="/images/pages/unique/industries-index-cyber-security.jpg"
-          data-img="/images/pages/unique/industries-index-cyber-security.jpg"
-          data-alt="Reliable Healthcare Connection — Healthcare & Clinics">Reliable Healthcare Connection</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Facilitates Telemedicine"
-          data-copy="We provide the essential IT frameworks healthcare organisations need to support patient care, enhance clinical operations, and reduce system disruption."
-          data-srcset="/images/pages/unique/industries-index-results.jpg"
-          data-img="/images/pages/unique/industries-index-results.jpg"
-          data-alt="Facilitates Telemedicine — Healthcare & Clinics">Facilitates Telemedicine</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Healthcare System Management"
-          data-copy="We provide the essential IT frameworks healthcare organisations need to support patient care, enhance clinical operations, and reduce system disruption."
-          data-srcset="/images/pages/unique/industries-index-professional.jpg"
-          data-img="/images/pages/unique/industries-index-professional.jpg"
-          data-alt="Healthcare System Management — Healthcare & Clinics">Healthcare System Management</button>
-      </div>
-      <div class="svl-overview__feature">
-        <picture>
-          <source id="svl-feature-source" srcset="/images/pages/unique/industries-healthcare-clinics-managed-support.jpg" type="image/jpeg">
-          <img id="svl-feature-img" src="/images/pages/unique/industries-healthcare-clinics-managed-support.jpg" alt="Fast Networks — Healthcare & Clinics" loading="lazy">
-        </picture>
-        <div class="svl-overview__panel" role="tabpanel">
-          <h3 id="svl-overview-title">Fast Networks</h3>
-          <p id="svl-overview-copy">We provide the essential IT frameworks healthcare organisations need to support patient care, enhance clinical operations, and reduce system disruption.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-  (function svlOverviewTabs() {
-    'use strict';
-    var tabs = Array.prototype.slice.call(document.querySelectorAll('.svl-overview__list-item'));
-    var panel = document.querySelector('.svl-overview__panel');
-    if (tabs.length === 0 || panel === null) return;
-    var title = document.getElementById('svl-overview-title');
-    var copy = document.getElementById('svl-overview-copy');
-    var img = document.getElementById('svl-feature-img');
-    var source = document.getElementById('svl-feature-source');
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        if (tab.classList.contains('svl-overview__list-item--active')) return;
-        tabs.forEach(function (t) {
-          t.classList.remove('svl-overview__list-item--active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        tab.classList.add('svl-overview__list-item--active');
-        tab.setAttribute('aria-selected', 'true');
-        panel.classList.add('is-switching');
-        if (img) img.style.opacity = '0';
-        setTimeout(function () {
-          title.textContent = tab.getAttribute('data-title');
-          copy.textContent = tab.getAttribute('data-copy');
-          if (source) source.srcset = tab.getAttribute('data-srcset');
-          if (img) {
-            img.src = tab.getAttribute('data-img');
-            img.alt = tab.getAttribute('data-alt');
-            img.style.opacity = '1';
-          }
-          panel.classList.remove('is-switching');
-        }, 250);
-      });
-    });
-  })();
-  </script>
-
-  <section class="sd-section" aria-labelledby="biz-h">
-    <div class="sd-wrap">
-      <div class="biz" id="biz">
-        <div class="biz__left">
-          <h2 id="biz-h">Resolving Your Healthcare IT Risks and System Downtime</h2>
-          <p>Every healthcare provider needs dependable infrastructure so digital patient records, diagnostics and collaboration tools remain available.</p>
-          <p></p>
-          <div class="biz__nav">
-            <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
-            <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
-            <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
+    <!-- HERO -->
+    <section class="svcs-hero" aria-label="Industries hero">
+      <div class="svcs-hero__wrap">
+        <div class="svcs-hero__content">
+          <div class="svcs-hero__text">
+            <h1 class="svcs-hero__title animate-fade-up">Healthcare Network Security</h1>
+            <p class="svcs-hero__sub animate-fade-up">Network Consultancy delivers secure IT infrastructure for healthcare providers, protecting patient data, supporting compliance, and keeping systems connected.</p>
           </div>
+          <a href="/contact" class="btn-blue svcs-hero__cta animate-fade-up" data-source-cta="industry_health_check">Book Health Check</a>
         </div>
-        <div class="biz__card">
-          <div>
-            <h3 id="biz-title">Stopping Cyber Threats</h3>
-            <p id="biz-desc">Strong infrastructure protects sensitive healthcare data and limits exposure to cyber risks.</p>
+      </div>
+    </section>
+
+    <!-- TAB OVERVIEW -->
+    <section class="svl-overview animate-fade-up" aria-labelledby="intro-h">
+      <h2 class="heading-xl svl-overview__title" id="intro-h">The Core IT Infrastructure We Build for Healthcare</h2>
+      <div class="body-lg svl-overview__lead">
+        <p>We provide the essential IT frameworks healthcare organisations need to support patient care, enhance clinical operations, and reduce system disruption.</p>
+      </div>
+      <div class="svl-overview__inner">
+        <div class="svl-overview__list" role="tablist" aria-label="Healthcare focus areas">
+
+          <!-- Tab 1 -->
+          <button type="button" role="tab" aria-selected="true"
+            class="svl-overview__list-item svl-overview__list-item--active"
+            data-title="Connected Clinical Infrastructure"
+            data-copy="Our team links your departments, medical devices, and main systems together so your staff can share clinical data quickly and securely."
+            data-img="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Connected clinical infrastructure — healthcare departments linked securely">
+            Connected Clinical Infrastructure
+          </button>
+
+          <!-- Tab 2 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Secure Cloud for Medical Applications"
+            data-copy="We deploy secure cloud environments for medical applications, enabling authorised staff to access systems safely from any location."
+            data-img="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Secure cloud environments for medical applications">
+            Secure Cloud for Medical Applications
+          </button>
+
+          <!-- Tab 3 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="EHR and Clinical Application Management"
+            data-copy="We manage the core systems that support your Electronic Health Records (EHR) and essential clinical applications, ensuring reliable performance and availability."
+            data-img="https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=1440&q=80&auto=format&fit=crop"
+            data-alt="EHR and clinical application management">
+            EHR and Clinical Application Management
+          </button>
+
+          <!-- Tab 4 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Hospital and Clinic Wi-Fi Networks"
+            data-copy="We install reliable Wi-Fi networks across hospitals and clinics, ensuring staff, patients, and connected medical devices remain securely connected."
+            data-img="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Reliable Wi-Fi across hospitals and clinics">
+            Hospital and Clinic Wi-Fi Networks
+          </button>
+
+          <!-- Tab 5 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Patient Data Security"
+            data-copy="Network consultancy helps protect confidential patient data through strong access controls, data encryption, and continuous monitoring, reducing the risk of unauthorised access and cyber threats."
+            data-img="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Patient data security — encryption and access controls">
+            Patient Data Security
+          </button>
+
+          <!-- Tab 6 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Backend System Management"
+            data-copy="We manage the backend systems that support essential services such as appointment scheduling and diagnostic applications, ensuring they run reliably and efficiently."
+            data-img="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Backend system management for healthcare services">
+            Backend System Management
+          </button>
+
+        </div><!-- /.svl-overview__list -->
+
+        <div class="svl-overview__feature">
+          <picture>
+            <source id="svl-feature-source" srcset="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1440&q=80&auto=format&fit=crop" type="image/jpeg">
+            <img id="svl-feature-img"
+              src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1440&q=80&auto=format&fit=crop"
+              alt="Connected clinical infrastructure — healthcare departments linked securely"
+              loading="lazy">
+          </picture>
+          <div class="svl-overview__panel" role="tabpanel">
+            <h3 id="svl-overview-title">Connected Clinical Infrastructure</h3>
+            <p id="svl-overview-copy">Our team links your departments, medical devices, and main systems together so your staff can share clinical data quickly and securely.</p>
           </div>
-          <div class="biz__num" id="biz-count">1/5</div>
-        </div>
-      </div>
-    </div>
-  </section>
+        </div><!-- /.svl-overview__feature -->
 
-  <section class="section animate-fade-up" aria-labelledby="use-h">
-    <h2 class="heading-lg" id="use-h">How Healthcare Organisations Can Use IT Infrastructure</h2>
-    <p class="body-lg industry-text-gap-lg">Modern infrastructure underpins digital workflows, supports secure communication, and enables responsive patient services.</p>
-    <div class="industry-highlight">
-      <picture>
-        <source srcset="/images/pages/unique/industries-index-network-abstract.jpg" type="image/jpeg">
-        <img src="/images/pages/unique/industries-index-network-abstract.jpg" alt="Clinical benefits and EHR management" loading="lazy">
-      </picture>
-      <div class="industry-highlight__overlay" aria-hidden="true"></div>
-      <div class="industry-highlight__content">
-        <h3 class="industry-highlight__title">Clinical Benefits and EHR Management</h3>
-        <ul class="industry-highlight__list">
-          <li>Supporting patient care has become more connected through secure digital systems.</li>
-          <li>Emergency departments and clinical teams now rely on digital platforms to coordinate treatment and reduce response times.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+      </div><!-- /.svl-overview__inner -->
+    </section>
 
-  <section class="section animate-fade-up" aria-labelledby="challenge-h">
-    <h2 class="heading-lg" id="challenge-h">Common IT Infrastructure Challenges in Healthcare and How to Address Them</h2>
-    <p class="body-lg industry-text-gap-md">Healthcare organisations face operational and security pressures every day. Strong infrastructure helps teams maintain continuity while improving patient service delivery.</p>
-    <div class="industry-challenge">
-      <div>
-        <h3 class="heading-md">Network outages</h3>
-        <p class="industry-challenge__copy">Downtime interrupts consultations and access to critical records. Redundant architecture and proactive monitoring reduce outage frequency and impact.</p>
-      </div>
-      <div class="industry-challenge__visual">
-        <picture>
-          <source srcset="/images/pages/unique/industries-index-team-office.jpg" type="image/jpeg">
-          <img src="/images/pages/unique/industries-index-team-office.jpg" alt="Healthcare technology operations" loading="lazy">
-        </picture>
-      </div>
-    </div>
-  </section>
-
-  <section class="industry-banner animate-fade-up" aria-labelledby="why-h">
-    <div class="industry-banner__inner">
-      <div class="industry-banner__bg">
-        <picture>
-          <source srcset="/images/pages/unique/services-business-continuity-servers.jpg" type="image/jpeg">
-          <img src="/images/pages/unique/services-business-continuity-servers.jpg" alt="Healthcare & Clinics support delivery" loading="lazy">
-        </picture>
-      </div>
-      <div class="industry-banner__overlay" aria-hidden="true"></div>
-      <div class="industry-banner__content">
-        <span class="industry-banner__eyebrow">Healthcare Transformation</span>
-        <h2 class="industry-banner__title" id="why-h">Next-Generation Healthcare IT Infrastructure Transformation</h2>
-        <p class="industry-banner__text">Modern healthcare organisations need infrastructure that supports digital records, advanced diagnostics and secure collaboration. We help integrate cloud-enabled architecture, improve cybersecurity, and strengthen system resilience across clinical and operational teams.</p>
-      </div>
-    </div>
-  </section>
-
+    <!-- TAB SCRIPT -->
     <script>
-  window.PAGE_TESTIMONIALS = [
-    {
-      quote: 'Our network has shifted from reactive fixes to proactive monitoring, and the new controls around access have improved stability and confidence across all service points.',
-      name: 'Sarah Malik',
-      role: 'Operations Director, Manchester',
-      avatar: '/images/misc/avatars/testimonial-avatar-f1.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Managing Director',
-      role: 'Broadcasting Company, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-managing-director.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'IT Director',
-      role: 'Professional Services Firm, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-it-director.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Head of Operations',
-      role: 'Healthcare Provider, Birmingham',
-      avatar: '/images/misc/avatars/testimonial-avatar-head-of-operations.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Managing Partner',
-      role: 'Legal Firm, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-managing-partner.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Operations Director',
-      role: 'Manufacturing Company, Midlands',
-      avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
-    }
-  ];
-  </script>
-  <div data-cms="testimonials" data-title="What our client says"></div>
+    (function svlOverviewTabs() {
+      'use strict';
+      var tabs   = Array.prototype.slice.call(document.querySelectorAll('.svl-overview__list-item'));
+      var panel  = document.querySelector('.svl-overview__panel');
+      if (tabs.length === 0 || panel === null) return;
+      var title  = document.getElementById('svl-overview-title');
+      var copy   = document.getElementById('svl-overview-copy');
+      var img    = document.getElementById('svl-feature-img');
+      var source = document.getElementById('svl-feature-source');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          if (tab.classList.contains('svl-overview__list-item--active')) return;
+          tabs.forEach(function (t) {
+            t.classList.remove('svl-overview__list-item--active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('svl-overview__list-item--active');
+          tab.setAttribute('aria-selected', 'true');
+          tab.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          panel.classList.add('is-switching');
+          if (img) img.style.opacity = '0';
+          setTimeout(function () {
+            if (title)  title.textContent  = tab.getAttribute('data-title');
+            if (copy)   copy.textContent   = tab.getAttribute('data-copy');
+            if (source) source.srcset      = tab.getAttribute('data-img');
+            if (img) {
+              img.src           = tab.getAttribute('data-img');
+              img.alt           = tab.getAttribute('data-alt');
+              img.style.opacity = '1';
+            }
+            panel.classList.remove('is-switching');
+          }, 250);
+        });
+      });
+    })();
+    </script>
 
-  <section class="industry-cta animate-fade-up" aria-label="Call to action">
-    <div class="industry-cta__inner">
-      <div class="industry-cta__chips" aria-hidden="true">
-        <span class="industry-cta__chip">Network Consultancy</span><span class="industry-cta__chip">Network Support</span><span class="industry-cta__chip">Managed Network Support</span><span class="industry-cta__chip">Managed Wireless LAN</span><span class="industry-cta__chip">Network Installations</span><span class="industry-cta__chip">Network Design &amp; Deployment</span><span class="industry-cta__chip">Firewall &amp; Network Security</span><span class="industry-cta__chip">Remote Access &amp; VPN</span>
+    <!-- BIZ SLIDER -->
+    <section class="sd-section" aria-labelledby="biz-h">
+      <div class="sd-wrap">
+        <div class="biz" id="biz">
+          <div class="biz__left">
+            <h2 id="biz-h">Resolving Your Healthcare IT Risks and System Downtime</h2>
+            <p>Every healthcare provider needs dependable infrastructure so digital patient records, diagnostics and collaboration tools remain available.</p>
+            <p>We identify the root cause of IT problems and implement structured solutions that reduce recurring incidents and protect operational continuity.</p>
+            <div class="biz__nav">
+              <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
+              <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
+              <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
+            </div>
+          </div>
+          <div class="biz__card">
+            <div>
+              <h3 id="biz-title">Stopping Cyber Threats</h3>
+              <p id="biz-desc">Strong infrastructure protects sensitive healthcare data and limits exposure to cyber risks.</p>
+            </div>
+            <div class="biz__num" id="biz-count">1/5</div>
+          </div>
+        </div>
       </div>
-      <div class="industry-cta__card">
-        <h2 class="industry-cta__title">Ready to Strengthen Your Network</h2>
-        <p class="industry-cta__text">Speak with our consultants to review current network risk, performance bottlenecks, and practical next steps for your organisation.</p>
-        <a href="/contact" class="btn-dark">Book Your Assessment</a>
+    </section>
+
+    <!-- HOW HEALTHCARE ORGS USE IT -->
+    <section class="section animate-fade-up" aria-labelledby="use-h">
+      <h2 class="heading-lg" id="use-h">How Healthcare Organisations Can Use IT Infrastructure</h2>
+      <p class="body-lg industry-text-gap-lg">Modern infrastructure underpins digital workflows, supports secure communication, and enables responsive patient services.</p>
+      <div class="industry-highlight">
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=1600&q=80&auto=format&fit=crop" type="image/jpeg">
+          <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=1600&q=80&auto=format&fit=crop" alt="Streamlining healthcare operations through connected infrastructure" loading="lazy">
+        </picture>
+        <div class="industry-highlight__overlay" aria-hidden="true"></div>
+        <div class="industry-highlight__content">
+          <h3 class="industry-highlight__title">Streamlining Healthcare Operations Through Connected Infrastructure</h3>
+          <ul class="industry-highlight__list">
+            <li><strong>Connecting Medical Devices</strong> — Secure IT networks enable monitoring equipment, diagnostic systems, and other clinical devices to share data efficiently across departments, supporting better patient care and operational efficiency.</li>
+            <li><strong>Supporting Cloud-Based Working</strong> — Cloud services allow authorised staff to securely access healthcare systems, share documents, and collaborate more effectively, helping to support flexible working and remote consultations where appropriate.</li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="nd-faq section-shell animate-fade-up" aria-labelledby="faq-h">
-  <div class="nd-faq__left">
-    <h2 class="section-title" id="faq-h">Frequently asked questions</h2>
-    <p>Still have questions? Get connected to our support team.</p>
-    <a href="../contact" class="nd-faq__cta">Contact us</a>
-  </div>
-  <div class="nd-faq__right">
-    <button class="nd-faq__item is-open"><span>Why is network consultancy important for Healthcare & Clinics organisations?</span><strong>−</strong></button>
-    <div class="nd-faq__panel">Network consultancy helps healthcare organisations build secure, reliable IT infrastructures that support patient care and day to day operations.<br><br>It can improve systems performance, streamline security measures, reduce downtime and help organisations meet healthcare compliance requirements.</div>
-    <button class="nd-faq__item"><span>How can healthcare organisations reduce the risk of cyberattacks?</span><strong>+</strong></button>
-    <div class="nd-faq__panel" hidden>We deploy layered controls including network segmentation, endpoint protection, secure access policies and real-time monitoring to reduce the attack surface.</div>
-    <button class="nd-faq__item"><span>What are key features of resilient healthcare IT infrastructure?</span><strong>+</strong></button>
-    <div class="nd-faq__panel" hidden>Resilient healthcare environments rely on high-availability networking, secure data handling, redundancy planning, rapid failover, and continuous monitoring.</div>
-  </div>
-</section>
+    <!-- COMMON IT CHALLENGES -->
+    <section class="section animate-fade-up" aria-labelledby="challenge-h">
+      <h2 class="heading-lg" id="challenge-h">Common IT Infrastructure Challenges in Healthcare and How to Address Them</h2>
+      <p class="body-lg industry-text-gap-md">Healthcare organisations face operational and security pressures every day. Strong infrastructure helps teams maintain continuity while improving patient service delivery.</p>
+      <div class="industry-challenge">
+        <div>
+          <h3 class="heading-md">Network outages</h3>
+          <p class="industry-challenge__copy">Downtime interrupts consultations and access to critical records. Redundant architecture and proactive monitoring reduce outage frequency and impact.</p>
+        </div>
+        <div class="industry-challenge__visual">
+          <picture>
+            <source srcset="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1200&q=80&auto=format&fit=crop" type="image/jpeg">
+            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1200&q=80&auto=format&fit=crop" alt="Healthcare network challenges and solutions" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </section>
 
-  <div id="site-contact"></div>
-  <script src="/js/form-source-tracking.js"></script>
-  <script src="/js/contact.js"></script>
+    <!-- HEALTHCARE BANNER — 3-slide with Unsplash backgrounds -->
+    <section class="industry-banner animate-fade-up hc-banner" aria-labelledby="why-h">
+      <div class="industry-banner__inner">
+
+        <div class="hc-banner__bg">
+          <img id="hc-banner-bg-img"
+            src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=1600&q=80&auto=format&fit=crop"
+            alt="Healthcare IT transformation"
+            loading="lazy">
+        </div>
+        <div class="hc-banner__overlay"></div>
+
+        <div class="industry-banner__content">
+          <span class="industry-banner__eyebrow">Healthcare Transformation</span>
+          <h2 class="industry-banner__title" id="why-h">Next-Generation Healthcare IT Infrastructure Transformation</h2>
+          <p class="industry-banner__text" id="hc-banner-text">Modern healthcare organisations need infrastructure that supports digital records, advanced diagnostics and secure collaboration. We help integrate cloud-enabled architecture, improve cybersecurity, and strengthen system resilience across clinical and operational teams.</p>
+        </div>
+
+        <div class="hc-banner__dots" role="tablist" aria-label="Healthcare transformation slides">
+          <button type="button" class="hc-banner__dot is-active" role="tab" aria-selected="true"  aria-label="Slide 1"></button>
+          <button type="button" class="hc-banner__dot"           role="tab" aria-selected="false" aria-label="Slide 2"></button>
+          <button type="button" class="hc-banner__dot"           role="tab" aria-selected="false" aria-label="Slide 3"></button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HC BANNER SCRIPT -->
+    <script>
+    (function hcBannerSlides() {
+      'use strict';
+      var slides = [
+        {
+          title: 'Next-Generation Healthcare IT Infrastructure Transformation',
+          text:  'Modern healthcare organisations need infrastructure that supports digital records, advanced diagnostics and secure collaboration. We help integrate cloud-enabled architecture, improve cybersecurity, and strengthen system resilience across clinical and operational teams.',
+          bg:    'https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=1600&q=80&auto=format&fit=crop'
+        },
+        {
+          title: 'Cybersecurity Risks',
+          text:  'Healthcare organisations are frequent targets for cyberattacks due to the sensitive patient data they store. We implement firewalls, endpoint security, data encryption, and multi-factor authentication to strengthen protection against cyber threats, and provide regular cybersecurity training to help staff recognise threats and follow security best practices.',
+          bg:    'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1600&q=80&auto=format&fit=crop'
+        },
+        {
+          title: 'Ageing IT Systems',
+          text:  'Outdated hardware and software can impact performance, increase maintenance costs, and create compatibility issues. We modernise infrastructure through planned upgrades and system updates to improve reliability and efficiency, and develop a long-term IT strategy that supports future growth while minimising disruption to healthcare services.',
+          bg:    'https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=1600&q=80&auto=format&fit=crop'
+        }
+      ];
+      var titleEl = document.getElementById('why-h');
+      var textEl  = document.getElementById('hc-banner-text');
+      var bgImg   = document.getElementById('hc-banner-bg-img');
+      var dots    = Array.prototype.slice.call(document.querySelectorAll('.hc-banner__dot'));
+      var banner  = document.querySelector('.hc-banner');
+      if (!titleEl || !textEl || dots.length === 0) return;
+      var current = 0;
+      var timer   = null;
+      function show(index) {
+        if (index === current) return;
+        current = index;
+        banner.classList.add('is-switching');
+        if (bgImg) bgImg.style.opacity = '0';
+        setTimeout(function () {
+          titleEl.textContent = slides[current].title;
+          textEl.textContent  = slides[current].text;
+          if (bgImg) { bgImg.src = slides[current].bg; bgImg.style.opacity = '1'; }
+          dots.forEach(function (d, i) {
+            d.classList.toggle('is-active', i === current);
+            d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+          });
+          banner.classList.remove('is-switching');
+        }, 250);
+      }
+      function startAuto() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(function () { show((current + 1) % slides.length); }, 6000);
+      }
+      dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () { show(i); startAuto(); });
+      });
+      startAuto();
+    })();
+    </script>
+
+    <!-- TESTIMONIALS -->
+    <script>
+    window.PAGE_TESTIMONIALS = [
+      {
+        quote: 'The consultants delivered a secure and scalable network solution that strengthened cybersecurity while supporting our expanding healthcare operations. Their expertise exceeded expectations.',
+        name: 'JAMES ROBERTS',
+        role: 'IT Director, Healthcare Group — Birmingham',
+        avatar: '/images/misc/avatars/testimonial-avatar-it-director.jpg'
+      },
+      {
+        quote: 'We needed dependable infrastructure to support clinical services across multiple locations. The network consultancy team provided practical solutions, excellent support, and proactive monitoring, reducing downtime and improving overall efficiency. Their guidance helped us modernise confidently while maintaining compliance and high service standards.',
+        name: 'EMMA WILSON',
+        role: 'Operations Manager, Medical Services — Leeds',
+        avatar: '/images/misc/avatars/testimonial-avatar-f2.jpg'
+      },
+      {
+        quote: 'Our network infrastructure was becoming increasingly unstable as we expanded services. The consultancy team redesigned our setup with a strong focus on security, performance, and scalability. Since implementation, we have seen far fewer outages and much faster system response times across all departments.',
+        name: 'DAVID THOMPSON',
+        role: 'Head of IT, Health Partners — London',
+        avatar: '/images/misc/avatars/testimonial-avatar-managing-director.jpg'
+      },
+      {
+        quote: 'The team provided a clear, structured approach to improving our IT environment. Their recommendations around network security, data protection, and connectivity have made a noticeable difference to daily operations. We now have a far more resilient system that supports both staff efficiency and patient care.',
+        name: 'RACHEL GREEN',
+        role: 'Clinical Systems Manager, Medical Centre — Leeds',
+        avatar: '/images/misc/avatars/testimonial-avatar-head-of-operations.jpg'
+      },
+      {
+        quote: 'Our network has shifted from reactive fixes to proactive monitoring, and the new controls around access have improved stability and confidence across all service points.',
+        name: 'SARAH MALIK',
+        role: 'Operations Director — Manchester',
+        avatar: '/images/misc/avatars/testimonial-avatar-f1.jpg'
+      },
+      {
+        quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
+        name: 'OPERATIONS DIRECTOR',
+        role: 'Manufacturing Company — Midlands',
+        avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
+      }
+    ];
+    </script>
+    <div data-cms="testimonials" data-title="What our client says"></div>
+
+    <!-- CTA -->
+    <section class="industry-cta animate-fade-up" aria-label="Call to action">
+      <div class="industry-cta__inner">
+        <div class="industry-cta__chips" aria-hidden="true">
+          <span class="industry-cta__chip">Network Consultancy</span><span class="industry-cta__chip">Network Support</span><span class="industry-cta__chip">Managed Network Support</span><span class="industry-cta__chip">Managed Wireless LAN</span><span class="industry-cta__chip">Network Installations</span><span class="industry-cta__chip">Network Design &amp; Deployment</span><span class="industry-cta__chip">Firewall &amp; Network Security</span><span class="industry-cta__chip">Remote Access &amp; VPN</span>
+        </div>
+        <div class="industry-cta__card">
+          <h2 class="industry-cta__title">Ready to Strengthen Your Network</h2>
+          <p class="industry-cta__text">Speak with our consultants to review current network risk, performance bottlenecks, and practical next steps for your organisation.</p>
+          <a href="/contact" class="btn-dark">Book Your Assessment</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="nd-faq section-shell animate-fade-up" aria-labelledby="faq-h">
+      <div class="nd-faq__left">
+        <h2 class="section-title" id="faq-h">Frequently asked questions</h2>
+        <p>Still have questions? Get connected to our support team.</p>
+        <a href="../contact" class="nd-faq__cta">Contact us</a>
+      </div>
+      <div class="nd-faq__right">
+        <button class="nd-faq__item is-open"><span>Why is network consultancy important for healthcare organisations?</span><strong>−</strong></button>
+        <div class="nd-faq__panel">Network consultancy helps healthcare organisations build secure, reliable IT infrastructures that support patient care and day-to-day operations. It can improve systems performance, streamline security measures, reduce downtime and help organisations meet healthcare compliance requirements.</div>
+
+        <button class="nd-faq__item"><span>How can healthcare organisations reduce the risk of cyberattacks?</span><strong>+</strong></button>
+        <div class="nd-faq__panel" hidden>We deploy layered controls including network segmentation, endpoint protection, secure access policies and real-time monitoring to reduce the attack surface.</div>
+
+        <button class="nd-faq__item"><span>What are key features of resilient healthcare IT infrastructure?</span><strong>+</strong></button>
+        <div class="nd-faq__panel" hidden>Resilient healthcare environments rely on high-availability networking, secure data handling, redundancy planning, rapid failover, and continuous monitoring.</div>
+      </div>
+    </section>
+
+    <div id="site-contact"></div>
+    <script src="/js/form-source-tracking.js"></script>
+    <script src="/js/contact.js"></script>
+
   </main>
 
   <div id="site-footer"></div>
   <script src="/js/footer.js"></script>
-
   <script src="/js/cms.js" defer></script>
-
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
-
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
+
+  <!-- BIZ SLIDER SCRIPT -->
   <script>
-  /* Business impact card slider */
   (function () {
     var biz = document.getElementById('biz');
     if (!biz) return;
     var title = document.getElementById('biz-title');
-    var desc = document.getElementById('biz-desc');
+    var desc  = document.getElementById('biz-desc');
     var count = document.getElementById('biz-count');
-    var fill = document.getElementById('biz-fill');
+    var fill  = document.getElementById('biz-fill');
     var slides = [
-      { title: title.textContent, desc: desc.textContent },
-      { title: 'Preventing System Downtime', desc: 'Redundant architecture and proactive monitoring keep patient records, diagnostics and clinical tools available when they are needed.' },
-      { title: 'Securing Patient Data', desc: 'Access controls and encrypted connections help protect confidential records and support healthcare compliance obligations.' },
-      { title: 'Supporting Clinical Collaboration', desc: 'Reliable connectivity keeps clinical teams, departments and sites working together without interruption.' },
-      { title: 'Planning for Growth', desc: 'Scalable infrastructure supports new services, devices and locations without compromising performance.' }
+      {
+        title: 'Stopping Cyber Threats',
+        desc:  'Strong infrastructure protects sensitive healthcare data and limits exposure to cyber risks.'
+      },
+      {
+        title: 'Preventing System Downtime',
+        desc:  'Redundant architecture and proactive monitoring keep patient records, diagnostics and clinical tools available when they are needed.'
+      },
+      {
+        title: 'Replacing Outdated Systems',
+        desc:  'We replace ageing hardware and modernise infrastructure, ensuring your organisation can leverage the latest medical technologies without performance limitations or reliability issues.'
+      },
+      {
+        title: 'Maximising Tight Budgets',
+        desc:  'We help healthcare organisations plan technology investments strategically, enabling access to modern solutions while making the most of available IT budgets.'
+      },
+      {
+        title: 'Keeping Compliance Current',
+        desc:  'We manage regular system updates, security checks, and maintenance to help ensure your organisation remains compliant with healthcare regulations and industry standards.'
+      }
     ];
     var i = 0, total = slides.length;
     function render() {
-      title.style.opacity = '0'; desc.style.opacity = '0';
+      title.style.opacity = '0';
+      desc.style.opacity  = '0';
       setTimeout(function () {
-        title.textContent = slides[i].title; desc.textContent = slides[i].desc;
+        title.textContent = slides[i].title;
+        desc.textContent  = slides[i].desc;
         count.textContent = (i + 1) + '/' + total;
         if (fill) fill.style.width = ((i + 1) / total * 100) + '%';
-        title.style.opacity = '1'; desc.style.opacity = '1';
+        title.style.opacity = '1';
+        desc.style.opacity  = '1';
       }, 200);
     }
     document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
   })();
   </script>
+
 </body>
 </html>
