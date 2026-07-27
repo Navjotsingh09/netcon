@@ -1,36 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  "<script type=""application/ld+json"">
-{
-  ""@context"": ""https://schema.org"",
-  ""@type"": ""BreadcrumbList"",
-  ""itemListElement"": [
-    {
-      ""@type"": ""ListItem"",
-      ""position"": 1,
-      ""name"": ""Home"",
-      ""item"": ""https://network-consultancy.com/""
-    },
-    {
-      ""@type"": ""ListItem"",
-      ""position"": 2,
-      ""name"": ""Industries"",
-      ""item"": ""https://network-consultancy.com/industries""
-    },
-    {
-      ""@type"": ""ListItem"",
-      ""position"": 3,
-      ""name"": ""Manufacturing"",
-      ""item"": ""https://network-consultancy.com/industries/manufacturing""
-    }
-  ]
-}
-</script>"
-    <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://network-consultancy.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://network-consultancy.com/industries" },
+      { "@type": "ListItem", "position": 3, "name": "Manufacturing", "item": "https://network-consultancy.com/industries/manufacturing" }
+    ]
+  }
+  </script>
+
+  <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PVKBZV7');</script>
 
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/misc/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/misc/favicon-180.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,15 +36,13 @@
   <script src="/js/schema.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+
   <style>
-    /* industry-detail-spacing */
     body.industry-detail-page #main > section + section { margin-top: 40px !important; }
     body.industry-detail-page #main > #contact { margin-top: 40px !important; }
   </style>
-  <style>
-    .manufacturing-panel { margin-top:28px; }
-    .manufacturing-panel .industry-panel__caption--landing { max-width: 430px; }
 
+  <style>
     .manufacturing-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr) 260px minmax(0, 1fr);
@@ -67,249 +51,21 @@
       max-width: var(--max-w);
       margin: 0 auto;
     }
-
-    .manufacturing-grid__col {
-      font-size: 15px;
-      line-height: 1.55;
-    }
-
-    .manufacturing-grid__col p + p {
-      margin-top: 38px;
-      padding-top: 20px;
-      border-top: 1px solid var(--gray-mid);
-    }
-
-    .manufacturing-grid__image {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      border-radius: 14px;
-    }
-
+    .manufacturing-grid__col { font-size: 15px; line-height: 1.55; }
+    .manufacturing-grid__col p + p { margin-top: 38px; padding-top: 20px; border-top: 1px solid var(--gray-mid); }
+    .manufacturing-grid__image { width: 100%; height: 260px; object-fit: cover; border-radius: 14px; }
     .manufacturing-grid--spaced { margin-top: 30px; }
 
-    .manufacturing-testimonial {
-      padding: 72px var(--px);
-      max-width: var(--section-w);
-      margin: 0 auto;
-      background: linear-gradient(90deg, #dfeeff 0%, #f9fcff 55%, #dfeeff 100%);
-    }
-
-    .manufacturing-testimonial__inner {
-      max-width: 1440px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 36px;
-      align-items: center;
-    }
-
-    .manufacturing-testimonial__left h2 {
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 0.95;
-      max-width: 180px;
-      margin-bottom: 28px;
-    }
-
-    .manufacturing-testimonial__controls {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: 88px;
-    }
-
-    .manufacturing-testimonial__arrow {
-      width: 48px;
-      height: 36px;
-      border-radius: 4px;
-      border: 1px solid rgba(9,130,197,.18);
-      background: rgba(255,255,255,.45);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      color: var(--dark);
-    }
-
-    .manufacturing-testimonial__progress {
-      height: 4px;
-      width: 110px;
-      border-radius: 999px;
-      background: rgba(9,130,197,.18);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .manufacturing-testimonial__progress::after {
-      content: '';
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 56px;
-      background: var(--dark);
-      border-radius: inherit;
-    }
-
-    .manufacturing-testimonial__card {
-      background: #fff;
-      border: 1px solid rgba(9,130,197,.08);
-      border-radius: 18px;
-      padding: 34px 40px 38px;
-      box-shadow: 0 10px 26px rgba(9,130,197,.08);
-      max-width: 610px;
-      margin-left: auto;
-    }
-
-    .manufacturing-testimonial__stars {
-      color: #d88919;
-      letter-spacing: 4px;
-      font-size: 26px;
-      margin-bottom: 18px;
-    }
-
-    .manufacturing-testimonial__quote {
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 28px;
-      font-weight: 300;
-      line-height: 1.35;
-      color: var(--dark);
-      margin-bottom: 26px;
-    }
-
-    .manufacturing-testimonial__meta {
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 15px;
-      color: var(--sub);
-      max-width: 260px;
-    }
-
-    .manufacturing-cta-band {
-      background: var(--blue);
-      padding: 80px 0;
-      position: relative;
-      overflow: hidden;
-      max-width: var(--section-w);
-      margin: 0 auto;
-    }
-
-    .manufacturing-cta-band__tags {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 24px;
-      padding: 0 var(--px);
-      pointer-events: none;
-    }
-
-    .manufacturing-cta-band__row {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-
-    .manufacturing-cta-band__row span {
-      background: #fff;
-      color: var(--blue);
-      opacity: .5;
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 18px;
-      font-weight: 500;
-      padding: 12px 32px;
-      border-radius: 20px;
-      white-space: nowrap;
-    }
-
-    .manufacturing-cta-band__card {
-      position: relative;
-      z-index: 2;
-      background: #fff;
-      border-radius: 20px;
-      padding: 46px 84px;
-      max-width: 660px;
-      margin: 0 auto;
-      text-align: center;
-      box-shadow: 0 12px 28px rgba(0,0,0,.12);
-    }
-
-    .manufacturing-cta-band__text {
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--sub);
-      line-height: 1.55;
-      margin-bottom: 32px;
-    }
-
     @media (max-width: 1200px) {
-      .manufacturing-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .manufacturing-grid__image {
-        height: auto;
-      }
-
-      .manufacturing-testimonial__inner {
-        grid-template-columns: 1fr;
-      }
-
-      .manufacturing-testimonial__left h2 {
-        max-width: none;
-      }
-
-      .manufacturing-testimonial__card {
-        margin-left: 0;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .svcs-hero__wrap { background-image:url(/images/pages/unique/banner-icons/industries-icon.svg); background-repeat:no-repeat; background-size:250px auto; background-position:right -24px top -24px; height: auto; min-height: 0; }
-      .manufacturing-testimonial {
-        padding: 56px 20px;
-      }
-
-      .manufacturing-testimonial__left h2 {
-        font-size: 40px;
-      }
-
-      .manufacturing-testimonial__card {
-        padding: 28px 24px 30px;
-      }
-
-      .manufacturing-testimonial__quote {
-        font-size: 22px;
-      }
-
-      .manufacturing-cta-band__card {
-        padding: 32px 28px;
-        margin: 0 20px;
-      }
-
-      .manufacturing-cta-band__text {
-        font-size: 18px;
-      }
+      .manufacturing-grid { grid-template-columns: 1fr; }
+      .manufacturing-grid__image { height: auto; }
     }
   </style>
 
-  
   <style>
-    #main > .svcs-hero {
-      padding-bottom: 0;
-      width: 100%;
-      margin-left: 0;
-      margin-right: 0;
-      align-self: stretch;
-    }
+    #main > .svcs-hero { padding-bottom: 0; width: 100%; margin-left: 0; margin-right: 0; align-self: stretch; }
     .svcs-hero { padding: 0; }
-    /* picture{display:contents} in global.css promotes <source> to a phantom grid/flex item; hide it */
     picture source { display: none; }
-
-    /* CMS testimonials: neutralise the 5-card -175px peek fallback */
     .nd-trusted__track { transform: translateX(-1px); }
 
     main#main > section.svcs-hero > .svcs-hero__wrap { max-width: none; width: 100%; margin: 0; }
@@ -323,11 +79,13 @@
     .svcs-hero__cta { margin-top: 0; background: #fff !important; color: #353535 !important; border: 0; border-radius: 2px !important; font-family: 'Google Sans Flex', sans-serif; font-size: 20px; font-style: normal; font-weight: 600; letter-spacing: 0; text-transform: none; min-width: 170px; width: auto; min-height: 50px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; line-height: normal; transition: background .2s ease; }
     .svcs-hero__cta:hover { background: #f0f0f0 !important; transform: none; }
 
+    /* Tab overview */
     .svl-overview { width: calc(100% - (var(--px) * 2)); max-width: var(--max-w); margin: 0 auto; padding-top: 72px; padding-bottom: 72px; }
     .svl-overview__title { margin: 0 0 14px; max-width: 980px; }
     .svl-overview__lead { max-width: 1080px; margin-bottom: 22px; }
     .svl-overview__inner { display: grid; grid-template-columns: minmax(0, 386px) minmax(0, 1fr); gap: 56px; align-items: start; background: #fff; border: 1px solid #353535; border-radius: 30px; padding: 40px; }
-    .svl-overview__list { display: flex; flex-direction: column; gap: 36px; }
+    .svl-overview__list { display: flex; flex-direction: column; gap: 36px; overflow-y: auto; max-height: 620px; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; }
+    .svl-overview__list::-webkit-scrollbar { display: none; }
     .svl-overview__list-item { appearance: none; background: transparent; border: 0; width: 100%; text-align: left; cursor: pointer; padding-bottom: 24px; border-bottom: 1px solid #353535; color: #585151; font-size: 28px; font-weight: 700; line-height: 1.25; transition: color .2s ease-out, background .25s ease-out, padding .25s ease-out; }
     .svl-overview__list-item:hover { color: var(--blue); }
     .svl-overview__list-item--active, .svl-overview__list-item--active:hover { padding: 24px; border-radius: 20px; border-bottom: 0; background: var(--blue); color: #fff; }
@@ -339,6 +97,7 @@
     .svl-overview__panel h3 { margin: 0; color: #585151; font-size: 24px; font-weight: 600; line-height: 1.25; }
     .svl-overview__panel p { margin: 0; color: #353535; font-size: 18px; font-weight: 400; line-height: 1.55; }
 
+    /* Biz slider */
     .sd-section { padding: 0 var(--px); margin: 100px auto; max-width: var(--section-w); }
     .sd-wrap { max-width: var(--max-w); margin: 0 auto; }
     .biz { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -346,10 +105,11 @@
     .biz__left p { margin: 0 0 16px; color: var(--sub); font-size: 20px; line-height: 1.5; }
     .biz__left p:last-of-type { margin-bottom: 40px; }
     .biz__nav { display: flex; align-items: center; gap: 16px; }
-    .biz__arrow { width: 48px; height: 48px; border-radius: 6px; border: 1px solid #d2d2d2; background: #f0f0f0; color: #464646; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; }
+    .biz__arrow { width: 48px; height: 48px; border-radius: 6px; border: 1px solid #d2d2d2; background: #f0f0f0; color: #464646; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
     .biz__arrow:last-of-type { background: #000; border-color: #000; color: #fff; }
+    .biz__arrow:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
     .biz__bar { flex: 1; max-width: 240px; height: 6px; margin-left: 8px; background: #e4e4e4; border-radius: 4px; overflow: hidden; }
-    .biz__bar-fill { width: 20%; height: 100%; background: var(--blue); border-radius: 4px; }
+    .biz__bar-fill { width: 16.66%; height: 100%; background: var(--blue); border-radius: 4px; }
     .biz__card { background: #13203f; border-radius: 16px; padding: 50px 43px 52px; min-height: 360px; color: #fff; display: flex; flex-direction: column; justify-content: space-between; }
     .biz__card h3 { margin: 0 0 20px; font-size: 42px; font-weight: 600; line-height: 1.05; }
     .biz__card p { margin: 0 0 28px; font-size: 20px; font-weight: 500; line-height: 1.35; color: rgba(255,255,255,.95); }
@@ -361,9 +121,10 @@
       .sd-section { margin: 56px auto; }
       .svl-overview__inner { grid-template-columns: 1fr; padding: 24px; gap: 32px; }
       .svl-overview__feature { order: -1; min-height: 480px; }
-      .svl-overview__list { gap: 24px; }
+      .svl-overview__list { gap: 24px; max-height: 480px; }
     }
     @media (max-width: 768px) {
+      .svcs-hero__wrap { background-image: url(/images/pages/unique/banner-icons/industries-icon.svg); background-repeat: no-repeat; background-size: 250px auto; background-position: right -24px top -24px; height: auto; min-height: 0; }
       .sd-section { margin: 56px auto; }
       .biz { grid-template-columns: 1fr; gap: 26px; }
       .biz__left h2 { font-size: 22px; line-height: 1.25; }
@@ -377,6 +138,7 @@
       .svl-overview { padding-top: 52px; padding-bottom: 52px; }
       .svl-overview__feature { min-height: 480px; padding: 16px; }
       .svl-overview__list-item { font-size: 22px; }
+      .svl-overview__list { max-height: 360px; }
       .svl-overview__panel { padding: 20px; }
       .svcs-hero__title { font-size: 42px; }
       .svcs-hero__sub { font-size: 20px; }
@@ -389,257 +151,363 @@
   </style>
 </head>
 <body class="industry-detail-page">
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVKBZV7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVKBZV7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<a class="skip-link" href="#main">Skip to main content</a>
-
+  <a class="skip-link" href="#main">Skip to main content</a>
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
+
   <main id="main">
 
-  <section class="svcs-hero" aria-label="Industries hero">
-    <div class="svcs-hero__wrap">
-      <div class="svcs-hero__content">
-        <div class="svcs-hero__text">
-          <h1 class="svcs-hero__title animate-fade-up">Manufacturing Network Support</h1>
-          <p class="svcs-hero__sub animate-fade-up">Network Consultancy designs resilient IT infrastructure for manufacturers, reducing downtime and enabling secure communication between operational and business systems.</p>
-        </div>
-        <a href="/contact" class="btn-blue svcs-hero__cta animate-fade-up" data-source-cta="industry_health_check">Book Health Check</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="svl-overview animate-fade-up" aria-labelledby="intro-h">
-    <h2 class="heading-xl svl-overview__title" id="intro-h">Driving Manufacturing Efficiency Through Reliable IT Infrastructure</h2>
-    <div class="body-lg svl-overview__lead"><p>We build and manage rock-solid network infrastructure that connects your floor, warehouse, and office, keeping your supply chain moving without costly delays.</p></div>
-    <div class="svl-overview__inner">
-      <div class="svl-overview__list" role="tablist" aria-label="Industry focus areas">
-        <button type="button" role="tab" aria-selected="true" class="svl-overview__list-item svl-overview__list-item--active"
-          data-title="Zero Production Downtime"
-          data-copy="We build and manage rock-solid network infrastructure that connects your floor, warehouse, and office, keeping your supply chain moving without costly delays."
-          data-srcset="/images/pages/unique/industries-manufacturing-technician.jpg"
-          data-img="/images/pages/unique/industries-manufacturing-technician.jpg"
-          data-alt="Zero Production Downtime — Manufacturing">Zero Production Downtime</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Connected Operational Systems"
-          data-copy="We build and manage rock-solid network infrastructure that connects your floor, warehouse, and office, keeping your supply chain moving without costly delays."
-          data-srcset="/images/pages/unique/industries-index-cyber-security.jpg"
-          data-img="/images/pages/unique/industries-index-cyber-security.jpg"
-          data-alt="Connected Operational Systems — Manufacturing">Connected Operational Systems</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Real-Time Access to Critical Systems"
-          data-copy="We build and manage rock-solid network infrastructure that connects your floor, warehouse, and office, keeping your supply chain moving without costly delays."
-          data-srcset="/images/pages/unique/industries-index-results.jpg"
-          data-img="/images/pages/unique/industries-index-results.jpg"
-          data-alt="Real-Time Access to Critical Systems — Manufacturing">Real-Time Access to Critical Systems</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Industrial Network Security"
-          data-copy="We build and manage rock-solid network infrastructure that connects your floor, warehouse, and office, keeping your supply chain moving without costly delays."
-          data-srcset="/images/pages/unique/industries-index-team-office.jpg"
-          data-img="/images/pages/unique/industries-index-team-office.jpg"
-          data-alt="Industrial Network Security — Manufacturing">Industrial Network Security</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Multi-Site Connectivity"
-          data-copy="We build and manage rock-solid network infrastructure that connects your floor, warehouse, and office, keeping your supply chain moving without costly delays."
-          data-srcset="/images/pages/unique/industries-index-about-team.jpg"
-          data-img="/images/pages/unique/industries-index-about-team.jpg"
-          data-alt="Multi-Site Connectivity — Manufacturing">Multi-Site Connectivity</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Network Performance Optimisation"
-          data-copy="We build and manage rock-solid network infrastructure that connects your floor, warehouse, and office, keeping your supply chain moving without costly delays."
-          data-srcset="/images/pages/unique/industries-index-professional.jpg"
-          data-img="/images/pages/unique/industries-index-professional.jpg"
-          data-alt="Network Performance Optimisation — Manufacturing">Network Performance Optimisation</button>
-      </div>
-      <div class="svl-overview__feature">
-        <picture>
-          <source id="svl-feature-source" srcset="/images/pages/unique/industries-manufacturing-technician.jpg" type="image/jpeg">
-          <img id="svl-feature-img" src="/images/pages/unique/industries-manufacturing-technician.jpg" alt="Zero Production Downtime — Manufacturing" loading="lazy">
-        </picture>
-        <div class="svl-overview__panel" role="tabpanel">
-          <h3 id="svl-overview-title">Zero Production Downtime</h3>
-          <p id="svl-overview-copy">We build and manage rock-solid network infrastructure that connects your floor, warehouse, and office, keeping your supply chain moving without costly delays.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sd-section" aria-labelledby="biz-h">
-    <div class="sd-wrap">
-      <div class="biz" id="biz">
-        <div class="biz__left">
-          <h2 id="biz-h">How We Help Manufacturing Industries Drive Growth Through IT Support</h2>
-          <p>To scale production smoothly and stay on top of orders, your operations must be able to run without interruption. IT support creates the stable foundation your production teams need to increase output capacity, stay organised, and grow without bottlenecks.</p>
-          <p></p>
-          <div class="biz__nav">
-            <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
-            <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
-            <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
+    <!-- HERO -->
+    <section class="svcs-hero" aria-label="Industries hero">
+      <div class="svcs-hero__wrap">
+        <div class="svcs-hero__content">
+          <div class="svcs-hero__text">
+            <h1 class="svcs-hero__title animate-fade-up">Manufacturing Network Support</h1>
+            <p class="svcs-hero__sub animate-fade-up">Network Consultancy designs resilient IT infrastructure for manufacturers, reducing downtime and enabling secure communication between operational and business systems.</p>
           </div>
+          <a href="/contact" class="btn-blue svcs-hero__cta animate-fade-up" data-source-cta="industry_health_check">Book Health Check</a>
         </div>
-        <div class="biz__card">
-          <div>
-            <h3 id="biz-title">Keeping Systems Stable</h3>
-            <p id="biz-desc">We verify existing server architecture and plan network resilience so your operations stay productive throughout the day.</p>
+      </div>
+    </section>
+
+    <!-- TAB OVERVIEW -->
+    <section class="svl-overview animate-fade-up" aria-labelledby="intro-h">
+      <h2 class="heading-xl svl-overview__title" id="intro-h">Driving Manufacturing Efficiency Through Reliable IT Infrastructure</h2>
+      <div class="body-lg svl-overview__lead">
+        <p>We build and manage rock-solid network infrastructure that connects your floor, warehouse, and office, keeping your supply chain moving without costly delays.</p>
+      </div>
+      <div class="svl-overview__inner">
+        <div class="svl-overview__list" role="tablist" aria-label="Manufacturing focus areas">
+
+          <!-- Tab 1 -->
+          <button type="button" role="tab" aria-selected="true"
+            class="svl-overview__list-item svl-overview__list-item--active"
+            data-title="Zero Production Downtime"
+            data-copy="We monitor your network 24/7 to catch and fix connectivity bugs before they stall your machinery or assembly lines."
+            data-img="https://images.unsplash.com/photo-1581091212991-8891c7d4bd9b?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Zero production downtime — 24/7 manufacturing network monitoring">
+            Zero Production Downtime
+          </button>
+
+          <!-- Tab 2 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Connected Operational Systems"
+            data-copy="We connect your machinery, inventory management software, and shipping systems to enable seamless data sharing across departments, improving efficiency, visibility, and operational performance."
+            data-img="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Connected operational systems — manufacturing machinery and inventory">
+            Connected Operational Systems
+          </button>
+
+          <!-- Tab 3 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Real-Time Access to Critical Systems"
+            data-copy="Your team benefits from reliable, real-time access to stock levels, inventory data, and supply chain applications, helping to prevent ordering errors, reduce bottlenecks, and improve operational efficiency."
+            data-img="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Real-time access to stock levels and supply chain applications">
+            Real-Time Access to Critical Systems
+          </button>
+
+          <!-- Tab 4 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Industrial Network Security"
+            data-copy="We implement robust security controls around connected equipment and operational systems, helping to protect your manufacturing environment from cyber threats, malware, and unauthorised access."
+            data-img="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Industrial network security — protecting manufacturing systems">
+            Industrial Network Security
+          </button>
+
+          <!-- Tab 5 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Multi-Site Connectivity"
+            data-copy="We connect your head office, factories, and warehouses through a reliable network infrastructure, enabling seamless communication, remote management, and real-time visibility across all locations."
+            data-img="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Multi-site connectivity — connecting factories warehouses and offices">
+            Multi-Site Connectivity
+          </button>
+
+          <!-- Tab 6 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Network Performance Optimisation"
+            data-copy="We optimise network bandwidth to ensure automated processes, scanners, and smart manufacturing tools operate smoothly. This helps reduce delays, improve efficiency, and keep critical operations running at peak performance."
+            data-img="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1440&q=80&auto=format&fit=crop"
+            data-alt="Network performance optimisation — smart manufacturing tools">
+            Network Performance Optimisation
+          </button>
+
+        </div><!-- /.svl-overview__list -->
+
+        <div class="svl-overview__feature">
+          <picture>
+            <source id="svl-feature-source" srcset="https://images.unsplash.com/photo-1581091212991-8891c7d4bd9b?w=1440&q=80&auto=format&fit=crop" type="image/jpeg">
+            <img id="svl-feature-img"
+              src="https://images.unsplash.com/photo-1581091212991-8891c7d4bd9b?w=1440&q=80&auto=format&fit=crop"
+              alt="Zero production downtime — 24/7 manufacturing network monitoring"
+              loading="lazy">
+          </picture>
+          <div class="svl-overview__panel" role="tabpanel">
+            <h3 id="svl-overview-title">Zero Production Downtime</h3>
+            <p id="svl-overview-copy">We monitor your network 24/7 to catch and fix connectivity bugs before they stall your machinery or assembly lines.</p>
           </div>
-          <div class="biz__num" id="biz-count">1/6</div>
-        </div>
-      </div>
-    </div>
-  </section>
+        </div><!-- /.svl-overview__feature -->
 
-  <section class="section animate-fade-up" aria-labelledby="components-h">
-    <h2 class="heading-lg" id="components-h">Key Components of IT Support Services for Manufacturing</h2>
-    <div class="body-lg"><p>IT support in manufacturing environments needs to keep every system in step so that tasks remain stable and operations keep running smoothly.</p></div>
-    <div class="manufacturing-grid manufacturing-grid--spaced">
-      <div class="body-lg manufacturing-grid__col">
-        <p>Network management ensures the factory floor, warehouse, and office systems are all aligned to the same uptime and security priorities.</p>
-        <p>Cybersecurity helps protect shared operational data and industrial control systems against threats, while preventing production interruptions.</p>
-      </div>
-      <picture>
-        <source srcset="/images/pages/unique/industries-manufacturing-technician.jpg" type="image/jpeg">
-        <img class="manufacturing-grid__image" src="/images/pages/unique/industries-manufacturing-technician.jpg" alt="Manufacturing network planning" loading="lazy">
-      </picture>
-      <div class="body-lg manufacturing-grid__col">
-        <p>System monitoring enables issues to be identified early, helping prevent downtime and production delays.</p>
-        <p>Cloud integration improves flexibility and makes it easier to store, share, and use business applications as work schedules change.</p>
-      </div>
-    </div>
-  </section>
+      </div><!-- /.svl-overview__inner -->
+    </section>
 
-  <section class="industry-banner animate-fade-up" aria-labelledby="why-h">
-    <div class="industry-banner__inner">
-      <div class="industry-banner__bg">
-        <picture>
-          <source srcset="/images/pages/unique/industries-manufacturing-managed-support.jpg" type="image/jpeg">
-          <img src="/images/pages/unique/industries-manufacturing-managed-support.jpg" alt="Manufacturing support delivery" loading="lazy">
-        </picture>
-      </div>
-      <div class="industry-banner__overlay" aria-hidden="true"></div>
-      <div class="industry-banner__content">
-        <h2 class="industry-banner__title" id="why-h">Why Choose Us?</h2>
-        <p class="industry-banner__text">We provide practical IT support and network consultancy designed for manufacturing environments. Our focus is on keeping systems reliable, secure and easy to manage so your teams can stay productive.</p>
-        <p class="industry-banner__text">Through ongoing monitoring, structured planning, and quick response times, we help reduce downtime, support system stability, and keep your operations running consistently across all areas of your business.</p>
-      </div>
-    </div>
-  </section>
-
+    <!-- TAB SCRIPT -->
     <script>
-  window.PAGE_TESTIMONIALS = [
-    {
-      quote: 'The network consultancy team transformed our infrastructure, reducing downtime and improving confidence in our production systems.',
-      name: 'Operations Director',
-      role: 'Birmingham manufacturing site',
-      avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Managing Director',
-      role: 'Broadcasting Company, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-managing-director.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'IT Director',
-      role: 'Professional Services Firm, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-it-director.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Head of Operations',
-      role: 'Healthcare Provider, Birmingham',
-      avatar: '/images/misc/avatars/testimonial-avatar-head-of-operations.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Managing Partner',
-      role: 'Legal Firm, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-managing-partner.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Operations Director',
-      role: 'Manufacturing Company, Midlands',
-      avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
-    }
-  ];
-  </script>
-  <div data-cms="testimonials" data-title="What our client says"></div>
+    (function svlOverviewTabs() {
+      'use strict';
+      var tabs   = Array.prototype.slice.call(document.querySelectorAll('.svl-overview__list-item'));
+      var panel  = document.querySelector('.svl-overview__panel');
+      if (tabs.length === 0 || panel === null) return;
+      var title  = document.getElementById('svl-overview-title');
+      var copy   = document.getElementById('svl-overview-copy');
+      var img    = document.getElementById('svl-feature-img');
+      var source = document.getElementById('svl-feature-source');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          if (tab.classList.contains('svl-overview__list-item--active')) return;
+          tabs.forEach(function (t) {
+            t.classList.remove('svl-overview__list-item--active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('svl-overview__list-item--active');
+          tab.setAttribute('aria-selected', 'true');
+          tab.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          panel.classList.add('is-switching');
+          if (img) img.style.opacity = '0';
+          setTimeout(function () {
+            if (title)  title.textContent  = tab.getAttribute('data-title');
+            if (copy)   copy.textContent   = tab.getAttribute('data-copy');
+            if (source) source.srcset      = tab.getAttribute('data-img');
+            if (img) {
+              img.src           = tab.getAttribute('data-img');
+              img.alt           = tab.getAttribute('data-alt');
+              img.style.opacity = '1';
+            }
+            panel.classList.remove('is-switching');
+          }, 250);
+        });
+      });
+    })();
+    </script>
 
-  <section class="industry-cta animate-fade-up" aria-label="Call to action">
-    <div class="industry-cta__inner">
-      <div class="industry-cta__chips" aria-hidden="true">
-        <span class="industry-cta__chip">Network Consultancy</span><span class="industry-cta__chip">Network Support</span><span class="industry-cta__chip">Managed Network Support</span><span class="industry-cta__chip">Managed Wireless LAN</span><span class="industry-cta__chip">Network Installations</span><span class="industry-cta__chip">Network Design &amp; Deployment</span><span class="industry-cta__chip">Firewall &amp; Network Security</span><span class="industry-cta__chip">Remote Access &amp; VPN</span>
+    <!-- BIZ SLIDER -->
+    <section class="sd-section" aria-labelledby="biz-h">
+      <div class="sd-wrap">
+        <div class="biz" id="biz">
+          <div class="biz__left">
+            <h2 id="biz-h">How We Help Manufacturing Industries Drive Growth Through IT Support</h2>
+            <p>To scale production smoothly and stay on top of orders, your operations must be able to run without interruption. IT support creates the stable foundation your production teams need to increase output capacity, stay organised, and grow without bottlenecks.</p>
+            <p>We identify and resolve network risks before they become costly production issues, keeping your systems dependable across every shift.</p>
+            <div class="biz__nav">
+              <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
+              <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
+              <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
+            </div>
+          </div>
+          <div class="biz__card">
+            <div>
+              <h3 id="biz-title">Keeping Systems Stable</h3>
+              <p id="biz-desc">We verify existing server architecture and plan network resilience so your operations stay productive throughout the day.</p>
+            </div>
+            <div class="biz__num" id="biz-count">1/6</div>
+          </div>
+        </div>
       </div>
-      <div class="industry-cta__card">
-        <h2 class="industry-cta__title">Strengthen Your Manufacturing Network</h2>
-        <p class="industry-cta__text">Support your production systems and scale operations with reliable, resilient connectivity and practical support for your manufacturing environment.</p>
-        <a href="/contact" class="btn-dark">Book a Network Health Check</a>
+    </section>
+
+    <!-- KEY COMPONENTS SECTION -->
+    <section class="section animate-fade-up" aria-labelledby="components-h">
+      <h2 class="heading-lg" id="components-h">Key Components of IT Support Services for Manufacturing</h2>
+      <div class="body-lg"><p>IT support in manufacturing environments needs to keep every system in step so that tasks remain stable and operations keep running smoothly.</p></div>
+      <div class="manufacturing-grid manufacturing-grid--spaced">
+        <div class="body-lg manufacturing-grid__col">
+          <p>Network management ensures the factory floor, warehouse, and office systems are all aligned to the same uptime and security priorities.</p>
+          <p>Cybersecurity helps protect shared operational data and industrial control systems against threats, while preventing production interruptions.</p>
+        </div>
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1547895749-888a559fc2a7?w=800&q=80&auto=format&fit=crop" type="image/jpeg">
+          <img class="manufacturing-grid__image"
+            src="https://images.unsplash.com/photo-1547895749-888a559fc2a7?w=800&q=80&auto=format&fit=crop"
+            alt="Manufacturing network planning and infrastructure"
+            loading="lazy">
+        </picture>
+        <div class="body-lg manufacturing-grid__col">
+          <p>System monitoring enables issues to be identified early, helping prevent downtime and production delays.</p>
+          <p>Cloud integration improves flexibility and makes it easier to store, share, and use business applications as work schedules change.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="nd-faq section-shell animate-fade-up" aria-labelledby="faq-h">
-  <div class="nd-faq__left">
-    <h2 class="section-title" id="faq-h">Frequently asked questions</h2>
-    <p>Still have questions? Get connected to our support team.</p>
-    <a href="../contact" class="nd-faq__cta">Contact us</a>
-  </div>
-  <div class="nd-faq__right">
-    <button class="nd-faq__item is-open"><span>Why is network consultancy important for manufacturing companies?</span><strong>−</strong></button>
-    <div class="nd-faq__panel">Network consultancy helps manufacturing companies build more reliable and efficient IT systems. It improves connectivity, supports secure operations, reduces downtime and helps keep production processes running smoothly.</div>
-    <button class="nd-faq__item"><span>How can IT support improve manufacturing productivity?</span><strong>+</strong></button>
-    <div class="nd-faq__panel" hidden>By reducing disruptions, improving system visibility, and keeping production, office, and warehouse networks aligned, IT support helps teams work faster and with fewer interruptions.</div>
-    <button class="nd-faq__item"><span>What services are included in manufacturing IT support?</span><strong>+</strong></button>
-    <div class="nd-faq__panel" hidden>We provide network planning, system monitoring, security support, and infrastructure improvements tailored to manufacturing environments.</div>
-  </div>
-</section>
+    <!-- INDUSTRY BANNER -->
+    <section class="industry-banner animate-fade-up" aria-labelledby="why-h">
+      <div class="industry-banner__inner">
+        <div class="industry-banner__bg">
+          <picture>
+            <source srcset="https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?w=1600&q=80&auto=format&fit=crop" type="image/jpeg">
+            <img src="https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?w=1600&q=80&auto=format&fit=crop" alt="Manufacturing facility interior" loading="lazy">
+          </picture>
+        </div>
+        <div class="industry-banner__overlay" aria-hidden="true"></div>
+        <div class="industry-banner__content">
+          <h2 class="industry-banner__title" id="why-h">Why Choose Us?</h2>
+          <p class="industry-banner__text">We provide practical IT support and network consultancy designed for manufacturing environments. Our focus is on keeping systems reliable, secure and easy to manage so your teams can stay productive.</p>
+          <p class="industry-banner__text">Through ongoing monitoring, structured planning, and quick response times, we help reduce downtime, support system stability, and keep your operations running consistently across all areas of your business.</p>
+        </div>
+      </div>
+    </section>
 
-  <div id="site-contact"></div>
-  <script src="/js/form-source-tracking.js"></script>
-  <script src="/js/contact.js"></script>
+    <!-- TESTIMONIALS -->
+    <script>
+    window.PAGE_TESTIMONIALS = [
+      {
+        quote: 'The support team delivered reliable solutions that strengthened network security and improved operational efficiency throughout our facility.',
+        name: 'MANUFACTURING DIRECTOR',
+        role: 'Components Ltd — Manchester',
+        avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
+      },
+      {
+        quote: 'Their expertise helped us modernise our systems, improve connectivity, and support business growth without disrupting production activities.',
+        name: 'PLANT MANAGER',
+        role: 'Manufacturing Group — Sheffield',
+        avatar: '/images/misc/avatars/testimonial-avatar-managing-director.jpg'
+      },
+      {
+        quote: 'The consultancy team delivered a highly stable network environment that improved system performance and ensured uninterrupted access across our quality control operations.',
+        name: 'QUALITY ASSURANCE LEAD',
+        role: 'Manufacturing Ltd — Leicester',
+        avatar: '/images/misc/avatars/testimonial-avatar-head-of-operations.jpg'
+      },
+      {
+        quote: 'Their tailored network solution enhanced security, streamlined internal communication, and significantly improved overall reliability across our manufacturing processes.',
+        name: 'IT MANAGER',
+        role: 'Advanced Engineering Works — Leeds',
+        avatar: '/images/misc/avatars/testimonial-avatar-it-director.jpg'
+      },
+      {
+        quote: 'The network consultancy team transformed our infrastructure, reducing downtime and improving confidence in our production systems.',
+        name: 'OPERATIONS DIRECTOR',
+        role: 'Birmingham Manufacturing Site',
+        avatar: '/images/misc/avatars/testimonial-avatar-managing-partner.jpg'
+      },
+      {
+        quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
+        name: 'OPERATIONS DIRECTOR',
+        role: 'Manufacturing Company — Midlands',
+        avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
+      }
+    ];
+    </script>
+    <div data-cms="testimonials" data-title="What our client says"></div>
+
+    <!-- CTA -->
+    <section class="industry-cta animate-fade-up" aria-label="Call to action">
+      <div class="industry-cta__inner">
+        <div class="industry-cta__chips" aria-hidden="true">
+          <span class="industry-cta__chip">Network Consultancy</span><span class="industry-cta__chip">Network Support</span><span class="industry-cta__chip">Managed Network Support</span><span class="industry-cta__chip">Managed Wireless LAN</span><span class="industry-cta__chip">Network Installations</span><span class="industry-cta__chip">Network Design &amp; Deployment</span><span class="industry-cta__chip">Firewall &amp; Network Security</span><span class="industry-cta__chip">Remote Access &amp; VPN</span>
+        </div>
+        <div class="industry-cta__card">
+          <h2 class="industry-cta__title">Strengthen Your Manufacturing Network</h2>
+          <p class="industry-cta__text">Support your production systems and scale operations with reliable, resilient connectivity and practical support for your manufacturing environment.</p>
+          <a href="/contact" class="btn-dark">Book a Network Health Check</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="nd-faq section-shell animate-fade-up" aria-labelledby="faq-h">
+      <div class="nd-faq__left">
+        <h2 class="section-title" id="faq-h">Frequently asked questions</h2>
+        <p>Still have questions? Get connected to our support team.</p>
+        <a href="../contact" class="nd-faq__cta">Contact us</a>
+      </div>
+      <div class="nd-faq__right">
+        <button class="nd-faq__item is-open"><span>Why is network consultancy important for manufacturing companies?</span><strong>−</strong></button>
+        <div class="nd-faq__panel">Network consultancy helps manufacturing companies build more reliable and efficient IT systems. It improves connectivity, supports secure operations, reduces downtime and helps keep production processes running smoothly.</div>
+
+        <button class="nd-faq__item"><span>How can IT support improve manufacturing productivity?</span><strong>+</strong></button>
+        <div class="nd-faq__panel" hidden>By reducing disruptions, improving system visibility, and keeping production, office, and warehouse networks aligned, IT support helps teams work faster and with fewer interruptions.</div>
+
+        <button class="nd-faq__item"><span>What services are included in manufacturing IT support?</span><strong>+</strong></button>
+        <div class="nd-faq__panel" hidden>We provide network planning, system monitoring, security support, and infrastructure improvements tailored to manufacturing environments.</div>
+      </div>
+    </section>
+
+    <div id="site-contact"></div>
+    <script src="/js/form-source-tracking.js"></script>
+    <script src="/js/contact.js"></script>
+
   </main>
 
   <div id="site-footer"></div>
   <script src="/js/footer.js"></script>
-
   <script src="/js/cms.js" defer></script>
-
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
-
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
+
+  <!-- BIZ SLIDER SCRIPT -->
   <script>
-  /* Business impact card slider */
   (function () {
     var biz = document.getElementById('biz');
     if (!biz) return;
     var title = document.getElementById('biz-title');
-    var desc = document.getElementById('biz-desc');
+    var desc  = document.getElementById('biz-desc');
     var count = document.getElementById('biz-count');
-    var fill = document.getElementById('biz-fill');
+    var fill  = document.getElementById('biz-fill');
     var slides = [
-      { title: title.textContent, desc: desc.textContent },
-      { title: 'Reducing Production Downtime', desc: 'Proactive monitoring and rapid response keep production lines, scanners and control systems online through the working day.' },
-      { title: 'Connecting Floor to Office', desc: 'Dependable connectivity links production, warehouse and office systems so orders and schedules stay in sync.' },
-      { title: 'Securing Industrial Systems', desc: 'Segmentation and access controls protect operational technology from threats without slowing production.' },
-      { title: 'Scaling With Your Output', desc: 'Infrastructure planning supports new lines, sites and equipment as production capacity grows.' }
+      {
+        title: 'Keeping Systems Stable',
+        desc:  'We verify existing server architecture and plan network resilience so your operations stay productive throughout the day.'
+      },
+      {
+        title: 'Fast Issue Resolution',
+        desc:  'When issues arise, we respond quickly to minimise downtime and prevent disruptions to your production and delivery schedules, helping your operations stay on track.'
+      },
+      {
+        title: 'Preventing System Failures',
+        desc:  'We carry out proactive maintenance and regular health checks to identify and resolve issues before they cause disruptions. This helps prevent downtime, improve reliability, and keep your operations running smoothly.'
+      },
+      {
+        title: 'Connecting Your Departments',
+        desc:  'We connect teams, departments, and sites through a unified network, enabling information to flow seamlessly between sales, warehousing, and production. This improves collaboration, efficiency, and visibility across your operations.'
+      },
+      {
+        title: 'Securing Your Data',
+        desc:  'We protect critical business data with secure backup and recovery solutions, helping ensure operations continue smoothly even during unexpected system failures, outages, or power disruption.'
+      },
+      {
+        title: 'Enabling Business Growth',
+        desc:  'With a secure and reliable network foundation in place, we help implement cloud and automation solutions that streamline manual processes, improve efficiency, and support long-term business growth. This gives your team the flexibility and scalability needed to adapt and expand with confidence.'
+      }
     ];
     var i = 0, total = slides.length;
     function render() {
-      title.style.opacity = '0'; desc.style.opacity = '0';
+      title.style.opacity = '0';
+      desc.style.opacity  = '0';
       setTimeout(function () {
-        title.textContent = slides[i].title; desc.textContent = slides[i].desc;
+        title.textContent = slides[i].title;
+        desc.textContent  = slides[i].desc;
         count.textContent = (i + 1) + '/' + total;
         if (fill) fill.style.width = ((i + 1) / total * 100) + '%';
-        title.style.opacity = '1'; desc.style.opacity = '1';
+        title.style.opacity = '1';
+        desc.style.opacity  = '1';
       }, 200);
     }
     document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
   })();
   </script>
+
 </body>
 </html>
