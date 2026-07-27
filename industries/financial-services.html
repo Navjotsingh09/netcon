@@ -1,36 +1,22 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  "<script type=""application/ld+json"">
-{
-  ""@context"": ""https://schema.org"",
-  ""@type"": ""BreadcrumbList"",
-  ""itemListElement"": [
-    {
-      ""@type"": ""ListItem"",
-      ""position"": 1,
-      ""name"": ""Home"",
-      ""item"": ""https://network-consultancy.com/""
-    },
-    {
-      ""@type"": ""ListItem"",
-      ""position"": 2,
-      ""name"": ""Industries"",
-      ""item"": ""https://network-consultancy.com/industries""
-    },
-    {
-      ""@type"": ""ListItem"",
-      ""position"": 3,
-      ""name"": ""Financial Services"",
-      ""item"": ""https://network-consultancy.com/industries/financial-services""
-    }
-  ]
-}
-</script>"
-    <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://network-consultancy.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://network-consultancy.com/industries" },
+      { "@type": "ListItem", "position": 3, "name": "Financial Services", "item": "https://network-consultancy.com/industries/financial-services" }
+    ]
+  }
+  </script>
+
+  <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PVKBZV7');</script>
 
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/misc/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/misc/favicon-180.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,459 +36,161 @@
   <script src="/js/schema.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
+
   <style>
-    /* industry-detail-spacing */
     body.industry-detail-page #main > section + section { margin-top: 40px !important; }
     body.industry-detail-page #main > #contact { margin-top: 40px !important; }
 
-    #main > .svcs-hero {
-      padding-bottom: 0;
-      width: 100%;
-      margin-left: 0;
-      margin-right: 0;
-      align-self: stretch;
-    }
+    #main > .svcs-hero { padding-bottom: 0; width: 100%; margin-left: 0; margin-right: 0; align-self: stretch; }
+    .svcs-hero { padding: 0; }
+    picture source { display: none; }
+    .nd-trusted__track { transform: translateX(-1px); }
 
-    .svcs-hero {
-      padding: 0;
-    }
+    main#main > section.svcs-hero > .svcs-hero__wrap { max-width: none; width: 100%; margin: 0; }
+    .svcs-hero__wrap { position: relative; width: 100%; max-width: none; height: 467px; min-height: 467px; margin: 0; border-radius: 0; overflow: hidden; background-color: #02172F; background-image: url(/images/pages/unique/industries-banner.webp); background-repeat: no-repeat; background-position: right center; background-size: cover; }
+    .svcs-hero__bg, .svcs-hero__overlay { display: none; }
+    main#main > section.svcs-hero > .svcs-hero__wrap > .svcs-hero__content { max-width: none; width: 100%; }
+    .svcs-hero__content { position: relative; z-index: 2; padding: 117px 145px 178px var(--px); width: 100%; min-width: 100%; max-width: none; display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
+    .svcs-hero__text { display: flex; flex-direction: column; gap: 16px; max-width: 908px; }
+    .svcs-hero__title { font-family: 'Google Sans Flex', sans-serif; font-size: 64px; font-weight: 600; color: #fff; line-height: 1.08; }
+    .svcs-hero__sub { font-family: 'Google Sans Flex', sans-serif; font-size: 24px; font-weight: 500; line-height: 1.35; color: #fff; }
+    .svcs-hero__cta { margin-top: 0; background: #fff !important; color: #353535 !important; border: 0; border-radius: 2px !important; font-family: 'Google Sans Flex', sans-serif; font-size: 20px; font-style: normal; font-weight: 600; letter-spacing: 0; text-transform: none; min-width: 170px; width: auto; min-height: 50px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; line-height: normal; transition: background .2s ease; }
+    .svcs-hero__cta:hover { background: #f0f0f0 !important; transform: none; }
 
-    main#main > section.svcs-hero > .svcs-hero__wrap {
-      max-width: none;
-      width: 100%;
-      margin: 0;
-    }
+    /* Tab overview */
+    .svl-overview { width: calc(100% - (var(--px) * 2)); max-width: var(--max-w); margin: 0 auto; padding-top: 72px; padding-bottom: 72px; }
+    .svl-overview__title { margin: 0 0 14px; max-width: 980px; }
+    .svl-overview__lead { max-width: 1080px; margin-bottom: 22px; }
+    .svl-overview__inner { display: grid; grid-template-columns: minmax(0, 386px) minmax(0, 1fr); gap: 56px; align-items: start; background: #fff; border: 1px solid #353535; border-radius: 30px; padding: 40px; }
+    .svl-overview__list { display: flex; flex-direction: column; gap: 36px; overflow-y: auto; max-height: 620px; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; }
+    .svl-overview__list::-webkit-scrollbar { display: none; }
+    .svl-overview__list-item { appearance: none; background: transparent; border: 0; width: 100%; text-align: left; cursor: pointer; padding-bottom: 24px; border-bottom: 1px solid #353535; color: #585151; font-size: 28px; font-weight: 700; line-height: 1.25; transition: color .2s ease-out, background .25s ease-out, padding .25s ease-out; }
+    .svl-overview__list-item:hover { color: var(--blue); }
+    .svl-overview__list-item--active, .svl-overview__list-item--active:hover { padding: 24px; border-radius: 20px; border-bottom: 0; background: var(--blue); color: #fff; }
+    .svl-overview__feature { position: relative; min-height: 678px; border-radius: 20px; overflow: hidden; background: #0c1b3d; display: flex; align-items: flex-end; padding: 28px; }
+    .svl-overview__feature img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .25s ease-out; }
+    .svl-overview__feature::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,130,197,0.18) 0%, rgba(9,130,197,0.88) 100%); }
+    .svl-overview__panel { position: relative; z-index: 2; width: 735px; max-width: 100%; padding: 28px; background: #fff; border-radius: 10px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; transition: opacity .25s ease-out, transform .25s ease-out; }
+    .svl-overview__panel.is-switching { opacity: 0; transform: translateY(12px); }
+    .svl-overview__panel h3 { margin: 0; color: #585151; font-size: 24px; font-weight: 600; line-height: 1.25; }
+    .svl-overview__panel p { margin: 0; color: #353535; font-size: 18px; font-weight: 400; line-height: 1.55; }
 
-    .svcs-hero__wrap {
-      position: relative;
-      width: 100%;
-      max-width: none;
-      height: 467px;
-      min-height: 467px;
-      margin: 0;
-      border-radius: 0;
-      overflow: hidden;
-      background-color: #02172F;
-      background-image: url(/images/pages/unique/industries-banner.webp);
-      background-repeat: no-repeat;
-      background-position: right center;
-      background-size: cover;
-    }
+    /* Biz slider */
+    .sd-section { padding: 0 var(--px); margin: 100px auto; max-width: var(--section-w); }
+    .sd-wrap { max-width: var(--max-w); margin: 0 auto; }
+    .biz { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .biz__left h2 { margin: 0 0 18px; color: var(--navy); font-size: 42px; font-weight: 600; line-height: 1.1; }
+    .biz__left p { margin: 0 0 16px; color: var(--sub); font-size: 20px; line-height: 1.5; }
+    .biz__left p:last-of-type { margin-bottom: 40px; }
+    .biz__nav { display: flex; align-items: center; gap: 16px; }
+    .biz__arrow { width: 48px; height: 48px; border-radius: 6px; border: 1px solid #d2d2d2; background: #f0f0f0; color: #464646; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+    .biz__arrow:last-of-type { background: #000; border-color: #000; color: #fff; }
+    .biz__arrow:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .biz__bar { flex: 1; max-width: 240px; height: 6px; margin-left: 8px; background: #e4e4e4; border-radius: 4px; overflow: hidden; }
+    .biz__bar-fill { width: 33.33%; height: 100%; background: var(--blue); border-radius: 4px; }
+    .biz__card { background: #13203f; border-radius: 16px; padding: 50px 43px 52px; min-height: 360px; color: #fff; display: flex; flex-direction: column; justify-content: space-between; }
+    .biz__card h3 { margin: 0 0 20px; font-size: 42px; font-weight: 600; line-height: 1.05; }
+    .biz__card p { margin: 0 0 28px; font-size: 20px; font-weight: 500; line-height: 1.35; color: rgba(255,255,255,.95); }
+    .biz__num { font-size: 42px; font-weight: 600; }
 
-    .svcs-hero__bg,
-    .svcs-hero__overlay {
-      display: none;
-    }
-
-    main#main > section.svcs-hero > .svcs-hero__wrap > .svcs-hero__content {
-      max-width: none;
-      width: 100%;
-    }
-
-    .svcs-hero__content {
-      position: relative;
-      z-index: 2;
-      padding: 117px 145px 178px var(--px);
-      width: 100%;
-      min-width: 100%;
-      max-width: none;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      align-items: flex-start;
-    }
-
-    .svcs-hero__text {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-width: 908px;
-    }
-
-    .svcs-hero__title {
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 64px;
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.08;
-    }
-
-    .svcs-hero__sub {
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 24px;
-      font-weight: 500;
-      line-height: 1.35;
-      color: #fff;
-    }
-
-    .svcs-hero__cta {
-      margin-top: 0;
-      background: #fff !important;
-      color: #353535 !important;
-      border: 0;
-      border-radius: 2px !important;
-      font-family: 'Google Sans Flex', sans-serif;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 600;
-      letter-spacing: 0;
-      text-transform: none;
-      min-width: 170px;
-      width: auto;
-      min-height: 50px;
-      padding: 0 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      white-space: nowrap;
-      line-height: normal;
-      transition: background .2s ease;
-    }
-
-    .svcs-hero__cta:hover {
-      background: #f0f0f0 !important;
-      transform: none;
-    }
-
-    /* Financial page section-specific parity tweaks */
-    .svl-overview {
-      width: calc(100% - (var(--px) * 2));
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding-top: 72px;
-      padding-bottom: 72px;
-    }
-
-    .svl-overview__title {
-      margin: 0 0 14px;
-      max-width: 980px;
-    }
-
-    .svl-overview__lead {
-      max-width: 1080px;
-      margin-bottom: 22px;
-    }
-
-    .svl-overview__inner {
-      display: grid;
-      grid-template-columns: minmax(0, 386px) minmax(0, 1fr);
-      gap: 56px;
-      align-items: start;
-      background: #fff;
-      border: 1px solid #353535;
-      border-radius: 30px;
-      padding: 40px;
-    }
-
-    .svl-overview__list {
-      display: flex;
-      flex-direction: column;
-      gap: 36px;
-    }
-
-    .svl-overview__list-item {
-      appearance: none;
-      background: transparent;
-      border: 0;
-      width: 100%;
-      text-align: left;
-      cursor: pointer;
-      padding-bottom: 24px;
-      border-bottom: 1px solid #353535;
-      color: #585151;
-      font-size: 28px;
-      font-weight: 700;
-      line-height: 1.25;
-      transition: color .2s ease-out, background .25s ease-out, padding .25s ease-out;
-    }
-
-    .svl-overview__list-item:hover {
-      color: var(--blue);
-    }
-
-    .svl-overview__list-item--active,
-    .svl-overview__list-item--active:hover {
-      padding: 24px;
-      border-radius: 20px;
-      border-bottom: 0;
-      background: var(--blue);
-      color: #fff;
-    }
-
-    .svl-overview__feature {
-      position: relative;
-      min-height: 678px;
-      border-radius: 20px;
-      overflow: hidden;
+    /* Fin banner — Unsplash background version */
+    .fin-banner { position: relative; overflow: hidden; }
+    .fin-banner .industry-banner__inner {
+      min-height: 520px;
+      border-radius: 10px;
       background: #0c1b3d;
-      display: flex;
-      align-items: flex-end;
-      padding: 28px;
+      position: relative;
+      overflow: hidden;
     }
-
-    .svl-overview__feature img {
+    .fin-banner__bg {
       position: absolute;
       inset: 0;
+      z-index: 0;
+    }
+    .fin-banner__bg img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: opacity .25s ease-out;
+      opacity: 0.28;
+      transition: opacity .4s ease;
     }
-
-    .svl-overview__feature::after {
-      content: "";
+    .fin-banner__overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(9,130,197,0.18) 0%, rgba(9,130,197,0.88) 100%);
+      z-index: 1;
+      background: linear-gradient(135deg, rgba(9,24,63,0.92) 0%, rgba(9,130,197,0.55) 100%);
     }
-
-    .svl-overview__panel {
+    .fin-banner .industry-banner__content {
       position: relative;
       z-index: 2;
-      width: 735px;
-      max-width: 100%;
-      padding: 28px;
-      background: #fff;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: flex-start;
-      transition: opacity .25s ease-out, transform .25s ease-out;
+      max-width: 720px;
+      padding: 60px 52px;
     }
-
-    .svl-overview__panel.is-switching {
-      opacity: 0;
-      transform: translateY(12px);
+    .fin-banner .industry-banner__eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      color: #7dd3fc;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
     }
-
-    .svl-overview__panel h3 {
-      margin: 0;
-      color: #585151;
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 1.25;
-    }
-
-    .svl-overview__panel p {
-      margin: 0;
-      color: #353535;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 1.55;
-    }
-
-    .sd-section {
-      padding: 0 var(--px);
-      margin: 100px auto;
-      max-width: var(--section-w);
-    }
-    .sd-wrap {
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
-
-    .biz {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .biz__left h2 {
-      margin: 0 0 18px;
-      color: var(--navy);
-      font-size: 42px;
-      font-weight: 600;
-      line-height: 1.1;
-    }
-    .biz__left p {
-      margin: 0 0 16px;
-      color: var(--sub);
-      font-size: 20px;
-      line-height: 1.5;
-    }
-    .biz__left p:last-of-type {
-      margin-bottom: 40px;
-    }
-    .biz__nav {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .biz__arrow {
-      width: 48px;
-      height: 48px;
-      border-radius: 6px;
-      border: 1px solid #d2d2d2;
-      background: #f0f0f0;
-      color: #464646;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      cursor: pointer;
-      transition: background .2s, color .2s, border-color .2s;
-    }
-    .biz__arrow:last-of-type {
-      background: #000;
-      border-color: #000;
+    .fin-banner .industry-banner__title {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.07;
       color: #fff;
-    }
-    .biz__arrow:hover {
-      background: var(--blue);
-      border-color: var(--blue);
-      color: #fff;
-    }
-    .biz__bar {
-      flex: 1;
-      max-width: 240px;
-      height: 6px;
-      margin-left: 8px;
-      background: #e4e4e4;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .biz__bar-fill {
-      width: 33.33%;
-      height: 100%;
-      background: var(--blue);
-      border-radius: 4px;
-    }
-    .biz__card {
-      background: #13203f;
-      border-radius: 16px;
-      padding: 50px 43px 52px;
-      min-height: 360px;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .biz__card h3 {
       margin: 0 0 20px;
-      font-size: 42px;
-      font-weight: 600;
-      line-height: 1.05;
+      transition: opacity .25s ease-out;
     }
-    .biz__card p {
-      margin: 0 0 28px;
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 1.35;
-      color: rgba(255,255,255,.95);
-    }
-    .biz__num {
-      font-size: 42px;
-      font-weight: 600;
-    }
-
-    .fin-banner .industry-banner__inner {
-      min-height: 520px;
-      border-radius: 10px;
-      background: #0982c5;
-    }
-    .fin-banner .industry-banner__title,
     .fin-banner .industry-banner__text {
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.88);
+      max-width: 620px;
       transition: opacity .25s ease-out;
     }
     .fin-banner.is-switching .industry-banner__title,
-    .fin-banner.is-switching .industry-banner__text {
-      opacity: 0;
-    }
-    .fin-banner .industry-banner__content {
-      max-width: 720px;
-      padding: 44px 42px;
-    }
-    .fin-banner .industry-banner__title {
-      font-size: 52px;
-      line-height: 1.04;
-    }
-    .fin-banner .industry-banner__text {
-      font-size: 18px;
-      line-height: 1.5;
-      max-width: 640px;
-    }
+    .fin-banner.is-switching .industry-banner__text { opacity: 0; }
     .fin-banner__dots {
       position: absolute;
-      left: 42px;
-      bottom: 30px;
-      z-index: 2;
+      left: 52px;
+      bottom: 36px;
+      z-index: 3;
       display: flex;
       gap: 10px;
     }
     .fin-banner__dot {
-      width: 26px;
+      width: 32px;
       height: 4px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.35);
       border: 0;
       padding: 0;
       cursor: pointer;
-      transition: background .2s ease;
+      transition: background .2s ease, width .2s ease;
     }
-    .fin-banner__dot:hover {
-      background: rgba(255,255,255,0.85);
-    }
-    .fin-banner__dot.is-active {
-      background: #08adfc;
-    }
+    .fin-banner__dot.is-active { background: #38bdf8; width: 48px; }
+    .fin-banner__dot:hover { background: rgba(255,255,255,0.7); }
 
-    .fin-why {
-      padding-top: 58px;
-    }
-    .fin-why .split {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 56px;
-    }
-    .fin-why .split > div:first-child {
-      flex: 0 0 58%;
-      max-width: 58%;
-    }
-    .fin-why .split > picture {
-      flex: 0 0 38%;
-      max-width: 38%;
-      display: block;
-    }
-    .fin-why .heading-lg {
-      margin-bottom: 14px;
-    }
-    .fin-why .body-lg {
-      max-width: 720px;
-    }
-    .fin-why .split__img {
-      border-radius: 8px;
-      height: 300px;
-      object-position: center;
-      width: 100%;
-    }
+    /* Why choose us */
+    .fin-why { padding-top: 58px; }
+    .fin-why .split { display: flex; align-items: center; justify-content: space-between; gap: 56px; }
+    .fin-why .split > div:first-child { flex: 0 0 58%; max-width: 58%; }
+    .fin-why .split > picture { flex: 0 0 38%; max-width: 38%; display: block; }
+    .fin-why .heading-lg { margin-bottom: 14px; }
+    .fin-why .body-lg { max-width: 720px; }
+    .fin-why .split__img { border-radius: 8px; height: 300px; object-position: center; width: 100%; }
 
-    /* CMS testimonials: neutralise the 5-card -175px peek fallback */
-    .nd-trusted__track { transform: translateX(-1px); }
-
-    .fin-cta {
-      padding-top: 40px;
-      padding-bottom: 40px;
-    }
-    .fin-cta .industry-cta__inner {
-      min-height: 198px;
-      position: relative;
-    }
-    .fin-cta .industry-cta__chips {
-      position: absolute;
-      inset: 0;
-      display: block;
-      pointer-events: none;
-    }
-    .fin-cta .industry-cta__chip {
-      position: absolute;
-      white-space: nowrap;
-      border-radius: 14px;
-      font-size: 12px;
-      padding: 6px 12px;
-    }
+    /* CTA */
+    .fin-cta { padding-top: 40px; padding-bottom: 40px; }
+    .fin-cta .industry-cta__inner { min-height: 198px; position: relative; }
+    .fin-cta .industry-cta__chips { position: absolute; inset: 0; display: block; pointer-events: none; }
+    .fin-cta .industry-cta__chip { position: absolute; white-space: nowrap; border-radius: 14px; font-size: 12px; padding: 6px 12px; }
     .fin-cta .industry-cta__chip:nth-child(1) { top: 34px; left: 8px; }
     .fin-cta .industry-cta__chip:nth-child(2) { top: 34px; left: 164px; }
     .fin-cta .industry-cta__chip:nth-child(3) { top: 34px; right: 154px; }
@@ -511,495 +199,474 @@
     .fin-cta .industry-cta__chip:nth-child(6) { bottom: 34px; left: 190px; }
     .fin-cta .industry-cta__chip:nth-child(7) { bottom: 34px; right: 184px; }
     .fin-cta .industry-cta__chip:nth-child(8) { bottom: 34px; right: 8px; }
-    .fin-cta .industry-cta__card {
-      border-radius: 8px;
-      width: min(620px, 100%);
-      padding: 20px 26px;
-    }
-    .fin-cta .industry-cta__title {
-      font-size: 40px;
-      line-height: 1.02;
-      margin-bottom: 12px;
-    }
-    .fin-cta .industry-cta__text {
-      font-size: 15px;
-      margin-bottom: 14px;
-    }
+    .fin-cta .industry-cta__card { border-radius: 8px; width: min(620px, 100%); padding: 20px 26px; }
+    .fin-cta .industry-cta__title { font-size: 40px; line-height: 1.02; margin-bottom: 12px; }
+    .fin-cta .industry-cta__text { font-size: 15px; margin-bottom: 14px; }
 
     @media (max-width: 1200px) {
-      .svcs-hero__title {
-        font-size: 46px;
-      }
-      .svcs-hero__content {
-        padding: 80px 60px 120px var(--px);
-      }
-
-      .fin-banner .industry-banner__title {
-        font-size: 44px;
-      }
-      .sd-section {
-        margin: 56px auto;
-      }
-      .svl-overview__inner {
-        grid-template-columns: 1fr;
-        padding: 24px;
-        gap: 32px;
-      }
-      .svl-overview__feature {
-        order: -1;
-      }
-      .svl-overview__list {
-        gap: 24px;
-      }
-      .fin-why .split {
-        display: grid;
-      }
-      .fin-why .split > div:first-child,
-      .fin-why .split > picture {
-        flex: initial;
-        max-width: none;
-      }
+      .svcs-hero__title { font-size: 46px; }
+      .svcs-hero__content { padding: 80px 60px 120px var(--px); }
+      .fin-banner .industry-banner__title { font-size: 40px; }
+      .sd-section { margin: 56px auto; }
+      .svl-overview__inner { grid-template-columns: 1fr; padding: 24px; gap: 32px; }
+      .svl-overview__feature { order: -1; min-height: 480px; }
+      .svl-overview__list { gap: 24px; max-height: 480px; }
+      .fin-why .split { display: grid; }
+      .fin-why .split > div:first-child, .fin-why .split > picture { flex: initial; max-width: none; }
     }
-
     @media (max-width: 768px) {
-      .svcs-hero__wrap {
-        background-image: url(/images/pages/unique/banner-icons/industries-icon.svg);
-        background-repeat: no-repeat;
-        background-size: 250px auto;
-        background-position: right -24px top -24px;
-        height: auto; min-height: 0;
-      }
-      .sd-section {
-        margin: 56px auto;
-      }
-      .biz {
-        grid-template-columns: 1fr;
-        gap: 26px;
-      }
-      .biz__left h2 {
-        font-size: 22px;
-        line-height: 1.25;
-      }
-      .biz__left p {
-        font-size: 15.5px;
-        line-height: 1.6;
-      }
-      .biz__left p:last-of-type {
-        margin-bottom: 22px;
-      }
-      .biz__arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-      }
-      .biz__card {
-        min-height: 0;
-        padding: 26px 20px 30px;
-      }
-      .biz__card h3 {
-        font-size: 20px;
-        margin-bottom: 12px;
-      }
-      .biz__card p {
-        font-size: 15.5px;
-        line-height: 1.55;
-        margin-bottom: 18px;
-      }
-      .biz__num {
-        font-size: 22px;
-      }
-      .svl-overview {
-        padding-top: 52px;
-        padding-bottom: 52px;
-      }
-      .svl-overview__feature {
-        min-height: 480px;
-        padding: 16px;
-      }
-      .svl-overview__list-item {
-        font-size: 22px;
-      }
-      .svl-overview__panel {
-        padding: 20px;
-      }
-      .svcs-hero__title {
-        font-size: 42px;
-      }
-      .svcs-hero__sub {
-        font-size: 20px;
-      }
-      .svcs-hero__content {
-        padding: 60px var(--px) 80px var(--px);
-      }
-
-      .fin-why,
-      .fin-cta {
-        padding-top: 52px;
-        padding-bottom: 52px;
-      }
-      .fin-banner .industry-banner__content {
-        padding: 32px 24px;
-      }
-      .fin-banner .industry-banner__title {
-        font-size: 34px;
-      }
-      .fin-banner__dots {
-        left: 24px;
-        bottom: 20px;
-      }
-      .fin-cta .industry-cta__title {
-        font-size: 30px;
-      }
-      .fin-cta .industry-cta__chips {
-        display: none;
-      }
+      .svcs-hero__wrap { background-image: url(/images/pages/unique/banner-icons/industries-icon.svg); background-repeat: no-repeat; background-size: 250px auto; background-position: right -24px top -24px; height: auto; min-height: 0; }
+      .sd-section { margin: 56px auto; }
+      .biz { grid-template-columns: 1fr; gap: 26px; }
+      .biz__left h2 { font-size: 22px; line-height: 1.25; }
+      .biz__left p { font-size: 15.5px; line-height: 1.6; }
+      .biz__left p:last-of-type { margin-bottom: 22px; }
+      .biz__arrow { width: 40px; height: 40px; font-size: 18px; }
+      .biz__card { min-height: 0; padding: 26px 20px 30px; }
+      .biz__card h3 { font-size: 20px; margin-bottom: 12px; }
+      .biz__card p { font-size: 15.5px; line-height: 1.55; margin-bottom: 18px; }
+      .biz__num { font-size: 22px; }
+      .svl-overview { padding-top: 52px; padding-bottom: 52px; }
+      .svl-overview__feature { min-height: 480px; padding: 16px; }
+      .svl-overview__list-item { font-size: 22px; }
+      .svl-overview__list { max-height: 360px; }
+      .svl-overview__panel { padding: 20px; }
+      .svcs-hero__title { font-size: 42px; }
+      .svcs-hero__sub { font-size: 20px; }
+      .svcs-hero__content { padding: 60px var(--px) 80px var(--px); }
+      .fin-why, .fin-cta { padding-top: 52px; padding-bottom: 52px; }
+      .fin-banner .industry-banner__content { padding: 36px 28px 72px; }
+      .fin-banner .industry-banner__title { font-size: 30px; }
+      .fin-banner__dots { left: 28px; bottom: 22px; }
+      .fin-cta .industry-cta__title { font-size: 30px; }
+      .fin-cta .industry-cta__chips { display: none; }
     }
-
     @media (max-width: 480px) {
-      .svcs-hero__title {
-        font-size: 28px;
-      }
-      .svcs-hero__cta {
-        margin-top: 20px;
-        font-size: 14px;
-        min-height: 44px;
-        min-width: 0;
-        padding: 0 24px;
-      }
+      .svcs-hero__title { font-size: 28px; }
+      .svcs-hero__cta { margin-top: 20px; font-size: 14px; min-height: 44px; min-width: 0; padding: 0 24px; }
     }
   </style>
 </head>
 <body class="industry-detail-page">
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVKBZV7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVKBZV7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<a class="skip-link" href="#main">Skip to main content</a>
-
+  <a class="skip-link" href="#main">Skip to main content</a>
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
+
   <main id="main">
-  <section class="svcs-hero" aria-label="Industries hero">
-    <div class="svcs-hero__wrap">
-      <div class="svcs-hero__content">
-        <div class="svcs-hero__text">
-          <h1 class="svcs-hero__title animate-fade-up">Financial Network Security</h1>
-          <p class="svcs-hero__sub animate-fade-up">Network Consultancy delivers secure IT networks for financial organisations, helping protect data, meet compliance requirements, and reduce downtime.</p>
-        </div>
-        <a href="/contact" class="btn-blue svcs-hero__cta animate-fade-up" data-source-cta="industry_health_check">Book Health Check</a>
-      </div>
-    </div>
-  </section>
 
-  <section class="svl-overview animate-fade-up" aria-labelledby="fin-intro-h">
-    <h2 class="heading-xl svl-overview__title" id="fin-intro-h">Engineer the Future of Financial Services with a Modern Network</h2>
-    <div class="body-lg svl-overview__lead"><p>Every financial organisation needs a dependable network. We engineer zero-latency core IT security networks and layered security controls to protect transaction pathways and maintain regulatory compliance.</p></div>
-    <div class="svl-overview__inner">
-      <div class="svl-overview__list" role="tablist" aria-label="Financial services focus areas">
-        <button type="button" role="tab" aria-selected="true" class="svl-overview__list-item svl-overview__list-item--active"
-          data-title="Planning and Assessment"
-          data-copy="We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements."
-          data-srcset="/images/pages/unique/generated/young-creative-businesswoman-working-on-new-projec-2026-03-16-03-31-54-utc.jpg"
-          data-img="/images/pages/unique/generated/young-creative-businesswoman-working-on-new-projec-2026-03-16-03-31-54-utc.jpg"
-          data-alt="Planning and assessment for financial network services">Planning and Assessment</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Secure Network Design and Deployment"
-          data-copy="We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements."
-          data-srcset="/images/pages/unique/services-network-design-deployment-nc-hero-person.jpg"
-          data-img="/images/pages/unique/services-network-design-deployment-nc-hero-person.jpg"
-          data-alt="Secure network design and deployment for financial services">Secure Network Design and Deployment</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Continuous Monitoring and Threat Detection"
-          data-copy="We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements."
-          data-srcset="/images/pages/unique/generated/back-view-of-african-american-security-operator-us-2026-03-25-22-43-01-utc.jpg"
-          data-img="/images/pages/unique/generated/back-view-of-african-american-security-operator-us-2026-03-25-22-43-01-utc.jpg"
-          data-alt="Continuous monitoring and threat detection for financial services">Continuous Monitoring and Threat Detection</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Performance Optimisation and Ongoing Management"
-          data-copy="We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements."
-          data-srcset="/images/pages/unique/industries-financial-services-managed-support.jpg"
-          data-img="/images/pages/unique/industries-financial-services-managed-support.jpg"
-          data-alt="Performance optimisation and ongoing management for financial services">Performance Optimisation and Ongoing Management</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Compliance and Governance"
-          data-copy="We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements."
-          data-srcset="/images/pages/unique/services-firewall-network-security-cyber-security.jpg"
-          data-img="/images/pages/unique/services-firewall-network-security-cyber-security.jpg"
-          data-alt="Compliance and governance for financial services">Compliance and Governance</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Backup and Disaster Recovery"
-          data-copy="We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements."
-          data-srcset="/images/pages/unique/services-business-continuity-servers.jpg"
-          data-img="/images/pages/unique/services-business-continuity-servers.jpg"
-          data-alt="Backup and disaster recovery for financial services">Backup and Disaster Recovery</button>
-      </div>
-      <div class="svl-overview__feature">
-        <picture>
-          <source id="svl-feature-source" srcset="/images/pages/unique/generated/young-creative-businesswoman-working-on-new-projec-2026-03-16-03-31-54-utc.jpg" type="image/jpeg">
-          <img id="svl-feature-img" src="/images/pages/unique/generated/young-creative-businesswoman-working-on-new-projec-2026-03-16-03-31-54-utc.jpg" alt="Planning and assessment for financial network services" loading="lazy">
-        </picture>
-        <div class="svl-overview__panel" role="tabpanel">
-          <h3 id="svl-overview-title">Planning and Assessment</h3>
-          <p id="svl-overview-copy">We start every project by looking at your IT environment. We check network performance, security risks, and recommend practical improvements.</p>
+    <!-- HERO -->
+    <section class="svcs-hero" aria-label="Industries hero">
+      <div class="svcs-hero__wrap">
+        <div class="svcs-hero__content">
+          <div class="svcs-hero__text">
+            <h1 class="svcs-hero__title animate-fade-up">Financial Network Security</h1>
+            <p class="svcs-hero__sub animate-fade-up">Network Consultancy delivers secure IT networks for financial organisations, helping protect data, meet compliance requirements, and reduce downtime.</p>
+          </div>
+          <a href="/contact" class="btn-blue svcs-hero__cta animate-fade-up" data-source-cta="industry_health_check">Book Health Check</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <script>
-  (function svlOverviewTabs() {
-    'use strict';
-    var tabs = Array.prototype.slice.call(document.querySelectorAll('.svl-overview__list-item'));
-    var panel = document.querySelector('.svl-overview__panel');
-    if (tabs.length === 0 || panel === null) return;
-    var title = document.getElementById('svl-overview-title');
-    var copy = document.getElementById('svl-overview-copy');
-    var img = document.getElementById('svl-feature-img');
-    var source = document.getElementById('svl-feature-source');
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        if (tab.classList.contains('svl-overview__list-item--active')) return;
-        tabs.forEach(function (t) {
-          t.classList.remove('svl-overview__list-item--active');
-          t.setAttribute('aria-selected', 'false');
+    <!-- TAB OVERVIEW -->
+    <section class="svl-overview animate-fade-up" aria-labelledby="fin-intro-h">
+      <h2 class="heading-xl svl-overview__title" id="fin-intro-h">Engineer the Future of Financial Services with a Modern Network</h2>
+      <div class="body-lg svl-overview__lead">
+        <p>Every financial organisation needs a dependable network. We engineer secure IT infrastructure with layered security controls to protect transaction pathways and maintain regulatory compliance.</p>
+      </div>
+      <div class="svl-overview__inner">
+        <div class="svl-overview__list" role="tablist" aria-label="Financial services focus areas">
+
+          <!-- Tab 1 -->
+          <button type="button" role="tab" aria-selected="true"
+            class="svl-overview__list-item svl-overview__list-item--active"
+            data-title="Planning and Assessment"
+            data-copy="We start every project by looking at your IT environment. We check network performance, find security risks, and recommend improvements."
+            data-img="/images/pages/unique/generated/young-creative-businesswoman-working-on-new-projec-2026-03-16-03-31-54-utc.jpg"
+            data-alt="Planning and assessment for financial network services">
+            Planning and Assessment
+          </button>
+
+          <!-- Tab 2 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Secure Network Design and Deployment"
+            data-copy="We implement secure network infrastructure using trusted security controls, encrypted connections, and robust access management. This helps protect sensitive data and ensures that only authorised users can access your network and systems."
+            data-img="/images/pages/unique/services-network-design-deployment-nc-hero-person.jpg"
+            data-alt="Secure network design and deployment for financial services">
+            Secure Network Design and Deployment
+          </button>
+
+          <!-- Tab 3 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Continuous Monitoring and Threat Detection"
+            data-copy="We monitor your network around the clock to identify suspicious activity before it becomes a serious issue. This proactive approach enables us to respond quickly to potential threats, helping to keep your systems secure and running smoothly."
+            data-img="/images/pages/unique/generated/back-view-of-african-american-security-operator-us-2026-03-25-22-43-01-utc.jpg"
+            data-alt="Continuous monitoring and threat detection for financial services">
+            Continuous Monitoring and Threat Detection
+          </button>
+
+          <!-- Tab 4 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Performance Optimisation and Ongoing Management"
+            data-copy="Regular maintenance is essential to keep your network secure, reliable, and performing at its best. We monitor system performance, apply critical updates, and make ongoing improvements to ensure your infrastructure remains efficient, secure, and resilient."
+            data-img="/images/pages/unique/industries-financial-services-managed-support.jpg"
+            data-alt="Performance optimisation and ongoing management for financial services">
+            Performance Optimisation and Ongoing Management
+          </button>
+
+          <!-- Tab 5 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Compliance and Governance"
+            data-copy="Financial organisations must meet strict regulatory and security requirements. We help keep systems secure and compliant by implementing effective access controls, maintaining clear security policies, and ensuring documented processes are in place to support regulatory obligations."
+            data-img="/images/pages/unique/services-firewall-network-security-cyber-security.jpg"
+            data-alt="Compliance and governance for financial services">
+            Compliance and Governance
+          </button>
+
+          <!-- Tab 6 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Backup and Disaster Recovery"
+            data-copy="We help businesses protect critical data with reliable backup and disaster recovery solutions. By planning for unexpected events, we minimise disruption from system failures or data loss and regularly test recovery procedures to ensure they work when needed most."
+            data-img="/images/pages/unique/services-business-continuity-servers.jpg"
+            data-alt="Backup and disaster recovery for financial services">
+            Backup and Disaster Recovery
+          </button>
+
+        </div><!-- /.svl-overview__list -->
+
+        <div class="svl-overview__feature">
+          <picture>
+            <source id="svl-feature-source" srcset="/images/pages/unique/generated/young-creative-businesswoman-working-on-new-projec-2026-03-16-03-31-54-utc.jpg" type="image/jpeg">
+            <img id="svl-feature-img"
+              src="/images/pages/unique/generated/young-creative-businesswoman-working-on-new-projec-2026-03-16-03-31-54-utc.jpg"
+              alt="Planning and assessment for financial network services"
+              loading="lazy">
+          </picture>
+          <div class="svl-overview__panel" role="tabpanel">
+            <h3 id="svl-overview-title">Planning and Assessment</h3>
+            <p id="svl-overview-copy">We start every project by looking at your IT environment. We check network performance, find security risks, and recommend improvements.</p>
+          </div>
+        </div><!-- /.svl-overview__feature -->
+
+      </div><!-- /.svl-overview__inner -->
+    </section>
+
+    <!-- TAB SCRIPT -->
+    <script>
+    (function svlOverviewTabs() {
+      'use strict';
+      var tabs   = Array.prototype.slice.call(document.querySelectorAll('.svl-overview__list-item'));
+      var panel  = document.querySelector('.svl-overview__panel');
+      if (tabs.length === 0 || panel === null) return;
+      var title  = document.getElementById('svl-overview-title');
+      var copy   = document.getElementById('svl-overview-copy');
+      var img    = document.getElementById('svl-feature-img');
+      var source = document.getElementById('svl-feature-source');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          if (tab.classList.contains('svl-overview__list-item--active')) return;
+          tabs.forEach(function (t) {
+            t.classList.remove('svl-overview__list-item--active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('svl-overview__list-item--active');
+          tab.setAttribute('aria-selected', 'true');
+          tab.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          panel.classList.add('is-switching');
+          if (img) img.style.opacity = '0';
+          setTimeout(function () {
+            if (title)  title.textContent  = tab.getAttribute('data-title');
+            if (copy)   copy.textContent   = tab.getAttribute('data-copy');
+            if (source) source.srcset      = tab.getAttribute('data-img');
+            if (img) {
+              img.src           = tab.getAttribute('data-img');
+              img.alt           = tab.getAttribute('data-alt');
+              img.style.opacity = '1';
+            }
+            panel.classList.remove('is-switching');
+          }, 250);
         });
-        tab.classList.add('svl-overview__list-item--active');
-        tab.setAttribute('aria-selected', 'true');
-        panel.classList.add('is-switching');
-        if (img) img.style.opacity = '0';
-        setTimeout(function () {
-          title.textContent = tab.getAttribute('data-title');
-          copy.textContent = tab.getAttribute('data-copy');
-          if (source) source.srcset = tab.getAttribute('data-srcset');
-          if (img) {
-            img.src = tab.getAttribute('data-img');
-            img.alt = tab.getAttribute('data-alt');
-            img.style.opacity = '1';
-          }
-          panel.classList.remove('is-switching');
-        }, 250);
       });
-    });
-  })();
-  </script>
+    })();
+    </script>
 
-  <section class="sd-section" aria-labelledby="biz-h">
-    <div class="sd-wrap">
-      <div class="biz" id="biz">
-        <div class="biz__left">
-          <h2 id="biz-h">Primary Cyber Threats and Vulnerabilities for Financial Services</h2>
-          <p>Understanding the most common threats is an important part of protecting your network and maintaining business continuity.</p>
-          <p>Fraudulent emails, messages and websites are used to trick employees or customers into revealing login details or other sensitive information while attackers target financial systems.</p>
-          <div class="biz__nav">
-            <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
-            <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
-            <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
+    <!-- BIZ SLIDER -->
+    <section class="sd-section" aria-labelledby="biz-h">
+      <div class="sd-wrap">
+        <div class="biz" id="biz">
+          <div class="biz__left">
+            <h2 id="biz-h">Primary Cyber Threats and Vulnerabilities for Financial Services</h2>
+            <p>Understanding the most common threats is an important part of protecting your network and maintaining business continuity.</p>
+            <p>Fraudulent emails, messages and websites are used to trick employees or customers into revealing login details or other sensitive information, giving attackers access to financial systems.</p>
+            <div class="biz__nav">
+              <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
+              <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
+              <div class="biz__bar"><div class="biz__bar-fill" id="biz-fill"></div></div>
+            </div>
+          </div>
+          <div class="biz__card">
+            <div>
+              <h3 id="biz-title">Phishing Attacks</h3>
+              <p id="biz-desc">Fraudulent emails, messages and websites are used to trick users into revealing login details and other sensitive information, giving attackers access to financial systems.</p>
+            </div>
+            <div class="biz__num" id="biz-count">1/3</div>
           </div>
         </div>
-        <div class="biz__card">
-          <div>
-            <h3 id="biz-title">Phishing attacks</h3>
-            <p id="biz-desc">Fraudulent emails, messages and websites are used to trick users into revealing login details and other sensitive information.</p>
-          </div>
-          <div class="biz__num" id="biz-count">1/3</div>
+      </div>
+    </section>
+
+    <!-- FIN BANNER — Unsplash background, 3 slides -->
+    <section class="industry-banner animate-fade-up fin-banner" aria-labelledby="fin-banner-h">
+      <div class="industry-banner__inner">
+
+        <!-- Unsplash background image -->
+        <div class="fin-banner__bg">
+          <img id="fin-banner-bg-img"
+            src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1600&q=80&auto=format&fit=crop"
+            alt="Financial network security"
+            loading="lazy">
         </div>
-      </div>
-    </div>
-  </section>
+        <div class="fin-banner__overlay"></div>
 
-  <section class="industry-banner animate-fade-up fin-banner" aria-labelledby="fin-banner-h">
-    <div class="industry-banner__inner">
-      <div class="industry-banner__content">
-        <span class="industry-banner__eyebrow">Cyber Threats</span>
-        <h2 class="industry-banner__title" id="fin-banner-h">Common Types of Cyber Attacks Financial Systems Face</h2>
-        <p class="industry-banner__text" id="fin-banner-text">Attackers look for weaknesses in software, poorly secured APIs, and weak passwords. They use techniques like ransomware, phishing and distributed denial-of-service attacks, as well as credential stuffing and man-in-the-middle attacks to compromise accounts or intercept data.</p>
-      </div>
-      <div class="fin-banner__dots" role="tablist" aria-label="Cyber threat slides">
-        <button type="button" class="fin-banner__dot is-active" role="tab" aria-selected="true" aria-label="Slide 1"></button>
-        <button type="button" class="fin-banner__dot" role="tab" aria-selected="false" aria-label="Slide 2"></button>
-        <button type="button" class="fin-banner__dot" role="tab" aria-selected="false" aria-label="Slide 3"></button>
-      </div>
-    </div>
-  </section>
+        <div class="industry-banner__content">
+          <span class="industry-banner__eyebrow">Cyber Threats</span>
+          <h2 class="industry-banner__title" id="fin-banner-h">Credential Stuffing and Account Takeover</h2>
+          <p class="industry-banner__text" id="fin-banner-text">Stolen or reused passwords are used to gain access to accounts and internal systems. Strong access controls, multi-factor authentication and continuous monitoring help detect and block unauthorised activity before sensitive data is exposed.</p>
+        </div>
 
-  <script>
-  (function finBannerSlides() {
-    'use strict';
-    var slides = [
+        <div class="fin-banner__dots" role="tablist" aria-label="Cyber threat slides">
+          <button type="button" class="fin-banner__dot is-active" role="tab" aria-selected="true"  aria-label="Slide 1"></button>
+          <button type="button" class="fin-banner__dot"           role="tab" aria-selected="false" aria-label="Slide 2"></button>
+          <button type="button" class="fin-banner__dot"           role="tab" aria-selected="false" aria-label="Slide 3"></button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FIN BANNER SCRIPT -->
+    <script>
+    (function finBannerSlides() {
+      'use strict';
+      var slides = [
+        {
+          title: 'Credential Stuffing and Account Takeover',
+          text:  'Stolen or reused passwords are used to gain access to accounts and internal systems. Strong access controls, multi-factor authentication and continuous monitoring help detect and block unauthorised activity before sensitive data is exposed.',
+          bg:    'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1600&q=80&auto=format&fit=crop'
+        },
+        {
+          title: 'Core Network Security Components',
+          text:  'A strong network security strategy relies on multiple layers of protection working together. Firewalls prevent unauthorised access, intrusion detection systems monitor for suspicious behaviour, and data encryption protects information in transit and at rest. Multi-factor authentication adds an extra layer of security, reducing the risk of unauthorised access and strengthening overall network protection.',
+          bg:    'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1600&q=80&auto=format&fit=crop'
+        },
+        {
+          title: 'Secure VPN Access',
+          text:  'Secure VPN access enables employees to connect safely to business systems when working remotely. Endpoint security solutions protect laptops, desktops, and connected devices from cyber threats. Role-based access controls ensure users can only access the information they need, while continuous security monitoring helps identify and respond to potential threats quickly, strengthening overall network security.',
+          bg:    'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=1600&q=80&auto=format&fit=crop'
+        }
+      ];
+      var titleEl = document.getElementById('fin-banner-h');
+      var textEl  = document.getElementById('fin-banner-text');
+      var bgImg   = document.getElementById('fin-banner-bg-img');
+      var dots    = Array.prototype.slice.call(document.querySelectorAll('.fin-banner__dot'));
+      var banner  = document.querySelector('.fin-banner');
+      if (!titleEl || !textEl || dots.length === 0) return;
+      var current = 0;
+      var timer   = null;
+      function show(index) {
+        if (index === current) return;
+        current = index;
+        banner.classList.add('is-switching');
+        if (bgImg) bgImg.style.opacity = '0';
+        setTimeout(function () {
+          titleEl.textContent = slides[current].title;
+          textEl.textContent  = slides[current].text;
+          if (bgImg) { bgImg.src = slides[current].bg; bgImg.style.opacity = '1'; }
+          dots.forEach(function (d, i) {
+            d.classList.toggle('is-active', i === current);
+            d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+          });
+          banner.classList.remove('is-switching');
+        }, 250);
+      }
+      function startAuto() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(function () { show((current + 1) % slides.length); }, 6000);
+      }
+      dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () { show(i); startAuto(); });
+      });
+      startAuto();
+    })();
+    </script>
+
+    <!-- WHY CHOOSE US -->
+    <section class="section animate-fade-up fin-why" aria-labelledby="fin-why-h">
+      <div class="split split--3-2">
+        <div>
+          <h2 class="heading-lg" id="fin-why-h">Why Choose Us</h2>
+          <div class="body-lg">
+            <p>We have experience delivering secure IT network solutions for banks and financial institutions.</p>
+            <p>We design our networks with security in mind, keep a close eye on regulatory requirements, and adapt to the changing needs of the financial sector.</p>
+          </div>
+          <ul class="check-list">
+            <li class="check-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="check-text">Experience delivering secure IT network solutions for banks, financial institutions and organisations that handle sensitive information</span>
+            </li>
+            <li class="check-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="check-text">Security-focused network design with continuous monitoring</span>
+            </li>
+            <li class="check-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="check-text">Reliable infrastructure built to support business continuity</span>
+            </li>
+          </ul>
+        </div>
+        <picture>
+          <source srcset="/images/pages/servers.jpg" type="image/jpeg">
+          <img class="split__img split__img--med" src="/images/pages/servers.jpg" alt="Network infrastructure hardware" width="600" height="380" loading="lazy">
+        </picture>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <script>
+    window.PAGE_TESTIMONIALS = [
       {
-        title: 'Common Types of Cyber Attacks Financial Systems Face',
-        text: 'Attackers look for weaknesses in software, poorly secured APIs, and weak passwords. They use techniques like ransomware, phishing and distributed denial-of-service attacks, as well as credential stuffing and man-in-the-middle attacks to compromise accounts or intercept data.'
+        quote: 'The migration was well managed from start to finish. We have seen better visibility across our network, stronger security and a much quicker response to potential issues.',
+        name: 'SOPHIE MITCHELL',
+        role: 'Cybersecurity Manager — Manchester',
+        avatar: '/images/misc/avatars/testimonial-avatar-f2.jpg'
       },
       {
-        title: 'Ransomware and Denial-of-Service Disruption',
-        text: 'Ransomware can lock teams out of critical systems, while distributed denial-of-service attacks overwhelm networks and interrupt customer-facing services. Resilient architecture, network segmentation and tested recovery plans keep operations running when incidents occur.'
+        quote: 'The new infrastructure has improved performance across our organisation. Our teams can work without interruption, and the network has remained reliable throughout.',
+        name: 'DANIEL HUGHES',
+        role: 'Network Lead — Birmingham',
+        avatar: '/images/misc/avatars/testimonial-avatar-it-director.jpg'
       },
       {
-        title: 'Credential Stuffing and Account Takeover',
-        text: 'Stolen or reused passwords are used to gain access to accounts and internal systems. Strong access controls, multi-factor authentication and continuous monitoring help detect and block unauthorised activity before sensitive data is exposed.'
+        quote: 'We needed a secure network that could support our compliance requirements and daily operations. The solution has helped improve system stability and given our team greater confidence in our IT environment.',
+        name: 'EMMA WALKER',
+        role: 'Chief Information Officer — Leeds',
+        avatar: '/images/misc/avatars/testimonial-avatar-f2.jpg'
+      },
+      {
+        quote: 'The ongoing support has been excellent. Our network is easier to manage, security has improved, and we have much better visibility of what is happening across our systems.',
+        name: 'OLIVER BENNETT',
+        role: 'Head of Infrastructure — Glasgow',
+        avatar: '/images/misc/avatars/testimonial-avatar-managing-director.jpg'
+      },
+      {
+        quote: 'The improvements to our network have made a real difference. Our systems are more reliable, and we have greater confidence that sensitive financial data is properly protected.',
+        name: 'JAMES CARTER',
+        role: 'IT Director — London',
+        avatar: '/images/misc/avatars/testimonial-avatar-m1.jpg'
+      },
+      {
+        quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
+        name: 'OPERATIONS DIRECTOR',
+        role: 'Manufacturing Company — Midlands',
+        avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
       }
     ];
-    var title = document.getElementById('fin-banner-h');
-    var text = document.getElementById('fin-banner-text');
-    var dots = Array.prototype.slice.call(document.querySelectorAll('.fin-banner__dot'));
-    var banner = document.querySelector('.fin-banner');
-    if (!title || !text || dots.length === 0) return;
-    var current = 0;
-    var timer = null;
-    function show(index) {
-      if (index === current) return;
-      current = index;
-      banner.classList.add('is-switching');
-      setTimeout(function () {
-        title.textContent = slides[current].title;
-        text.textContent = slides[current].text;
-        dots.forEach(function (d, i) {
-          d.classList.toggle('is-active', i === current);
-          d.setAttribute('aria-selected', i === current ? 'true' : 'false');
-        });
-        banner.classList.remove('is-switching');
-      }, 250);
-    }
-    function startAuto() {
-      if (timer) clearInterval(timer);
-      timer = setInterval(function () { show((current + 1) % slides.length); }, 6000);
-    }
-    dots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () { show(i); startAuto(); });
-    });
-    startAuto();
-  })();
-  </script>
+    </script>
+    <div data-cms="testimonials" data-title="What our client says"></div>
 
-  <section class="section animate-fade-up fin-why" aria-labelledby="fin-why-h">
-    <div class="split split--3-2">
-      <div>
-        <h2 class="heading-lg" id="fin-why-h">Why Choose Us</h2>
-        <div class="body-lg"><p>We have experience delivering secure IT network solutions for banks and financial institutions.</p><p>We design our networks with security in mind, keep a close eye on regulatory requirements, and adapt to the changing needs of the financial sector.</p></div>
-        <ul class="check-list">
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Experience delivering secure IT network solutions for banks, financial institutions and organisations that handle sensitive information</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Security-focused network design with continuous monitoring</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Reliable infrastructure built to support business continuity</span></li>
-        </ul>
+    <!-- CTA -->
+    <section class="industry-cta animate-fade-up fin-cta" aria-label="Call to action">
+      <div class="industry-cta__inner">
+        <div class="industry-cta__chips" aria-hidden="true">
+          <span class="industry-cta__chip">Network Consultancy</span><span class="industry-cta__chip">Network Support</span><span class="industry-cta__chip">Managed Network Support</span><span class="industry-cta__chip">Managed Wireless LAN</span><span class="industry-cta__chip">Network Installations</span><span class="industry-cta__chip">Network Design &amp; Deployment</span><span class="industry-cta__chip">Firewall &amp; Network Security</span><span class="industry-cta__chip">Remote Access &amp; VPN</span>
+        </div>
+        <div class="industry-cta__card">
+          <h2 class="industry-cta__title">Strengthen Your Financial Network</h2>
+          <p class="industry-cta__text">Build stronger security and business continuity with a reliable network infrastructure built around financial services.</p>
+          <a href="/contact" class="btn-dark">Book a Network Health Check</a>
+        </div>
       </div>
-      <picture>
-        <source srcset="/images/pages/servers.jpg" type="image/jpeg">
-        <img class="split__img split__img--med" src="/images/pages/servers.jpg" alt="Network infrastructure hardware" width="600" height="380" loading="lazy">
-      </picture>
-    </div>
-  </section>
-  <script>
-  window.PAGE_TESTIMONIALS = [
-    {
-      quote: 'The improvements to our network have made a real difference. Our systems are more reliable, and we have greater confidence that sensitive financial data is properly protected.',
-      name: 'James Carter',
-      role: 'IT Director, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-m1.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Managing Director',
-      role: 'Broadcasting Company, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-managing-director.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'IT Director',
-      role: 'Professional Services Firm, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-it-director.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Head of Operations',
-      role: 'Healthcare Provider, Birmingham',
-      avatar: '/images/misc/avatars/testimonial-avatar-head-of-operations.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Managing Partner',
-      role: 'Legal Firm, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-managing-partner.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Operations Director',
-      role: 'Manufacturing Company, Midlands',
-      avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
-    }
-  ];
-  </script>
-  <div data-cms="testimonials" data-title="What our client says"></div>
+    </section>
 
-  <section class="industry-cta animate-fade-up fin-cta" aria-label="Call to action">
-    <div class="industry-cta__inner">
-      <div class="industry-cta__chips" aria-hidden="true">
-        <span class="industry-cta__chip">Network Consultancy</span><span class="industry-cta__chip">Network Support</span><span class="industry-cta__chip">Managed Network Support</span><span class="industry-cta__chip">Managed Wireless LAN</span><span class="industry-cta__chip">Network Installations</span><span class="industry-cta__chip">Network Design &amp; Deployment</span><span class="industry-cta__chip">Firewall &amp; Network Security</span><span class="industry-cta__chip">Remote Access &amp; VPN</span>
+    <!-- FAQ -->
+    <section class="nd-faq section-shell animate-fade-up" aria-labelledby="faq-h">
+      <div class="nd-faq__left">
+        <h2 class="section-title" id="faq-h">Frequently asked questions</h2>
+        <p>Still have questions? Get connected to our support team.</p>
+        <a href="../contact" class="nd-faq__cta">Contact us</a>
       </div>
-      <div class="industry-cta__card">
-        <h2 class="industry-cta__title">Strengthen Your Financial Network</h2>
-        <p class="industry-cta__text">Build stronger security and business continuity with a reliable network infrastructure built around financial services.</p>
-        <a href="/contact" class="btn-dark">Book a Network Health Check</a>
-      </div>
-    </div>
-  </section>
-  <section class="nd-faq section-shell animate-fade-up" aria-labelledby="faq-h">
-  <div class="nd-faq__left">
-    <h2 class="section-title" id="faq-h">Frequently asked questions</h2>
-    <p>Still have questions? Get connected to our support team.</p>
-    <a href="../contact" class="nd-faq__cta">Contact us</a>
-  </div>
-  <div class="nd-faq__right">
-    <button class="nd-faq__item is-open"><span>What network security measures do financial institutions use?</span><strong>−</strong></button>
-    <div class="nd-faq__panel">To safeguard sensitive financial data and ensure regulatory compliance, financial institutions use layered security measures, including firewalls, encryption, intrusion detection, ongoing monitoring, and stringent access controls.</div>
-    <button class="nd-faq__item"><span>What are the most common cyber threats financial organisations face?</span><strong>+</strong></button>
-    <div class="nd-faq__panel" hidden>Phishing, ransomware, account takeover, and distributed denial-of-service attacks are among the most common threats. Financial institutions reduce risk by hardening access, monitoring traffic, and strengthening response controls.</div>
-    <button class="nd-faq__item"><span>Why is continuous network monitoring important?</span><strong>+</strong></button>
-    <div class="nd-faq__panel" hidden>Continuous monitoring helps detect unusual behaviour early so teams can respond before issues become outages or security incidents.</div>
-  </div>
-</section>
+      <div class="nd-faq__right">
+        <button class="nd-faq__item is-open"><span>What network security measures do financial institutions use?</span><strong>−</strong></button>
+        <div class="nd-faq__panel">To safeguard sensitive financial data and ensure regulatory compliance, financial institutions use layered security measures, including firewalls, encryption, intrusion detection, ongoing monitoring, and stringent access controls.</div>
 
-  <div id="site-contact"></div>
-  <script src="/js/form-source-tracking.js"></script>
-  <script src="/js/contact.js"></script>
+        <button class="nd-faq__item"><span>What are the most common cyber threats financial organisations face?</span><strong>+</strong></button>
+        <div class="nd-faq__panel" hidden>Phishing, ransomware, account takeover, and distributed denial-of-service attacks are among the most common threats. Financial institutions reduce risk by hardening access, monitoring traffic, and strengthening response controls.</div>
+
+        <button class="nd-faq__item"><span>Why is continuous network monitoring important?</span><strong>+</strong></button>
+        <div class="nd-faq__panel" hidden>Continuous monitoring helps detect unusual behaviour early so teams can respond before issues become outages or security incidents.</div>
+      </div>
+    </section>
+
+    <div id="site-contact"></div>
+    <script src="/js/form-source-tracking.js"></script>
+    <script src="/js/contact.js"></script>
+
   </main>
 
   <div id="site-footer"></div>
   <script src="/js/footer.js"></script>
-
   <script src="/js/cms.js" defer></script>
   <script src="/js/animations.js" defer></script>
   <script src="/js/global.js" defer></script>
   <script src="/js/accessibility.js" defer></script>
-
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
+
+  <!-- BIZ SLIDER SCRIPT -->
   <script>
-  /* Business impact card slider */
   (function () {
     var biz = document.getElementById('biz');
     if (!biz) return;
     var title = document.getElementById('biz-title');
-    var desc = document.getElementById('biz-desc');
+    var desc  = document.getElementById('biz-desc');
     var count = document.getElementById('biz-count');
-    var fill = document.getElementById('biz-fill');
+    var fill  = document.getElementById('biz-fill');
     var slides = [
-      { title: title.textContent, desc: desc.textContent },
-      { title: 'Ransomware and malware', desc: 'Malicious software can lock critical systems and demand payment. Layered defences, patching and tested backups limit the damage and speed up recovery.' },
-      { title: 'Insider threats', desc: 'Accidental or deliberate misuse of access from within the organisation. Role-based permissions and activity monitoring reduce exposure.' },
-      { title: 'DDoS attacks', desc: 'Attackers flood systems with traffic to knock services offline. Resilient architecture and traffic filtering keep customer-facing services available.' },
-      { title: 'Third-party and supply chain risk', desc: 'Vendors and integrations can introduce vulnerabilities into your environment. Due diligence and network segmentation contain the risk.' }
+      {
+        title: 'Phishing Attacks',
+        desc:  'Fraudulent emails, messages and websites are used to trick users into revealing login details and other sensitive information, giving attackers access to financial systems.'
+      },
+      {
+        title: 'Ransomware Protection',
+        desc:  'Ransomware attacks can encrypt critical files and disrupt financial services, causing significant consequences. Effective security measures, regular backups, and recovery plans help reduce impact and ensure business continuity.'
+      },
+      {
+        title: 'Insider Threat Protection',
+        desc:  'Employees and contractors with authorised access can unintentionally or deliberately expose sensitive financial data. Strong access controls, user activity monitoring, and security policies help reduce risk and improve security.'
+      }
     ];
     var i = 0, total = slides.length;
     function render() {
-      title.style.opacity = '0'; desc.style.opacity = '0';
+      title.style.opacity = '0';
+      desc.style.opacity  = '0';
       setTimeout(function () {
-        title.textContent = slides[i].title; desc.textContent = slides[i].desc;
+        title.textContent = slides[i].title;
+        desc.textContent  = slides[i].desc;
         count.textContent = (i + 1) + '/' + total;
         if (fill) fill.style.width = ((i + 1) / total * 100) + '%';
-        title.style.opacity = '1'; desc.style.opacity = '1';
+        title.style.opacity = '1';
+        desc.style.opacity  = '1';
       }, 200);
     }
     document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
   })();
   </script>
+
 </body>
 </html>
