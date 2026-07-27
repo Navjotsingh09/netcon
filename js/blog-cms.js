@@ -170,8 +170,18 @@
       dateLabel: "21/07/2026",
       category: "Infrastructure",
       image: "/images/pages/unique/resources-blog-business-network-components.jpg"
+    },
+    {
+      slug: "post-21",
+      urlSlug: "network-audit-timeline-uk-businesses",
+      title: "How Long Does a Network Audit Take? A Complete Guide to UK Businesses",
+      excerpt: "Discover how long a network audit takes for UK businesses, what influences the timeline, what the process involves, and how expert audits improve security and performance.",
+      dateLabel: "27/07/2026",
+      category: "Infrastructure",
+      image: "/images/pages/unique/resources-blog-post-12-resources.jpg"
     }
   ];
+  
 
   function shuffle(array) {
     var copy = array.slice();
