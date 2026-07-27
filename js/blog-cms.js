@@ -178,9 +178,19 @@
       excerpt: "Discover how long a network audit takes for UK businesses, what influences the timeline, what the process involves, and how expert audits improve security and performance.",
       dateLabel: "27/07/2026",
       category: "Infrastructure",
-      image: "/images/pages/unique/resources-blog-post-12-resources.jpg"
+      image: "/images/pages/unique/resources-blog-post-12-resources.png"
     }
   ];
+
+  function parseDateLabel(label) {
+    var parts = (label || "").split("/");
+    if (parts.length !== 3) return 0;
+    var day = parseInt(parts[0], 10);
+    var month = parseInt(parts[1], 10) - 1;
+    var year = parseInt(parts[2], 10);
+    var timestamp = new Date(year, month, day).getTime();
+    return Number.isFinite(timestamp) ? timestamp : 0;
+  }
   
 
   function shuffle(array) {
@@ -408,6 +418,10 @@
     var moreLink = card.querySelector(".blog-side__more");
 
     var picks = BLOG_POSTS
+      .slice()
+      .sort(function (a, b) {
+        return parseDateLabel(b.dateLabel) - parseDateLabel(a.dateLabel);
+      })
       .filter(function (post) { return post.urlSlug !== currentUrlSlug; })
       .slice(0, 3);
 
