@@ -33,6 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <script src="/js/schema.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
@@ -104,6 +105,92 @@
     .ctf-sr-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
     .form-success { display: none; margin-top: 8px; background: #d4edda; color: #155724; padding: 12px; border-radius: 8px; }
     .form-error { display: none; margin-top: 8px; background: #f8d7da; color: #721c24; padding: 12px; border-radius: 8px; }
+
+    /* ---- DPA/GDPR complaint form (injected) ---- */
+    .dpaf-wrap{
+      --dpaf-ink:#181B20;
+      --dpaf-text:#4B5563;
+      --dpaf-label:#1F2430;
+      --dpaf-border:#DEE2E7;
+      --dpaf-border-soft:#E9EBEF;
+      --dpaf-blue:#0982C5;
+      --dpaf-blue-dark:#076CA3;
+      --dpaf-orange:#F0871E;
+      --dpaf-panel:#FBFBFC;
+      padding: 0 var(--px) 90px;
+      max-width: var(--section-w);
+      margin: 0 auto;
+    }
+    .dpaf-inner{ max-width: 900px; margin: 0 auto; }
+    .dpaf-formbox{
+      border: 1px solid var(--dpaf-border);
+      border-radius: 0;
+      padding: 40px 40px 36px;
+      font-family: 'Inter', sans-serif;
+    }
+    .dpaf-required-note{ font-size: 14px; color: var(--dpaf-text); margin: 0 0 26px; }
+    .dpaf-required-note .dpaf-star{ color: var(--dpaf-orange); font-weight: 700; }
+    .dpaf-field{ margin-bottom: 28px; }
+    .dpaf-field:last-of-type{ margin-bottom: 0; }
+    .dpaf-flabel{ display: block; font-size: 15px; font-weight: 600; color: var(--dpaf-label); margin-bottom: 8px; font-family: 'Inter', sans-serif; }
+    .dpaf-flabel .dpaf-star{ color: var(--dpaf-orange); margin-left: 2px; }
+    .dpaf-sub{ font-size: 13px; color: #8A93A1; margin: -4px 0 8px; font-weight: 400; }
+    .dpaf-formbox input[type="text"], .dpaf-formbox textarea{
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--dpaf-ink);
+      padding: 12px 14px;
+      border: 1px solid var(--dpaf-border);
+      border-radius: 0;
+      background: #fff;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .dpaf-formbox textarea{ min-height: 120px; resize: vertical; }
+    .dpaf-formbox input::placeholder, .dpaf-formbox textarea::placeholder{ color: #A7AEB8; }
+    .dpaf-formbox input:focus, .dpaf-formbox textarea:focus{
+      outline: none;
+      border-color: var(--dpaf-blue);
+      box-shadow: 0 0 0 3px rgba(9,130,197,0.14);
+    }
+    .dpaf-charcount{ text-align: right; font-size: 12px; color: #9AA2AD; margin-top: 6px; }
+    .dpaf-options{ display: flex; flex-direction: column; gap: 10px; }
+    .dpaf-options.dpaf-row{ flex-direction: row; flex-wrap: wrap; gap: 12px; }
+    .dpaf-opt{
+      display: flex; align-items: center; gap: 10px;
+      padding: 11px 14px; border: 1px solid var(--dpaf-border); border-radius: 0;
+      cursor: pointer; font-size: 15px; color: var(--dpaf-ink);
+      transition: border-color .15s ease, background .15s ease;
+      font-family: 'Inter', sans-serif;
+    }
+    .dpaf-options.dpaf-row .dpaf-opt{ flex: 0 0 auto; padding: 10px 20px; }
+    .dpaf-opt:hover{ border-color: var(--dpaf-blue); }
+    .dpaf-opt input{ accent-color: var(--dpaf-blue); width: 16px; height: 16px; margin: 0; }
+    .dpaf-opt.selected{ border-color: var(--dpaf-blue); background: rgba(9,130,197,0.06); }
+    .dpaf-conditional{ margin-top: 16px; padding: 16px 18px; border-radius: 0; border: 1px dashed var(--dpaf-border); background: var(--dpaf-panel); }
+    .dpaf-agree{ display: flex; align-items: flex-start; gap: 10px; margin: 32px 0 24px; font-size: 14px; color: var(--dpaf-text); line-height: 1.5; font-family: 'Inter', sans-serif; }
+    .dpaf-agree input{ margin-top: 3px; width: 16px; height: 16px; accent-color: var(--dpaf-blue); flex: 0 0 auto; }
+    .dpaf-agree a{ color: var(--dpaf-blue); text-decoration: underline; font-weight: 500; }
+    .dpaf-submit{
+      width: 100%; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px;
+      color: #fff; background: var(--dpaf-blue); border: none; padding: 15px 20px;
+      border-radius: 0; cursor: pointer; transition: background .15s ease;
+    }
+    .dpaf-submit:hover{ background: var(--dpaf-blue-dark); }
+    .dpaf-success{ display: none; margin-top: 18px; padding: 16px 18px; border-radius: 0; background: #EEF2FC; border: 1px solid var(--dpaf-blue); font-size: 14.5px; color: var(--dpaf-ink); font-family: 'Inter', sans-serif; }
+    .dpaf-success.show{ display: block; }
+    .dpaf-success strong{ display: block; margin-bottom: 4px; }
+    .dpaf-error{ display: none; margin-top: 18px; padding: 14px 16px; border-radius: 0; background: #FDEDEB; border: 1px solid #E8B4AB; font-size: 14px; color: #8A2E20; font-family: 'Inter', sans-serif; }
+    .dpaf-error.show{ display: block; }
+    .dpaf-trust{ display: flex; gap: 28px; flex-wrap: wrap; margin-top: 38px; padding-top: 30px; border-top: 1px solid var(--dpaf-border-soft); }
+    .dpaf-trust-item{ display: flex; gap: 12px; align-items: flex-start; }
+    .dpaf-trust-icon{ width: 34px; height: 34px; border: 1px solid var(--dpaf-border); border-radius: 0; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; color: var(--dpaf-ink); }
+    .dpaf-trust-item h4{ font-size: 14px; font-weight: 600; color: var(--dpaf-ink); margin: 0 0 2px; font-family: 'Inter', sans-serif; }
+    .dpaf-trust-item p{ font-size: 13.5px; color: var(--dpaf-text); margin: 0; font-family: 'Inter', sans-serif; }
+
+    @media (max-width: 768px) {
+      .dpaf-formbox{ padding: 26px 20px 24px; }
+    }
 
     @media (max-width: 1200px) {
       .tos-hero-title { font-size: 48px; }
@@ -196,7 +283,127 @@
     </div>
   </section>
 
- 
+  <section class="dpaf-wrap" aria-label="DPA/GDPR complaint form">
+    <div class="dpaf-inner">
+      <form class="dpaf-formbox" id="dpForm">
+
+        <p class="dpaf-required-note"><span class="dpaf-star">*</span> Required field</p>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel" for="fullname">Your full name <span class="dpaf-star">*</span></label>
+          <input type="text" id="fullname" name="fullname" placeholder="First and last name" required>
+        </div>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel">Are you submitting this complaint on behalf of another individual? <span class="dpaf-star">*</span></label>
+          <div class="dpaf-options dpaf-row" id="onBehalfGroup">
+            <label class="dpaf-opt"><input type="radio" name="onbehalf" value="yes" required> Yes</label>
+            <label class="dpaf-opt"><input type="radio" name="onbehalf" value="no" required> No</label>
+          </div>
+
+          <div class="dpaf-conditional" id="relationshipBlock" style="display:none;">
+            <label class="dpaf-flabel" style="margin-bottom:12px;">If yes, please specify your relationship to the complainant</label>
+            <div class="dpaf-options">
+              <label class="dpaf-opt"><input type="radio" name="relationship" value="legal"> Legal advisor</label>
+              <label class="dpaf-opt"><input type="radio" name="relationship" value="representative"> Personal representative</label>
+              <label class="dpaf-opt"><input type="radio" name="relationship" value="itcontact"> IT / operations manager</label>
+              <label class="dpaf-opt"><input type="radio" name="relationship" value="business"> Authorised business contact</label>
+              <label class="dpaf-opt"><input type="radio" name="relationship" value="other"> Other</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel" for="relatesTo">Name of the person the complaint relates to</label>
+          <p class="dpaf-sub">If different from above</p>
+          <input type="text" id="relatesTo" name="relatesTo" placeholder="Enter name">
+        </div>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel" for="contactdetails">Contact details <span class="dpaf-star">*</span></label>
+          <p class="dpaf-sub">Email address, postal address, etc.</p>
+          <input type="text" id="contactdetails" name="contactdetails" placeholder="Enter your contact details" required>
+        </div>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel">What is the main subject of your complaint? <span class="dpaf-star">*</span></label>
+          <div class="dpaf-options">
+            <label class="dpaf-opt"><input type="radio" name="subject" value="dsar" required> DSAR (Data Subject Access Request)</label>
+            <label class="dpaf-opt"><input type="radio" name="subject" value="rights"> Individual rights</label>
+            <label class="dpaf-opt"><input type="radio" name="subject" value="notice"> Privacy notice</label>
+            <label class="dpaf-opt"><input type="radio" name="subject" value="sharing"> Sharing / disclosure of data</label>
+            <label class="dpaf-opt"><input type="radio" name="subject" value="retention"> Retention</label>
+            <label class="dpaf-opt"><input type="radio" name="subject" value="handling"> General personal data handling</label>
+            <label class="dpaf-opt"><input type="radio" name="subject" value="breach"> Personal data breach</label>
+            <label class="dpaf-opt"><input type="radio" name="subject" value="insecure"> Not keeping information secure</label>
+            <label class="dpaf-opt"><input type="radio" name="subject" value="inaccurate"> Inaccurate / incomplete information</label>
+            <label class="dpaf-opt"><input type="radio" name="subject" value="other"> Other</label>
+          </div>
+        </div>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel" for="summary">Please summarise your concern(s), including relevant dates and details <span class="dpaf-star">*</span></label>
+          <p class="dpaf-sub">Maximum 255 words</p>
+          <textarea id="summary" name="summary" placeholder="Your message..." required maxlength="1600"></textarea>
+          <div class="dpaf-charcount"><span id="wordcount">0</span> / 255 words</div>
+        </div>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel">Have you previously contacted us in relation to this matter? <span class="dpaf-star">*</span></label>
+          <div class="dpaf-options dpaf-row">
+            <label class="dpaf-opt"><input type="radio" name="previouscontact" value="yes" required> Yes</label>
+            <label class="dpaf-opt"><input type="radio" name="previouscontact" value="no"> No</label>
+          </div>
+        </div>
+
+        <label class="dpaf-agree">
+          <input type="checkbox" required>
+          <span>I agree with <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-of-service">Terms of Conditions</a></span>
+        </label>
+
+        <button type="submit" class="dpaf-submit">Submit</button>
+
+        <div class="dpaf-success" id="successMsg">
+          <strong>Thank you for your submission.</strong>
+          We will acknowledge your complaint within 30 days and keep you updated on progress.
+        </div>
+        <div class="dpaf-error" id="errorMsg">
+          Something went wrong. Please check the required fields and try again, or call us directly on +44 (0) 203 150 1401.
+        </div>
+
+        <div class="dpaf-trust">
+          <div class="dpaf-trust-item">
+            <div class="dpaf-trust-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <h4>Chat customer services</h4>
+              <p>+44 (0) 203 150 1401</p>
+            </div>
+          </div>
+          <div class="dpaf-trust-item">
+            <div class="dpaf-trust-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div>
+              <h4>Chat to our sales</h4>
+              <p>info@network-consultancy.com</p>
+            </div>
+          </div>
+          <div class="dpaf-trust-item">
+            <div class="dpaf-trust-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Address</h4>
+              <p>Birmingham, Beech House, Greenfield Crescent, Edgbaston, B15 3BE</p>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </section>
 
   </main>
 
@@ -209,5 +416,43 @@
 
   <script src="/js/search-index.js" defer></script>
   <script src="/js/search.js" defer></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var form = document.getElementById('dpForm');
+    if (!form) return;
+
+    form.querySelectorAll('.dpaf-opt').forEach(function (opt) {
+      var input = opt.querySelector('input');
+      input.addEventListener('change', function () {
+        form.querySelectorAll('input[name="' + input.name + '"]').forEach(function (i) {
+          i.closest('.dpaf-opt').classList.toggle('selected', i.checked);
+        });
+      });
+    });
+
+    form.querySelectorAll('input[name="onbehalf"]').forEach(function (r) {
+      r.addEventListener('change', function () {
+        document.getElementById('relationshipBlock').style.display = r.value === 'yes' && r.checked ? 'block' : 'none';
+      });
+    });
+
+    var summary = document.getElementById('summary');
+    var wordcount = document.getElementById('wordcount');
+    summary.addEventListener('input', function () {
+      var text = summary.value.trim();
+      var words = text.length ? text.split(/\s+/).length : 0;
+      wordcount.textContent = Math.min(words, 255);
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('errorMsg').classList.remove('show');
+      var success = document.getElementById('successMsg');
+      success.classList.add('show');
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+  </script>
 </body>
 </html>

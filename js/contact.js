@@ -1,187 +1,530 @@
-(function () {
-  'use strict';
-  var holder = document.getElementById('site-contact');
-  if (!holder || holder.getAttribute('data-contact-ready')) return;
-  holder.setAttribute('data-contact-ready', '1');
-  holder.outerHTML = `  <section class="nd-contact section-shell" id="contact" aria-labelledby="contact-heading">
-    <div class="nd-contact__surface">
-      <div class="nd-contact__layout">
-        <div class="nd-contact__intro animate-fade-up">
-          <h2 class="nd-contact__title" id="contact-heading">Contact us today for a free consultation</h2>
-          <p class="nd-contact__subtitle">We pride ourselves on delivering a flexible engagement style in order to meet your requirements. Contact us for your free consultation.</p>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  "<script type=""application/ld+json"">
+{
+  ""@context"": ""https://schema.org"",
+  ""@type"": ""BreadcrumbList"",
+  ""itemListElement"": [
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 1,
+      ""name"": ""Home"",
+      ""item"": ""https://network-consultancy.com/""
+    },
+    {
+      ""@type"": ""ListItem"",
+      ""position"": 2,
+      ""name"": ""Complaint Form"",
+      ""item"": ""https://network-consultancy.com/complaint-form""
+    }
+  ]
+}
+</script>"
+    <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PVKBZV7');</script>
 
-        <div class="nd-contact__tiles">
-          <article class="nd-contact__tile">
-            <span class="nd-contact__chip"><img src="/images/pages/contact-phone-icon.png" alt="Phone icon"></span>
-            <div class="nd-contact__tile-copy">
-              <h3>Chat customer services</h3>
-              <p><a href="tel:+442031501401">+44 (0) 203 150 1401</a></p>
-            </div>
-          </article>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/misc/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/misc/favicon-180.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DPA/GDPR Complaints Form | Network Consultancy</title>
+  <meta name="description" content="Submit a DPA/GDPR complaint regarding personal data handling by Network Consultancy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css">
+  <script src="/js/schema.js" defer></script>
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/accessibility.css">
+  <style>
+    .tos-hero-wrap { padding: 23px var(--px) 0; max-width: var(--section-w); margin: 0 auto; }
+    .tos-hero { max-width: 1440px; margin: 0 auto; position: relative; border-radius: 10px; overflow: hidden; min-height: 330px; display: flex; align-items: flex-start; }
+    .tos-hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .tos-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; display: block; }
+    .tos-hero-overlay { position: absolute; inset: 0; z-index: 1; background: rgba(4,31,93,.55); border-radius: 10px; }
+    .tos-hero-content { position: relative; z-index: 2; padding: 78px 145px 80px 75px; max-width: 908px; display: flex; flex-direction: column; gap: 24px; }
+    .tos-hero-title { font-family: 'Google Sans Flex', sans-serif; font-weight: 600; font-size: 60px; color: #fff; line-height: 1; }
+    .tos-hero-sub { font-family: 'Google Sans Flex', sans-serif; font-weight: 500; font-size: 24px; color: #fff; line-height: 1.25; max-width: 820px; }
 
-          <article class="nd-contact__tile">
-            <span class="nd-contact__chip"><img src="/images/pages/contact-email-icon.png" alt="Envelope icon"></span>
-            <div class="nd-contact__tile-copy">
-              <h3>Chat to our sales</h3>
-              <p><a href="mailto:info@network-consultancy.com">info@network-consultancy.com</a></p>
-            </div>
-          </article>
+    .tos-content { padding: 47px var(--px) 60px; max-width: var(--section-w); margin: 0 auto; }
+    .tos-inner { max-width: 1431px; margin: 0 auto; display: flex; flex-direction: column; gap: 50px; }
+    .tos-section { display: flex; flex-direction: column; gap: 37px; }
+    .tos-h2 { font-family: 'Google Sans Flex', sans-serif; font-weight: 600; font-size: 42px; color: #585151; line-height: 1; }
+    .tos-body { font-family: 'Google Sans Flex', sans-serif; font-weight: 400; font-size: 26px; color: #585151; line-height: normal; }
+    .tos-body p { margin-bottom: 16px; }
+    .tos-body p:last-child { margin-bottom: 0; }
+    .tos-body ul { margin: 0 0 18px 39px; list-style: disc; display: flex; flex-direction: column; gap: 12px; }
+    .tos-body ul:last-child { margin-bottom: 0; }
+    .tos-body li { line-height: 1.4; }
+    .tos-body a { color: #585151; text-decoration: underline; }
 
-          <article class="nd-contact__tile">
-            <span class="nd-contact__chip"><img src="/images/pages/contact-address-icon.png" alt="Location icon"></span>
-            <div class="nd-contact__tile-copy">
-              <h3>Address</h3>
-              <p>London / South
-20-22 Wenlock Rd
-London N1 7GU</p>
-            </div>
-          </article>
+    .pp-table-wrap { overflow-x: auto; }
+    .pp-table { width: 100%; border-collapse: collapse; font-family: 'Google Sans Flex', sans-serif; font-size: 24px; color: #070707; border: 2px solid #070707; margin-top: 12px; }
+    .pp-table th { font-weight: 700; text-align: center; padding: 24px 16px; border: 2px solid #070707; line-height: 1.25; background: #fff; }
+    .pp-table td { font-weight: 500; text-align: left; padding: 20px 16px; border: 2px solid #070707; line-height: 1.25; vertical-align: top; }
+    .pp-table td:first-child { font-weight: 700; }
 
-          <article class="nd-contact__tile">
-            <span class="nd-contact__chip"><img src="/images/pages/contact-address-icon-2.png" alt="Location icon"></span>
-            <div class="nd-contact__tile-copy">
-              <h3>Address</h3>
-              <p>Birmingham
-Beech House, Greenfield Crescent
-Edgbaston, B15 3BE</p>
-            </div>
-          </article>
-        </div>
+    .cmp-intro { padding: 69px var(--px); max-width: var(--section-w); margin: 0 auto; }
+    .cmp-intro-inner { max-width: 1431px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 87px; }
+    .cmp-copy { font-family: 'Google Sans Flex', sans-serif; font-weight: 500; font-size: 24px; color: #585151; line-height: 1.35; }
+    .cmp-side-title { font-family: 'Google Sans Flex', sans-serif; font-weight: 600; font-size: 42px; color: #0982C5; line-height: 1; margin: 0 0 78px; }
+    .cmp-side-links { display: flex; flex-direction: column; gap: 24px; font-family: 'Google Sans Flex', sans-serif; font-weight: 500; font-size: 24px; color: #585151; }
+    .cmp-side-links a { color: inherit; text-decoration: none; }
+    .cmp-side-links a:hover { text-decoration: underline; }
+    .cmp-anchor { padding: 0 var(--px) 69px; max-width: var(--section-w); margin: 0 auto; }
+    .cmp-anchor-inner { max-width: 1431px; margin: 0 auto; }
+    .cmp-anchor h2 { font-family: 'Google Sans Flex', sans-serif; font-weight: 600; font-size: 42px; color: #0982C5; line-height: 1.1; margin: 0; }
+    .cmp-anchor h2 a { color: #000; text-decoration: underline; text-underline-offset: 3px; }
 
-        <form class="nd-contact__form" id="contact-form" method="post" action="https://api.web3forms.com/submit" novalidate>
-          <input type="hidden" name="access_key" value="fbcd4bae-c2e9-4e0c-9bf1-9576bef8625b">
-          <input type="hidden" name="subject" id="cf-subject" value="NetCon website enquiry">
-          <input type="checkbox" name="botcheck" tabindex="-1" aria-hidden="true" style="display:none">
-          <div class="nd-contact__row nd-contact__row--split">
-            <label class="nd-contact__field">
-              <span class="nd-contact__field-head"><span class="nd-contact__field-label">First Name</span><span class="nd-contact__required">*</span></span>
-              <input id="cf-fname" type="text" name="first_name" autocomplete="given-name" placeholder="First name" required>
-            </label>
-            <label class="nd-contact__field">
-              <span class="nd-contact__field-head"><span class="nd-contact__field-label">Last Name</span></span>
-              <input id="cf-lname" type="text" name="last_name" autocomplete="family-name" placeholder="Last name">
-            </label>
-          </div>
-          <div class="nd-contact__row nd-contact__row--split">
-            <label class="nd-contact__field">
-              <span class="nd-contact__field-head"><span class="nd-contact__field-label">Phone Number</span><span class="nd-contact__required">*</span></span>
-              <input id="cf-phone" type="tel" name="phone" autocomplete="tel" placeholder="Phone Number" required pattern="^\\+?[\\s\\(\\)\\-]*([0-9][\\s\\(\\)\\-]*){7,15}$" title="Numbers only — you may use + - ( ) and spaces">
-            </label>
-            <label class="nd-contact__field">
-              <span class="nd-contact__field-head"><span class="nd-contact__field-label">Company Name</span></span>
-              <input id="cf-company" type="text" name="company" autocomplete="organization" placeholder="Company Name">
-            </label>
-          </div>
-          <label class="nd-contact__field">
-            <span class="nd-contact__field-head"><span class="nd-contact__field-label">Your Email</span><span class="nd-contact__required">*</span></span>
-            <input id="cf-email" type="email" name="email" autocomplete="email" placeholder="Enter your email" required>
-          </label>
-          <div class="nd-contact__row nd-contact__row--split">
-            <label class="nd-contact__field">
-              <span class="nd-contact__field-head"><span class="nd-contact__field-label">I Need Help With</span></span>
-              <input id="cf-help" type="text" name="help" placeholder="e.g. Network Support, Security Review">
-            </label>
-            <label class="nd-contact__field">
-              <span class="nd-contact__field-head"><span class="nd-contact__field-label">Scale of Business</span></span>
-              <input id="cf-scale" type="text" name="scale" placeholder="e.g. 50 employees, 3 sites">
-            </label>
-          </div>
-          <label class="nd-contact__field">
-            <span class="nd-contact__field-head"><span class="nd-contact__field-label">Message</span><span class="nd-contact__required">*</span></span>
-            <textarea id="cf-message" name="message" rows="4" placeholder="Tell us about your network requirements..." required></textarea>
-          </label>
-          <label class="nd-contact__field">
-            <span class="nd-contact__field-head"><span class="nd-contact__field-label">Where Did You Hear About Us?</span></span>
-            <select class="form-select" id="cf-referral" name="referral"><option value="">Please select&hellip;</option><option>Google / Search</option><option>LinkedIn</option><option>Referral from a colleague</option><option>Social Media</option><option>Other</option></select>
-          </label>
-          <!-- Source tracking fields (hidden) -->
-          <input type="hidden" name="source_page" id="cf-source-page">
-          <input type="hidden" name="source_family" id="cf-source-family">
-          <input type="hidden" name="source_cta" id="cf-source-cta">
-          <input type="hidden" name="inquiry_type" id="cf-inquiry-type">
-          <input type="hidden" name="lead_status" id="cf-lead-status">
-          <input type="hidden" name="action_required" id="cf-action-required">
-          <input type="hidden" name="routing_team" id="cf-routing-team">
-          <label class="nd-contact__agree">
-            <span class="nd-contact__checkbox">
-              <input id="cf-consent-privacy" type="checkbox" name="consent_privacy" value="yes" required>
-              <span class="nd-contact__checkbox-box" aria-hidden="true"></span>
-            </span>
-            <span class="nd-contact__agree-text">By submitting this form, you agree to our processing of your corporate details in accordance with our <a href="/privacy-policy">Privacy Policy</a>.</span>
-          </label>
-          <label class="nd-contact__agree">
-            <span class="nd-contact__checkbox">
-              <input id="cf-consent-marketing" type="checkbox" name="consent_marketing" value="yes">
-              <span class="nd-contact__checkbox-box" aria-hidden="true"></span>
-            </span>
-            <span class="nd-contact__agree-text">I want to receive B2B network insights and marketing emails.</span>
-          </label>
-          <button class="nd-contact__submit" type="submit">Send Enquiry</button>
-          <div id="form-success" class="form-success" role="status" aria-live="polite">Thank you for your enquiry &mdash; we will be in touch shortly.</div>
-          <div id="form-error"   class="form-error"   role="alert"  aria-live="assertive">Something went wrong. Please try again or call us directly on +44 (0) 203 150 1401.</div>
-        </form>
+    .ctf-section { padding: 80px var(--px); max-width: var(--section-w); margin: 0 auto; }
+    .ctf-inner { max-width: 1428px; margin: 0 auto; }
+    .ctf-body { display: flex; gap: 28px; align-items: stretch; }
+    .ctf-card, .ctf-form-panel { background: #e0e0e0; border-radius: 20px; }
+    .ctf-card { width: 518px; min-height: 701px; padding: 59px 30px 56px 28px; display: flex; flex-direction: column; }
+    .ctf-card-title { font-family: 'Google Sans Flex', sans-serif; font-weight: 600; font-size: 30px; line-height: 1.1; color: #353535; margin: 0 0 20px; max-width: 460px; }
+    .ctf-card-copy { font-family: 'Google Sans Flex', sans-serif; font-weight: 400; font-size: 24px; line-height: 1.2; color: #000; margin: 0 0 40px; max-width: 460px; }
+    .ctf-contact-list { display: flex; flex-direction: column; gap: 37px; margin-top: auto; }
+    .ctf-contact-item { display: flex; align-items: flex-start; gap: 37px; font-family: 'Google Sans Flex', sans-serif; font-size: 24px; line-height: 1.25; color: #060606; }
+    .ctf-contact-item svg { flex-shrink: 0; margin-top: 2px; }
+    .ctf-contact-item a { color: inherit; text-decoration: none; }
+    .ctf-contact-item a:hover { text-decoration: underline; }
+    .ctf-form-panel { flex: 1; padding: 59px 40px 51px 64px; }
+    .ctf-form { display: flex; flex-direction: column; gap: 30px; }
+    .ctf-row { display: flex; gap: 26px; }
+    .ctf-field { flex: 1; min-width: 0; }
+    .ctf-input, .ctf-select, .ctf-textarea {
+      width: 100%; border: 0.2px solid #353535; border-radius: 10px; background: #fff; padding: 0 23px;
+      box-shadow: 0 4px 2px rgba(0,0,0,0.1); font-family: 'Google Sans Flex', sans-serif; font-size: 20px; color: #353535; height: 68px;
+    }
+    .ctf-textarea { height: 138px; padding: 21px 23px; resize: vertical; }
+    .ctf-select { -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23353535' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 23px center; padding-right: 50px; }
+    .ctf-label { font-family: 'Google Sans Flex', sans-serif; font-size: 20px; color: #353535; margin: 0; }
+    .ctf-btn { background: #353535; border: 1px solid #353535; color: #fff; border-radius: 10px; font-family: 'Google Sans Flex', sans-serif; font-size: 20px; font-weight: 600; padding: 12px 24px; align-self: flex-start; cursor: pointer; }
+    .ctf-sr-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    .form-success { display: none; margin-top: 8px; background: #d4edda; color: #155724; padding: 12px; border-radius: 8px; }
+    .form-error { display: none; margin-top: 8px; background: #f8d7da; color: #721c24; padding: 12px; border-radius: 8px; }
+
+    /* ---- DPA/GDPR complaint form (injected) ---- */
+    .dpaf-wrap{
+      --dpaf-ink:#181B20;
+      --dpaf-text:#4B5563;
+      --dpaf-label:#1F2430;
+      --dpaf-border:#DEE2E7;
+      --dpaf-border-soft:#E9EBEF;
+      --dpaf-blue:#0982C5;
+      --dpaf-blue-dark:#076CA3;
+      --dpaf-orange:#F0871E;
+      --dpaf-panel:#FBFBFC;
+      padding: 0 var(--px) 90px;
+      max-width: var(--section-w);
+      margin: 0 auto;
+    }
+    .dpaf-inner{ max-width: 900px; margin: 0 auto; }
+    .dpaf-formbox{
+      border: 1px solid var(--dpaf-border);
+      border-radius: 0;
+      padding: 40px 40px 36px;
+      font-family: 'Inter', sans-serif;
+    }
+    .dpaf-required-note{ font-size: 14px; color: var(--dpaf-text); margin: 0 0 26px; }
+    .dpaf-required-note .dpaf-star{ color: var(--dpaf-orange); font-weight: 700; }
+    .dpaf-field{ margin-bottom: 28px; }
+    .dpaf-field:last-of-type{ margin-bottom: 0; }
+    .dpaf-flabel{ display: block; font-size: 15px; font-weight: 600; color: var(--dpaf-label); margin-bottom: 8px; font-family: 'Inter', sans-serif; }
+    .dpaf-flabel .dpaf-star{ color: var(--dpaf-orange); margin-left: 2px; }
+    .dpaf-sub{ font-size: 13px; color: #8A93A1; margin: -4px 0 8px; font-weight: 400; }
+    .dpaf-formbox input[type="text"], .dpaf-formbox textarea{
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--dpaf-ink);
+      padding: 12px 14px;
+      border: 1px solid var(--dpaf-border);
+      border-radius: 0;
+      background: #fff;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .dpaf-formbox textarea{ min-height: 120px; resize: vertical; }
+    .dpaf-formbox input::placeholder, .dpaf-formbox textarea::placeholder{ color: #A7AEB8; }
+    .dpaf-formbox input:focus, .dpaf-formbox textarea:focus{
+      outline: none;
+      border-color: var(--dpaf-blue);
+      box-shadow: 0 0 0 3px rgba(9,130,197,0.14);
+    }
+    .dpaf-charcount{ text-align: right; font-size: 12px; color: #9AA2AD; margin-top: 6px; }
+    .dpaf-options{ display: flex; flex-direction: column; gap: 10px; }
+    .dpaf-options.dpaf-row{ flex-direction: row; flex-wrap: wrap; gap: 12px; }
+    .dpaf-opt{
+      display: flex; align-items: center; gap: 10px;
+      padding: 11px 14px; border: 1px solid var(--dpaf-border); border-radius: 0;
+      cursor: pointer; font-size: 15px; color: var(--dpaf-ink);
+      transition: border-color .15s ease, background .15s ease;
+      font-family: 'Inter', sans-serif;
+    }
+    .dpaf-options.dpaf-row .dpaf-opt{ flex: 0 0 auto; padding: 10px 20px; }
+    .dpaf-opt:hover{ border-color: var(--dpaf-blue); }
+    .dpaf-opt input{ accent-color: var(--dpaf-blue); width: 16px; height: 16px; margin: 0; }
+    .dpaf-opt.selected{ border-color: var(--dpaf-blue); background: rgba(9,130,197,0.06); }
+    .dpaf-conditional{ margin-top: 16px; padding: 16px 18px; border-radius: 0; border: 1px dashed var(--dpaf-border); background: var(--dpaf-panel); }
+    .dpaf-agree{ display: flex; align-items: flex-start; gap: 10px; margin: 32px 0 24px; font-size: 14px; color: var(--dpaf-text); line-height: 1.5; font-family: 'Inter', sans-serif; }
+    .dpaf-agree input{ margin-top: 3px; width: 16px; height: 16px; accent-color: var(--dpaf-blue); flex: 0 0 auto; }
+    .dpaf-agree a{ color: var(--dpaf-blue); text-decoration: underline; font-weight: 500; }
+    .dpaf-submit{
+      width: 100%; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 16px;
+      color: #fff; background: var(--dpaf-blue); border: none; padding: 15px 20px;
+      border-radius: 0; cursor: pointer; transition: background .15s ease;
+    }
+    .dpaf-submit:hover{ background: var(--dpaf-blue-dark); }
+    .dpaf-success{ display: none; margin-top: 18px; padding: 16px 18px; border-radius: 0; background: #EEF2FC; border: 1px solid var(--dpaf-blue); font-size: 14.5px; color: var(--dpaf-ink); font-family: 'Inter', sans-serif; }
+    .dpaf-success.show{ display: block; }
+    .dpaf-success strong{ display: block; margin-bottom: 4px; }
+    .dpaf-error{ display: none; margin-top: 18px; padding: 14px 16px; border-radius: 0; background: #FDEDEB; border: 1px solid #E8B4AB; font-size: 14px; color: #8A2E20; font-family: 'Inter', sans-serif; }
+    .dpaf-error.show{ display: block; }
+    .dpaf-trust{ display: flex; gap: 28px; flex-wrap: wrap; margin-top: 38px; padding-top: 30px; border-top: 1px solid var(--dpaf-border-soft); }
+    .dpaf-trust-item{ display: flex; gap: 12px; align-items: flex-start; }
+    .dpaf-trust-icon{ width: 34px; height: 34px; border: 1px solid var(--dpaf-border); border-radius: 0; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; color: var(--dpaf-ink); }
+    .dpaf-trust-item h4{ font-size: 14px; font-weight: 600; color: var(--dpaf-ink); margin: 0 0 2px; font-family: 'Inter', sans-serif; }
+    .dpaf-trust-item p{ font-size: 13.5px; color: var(--dpaf-text); margin: 0; font-family: 'Inter', sans-serif; }
+
+    @media (max-width: 768px) {
+      .dpaf-formbox{ padding: 26px 20px 24px; }
+    }
+
+    @media (max-width: 1200px) {
+      .tos-hero-title { font-size: 48px; }
+      .tos-hero-sub { font-size: 20px; }
+      .tos-hero-content { padding: 62px 80px 64px 56px; }
+      .tos-h2 { font-size: 34px; }
+      .tos-body { font-size: 22px; }
+      .pp-table { font-size: 20px; }
+      .cmp-intro { padding: 52px var(--px); }
+      .cmp-intro-inner { grid-template-columns: 1fr; gap: 40px; }
+      .cmp-side-title { margin: 0 0 30px; }
+      .cmp-side-links { gap: 16px; font-size: 22px; }
+      .cmp-anchor { padding: 0 var(--px) 52px; }
+      .cmp-anchor h2 { font-size: 34px; }
+      .ctf-body { flex-direction: column; }
+      .ctf-card { width: 100%; }
+    }
+    @media (max-width: 768px) {
+      .tos-hero-wrap { padding: 14px var(--px) 0; }
+      .tos-hero { min-height: 280px; }
+      .tos-hero-content { padding: 60px 32px 80px; }
+      .tos-hero-title { font-size: 36px; }
+      .tos-hero-sub { font-size: 16px; max-width: 100%; }
+      .cmp-intro { padding: 38px var(--px); }
+      .cmp-copy { font-size: 18px; line-height: 1.55; }
+      .cmp-side-title, .cmp-anchor h2 { font-size: 30px; }
+      .cmp-side-title { margin-bottom: 20px; }
+      .cmp-side-links { font-size: 19px; }
+      .cmp-anchor { padding: 0 var(--px) 38px; }
+      .cmp-anchor h2 { line-height: 1.2; }
+      .tos-body { font-size: 18px; }
+      .ctf-row { flex-direction: column; }
+      .ctf-form-panel { padding: 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .tos-hero { min-height: 244px; }
+      .tos-hero-content { padding: 48px 20px 46px; gap: 16px; }
+      .tos-hero-title { font-size: 28px; }
+      .tos-hero-sub { font-size: 14px; line-height: 1.5; }
+      .cmp-intro { padding: 30px var(--px); }
+      .cmp-copy { font-size: 16px; line-height: 1.55; }
+      .cmp-side-title { font-size: 26px; }
+      .cmp-side-links { font-size: 17px; gap: 12px; }
+      .cmp-anchor { padding: 0 var(--px) 30px; }
+      .cmp-anchor h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body class="cmp-page">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVKBZV7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+  <div id="site-navbar"></div>
+  <script src="/js/navbar.js"></script>
+    <main id="main">
+
+  <div class="tos-hero-wrap">
+    <div class="tos-hero">
+      <div class="tos-hero-bg">
+        <picture>
+          <source srcset="/images/pages/legal-hero-dpa.webp" type="image/webp">
+          <img src="/images/pages/legal-hero-dpa.jpg" alt="" loading="eager" width="1440" height="618">
+        </picture>
+      </div>
+      <div class="tos-hero-overlay" aria-hidden="true"></div>
+      <div class="tos-hero-content">
+        <h1 class="tos-hero-title">DPA/GDPR complaints form</h1>
+        <p class="tos-hero-sub">UK GDPR &amp; Data Protection Act 2018 Compliant &middot; Last updated: June 2026</p>
       </div>
     </div>
-  </section>`;
+  </div>
 
-  // ---- Form submit (AJAX to Web3Forms, graceful fallback) ----
-  var form = document.getElementById('contact-form');
-  if (!form) return;
-  var ok  = document.getElementById('form-success');
-  var err = document.getElementById('form-error');
+  <section class="cmp-intro" aria-label="Complaint introduction">
+    <div class="cmp-intro-inner">
+      <div class="cmp-copy">
+        <p>You can use this form to submit a complaint to us about how we have handled your personal data or your data rights.</p>
+        <p>We take our obligations under the UK-GDPR and DPA 2018 very seriously and welcome the opportunity to make things right. When we refer to &lsquo;personal data&rsquo; we mean information that contains your name or anything that can identify you or another living individual.</p>
+        <p>This form should not be used for general service complaints where they are not related directly to Data Protection matters.</p>
+      </div>
+      <div>
+        <p class="cmp-side-title">Useful Information</p>
+        <div class="cmp-side-links">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms and Condition</a>
+          <a href="/cookie-policy">Cookies Policy</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  function populateSourceFields() {
-    if (!window.NetConSource || typeof window.NetConSource.toObject !== 'function') return;
-    var sourceData = window.NetConSource.toObject();
-    document.getElementById('cf-source-page').value = sourceData.source_page;
-    document.getElementById('cf-source-family').value = sourceData.source_family;
-    document.getElementById('cf-source-cta').value = sourceData.source_cta;
-    document.getElementById('cf-inquiry-type').value = sourceData.inquiry_type;
-    document.getElementById('cf-lead-status').value = sourceData.lead_status;
-    document.getElementById('cf-action-required').value = sourceData.action_required;
-    document.getElementById('cf-routing-team').value = sourceData.routing_team;
-    var subj = document.getElementById('cf-subject');
-    if (subj) subj.value = 'NetCon website enquiry \u2014 ' + sourceData.source_page + ' (' + sourceData.source_cta + ')';
-  }
+  <section class="dpaf-wrap" aria-label="DPA/GDPR complaint form">
+    <div class="dpaf-inner">
+      <form class="dpaf-formbox" id="dpForm" method="post" action="https://api.web3forms.com/submit" novalidate>
+        <input type="hidden" name="access_key" value="fbcd4bae-c2e9-4e0c-9bf1-9576bef8625b">
+        <input type="hidden" name="subject" id="dpaf-subject" value="NetCon DPA/GDPR complaint">
+        <input type="checkbox" name="botcheck" tabindex="-1" aria-hidden="true" style="display:none">
 
-  form.addEventListener('submit', function (e) {
-    if (window.__netconGlobalFormHandler) return;
-    if (!form.action) return;
-    e.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
-    if (err && !err.dataset.defaultMessage) err.dataset.defaultMessage = err.textContent;
-    var requiredConsents = form.querySelectorAll('input[type="checkbox"][required]');
-    for (var i = 0; i < requiredConsents.length; i++) {
-      if (!requiredConsents[i].checked) {
-        if (ok) ok.style.display = 'none';
-        if (err) {
-          err.textContent = 'Please confirm the required consent before submitting the form.';
-          err.style.display = 'block';
-        }
-        requiredConsents[i].focus();
-        return;
-      }
-    }
-    if (ok) ok.style.display = 'none';
-    if (err) {
-      err.style.display = 'none';
-      if (err.dataset.defaultMessage) err.textContent = err.dataset.defaultMessage;
-    }
-    populateSourceFields();
-    fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-      .then(function (r) {
-        if (r.ok) { form.reset(); if (ok) ok.style.display = 'block'; }
-        else if (err) {
-          if (err.dataset.defaultMessage) err.textContent = err.dataset.defaultMessage;
-          err.style.display = 'block';
-        }
-      })
-      .catch(function () {
-        if (err) {
-          if (err.dataset.defaultMessage) err.textContent = err.dataset.defaultMessage;
-          err.style.display = 'block';
-        }
+        <!-- Source tracking fields (hidden) -->
+        <input type="hidden" name="source_page" id="dpaf-source-page">
+        <input type="hidden" name="source_family" id="dpaf-source-family">
+        <input type="hidden" name="source_cta" id="dpaf-source-cta">
+        <input type="hidden" name="inquiry_type" id="dpaf-inquiry-type">
+        <input type="hidden" name="lead_status" id="dpaf-lead-status">
+        <input type="hidden" name="action_required" id="dpaf-action-required">
+        <input type="hidden" name="routing_team" id="dpaf-routing-team">
+
+        <p class="dpaf-required-note"><span class="dpaf-star">*</span> Required field</p>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel" for="fullname">Your full name <span class="dpaf-star">*</span></label>
+          <input type="text" id="fullname" name="fullname" placeholder="First and last name" required>
+        </div>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel">Are you submitting this complaint on behalf of another individual? <span class="dpaf-star">*</span></label>
+          <div class="dpaf-options dpaf-row" id="onBehalfGroup">
+            <label class="dpaf-opt"><input type="radio" name="onbehalf" value="yes" required> Yes</label>
+            <label class="dpaf-opt"><input type="radio" name="onbehalf" value="no" required> No</label>
+          </div>
+
+          <div class="dpaf-conditional" id="relationshipBlock" style="display:none;">
+            <label class="dpaf-flabel" style="margin-bottom:12px;">If yes, please specify your relationship to the complainant</label>
+            <div class="dpaf-options">
+              <label class="dpaf-opt"><input type="radio" name="relationship" value="legal"> Legal advisor</label>
+              <label class="dpaf-opt"><input type="radio" name="relationship" value="representative"> Personal representative</label>
+              <label class="dpaf-opt"><input type="radio" name="relationship" value="itcontact"> IT / operations manager</label>
+              <label class="dpaf-opt"><input type="radio" name="relationship" value="business"> Authorised business contact</label>
+              <label class="dpaf-opt"><input type="radio" name="relationship" value="other"> Other</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel" for="relatesTo">Name of the person the complaint relates to</label>
+          <p class="dpaf-sub">If different from above</p>
+          <input type="text" id="relatesTo" name="relatesTo" placeholder="Enter name">
+        </div>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel" for="contactdetails">Contact details <span class="dpaf-star">*</span></label>
+          <p class="dpaf-sub">Email address, postal address, etc.</p>
+          <input type="text" id="contactdetails" name="contactdetails" placeholder="Enter your contact details" required>
+        </div>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel">What is the main subject of your complaint? <span class="dpaf-star">*</span></label>
+          <div class="dpaf-options">
+            <label class="dpaf-opt"><input type="radio" name="complaint_subject" value="dsar" required> DSAR (Data Subject Access Request)</label>
+            <label class="dpaf-opt"><input type="radio" name="complaint_subject" value="rights"> Individual rights</label>
+            <label class="dpaf-opt"><input type="radio" name="complaint_subject" value="notice"> Privacy notice</label>
+            <label class="dpaf-opt"><input type="radio" name="complaint_subject" value="sharing"> Sharing / disclosure of data</label>
+            <label class="dpaf-opt"><input type="radio" name="complaint_subject" value="retention"> Retention</label>
+            <label class="dpaf-opt"><input type="radio" name="complaint_subject" value="handling"> General personal data handling</label>
+            <label class="dpaf-opt"><input type="radio" name="complaint_subject" value="breach"> Personal data breach</label>
+            <label class="dpaf-opt"><input type="radio" name="complaint_subject" value="insecure"> Not keeping information secure</label>
+            <label class="dpaf-opt"><input type="radio" name="complaint_subject" value="inaccurate"> Inaccurate / incomplete information</label>
+            <label class="dpaf-opt"><input type="radio" name="complaint_subject" value="other"> Other</label>
+          </div>
+        </div>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel" for="summary">Please summarise your concern(s), including relevant dates and details <span class="dpaf-star">*</span></label>
+          <p class="dpaf-sub">Maximum 255 words</p>
+          <textarea id="summary" name="summary" placeholder="Your message..." required maxlength="1600"></textarea>
+          <div class="dpaf-charcount"><span id="wordcount">0</span> / 255 words</div>
+        </div>
+
+        <div class="dpaf-field">
+          <label class="dpaf-flabel">Have you previously contacted us in relation to this matter? <span class="dpaf-star">*</span></label>
+          <div class="dpaf-options dpaf-row">
+            <label class="dpaf-opt"><input type="radio" name="previouscontact" value="yes" required> Yes</label>
+            <label class="dpaf-opt"><input type="radio" name="previouscontact" value="no"> No</label>
+          </div>
+        </div>
+
+        <label class="dpaf-agree">
+          <input type="checkbox" id="dpaf-consent-privacy" name="consent_privacy" value="yes" required>
+          <span>I agree with <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-of-service">Terms of Conditions</a></span>
+        </label>
+
+        <button type="submit" class="dpaf-submit">Submit</button>
+
+        <div class="dpaf-success" id="successMsg">
+          <strong>Thank you for your submission.</strong>
+          We will acknowledge your complaint within 30 days and keep you updated on progress.
+        </div>
+        <div class="dpaf-error" id="errorMsg">
+          Something went wrong. Please check the required fields and try again, or call us directly on +44 (0) 203 150 1401.
+        </div>
+
+        <div class="dpaf-trust">
+          <div class="dpaf-trust-item">
+            <div class="dpaf-trust-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <h4>Chat customer services</h4>
+              <p>+44 (0) 203 150 1401</p>
+            </div>
+          </div>
+          <div class="dpaf-trust-item">
+            <div class="dpaf-trust-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div>
+              <h4>Chat to our sales</h4>
+              <p>info@network-consultancy.com</p>
+            </div>
+          </div>
+          <div class="dpaf-trust-item">
+            <div class="dpaf-trust-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Address</h4>
+              <p>Birmingham, Beech House, Greenfield Crescent, Edgbaston, B15 3BE</p>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="/js/footer.js"></script>
+
+  <script src="/js/animations.js" defer></script>
+  <script src="/js/global.js" defer></script>
+  <script src="/js/accessibility.js" defer></script>
+
+  <script src="/js/search-index.js" defer></script>
+  <script src="/js/search.js" defer></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var form = document.getElementById('dpForm');
+    if (!form) return;
+
+    form.querySelectorAll('.dpaf-opt').forEach(function (opt) {
+      var input = opt.querySelector('input');
+      input.addEventListener('change', function () {
+        form.querySelectorAll('input[name="' + input.name + '"]').forEach(function (i) {
+          i.closest('.dpaf-opt').classList.toggle('selected', i.checked);
+        });
       });
+    });
+
+    form.querySelectorAll('input[name="onbehalf"]').forEach(function (r) {
+      r.addEventListener('change', function () {
+        document.getElementById('relationshipBlock').style.display = r.value === 'yes' && r.checked ? 'block' : 'none';
+      });
+    });
+
+    var summary = document.getElementById('summary');
+    var wordcount = document.getElementById('wordcount');
+    summary.addEventListener('input', function () {
+      var text = summary.value.trim();
+      var words = text.length ? text.split(/\s+/).length : 0;
+      wordcount.textContent = Math.min(words, 255);
+    });
+
+    // ---- Form submit (AJAX to Web3Forms, same pattern as the site's main contact form) ----
+    var ok = document.getElementById('successMsg');
+    var err = document.getElementById('errorMsg');
+
+    function populateSourceFields() {
+      if (!window.NetConSource || typeof window.NetConSource.toObject !== 'function') return;
+      var sourceData = window.NetConSource.toObject();
+      document.getElementById('dpaf-source-page').value = sourceData.source_page;
+      document.getElementById('dpaf-source-family').value = sourceData.source_family;
+      document.getElementById('dpaf-source-cta').value = sourceData.source_cta;
+      document.getElementById('dpaf-inquiry-type').value = sourceData.inquiry_type;
+      document.getElementById('dpaf-lead-status').value = sourceData.lead_status;
+      document.getElementById('dpaf-action-required').value = sourceData.action_required;
+      document.getElementById('dpaf-routing-team').value = sourceData.routing_team;
+      var subj = document.getElementById('dpaf-subject');
+      if (subj) subj.value = 'NetCon DPA/GDPR complaint \u2014 ' + sourceData.source_page;
+    }
+
+    form.addEventListener('submit', function (e) {
+      if (window.__netconGlobalFormHandler) return;
+      if (!form.action) return;
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      if (err && !err.dataset.defaultMessage) err.dataset.defaultMessage = err.textContent;
+
+      var requiredConsents = form.querySelectorAll('input[type="checkbox"][required]');
+      for (var i = 0; i < requiredConsents.length; i++) {
+        if (!requiredConsents[i].checked) {
+          if (ok) ok.classList.remove('show');
+          if (err) {
+            err.textContent = 'Please confirm the required consent before submitting the form.';
+            err.classList.add('show');
+          }
+          requiredConsents[i].focus();
+          return;
+        }
+      }
+
+      if (ok) ok.classList.remove('show');
+      if (err) {
+        err.classList.remove('show');
+        if (err.dataset.defaultMessage) err.textContent = err.dataset.defaultMessage;
+      }
+
+      populateSourceFields();
+
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (r) {
+          if (r.ok) {
+            form.reset();
+            document.getElementById('relationshipBlock').style.display = 'none';
+            form.querySelectorAll('.dpaf-opt.selected').forEach(function (o) { o.classList.remove('selected'); });
+            wordcount.textContent = '0';
+            if (ok) { ok.classList.add('show'); ok.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+          } else if (err) {
+            if (err.dataset.defaultMessage) err.textContent = err.dataset.defaultMessage;
+            err.classList.add('show');
+          }
+        })
+        .catch(function () {
+          if (err) {
+            if (err.dataset.defaultMessage) err.textContent = err.dataset.defaultMessage;
+            err.classList.add('show');
+          }
+        });
+    });
   });
-})();
+  </script>
+</body>
+</html>
