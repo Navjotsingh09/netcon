@@ -1723,6 +1723,15 @@ body.industry-detail-page #main > #contact {
   font-weight: 400;
   white-space: pre-line;
 }
+.nd-contact__tile-copy a {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+.nd-contact__tile-copy a:hover,
+.nd-contact__tile-copy a:focus-visible {
+  text-decoration: underline;
+}
 .nd-contact__form {
   grid-column: 2;
   grid-row: 1 / span 3;

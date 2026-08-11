@@ -187,6 +187,9 @@
     .dpaf-trust-icon{ width: 34px; height: 34px; border: 1px solid var(--dpaf-border); border-radius: 0; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; color: var(--dpaf-ink); }
     .dpaf-trust-item h4{ font-size: 14px; font-weight: 600; color: var(--dpaf-ink); margin: 0 0 2px; font-family: 'Inter', sans-serif; }
     .dpaf-trust-item p{ font-size: 13.5px; color: var(--dpaf-text); margin: 0; font-family: 'Inter', sans-serif; }
+    .dpaf-trust-item a{ color: inherit; font: inherit; text-decoration: none; }
+    .dpaf-trust-item a:hover,
+    .dpaf-trust-item a:focus-visible{ text-decoration: underline; }
 
     @media (max-width: 768px) {
       .dpaf-formbox{ padding: 26px 20px 24px; }
@@ -390,7 +393,7 @@
             </div>
             <div>
               <h4>Chat customer services</h4>
-              <p>+44 (0) 203 150 1401</p>
+              <p><a href="tel:+442031501401">+44 (0) 203 150 1401</a></p>
             </div>
           </div>
           <div class="dpaf-trust-item">
@@ -399,7 +402,7 @@
             </div>
             <div>
               <h4>Chat to our sales</h4>
-              <p>info@network-consultancy.com</p>
+              <p><a href="mailto:info@network-consultancy.com">info@network-consultancy.com</a></p>
             </div>
           </div>
           <div class="dpaf-trust-item">
