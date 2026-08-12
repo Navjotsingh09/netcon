@@ -48,7 +48,7 @@
     {
       slug: "post-06",
       urlSlug: "network-validation",
-      title: "Network Validation: Everything You Need To Know",
+      title: "Network Validation: Everything You Need to Know in 2026",
       excerpt: "Ensure your secure wireless network is trustworthy. Learn the key authentication methods and why proactive network validation beats reactive fixes.",
       dateLabel: "04/07/2026",
       category: "Security",
@@ -93,8 +93,8 @@
     {
       slug: "post-12",
       urlSlug: "remote-work-network-security",
-      title: "Top Network Security Management Solutions for Remote Working",
-      excerpt: "Remote working creates new network security challenges. Discover the top management solutions to keep distributed teams secure in 2025.",
+      title: "Top Network Security Solutions for Remote Working: Expert Tips",
+      excerpt: "Remote working creates new network security challenges. Discover practical network installation, cloud security, endpoint protection, and IT consulting solutions.",
       dateLabel: "19/06/2026",
       category: "Security",
       image: "/images/pages/unique/resources-blog-post-12-resources.png"
@@ -102,8 +102,8 @@
     {
       slug: "post-13",
       urlSlug: "secure-hybrid-workspace",
-      title: "Creating a Secure Hybrid Workspace",
-      excerpt: "Hybrid workplaces depend on secure, reliable networks. Three practical steps to build a secure hybrid workspace using your IT infrastructure.",
+      title: "3 Steps to Creating a Secure Hybrid Workspace Using Your Network",
+      excerpt: "Hybrid workplaces depend on secure, reliable networks. Learn how to create a balanced work experience, secure the cloud, and embrace zero trust.",
       dateLabel: "16/06/2026",
       category: "Solutions",
       image: "/images/pages/technician.jpg"
@@ -147,8 +147,8 @@
     {
       slug: "post-18",
       urlSlug: "cisco-security-solutions",
-      title: "Virtualised Networks Designed & Installed by Us",
-      excerpt: "Organisations transform their business with integrated technology from Cisco and VMware. See how converged compute, storage, and virtualisation accelerate IT agility.",
+      title: "Cisco and VMware Virtualisation Solutions for Modern Business Networks",
+      excerpt: "Discover how Cisco and VMware virtualisation solutions improve flexibility, resilience, security, and scalability for modern business networks.",
       dateLabel: "03/06/2026",
       category: "Industry News",
       image: "/images/pages/unique/resources-blog-post-18-resources.jpg"
@@ -156,7 +156,7 @@
     {
       slug: "post-19",
       urlSlug: "network-consultant-benefits",
-      title: "Why Your Business Needs a Network Consultant Partner",
+      title: "Why Your Business Needs a Network Consultant Partner, Not Just an IT Fixer",
       excerpt: "A strategic network consultant partner delivers more than IT fixes. Learn why businesses need expert consultancy to future-proof their infrastructure.",
       dateLabel: "31/05/2026",
       category: "Strategy",
