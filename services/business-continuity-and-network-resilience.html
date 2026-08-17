@@ -297,7 +297,7 @@
           <div class="biz__card">
             <div>
               <h3 id="biz-title">Constant operational stability</h3>
-              <p id="biz-desc">Our wireless design accounts for building materials and structural elements, ensuring complete coverage and removing connectivity blind spots.</p>
+              <p id="biz-desc">Teams stay active, and networks stay online even during a local power cut or internet blackout.</p>
             </div>
             <div class="biz__num" id="biz-count">1/4</div>
           </div>
@@ -477,8 +477,8 @@
     <script>  
     window.PAGE_FAQ = [
       { question:'What makes network resilience crucial to business continuity?', answer:'If your network fails, your business stops. Resilience means having backup hardware, like a second internet line from a different provider. If your main link goes down, your traffic switches over automatically so your staff can keep working.', open:true },
-      { question:'What are the components of a network resilience and business continuity strategy?', answer:'A reliable business continuity strategy is built on four key foundations: Risk Assessment: Identifying vulnerabilities, single points of failure, and operational risks that could impact business performance. Automated Failover: Implementing redundant systems and connectivity that automatically take over when primary services become unavailable. Secure Off-Site Backups: Maintaining protected copies of critical data in separate locations to ensure rapid recovery and data integrity. Regular Testing and Validation: Simulating outages and system failures to verify that recovery plans, backups, and failover mechanisms perform as expected.', open:false },
-      { question:'In what ways may business continuity consulting enhance organisational preparedness?', answer:'Rather than reacting under pressure, your IT team follows a proven recovery plan. We develop detailed playbooks that help engineers rapidly diagnose issues, secure data, and bring critical services back online with minimal disruption.', open:false }
+      { question:'What are the components of a network resilience and business continuity strategy?', answer:'A reliable strategy relies on four practical steps: (1) Finding single points of failure. (2) Backup lines that take over instantly if primary links drop. (3) Regular data copies stored safely away from the main office. (4) Simulating hardware failures to prove the backups actually work.', open:false },
+      { question:'In what ways may business continuity consulting enhance organisational preparedness?', answer:'It replaces panic with a clear plan. We build step-by-step recovery playbooks for your IT staff. When an outage hits, your engineers know exactly how to isolate the fault, protect your data, and restore services quickly.', open:false }
     ];
     </script>
     <div data-cms="faq"></div>
@@ -502,11 +502,11 @@
       var desc = document.getElementById('ksa-desc');
       var data = [
         { img:'/images/pages/unique/envato/business-continuity/bc-envato-1.jpg', title:'Disaster Recovery Strategy & Testing', desc:'Our team builds and simulates step-by-step recovery playbooks for your business. We verify that your backup systems deploy instantly during unexpected operational blackouts.' },
-        { img:'/images/pages/unique/envato/business-continuity/bc-envato-2.jpg', title:'Automated Cloud Backup & Replication', desc:'Our backup and disaster recovery solutions safeguard your business data through secure off-site replication. Should local hardware experience an outage or failure, your information remains protected and quickly recoverable.' },
-        { img:'/images/pages/unique/envato/business-continuity/bc-envato-3.jpg', title:'Automated Secondary Network Failover', desc:'We install resilient secondary internet connections that automatically take over in the event of a primary service outage. This ensures your team remains connected and business-critical systems continue operating without interruption.' },
-        { img:'/images/pages/unique/envato/business-continuity/bc-envato-4.jpg', title:'Power Redundancy & UPS Deployment', desc:'We equip your infrastructure with Uninterruptible Power Supply (UPS) systems to keep critical network equipment, including switches and routers, operational during power outages, ensuring business continuity and minimising downtime.' },
-        { img:'/images/pages/unique/envato/business-continuity/bc-envato-5.jpg', title:'Endpoint Backup & Remote Protection', desc:'We safeguard data across all employee devices, giving remote workers the same level of protection as office-based staff. This ensures business-critical information remains secure, backed up, and recoverable in the event of ransomware or device failure.' },
-        { img:'/images/pages/unique/envato/business-continuity/bc-envato-6.jpg', title:'Rapid Hardware Replacement Protocols', desc:'In the event of a hardware failure, we can quickly replace critical network devices to minimise disruption and keep your operations running smoothly. All deployed equipment is covered by vendor support and warranty services, ensuring reliable protection and access to manufacturer expertise when required.' }
+        { img:'/images/pages/unique/envato/business-continuity/bc-envato-2.jpg', title:'Automated Cloud Backup & Replication', desc:'Network Consultancy makes copies of your business data and stores them on secure off-site servers in real time. If local hardware fails, your files remain intact and accessible, preventing data loss.' },
+        { img:'/images/pages/unique/envato/business-continuity/bc-envato-3.jpg', title:'Automated Secondary Network Failover', desc:'We install secondary line connections that instantly take over if your primary internet goes down. Your team stays online, and your systems keep running without a single dropped connection.' },
+        { img:'/images/pages/unique/envato/business-continuity/bc-envato-4.jpg', title:'Power Redundancy & UPS Deployment', desc:'Equip your infrastructure with Uninterruptible Power Supplies to keep critical switches and routers operational during local power cuts.' },
+        { img:'/images/pages/unique/envato/business-continuity/bc-envato-5.jpg', title:'Endpoint Backup & Remote Protection', desc:'We secure data directly on employee laptops and devices, even outside the main office. This ensures your remote workforce stays fully backed up and resilient against ransomware attacks.' },
+        { img:'/images/pages/unique/envato/business-continuity/bc-envato-6.jpg', title:'Rapid Hardware Replacement Protocols', desc:'Our engineers keep pre-configured spare routers and switches ready for immediate deployment. If a core device fails, we replace it fast to keep your operations moving.' }
       ];
       tabs.forEach(function (tab, i) {
         tab.addEventListener('click', function () {
@@ -526,10 +526,10 @@
       var biz = document.getElementById('biz');
       if (!biz) return;
       var slides = [
-        { title:'Constant operational stability', desc:'Our resilience design keeps your business running through outages, so your operations never grind to a halt.' },
-        { title:'Secured business data', desc:'Automated off-site backups protect essential business data, ensuring rapid recovery and uninterrupted operations when incidents occur.' },
-        { title:'Consistent Customer Service', desc:'Customers receive uninterrupted support and responsive service, helping maintain confidence and trust in your business even when unforeseen issues occur.' },
-        { title:'Coordinated Incident Response', desc:'Clearly defined response procedures enable staff to address infrastructure issues quickly and effectively, reducing downtime and eliminating uncertainty during critical situations.' }
+        { title:'Constant operational stability', desc:'Teams stay active, and networks stay online even during a local power cut or internet blackout.' },
+        { title:'Secured business data', desc:'Automatic off-site copies mean critical corporate records are never lost or corrupted by unexpected disruptions.' },
+        { title:'Consistent client service', desc:'Customers receive seamless support without delays, maintaining professional trust even when external issues arise.' },
+        { title:'Coordinated incident response', desc:'Clear, practical playbooks ensure staff handle sudden infrastructure issues quickly and without confusion.' }
       ];
       var i = 0, total = slides.length;
       var title = document.getElementById('biz-title');

@@ -337,6 +337,8 @@
             <li><strong>Security Assessment</strong> &ndash; Reviewing your current firewall setup, access rules, and network exposure.</li>
             <li><strong>Risk &amp; Vulnerability Analysis</strong> &ndash; Looking at where the gaps are, what could be improved, and anything that might cause issues later on.</li>
             <li><strong>Design &amp; Implementation</strong> &ndash; Setting up the new firewall rules, network segments, and access controls.</li>
+            <li><strong>Monitoring</strong> &ndash; Watching network traffic around the clock to spot unusual activity.</li>
+            <li><strong>Ongoing Support</strong> &ndash; Handling updates and software patches as your business changes.</li>
           </ul>
         </div>
       </div>
@@ -385,7 +387,7 @@
     <div class="sd-wrap">
       <div class="nd-trusted">
         <div class="nd-trusted__head">
-          <h2 class="nd-trusted__title" id="tst-h">What our clients say</h2>
+          <h2 class="nd-trusted__title" id="tst-h">What Clients Say</h2>
           <div class="nd-trusted__controls">
             <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
               <span aria-hidden="true">&#8249;</span>
@@ -403,27 +405,27 @@
                 <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-m1.jpg" alt="" loading="lazy"></span>
                 <div>
                   <p class="nd-t-card__name">James Thornton</p>
-                  <p class="nd-t-card__role">IT Manager, Financial Services, Manchester, England</p>
+                  <p class="nd-t-card__role">IT Manager - Financial Services, Manchester</p>
                 </div>
               </div>
             </article>
             <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;Moving to their firewall-as-a-service gave us consistent protection across every office without a single piece of on-site hardware. Threats are blocked before we ever see them.&rdquo;</p>
+              <p class="nd-t-card__quote">&ldquo;We didn&rsquo;t realise how many gaps we had until this was reviewed. Big improvement overall.&rdquo;</p>
               <div class="nd-t-card__person">
                 <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-operations-director.jpg" alt="" loading="lazy"></span>
                 <div>
-                  <p class="nd-t-card__name">Operations Director</p>
-                  <p class="nd-t-card__role">Multi-Site Retailer, Midlands</p>
+                  <p class="nd-t-card__name">Operations Lead</p>
+                  <p class="nd-t-card__role">Birmingham</p>
                 </div>
               </div>
             </article>
             <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;Segmentation and live filtering have transformed our security posture. Our data and our customers are genuinely safer.&rdquo;</p>
+              <p class="nd-t-card__quote">&ldquo;Managing multiple locations is much simpler now. Everything is more consistent.&rdquo;</p>
               <div class="nd-t-card__person">
                 <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy"></span>
                 <div>
                   <p class="nd-t-card__name">Head of IT</p>
-                  <p class="nd-t-card__role">Professional Services Firm, London</p>
+                  <p class="nd-t-card__role">Multi-site Organisation, Leeds</p>
                 </div>
               </div>
             </article>
@@ -440,8 +442,8 @@
   <script>
   window.PAGE_FAQ = [
     { question:'What is network segmentation?', answer:'Network segmentation is dividing your network into smaller sections so problems don\u2019t spread. It simply ensures that a threat is contained to a single area, making user control much easier.', open:true },
-    { question:'Do firewalls still matter?', answer:'More than ever. Modern cloud firewalls filter malicious traffic, block ransomware, and enforce your access rules automatically, protecting your data and revenue around the clock.', open:false },
-    { question:'Can this work for remote teams?', answer:'Yes. Our firewall-as-a-service and encrypted remote access protect your staff wherever they work, extending the same security to home, mobile, and multi-site users.', open:false }
+    { question:'Do firewalls still matter?', answer:'Yes, very much. While AI-driven threats are taking over, firewalls are still your essential frontline defence. But they need to be configured properly. Otherwise, they don\'t really do much.', open:false },
+    { question:'Can this work for remote teams?', answer:'Yes. In fact, it becomes even more important when people are accessing systems from different locations. It ensures your off-site staff can connect securely without exposing your main network.', open:false }
   ];
   </script>
   <div data-cms="faq"></div>
@@ -465,9 +467,9 @@
     var desc = document.getElementById('ksa-desc');
     var data = [
       { img:'/images/pages/unique/services-firewall-network-security-nc-hero-person.jpg', title:'Centralised Cloud Firewalls (FWaaS)', desc:'Deploying and managing virtual firewalls across all your physical branches. We ensure you get uniform protection that blocks malicious incoming traffic without the need for on-site security hardware at every office.' },
-      { img:'/images/unique/services-firewall-network-security-feature-1.jpg', title:'Encrypted Remote Access', desc:'We give your remote staff secure, encrypted access to company systems, so people can work from anywhere without exposing your data.' },
-      { img:'/images/unique/services-firewall-network-security-service-2.jpg', title:'Internal Network Segmentation', desc:'We divide your network into secure zones, so a threat in one area is contained and never spreads across your whole business.' },
-      { img:'/images/unique/services-firewall-network-security-feature-2.jpg', title:'Live Threat & Traffic Filtering', desc:'We continuously filter your traffic in real time, blocking malicious activity before it can reach your systems or your data.' }
+      { img:'/images/unique/services-firewall-network-security-feature-1.jpg', title:'Encrypted Remote Access', desc:'We deploy Zero Trust Network Access (ZTNA) with multi-factor authentication (MFA) to set up secure, authenticated tunnels for your hybrid workforce. Your remote staff can connect to corporate applications without exposing your central network to the public internet.' },
+      { img:'/images/unique/services-firewall-network-security-service-2.jpg', title:'Internal Network Segmentation', desc:'Dividing your network into isolated security zones using internal firewalls. If a single device or branch is compromised, the system blocks lateral movement to isolate the attack and protect your core financial data.' },
+      { img:'/images/unique/services-firewall-network-security-feature-2.jpg', title:'Live Threat & Traffic Filtering', desc:'Blocking malicious websites and unauthorised data transfers in real time. Network Consultancy ensures your security policies stay updated automatically against new threats without interrupting your daily digital operations.' }
     ];
     tabs.forEach(function (tab, i) {
       tab.addEventListener('click', function () {
@@ -488,9 +490,9 @@
     if (!biz) return;
     var slides = [
       { title:'Blocked cyber threats', desc:'Firewalls filter out malicious traffic and ransomware automatically, keeping your core data and company money secure.' },
-      { title:'Protected customer trust', desc:'Strong security keeps sensitive customer data safe, protecting your reputation and the trust your business depends on.' },
-      { title:'Consistent multi-site security', desc:'Centralised cloud firewalls apply the same protection across every office, with no gaps between locations.' },
-      { title:'No hardware headaches', desc:'Firewall-as-a-service removes the cost and complexity of on-site security hardware at every branch.' }
+      { title:'Restricted system access', desc:'Smart user permissions stop unauthorised users from viewing sensitive files, keeping your customer data private.' },
+      { title:'Contained network risks', desc:'Isolated network segments prevent a security slip-up at one location from spreading to your other offices.' },
+      { title:'Safe remote connections', desc:'Encrypted links let your hybrid team work from anywhere without opening your central servers to internet attacks.' }
     ];
     var i = 0, total = slides.length;
     var title = document.getElementById('biz-title');

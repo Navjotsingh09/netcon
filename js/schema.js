@@ -44,7 +44,7 @@
         "https://www.facebook.com/NetConSupport/",
         "https://www.instagram.com/netcon_1/",
         "https://www.linkedin.com/company/netconsupport/",
-        "https://twitter.com/NetConSupport"
+        "http://twitter.com/NetConSupport"
       ]
     },
     {

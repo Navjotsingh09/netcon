@@ -218,7 +218,7 @@
     { title: 'Legal Firms', url: '/industries/legal-firms', category: 'industries', keywords: ['legal', 'law firm'], audience: ['manager'], intents: ['discover', 'risk'] },
     { title: 'Manufacturing', url: '/industries/manufacturing', category: 'industries', keywords: ['manufacturing', 'plant network'], audience: ['manager'], intents: ['discover', 'support'] },
     { title: 'Multi-Site Businesses', url: '/industries/multi-site-businesses', category: 'industries', keywords: ['multi-site', 'multiple offices'], audience: ['manager', 'technical'], intents: ['discover', 'upgrade'] },
-    { title: 'Professional Services', url: '/industries/professional-services', category: 'industries', keywords: ['professional services'], audience: ['manager'], intents: ['discover'] },
+    { title: 'Educational Institutes', url: '/industries/educational-institutes', category: 'industries', keywords: ['education', 'schools', 'colleges', 'universities'], audience: ['manager'], intents: ['discover'] },
     { title: 'Recruitment Agencies', url: '/industries/recruitment-agencies', category: 'industries', keywords: ['recruitment'], audience: ['manager'], intents: ['discover'] },
 
     {

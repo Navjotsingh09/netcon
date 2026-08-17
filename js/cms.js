@@ -20,32 +20,32 @@
   var TESTIMONIALS = [
     {
       quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name:    'Managing Director',
-      role:    'Broadcasting Company, London',
+      name:    'MANAGING DIRECTOR',
+      role:    'BROADCASTING COMPANY, LONDON',
       avatar:  '/images/misc/avatars/testimonial-avatar-managing-director.jpg'
     },
     {
-      quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name:    'IT Director',
-      role:    'Professional Services Firm, London',
+      quote:   'After our in-house network admin decided to leave, we approached Network Consultancy to take over the support and management of our complex network. I was initially apprehensive as to how it would work out. Network Consultancy have far exceeded my expectations. They are quick to respond, very knowledgeable, happy to provide out-of-hours assistance and have made some very useful recommendations. They have massively reduced our annual budget. We didn\'t need to recruit the in-house person we thought we needed. Network Consultancy are always there and is now part of our team.',
+      name:    'CEO',
+      role:    'Investment Company, London',
       avatar:  '/images/misc/avatars/testimonial-avatar-it-director.jpg'
     },
     {
-      quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name:    'Head of Operations',
-      role:    'Healthcare Provider, Birmingham',
+      quote:   'We have been working with Network Consultancy for a number of years now. A very professional service. I cannot recommend them highly enough!',
+      name:    'PROJECT MANAGER',
+      role:    'INTERNATIONAL MANUFACTURING COMPANY - WORLDWIDE.',
       avatar:  '/images/misc/avatars/testimonial-avatar-head-of-operations.jpg'
     },
     {
-      quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name:    'Managing Partner',
-      role:    'Legal Firm, London',
+      quote:   'I have used Net Con for project work over a number of years now, and each time they are professional and will bend over backwards to help resolve any issues. They add great value to my business and helped us grow. I hope to continue working with them for many years to come.',
+      name:    'MANAGING DIRECTOR - IT SERVICES COMPANY',
+      role:    '',
       avatar:  '/images/misc/avatars/testimonial-avatar-managing-partner.jpg'
     },
     {
-      quote:   'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name:    'Operations Director',
-      role:    'Manufacturing Company, Midlands',
+      quote:   'Our VPN connections to our worldwide offices are crucial to everyday operations. Network Consultancy not only helped us deploy this complex network, but they also provided the ongoing management. They\'ve always been very fast to respond to any issues, and when we require some changes, they will suggest the best track forward. Always leave me impressed.',
+      name:    'AREA M.D. SERVICES COMPANY - INDIA',
+      role:    '',
       avatar:  '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
     }
   ];
@@ -300,7 +300,7 @@
       var mark     = item.open ? '\u2212' : '+';
       var hidden   = item.open ? '' : ' hidden';
       return [
-        '<button class="nd-faq__item' + openAttr + '"><span>' + escHtml(item.question) + '</span><strong>' + mark + '</strong></button>',
+        '<button type="button" class="nd-faq__item' + openAttr + '"><span>' + escHtml(item.question) + '</span><strong>' + mark + '</strong></button>',
         '<div class="nd-faq__panel"' + hidden + '>' + escHtml(item.answer) + '</div>'
       ].join('\n');
     }).join('\n');

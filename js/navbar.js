@@ -65,7 +65,7 @@
     { href: '/industries/legal-firms',           icon: 'scales',    title: 'Legal Firms' },
     { href: '/industries/manufacturing',         icon: 'factory',   title: 'Manufacturing' },
     { href: '/industries/multi-site-businesses', icon: 'buildings', title: 'Multi-Site Businesses' },
-    { href: '/industries/professional-services', icon: 'briefcase', title: 'Educational Institutes' },
+    { href: '/industries/educational-institutes', icon: 'briefcase', title: 'Educational Institutes' },
     { href: '/industries/recruitment-agencies',  icon: 'users',     title: 'Recruitment Agencies' },
     { href: '/industries/internal-it-teams',     icon: 'monitor',   title: 'Internal IT Teams' }
   ];
