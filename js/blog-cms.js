@@ -16,7 +16,7 @@
       excerpt: "Build a network that withstands failures. Learn the four key factors every organisation needs to design genuine resilience into their infrastructure.",
       dateLabel: "15/07/2026",
       category: "Services",
-      image: "/images/pages/servers.jpg"
+      image: "/images/pages/Key-Elements-Resilient-Network.avif"
     },
     {
       slug: "post-03",
@@ -43,7 +43,7 @@
       excerpt: "Cloud networking is transforming how businesses operate. Discover the key benefits and how to implement it effectively in your organisation.",
       dateLabel: "07/07/2026",
       category: "Cloud",
-      image: "/images/pages/unique/resources-blog-post-05-resources.png"
+      image: "/images/pages/unique/Why-Your-Business-Needs-Cloud-Networking.avif"
     },
     {
       slug: "post-06",
@@ -61,7 +61,7 @@
       excerpt: "Cloud networking unlocks new levels of efficiency and agility. Explore how to leverage cloud-based networking to drive business performance.",
       dateLabel: "02/07/2026",
       category: "Cloud",
-      image: "/images/pages/unique/resources-blog-post-07-resources.jpg"
+      image: "/images/pages/unique/Leveraging-Cloud-Networking-for-Business-Efficiency.avif"
     },
     {
       slug: "post-09",
@@ -115,7 +115,7 @@
       excerpt: "Is your SME network limiting your growth? Explore the common network challenges facing small businesses and how a consultant can help.",
       dateLabel: "13/06/2026",
       category: "Industries",
-      image: "/images/pages/professional.jpg"
+      image: "/images/pages/Is-Your-SME-Network.avif"
     },
     {
       slug: "post-15",
@@ -133,7 +133,7 @@
       excerpt: "Outdated network infrastructure costs more than you think. Explore the performance, security, and reliability benefits of upgrading your network.",
       dateLabel: "07/06/2026",
       category: "Services",
-      image: "/images/pages/network-abstract.jpg"
+      image: "/images/pages/Reasons-Upgrade-Your-Network.avif"
     },
     {
       slug: "post-17",
@@ -142,7 +142,7 @@
       excerpt: "Cisco Network Convergence System delivers petabit-scale performance for global service providers. Learn about the breakthroughs powering next-generation networks.",
       dateLabel: "05/06/2026",
       category: "Industry News",
-      image: "/images/pages/unique/resources-blog-post-17-resources.jpg"
+      image: "/images/pages/unique/Cisco-Network-Convergence-System.avif"
     },
     {
       slug: "post-18",
@@ -160,7 +160,7 @@
       excerpt: "A strategic network consultant partner delivers more than IT fixes. Learn why businesses need expert consultancy to future-proof their infrastructure.",
       dateLabel: "31/05/2026",
       category: "Strategy",
-      image: "/images/pages/unique/resources-blog-post-19-resources.jpg"
+      image: "/images/pages/unique/Why-Your-Business-Needs-Network.avif"
     },
     {
       slug: "post-20",
