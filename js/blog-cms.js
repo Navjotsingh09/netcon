@@ -179,6 +179,15 @@
       dateLabel: "27/07/2026",
       category: "Infrastructure",
       image: "/images/pages/unique/resources-blog-post-12-resources.png"
+    },
+       {
+      slug: "post-22",
+      urlSlug: "network-cabling-installation-uk-business-guide",
+      title: "Networking Cable Installation: UK Business Guide",
+      excerpt: "Learn how networking cable installation supports UK businesses with reliable connectivity, secure infrastructure, better performance and future scalability.",
+      dateLabel: "19/08/2026",
+      category: "Infrastructure",
+      image: "/images/pages/unique/Professional-networking-cable.avif"
     }
   ];
 
