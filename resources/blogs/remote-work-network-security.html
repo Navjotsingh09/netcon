@@ -130,6 +130,39 @@
       line-height: 1.18;
     }
 
+    .blog-related-links {
+      margin-top: 42px;
+      padding: 26px 24px;
+      border: 1px solid #e4e4e4;
+      border-radius: 10px;
+      background: #f7f9fc;
+    }
+    .blog-related-links h3 {
+      margin: 0 0 18px;
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--navy);
+    }
+    .blog-related-links ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .blog-related-links li {
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 17px;
+      line-height: 1.5;
+      color: var(--dark);
+    }
+    .blog-related-links a {
+      color: var(--blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     .blog-side__card,
     .blog-side__categories {
       background: #f7f9fc;
@@ -389,33 +422,44 @@
 <h3>5\. Why is IT consulting important for remote network security?</h3>
 
 <p><a href="https://network-consultancy.com/">IT consulting</a> helps businesses design customised security strategies based on their needs. Consultants assess risks, improve infrastructure, and implement solutions such as zero-trust security to ensure safer, more efficient remote working environments.</p>
+          
+            <div class="blog-related-links" aria-label="Related internal links">
+              <h3>Explore related services</h3>
+              <ul>
+                <li><a href="/services/network-consultancy">Network Consultancy</a></li>
+                <li><a href="/services/managed-network-support">Managed Network Support</a></li>
+                <li><a href="/solutions/cyber-security-review">Cyber Security Review</a></li>
+                <li><a href="/contact">Book a free consultation</a></li>
+              </ul>
+            </div>
+
           </article>
 
           <aside class="blog-side" aria-label="Sidebar">
             <div class="blog-side__card">
               <h3>Latest Blog</h3>
 
-              <article class="latest-item">
+              <a class="latest-item" href="/resources/blogs/" aria-label="See more blog articles">
                 <div class="latest-item__thumb" aria-hidden="true"></div>
                 <div>
                   <p>We replaced the entire core network equipment across three data centres for a VoIP provider and ISP.</p>
                   <time datetime="2026-12-10">10/12/2026</time>
                 </div>
-              </article>
-              <article class="latest-item">
+              </a>
+              <a class="latest-item" href="/resources/blogs/" aria-label="See more blog articles">
                 <div class="latest-item__thumb" aria-hidden="true"></div>
                 <div>
                   <p>We replaced the entire core network equipment across three data centres for a VoIP provider and ISP.</p>
                   <time datetime="2026-12-10">10/12/2026</time>
                 </div>
-              </article>
-              <article class="latest-item">
+              </a>
+              <a class="latest-item" href="/resources/blogs/" aria-label="See more blog articles">
                 <div class="latest-item__thumb" aria-hidden="true"></div>
                 <div>
                   <p>We replaced the entire core network equipment across three data centres for a VoIP provider and ISP.</p>
                   <time datetime="2026-12-10">10/12/2026</time>
                 </div>
-              </article>
+              </a>
 
               <a class="blog-side__more" href="/resources/blogs/">See More</a>
             </div>
