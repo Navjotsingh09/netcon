@@ -7,7 +7,7 @@
       excerpt: "A breakdown of the process behind designing and implementing a business network, from consultation and diagramming through to installation and testing.",
       dateLabel: "17/07/2026",
       category: "Infrastructure",
-      image: "/images/pages/unique/resources-blog-post-01-resources.jpg"
+      image: "/images/pages/unique/Network-Design-Implementation.avif"
     },
     {
       slug: "post-02",
@@ -25,7 +25,7 @@
       excerpt: "Wireless and wired networks each have distinct advantages. Understand the trade-offs to make the right choice for your office environment.",
       dateLabel: "12/07/2026",
       category: "Infrastructure",
-      image: "/images/pages/unique/resources-blog-post-03-resources.jpg"
+      image: "/images/pages/unique/Wireless-Wired-Networks.avif"
     },
     {
       slug: "post-04",
@@ -34,7 +34,7 @@
       excerpt: "Wireless security is essential for modern businesses. Explore five practical solutions to protect your wireless network from threats.",
       dateLabel: "10/07/2026",
       category: "Security",
-      image: "/images/pages/unique/resources-blog-post-04-resources.jpg"
+      image: "/images/pages/unique/guide-Wireless-Security-Solutions.avif"
     },
     {
       slug: "post-05",
@@ -52,7 +52,7 @@
       excerpt: "Ensure your secure wireless network is trustworthy. Learn the key authentication methods and why proactive network validation beats reactive fixes.",
       dateLabel: "04/07/2026",
       category: "Security",
-      image: "/images/pages/unique/resources-blog-post-06-resources.jpg"
+      image: "/images/pages/unique/Network-Validation-Everything.avif"
     },
     {
       slug: "post-07",
@@ -70,7 +70,7 @@
       excerpt: "Professional IT services deliver more than fixes. Understand the full value of working with expert consultants and network specialists.",
       dateLabel: "28/06/2026",
       category: "Managed Services",
-      image: "/images/pages/unique/resources-blog-post-09-resources.png"
+      image: "/images/pages/unique/The-Value-Professional-IT-Services.avif"
     },
     {
       slug: "post-10",
@@ -79,7 +79,7 @@
       excerpt: "WLANs are central to modern connectivity. A comprehensive guide to everything you need to know about wireless local area networks.",
       dateLabel: "25/06/2026",
       category: "Infrastructure",
-      image: "/images/pages/unique/resources-blog-post-10-resources.jpg"
+      image: "/images/pages/unique/Everything-You-Need-About-WLANs.avif"
     },
     {
       slug: "post-11",
@@ -88,7 +88,7 @@
       excerpt: "Artificial intelligence is changing network management by enabling predictive maintenance, anomaly detection, and intelligent resource allocation.",
       dateLabel: "22/06/2026",
       category: "Infrastructure",
-      image: "/images/pages/unique/resources-blog-post-11-resources.jpg"
+      image: "/images/pages/unique/How-AI-Reducing-Network-Downtime.avif"
     },
     {
       slug: "post-12",
@@ -97,7 +97,7 @@
       excerpt: "Remote working creates new network security challenges. Discover the top management solutions to keep distributed teams secure in 2025.",
       dateLabel: "19/06/2026",
       category: "Security",
-      image: "/images/pages/unique/resources-blog-post-12-resources.png"
+      image: "/images/pages/unique/Top-Network-Security-Solutions.avif"
     },
     {
       slug: "post-13",
@@ -124,7 +124,7 @@
       excerpt: "A well-designed network is crucial for smooth data flow and robust security. Learn how strategic optimisation and redundancy strengthen infrastructure.",
       dateLabel: "10/06/2026",
       category: "Managed Services",
-      image: "/images/pages/unique/resources-blog-post-15-resources.jpg"
+      image: "/images/pages/unique/Optimising-Your-Network-Network-Consultancy.avif"
     },
     {
       slug: "post-16",
@@ -151,7 +151,7 @@
       excerpt: "Organisations transform their business with integrated technology from Cisco and VMware. See how converged compute, storage, and virtualisation accelerate IT agility.",
       dateLabel: "03/06/2026",
       category: "Industry News",
-      image: "/images/pages/unique/resources-blog-post-18-resources.jpg"
+      image: "/images/pages/unique/Virtualised-Networks-Designed-Installed.avif"
     },
     {
       slug: "post-19",
@@ -169,7 +169,7 @@
       excerpt: "From reliable connectivity and next-generation firewalls to cloud networking and professional design, explore the ten components every modern business network needs.",
       dateLabel: "21/07/2026",
       category: "Infrastructure",
-      image: "/images/pages/unique/resources-blog-business-network-components.jpg"
+      image: "/images/pages/unique/Essential-Components-Modern-Business-Network.avif"
     },
     {
       slug: "post-21",
@@ -178,7 +178,7 @@
       excerpt: "Discover how long a network audit takes for UK businesses, what influences the timeline, what the process involves, and how expert audits improve security and performance.",
       dateLabel: "27/07/2026",
       category: "Infrastructure",
-      image: "/images/pages/unique/resources-blog-post-12-resources.png"
+      image: "/images/pages/unique/Top-Network-Security-Solutions.avif"
     },
        {
       slug: "post-22",
