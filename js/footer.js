@@ -27,7 +27,7 @@
     '            <path d="M20 15.5C20 16.33 19.33 17 18.5 17C17.67 17 17 16.33 17 15.5C17 14.67 17.67 14 18.5 14C19.33 14 20 14.67 20 15.5ZM17 18.5H20V27H17V18.5ZM22 18.5H24.8V19.8H24.84C25.22 19.08 26.14 18.3 27.5 18.3C30.5 18.3 31 20.26 31 22.8V27H28V23.3C28 22.2 27.98 20.8 26.5 20.8C25 20.8 24.8 22 24.8 23.22V27H22V18.5Z" fill="white"/>',
     '          </svg>',
     '        </a>',
-    '        <a href="http://twitter.com/NetConSupport" aria-label="Twitter / X" target="_blank" rel="noopener" class="footer__social-link">',
+    '        <a href="https://twitter.com/NetConSupport" aria-label="Twitter / X" target="_blank" rel="noopener" class="footer__social-link">',
     '          <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
     '            <rect width="52" height="39" rx="19.5" fill="rgba(255,255,255,0.12)"/>',
     '            <path d="M30.96 14H33.28L28.18 19.77L34.18 26.97H29.45L25.79 22.18L21.59 26.97H19.26L24.71 20.81L18.96 14H23.8L27.12 18.37L30.96 14ZM30.16 25.57H31.44L23.04 15.31H21.67L30.16 25.57Z" fill="white"/>',
