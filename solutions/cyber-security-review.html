@@ -151,7 +151,7 @@
       max-width: var(--max-w);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, 386px) minmax(0, 822px);
+      grid-template-columns: 30% 66%;
       gap: 56px;
       align-items: start;
       background: #fff;
@@ -533,48 +533,130 @@
       </div>
     </section>
 
-    <section class="csr-overview" aria-labelledby="csr-audit-h">
-      <div class="csr-overview__head animate-fade-up">
-        <h2 id="csr-audit-h">Cyber Security Audit and Review</h2>
-        <p>Areas Covered During a Cyber Security Audit</p>
+<section class="csr-overview" aria-labelledby="csr-overview-title">
+  <div class="csr-overview__inner">
+
+    <div class="csr-overview__list animate-fade-up"
+         role="tablist"
+         aria-label="Areas covered during a cyber security audit">
+
+      <!-- 1. Security Controls Review -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="true"
+        class="csr-overview__list-item csr-overview__list-item--active"
+        data-title="Security Controls Review"
+        data-copy="A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses."
+        data-img="/images/pages/unique/Security-Controls-Review.jpg">
+        Security Controls Review
+      </button>
+
+      <!-- 2. Access & Permissions Analysis -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="csr-overview__list-item"
+        data-title="Access &amp; Permissions Analysis"
+        data-copy="By analysing infrastructure security, user permissions, administrative access, and network services, the assessment uncovers potential weaknesses that could affect operational stability and resilience."
+        data-img="/images/pages/unique/solutions-cyber-security-review-nc-hero-person.webp">
+        Access &amp; Permissions Analysis
+      </button>
+
+      <!-- 3. Key Security Controls -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="csr-overview__list-item"
+        data-title="Key Security Controls"
+        data-copy="Key security controls - including firewall policies, network segmentation, user authentication, endpoint configurations, and privileged access - are reviewed to identify risks that could impact business operations."
+        data-img="/images/pages/unique/Key-Security-Controls.jpg">
+        Key Security Controls
+      </button>
+
+      <!-- 4. Configuration & Exposure Assessment -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="csr-overview__list-item"
+        data-title="Configuration &amp; Exposure Assessment"
+        data-copy="Configuration drift, unnecessary system exposure, inherited permissions, and policy inconsistencies are assessed against operational and business risk."
+        data-img="/images/pages/unique/Configuration-Exposure-Assessment.jpg">
+        Configuration &amp; Exposure Assessment
+      </button>
+
+      <!-- 5. Service Disruption Risks -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="csr-overview__list-item"
+        data-title="Service Disruption Risks"
+        data-copy="The review identifies weaknesses that could disrupt critical services, increase attack paths, or delay incident containment during security events."
+        data-img="/images/pages/unique/Service-Disruption-Risks.jpg">
+        Service Disruption Risks
+      </button>
+
+      <!-- 6. Business Impact Ranking -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="csr-overview__list-item"
+        data-title="Business Impact Ranking"
+        data-copy="Findings are ranked by business impact, allowing remediation work to focus on security issues with the highest operational and governance risk."
+        data-img="/images/pages/unique/Business-Impact-Ranking.jpg">
+        Business Impact Ranking
+      </button>
+
+      <!-- 7. Framework-Aligned Recommendations -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="csr-overview__list-item"
+        data-title="Framework-Aligned Recommendations"
+        data-copy="Recommendations reflect recognised security frameworks, regulatory expectations, and implementation priorities suited to existing infrastructure constraints."
+        data-img="/images/pages/unique/Framework-Aligned-Recommendations.jpg">
+        Framework-Aligned Recommendations
+      </button>
+
+    </div>
+
+
+    <!-- FEATURE / IMAGE -->
+    <div class="csr-overview__feature animate-fade-up">
+
+      <picture>
+        <img
+          id="csr-overview-image"
+          src="/images/pages/unique/Security-Controls-Review.jpg"
+          alt="Security Controls Review"
+          loading="lazy">
+      </picture>
+
+      <!-- CONTENT PANEL -->
+      <div class="csr-overview__panel" role="tabpanel">
+
+        <h2 id="csr-overview-title">
+          Security Controls Review
+        </h2>
+
+        <p id="csr-overview-copy">
+          A cybersecurity review measures whether existing security controls
+          reduce operational risk or leave infrastructure exposed through
+          configuration weaknesses.
+        </p>
+
       </div>
-      <div class="csr-overview__inner">
-        <div class="csr-overview__list animate-fade-up" role="tablist" aria-label="Areas covered during a cyber security audit">
-          <button type="button" role="tab" aria-selected="true" class="csr-overview__list-item csr-overview__list-item--active"
-            data-title="Security Controls Review"
-            data-copy="A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses." data-img="/images/pages/unique/Security-Controls-Review.avif">Security Controls Review</button>
-          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
-            data-title="Access &amp; Permissions Analysis"
-            data-copy="By analysing infrastructure security, user permissions, administrative access, and network services, the assessment uncovers potential weaknesses that could affect operational stability and resilience." data-img="/images/pages/unique/Access-Permissions.avif">Access &amp; Permissions Analysis</button>
-          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
-            data-title="Key Security Controls"
-            data-copy="Key security controls - including firewall policies, network segmentation, user authentication, endpoint configurations, and privileged access - are reviewed to identify risks that could impact business operations." data-img="/images/pages/unique/Key-Security-Controls.avif">Key Security Controls</button>
-          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
-            data-title="Configuration &amp; Exposure Assessment"
-            data-copy="Configuration drift, unnecessary system exposure, inherited permissions, and policy inconsistencies are assessed against operational and business risk." data-img="/images/pages/unique/Configuration-Exposure-Assessment.avif">Configuration &amp; Exposure Assessment</button>
-          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
-            data-title="Service Disruption Risks"
-            data-copy="The review identifies weaknesses that could disrupt critical services, increase attack paths, or delay incident containment during security events." data-img="/images/pages/unique/Service-Disruption-Risks.avif">Service Disruption Risks</button>
-          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
-            data-title="Business Impact Ranking"
-            data-copy="Findings are ranked by business impact, allowing remediation work to focus on security issues with the highest operational and governance risk." data-img="/images/pages/unique/Business-Impact-Ranking.avif">Business Impact Ranking</button>
-          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
-            data-title="Framework-Aligned Recommendations"
-            data-copy="Recommendations reflect recognised security frameworks, regulatory expectations, and implementation priorities suited to existing infrastructure constraints." data-img="/images/pages/unique/Framework-Aligned-Recommendations.avif">Framework-Aligned Recommendations</button>
-        </div>
-        <div class="csr-overview__feature animate-fade-up">
-               <picture>
-            <source srcset="/images/pages/unique/Security-Controls-Review.avif" type="image/avif">
-            <img src="/images/pages/unique/Security-Controls-Review.avif" alt="Cyber security review" loading="lazy">
-          </picture>
-          <div class="csr-overview__panel" role="tabpanel">
-       
-            <h2 id="csr-overview-title">Security Controls Review</h2>
-            <p>A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+
+    </div>
+
+  </div>
+</section>
 
     <section class="csr-why" aria-labelledby="csr-why-h">
       <div class="csr-why__inner">
@@ -587,8 +669,8 @@
         </div>
         <div class="csr-why__media animate-fade-up">
           <picture>
-            <source srcset="/images/pages/unique/Why-Choose-Us-4.avif" type="image/avif">
-            <img src="/images/pages/unique/Why-Choose-Us-4.avif" alt="Security cabling and infrastructure" loading="lazy">
+            <source srcset="/images/pages/unique/Why-Choose-cyber.jpg" type="image/jpg">
+            <img src="/images/pages/unique/Why-Choose-cyber.jpg" alt="Security cabling and infrastructure" loading="lazy">
           </picture>
         </div>
       </div>
@@ -654,30 +736,69 @@
       }, { passive: true });
     })();
 
-    (function csrOverviewTabs() {
-      var tabs = Array.prototype.slice.call(document.querySelectorAll('.csr-overview__list-item'));
-      var panel = document.querySelector('.csr-overview__panel');
-      if (tabs.length === 0 || panel === null) return;
-      var title = panel.querySelector('h2');
-      var copy = panel.querySelector('p');
-      tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-          if (tab.classList.contains('csr-overview__list-item--active')) return;
-          tabs.forEach(function (t) {
-            t.classList.remove('csr-overview__list-item--active');
-            t.setAttribute('aria-selected', 'false');
-          });
-          tab.classList.add('csr-overview__list-item--active');
-          tab.setAttribute('aria-selected', 'true');
-          panel.classList.add('is-switching');
-          setTimeout(function () {
-            title.textContent = tab.getAttribute('data-title');
-            copy.textContent = tab.getAttribute('data-copy');
-            panel.classList.remove('is-switching');
-          }, 250);
-        });
+
+(function csrOverviewTabs() {
+
+  var tabs = Array.prototype.slice.call(
+    document.querySelectorAll('.csr-overview__list-item')
+  );
+
+  var panel = document.querySelector('.csr-overview__panel');
+  var image = document.querySelector('.csr-overview__feature img');
+
+  if (tabs.length === 0 || panel === null || image === null) return;
+
+  var title = panel.querySelector('h2');
+  var copy = panel.querySelector('p');
+
+  tabs.forEach(function (tab) {
+
+    tab.addEventListener('click', function () {
+
+      if (tab.classList.contains('csr-overview__list-item--active')) {
+        return;
+      }
+
+      /* Remove active state */
+      tabs.forEach(function (t) {
+        t.classList.remove('csr-overview__list-item--active');
+        t.setAttribute('aria-selected', 'false');
       });
-    })();
+
+      /* Add active state */
+      tab.classList.add('csr-overview__list-item--active');
+      tab.setAttribute('aria-selected', 'true');
+
+      /* Start transition */
+      panel.classList.add('is-switching');
+
+      setTimeout(function () {
+
+        /* Update title */
+        title.textContent = tab.getAttribute('data-title');
+
+        /* Update description */
+        copy.textContent = tab.getAttribute('data-copy');
+
+        /* Update image */
+        var newImage = tab.getAttribute('data-img');
+
+        if (newImage) {
+          image.src = newImage;
+          image.alt = tab.getAttribute('data-title') || '';
+        }
+
+        /* End transition */
+        panel.classList.remove('is-switching');
+
+      }, 250);
+
+    });
+
+  });
+
+})();
+
 
     (function mcsrAccordion() {
       var acc = document.querySelector('.mcsr-acc');

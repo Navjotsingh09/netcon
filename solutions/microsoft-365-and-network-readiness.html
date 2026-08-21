@@ -642,7 +642,7 @@
       <section class="mm365-sec animate-fade-up">
         <h2 class="mm365-h">What's Included in the Microsoft 365 Readiness Assessment</h2>
         <div class="mm365-acc">
-          <button type="button" class="mm365-acc__item mm365-acc__item--active" aria-expanded="true" data-copy="Evaluates whether your infrastructure can support Microsoft 365 production workloads.">Infrastructure Workload Support <span aria-hidden="true">&#94;</span></button>
+          <button type="button" class="mm365-acc__item mm365-acc__item--active" aria-expanded="true" data-copy="Evaluates whether your infrastructure can support Microsoft 365 production workloads." >Infrastructure Workload Support <span aria-hidden="true">&#94;</span></button>
           <div class="mm365-acc__panel">
             <p>Evaluates whether your infrastructure can support Microsoft 365 production workloads.</p>
             <div class="mm365-acc__bar" aria-hidden="true"><span></span></div>
@@ -693,43 +693,125 @@
       </div>
     </section>
 
-    <section class="m365-overview" aria-labelledby="m365-features-h">
-      <div class="m365-overview__head animate-fade-up">
-        <h2 id="m365-features-h">What's Included in the Microsoft 365 Readiness Assessment</h2>
+<section class="m365-overview" aria-labelledby="m365-features-h">
+
+  <div class="m365-overview__head animate-fade-up">
+    <h2 id="m365-features-h">
+      What's Included in the Microsoft 365 Readiness Assessment
+    </h2>
+  </div>
+
+  <div class="m365-overview__inner">
+
+    <div class="m365-overview__list animate-fade-up"
+         role="tablist"
+         aria-label="What's included in the Microsoft 365 readiness assessment">
+
+      <!-- 1 -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="true"
+        class="m365-overview__list-item m365-overview__list-item--active"
+        data-title="Infrastructure Workload Support"
+        data-copy="Evaluates whether your infrastructure can support Microsoft 365 production workloads."
+        data-img="/images/pages/unique/Infrastructure-Workload-Support.jpg">
+        Infrastructure Workload Support
+      </button>
+
+      <!-- 2 -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="m365-overview__list-item"
+        data-title="Latency &amp; Bandwidth Review"
+        data-copy="Reviews network latency, routing paths, bandwidth utilisation, and internet performance."
+        data-img="/images/pages/unique/Latency-Bandwidth-Review.jpg">
+        Latency &amp; Bandwidth Review
+      </button>
+
+      <!-- 3 -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="m365-overview__list-item"
+        data-title="Endpoint Readiness"
+        data-copy="Assesses whether existing endpoints can reliably support Microsoft 365 workloads."
+        data-img="/images/pages/unique/Endpoint-Readiness.jpg">
+        Endpoint Readiness
+      </button>
+
+      <!-- 4 -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="m365-overview__list-item"
+        data-title="Teams, Exchange &amp; SharePoint Connectivity"
+        data-copy="Validates connectivity for Microsoft Teams, Exchange Online, SharePoint, and OneDrive."
+        data-img="/images/pages/unique/Teams-Exchange-SharePoint-Connectivity.jpg">
+        Teams, Exchange &amp; SharePoint Connectivity
+      </button>
+
+      <!-- 5 -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="m365-overview__list-item"
+        data-title="Identity &amp; Security Controls"
+        data-copy="Examines identity services, authentication policies, security controls, and compliance settings."
+        data-img="/images/pages/unique/Identity-Security-Controls.jpg">
+        Identity &amp; Security Controls
+      </button>
+
+      <!-- 6 -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="m365-overview__list-item"
+        data-title="Risk &amp; Remediation Recommendations"
+        data-copy="Identifies technical risks before deployment and provides prioritised remediation recommendations."
+        data-img="/images/pages/unique/Risk-Remediation-Recommendations.jpg">
+        Risk &amp; Remediation Recommendations
+      </button>
+
+    </div>
+
+
+    <!-- FEATURE -->
+    <div class="m365-overview__feature animate-fade-up">
+
+      <picture>
+        <img
+          id="m365-overview-image"
+          src="/images/pages/unique/Infrastructure-Workload-Support.jpg"
+          alt="Infrastructure Workload Support"
+          loading="lazy">
+      </picture>
+
+      <!-- CONTENT PANEL -->
+      <div class="m365-overview__panel" role="tabpanel">
+
+        <h2 id="m365-overview-title">
+          Infrastructure Workload Support
+        </h2>
+
+        <p id="m365-overview-copy">
+          Evaluates whether your infrastructure can support Microsoft 365
+          production workloads.
+        </p>
+
       </div>
-      <div class="m365-overview__inner">
-        <div class="m365-overview__list animate-fade-up" role="tablist" aria-label="What's included in the Microsoft 365 readiness assessment">
-          <button type="button" role="tab" aria-selected="true" class="m365-overview__list-item m365-overview__list-item--active"
-            data-title="Infrastructure Workload Support"
-            data-copy="Evaluates whether your infrastructure can support Microsoft 365 production workloads.">Infrastructure Workload Support</button>
-          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
-            data-title="Latency &amp; Bandwidth Review"
-            data-copy="Reviews network latency, routing paths, bandwidth utilisation, and internet performance.">Latency &amp; Bandwidth Review</button>
-          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
-            data-title="Endpoint Readiness"
-            data-copy="Assesses whether existing endpoints can reliably support Microsoft 365 workloads.">Endpoint Readiness</button>
-          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
-            data-title="Teams, Exchange &amp; SharePoint Connectivity"
-            data-copy="Validates connectivity for Microsoft Teams, Exchange Online, SharePoint, and OneDrive.">Teams, Exchange &amp; SharePoint Connectivity</button>
-          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
-            data-title="Identity &amp; Security Controls"
-            data-copy="Examines identity services, authentication policies, security controls, and compliance settings.">Identity &amp; Security Controls</button>
-          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
-            data-title="Risk &amp; Remediation Recommendations"
-            data-copy="Identifies technical risks before deployment and provides prioritised remediation recommendations.">Risk &amp; Remediation Recommendations</button>
-        </div>
-        <div class="m365-overview__feature animate-fade-up">
-          <picture>
-            <source srcset="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.webp" type="image/webp">
-            <img src="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.jpg" alt="Microsoft 365 assessment consultant" loading="lazy">
-          </picture>
-          <div class="m365-overview__panel" role="tabpanel">
-            <h2 id="m365-overview-title">Infrastructure Workload Support</h2>
-            <p>Evaluates whether your infrastructure can support Microsoft 365 production workloads.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+
+    </div>
+
+  </div>
+
+</section>
 
     <section class="m365-band" aria-labelledby="m365-banner-h">
       <div class="m365-band__inner animate-fade-up">
@@ -737,8 +819,8 @@
         <div class="m365-band__grid">
           <div class="m365-band__media">
             <picture>
-              <source srcset="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.webp" type="image/webp">
-              <img src="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.jpg" alt="Office 365 readiness assessment" loading="lazy">
+              <source srcset="/images/pages/unique/Readiness-Assessment-Involves.jpg" type="image/jpg">
+              <img src="/images/pages/unique/Readiness-Assessment-Involves.jpg" alt="Office 365 readiness assessment" loading="lazy">
             </picture>
           </div>
           <div class="m365-band__copy">
@@ -847,30 +929,68 @@
       }, { passive: true });
     })();
 
-    (function m365OverviewTabs() {
-      var tabs = Array.prototype.slice.call(document.querySelectorAll('.m365-overview__list-item'));
-      var panel = document.querySelector('.m365-overview__panel');
-      if (tabs.length === 0 || panel === null) return;
-      var title = panel.querySelector('h2');
-      var copy = panel.querySelector('p');
-      tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-          if (tab.classList.contains('m365-overview__list-item--active')) return;
-          tabs.forEach(function (t) {
-            t.classList.remove('m365-overview__list-item--active');
-            t.setAttribute('aria-selected', 'false');
-          });
-          tab.classList.add('m365-overview__list-item--active');
-          tab.setAttribute('aria-selected', 'true');
-          panel.classList.add('is-switching');
-          setTimeout(function () {
-            title.textContent = tab.getAttribute('data-title');
-            copy.textContent = tab.getAttribute('data-copy');
-            panel.classList.remove('is-switching');
-          }, 250);
-        });
+(function m365OverviewTabs() {
+
+  var tabs = Array.prototype.slice.call(
+    document.querySelectorAll('.m365-overview__list-item')
+  );
+
+  var panel = document.querySelector('.m365-overview__panel');
+  var image = document.getElementById('m365-overview-image');
+
+  if (tabs.length === 0 || panel === null || image === null) return;
+
+  var title = panel.querySelector('h2');
+  var copy = panel.querySelector('p');
+
+  tabs.forEach(function (tab) {
+
+    tab.addEventListener('click', function () {
+
+      if (tab.classList.contains('m365-overview__list-item--active')) {
+        return;
+      }
+
+      /* Remove active state */
+      tabs.forEach(function (t) {
+        t.classList.remove('m365-overview__list-item--active');
+        t.setAttribute('aria-selected', 'false');
       });
-    })();
+
+      /* Add active state */
+      tab.classList.add('m365-overview__list-item--active');
+      tab.setAttribute('aria-selected', 'true');
+
+      /* Fade content */
+      panel.classList.add('is-switching');
+
+      setTimeout(function () {
+
+        /* Update title */
+        title.textContent = tab.getAttribute('data-title');
+
+        /* Update description */
+        copy.textContent = tab.getAttribute('data-copy');
+
+        /* Update image */
+        var newImage = tab.getAttribute('data-img');
+
+        if (newImage) {
+          image.src = newImage;
+          image.alt = tab.getAttribute('data-title') || '';
+        }
+
+        /* Show content */
+        panel.classList.remove('is-switching');
+
+      }, 250);
+
+    });
+
+  });
+
+})();
+
 
     (function mm365Accordion() {
       var acc = document.querySelector('.mm365-acc');
