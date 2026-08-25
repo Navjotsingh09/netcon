@@ -266,8 +266,8 @@
     /* ===== MEGA MENU ===== */
     .nav-arrow { transition: transform 0.2s ease; }
     .has-mega.is-open .nav-arrow { transform: rotate(180deg); }
-    .mega-menu { position:absolute; top:calc(100% + 4px); left:0; right:0; background:#fff; border:1px solid var(--gray-mid); border-top:3px solid var(--blue); border-radius:0 0 14px 14px; box-shadow:0 16px 40px rgba(0,0,0,.18); overflow:hidden; opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-8px); transition:opacity .22s,transform .22s,visibility 0s .22s; z-index:400; }
-    .has-mega.is-open .mega-menu { opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0); transition:opacity .22s,transform .22s,visibility 0s 0s; }
+    .mega-menu { position:absolute; top:calc(100% + 4px); left:50%; right:auto; width:min(1120px,calc(100vw - 40px)); background:#fff; border:1px solid var(--gray-mid); border-top:3px solid var(--blue); border-radius:0 0 14px 14px; box-shadow:0 16px 40px rgba(0,0,0,.18); overflow:hidden; opacity:0; visibility:hidden; pointer-events:none; transform:translateX(-50%) translateY(-8px); transition:opacity .22s,transform .22s,visibility 0s .22s; z-index:400; }
+    .has-mega.is-open .mega-menu { opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0); transition:opacity .22s,transform .22s,visibility 0s 0s; }
     .mega-inner { max-width:var(--max-w); margin:0 auto; padding:24px 0 28px; }
     /* SERVICES — dark sidebar + 2-col bordered grid */
     .mega-inner--services { display:flex; gap:10px; align-items:stretch; }
@@ -916,9 +916,6 @@
       padding: 45px 60px 60px;
     }
     .services-section__title { margin-bottom: 40px; }
-    .services-section__cards {
-      /* layout driven by .sc-track */
-    }
     .s-card {
       position: relative;
       border-radius: 17px;
@@ -1190,10 +1187,6 @@
       padding: 45px 60px 60px;
     }
     .industries-section__title { margin-bottom: 40px; }
-    .industries-section__cards {
-      /* layout driven by .sc-track */
-    }
-
     /* ===== SCROLL BANNERS — sticky card flip ===== */
     .banners-flip {
       position: relative;
@@ -1505,9 +1498,6 @@
     .footer__bottom-links a:hover { opacity: 1; }
 
     /* ===== SCROLL BANNER 2 — CTA ABSOLUTE POSITION ===== */
-    .scroll-banner-cta-abs {
-      /* top/left set in main rule above — no override needed here */
-    }
     /* CTA button inside scroll banner content: don't stretch full-width */
     .scroll-banner--cta .scroll-banner__content {
       align-items: flex-start;
@@ -3259,11 +3249,11 @@ Edgbaston, B15 3BE</p>
       font-weight: 400;
     }
     .nd-contact__layout {
-      width: 1440px;
+      width: min(1440px, 100%);
       max-width: 100%;
       display: grid;
-      grid-template-columns: 588px 708px;
-      column-gap: 144px;
+      grid-template-columns: minmax(0, 588px) minmax(0, 708px);
+      column-gap: clamp(32px, 7.5vw, 144px);
       row-gap: 24px;
       align-items: start;
     }
@@ -3291,13 +3281,14 @@ Edgbaston, B15 3BE</p>
     }
     .nd-contact__layout {
       display: grid;
-      grid-template-columns: 588px 708px;
-      column-gap: 144px;
+      grid-template-columns: minmax(0, 588px) minmax(0, 708px);
+      column-gap: clamp(32px, 7.5vw, 144px);
       row-gap: 24px;
       align-items: start;
     }
     .nd-contact__intro {
       grid-column: 1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -3386,6 +3377,8 @@ Edgbaston, B15 3BE</p>
       grid-row: 1 / span 3;
       width: 708px;
       max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
       padding: 32px;
       border: 1px solid #cfd4db;
       background: #fff;

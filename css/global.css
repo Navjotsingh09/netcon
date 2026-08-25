@@ -1632,16 +1632,17 @@ body.industry-detail-page #main > #contact {
   line-height: 1.55;
 }
 .nd-contact__layout {
-  width: 1440px;
+  width: min(1440px, 100%);
   max-width: 100%;
   display: grid;
-  grid-template-columns: 588px 708px;
-  column-gap: 144px;
+  grid-template-columns: minmax(0, 588px) minmax(0, 708px);
+  column-gap: clamp(32px, 7.5vw, 144px);
   row-gap: 24px;
   align-items: start;
 }
 .nd-contact__intro {
   grid-column: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -1666,6 +1667,7 @@ body.industry-detail-page #main > #contact {
 }
 .nd-contact__tiles {
   grid-column: 1;
+  min-width: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
@@ -1738,6 +1740,8 @@ body.industry-detail-page #main > #contact {
   grid-row: 1 / span 3;
   width: 708px;
   max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   padding: 32px;
   border: 1px solid #cfd4db;
   background: #fff;
