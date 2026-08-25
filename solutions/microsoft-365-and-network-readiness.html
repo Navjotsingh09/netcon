@@ -49,6 +49,7 @@
   <link rel="stylesheet" href="/css/global.css?v=home-sections-20260715b">
   <script src="/js/schema.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/content-cta.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
     .m365-page {
@@ -693,43 +694,117 @@
       </div>
     </section>
 
-    <section class="m365-overview" aria-labelledby="m365-features-h">
-      <div class="m365-overview__head animate-fade-up">
-        <h2 id="m365-features-h">What's Included in the Microsoft 365 Readiness Assessment</h2>
+   <section class="m365-overview" aria-labelledby="m365-features-h">
+  <div class="m365-overview__head animate-fade-up">
+    <h2 id="m365-features-h">
+      What's Included in the Microsoft 365 Readiness Assessment
+    </h2>
+  </div>
+
+  <div class="m365-overview__inner">
+
+    <div
+      class="m365-overview__list animate-fade-up"
+      role="tablist"
+      aria-label="What's included in the Microsoft 365 readiness assessment"
+    >
+
+      <button
+        type="button"
+        role="tab"
+        aria-selected="true"
+        class="m365-overview__list-item m365-overview__list-item--active"
+        data-title="Infrastructure Workload Support"
+        data-copy="Evaluates whether your infrastructure can support Microsoft 365 production workloads."
+        data-image="/images/pages/unique/infrastructure-workload-support.jpg"
+        data-alt="Infrastructure workload support assessment">
+        Infrastructure Workload Support
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="m365-overview__list-item"
+        data-title="Latency &amp; Bandwidth Review"
+        data-copy="Reviews network latency, routing paths, bandwidth utilisation, and internet performance."
+        data-image="/images/pages/unique/latency-bandwidth-review.jpg"
+        data-alt="Microsoft 365 latency and bandwidth review">
+        Latency &amp; Bandwidth Review
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="m365-overview__list-item"
+        data-title="Endpoint Readiness"
+        data-copy="Assesses whether existing endpoints can reliably support Microsoft 365 workloads."
+        data-image="/images/pages/unique/endpoint-readiness.jpg"
+        data-alt="Microsoft 365 endpoint readiness assessment">
+        Endpoint Readiness
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="m365-overview__list-item"
+        data-title="Teams, Exchange &amp; SharePoint Connectivity"
+        data-copy="Validates connectivity for Microsoft Teams, Exchange Online, SharePoint, and OneDrive."
+        data-image="/images/pages/unique/teams-exchange-sharepoint-connectivity.jpg"
+        data-alt="Teams Exchange SharePoint and OneDrive connectivity assessment">
+        Teams, Exchange &amp; SharePoint Connectivity
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="m365-overview__list-item"
+        data-title="Identity &amp; Security Controls"
+        data-copy="Examines identity services, authentication policies, security controls, and compliance settings."
+        data-image="/images/pages/unique/identity-security-controls.jpg"
+        data-alt="Microsoft 365 identity and security controls assessment">
+        Identity &amp; Security Controls
+      </button>
+
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="m365-overview__list-item"
+        data-title="Risk &amp; Remediation Recommendations"
+        data-copy="Identifies technical risks before deployment and provides prioritised remediation recommendations."
+        data-image="/images/pages/unique/risk-remediation-recommendations.jpg"
+        data-alt="Microsoft 365 risk and remediation recommendations">
+        Risk &amp; Remediation Recommendations
+      </button>
+
+    </div>
+
+    <div class="m365-overview__feature animate-fade-up">
+
+      <img
+        id="m365-overview-image"
+        src="/images/pages/unique/infrastructure-workload-support.jpg"
+        alt="Infrastructure workload support assessment"
+        loading="lazy"
+      >
+
+      <div class="m365-overview__panel" role="tabpanel">
+        <h3 id="m365-overview-title">
+          Infrastructure Workload Support
+        </h3>
+
+        <p id="m365-overview-copy">
+          Evaluates whether your infrastructure can support Microsoft 365 production workloads.
+        </p>
       </div>
-      <div class="m365-overview__inner">
-        <div class="m365-overview__list animate-fade-up" role="tablist" aria-label="What's included in the Microsoft 365 readiness assessment">
-          <button type="button" role="tab" aria-selected="true" class="m365-overview__list-item m365-overview__list-item--active"
-            data-title="Infrastructure Workload Support"
-            data-copy="Evaluates whether your infrastructure can support Microsoft 365 production workloads.">Infrastructure Workload Support</button>
-          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
-            data-title="Latency &amp; Bandwidth Review"
-            data-copy="Reviews network latency, routing paths, bandwidth utilisation, and internet performance.">Latency &amp; Bandwidth Review</button>
-          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
-            data-title="Endpoint Readiness"
-            data-copy="Assesses whether existing endpoints can reliably support Microsoft 365 workloads.">Endpoint Readiness</button>
-          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
-            data-title="Teams, Exchange &amp; SharePoint Connectivity"
-            data-copy="Validates connectivity for Microsoft Teams, Exchange Online, SharePoint, and OneDrive.">Teams, Exchange &amp; SharePoint Connectivity</button>
-          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
-            data-title="Identity &amp; Security Controls"
-            data-copy="Examines identity services, authentication policies, security controls, and compliance settings.">Identity &amp; Security Controls</button>
-          <button type="button" role="tab" aria-selected="false" class="m365-overview__list-item"
-            data-title="Risk &amp; Remediation Recommendations"
-            data-copy="Identifies technical risks before deployment and provides prioritised remediation recommendations.">Risk &amp; Remediation Recommendations</button>
-        </div>
-        <div class="m365-overview__feature animate-fade-up">
-          <picture>
-            <source srcset="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.webp" type="image/webp">
-            <img src="/images/pages/unique/solutions-microsoft-365-network-nc-hero-person.jpg" alt="Microsoft 365 assessment consultant" loading="lazy">
-          </picture>
-          <div class="m365-overview__panel" role="tabpanel">
-            <h3 id="m365-overview-title">Infrastructure Workload Support</h3>
-            <p>Evaluates whether your infrastructure can support Microsoft 365 production workloads.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+
+    </div>
+  </div>
+</section>
 
     <section class="m365-band" aria-labelledby="m365-banner-h">
       <div class="m365-band__inner animate-fade-up">
@@ -764,6 +839,13 @@
             <img src="/images/pages/unique/solutions-microsoft-365-network-servers.jpg" alt="Office 365 readiness infrastructure review" loading="lazy">
           </picture>
         </div>
+      </div>
+    </section>
+
+    <section class="content-cta" aria-label="Contact Network Consultancy">
+      <div class="content-cta__inner">
+        <div class="content-cta__copy"><h2 class="content-cta__title">Ready to assess your Microsoft 365 readiness?</h2><p class="content-cta__text">Contact our team to plan a practical review of your network and infrastructure.</p></div>
+        <a class="content-cta__button" href="/contact" data-source-cta="solution_microsoft_365_services_contact">Contact Us</a>
       </div>
     </section>
 
