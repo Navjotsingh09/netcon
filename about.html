@@ -197,6 +197,15 @@
       align-items: start;
     }
 
+    @media (min-width: 1201px) {
+      .ab-intro__grid,
+      .ab-cap > .ab-inner,
+      .ab-pro__card,
+      .ab-test {
+        width: min(var(--max-w), calc(100% - (2 * var(--px))));
+      }
+    }
+
     .ab-intro__media {
       border-radius: 19.47px;
       overflow: hidden;
@@ -1253,6 +1262,10 @@
     }
 
     @media (max-width: 1200px) {
+      .ab-highlight .ab-inner {
+        width: 100%;
+      }
+
       .ab-hero {
         grid-template-columns: 1fr;
       }
