@@ -1,9 +1,9 @@
 .content-cta {
   background: var(--blue);
   color: #fff;
-  max-width: var(--section-w);
+  max-width: 1440px;
   margin: 42px auto;
-  padding: 34px var(--px);
+  padding: 52px 80px;
 }
 
 .content-cta__inner {
@@ -68,8 +68,8 @@
 @media (max-width: 768px) {
   .content-cta {
     margin: 32px auto;
-    padding-top: 28px;
-    padding-bottom: 28px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   .content-cta__inner {
