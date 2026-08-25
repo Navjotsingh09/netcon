@@ -104,6 +104,35 @@
     .ctu-contact-item:hover .ctu-contact-value a { color: var(--blue); }
     .ctu-contact-value a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 3px; }
 
+    .ctf-section { padding: 72px var(--px) 42px; max-width: var(--section-w); margin: 0 auto; }
+    .ctf-inner { max-width: 1440px; margin: 0 auto; }
+    .ctf-header { display: grid; grid-template-columns: minmax(260px, 1fr) minmax(0, 1.4fr); gap: 42px; align-items: start; margin-bottom: 36px; }
+    .ctf-title { font-family: 'Google Sans Flex', sans-serif; font-weight: 600; font-size: 42px; color: var(--navy); line-height: 1.05; margin: 0; }
+    .ctf-sub { font-family: 'Google Sans Flex', sans-serif; font-weight: 500; font-size: 20px; color: var(--navy); line-height: 1.35; margin: 0; }
+    .ctf-body { display: grid; grid-template-columns: minmax(280px, 521px) minmax(0, 1fr); gap: 36px; align-items: stretch; }
+    .ctf-image { min-height: 560px; border-radius: 20px; overflow: hidden; }
+    .ctf-image img { width: 100%; height: 100%; min-height: 560px; object-fit: cover; object-position: center; display: block; }
+    .ctf-form-panel { background: #859aba; border-radius: 20px; padding: 36px 40px 32px; }
+    .ctf-form { display: flex; flex-direction: column; gap: 18px; }
+    .ctf-fields { display: flex; flex-direction: column; gap: 14px; }
+    .ctf-row { display: flex; gap: 14px; }
+    .ctf-field { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+    .ctf-label { font-family: 'Google Sans Flex', sans-serif; font-size: 13px; color: #353535; }
+    .ctf-input, .ctf-select, .ctf-textarea { width: 100%; border: 1px solid rgba(53,53,53,.35); border-radius: 8px; background: #fff; padding: 0 14px; box-shadow: 0 3px 2px rgba(0,0,0,.1); font-family: 'Google Sans Flex', sans-serif; font-size: 15px; color: #353535; height: 44px; }
+    .ctf-select { -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23353535' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .ctf-textarea { height: 90px; padding: 12px 14px; resize: vertical; }
+    .ctf-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 2px 0 0; padding: 0; border: 0; }
+    .ctf-option { display: flex; align-items: center; gap: 8px; min-height: 42px; padding: 8px 10px; border: 1px solid rgba(53,53,53,.25); border-radius: 8px; background: rgba(255,255,255,.18); color: #353535; font-family: 'Google Sans Flex', sans-serif; font-size: 14px; cursor: pointer; transition: background .2s, border-color .2s, transform .2s; }
+    .ctf-option:hover, .ctf-option:has(input:checked) { background: #fff; border-color: var(--blue); transform: translateY(-1px); }
+    .ctf-option input { accent-color: var(--blue); margin: 0; }
+    .ctf-btn { background: #353535; border: 1px solid #353535; color: #fff; border-radius: 7px; font-family: 'Google Sans Flex', sans-serif; font-size: 13px; padding: 9px 18px; align-self: flex-start; cursor: pointer; transition: background .2s, transform .2s; }
+    .ctf-btn:hover { background: #1a1a1a; transform: translateY(-1px); }
+    .ctf-sr-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    .ctf-form .form-consents { margin-top: 0; }
+    .ctf-form .form-success, .ctf-form .form-error { display: none; margin: 0; padding: 10px 12px; border-radius: 7px; font-family: 'Google Sans Flex', sans-serif; font-size: 13px; }
+    .ctf-form .form-success { background: #d4edda; color: #155724; }
+    .ctf-form .form-error { background: #f8d7da; color: #721c24; }
+
     @media (prefers-reduced-motion: reduce) {
       .ctu-card, .ctu-icon, .ctu-contact-icon, .ctu-contact-icon--email, .ctu-num, .ctu-contact-value a { transition: none; }
       .ctu-card:hover, .ctu-card:focus-within,
@@ -133,19 +162,31 @@
     }
 
     @media (max-width: 1200px) {
+      .ctf-header { grid-template-columns: 1fr; gap: 18px; }
+      .ctf-body { grid-template-columns: 380px minmax(0, 1fr); }
+      .ctf-image, .ctf-image img { min-height: 520px; }
       .ctu-title { font-size: 36px; }
       .ctu-body { font-size: 20px; }
       .ctu-cat, .ctu-card-title, .ctu-desc { font-size: 20px; }
       .ctu-contact-label, .ctu-contact-value { font-size: 26px; }
     }
     @media (max-width: 1024px) {
+      .ctf-body { grid-template-columns: 1fr; }
+      .ctf-image { min-height: 300px; max-height: 380px; }
+      .ctf-image img { min-height: 300px; max-height: 380px; }
       .ctu-grid { grid-template-columns: repeat(2, 1fr); }
       .ctu-contact-inner { flex-wrap: wrap; justify-content: center; gap: 48px; }
     }
     @media (max-width: 768px) {
+      .ctf-section { padding-top: 48px; }
+      .ctf-row { flex-direction: column; }
+      .ctf-form-panel { padding: 28px 22px; }
       .ctu-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
+      .ctf-title { font-size: 28px; }
+      .ctf-sub { font-size: 17px; }
+      .ctf-options { grid-template-columns: repeat(2, 1fr); }
       .ctu-title { font-size: 28px; }
       .ctu-contact-label, .ctu-contact-value { font-size: 22px; }
     }
@@ -159,6 +200,49 @@
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
     <main id="main">
+
+  <section class="ctf-section animate-fade-up" aria-labelledby="ctf-title">
+    <div class="ctf-inner">
+      <div class="ctf-header">
+        <h2 class="ctf-title" id="ctf-title">Contact us today for a free consultation</h2>
+        <p class="ctf-sub">We pride ourselves on delivering a flexible engagement style in order to meet your requirements. Contact us for your free consultation.</p>
+      </div>
+
+      <div class="ctf-body">
+        <div class="ctf-image">
+          <picture>
+            <source srcset="/images/pages/contact-form-photo.webp" type="image/webp">
+            <img src="/images/pages/contact-form-photo.jpg" alt="Business professional speaking on the phone while working on a laptop" loading="eager" width="521" height="755">
+          </picture>
+        </div>
+        <div class="ctf-form-panel">
+          <form class="ctf-form" id="contact-form" method="post" action="https://api.web3forms.com/submit" novalidate>
+            <input type="hidden" name="access_key" value="fbcd4bae-c2e9-4e0c-9bf1-9576bef8625b">
+            <input type="hidden" name="subject" id="cf-subject" value="NetCon website enquiry">
+            <input type="checkbox" name="botcheck" tabindex="-1" aria-hidden="true" style="display:none">
+            <input type="hidden" name="source_page" id="cf-source-page" value="contact">
+            <input type="hidden" name="source_family" id="cf-source-family" value="contact">
+            <input type="hidden" name="source_cta" id="cf-source-cta" value="contact_consultation_form">
+            <input type="hidden" name="inquiry_type" id="cf-inquiry-type" value="general_inquiry">
+            <input type="hidden" name="lead_status" id="cf-lead-status" value="new_lead">
+            <input type="hidden" name="action_required" id="cf-action-required" value="review_and_route">
+            <input type="hidden" name="routing_team" id="cf-routing-team" value="admin">
+            <div class="ctf-fields">
+              <label class="ctf-field"><span class="ctf-label">Select the enquiry type</span><select class="ctf-select" name="enquiry_type" required><option value="" selected disabled>Select here</option><option value="General">General</option><option value="Support">Support</option><option value="Projects">Projects</option><option value="Appointment">Appointment</option><option value="Assistance">Assistance</option><option value="Consulting">Consulting</option></select></label>
+              <div class="ctf-row"><label class="ctf-field"><span class="ctf-label">First name</span><input class="ctf-input" type="text" name="first_name" autocomplete="given-name" placeholder="First name" required></label><label class="ctf-field"><span class="ctf-label">Last name</span><input class="ctf-input" type="text" name="last_name" autocomplete="family-name" placeholder="Last name" required></label></div>
+              <div class="ctf-row"><label class="ctf-field"><span class="ctf-label">Phone number</span><input class="ctf-input" type="tel" name="phone" autocomplete="tel" placeholder="Phone number" required></label><label class="ctf-field"><span class="ctf-label">Company name</span><input class="ctf-input" type="text" name="company" autocomplete="organization" placeholder="Company name" required></label></div>
+              <label class="ctf-field"><span class="ctf-label">Message</span><textarea class="ctf-textarea" name="message" rows="4" placeholder="Tell us how we can help" required></textarea></label>
+              <label class="ctf-field"><span class="ctf-label">Where did you hear about us?</span><select class="ctf-select" name="referral_source" required><option value="" selected disabled>Select here</option><option value="Search engine">Search engine</option><option value="Recommendation">Recommendation</option><option value="Social media">Social media</option><option value="Other">Other</option></select></label>
+            </div>
+            <fieldset class="ctf-options"><legend class="ctf-sr-label">What can we help with?</legend><label class="ctf-option"><input type="radio" name="service_interest" value="General" checked> General</label><label class="ctf-option"><input type="radio" name="service_interest" value="Support"> Support</label><label class="ctf-option"><input type="radio" name="service_interest" value="Projects"> Projects</label><label class="ctf-option"><input type="radio" name="service_interest" value="Appointment"> Appointment</label><label class="ctf-option"><input type="radio" name="service_interest" value="Assistance"> Assistance</label><label class="ctf-option"><input type="radio" name="service_interest" value="Consulting"> Consulting</label></fieldset>
+            <button class="ctf-btn" type="submit">Submit</button>
+            <div id="form-success" class="form-success" role="status" aria-live="polite">Thank you for your enquiry &mdash; we will be in touch shortly.</div>
+            <div id="form-error" class="form-error" role="alert">Something went wrong. Please check the required fields and try again.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="ctu-reach animate-fade-up" aria-labelledby="ctu-h">
     <h1 class="ctu-title" id="ctu-h">Reach Out to Us</h1>
@@ -295,7 +379,6 @@
   </main>
   <div id="site-contact"></div>
   <script src="/js/form-source-tracking.js"></script>
-  <script src="/js/contact.js"></script>
 
   <div id="site-footer"></div>
   <script src="/js/footer.js"></script>
