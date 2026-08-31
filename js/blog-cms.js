@@ -188,6 +188,15 @@
       dateLabel: "19/08/2026",
       category: "Infrastructure",
       image: "/images/pages/unique/Professional-networking-cable.avif"
+    },
+      {
+      slug: "post-23",
+      urlSlug: "shadow-ai-cybersecurity-risk-uk-businesses",
+      title: "Shadow AI Cybersecurity Risk UK Businesses",
+      excerpt: "Discover how shadow AI can expose business data to security risks and why UK businesses need clear rules for safe AI use",
+      dateLabel: "27/08/2026",
+      category: "Security",
+      image: "/images/pages/unique/Cybersecurity-Risk-UK.avif"
     }
   ];
 
