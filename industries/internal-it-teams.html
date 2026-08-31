@@ -162,8 +162,8 @@
     <div class="svcs-hero__wrap">
       <div class="svcs-hero__content">
         <div class="svcs-hero__text">
-          <h1 class="svcs-hero__title animate-fade-up">Managed IT for Education</h1>
-          <p class="svcs-hero__sub animate-fade-up">Network Consultancy delivers secure, reliable IT networks for schools and colleges, ensuring consistent connectivity and supporting modern learning.</p>
+          <h1 class="svcs-hero__title animate-fade-up">Network Consultancy Support for Internal IT Departments</h1>
+          <p class="svcs-hero__sub animate-fade-up">Network Consultancy works alongside internal IT teams, handling the network and security work that would otherwise compete with day-to-day priorities.</p>
         </div>
         <a href="/contact" class="btn-blue svcs-hero__cta animate-fade-up" data-source-cta="industry_health_check">Book Health Check</a>
       </div>
@@ -172,27 +172,104 @@
 
   <section class="svl-overview animate-fade-up" aria-labelledby="intro-h">
     <h2 class="heading-xl svl-overview__title" id="intro-h">Strengthening Internal IT with Expert Network Support</h2>
-    <div class="body-lg svl-overview__lead"><p>A network specialist provides support to your existing personnel without increasing their workload on a daily basis.</p></div>
+    <div class="body-lg svl-overview__lead"><p>A network specialist provides support to your existing personnel without increasing their workloads on a daily basis.</p></div>
+
     <div class="svl-overview__inner">
-      <div class="svl-overview__list" role="tablist" aria-label="Internal IT focus areas">
-        <button type="button" role="tab" aria-selected="true" class="svl-overview__list-item svl-overview__list-item--active"
-          data-title="The Expanding Responsibilities of Internal IT Teams"
-          data-copy="IT departments today face challenges from multiple fronts, including cyber security, maintaining infrastructure, supporting users and long-term strategic planning."
-          data-srcset="/images/pages/unique/The-Expanding-Responsibilities-Internal.avif"
-          data-img="/images/pages/unique/The-Expanding-Responsibilities-Internal.avif"
-          data-alt="Internal IT teams network strategy">The Expanding Responsibilities of Internal IT Teams</button>
-      </div>
-      <div class="svl-overview__feature">
-        <picture>
-          <source id="svl-feature-source" srcset="/images/pages/unique/The-Expanding-Responsibilities-Internal.avif" type="image/avif">
-          <img id="svl-feature-img" src="/images/pages/unique/The-Expanding-Responsibilities-Internal.avif" alt="Internal IT teams network strategy" loading="lazy">
-        </picture>
-        <div class="svl-overview__panel" role="tabpanel">
-          <h3 id="svl-overview-title">The Expanding Responsibilities of Internal IT Teams</h3>
-          <p id="svl-overview-copy">IT departments today face challenges from multiple fronts, including cyber security, maintaining infrastructure, supporting users and long-term strategic planning.</p>
-        </div>
-      </div>
-    </div>
+        <div class="svl-overview__list" role="tablist" aria-label="Industry focus areas">
+
+          <!-- Tab 2 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Managing Multiple IT Challenges"
+            data-copy="IT departments today face challenges from multiple fronts, including Cyber Security, maintaining infrastructure, supporting users and long-term strategic planning."
+            data-img="/images/pages/unique/Managing-Multiple-It.avif"
+            data-alt="Managing Multiple IT Challenges">
+           Managing Multiple IT Challenges
+          </button>
+
+          <!-- Tab 3 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Specialist Network Troubleshooting Support"
+            data-copy="Network Consultancy adds specialist network troubleshooting capacity that is often pushed aside when daily issues take priority.
+
+Consultants work alongside internal IT teams to identify vulnerabilities that the existing setup might miss without disrupting daily operations.
+Internal teams get access to experts and the latest technologies without having to hire people with specific skills."
+            data-img="/images/pages/unique/Network-Issues-Supporting.avif"
+            data-alt="Specialist Network Troubleshooting Support ">
+            Specialist Network Troubleshooting Support
+          </button>
+
+          <!-- Tab 4 -->
+          <button type="button" role="tab" aria-selected="false"
+            class="svl-overview__list-item"
+            data-title="Reducing Network Issues and Supporting Strategic IT Goals"
+            data-copy="This means fewer problems become issues, security problems get fixed quickly, and our internal IT team can focus on bigger goals instead of just fixing network problems all the time."
+            data-img="/images/pages/unique/Network-Troubleshootin-Support.avif"
+            data-alt="Reducing Network Issues and Supporting Strategic IT Goals">
+          Reducing Network Issues and Supporting Strategic IT Goals
+          </button>
+
+         
+        </div><!-- /.svl-overview__list -->
+
+        <div class="svl-overview__feature">
+          <picture>
+            <source id="svl-feature-source" srcset="/images/pages/unique/Managing-Multiple-It.avif" type="image/avif">
+            <img id="svl-feature-img"
+              src="/images/pages/unique/Managing-Multiple-It.avif"
+              alt="Managing Multiple IT Challenges"
+              loading="lazy">
+          </picture>
+          <div class="svl-overview__panel" role="tabpanel">
+            <h3 id="svl-overview-title">  Managing Multiple IT Challenges</h3>
+            <p id="svl-overview-copy">IT departments today face challenges from multiple fronts, including Cyber Security, maintaining infrastructure, supporting users and long-term strategic planning.</p>
+          </div>
+        </div><!-- /.svl-overview__feature -->
+
+      </div><!-- /.svl-overview__inner -->
+
+    <!-- SINGLE TAB SCRIPT -->
+    <script>
+    (function svlOverviewTabs() {
+      'use strict';
+      var tabs   = Array.prototype.slice.call(document.querySelectorAll('.svl-overview__list-item'));
+      var panel  = document.querySelector('.svl-overview__panel');
+      if (tabs.length === 0 || panel === null) return;
+      var title  = document.getElementById('svl-overview-title');
+      var copy   = document.getElementById('svl-overview-copy');
+      var img    = document.getElementById('svl-feature-img');
+      var source = document.getElementById('svl-feature-source');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          if (tab.classList.contains('svl-overview__list-item--active')) return;
+          tabs.forEach(function (t) {
+            t.classList.remove('svl-overview__list-item--active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('svl-overview__list-item--active');
+          tab.setAttribute('aria-selected', 'true');
+          tab.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          panel.classList.add('is-switching');
+          if (img) img.style.opacity = '0';
+          setTimeout(function () {
+            if (title)  title.textContent  = tab.getAttribute('data-title');
+            if (copy)   copy.textContent   = tab.getAttribute('data-copy');
+            if (source) source.srcset      = tab.getAttribute('data-img');
+            if (img) {
+              img.src           = tab.getAttribute('data-img');
+              img.alt           = tab.getAttribute('data-alt');
+              img.style.opacity = '1';
+            }
+            panel.classList.remove('is-switching');
+          }, 250);
+        });
+      });
+    })();
+    </script>
+
+
+
   </section>
 
   <section class="section animate-fade-up" aria-labelledby="support-h">
@@ -241,34 +318,28 @@
       avatar: '/images/misc/avatars/testimonial-avatar-m2.jpg'
     },
     {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Managing Director',
-      role: 'Broadcasting Company, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-managing-director.jpg'
+      quote: 'We needed specialist network consultancy support during a major infrastructure upgrade. Their guidance ensured a smooth transition, improved security, and minimised disruption to daily operations',
+      name: 'Sarah Mitchell',
+      role: 'Head of IT Operations, Birmingham – Financial Services',
+      avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
     },
     {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'IT Director',
-      role: 'Professional Services Firm, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-it-director.jpg'
+      quote: 'Working with this network consultancy has strengthened our internal IT capabilities significantly. Their proactive recommendations, technical knowledge, and ongoing support have improved reliability, efficiency, and long-term network planning across the business.',
+      name: 'David Roberts',
+      role: 'Infrastructure Lead, Leeds – Manufacturing Group',
+      avatar: '/images/misc/avatars/testimonial-avatar-m1.jpg'
     },
     {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Head of Operations',
-      role: 'Healthcare Provider, Birmingham',
-      avatar: '/images/misc/avatars/testimonial-avatar-head-of-operations.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Managing Partner',
-      role: 'Legal Firm, London',
+      quote: 'The network consultancy support helped us modernise our infrastructure with minimal downtime. Their clear recommendations and hands-on approach significantly improved system stability, security, and overall performance across our clinical and administrative systems.',
+      name: 'Emma Clarke',
+      role: 'Director, London – Healthcare Solutions',
       avatar: '/images/misc/avatars/testimonial-avatar-managing-partner.jpg'
     },
     {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Operations Director',
-      role: 'Manufacturing Company, Midlands',
-      avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
+      quote: 'Their expertise in network consultancy was instrumental during our multi-site expansion. They helped standardise our network architecture, improve connectivity between locations, and strengthen security protocols, resulting in a far more resilient IT environment.',
+      name: 'Michael Harris ',
+      role: ' Senior Systems Administrator, Bristol',
+      avatar: '/images/misc/avatars/testimonial-avatar-m3.jpg'
     }
   ];
   </script>
@@ -296,9 +367,9 @@
     <button class="nd-faq__item is-open"><span>What exactly is network consultancy, and how does it assist the internal IT team?</span><strong>−</strong></button>
     <div class="nd-faq__panel">Network consultants provide specialised networking knowledge that the internal IT team's schedule does not permit them to develop within the organisation.<br><br>The consultant will design, troubleshoot, and secure networks in conjunction with the internal IT team. The consultant applies their expertise to the networks that require more focus than the internal IT team can provide in their daily activities.</div>
     <button class="nd-faq__item"><span>When should an organisation use network consultancy services?</span><strong>+</strong></button>
-    <div class="nd-faq__panel" hidden>Organisations usually bring in consultancy when internal teams are stretched, network changes are high risk, or performance issues continue despite repeated fixes.<br><br>It is especially useful during growth, office moves, mergers, or infrastructure refresh projects where specialist design and migration planning are needed.</div>
+    <div class="nd-faq__panel" hidden>Organisations typically bring in Network Consultancy during a network upgrade, an expansion to new sites, or a security issue that requires expertise that the internal team doesn't have time to build in-house.</div>
     <button class="nd-faq__item"><span>What are the benefits of working with a network consultancy?</span><strong>+</strong></button>
-    <div class="nd-faq__panel" hidden>You gain access to specialist expertise, improved network stability, stronger security posture, and faster delivery of complex networking projects.<br><br>Your internal team keeps ownership while benefiting from additional capability where it matters most.</div>
+    <div class="nd-faq__panel" hidden>Network Consulting takes over the day-to-day monitoring and troubleshooting of the network, eliminating the need to compete for resources with other operational priorities. This allows early detection and resolution of problems that could disrupt your network's operation. Like other organisations that engage external service providers, the internal IT department has more time to focus on its overall business objectives, rather than continuously maintaining the network.</div>
   </div>
 </section>
 
