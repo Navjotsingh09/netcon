@@ -196,7 +196,7 @@
       excerpt: "Discover how shadow AI can expose business data to security risks and why UK businesses need clear rules for safe AI use",
       dateLabel: "27/08/2026",
       category: "Security",
-      image: "/images/pages/unique/Cybersecurity-Risk-UK.avif"
+      image: "/images/pages/unique/Cybersecurity-Risk-Uk.avif"
     }
   ];
 
