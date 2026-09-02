@@ -1,6 +1,17 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "api/cms/bootstrap.js": {
+      "includeFiles": "reports/cms-blog-import-baseline.json"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/resources/blogs/:slug",
+      "destination": "/api/public/blog/:slug"
+    }
+  ],
   "redirects": [
     {
       "source": "/services/managed-network-maintenance-support",

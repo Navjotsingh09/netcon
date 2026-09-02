@@ -48,7 +48,7 @@
     {
       slug: "post-06",
       urlSlug: "network-validation",
-      title: "Network Validation: Everything You Need To Know",
+      title: "Network Validation: Everything You Need to Know in 2026",
       excerpt: "Ensure your secure wireless network is trustworthy. Learn the key authentication methods and why proactive network validation beats reactive fixes.",
       dateLabel: "04/07/2026",
       category: "Security",
@@ -93,8 +93,8 @@
     {
       slug: "post-12",
       urlSlug: "remote-work-network-security",
-      title: "Top Network Security Management Solutions for Remote Working",
-      excerpt: "Remote working creates new network security challenges. Discover the top management solutions to keep distributed teams secure in 2025.",
+      title: "Top Network Security Solutions for Remote Working: Expert Tips",
+      excerpt: "Remote working creates new network security challenges. Discover practical network installation, cloud security, endpoint protection, and IT consulting solutions.",
       dateLabel: "19/06/2026",
       category: "Security",
       image: "/images/pages/unique/resources-blog-post-12-resources.png"
@@ -102,8 +102,8 @@
     {
       slug: "post-13",
       urlSlug: "secure-hybrid-workspace",
-      title: "Creating a Secure Hybrid Workspace",
-      excerpt: "Hybrid workplaces depend on secure, reliable networks. Three practical steps to build a secure hybrid workspace using your IT infrastructure.",
+      title: "3 Steps to Creating a Secure Hybrid Workspace Using Your Network",
+      excerpt: "Hybrid workplaces depend on secure, reliable networks. Learn how to create a balanced work experience, secure the cloud, and embrace zero trust.",
       dateLabel: "16/06/2026",
       category: "Solutions",
       image: "/images/pages/technician.jpg"
@@ -147,8 +147,8 @@
     {
       slug: "post-18",
       urlSlug: "cisco-security-solutions",
-      title: "Virtualised Networks Designed & Installed by Us",
-      excerpt: "Organisations transform their business with integrated technology from Cisco and VMware. See how converged compute, storage, and virtualisation accelerate IT agility.",
+      title: "Cisco and VMware Virtualisation Solutions for Modern Business Networks",
+      excerpt: "Discover how Cisco and VMware virtualisation solutions improve flexibility, resilience, security, and scalability for modern business networks.",
       dateLabel: "03/06/2026",
       category: "Industry News",
       image: "/images/pages/unique/resources-blog-post-18-resources.jpg"
@@ -156,7 +156,7 @@
     {
       slug: "post-19",
       urlSlug: "network-consultant-benefits",
-      title: "Why Your Business Needs a Network Consultant Partner",
+      title: "Why Your Business Needs a Network Consultant Partner, Not Just an IT Fixer",
       excerpt: "A strategic network consultant partner delivers more than IT fixes. Learn why businesses need expert consultancy to future-proof their infrastructure.",
       dateLabel: "31/05/2026",
       category: "Strategy",
@@ -227,15 +227,33 @@
     var meta = document.getElementById("blog-results-meta");
     var paginationWrap = document.getElementById("blog-pagination");
     var searchInput = document.getElementById("blog-search-input");
+    var dateSort = document.getElementById("blog-date-sort");
 
     if (!list || !chipsWrap || !meta) {
       return;
+    }
+
+    var featuredCard = document.querySelector(".blog-featured__card");
+    var featuredTitle = document.getElementById("featured-article-heading");
+    var featuredMeta = document.querySelector(".blog-featured__meta");
+    var featuredText = document.querySelector(".blog-featured__text");
+    var featuredImage = document.querySelector(".blog-featured__media img");
+    var featuredPost = BLOG_POSTS.filter(function (post) { return post.isFeatured; })
+      .sort(function (a, b) { return (a.featuredRank || 999) - (b.featuredRank || 999); })[0];
+    if (featuredPost && featuredCard && featuredTitle && featuredMeta && featuredText && featuredImage) {
+      featuredCard.href = "/resources/blogs/" + featuredPost.urlSlug;
+      featuredTitle.textContent = featuredPost.title;
+      featuredMeta.textContent = featuredPost.dateLabel + " \u2022 " + featuredPost.category;
+      featuredText.textContent = featuredPost.excerpt;
+      featuredImage.src = featuredPost.image;
+      featuredImage.alt = featuredPost.imageAlt || featuredPost.title;
     }
 
     var activeCategory = "All";
     var searchTerm = "";
     var pageSize = 6;
     var currentPage = 1;
+    var dateSortDirection = "desc";
 
     var categories = BLOG_POSTS
       .map(function (post) { return post.category; })
@@ -332,6 +350,11 @@
         var categoryOk = activeCategory === "All" || post.category === activeCategory;
         return categoryOk && matchesSearch(post, term);
       });
+      filtered.sort(function (a, b) {
+        return dateSortDirection === "asc"
+          ? parseDateLabel(a.dateLabel) - parseDateLabel(b.dateLabel)
+          : parseDateLabel(b.dateLabel) - parseDateLabel(a.dateLabel);
+      });
 
       var total = filtered.length;
       var totalPages = Math.max(1, Math.ceil(total / pageSize));
@@ -422,6 +445,14 @@
       });
     }
 
+    if (dateSort) {
+      dateSort.addEventListener("change", function () {
+        dateSortDirection = dateSort.value;
+        currentPage = 1;
+        renderPosts();
+      });
+    }
+
     setActiveChip();
     renderPosts();
   }
@@ -474,8 +505,23 @@
   }
 
   window.NETCON_BLOG_POSTS = BLOG_POSTS;
+  function loadPublishedPosts() {
+    return fetch("/api/public/blogs", { headers: { Accept: "application/json" } })
+      .then(function (response) { return response.ok ? response.json() : null; })
+      .then(function (data) {
+        if (data && Array.isArray(data.posts) && data.posts.length) {
+          BLOG_POSTS = data.posts;
+          BLOG_POSTS.sort(function (a, b) { return parseDateLabel(b.dateLabel) - parseDateLabel(a.dateLabel); });
+          window.NETCON_BLOG_POSTS = BLOG_POSTS;
+        }
+      })
+      .catch(function () {});
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
-    renderBlogIndex();
-    renderLatestSidebar();
+    loadPublishedPosts().then(function () {
+      renderBlogIndex();
+      renderLatestSidebar();
+    });
   });
 })();
