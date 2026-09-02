@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Blog CMS | Network Consultancy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/styles.css">
+  <script defer src="/admin/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="cms-shell">
+    <header class="cms-header">
+      <a class="cms-brand" href="/" aria-label="Network Consultancy home">
+        <span class="cms-brand__mark">NC</span>
+        <span>Network Consultancy <small>Editorial</small></span>
+      </a>
+      <div class="cms-session" id="cms-session">
+        <span class="cms-connection" id="cms-connection">Checking CMS connection</span>
+      </div>
+    </header>
+
+    <main id="main-content" class="cms-main">
+      <section class="cms-welcome" aria-labelledby="cms-title">
+        <div>
+          <p class="cms-eyebrow">Blog publishing</p>
+          <h1 id="cms-title">Editorial dashboard</h1>
+          <p>Draft, review, schedule and publish articles without changing the public site directly.</p>
+        </div>
+        <button class="cms-button cms-button--primary" id="new-post-button" type="button" disabled>New article</button>
+      </section>
+
+      <section class="cms-setup" id="cms-setup" aria-live="polite" hidden>
+        <h2>CMS setup is incomplete</h2>
+        <p id="cms-setup-message">This deployment is not connected to the editorial services yet.</p>
+        <p>Ask a project owner to confirm the Supabase environment values and CMS database setup.</p>
+      </section>
+
+      <section class="cms-auth" id="cms-auth" aria-live="polite">
+        <div id="clerk-sign-in"></div>
+      </section>
+
+      <section class="cms-workspace" id="cms-workspace" hidden>
+        <div class="cms-stats" aria-label="Blog statistics">
+          <article><span id="published-count">0</span><small>Published</small></article>
+          <article><span id="draft-count">0</span><small>Drafts</small></article>
+          <article><span id="review-count">0</span><small>In review</small></article>
+          <article><span id="scheduled-count">0</span><small>Scheduled</small></article>
+        </div>
+
+        <div class="cms-workspace__body">
+        <section class="cms-panel cms-library" aria-labelledby="articles-heading">
+          <div class="cms-panel__head">
+            <div><p class="cms-eyebrow">Content library</p><h2 id="articles-heading">Articles</h2></div>
+            <input id="post-search" type="search" placeholder="Search articles" autocomplete="off">
+          </div>
+          <div class="cms-table-wrap">
+            <table>
+              <thead><tr><th>Article</th><th>Status</th><th>Updated</th><th></th></tr></thead>
+              <tbody id="post-list"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="cms-panel cms-editor" id="editor-panel" hidden aria-labelledby="editor-heading">
+          <div class="cms-panel__head"><div><p class="cms-eyebrow">Article editor</p><h2 id="editor-heading">New article</h2><p class="cms-editor__state" id="editor-state">Complete the fields, then save the draft.</p></div><span id="save-status" aria-live="polite"></span></div>
+          <form id="article-form">
+            <div class="cms-form-grid">
+              <label>Article title<input name="title" required maxlength="180" autocomplete="off"></label>
+              <label>Public URL slug<input name="publicSlug" required maxlength="120" pattern="[a-z0-9]+(-[a-z0-9]+)*" placeholder="network-topic-guide" autocomplete="off"></label>
+              <label>Category<input name="category" required maxlength="80" placeholder="Infrastructure" autocomplete="off"></label>
+              <label>Publication date<input name="publishedAt" type="date"></label>
+              <label class="cms-checkbox"><input name="isFeatured" type="checkbox"> Feature on blog listing</label>
+              <label>Featured position<input name="featuredRank" type="number" min="1" max="50" placeholder="Optional"></label>
+              <label>Replace featured image (optional)<input name="featuredImage" type="file" accept="image/avif,image/jpeg,image/png,image/webp"></label>
+              <div class="cms-featured-image cms-form-grid__wide" id="featured-image-panel" hidden>
+                <img id="featured-image-preview" alt="">
+                <div><strong>Current featured image</strong><p id="featured-image-name"></p><button class="cms-link-button" id="remove-featured-image" type="button">Remove and choose a new image</button></div>
+              </div>
+              <label class="cms-form-grid__wide">Image alternative text<input name="featuredImageAlt" required maxlength="250" autocomplete="off"></label>
+              <label class="cms-form-grid__wide">Excerpt<textarea name="excerpt" required maxlength="360" rows="3"></textarea></label>
+              <label class="cms-form-grid__wide">Article body<textarea name="articleHtml" required rows="16" placeholder="Use semantic HTML, for example: <h2>Heading</h2><p>Paragraph.</p>"></textarea></label>
+              <label class="cms-form-grid__wide">SEO title<input name="seoTitle" maxlength="180" autocomplete="off"></label>
+              <label class="cms-form-grid__wide">SEO description<textarea name="seoDescription" maxlength="360" rows="3"></textarea></label>
+              <label class="cms-form-grid__wide">Schema markup (JSON-LD)<textarea name="schemaMarkup" rows="10" spellcheck="false" placeholder='{"@context":"https://schema.org","@type":"Article"}'></textarea></label>
+            </div>
+            <input name="featuredImageUrl" type="hidden">
+            <div class="cms-actions">
+              <button class="cms-button cms-button--secondary" id="preview-button" type="button">Preview</button>
+              <button class="cms-button cms-button--primary" type="submit">Save draft</button>
+              <button class="cms-button cms-button--dark" id="publish-live-button" type="button" disabled>Publish live</button>
+            </div>
+            <div class="cms-lifecycle-actions" id="cms-lifecycle-actions" hidden>
+              <button class="cms-link-button" id="archive-post-button" type="button">Archive article</button>
+              <button class="cms-link-button cms-link-button--danger" id="delete-post-button" type="button">Delete draft</button>
+            </div>
+          </form>
+        </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="preview-dialog">
+    <div class="cms-dialog__head"><h2>Article preview</h2><button class="cms-icon-button" id="close-preview-button" type="button" aria-label="Close preview">x</button></div>
+    <article id="preview-content"></article>
+  </dialog>
+  <dialog id="account-created-dialog" aria-labelledby="account-created-title">
+    <div class="cms-dialog__head"><h2 id="account-created-title">Account created</h2><button class="cms-icon-button" id="close-account-created" type="button" aria-label="Close confirmation">x</button></div>
+    <div class="cms-dialog__body">
+      <p>We have sent a confirmation link to your company email address.</p>
+      <p>Confirm your email, then return here and sign in to start the CMS.</p>
+      <button class="cms-button cms-button--primary" id="account-created-done" type="button">Back to sign in</button>
+    </div>
+  </dialog>
+  <dialog id="publish-result-dialog" aria-labelledby="publish-result-title">
+    <div class="cms-dialog__head"><h2 id="publish-result-title">Article published</h2><button class="cms-icon-button" id="close-publish-result" type="button" aria-label="Close publish confirmation">x</button></div>
+    <div class="cms-dialog__body">
+      <p id="publish-result-message"></p>
+      <a class="cms-button cms-button--primary" id="publish-result-link" href="/" target="_blank" rel="noopener">View published article</a>
+    </div>
+  </dialog>
+</body>
+</html>

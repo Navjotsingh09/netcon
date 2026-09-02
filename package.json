@@ -1,0 +1,14 @@
+{
+  "name": "network-consultancy-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "cms:import:check": "node scripts/import-existing-blogs.mjs",
+    "cms:import:write": "node scripts/import-existing-blogs.mjs --write",
+    "cms:import:supabase": "env -u SUPABASE_URL -u SUPABASE_PUBLISHABLE_KEY -u SUPABASE_SERVICE_ROLE_KEY node --env-file=.env.local scripts/import-existing-blogs.mjs --supabase-import"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0",
+    "sanitize-html": "^2.16.0"
+  }
+}

@@ -10,3 +10,5 @@ Figma design files
 *.7z
 add-*.py
 batch-*.py
+resources/blogs/*.html
+!resources/blogs/index.html
