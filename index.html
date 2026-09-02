@@ -266,8 +266,8 @@
     /* ===== MEGA MENU ===== */
     .nav-arrow { transition: transform 0.2s ease; }
     .has-mega.is-open .nav-arrow { transform: rotate(180deg); }
-    .mega-menu { position:absolute; top:calc(100% + 4px); left:0; right:0; background:#fff; border:1px solid var(--gray-mid); border-top:3px solid var(--blue); border-radius:0 0 14px 14px; box-shadow:0 16px 40px rgba(0,0,0,.18); overflow:hidden; opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-8px); transition:opacity .22s,transform .22s,visibility 0s .22s; z-index:400; }
-    .has-mega.is-open .mega-menu { opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0); transition:opacity .22s,transform .22s,visibility 0s 0s; }
+    .mega-menu { position:absolute; top:calc(100% + 4px); left:50%; right:auto; width:min(1120px,calc(100vw - 40px)); background:#fff; border:1px solid var(--gray-mid); border-top:3px solid var(--blue); border-radius:0 0 14px 14px; box-shadow:0 16px 40px rgba(0,0,0,.18); overflow:hidden; opacity:0; visibility:hidden; pointer-events:none; transform:translateX(-50%) translateY(-8px); transition:opacity .22s,transform .22s,visibility 0s .22s; z-index:400; }
+    .has-mega.is-open .mega-menu { opacity:1; visibility:visible; pointer-events:auto; transform:translateX(-50%) translateY(0); transition:opacity .22s,transform .22s,visibility 0s 0s; }
     .mega-inner { max-width:var(--max-w); margin:0 auto; padding:24px 0 28px; }
     /* SERVICES — dark sidebar + 2-col bordered grid */
     .mega-inner--services { display:flex; gap:10px; align-items:stretch; }
