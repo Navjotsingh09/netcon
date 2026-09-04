@@ -149,6 +149,7 @@
     }
     const created = await api('/api/cms/posts', { method: 'POST', body: JSON.stringify(payload) });
     currentPost = { publicSlug: payload.publicSlug, revisionId: created.revision.id, status: 'draft' };
+    updatePublishingControls(currentPost);
   }
   elements.newPost.addEventListener('click', () => { resetEditor(); document.getElementById('cms-lifecycle-actions').hidden = true; renderPosts(); }); elements.search.addEventListener('input', renderPosts);
   elements.form.elements.featuredImage.addEventListener('change', () => { const file = elements.form.elements.featuredImage.files[0]; if (file) renderFeaturedImage(URL.createObjectURL(file), elements.form.elements.featuredImageAlt.value); });

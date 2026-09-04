@@ -39,12 +39,21 @@ export default async function handler(request, response) {
 <link rel="apple-touch-icon" sizes="180x180" href="/images/misc/favicon-180.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="${canonical}">
+${isStaging ? '<meta name="robots" content="noindex, nofollow">' : ''}
 <meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
 <meta property="og:url" content="${canonical}">
 <meta property="og:title" content="${escapeHtml(revision.seo_title)}">
 <meta property="og:description" content="${escapeHtml(revision.seo_description)}">
 <meta property="og:site_name" content="Network Consultancy">
 <meta property="og:image" content="${escapeHtml(revision.featured_image_url)}">
+<meta property="og:image:alt" content="${escapeHtml(revision.featured_image_alt || revision.seo_title)}">
+${revision.published_at ? `<meta property="article:published_time" content="${new Date(revision.published_at).toISOString()}">` : ''}
+${revision.updated_at ? `<meta property="article:modified_time" content="${new Date(revision.updated_at).toISOString()}">` : ''}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${escapeHtml(revision.seo_title)}">
+<meta name="twitter:description" content="${escapeHtml(revision.seo_description)}">
+<meta name="twitter:image" content="${escapeHtml(revision.featured_image_url)}">
 <title>${escapeHtml(revision.seo_title)}</title>
 <meta name="description" content="${escapeHtml(revision.seo_description)}">
 ${schemaMarkup}
