@@ -210,23 +210,8 @@
     const { data: sessionData } = await supabase.auth.getSession();
     if (!sessionData.session) {
       elements.auth.hidden = false;
-      document.getElementById('clerk-sign-in').innerHTML = '<form id="cms-sign-in-form"><h2 id="cms-auth-title">Sign in to continue</h2><p id="cms-auth-copy">Use the editorial account created by your Network Consultancy administrator.</p><label>Company email<input name="email" type="email" autocomplete="email" required></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><button class="cms-button cms-button--primary" id="cms-auth-submit" type="submit">Sign in</button><button class="cms-button cms-button--secondary" id="create-account" type="button">Create account</button><button class="cms-button cms-button--secondary" id="google-sign-in" type="button">Continue with Google</button><button class="cms-link-button" id="reset-password" type="button">Reset password</button><p id="cms-auth-error" role="alert"></p></form>';
-      let authMode = 'sign-in';
-      function setAuthMode(mode) {
-        authMode = mode;
-        const isCreateMode = mode === 'create-account';
-        document.getElementById('cms-auth-title').textContent = isCreateMode ? 'Create account' : 'Sign in to continue';
-        document.getElementById('cms-auth-copy').textContent = isCreateMode ? 'Create your editorial account using your company email address.' : 'Use the editorial account created by your Network Consultancy administrator.';
-        document.getElementById('cms-auth-submit').textContent = isCreateMode ? 'Create account' : 'Sign in';
-        document.getElementById('create-account').textContent = isCreateMode ? 'Back to sign in' : 'Create account';
-        document.getElementById('reset-password').hidden = isCreateMode;
-        document.getElementById('cms-auth-error').textContent = '';
-      }
-      document.getElementById('cms-sign-in-form').addEventListener('submit', async (event) => { event.preventDefault(); const form = new FormData(event.currentTarget); const result = authMode === 'create-account' ? await supabase.auth.signUp({ email: form.get('email'), password: form.get('password'), options: { emailRedirectTo: `${window.location.origin}/admin` } }) : await supabase.auth.signInWithPassword({ email: form.get('email'), password: form.get('password') }); if (result.error) { document.getElementById('cms-auth-error').textContent = result.error.message; return; } if (authMode === 'create-account') { document.getElementById('account-created-dialog').showModal(); return; } window.location.reload(); });
-      document.getElementById('create-account').addEventListener('click', () => setAuthMode(authMode === 'create-account' ? 'sign-in' : 'create-account'));
-      document.getElementById('google-sign-in').addEventListener('click', async () => { const { error } = await supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: `${window.location.origin}/admin` } }); if (error) document.getElementById('cms-auth-error').textContent = error.message; });
-      document.getElementById('reset-password').addEventListener('click', async () => { const email = document.querySelector('#cms-sign-in-form [name="email"]').value; if (!email) { document.getElementById('cms-auth-error').textContent = 'Enter your email address first.'; return; } const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/admin` }); document.getElementById('cms-auth-error').textContent = error ? error.message : 'Password reset instructions have been sent.'; });
-      ['close-account-created', 'account-created-done'].forEach((id) => document.getElementById(id).addEventListener('click', () => { document.getElementById('account-created-dialog').close(); setAuthMode('sign-in'); }));
+      document.getElementById('clerk-sign-in').innerHTML = '<form id="cms-sign-in-form"><h2 id="cms-auth-title">Sign in to continue</h2><p id="cms-auth-copy">Use the editorial account created by your Network Consultancy administrator.</p><label>Company email<input name="email" type="email" autocomplete="email" required></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><button class="cms-button cms-button--primary" id="cms-auth-submit" type="submit">Sign in</button><p id="cms-auth-error" role="alert"></p></form>';
+      document.getElementById('cms-sign-in-form').addEventListener('submit', async (event) => { event.preventDefault(); const form = new FormData(event.currentTarget); const result = await supabase.auth.signInWithPassword({ email: form.get('email'), password: form.get('password') }); if (result.error) { document.getElementById('cms-auth-error').textContent = result.error.message; return; } window.location.reload(); });
       setConnection('Sign in required', false); return;
     }
     token = sessionData.session.access_token; elements.auth.hidden = true; elements.workspace.hidden = false; elements.newPost.disabled = false; setConnection('CMS connected', true);
