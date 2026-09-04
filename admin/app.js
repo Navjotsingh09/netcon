@@ -66,7 +66,11 @@
   function renderPosts() {
     const query = elements.search.value.trim().toLowerCase();
     const visible = posts.filter((post) => `${post.title} ${post.publicSlug} ${post.category}`.toLowerCase().includes(query));
-    elements.list.innerHTML = visible.map((post) => `<tr class="${currentPost?.publicSlug === post.publicSlug ? 'is-selected' : ''}"><td>${escapeHtml(post.title || 'Untitled article')}${post.isFeatured ? '<small>Featured</small>' : ''}<small>/resources/blogs/${escapeHtml(post.publicSlug)}</small></td><td><span class="cms-status">${escapeHtml(post.status || 'draft').replace(/_/g, ' ')}</span></td><td>${post.updatedAt ? new Date(post.updatedAt).toLocaleDateString('en-GB') : '-'}</td><td><button class="cms-button cms-button--secondary" data-slug="${escapeHtml(post.publicSlug)}" type="button">Open</button></td></tr>`).join('') || '<tr><td colspan="4">No articles match this search.</td></tr>';
+    elements.list.innerHTML = visible.map((post) => {
+      const label = (post.archivedAt ? 'archived' : (post.status || 'draft')).replace(/_/g, ' ');
+      const rowClass = `${currentPost?.publicSlug === post.publicSlug ? 'is-selected' : ''}${post.archivedAt ? ' is-archived' : ''}`.trim();
+      return `<tr class="${rowClass}"><td>${escapeHtml(post.title || 'Untitled article')}${post.isFeatured ? '<small>Featured</small>' : ''}<small>/resources/blogs/${escapeHtml(post.publicSlug)}</small></td><td><span class="cms-status" data-status="${escapeHtml(label)}">${escapeHtml(label)}</span></td><td>${post.updatedAt ? new Date(post.updatedAt).toLocaleDateString('en-GB') : '-'}</td><td><button class="cms-button cms-button--secondary" data-slug="${escapeHtml(post.publicSlug)}" type="button">Open</button></td></tr>`;
+    }).join('') || '<tr><td colspan="4">No articles match this search.</td></tr>';
     const countElementIds = { published: 'published-count', draft: 'draft-count', in_review: 'review-count', scheduled: 'scheduled-count' };
     Object.entries(countElementIds).forEach(([status, id]) => { document.getElementById(id).textContent = posts.filter((post) => post.status === status).length; });
   }

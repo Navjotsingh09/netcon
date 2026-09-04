@@ -5,13 +5,13 @@ import { errorResponse, json, options } from '../../../lib/cms/http.js';
 
 async function listPosts(request, response, user) {
   const client = supabaseAdmin();
-  const { data: rawPosts, error: postError } = await client.from('blog_posts').select('id, public_slug, first_published_at, published_revision_id, created_at').order('created_at', { ascending: false });
+  const { data: rawPosts, error: postError } = await client.from('blog_posts').select('id, public_slug, first_published_at, published_revision_id, created_at, archived_at').order('created_at', { ascending: false });
   if (postError) throw postError;
   const { data: revisions, error: revisionError } = await client.from('blog_revisions').select('id, post_id, revision_number, status, title, category, updated_at, created_by').order('revision_number', { ascending: false });
   if (revisionError) throw revisionError;
   const posts = rawPosts.map((post) => {
     const latest = revisions.find((revision) => revision.post_id === post.id);
-    return { id: post.id, publicSlug: post.public_slug, firstPublishedAt: post.first_published_at, publishedRevisionId: post.published_revision_id, latestRevisionId: latest?.id || null, revisionNumber: latest?.revision_number || 0, status: latest?.status || 'draft', title: latest?.title || '', category: latest?.category || '', updatedAt: latest?.updated_at || post.created_at, createdBy: latest?.created_by || null };
+    return { id: post.id, publicSlug: post.public_slug, firstPublishedAt: post.first_published_at, publishedRevisionId: post.published_revision_id, latestRevisionId: latest?.id || null, revisionNumber: latest?.revision_number || 0, status: latest?.status || 'draft', archivedAt: post.archived_at || null, title: latest?.title || '', category: latest?.category || '', updatedAt: latest?.updated_at || post.created_at, createdBy: latest?.created_by || null };
   });
   return json(request, response, { user, posts });
 }
