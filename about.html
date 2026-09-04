@@ -1936,6 +1936,9 @@ Edgbaston, B15 3BE</p>
           var isAnimating = false;
           var transitionMs = 420;
           var isDesktop = desktopQuery.matches;
+          var autoAdvanceId = null;
+          var autoAdvanceDelay = 5000;
+          var reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
           function updateDots() {
             if (!dots.length || !cardCount) return;
@@ -1948,6 +1951,7 @@ Edgbaston, B15 3BE</p>
           function setDesktopState(enabled) {
             isDesktop = enabled;
             if (!isDesktop) {
+              stopAutoAdvance();
               isAnimating = false;
               prevBtn.disabled = true;
               nextBtn.disabled = true;
@@ -1966,6 +1970,22 @@ Edgbaston, B15 3BE</p>
             track.style.transform = 'translateX(' + baseTranslate + 'px)';
             currentIndex = 0;
             updateDots();
+          }
+
+          function stopAutoAdvance() {
+            if (autoAdvanceId === null) return;
+            window.clearInterval(autoAdvanceId);
+            autoAdvanceId = null;
+          }
+
+          function startAutoAdvance() {
+            if (!isDesktop || reduceMotionQuery.matches || document.hidden || autoAdvanceId !== null) return;
+            autoAdvanceId = window.setInterval(onNext, autoAdvanceDelay);
+          }
+
+          function restartAutoAdvance() {
+            stopAutoAdvance();
+            startAutoAdvance();
           }
 
           function recalcMetrics() {
@@ -2060,12 +2080,26 @@ Edgbaston, B15 3BE</p>
             setDesktopState(desktopQuery.matches);
           }
 
-          prevBtn.addEventListener('click', onPrev);
-          nextBtn.addEventListener('click', onNext);
+          prevBtn.addEventListener('click', function () { onPrev(); restartAutoAdvance(); });
+          nextBtn.addEventListener('click', function () { onNext(); restartAutoAdvance(); });
           desktopQuery.addEventListener('change', refresh);
           window.addEventListener('resize', refresh);
+          trusted.addEventListener('mouseenter', stopAutoAdvance);
+          trusted.addEventListener('mouseleave', startAutoAdvance);
+          trusted.addEventListener('focusin', stopAutoAdvance);
+          trusted.addEventListener('focusout', function () {
+            window.setTimeout(function () {
+              if (!trusted.contains(document.activeElement)) startAutoAdvance();
+            }, 0);
+          });
+          document.addEventListener('visibilitychange', function () {
+            if (document.hidden) stopAutoAdvance();
+            else startAutoAdvance();
+          });
+          reduceMotionQuery.addEventListener('change', restartAutoAdvance);
 
           refresh();
+          startAutoAdvance();
         }
       }
 
@@ -2077,6 +2111,10 @@ Edgbaston, B15 3BE</p>
         var bodyTwo = abPro.querySelector('[data-ab-pro-body-2]');
         var source = abPro.querySelector('[data-ab-pro-source]');
         var image = abPro.querySelector('[data-ab-pro-image]');
+        var currentProSlide = 0;
+        var proAutoAdvanceId = null;
+        var proAutoAdvanceDelay = 5000;
+        var reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
         var proSlides = [
           {
@@ -2109,6 +2147,8 @@ Edgbaston, B15 3BE</p>
           var slide = proSlides[index];
           if (!slide || !title || !bodyOne || !bodyTwo || !image || !source) return;
 
+          currentProSlide = index;
+
           title.textContent = slide.title;
           bodyOne.textContent = slide.bodyOne;
           bodyTwo.textContent = slide.bodyTwo;
@@ -2119,7 +2159,21 @@ Edgbaston, B15 3BE</p>
           bars.forEach(function (bar, barIndex) {
             var active = barIndex === index;
             bar.classList.toggle('is-active', active);
+            bar.setAttribute('aria-pressed', active ? 'true' : 'false');
           });
+        }
+
+        function stopProAutoAdvance() {
+          if (proAutoAdvanceId === null) return;
+          window.clearInterval(proAutoAdvanceId);
+          proAutoAdvanceId = null;
+        }
+
+        function startProAutoAdvance() {
+          if (reduceMotionQuery.matches || document.hidden || proAutoAdvanceId !== null) return;
+          proAutoAdvanceId = window.setInterval(function () {
+            setProSlide((currentProSlide + 1) % proSlides.length);
+          }, proAutoAdvanceDelay);
         }
 
         bars.forEach(function (bar) {
@@ -2127,8 +2181,30 @@ Edgbaston, B15 3BE</p>
             var idx = Number(bar.getAttribute('data-ab-pro-bar'));
             if (Number.isNaN(idx)) return;
             setProSlide(idx);
+            stopProAutoAdvance();
+            startProAutoAdvance();
           });
         });
+
+        abPro.addEventListener('mouseenter', stopProAutoAdvance);
+        abPro.addEventListener('mouseleave', startProAutoAdvance);
+        abPro.addEventListener('focusin', stopProAutoAdvance);
+        abPro.addEventListener('focusout', function () {
+          window.setTimeout(function () {
+            if (!abPro.contains(document.activeElement)) startProAutoAdvance();
+          }, 0);
+        });
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden) stopProAutoAdvance();
+          else startProAutoAdvance();
+        });
+        reduceMotionQuery.addEventListener('change', function () {
+          stopProAutoAdvance();
+          startProAutoAdvance();
+        });
+
+        setProSlide(currentProSlide);
+        startProAutoAdvance();
       }
 
       var list = document.getElementById("nd-faq-list");

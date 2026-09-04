@@ -193,15 +193,6 @@
       audience: ['manager', 'technical'],
       intents: ['security', 'risk']
     },
-    {
-      title: 'Microsoft 365 & Network',
-      url: '/solutions/microsoft-365-and-network-readiness',
-      category: 'solutions',
-      summary: 'Prepare network performance and reliability for Microsoft 365 workloads.',
-      keywords: ['microsoft 365', 'm365 slow', 'office 365 network'],
-      audience: ['manager', 'technical'],
-      intents: ['upgrade', 'troubleshoot']
-    },
 
     {
       title: 'Industries',

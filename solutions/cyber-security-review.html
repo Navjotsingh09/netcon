@@ -7,22 +7,22 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://network-consultancy.com/"
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://network-consultancy.com/"
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Solutions",
-      "item": "https://network-consultancy.com/solutions/"
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Solutions",
+    "item": "https://network-consultancy.com/solutions/"
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Cyber Security Review",
-      "item": "https://network-consultancy.com/solutions/cyber-security-review"
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Cyber Security Review",
+    "item": "https://network-consultancy.com/solutions/cyber-security-review"
     }
   ]
 }
@@ -151,7 +151,7 @@
       max-width: var(--max-w);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, 386px) minmax(0, 822px);
+      grid-template-columns: 30% 66%;
       gap: 56px;
       align-items: start;
       background: #fff;
@@ -162,7 +162,8 @@
 
     .csr-overview__feature {
       position: relative;
-      min-height: 678px;
+      aspect-ratio: 822 / 678;
+      min-height: 0;
       border-radius: 20px;
       overflow: hidden;
       background: #0c1b3d;
@@ -206,7 +207,7 @@
       transform: translateY(12px);
     }
 
-    .csr-overview__panel h3 {
+    .csr-overview__panel h2 {
       margin: 0;
       color: #585151;
       font-family: "Google Sans Flex", sans-serif;
@@ -391,7 +392,7 @@
       }
 
       .csr-overview__feature {
-        min-height: 560px;
+        aspect-ratio: 4 / 3;
       }
 
       .csr-overview__list-item {
@@ -461,7 +462,7 @@
       .mcsr-card__count { position: absolute; left: 18px; bottom: 14px; font-size: 13px; font-weight: 600; color: #6d76a6; }
 
       /* FAQ clean white accordion + trusted heading color per design */
-      .nd-faq { background: #fff; border: 0; padding: 6px 22px 10px; margin-bottom: 100px; }
+      .nd-faq { background: #fff; border: 0; padding: 6px 22px 10px; }
       .nd-faq__left .section-title { color: #0982c5; font-size: 22px; font-weight: 700; }
       .nd-faq__left p { font-size: 14px; color: #4a4a4a; margin-bottom: 14px; }
       .nd-faq__cta { display: none; }
@@ -518,7 +519,7 @@
         <p class="mcsr-p">We identify security weaknesses that increase operational or compliance risk. Every cyber risk assessment reviews firewall configurations, network segmentation, user access, and infrastructure settings.</p>
         <p class="mcsr-p">The findings explain which issues require immediate attention and which can be planned later. Recommendations are based on technical evidence and practical business impact.</p>
         <p class="mcsr-p">Our team also provides ongoing cybersecurity consultancy whenever additional support is required.</p>
-        <img class="mcsr-img" src="/images/pages/unique/solutions-cyber-security-review-servers.jpg" alt="Security cabling and infrastructure" loading="lazy">
+        <img class="mcsr-img" src="/images/pages/unique/Why-Choose-cyber.jpg" alt="Security cabling and infrastructure" loading="lazy">
       </section>
 
     </div>
@@ -533,47 +534,130 @@
       </div>
     </section>
 
-    <section class="csr-overview" aria-labelledby="csr-audit-h">
-      <div class="csr-overview__head animate-fade-up">
-        <h2 id="csr-audit-h">Cyber Security Audit and Review</h2>
-        <p>Areas Covered During a Cyber Security Audit</p>
+<section class="csr-overview" aria-labelledby="csr-overview-title">
+  <div class="csr-overview__inner">
+
+    <div class="csr-overview__list animate-fade-up"
+         role="tablist"
+         aria-label="Areas covered during a cyber security audit">
+
+      <!-- 1. Security Controls Review -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="true"
+        class="csr-overview__list-item csr-overview__list-item--active"
+        data-title="Security Controls Review"
+        data-copy="A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses."
+        data-img="/images/pages/unique/Security-Controls-Review.jpg">
+        Security Controls Review
+      </button>
+
+      <!-- 2. Access & Permissions Analysis -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="csr-overview__list-item"
+        data-title="Access &amp; Permissions Analysis"
+        data-copy="By analysing infrastructure security, user permissions, administrative access, and network services, the assessment uncovers potential weaknesses that could affect operational stability and resilience."
+        data-img="/images/pages/unique/solutions-cyber-security-review-nc-hero-person.webp">
+        Access &amp; Permissions Analysis
+      </button>
+
+      <!-- 3. Key Security Controls -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="csr-overview__list-item"
+        data-title="Key Security Controls"
+        data-copy="Key security controls - including firewall policies, network segmentation, user authentication, endpoint configurations, and privileged access - are reviewed to identify risks that could impact business operations."
+        data-img="/images/pages/unique/Key-Security-Controls.jpg">
+        Key Security Controls
+      </button>
+
+      <!-- 4. Configuration & Exposure Assessment -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="csr-overview__list-item"
+        data-title="Configuration &amp; Exposure Assessment"
+        data-copy="Configuration drift, unnecessary system exposure, inherited permissions, and policy inconsistencies are assessed against operational and business risk."
+        data-img="/images/pages/unique/solutions-cyber-security-review-nc-hero-person.webp">
+        Configuration &amp; Exposure Assessment
+      </button>
+
+      <!-- 5. Service Disruption Risks -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="csr-overview__list-item"
+        data-title="Service Disruption Risks"
+        data-copy="The review identifies weaknesses that could disrupt critical services, increase attack paths, or delay incident containment during security events."
+        data-img="/images/pages/unique/Service-Disruption-Risks.jpg">
+        Service Disruption Risks
+      </button>
+
+      <!-- 6. Business Impact Ranking -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="csr-overview__list-item"
+        data-title="Business Impact Ranking"
+        data-copy="Findings are ranked by business impact, allowing remediation work to focus on security issues with the highest operational and governance risk."
+        data-img="/images/pages/unique/Business-Impact-Ranking.jpg">
+        Business Impact Ranking
+      </button>
+
+      <!-- 7. Framework-Aligned Recommendations -->
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        class="csr-overview__list-item"
+        data-title="Framework-Aligned Recommendations"
+        data-copy="Recommendations reflect recognised security frameworks, regulatory expectations, and implementation priorities suited to existing infrastructure constraints."
+        data-img="/images/pages/unique/Framework-Aligned-Recommendations.jpg">
+        Framework-Aligned Recommendations
+      </button>
+
+    </div>
+
+
+    <!-- FEATURE / IMAGE -->
+    <div class="csr-overview__feature animate-fade-up">
+
+      <picture>
+        <img
+          id="csr-overview-image"
+          src="/images/pages/unique/Security-Controls-Review.jpg"
+          alt="Security Controls Review"
+          loading="lazy">
+      </picture>
+
+      <!-- CONTENT PANEL -->
+      <div class="csr-overview__panel" role="tabpanel">
+
+        <h2 id="csr-overview-title">
+          Security Controls Review
+        </h2>
+
+        <p id="csr-overview-copy">
+          A cybersecurity review measures whether existing security controls
+          reduce operational risk or leave infrastructure exposed through
+          configuration weaknesses.
+        </p>
+
       </div>
-      <div class="csr-overview__inner">
-        <div class="csr-overview__list animate-fade-up" role="tablist" aria-label="Areas covered during a cyber security audit">
-          <button type="button" role="tab" aria-selected="true" class="csr-overview__list-item csr-overview__list-item--active"
-            data-title="Security Controls Review"
-            data-copy="A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses.">Security Controls Review</button>
-          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
-            data-title="Access &amp; Permissions Analysis"
-            data-copy="By analysing infrastructure security, user permissions, administrative access, and network services, the assessment uncovers potential weaknesses that could affect operational stability and resilience.">Access &amp; Permissions Analysis</button>
-          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
-            data-title="Key Security Controls"
-            data-copy="Key security controls - including firewall policies, network segmentation, user authentication, endpoint configurations, and privileged access - are reviewed to identify risks that could impact business operations.">Key Security Controls</button>
-          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
-            data-title="Configuration &amp; Exposure Assessment"
-            data-copy="Configuration drift, unnecessary system exposure, inherited permissions, and policy inconsistencies are assessed against operational and business risk.">Configuration &amp; Exposure Assessment</button>
-          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
-            data-title="Service Disruption Risks"
-            data-copy="The review identifies weaknesses that could disrupt critical services, increase attack paths, or delay incident containment during security events.">Service Disruption Risks</button>
-          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
-            data-title="Business Impact Ranking"
-            data-copy="Findings are ranked by business impact, allowing remediation work to focus on security issues with the highest operational and governance risk.">Business Impact Ranking</button>
-          <button type="button" role="tab" aria-selected="false" class="csr-overview__list-item"
-            data-title="Framework-Aligned Recommendations"
-            data-copy="Recommendations reflect recognised security frameworks, regulatory expectations, and implementation priorities suited to existing infrastructure constraints.">Framework-Aligned Recommendations</button>
-        </div>
-        <div class="csr-overview__feature animate-fade-up">
-          <picture>
-            <source srcset="/images/pages/unique/solutions-cyber-security-review-nc-hero-person.webp" type="image/webp">
-            <img src="/images/pages/unique/solutions-cyber-security-review-nc-hero-person.jpg" alt="Cyber security review" loading="lazy">
-          </picture>
-          <div class="csr-overview__panel" role="tabpanel">
-            <h3 id="csr-overview-title">Security Controls Review</h3>
-            <p>A cybersecurity review measures whether existing security controls reduce operational risk or leave infrastructure exposed through configuration weaknesses.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+
+    </div>
+
+  </div>
+</section>
 
     <section class="csr-why" aria-labelledby="csr-why-h">
       <div class="csr-why__inner">
@@ -586,8 +670,8 @@
         </div>
         <div class="csr-why__media animate-fade-up">
           <picture>
-            <source srcset="/images/pages/unique/solutions-cyber-security-review-servers.webp" type="image/webp">
-            <img src="/images/pages/unique/solutions-cyber-security-review-servers.jpg" alt="Security cabling and infrastructure" loading="lazy">
+            <source srcset="/images/pages/unique/Why-Choose-cyber.jpg" type="image/jpg">
+            <img src="/images/pages/unique/Why-Choose-cyber.jpg" alt="Security cabling and infrastructure" loading="lazy">
           </picture>
         </div>
       </div>
@@ -622,7 +706,7 @@
       </div>
     </section>
 
-    <section class="section-shell"><div class="nd-faq"><div class="nd-faq__left"><h3 class="section-title">FREQUENTLY ASKED QUESTIONS</h3><p>Still have questions? Get connected to our support team.</p><a href="/contact" class="nd-faq__cta">Contact us</a></div><div class="nd-faq__right" id="nd-faq-list"><button class="nd-faq__item is-open"><span>What is a cyber security review?</span><strong>&minus;</strong></button><div class="nd-faq__panel">A cybersecurity review assesses your company's networks, procedures, and security controls to identify weaknesses and areas for improvement.</div><button class="nd-faq__item"><span>What is included in a cyber risk assessment?</span><strong>+</strong></button><div class="nd-faq__panel" hidden>A cyber risk assessment reviews security controls, firewall configurations, segmentation, user access, infrastructure settings, and the issues most likely to create operational or compliance risk.</div><button class="nd-faq__item"><span>How frequently should a cyber security review be carried out?</span><strong>+</strong></button><div class="nd-faq__panel" hidden>It should be carried out regularly, especially after significant infrastructure changes, growth, or when your organisation needs updated evidence of its current security posture.</div></div></div></section>
+    <section class="section-shell"><div class="nd-faq"><div class="nd-faq__left"><h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2><p>Still have questions? Get connected to our support team.</p><a href="/contact" class="nd-faq__cta">Contact us</a></div><div class="nd-faq__right" id="nd-faq-list"><button class="nd-faq__item is-open"><span>What is a cyber security review?</span><strong>&minus;</strong></button><div class="nd-faq__panel">A cybersecurity review assesses your company's networks, procedures, and security controls to identify weaknesses and areas for improvement.</div><button class="nd-faq__item"><span>What is included in a cyber risk assessment?</span><strong>+</strong></button><div class="nd-faq__panel" hidden>A cyber risk assessment reviews security controls, firewall configurations, segmentation, user access, infrastructure settings, and the issues most likely to create operational or compliance risk.</div><button class="nd-faq__item"><span>How frequently should a cyber security review be carried out?</span><strong>+</strong></button><div class="nd-faq__panel" hidden>It should be carried out regularly, especially after significant infrastructure changes, growth, or when your organisation needs updated evidence of its current security posture.</div></div></div></section>
 
     <div id="site-contact"></div>
     <script src="/js/form-source-tracking.js"></script>
@@ -653,30 +737,69 @@
       }, { passive: true });
     })();
 
-    (function csrOverviewTabs() {
-      var tabs = Array.prototype.slice.call(document.querySelectorAll('.csr-overview__list-item'));
-      var panel = document.querySelector('.csr-overview__panel');
-      if (tabs.length === 0 || panel === null) return;
-      var title = panel.querySelector('h2');
-      var copy = panel.querySelector('p');
-      tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-          if (tab.classList.contains('csr-overview__list-item--active')) return;
-          tabs.forEach(function (t) {
-            t.classList.remove('csr-overview__list-item--active');
-            t.setAttribute('aria-selected', 'false');
-          });
-          tab.classList.add('csr-overview__list-item--active');
-          tab.setAttribute('aria-selected', 'true');
-          panel.classList.add('is-switching');
-          setTimeout(function () {
-            title.textContent = tab.getAttribute('data-title');
-            copy.textContent = tab.getAttribute('data-copy');
-            panel.classList.remove('is-switching');
-          }, 250);
-        });
+
+(function csrOverviewTabs() {
+
+  var tabs = Array.prototype.slice.call(
+    document.querySelectorAll('.csr-overview__list-item')
+  );
+
+  var panel = document.querySelector('.csr-overview__panel');
+  var image = document.querySelector('.csr-overview__feature img');
+
+  if (tabs.length === 0 || panel === null || image === null) return;
+
+  var title = panel.querySelector('h2');
+  var copy = panel.querySelector('p');
+
+  tabs.forEach(function (tab) {
+
+    tab.addEventListener('click', function () {
+
+      if (tab.classList.contains('csr-overview__list-item--active')) {
+        return;
+      }
+
+      /* Remove active state */
+      tabs.forEach(function (t) {
+        t.classList.remove('csr-overview__list-item--active');
+        t.setAttribute('aria-selected', 'false');
       });
-    })();
+
+      /* Add active state */
+      tab.classList.add('csr-overview__list-item--active');
+      tab.setAttribute('aria-selected', 'true');
+
+      /* Start transition */
+      panel.classList.add('is-switching');
+
+      setTimeout(function () {
+
+        /* Update title */
+        title.textContent = tab.getAttribute('data-title');
+
+        /* Update description */
+        copy.textContent = tab.getAttribute('data-copy');
+
+        /* Update image */
+        var newImage = tab.getAttribute('data-img');
+
+        if (newImage) {
+          image.src = newImage;
+          image.alt = tab.getAttribute('data-title') || '';
+        }
+
+        /* End transition */
+        panel.classList.remove('is-switching');
+
+      }, 250);
+
+    });
+
+  });
+
+})();
+
 
     (function mcsrAccordion() {
       var acc = document.querySelector('.mcsr-acc');

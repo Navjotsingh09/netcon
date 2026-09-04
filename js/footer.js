@@ -71,7 +71,6 @@
     '        <ul>',
     '          <li><a href="/solutions/network-health-check">Network Health Check</a></li>',
     '          <li><a href="/solutions/cyber-security-review">Cyber Security Review</a></li>',
-    '          <li><a href="/solutions/microsoft-365-and-network-readiness">Microsoft 365 &amp; Network</a></li>',
     '          <li><a href="/solutions/ai-ready-infrastructure-review">AI-Ready Infrastructure Review</a></li>',
     '        </ul>',
     '        <h4 class="mt">Resources</h4>',

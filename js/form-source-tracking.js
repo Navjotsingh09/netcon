@@ -31,7 +31,6 @@
     '/solutions/network-health-check': { family: 'solutions', page: 'network_health_check', cta: 'shared_footer_form' },
     '/solutions/ai-ready-infrastructure-review': { family: 'solutions', page: 'ai_ready_infrastructure', cta: 'shared_footer_form' },
     '/solutions/cyber-security-review': { family: 'solutions', page: 'cyber_security_review', cta: 'shared_footer_form' },
-    '/solutions/microsoft-365-and-network-readiness': { family: 'solutions', page: 'microsoft_365_network', cta: 'shared_footer_form' },
     '/industries/': { family: 'industries', page: 'industries_index', cta: 'shared_footer_form' },
     '/industries/financial-services': { family: 'industries', page: 'financial_services', cta: 'shared_footer_form' },
     '/industries/healthcare-and-clinics': { family: 'industries', page: 'healthcare_clinics', cta: 'shared_footer_form' },

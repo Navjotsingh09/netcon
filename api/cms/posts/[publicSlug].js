@@ -39,15 +39,29 @@ async function createRevision(request, response, user, slug) {
 
 async function updateDraft(request, response, user, slug) {
   const revisionId = request.body?.revisionId;
-  const { errors, revision } = validateRevisionInput(request.body || {});
+  const { errors, revision } = validateRevisionInput(request.body || {}, { allowSlug: true });
   if (!revisionId) errors.revisionId = 'A draft revision is required.';
   if (Object.keys(errors).length) {
     return json(request, response, { error: 'Please correct the highlighted fields.', fields: errors }, 422);
   }
   const client = supabaseAdmin();
-  const { data: updated, error } = await client.from('blog_revisions').update({ title: revision.title, excerpt: revision.excerpt, category: revision.category, article_html: revision.articleHtml, featured_image_url: revision.featuredImageUrl, featured_image_alt: revision.featuredImageAlt, seo_title: revision.seoTitle, seo_description: revision.seoDescription, schema_markup: revision.schemaMarkup, published_at: request.body?.publishedAt || null, updated_at: new Date().toISOString() }).eq('id', revisionId).eq('created_by', user.id).in('status', ['draft', 'changes_requested']).select('id, post_id, revision_number, status, updated_at').maybeSingle();
+  const { data: currentPost, error: currentPostError } = await client.from('blog_posts').select('id').eq('public_slug', slug).maybeSingle();
+  if (currentPostError) throw currentPostError;
+  if (!currentPost) return errorResponse(request, response, 'Blog post not found.', 404);
+  if (revision.publicSlug !== slug) {
+    const { data: slugConflict, error: slugLookupError } = await client.from('blog_posts').select('id').eq('public_slug', revision.publicSlug).neq('id', currentPost.id).maybeSingle();
+    if (slugLookupError) throw slugLookupError;
+    if (slugConflict) return errorResponse(request, response, 'That public URL slug is already in use.', 409);
+  }
+  const canonicalUrl = `https://network-consultancy.com/resources/blogs/${revision.publicSlug}`;
+  const { data: updated, error } = await client.from('blog_revisions').update({ title: revision.title, excerpt: revision.excerpt, category: revision.category, article_html: revision.articleHtml, featured_image_url: revision.featuredImageUrl, featured_image_alt: revision.featuredImageAlt, seo_title: revision.seoTitle, seo_description: revision.seoDescription, schema_markup: revision.schemaMarkup, canonical_url: canonicalUrl, published_at: request.body?.publishedAt || null, updated_at: new Date().toISOString() }).eq('id', revisionId).eq('created_by', user.id).in('status', ['draft', 'changes_requested']).select('id, post_id, revision_number, status, updated_at').maybeSingle();
   if (error) throw error;
   if (!updated) return errorResponse(request, response, 'Only your editable draft revisions can be updated.', 409);
+  const { error: slugError } = await client.from('blog_posts').update({ public_slug: revision.publicSlug }).eq('id', currentPost.id).eq('public_slug', slug);
+  if (slugError) {
+    if (slugError.code === '23505') return errorResponse(request, response, 'That public URL slug is already in use.', 409);
+    throw slugError;
+  }
   const featuredRank = request.body?.featuredRank ? Number(request.body.featuredRank) : null;
   const { error: postError } = await client.from('blog_posts').update({ is_featured: Boolean(request.body?.isFeatured), featured_rank: request.body?.isFeatured ? featuredRank : null, updated_at: new Date().toISOString() }).eq('id', updated.post_id);
   if (postError) throw postError;

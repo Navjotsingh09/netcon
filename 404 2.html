@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Page Not Found | Network Consultancy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css">
+  <style>
+    :root { --not-found-navy: #162470; --not-found-blue: #0982c5; --not-found-ink: #353535; --not-found-bg: #f4f6f8; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: var(--not-found-bg); color: var(--not-found-ink); font-family: 'Barlow', sans-serif; }
+    .not-found { min-height: 100vh; display: grid; place-items: center; padding: 32px 20px; background: linear-gradient(135deg, #f4f6f8 0%, #e7edf2 52%, #d8e8f1 100%); }
+    .not-found__content { width: min(100%, 720px); padding: clamp(36px, 7vw, 76px); border: 1px solid rgba(22, 36, 112, .14); border-radius: 8px; background: rgba(255, 255, 255, .9); box-shadow: 0 24px 70px rgba(22, 36, 112, .14); text-align: center; }
+    .not-found__eyebrow { margin: 0 0 16px; color: var(--not-found-blue); font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .not-found__code { margin: 0; color: var(--not-found-navy); font-family: 'Roboto Condensed', sans-serif; font-size: clamp(88px, 18vw, 168px); font-weight: 700; line-height: .8; }
+    .not-found__title { margin: 30px 0 12px; color: var(--not-found-navy); font-family: 'Roboto Condensed', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 600; line-height: 1; }
+    .not-found__text { max-width: 480px; margin: 0 auto 30px; font-size: 18px; line-height: 1.55; }
+    .not-found__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .not-found__link { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; padding: 0 24px; border-radius: 10px; background: var(--not-found-blue); color: #fff; font-weight: 600; text-decoration: none; }
+    .not-found__link:hover, .not-found__link:focus-visible { background: var(--not-found-navy); }
+    .not-found__link--quiet { background: transparent; color: var(--not-found-navy); border: 1px solid rgba(22, 36, 112, .28); }
+    .not-found__link--quiet:hover, .not-found__link--quiet:focus-visible { background: rgba(22, 36, 112, .08); }
+  </style>
+</head>
+<body>
+  <main class="not-found">
+    <section class="not-found__content" aria-labelledby="not-found-title">
+      <p class="not-found__eyebrow">Network Consultancy</p>
+      <p class="not-found__code" aria-hidden="true">404</p>
+      <h1 class="not-found__title" id="not-found-title">Page not found</h1>
+      <p class="not-found__text">The page may have moved, or the address may be incorrect. Return to the main site or browse our services.</p>
+      <div class="not-found__actions">
+        <a class="not-found__link" href="/">Back to home</a>
+        <a class="not-found__link not-found__link--quiet" href="/services">Explore services</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

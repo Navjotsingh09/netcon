@@ -14,6 +14,16 @@
   ],
   "redirects": [
     {
+      "source": "/images/misc/avatars/testimonial-avatar-Finance.jpg",
+      "destination": "/images/misc/avatars/testimonial-avatar-head-of-operations.jpg",
+      "permanent": false
+    },
+    {
+      "source": "/images/pages/unique/resources-blog-post-12-resources.jpg",
+      "destination": "/images/pages/unique/resources-blog-post-12-resources.png",
+      "permanent": false
+    },
+    {
       "source": "/services/managed-network-maintenance-support",
       "destination": "/services/managed-network-support",
       "permanent": false
@@ -364,9 +374,9 @@
       "permanent": false
     },
     {
-      "source": "/solutions/microsoft-365-network",
-      "destination": "/solutions/microsoft-365-and-network-readiness",
-      "permanent": false
+      "source": "/solutions/microsoft-365-and-network-readiness",
+      "destination": "/services/",
+      "permanent": true
     },
     {
       "source": "/solutions/ai-ready-infrastructure",

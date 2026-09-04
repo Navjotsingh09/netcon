@@ -37,10 +37,30 @@
     return documentFragment.body.innerHTML;
   }
   function setConnection(text, isReady) { elements.connection.textContent = text; elements.connection.style.color = isReady ? '#bce6c8' : '#f5d593'; }
+  function clearValidationErrors() {
+    document.getElementById('validation-errors').textContent = '';
+    [...elements.form.elements].forEach((field) => field.setCustomValidity(''));
+  }
+  function showValidationErrors(error) {
+    clearValidationErrors();
+    const fields = error.fields || {};
+    const messages = Object.entries(fields).map(([fieldName, message]) => {
+      const field = elements.form.elements[fieldName];
+      if (field) field.setCustomValidity(message);
+      return `${fieldName}: ${message}`;
+    });
+    document.getElementById('validation-errors').textContent = messages.length ? messages.join(' ') : error.message;
+    const firstField = Object.keys(fields).map((fieldName) => elements.form.elements[fieldName]).find(Boolean);
+    if (firstField) firstField.focus();
+  }
   async function api(path, options = {}) {
     const response = await fetch(path, { ...options, headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}`, ...(options.headers || {}) } });
     const data = await response.json();
-    if (!response.ok) throw new Error(data.error || 'CMS request failed.');
+    if (!response.ok) {
+      const error = new Error(data.error || 'CMS request failed.');
+      error.fields = data.fields || {};
+      throw error;
+    }
     return data;
   }
   function renderPosts() {
@@ -91,7 +111,7 @@
   function isEditableDraft(post) {
     return ['draft', 'changes_requested'].includes(post?.status);
   }
-  function resetEditor() { currentPost = null; elements.form.reset(); renderFeaturedImage('', ''); elements.editor.hidden = false; updatePublishingControls(null); document.getElementById('editor-heading').textContent = 'New article'; elements.saveStatus.textContent = ''; }
+  function resetEditor() { currentPost = null; elements.form.reset(); clearValidationErrors(); renderFeaturedImage('', ''); elements.editor.hidden = false; updatePublishingControls(null); document.getElementById('editor-heading').textContent = 'New article'; elements.saveStatus.textContent = ''; }
   async function openPost(slug) {
     const data = await api(`/api/cms/posts/${encodeURIComponent(slug)}`); currentPost = data.post; elements.editor.hidden = false;
     document.getElementById('editor-heading').textContent = `Edit: ${data.post.title}`;
@@ -99,9 +119,10 @@
     elements.form.elements.publishedAt.value = data.post.publishedAt ? data.post.publishedAt.slice(0, 10) : '';
     elements.form.elements.isFeatured.checked = Boolean(data.post.isFeatured);
     elements.form.elements.featuredRank.value = data.post.featuredRank || '';
-    elements.form.elements.publicSlug.value = data.post.publicSlug; elements.form.elements.publicSlug.readOnly = true;
+    elements.form.elements.publicSlug.value = data.post.publicSlug; elements.form.elements.publicSlug.readOnly = false;
     renderFeaturedImage(data.post.featuredImageUrl, data.post.featuredImageAlt);
     updatePublishingControls(data.post);
+    clearValidationErrors();
     document.getElementById('editor-state').textContent = isEditableDraft(data.post) ? 'This is an editable draft. Save changes before publishing.' : 'This is the current published version. Save changes to create an editable draft.';
     document.getElementById('cms-lifecycle-actions').hidden = false;
     renderPosts();
@@ -123,6 +144,7 @@
     }
     if (currentPost) {
       await api(`/api/cms/posts/${encodeURIComponent(currentPost.publicSlug)}`, { method: 'PATCH', body: JSON.stringify({ ...payload, revisionId: currentPost.revisionId }) });
+      currentPost.publicSlug = payload.publicSlug;
       return;
     }
     const created = await api('/api/cms/posts', { method: 'POST', body: JSON.stringify(payload) });
@@ -134,7 +156,7 @@
   elements.list.addEventListener('click', (event) => { const slug = event.target.dataset.slug; if (slug) openPost(slug).catch((error) => alert(error.message)); });
   document.getElementById('preview-button').addEventListener('click', () => { const form = new FormData(elements.form); elements.previewContent.innerHTML = `<h1>${escapeHtml(form.get('title'))}</h1>${form.get('featuredImageUrl') ? `<img src="${escapeHtml(form.get('featuredImageUrl'))}" alt="${escapeHtml(form.get('featuredImageAlt'))}">` : ''}${safePreviewHtml(form.get('articleHtml'))}`; elements.preview.showModal(); });
   document.getElementById('close-preview-button').addEventListener('click', () => elements.preview.close());
-  elements.form.addEventListener('submit', async (event) => { event.preventDefault(); try { elements.saveStatus.textContent = 'Saving...'; await saveCurrentDraft(); elements.saveStatus.textContent = 'Draft saved. Review it with Preview, then publish live.'; await refreshPosts(); } catch (error) { elements.saveStatus.textContent = error.message; } });
+  elements.form.addEventListener('submit', async (event) => { event.preventDefault(); clearValidationErrors(); try { elements.saveStatus.textContent = 'Saving...'; await saveCurrentDraft(); elements.saveStatus.textContent = 'Draft saved. Review it with Preview, then publish live.'; await refreshPosts(); } catch (error) { elements.saveStatus.textContent = error.message; showValidationErrors(error); } });
   function showPublishResult(title, message, url) {
     document.getElementById('publish-result-title').textContent = title;
     document.getElementById('publish-result-message').textContent = message;

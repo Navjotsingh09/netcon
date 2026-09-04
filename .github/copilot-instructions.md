@@ -17,14 +17,41 @@
 
 ## 2 · Deployment Rules — READ FIRST
 
-> ⚠️ **ALWAYS DEPLOY TO `netcon-ivory.vercel.app` — NEVER CREATE NEW PREVIEW LINKS**
+> ⚠️ **STAGING FIRST, ALWAYS. LIVE ONLY AFTER EXPLICIT SIGN-OFF.**
+
+### Mandatory release guardrails
+
+The complete owner/developer release process is documented in [docs/netcon-release-guardrails.md](../docs/netcon-release-guardrails.md). It is mandatory for every human, automation, and AI agent working in this repository.
+
+- Never deploy from a dirty working tree. `git status --short` must be empty.
+- Never deploy an unclear branch or a mixture of contributors' uncommitted work.
+- Before deployment, identify the exact committed branch and SHA being released.
+- If the tree is dirty or the intended revision is unclear, stop and ask the owner. Do not stash, reset, clean, merge, rebase, switch branches, or delete files automatically.
+- Staging may be ahead of live only while an identified candidate is under review. When there is no pending review, staging and live must match.
+- Live may only be promoted from the exact preview deployment that was reviewed and explicitly approved by the owner. Never rebuild live separately.
 
 - **Staging URL (permanent):** `https://netcon-ivory.vercel.app` — this is always the review/staging destination.
-- **Command to deploy (mandatory):** `vercel --prod`
-- **NEVER run plain `vercel`** (no flags) — it creates a new throwaway preview URL every time, which is unwanted.
-- `netcon-ivory.vercel.app` is the staging domain, NOT the live customer domain. Do not treat it as "going live".
-- The real production/live domain (custom domain) will be confirmed by the user separately and explicitly.
-- **NEVER deploy to the real custom domain** unless the user explicitly says "go live on the real domain" or words to that effect in that exact session.
+- **Live domain (confirmed):** `https://network-consultancy.com` (and `www.network-consultancy.com`)
+
+### Two-stage deploy flow (mandatory, superseded 2026-09-01)
+Deploys are no longer a single `vercel --prod` command. Every deploy goes through staging first, and live is promoted from the *exact same build* — never rebuilt separately.
+
+1. **Deploy a preview build:** `vercel deploy` (plain `vercel`, no flags). This creates a new preview deployment and touches nothing live or staged yet.
+2. **Point staging at it:** `vercel alias set <preview-deployment-url> netcon-ivory.vercel.app`. Now the team (content, media, client) reviews on the permanent staging URL.
+3. **Review loop:** iterate — push more commits, redeploy preview, re-alias to staging — until sign-off is given.
+4. **Promote to live (only on explicit "go live"/"finalize" instruction from the user):** `vercel promote <preview-deployment-id-or-url>`. This ships the **exact same, already-reviewed** deployment to `network-consultancy.com` + `www` — no rebuild, so live is always byte-identical to what was approved on staging.
+- **NEVER run `vercel --prod` directly** anymore — it rebuilds and deploys straight to live, skipping the staging review step. Use step 4 (`vercel promote`) instead, and only when the user has confirmed staging is approved.
+- **NEVER alias a preview straight to the live domain** without it having first been aliased to and reviewed on staging.
+
+### Git Push Rule (mandatory)
+- The team also has a charity GitHub account (`Devanhaar/netcon2026`) that must stay equal with `origin` (`Navjotsingh09/netcon.git`).
+- `origin` is configured locally with two push URLs (`git remote -v` shows both `Navjotsingh09/netcon.git` and `Devanhaar/netcon2026.git` under push). Running `git push origin <branch>` pushes to **both** repos in one command — this is the required workflow going forward.
+- This dual-push config is local-only (stored in `.git/config`, not committed). If cloning fresh or working from another machine, re-run:
+  ```
+  git remote set-url --add --push origin https://github.com/Navjotsingh09/netcon.git
+  git remote set-url --add --push origin https://github.com/Devanhaar/netcon2026.git
+  ```
+- Never push directly to `charity` alone without also pushing to `origin` — they must stay in lockstep.
 
 ---
 

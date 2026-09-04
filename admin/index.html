@@ -81,7 +81,7 @@
                 <img id="featured-image-preview" alt="">
                 <div><strong>Current featured image</strong><p id="featured-image-name"></p><button class="cms-link-button" id="remove-featured-image" type="button">Remove and choose a new image</button></div>
               </div>
-              <label class="cms-form-grid__wide">Image alternative text<input name="featuredImageAlt" required maxlength="250" autocomplete="off"></label>
+              <label class="cms-form-grid__wide">Image alternative text<input name="featuredImageAlt" maxlength="250" autocomplete="off"></label>
               <label class="cms-form-grid__wide">Excerpt<textarea name="excerpt" required maxlength="360" rows="3"></textarea></label>
               <label class="cms-form-grid__wide">Article body<textarea name="articleHtml" required rows="16" placeholder="Use semantic HTML, for example: <h2>Heading</h2><p>Paragraph.</p>"></textarea></label>
               <label class="cms-form-grid__wide">SEO title<input name="seoTitle" maxlength="180" autocomplete="off"></label>
@@ -94,6 +94,7 @@
               <button class="cms-button cms-button--primary" type="submit">Save draft</button>
               <button class="cms-button cms-button--dark" id="publish-live-button" type="button" disabled>Publish live</button>
             </div>
+            <p id="validation-errors" class="cms-validation-errors" role="alert" aria-live="polite"></p>
             <div class="cms-lifecycle-actions" id="cms-lifecycle-actions" hidden>
               <button class="cms-link-button" id="archive-post-button" type="button">Archive article</button>
               <button class="cms-link-button cms-link-button--danger" id="delete-post-button" type="button">Delete draft</button>

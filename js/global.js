@@ -84,6 +84,9 @@
     var isAnimating = false;
     var transitionMs = 420;
     var isDesktop = desktopQuery.matches;
+    var autoAdvanceId = null;
+    var autoAdvanceDelay = 5000;
+    var reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     function extractTranslateX(node) {
       var transform = window.getComputedStyle(node).transform;
@@ -112,6 +115,7 @@
     function setDesktopState(enabled) {
       isDesktop = enabled;
       if (!isDesktop) {
+        stopAutoAdvance();
         isAnimating = false;
         prevBtn.disabled = true;
         nextBtn.disabled = true;
@@ -154,6 +158,22 @@
         }
         dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.nd-trusted__dot'));
       }
+    }
+
+    function stopAutoAdvance() {
+      if (autoAdvanceId === null) return;
+      window.clearInterval(autoAdvanceId);
+      autoAdvanceId = null;
+    }
+
+    function startAutoAdvance() {
+      if (!isDesktop || reduceMotionQuery.matches || document.hidden || autoAdvanceId !== null) return;
+      autoAdvanceId = window.setInterval(onNext, autoAdvanceDelay);
+    }
+
+    function restartAutoAdvance() {
+      stopAutoAdvance();
+      startAutoAdvance();
     }
 
     function onNext() {
@@ -233,8 +253,8 @@
       }
     }
 
-    prevBtn.addEventListener('click', onPrev);
-    nextBtn.addEventListener('click', onNext);
+    prevBtn.addEventListener('click', function () { onPrev(); restartAutoAdvance(); });
+    nextBtn.addEventListener('click', function () { onNext(); restartAutoAdvance(); });
 
     trusted.addEventListener('keydown', function (event) {
       if (!isDesktop) return;
@@ -249,7 +269,21 @@
     });
 
     window.addEventListener('resize', configure);
+    trusted.addEventListener('mouseenter', stopAutoAdvance);
+    trusted.addEventListener('mouseleave', startAutoAdvance);
+    trusted.addEventListener('focusin', stopAutoAdvance);
+    trusted.addEventListener('focusout', function () {
+      window.setTimeout(function () {
+        if (!trusted.contains(document.activeElement)) startAutoAdvance();
+      }, 0);
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stopAutoAdvance();
+      else startAutoAdvance();
+    });
+    reduceMotionQuery.addEventListener('change', restartAutoAdvance);
     configure();
+    startAutoAdvance();
   }());
 
   /* ── Contact Form ──────────────────────────────────────────── */
@@ -437,5 +471,37 @@
   }
 
   setupCaseStudyFloatingServices();
+
+  function setFamilyCtas() {
+    var path = window.location.pathname.replace(/index\.html$/, '').replace(/\/$/, '');
+    var family;
+    var selectors = {
+      blog: '.page-hero__cta-btn, .svc-cta-band__btn, .blog-cta a.btn-blue, a[data-source-cta]',
+      service: '.page-hero__cta-btn, .svcs-hero__cta, .content-cta__button, .svc-cta-band__btn, .acct__cta, a[data-source-cta]',
+      solution: '.page-hero__cta-btn, .mnhc-hero__btn, .nhc-hero__btn, .mcsr-hero__btn, .csr-hero__btn, .maif-hero__btn, .aif-hero__btn, .sol-hero-landing__btn, .content-cta__button, .nhc-cta-band__card a, .csr-cta-band__card a, .aif-cta-band__card a, a[data-source-cta]',
+      industry: '.svcs-hero__cta, .industry-cta__card a, a[data-source-cta]'
+    };
+
+    if (path.indexOf('/resources/blogs') === 0) family = 'blog';
+    else if (path.indexOf('/services') === 0) family = 'service';
+    else if (path.indexOf('/solutions') === 0) family = 'solution';
+    else if (path.indexOf('/industries') === 0) family = 'industry';
+    else return;
+
+    var labels = {
+      blog: 'Follow Us for More Insights',
+      service: 'Discuss Your Service Needs',
+      solution: 'Explore Solution Options',
+      industry: 'Discuss Your Industry Needs'
+    };
+    var links = document.querySelectorAll('#main ' + selectors[family]);
+    Array.prototype.forEach.call(links, function (link) {
+      link.textContent = labels[family];
+      if (family === 'blog') link.setAttribute('href', '/resources/blogs/');
+    });
+  }
+
+  setFamilyCtas();
+  window.addEventListener('load', setFamilyCtas);
 
 })();

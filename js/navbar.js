@@ -56,7 +56,6 @@
     { href: '/solutions/network-health-check',    icon: 'pulse',  title: 'Network Health Check',    desc: 'A comprehensive review of your network to identify weaknesses and opportunities.' },
     { href: '/solutions/ai-ready-infrastructure-review', icon: 'chip',   title: 'AI-Ready Infrastructure', desc: 'Assess whether your infrastructure can support AI-driven business demands.' },
     { href: '/solutions/cyber-security-review',   icon: 'search', title: 'Cyber Security Review',   desc: 'Identify vulnerabilities and close security gaps with expert analysis.' },
-    { href: '/solutions/microsoft-365-and-network-readiness',   icon: 'grid',   title: 'Microsoft 365 & Network', desc: 'Ensure seamless Microsoft 365 performance before you deploy.' }
   ];
   var INDUSTRIES = [
     { href: '/industries/financial-services',    icon: 'bank',      title: 'Financial Services' },

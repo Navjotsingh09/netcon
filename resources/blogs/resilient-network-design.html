@@ -121,6 +121,55 @@
       color: #575757;
       margin-bottom: 28px;
     }
+
+    /* Blog content enhancements */
+    .blog-main p a,
+    .blog-main li a {
+      color: var(--blue);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .blog-main h3 {
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--navy);
+      margin: 32px 0 14px;
+      line-height: 1.2;
+    }
+    .blog-main ul,
+    .blog-main ol {
+      margin: 0 0 28px;
+      padding-left: 24px;
+    }
+    .blog-main li {
+      font-family: 'Google Sans Flex', sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      color: #575757;
+      margin-bottom: 10px;
+    }
+    .blog-cta {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin: 40px 0 48px;
+    }
+    .blog-cta p {
+      color: #fff;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+    .blog-cta p:first-of-type {
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .blog-cta a.btn-blue {
+      display: inline-flex;
+      margin-top: 14px;
+    }
     .blog-main h2 {
       font-family: 'Google Sans Flex', sans-serif;
       font-size: 32px;
@@ -373,19 +422,19 @@
 
 <h2>In this article, we look at four factors that will help build a resilient network.</h2>
 
-<h3>1\. Know That Everything Fails</h3>
+<h3>1. Know That Everything Fails</h3>
 
 <p>The first step to building a resilient network is understanding everything that fails, from routers to switches, cables, circuits, and even cross-connects. Hence, regular network maintenance is crucial to smooth business operations. This will help keep your system at the right software levels, allow the application of <a href="https://network-consultancy.com/services/network-consultancy">network security</a> patches, and even give way for hardware maintenance and replacement.</p>
 
-<h3>2\. Operating Hours</h3>
+<h3>2. Operating Hours</h3>
 
 <p>Next, you should think about and determine the operating hours of the environment. For instance, your office network might not have users after work hours or during the weekends. On the other hand, this sort of network might come with strict reliability and availability requirements during regular hours. Nonetheless, it can be maintained after work hours too. On the other hand, data centres or life and safety systems should operate 24/7. Hence, the right design is essential for these networks to deal with failures as well as the ability to operate during maintenance.</p>
 
-<h3>3\. Virtualisation, Cloud, and Saas Applications</h3>
+<h3>3. Virtualisation, Cloud, and Saas Applications</h3>
 
 <p>Then come virtualisation, cloud, and <a href="https://en.wikipedia.org/wiki/Software_as_a_service">SaaS application</a> suites. Often people feel cloud-based applications lie outside IT controls. But this is not really the truth. For instance, AWS makes a considerable effort to advise clients on the availability offered by applications. In addition, applications put forward several service-level agreements to users based on where they are hosted, like with single availability zones, multiple availability zones, or operating across regions. It is also important how enterprises and their customers connect to the cloud or SaaS providers.</p>
 
-<h3>4\. Reliable Remote Connectivity</h3>
+<h3>4. Reliable Remote Connectivity</h3>
 
 <p>In the post-pandemic era, if there is something enterprises should think of, that is the reliability of their <a href="https://network-consultancy.com/services/remote-access-solution">secure remote access solutions'</a> connectivity. For example, does the connectivity run on primary or secondary VPN connectors? Is it load-balanced across systems, allowing for required maintenance?</p>
 
@@ -399,27 +448,30 @@
 
 <h2>Frequently Asked Questions</h2>
 
-<h3>1\. What is a resilient network, and why is it important?</h3>
+<h3>1. What is a resilient network, and why is it important?</h3>
 
 <p>A resilient network is designed to recover quickly from failures and minimise downtime. It helps businesses maintain critical operations, improve reliability, and ensure essential applications and services remain available even during unexpected disruptions or maintenance.</p>
 
-<h3>2\. Why should businesses assume that network components can fail?</h3>
+<h3>2. Why should businesses assume that network components can fail?</h3>
 
 <p>Every part of a network, including routers, switches, cables, and circuits, can experience failures. Planning for these possibilities through proactive maintenance, software updates, and hardware replacements helps reduce the risk of prolonged outages.</p>
 
-<h3>3\. How do operating hours affect network resilience planning?</h3>
+<h3>3. How do operating hours affect network resilience planning?</h3>
 
 <p>Different environments have different availability requirements. Office networks may allow maintenance outside business hours, while data centres and mission-critical systems often require 24/7 uptime and must be designed to remain operational during maintenance or failures.</p>
 
-<h3>4\. What role do cloud and SaaS applications play in network resilience?</h3>
+<h3>4. What role do cloud and SaaS applications play in network resilience?</h3>
 
 <p>Cloud and SaaS platforms can support resilience through features such as multiple availability zones and regional redundancy. However, organisations must also ensure reliable connectivity and understand the service levels offered by their providers.</p>
 
-<h3>5\. Why is reliable remote connectivity essential for modern businesses?</h3>
+<h3>5. Why is reliable remote connectivity essential for modern businesses?</h3>
 
 <p>With remote and hybrid working now common, dependable VPN connections and load-balanced remote access systems help employees stay securely connected while enabling maintenance and reducing the impact of network disruptions.</p>
 
-<p><em>Build a stronger, more resilient network with expert guidance that reduces downtime, supports remote teams, and keeps your business running.</em> <a href="https://network-consultancy.com/contact"><em>Strengthen Your Network Today</em></a></p>
+<div class="blog-cta">
+  <p>Build a stronger, more resilient network with expert guidance that reduces downtime, supports remote teams, and keeps your business running.</p>
+  <a class="btn-blue" href="https://network-consultancy.com/contact">Strengthen Your Network Today</a>
+</div>
           
             <div class="blog-related-links" aria-label="Related internal links">
               <h3>Explore related services</h3>

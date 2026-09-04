@@ -215,7 +215,7 @@ main > div > [class*="-wrap"] {
 .mm-head__title { font-family:'Google Sans Flex',sans-serif; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--sub); }
 .mm-head__all { font-family:'Google Sans Flex',sans-serif; font-size:13px; font-weight:600; color:var(--blue); display:inline-flex; align-items:center; gap:6px; transition:gap .2s; }
 .mm-head__all:hover { gap:9px; }
-.mm-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+.mm-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
 .mm-card { display:flex; flex-direction:column; padding:18px; border:1px solid #e8ecf3; border-radius:14px; background:#fbfcfe; text-decoration:none; transition:border-color .18s,box-shadow .18s,transform .18s,background .18s; min-width:0; }
 .mm-card:hover { background:#fff; border-color:rgba(9,130,197,.35); box-shadow:0 14px 28px -12px rgba(10,28,80,.18); transform:translateY(-2px); }
 .mm-card .mm-ico { margin-bottom:14px; }

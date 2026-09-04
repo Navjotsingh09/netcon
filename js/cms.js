@@ -139,6 +139,9 @@
     var isAnimating = false;
     var transitionMs = 420;
     var isDesktop = desktopQuery.matches;
+    var autoAdvanceId = null;
+    var autoAdvanceDelay = 5000;
+    var reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     function extractTranslateX(node) {
       var t = window.getComputedStyle(node).transform;
@@ -162,6 +165,7 @@
     function setDesktopState(enabled) {
       isDesktop = enabled;
       if (!isDesktop) {
+        stopAutoAdvance();
         isAnimating = false;
         prevBtn.disabled = true;
         nextBtn.disabled = true;
@@ -202,6 +206,22 @@
         }
         dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.nd-trusted__dot'));
       }
+    }
+
+    function stopAutoAdvance() {
+      if (autoAdvanceId === null) return;
+      window.clearInterval(autoAdvanceId);
+      autoAdvanceId = null;
+    }
+
+    function startAutoAdvance() {
+      if (!isDesktop || reduceMotionQuery.matches || document.hidden || autoAdvanceId !== null) return;
+      autoAdvanceId = window.setInterval(onNext, autoAdvanceDelay);
+    }
+
+    function restartAutoAdvance() {
+      stopAutoAdvance();
+      startAutoAdvance();
     }
 
     function onNext() {
@@ -280,8 +300,8 @@
       }
     }
 
-    prevBtn.addEventListener('click', onPrev);
-    nextBtn.addEventListener('click', onNext);
+    prevBtn.addEventListener('click', function () { onPrev(); restartAutoAdvance(); });
+    nextBtn.addEventListener('click', function () { onNext(); restartAutoAdvance(); });
 
     trusted.addEventListener('keydown', function (event) {
       if (!isDesktop) return;
@@ -290,7 +310,21 @@
     });
 
     window.addEventListener('resize', configure);
+    trusted.addEventListener('mouseenter', stopAutoAdvance);
+    trusted.addEventListener('mouseleave', startAutoAdvance);
+    trusted.addEventListener('focusin', stopAutoAdvance);
+    trusted.addEventListener('focusout', function () {
+      window.setTimeout(function () {
+        if (!trusted.contains(document.activeElement)) startAutoAdvance();
+      }, 0);
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stopAutoAdvance();
+      else startAutoAdvance();
+    });
+    reduceMotionQuery.addEventListener('change', restartAutoAdvance);
     configure();
+    startAutoAdvance();
   }
 
   function renderFAQ(container) {
