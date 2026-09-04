@@ -105,7 +105,7 @@
     .biz__left p:last-of-type { margin-bottom: 40px; }
     .biz__nav { display: flex; align-items: center; gap: 16px; }
     .biz__arrow { width: 48px; height: 48px; border-radius: 6px; border: 1px solid #d2d2d2; background: #f0f0f0; color: #464646; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; }
-    .biz__arrow:last-of-type { background: #000; border-color: #000; color: #fff; }
+    /* .biz__arrow:last-of-type { background: #000; border-color: #000; color: #fff; } */
     .biz__bar { flex: 1; max-width: 240px; height: 6px; margin-left: 8px; background: #e4e4e4; border-radius: 4px; overflow: hidden; }
     .biz__bar-fill { width: 20%; height: 100%; background: var(--blue); border-radius: 4px; }
     .biz__card { background: #13203f; border-radius: 16px; padding: 50px 43px 52px; min-height: 360px; color: #fff; display: flex; flex-direction: column; justify-content: space-between; }
@@ -168,60 +168,103 @@
     </div>
   </section>
 
-  <section class="svl-overview animate-fade-up" aria-labelledby="intro-h">
-    <h2 class="heading-xl svl-overview__title" id="intro-h">What Multi-Site Businesses Teams Need from IT Infrastructure</h2>
-    <div class="body-lg svl-overview__lead"><p>Strong network foundations keep Multi-Site Businesses operations stable, secure, and ready for growth. We design practical infrastructure that supports day-to-day productivity while reducing avoidable disruption.</p><p>Our approach balances performance, cyber resilience, and governance so your systems remain dependable as operational demand changes.</p></div>
-    <div class="svl-overview__inner">
-      <div class="svl-overview__list" role="tablist" aria-label="Industry focus areas">
-        <button type="button" role="tab" aria-selected="true" class="svl-overview__list-item svl-overview__list-item--active"
-          data-title="Planning and Assessment"
-          data-copy="We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency."
-          data-srcset="/images/pages/unique/Planning-Assessment.jpg"
-          data-img="/images/pages/unique/Planning-Assessment.jpg"
-          data-alt="Planning and Assessment — Multi-Site Businesses">Planning and Assessment</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Secure Network Design and Deployment"
-          data-copy="We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency."
-          data-srcset="/images/pages/unique/Secure-Network-Design-Deployment.jpg"
-          data-img="/images/pages/unique/Secure-Network-Design-Deployment.jpg"
-          data-alt="Secure Network Design and Deployment — Multi-Site Businesses">Secure Network Design and Deployment</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Monitoring and Threat Detection"
-          data-copy="We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency."
-          data-srcset="/images/pages/unique/Monitoring-Threat-Detection.jpg"
-          data-img="/images/pages/unique/Monitoring-Threat-Detection.jpg"
-          data-alt="Monitoring and Threat Detection — Multi-Site Businesses">Monitoring and Threat Detection</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Performance Tuning and Management"
-          data-copy="We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency."
-          data-srcset="/images/pages/unique/Performance-Tuning-Management.jpg"
-          data-img="/images/pages/unique/Performance-Tuning-Management.jpg"
-          data-alt="Performance Tuning and Management — Multi-Site Businesses">Performance Tuning and Management</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Compliance and Governance Support"
-          data-copy="We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency."
-          data-srcset="/images/pages/unique/Compliance-Governance-Support.jpg"
-          data-img="/images/pages/unique/Compliance-Governance-Support.jpg"
-          data-alt="Compliance and Governance Support — Multi-Site Businesses">Compliance and Governance Support</button>
-        <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item"
-          data-title="Backup and Recovery Readiness"
-          data-copy="We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency."
-          data-srcset="/images/pages/unique/Backup-Recovery-Readiness.jpg"
-          data-img="/images/pages/unique/Backup-Recovery-Readiness.jpg"
-          data-alt="Backup and Recovery Readiness — Multi-Site Businesses">Backup and Recovery Readiness</button>
-      </div>
-      <div class="svl-overview__feature">
-        <picture>
-          <source id="svl-feature-source" srcset="/images/pages/unique/Planning-Assessment.jpg" type="image/jpg">
-          <img id="svl-feature-img" src="/images/pages/unique/Planning-Assessment.jpg" alt="Planning and Assessment — Multi-Site Businesses" loading="lazy">
-        </picture>
-        <div class="svl-overview__panel" role="tabpanel">
-          <h3 id="svl-overview-title">How We Deliver Results</h3>
-          <p id="svl-overview-copy">We assess your current network, identify constraints, and apply targeted improvements that raise stability, security, and service consistency.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+ <section class="svl-overview animate-fade-up" aria-labelledby="intro-h"> 
+  <h2 class="heading-xl svl-overview__title" id="intro-h">
+    What Multi-Site Businesses Need from IT Infrastructure
+  </h2> 
+
+  <div class="body-lg svl-overview__lead">
+    <p>
+      Strong network foundations keep Multi-Site Businesses operations stable, secure, and ready for growth. We design practical infrastructure that supports day-to-day productivity while reducing avoidable disruption.
+    </p>
+    <p>
+      Our approach balances performance, cyber resilience, and governance so your systems remain dependable as operational demand changes.
+    </p>
+  </div> 
+
+  <div class="svl-overview__inner"> 
+    <div class="svl-overview__list" role="tablist" aria-label="Industry focus areas"> 
+
+      <button type="button" role="tab" aria-selected="true" class="svl-overview__list-item svl-overview__list-item--active" 
+        data-title="Reliable Connectivity Across Every Location" 
+        data-copy="Multi-site businesses need stable, high-performance networks that keep offices, branches and teams connected, enabling seamless communication and access to essential business systems." 
+        data-srcset="/images/pages/unique/Planning-Assessment.jpg" 
+        data-img="/images/pages/unique/Planning-Assessment.jpg" 
+        data-alt="Reliable Connectivity Across Every Location — Multi-Site Businesses">
+        Reliable Connectivity Across Every Location
+      </button> 
+
+      <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item" 
+        data-title="Centralised Network Management" 
+        data-copy="Centralised monitoring and management help businesses maintain consistent IT performance across locations, identify issues quickly and reduce the need for costly on-site intervention." 
+        data-srcset="/images/pages/unique/Planning-Assessment.jpg" 
+        data-img="/images/pages/unique/Planning-Assessment.jpg" 
+        data-alt="Centralised Network Management — Multi-Site Businesses">
+        Centralised Network Management
+      </button> 
+
+      <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item" 
+        data-title="Secure Access Between Locations" 
+        data-copy="Secure connectivity between offices, branches and remote users helps protect business data while allowing employees to access shared applications, systems and resources wherever they work." 
+        data-srcset="/images/pages/unique/Planning-Assessment.jpg" 
+        data-img="/images/pages/unique/Planning-Assessment.jpg" 
+        data-alt="Secure Access Between Locations — Multi-Site Businesses">
+        Secure Access Between Locations
+      </button> 
+
+      <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item" 
+        data-title="Scalable Infrastructure for Business Growth" 
+        data-copy="IT infrastructure should easily accommodate new offices, additional users and changing business requirements without creating unnecessary complexity or requiring major network redesigns." 
+        data-srcset="/images/pages/unique/Planning-Assessment.jpg" 
+        data-img="/images/pages/unique/Planning-Assessment.jpg" 
+        data-alt="Scalable Infrastructure for Business Growth — Multi-Site Businesses">
+        Scalable Infrastructure for Business Growth
+      </button> 
+
+      <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item" 
+        data-title="Consistent Security Across All Sites" 
+        data-copy="Every location needs robust security controls, including firewalls, access management and network monitoring, to reduce vulnerabilities and maintain consistent protection across the business." 
+        data-srcset="/images/pages/unique/Planning-Assessment.jpg" 
+        data-img="/images/pages/unique/Planning-Assessment.jpg" 
+        data-alt="Consistent Security Across All Sites — Multi-Site Businesses">
+        Consistent Security Across All Sites
+      </button> 
+
+      <button type="button" role="tab" aria-selected="false" class="svl-overview__list-item" 
+        data-title="Business Continuity & Responsive Support" 
+        data-copy="Resilient infrastructure, proactive monitoring and responsive technical support help multi-site businesses minimise downtime and keep critical operations running when network problems occur." 
+        data-srcset="/images/pages/unique/Planning-Assessment.jpg" 
+        data-img="/images/pages/unique/Planning-Assessment.jpg" 
+        data-alt="Business Continuity & Responsive Support — Multi-Site Businesses">
+        Business Continuity & Responsive Support
+      </button> 
+
+    </div> 
+
+    <div class="svl-overview__feature"> 
+      <picture> 
+        <source 
+          id="svl-feature-source" 
+          srcset="/images/pages/unique/Planning-Assessment.jpg" 
+          type="image/jpg">
+        <img 
+          id="svl-feature-img" 
+          src="/images/pages/unique/Planning-Assessment.jpg" 
+          alt="Reliable Connectivity Across Every Location — Multi-Site Businesses" 
+          loading="lazy">
+      </picture> 
+
+      <div class="svl-overview__panel" role="tabpanel"> 
+        <h3 id="svl-overview-title">
+          Reliable Connectivity Across Every Location
+        </h3> 
+        <p id="svl-overview-copy">
+          Multi-site businesses need stable, high-performance networks that keep offices, branches and teams connected, enabling seamless communication and access to essential business systems.
+        </p> 
+      </div> 
+    </div> 
+  </div> 
+</section>
 
   <script>
   (function svlOverviewTabs() {
@@ -267,8 +310,7 @@
       <div class="biz" id="biz">
         <div class="biz__left">
           <h2 id="biz-h">When Multi-Site Businesses Networks Need Immediate Attention</h2>
-          <p>If teams are seeing recurring slowdowns, unstable connectivity, or rising security risk, your network may need structured remediation rather than patch fixes.</p>
-          <p>We stabilise critical routes first, then improve observability and resilience so your operations run with fewer interruptions.</p>
+          <p>Reliable IT infrastructure is essential for businesses operating across multiple locations. A well-managed network keeps teams connected, supports secure access to systems and data, and helps maintain consistent performance, communication and productivity across every site.</p>
           <div class="biz__nav">
             <button class="biz__arrow" id="biz-prev" type="button" aria-label="Previous">&#8592;</button>
             <button class="biz__arrow" id="biz-next" type="button" aria-label="Next">&#8594;</button>
@@ -277,10 +319,10 @@
         </div>
         <div class="biz__card">
           <div>
-            <h3 id="biz-title">Service Pressure Points</h3>
-            <p id="biz-desc">Teams often report endpoint congestion, inconsistent remote access, and delayed issue detection. We prioritise these risks to restore confidence quickly.</p>
+            <h3 id="biz-title">Frequent Connectivity Issues Across Sites</h3>
+            <p id="biz-desc">Repeated outages, slow connections or unstable links between offices can disrupt communication, cloud applications and daily operations, signalling the need for immediate network assessment and corrective action.</p>
           </div>
-          <div class="biz__num" id="biz-count">1/5</div>
+          <div class="biz__num" id="biz-count">1/2</div>
         </div>
       </div>
     </div>
@@ -296,9 +338,9 @@
       </div>
       <div class="industry-banner__overlay" aria-hidden="true"></div>
       <div class="industry-banner__content">
-        <span class="industry-banner__eyebrow">Why Choose Us</span>
+        <span class="eyebrow">Why Choose Us</span>
         <h2 class="industry-banner__title" id="why-h">Why Organisations in Multi-Site Businesses Choose Network Consultancy</h2>
-        <p class="industry-banner__text">We combine consultancy and managed support to solve operational network issues with clear accountability, practical action plans, and measurable service improvements.</p>
+        <p class="industry-banner__text">Network consultancy is really helpful when you want to manage your computer networks at different business locations. The consultants come in. Look at what you already have, figure out what isn't working well, and then suggest what you need to fix it.  </p>
       </div>
     </div>
   </section>
@@ -307,12 +349,12 @@
     <div class="split split--3-2 split--reverse">
       <div>
         <span class="eyebrow">What You Get</span>
-        <h2 class="heading-lg" id="what-h">What Better Network Operations Look Like</h2>
-        <div class="body-lg"><p>Teams get faster access to core tools, fewer recurring incidents, and stronger confidence in security controls. We focus on outcomes your users can feel every day.</p></div>
+        <h2 class="heading-lg" id="what-h">Strategies for Effective Multi-Site Businesses</h2>
+        <div class="body-lg"><p>Strategic IT planning keeps multi-site businesses connected without each location operating in isolation. </p></div>
         <ul class="check-list">
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">More predictable network performance across sites and teams</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Earlier issue detection and faster remediation paths</span></li>
-          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Security controls aligned with real operational workflows</span></li>
+          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Centralised network administration gives one team visibility into every site, rather than working location by location. </span></li>
+          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Standardising technology across sites reduces the number of systems that require separate maintenance. Cloud-based tools let staff access applications securely from any branch. </span></li>
+          <li class="check-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span class="check-text">Automated monitoring catches problems before they affect daily operations.</span></li>
         </ul>
       </div>
       <picture>
@@ -322,46 +364,40 @@
     </div>
   </section>
 
-    <script>
+<script>
   window.PAGE_TESTIMONIALS = [
     {
-      quote: 'Network performance and reliability improved quickly, giving our team a stronger operational baseline and fewer service interruptions.',
-      name: 'Client feedback from a recent Multi-Site Businesses engagement',
-      role: '',
+      quote: 'The network consultancy team transformed connectivity across our five sites. Downtime was reduced significantly, and communication between branches improved immediately.',
+      name: 'James Walker',
+      role: 'Operations Director, Logistics Ltd, Birmingham, England',
       avatar: '/images/misc/avatars/testimonial-avatar-m1.jpg'
     },
     {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Managing Director',
-      role: 'Broadcasting Company, London',
+      quote: 'Their network consultancy expertise helped us standardise systems across multiple stores. Support is responsive, professional, and always focused on business continuity.',
+      name: 'Sarah Thompson',
+      role: 'IT Manager, Retail Group, Manchester, England',
       avatar: '/images/misc/avatars/testimonial-avatar-managing-director.jpg'
     },
     {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'IT Director',
-      role: 'Professional Services Firm, London',
+      quote: 'Managing networks across several locations was challenging until we partnered with this network consultancy. Their proactive monitoring and strategic guidance have improved performance, security, and operational efficiency. We now have confidence that every site remains connected, secure, and fully supported throughout the year.',
+      name: 'David Roberts',
+      role: 'Managing Director, Facilities Services, Leeds, England',
       avatar: '/images/misc/avatars/testimonial-avatar-it-director.jpg'
     },
     {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Head of Operations',
-      role: 'Healthcare Provider, Birmingham',
+      quote: 'The network consultancy support helped us modernise our entire infrastructure across multiple facilities. System performance is now far more stable, and we’ve seen a noticeable improvement in secure data access and overall reliability.',
+      name: 'Emma Collins',
+      role: 'Healthcare Solutions, London, England',
       avatar: '/images/misc/avatars/testimonial-avatar-head-of-operations.jpg'
     },
     {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Managing Partner',
-      role: 'Legal Firm, London',
-      avatar: '/images/misc/avatars/testimonial-avatar-managing-partner.jpg'
-    },
-    {
-      quote: 'Network Consultancy have some really great engineers, and with their proactive approach, we are able to relax knowing our Network and security are in good hands. I would not hesitate to recommend Anup and his team.',
-      name: 'Operations Director',
-      role: 'Manufacturing Company, Midlands',
+      quote: 'Their network consultancy approach gave us complete visibility across all our sites. We’ve reduced recurring issues, improved uptime, and strengthened security controls. Their ongoing support has made managing our distributed network far more efficient.',
+      name: 'Michael Harris',
+      role: 'IT Director, Engineering Services, Nottingham, England',
       avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg'
     }
   ];
-  </script>
+</script>
   <div data-cms="testimonials" data-title="What our client says"></div>
 
   <section class="industry-cta animate-fade-up" aria-label="Call to action">
@@ -371,25 +407,45 @@
       </div>
       <div class="industry-cta__card">
         <h2 class="industry-cta__title">Ready to Strengthen Your Network</h2>
-        <p class="industry-cta__text">Speak with our consultants to review current network risk, performance bottlenecks, and practical next steps for your organisation.</p>
-        <a href="/contact" class="btn-dark">Book Your Assessment</a>
+        <p class="industry-cta__text">Connect every location on one network, with one team managing security and performance across all of them.</p>
+        <a href="/contact" class="btn-dark">Get in Touch!</a>
       </div>
     </div>
   </section>
 
-  <section class="nd-faq section-shell animate-fade-up" aria-labelledby="faq-h">
+<section class="nd-faq section-shell animate-fade-up" aria-labelledby="faq-h">
   <div class="nd-faq__left">
     <h2 class="section-title" id="faq-h">Frequently asked questions</h2>
     <p>Still have questions? Get connected to our support team.</p>
     <a href="../contact" class="nd-faq__cta">Contact us</a>
   </div>
+
   <div class="nd-faq__right">
-    <button class="nd-faq__item is-open"><span>Why is network consultancy important for Multi-Site Businesses organisations?</span><strong>−</strong></button>
-    <div class="nd-faq__panel">Consultancy helps align infrastructure with operational goals so teams have dependable connectivity, clearer security controls, and fewer recurring incidents.</div>
-    <button class="nd-faq__item"><span>How do you reduce downtime and service disruption?</span><strong>+</strong></button>
-    <div class="nd-faq__panel" hidden>We prioritise critical network paths, improve monitoring, and implement resilient configurations so faults are detected and resolved faster.</div>
-    <button class="nd-faq__item"><span>Can you work alongside an internal IT team?</span><strong>+</strong></button>
-    <div class="nd-faq__panel" hidden>Yes. We often act as an extension of internal teams, providing specialist network capability while your team retains operational ownership.</div>
+    <button class="nd-faq__item is-open">
+      <span>Why should a multi-site business use a network consultancy?</span>
+      <strong>−</strong>
+    </button>
+    <div class="nd-faq__panel">
+      Network consultancy manages security and infrastructure across all locations from a single point, rather than having each site handle them separately.
+    </div>
+
+    <button class="nd-faq__item">
+      <span>How does network consultancy improve connectivity between business locations?</span>
+      <strong>+</strong>
+    </button>
+    <div class="nd-faq__panel" hidden>
+      Network Consultancy designs networks so every site connects the same way, allowing data to move between locations without a single bottleneck.
+    </div>
+
+    <button class="nd-faq__item">
+      <span>What are the benefits of centralised IT support for multi-site businesses?</span>
+      <strong>+</strong>
+    </button>
+    <div class="nd-faq__panel" hidden>
+      Network Consultancy helps businesses by bringing monitoring, maintenance, and security under one team. This approach means problems are caught early, before they cause downtime. It also keeps technology consistent across all locations.
+      <br><br>
+      For businesses with multiple sites, Network Consultancy provides a single point of contact for IT decision-making, rather than requiring coordination with vendors or teams at each location.
+    </div>
   </div>
 </section>
 
@@ -418,13 +474,16 @@
     var desc = document.getElementById('biz-desc');
     var count = document.getElementById('biz-count');
     var fill = document.getElementById('biz-fill');
-    var slides = [
-      { title: title.textContent, desc: desc.textContent },
-      { title: 'Consistent Performance Across Sites', desc: 'Standardised network design gives every location the same reliable connectivity and user experience.' },
-      { title: 'Central Visibility and Control', desc: 'Unified monitoring surfaces issues across all sites early, so problems are fixed before teams notice them.' },
-      { title: 'Security Applied Uniformly', desc: 'Consistent policies, segmentation and access controls remove the weak spots that vary site to site.' },
-      { title: 'Room to Add Locations', desc: 'A repeatable network blueprint makes opening or upgrading a site faster and more predictable.' }
-    ];
+var slides = [
+  { 
+    title: title.textContent, 
+    desc: desc.textContent 
+  },
+  { 
+    title: 'Security Threats or Unauthorised Access', 
+    desc: 'Unusual network activity, suspected breaches or inconsistent security controls across locations require immediate attention to protect business systems, data and connected users.' 
+  }
+];
     var i = 0, total = slides.length;
     function render() {
       title.style.opacity = '0'; desc.style.opacity = '0';

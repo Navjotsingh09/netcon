@@ -38,7 +38,7 @@
     '/industries/legal-firms': { family: 'industries', page: 'legal_firms', cta: 'shared_footer_form' },
     '/industries/manufacturing': { family: 'industries', page: 'manufacturing', cta: 'shared_footer_form' },
     '/industries/multi-site-businesses': { family: 'industries', page: 'multi_site_businesses', cta: 'shared_footer_form' },
-    '/industries/professional-services': { family: 'industries', page: 'professional_services', cta: 'shared_footer_form' },
+    '/industries/educational-institutes': { family: 'industries', page: 'professional_services', cta: 'shared_footer_form' },
     '/industries/recruitment-agencies': { family: 'industries', page: 'recruitment_agencies', cta: 'shared_footer_form' },
     '/industries/internal-it-teams': { family: 'industries', page: 'internal_it_teams', cta: 'shared_footer_form' },
     '/resources/': { family: 'resources', page: 'resources_index', cta: 'shared_footer_form' },

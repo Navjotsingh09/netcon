@@ -117,7 +117,7 @@ Inset card sections cap at `max-width: var(--max-w)`.
 │   ├── legal-firms.html
 │   ├── manufacturing.html
 │   ├── multi-site-businesses.html
-│   ├── professional-services.html
+│   ├── educational-institutes.html
 │   └── recruitment-agencies.html
 │
 ├── resources/
@@ -353,7 +353,7 @@ Update this table as pages are built and approved.
 | Industries → Legal Firms | `industries/legal-firms.html` | ⬜ | ⬜ | ⬜ |
 | Industries → Manufacturing | `industries/manufacturing.html` | ⬜ | ⬜ | ⬜ |
 | Industries → Multi-Site Businesses | `industries/multi-site-businesses.html` | ⬜ | ⬜ | ⬜ |
-| Industries → Professional Services | `industries/professional-services.html` | ⬜ | ⬜ | ⬜ |
+| Industries → Professional Services | `industries/educational-institutes.html` | ⬜ | ⬜ | ⬜ |
 | Industries → Recruitment Agencies | `industries/recruitment-agencies.html` | ⬜ | ⬜ | ⬜ |
 | Resources Landing | `resources/index.html` | ⬜ | ⬜ | ⬜ |
 | Resources → Blog Landing | `resources/blog/index.html` | ⬜ | ⬜ | ⬜ |

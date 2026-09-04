@@ -2015,3 +2015,9 @@ main .nd-faq {
 .blog-main__contact-details h4{
   font-size: 22px;
 }
+/* Industries Pages  */
+.biz__nav .biz__arrow:hover{
+    background: #000; 
+    border-color: #000;
+     color: #fff;
+}
