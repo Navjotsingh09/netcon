@@ -93,7 +93,7 @@
     '      <a href="/complaint-form">Complaint Form</a>',
     '    </div>',
     '    <p class="footer__copy">&copy; 2026 Network Consultancy is a trading name of Qcom.ltd. All Rights Reserved.</p>',
-    '    <p class="footer__copy">Qcom.ltd is registered in England and Wales. Company Registration Number: 11862320. Registered Office: 20-22 Wenlock Rd, London, N1 7GU.</p>',
+    '    <p class="footer__copy">QCOM LTD (trading as Network Consultancy) is registered in England and Wales. Company No. 11862320. Registered Office: Beech House, Greenfield Crescent, Birmingham, B15 3BE.</p>',
     '  </div>',
     '</footer>'
   ].join('\n');

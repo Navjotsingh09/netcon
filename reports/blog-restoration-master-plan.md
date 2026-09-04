@@ -43,7 +43,7 @@ Status: In progress
 | P1 | how-ai-is-revolutionising-network-operations-cost-control | /resources/blog/post-11.html | Populate/refresh as AI operations post |
 | P1 | a-guide-to-wireless-security-solutions | /resources/blog/post-04.html | Refresh content and metadata |
 | P1 | wireless-vs-wired-networks | /resources/blog/post-03.html | Refresh content and metadata |
-| P1 | leveraging-cloud-networking-for-business-efficiency | /resources/blog/post-07.html | Refresh content and metadata |
+| P1 | Leveraging-Cloud-Networking-for-Business-Efficiency.avif | /resources/blog/post-07.html | Refresh content and metadata |
 | P1 | top-network-security-solutions-for-remote-work-2025-tips | /resources/blog/post-12.html | Refresh content and metadata |
 | P1 | how-can-a-network-consultant-transform-your-it-infrastructure | /resources/blog/post-19.html | Replace placeholder content with full article |
 | P2 | everything-you-need-to-know-about-wlans | /resources/blog/post-10.html | Refresh content and metadata |
@@ -68,7 +68,7 @@ Notes:
 Folder: images/pages/unique
 
 1. resources-blog-index-professional.jpg
-2. resources-blog-post-02-resources.jpg through resources-blog-post-19-resources.jpg
+2. resources-blog-post-02-resources.jpg through Why-Your-Business-Needs-Network.avif
 
 ### 5.3 Output Convention
 

@@ -7,7 +7,7 @@
       excerpt: "A breakdown of the process behind designing and implementing a business network, from consultation and diagramming through to installation and testing.",
       dateLabel: "17/07/2026",
       category: "Infrastructure",
-      image: "/images/pages/unique/resources-blog-post-01-resources.jpg"
+      image: "/images/pages/unique/Network-Design-Implementation.avif"
     },
     {
       slug: "post-02",
@@ -16,7 +16,7 @@
       excerpt: "Build a network that withstands failures. Learn the four key factors every organisation needs to design genuine resilience into their infrastructure.",
       dateLabel: "15/07/2026",
       category: "Services",
-      image: "/images/pages/servers.jpg"
+      image: "/images/pages/Key-Elements-Resilient-Network.avif"
     },
     {
       slug: "post-03",
@@ -25,7 +25,7 @@
       excerpt: "Wireless and wired networks each have distinct advantages. Understand the trade-offs to make the right choice for your office environment.",
       dateLabel: "12/07/2026",
       category: "Infrastructure",
-      image: "/images/pages/unique/resources-blog-post-03-resources.jpg"
+      image: "/images/pages/unique/Wireless-Wired-Networks.avif"
     },
     {
       slug: "post-04",
@@ -34,7 +34,7 @@
       excerpt: "Wireless security is essential for modern businesses. Explore five practical solutions to protect your wireless network from threats.",
       dateLabel: "10/07/2026",
       category: "Security",
-      image: "/images/pages/unique/resources-blog-post-04-resources.jpg"
+      image: "/images/pages/unique/guide-Wireless-Security-Solutions.avif"
     },
     {
       slug: "post-05",
@@ -43,7 +43,7 @@
       excerpt: "Cloud networking is transforming how businesses operate. Discover the key benefits and how to implement it effectively in your organisation.",
       dateLabel: "07/07/2026",
       category: "Cloud",
-      image: "/images/pages/unique/resources-blog-post-05-resources.png"
+      image: "/images/pages/unique/Why-Your-Business-Needs-Cloud-Networking.avif"
     },
     {
       slug: "post-06",
@@ -52,7 +52,7 @@
       excerpt: "Ensure your secure wireless network is trustworthy. Learn the key authentication methods and why proactive network validation beats reactive fixes.",
       dateLabel: "04/07/2026",
       category: "Security",
-      image: "/images/pages/unique/resources-blog-post-06-resources.jpg"
+      image: "/images/pages/unique/Network-Validation-Everything.avif"
     },
     {
       slug: "post-07",
@@ -61,7 +61,7 @@
       excerpt: "Cloud networking unlocks new levels of efficiency and agility. Explore how to leverage cloud-based networking to drive business performance.",
       dateLabel: "02/07/2026",
       category: "Cloud",
-      image: "/images/pages/unique/resources-blog-post-07-resources.jpg"
+      image: "/images/pages/unique/Leveraging-Cloud-Networking-for-Business-Efficiency.avif"
     },
     {
       slug: "post-09",
@@ -70,7 +70,7 @@
       excerpt: "Professional IT services deliver more than fixes. Understand the full value of working with expert consultants and network specialists.",
       dateLabel: "28/06/2026",
       category: "Managed Services",
-      image: "/images/pages/unique/resources-blog-post-09-resources.png"
+      image: "/images/pages/unique/The-Value-Professional-IT-Services.avif"
     },
     {
       slug: "post-10",
@@ -79,7 +79,7 @@
       excerpt: "WLANs are central to modern connectivity. A comprehensive guide to everything you need to know about wireless local area networks.",
       dateLabel: "25/06/2026",
       category: "Infrastructure",
-      image: "/images/pages/unique/resources-blog-post-10-resources.jpg"
+      image: "/images/pages/unique/Everything-You-Need-About-WLANs.avif"
     },
     {
       slug: "post-11",
@@ -88,7 +88,7 @@
       excerpt: "Artificial intelligence is changing network management by enabling predictive maintenance, anomaly detection, and intelligent resource allocation.",
       dateLabel: "22/06/2026",
       category: "Infrastructure",
-      image: "/images/pages/unique/resources-blog-post-11-resources.jpg"
+      image: "/images/pages/unique/How-AI-Reducing-Network-Downtime.avif"
     },
     {
       slug: "post-12",
@@ -97,7 +97,7 @@
       excerpt: "Remote working creates new network security challenges. Discover practical network installation, cloud security, endpoint protection, and IT consulting solutions.",
       dateLabel: "19/06/2026",
       category: "Security",
-      image: "/images/pages/unique/resources-blog-post-12-resources.png"
+      image: "/images/pages/unique/Top-Network-Security-Solutions.avif"
     },
     {
       slug: "post-13",
@@ -115,7 +115,7 @@
       excerpt: "Is your SME network limiting your growth? Explore the common network challenges facing small businesses and how a consultant can help.",
       dateLabel: "13/06/2026",
       category: "Industries",
-      image: "/images/pages/professional.jpg"
+      image: "/images/pages/Is-Your-SME-Network.avif"
     },
     {
       slug: "post-15",
@@ -124,7 +124,7 @@
       excerpt: "A well-designed network is crucial for smooth data flow and robust security. Learn how strategic optimisation and redundancy strengthen infrastructure.",
       dateLabel: "10/06/2026",
       category: "Managed Services",
-      image: "/images/pages/unique/resources-blog-post-15-resources.jpg"
+      image: "/images/pages/unique/Optimising-Your-Network-Network-Consultancy.avif"
     },
     {
       slug: "post-16",
@@ -133,7 +133,7 @@
       excerpt: "Outdated network infrastructure costs more than you think. Explore the performance, security, and reliability benefits of upgrading your network.",
       dateLabel: "07/06/2026",
       category: "Services",
-      image: "/images/pages/network-abstract.jpg"
+      image: "/images/pages/Reasons-Upgrade-Your-Network.avif"
     },
     {
       slug: "post-17",
@@ -142,7 +142,7 @@
       excerpt: "Cisco Network Convergence System delivers petabit-scale performance for global service providers. Learn about the breakthroughs powering next-generation networks.",
       dateLabel: "05/06/2026",
       category: "Industry News",
-      image: "/images/pages/unique/resources-blog-post-17-resources.jpg"
+      image: "/images/pages/unique/Cisco-Network-Convergence-System.avif"
     },
     {
       slug: "post-18",
@@ -151,7 +151,7 @@
       excerpt: "Discover how Cisco and VMware virtualisation solutions improve flexibility, resilience, security, and scalability for modern business networks.",
       dateLabel: "03/06/2026",
       category: "Industry News",
-      image: "/images/pages/unique/resources-blog-post-18-resources.jpg"
+      image: "/images/pages/unique/Virtualised-Networks-Designed-Installed.avif"
     },
     {
       slug: "post-19",
@@ -160,7 +160,7 @@
       excerpt: "A strategic network consultant partner delivers more than IT fixes. Learn why businesses need expert consultancy to future-proof their infrastructure.",
       dateLabel: "31/05/2026",
       category: "Strategy",
-      image: "/images/pages/unique/resources-blog-post-19-resources.jpg"
+      image: "/images/pages/unique/Why-Your-Business-Needs-Network.avif"
     },
     {
       slug: "post-20",
@@ -169,7 +169,7 @@
       excerpt: "From reliable connectivity and next-generation firewalls to cloud networking and professional design, explore the ten components every modern business network needs.",
       dateLabel: "21/07/2026",
       category: "Infrastructure",
-      image: "/images/pages/unique/resources-blog-business-network-components.jpg"
+      image: "/images/pages/unique/Essential-Components-Modern-Business-Network.avif"
     },
     {
       slug: "post-21",
@@ -178,7 +178,25 @@
       excerpt: "Discover how long a network audit takes for UK businesses, what influences the timeline, what the process involves, and how expert audits improve security and performance.",
       dateLabel: "27/07/2026",
       category: "Infrastructure",
-      image: "/images/pages/unique/resources-blog-post-12-resources.png"
+      image: "/images/pages/unique/Top-Network-Security-Solutions.avif"
+    },
+       {
+      slug: "post-22",
+      urlSlug: "network-cabling-installation-uk-business-guide",
+      title: "Networking Cable Installation: UK Business Guide",
+      excerpt: "Learn how networking cable installation supports UK businesses with reliable connectivity, secure infrastructure, better performance and future scalability.",
+      dateLabel: "19/08/2026",
+      category: "Infrastructure",
+      image: "/images/pages/unique/Professional-networking-cable.avif"
+    },
+      {
+      slug: "post-23",
+      urlSlug: "shadow-ai-cybersecurity-risk-uk-businesses",
+      title: "Shadow AI Cybersecurity Risk UK Businesses",
+      excerpt: "Discover how shadow AI can expose business data to security risks and why UK businesses need clear rules for safe AI use",
+      dateLabel: "27/08/2026",
+      category: "Security",
+      image: "/images/pages/unique/Cybersecurity-Risk-Uk.avif"
     }
   ];
 

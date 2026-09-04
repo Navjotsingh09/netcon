@@ -10,7 +10,7 @@ cta_updates = [
     ('./industries/legal-firms.html', 'Book a Network Health Check', 'industry_health_check', '/contact.html'),
     ('./industries/manufacturing.html', 'Book a Network Health Check', 'industry_health_check', '/contact.html'),
     ('./industries/multi-site-businesses.html', 'Book a Network Health Check', 'industry_health_check', '/contact.html'),
-    ('./industries/professional-services.html', 'Book a Network Health Check', 'industry_health_check', '/contact.html'),
+    ('./industries/educational-institutes.html', 'Book a Network Health Check', 'industry_health_check', '/contact.html'),
     ('./industries/recruitment-agencies.html', 'Book a Network Health Check', 'industry_health_check', '/contact.html'),
     ('./industries/index.html', 'Book a Network Health Check', 'industry_health_check', '#contact'),
     
