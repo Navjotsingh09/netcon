@@ -11,3 +11,6 @@ images/_raw/
 
 videos/home video/*.mov
 .env*
+.env*.local
+
+solutions/OneDrive_2026-08-20.zip
