@@ -61,6 +61,10 @@
   margin-bottom: 0;
 }
 
+.csd-copy > .csd-section-block:nth-last-child(-n + 2) .csd-section-title {
+  padding-left: 24px;
+}
+
 @media (max-width: 768px) {
   .csd-copy {
     grid-template-columns: 1fr;
@@ -77,6 +81,10 @@
 
   .csd-copy .csd-section-title {
     font-size: 30px;
+  }
+
+  .csd-copy > .csd-section-block:nth-last-child(-n + 2) .csd-section-title {
+    padding-left: 18px;
   }
 
   .csd-copy .csd-metrics {
