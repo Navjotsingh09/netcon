@@ -65,6 +65,14 @@
     }
   });
 
+  (function moveServiceBusinessImpact() {
+    var main = document.getElementById('main');
+    var hero = main && main.querySelector('.nc-hero-wrap');
+    var businessImpact = main && main.querySelector('section[aria-labelledby="biz-h"]');
+    if (!main || !hero || !businessImpact || hero.nextElementSibling === businessImpact) return;
+    hero.insertAdjacentElement('afterend', businessImpact);
+  }());
+
   (function initTrustedSlider() {
     var trusted = document.querySelector('.nd-trusted');
     if (!trusted) return;
