@@ -84,22 +84,6 @@
     .svcs-hero__cta { margin-top: 0; background: #fff !important; color: #353535 !important; border: 0; border-radius: 2px !important; font-family: 'Google Sans Flex', sans-serif; font-size: 20px; font-style: normal; font-weight: 600; letter-spacing: 0; text-transform: none; min-width: 170px; width: auto; min-height: 50px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; line-height: normal; transition: background .2s ease; }
     .svcs-hero__cta:hover { background: #f0f0f0 !important; transform: none; }
 
-    .svl-overview { width: calc(100% - (var(--px) * 2)); max-width: var(--max-w); margin: 0 auto; padding-top: 72px; padding-bottom: 72px; }
-    .svl-overview__title { margin: 0 0 14px; max-width: 980px; }
-    .svl-overview__lead { max-width: 1080px; margin-bottom: 22px; }
-    .svl-overview__inner { display: grid; grid-template-columns: minmax(0, 386px) minmax(0, 1fr); gap: 56px; align-items: start; background: #fff; border: 1px solid #353535; border-radius: 30px; padding: 40px; }
-    .svl-overview__list { display: flex; flex-direction: column; gap: 36px; }
-    .svl-overview__list-item { appearance: none; background: transparent; border: 0; width: 100%; text-align: left; cursor: pointer; padding-bottom: 24px; border-bottom: 1px solid #353535; color: #585151; font-size: 28px; font-weight: 700; line-height: 1.25; transition: color .2s ease-out, background .25s ease-out, padding .25s ease-out; }
-    .svl-overview__list-item:hover { color: var(--blue); }
-    .svl-overview__list-item--active, .svl-overview__list-item--active:hover { padding: 24px; border-radius: 20px; border-bottom: 0; background: var(--blue); color: #fff; }
-    .svl-overview__feature { position: relative; min-height: 678px; border-radius: 20px; overflow: hidden; background: #0c1b3d; display: flex; align-items: flex-end; padding: 28px; }
-    .svl-overview__feature img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .25s ease-out; }
-    .svl-overview__feature::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,130,197,0.18) 0%, rgba(9,130,197,0.88) 100%); }
-    .svl-overview__panel { position: relative; z-index: 2; width: 735px; max-width: 100%; padding: 28px; background: #fff; border-radius: 10px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; transition: opacity .25s ease-out, transform .25s ease-out; }
-    .svl-overview__panel.is-switching { opacity: 0; transform: translateY(12px); }
-    .svl-overview__panel h3 { margin: 0; color: #585151; font-size: 24px; font-weight: 600; line-height: 1.25; }
-    .svl-overview__panel p { margin: 0; color: #353535; font-size: 18px; font-weight: 400; line-height: 1.55; }
-
     .sd-section { padding: 0 var(--px); margin: 100px auto; max-width: var(--section-w); }
     .sd-wrap { max-width: var(--max-w); margin: 0 auto; }
     .biz { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -120,9 +104,6 @@
       .svcs-hero__title { font-size: 46px; }
       .svcs-hero__content { padding: 80px 60px 120px var(--px); }
       .sd-section { margin: 56px auto; }
-      .svl-overview__inner { grid-template-columns: 1fr; padding: 24px; gap: 32px; }
-      .svl-overview__feature { order: -1; min-height: 480px; }
-      .svl-overview__list { gap: 24px; }
     }
     @media (max-width: 768px) {
       .svcs-hero__wrap { background-image:url(/images/pages/unique/banner-icons/industries-icon.svg); background-repeat:no-repeat; background-size:250px auto; background-position:right -24px top -24px; height: auto; min-height: 0; }
@@ -136,10 +117,6 @@
       .biz__card h3 { font-size: 20px; margin-bottom: 12px; }
       .biz__card p { font-size: 15.5px; line-height: 1.55; margin-bottom: 18px; }
       .biz__num { font-size: 22px; }
-      .svl-overview { padding-top: 52px; padding-bottom: 52px; }
-      .svl-overview__feature { min-height: 480px; padding: 16px; }
-      .svl-overview__list-item { font-size: 22px; }
-      .svl-overview__panel { padding: 20px; }
       .svcs-hero__title { font-size: 42px; }
       .svcs-hero__sub { font-size: 20px; }
       .svcs-hero__content { padding: 60px var(--px) 80px var(--px); }
@@ -167,31 +144,6 @@
           <p class="svcs-hero__sub animate-fade-up">Network Consultancy delivers secure, reliable IT networks for schools and colleges, ensuring consistent connectivity and supporting modern learning.</p>
         </div>
         <a href="/contact" class="btn-blue svcs-hero__cta animate-fade-up" data-source-cta="industry_health_check">Discuss Your Requirements</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="svl-overview animate-fade-up" aria-labelledby="intro-h">
-    <h2 class="heading-xl svl-overview__title" id="intro-h">Strengthening Internal IT with Expert Network Support</h2>
-    <div class="body-lg svl-overview__lead"><p>A network specialist provides support to your existing personnel without increasing their workload on a daily basis.</p></div>
-    <div class="svl-overview__inner">
-      <div class="svl-overview__list" role="tablist" aria-label="Internal IT focus areas">
-        <button type="button" role="tab" aria-selected="true" class="svl-overview__list-item svl-overview__list-item--active"
-          data-title="The Expanding Responsibilities of Internal IT Teams"
-          data-copy="IT departments today face challenges from multiple fronts, including cyber security, maintaining infrastructure, supporting users and long-term strategic planning."
-          data-srcset="/images/pages/unique/The-Expanding-Responsibilities-Internal.avif"
-          data-img="/images/pages/unique/The-Expanding-Responsibilities-Internal.avif"
-          data-alt="Internal IT teams network strategy">The Expanding Responsibilities of Internal IT Teams</button>
-      </div>
-      <div class="svl-overview__feature">
-        <picture>
-          <source id="svl-feature-source" srcset="/images/pages/unique/The-Expanding-Responsibilities-Internal.avif" type="image/avif">
-          <img id="svl-feature-img" src="/images/pages/unique/The-Expanding-Responsibilities-Internal.avif" alt="Internal IT teams network strategy" loading="lazy">
-        </picture>
-        <div class="svl-overview__panel" role="tabpanel">
-          <h3 id="svl-overview-title">The Expanding Responsibilities of Internal IT Teams</h3>
-          <p id="svl-overview-copy">IT departments today face challenges from multiple fronts, including cyber security, maintaining infrastructure, supporting users and long-term strategic planning.</p>
-        </div>
       </div>
     </div>
   </section>
