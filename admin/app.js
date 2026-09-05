@@ -14,7 +14,9 @@
   const articleEditor = document.getElementById('article-editor');
   const articleHtmlField = document.querySelector('[name="articleHtml"]');
   const articleEditorImage = document.getElementById('article-editor-image');
+  const deleteArticleDialog = document.getElementById('delete-article-dialog');
   let articleEditorSelection = null;
+  let pendingDeletionSlug = null;
 
   function escapeHtml(value) { const node = document.createElement('div'); node.textContent = value || ''; return node.innerHTML; }
   function syncArticleEditor() { articleHtmlField.value = articleEditor.innerHTML.trim(); }
@@ -215,7 +217,8 @@
   articleEditor.addEventListener('drop', async (event) => { event.preventDefault(); try { await uploadArticleImage([...event.dataTransfer.files].find((file) => file.type.startsWith('image/'))); } catch (error) { elements.saveStatus.textContent = error.message; } });
   elements.form.elements.featuredImage.addEventListener('change', () => { const file = elements.form.elements.featuredImage.files[0]; if (file) renderFeaturedImage(URL.createObjectURL(file), elements.form.elements.featuredImageAlt.value); });
   document.getElementById('remove-featured-image').addEventListener('click', () => { elements.form.elements.featuredImage.value = ''; elements.form.elements.featuredImageUrl.value = ''; renderFeaturedImage('', ''); elements.saveStatus.textContent = 'Choose a replacement image before saving.'; });
-  elements.list.addEventListener('click', (event) => { const actionButton = event.target.closest('[data-action]'); if (!actionButton) return; const { action, slug } = actionButton.dataset; if (action === 'edit') openPost(slug).catch((error) => alert(error.message)); else if (action === 'delete_post') runLifecycleAction('delete_post', 'Delete this article permanently? Its revisions cannot be restored.', slug); });
+  function requestArticleDeletion(slug) { if (!slug) return; pendingDeletionSlug = slug; deleteArticleDialog.showModal(); }
+  elements.list.addEventListener('click', (event) => { const actionButton = event.target.closest('[data-action]'); if (!actionButton) return; const { action, slug } = actionButton.dataset; if (action === 'edit') openPost(slug).catch((error) => alert(error.message)); else if (action === 'delete_post') requestArticleDeletion(slug); });
   document.getElementById('preview-button').addEventListener('click', () => { syncArticleEditor(); const form = new FormData(elements.form); elements.previewContent.innerHTML = `<h1>${escapeHtml(form.get('title'))}</h1>${form.get('featuredImageUrl') ? `<img src="${escapeHtml(form.get('featuredImageUrl'))}" alt="${escapeHtml(form.get('featuredImageAlt'))}">` : ''}${safePreviewHtml(form.get('articleHtml'))}`; elements.preview.showModal(); });
   document.getElementById('close-preview-button').addEventListener('click', () => elements.preview.close());
   elements.form.addEventListener('submit', async (event) => { event.preventDefault(); clearValidationErrors(); try { elements.saveStatus.textContent = 'Saving...'; await saveCurrentDraft(); elements.saveStatus.textContent = 'Draft saved. Review it with Preview, then publish live.'; await refreshPosts(); } catch (error) { elements.saveStatus.textContent = error.message; showValidationErrors(error); } });
@@ -243,8 +246,8 @@
   }
   elements.publishLive.addEventListener('click', publishCurrentArticle);
   document.getElementById('close-publish-result').addEventListener('click', () => document.getElementById('publish-result-dialog').close());
-  async function runLifecycleAction(action, question, slug = currentPost?.publicSlug) {
-    if (!slug || !window.confirm(question)) return;
+  async function runLifecycleAction(action, slug) {
+    if (!slug) return;
     try {
       elements.saveStatus.textContent = 'Updating article...';
       await api(`/api/cms/posts/${encodeURIComponent(slug)}/lifecycle`, { method: 'POST', body: JSON.stringify({ action }) });
@@ -253,7 +256,9 @@
       await refreshPosts();
     } catch (error) { elements.saveStatus.textContent = error.message; }
   }
-  document.getElementById('delete-post-button').addEventListener('click', () => runLifecycleAction('delete_post', 'Delete this article permanently? Its revisions cannot be restored.'));
+  document.getElementById('delete-post-button').addEventListener('click', () => requestArticleDeletion(currentPost?.publicSlug));
+  ['close-delete-article', 'cancel-delete-article'].forEach((id) => document.getElementById(id).addEventListener('click', () => { pendingDeletionSlug = null; deleteArticleDialog.close(); }));
+  document.getElementById('confirm-delete-article').addEventListener('click', () => { const slug = pendingDeletionSlug; pendingDeletionSlug = null; deleteArticleDialog.close(); runLifecycleAction('delete_post', slug); });
 
   try {
     const configResponse = await fetch('/api/cms/config');

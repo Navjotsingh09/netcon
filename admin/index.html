@@ -135,5 +135,12 @@
       <a class="cms-button cms-button--primary" id="publish-result-link" href="/" target="_blank" rel="noopener">View published article</a>
     </div>
   </dialog>
+  <dialog id="delete-article-dialog" aria-labelledby="delete-article-title">
+    <div class="cms-dialog__head"><h2 id="delete-article-title">Delete article?</h2><button class="cms-icon-button" id="close-delete-article" type="button" aria-label="Close delete confirmation"><i data-lucide="x"></i></button></div>
+    <div class="cms-dialog__body">
+      <p>This permanently removes the article and all its revisions. It cannot be restored.</p>
+      <div class="cms-dialog__actions"><button class="cms-button cms-button--secondary" id="cancel-delete-article" type="button">Cancel</button><button class="cms-button cms-button--danger" id="confirm-delete-article" type="button">Delete article</button></div>
+    </div>
+  </dialog>
 </body>
 </html>
