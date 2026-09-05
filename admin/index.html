@@ -67,16 +67,11 @@
             <div><p class="cms-eyebrow">Content library</p><h2 id="articles-heading">Articles</h2></div>
             <input id="post-search" type="search" placeholder="Search articles" autocomplete="off">
           </div>
-          <div class="cms-table-wrap">
-            <table>
-              <thead><tr><th>Article</th><th>Status</th><th>Updated</th><th></th></tr></thead>
-              <tbody id="post-list"></tbody>
-            </table>
-          </div>
+          <div class="cms-article-list" id="post-list" aria-live="polite"></div>
         </section>
 
         <section class="cms-panel cms-editor" id="editor-panel" hidden aria-labelledby="editor-heading">
-          <div class="cms-panel__head"><div><p class="cms-eyebrow">Article editor</p><h2 id="editor-heading">New article</h2><p class="cms-editor__state" id="editor-state">Complete the fields, then save the draft.</p></div><span id="save-status" aria-live="polite"></span></div>
+          <div class="cms-panel__head"><div><p class="cms-eyebrow">Article editor</p><h2 id="editor-heading">New article</h2><p class="cms-editor__state" id="editor-state">Complete the fields, then save the draft.</p></div><div class="cms-editor__controls"><span id="save-status" aria-live="polite"></span><button class="cms-icon-button" id="close-editor-button" type="button" aria-label="Close article editor" title="Close editor"><i data-lucide="x"></i></button></div></div>
           <form id="article-form">
             <div class="cms-form-grid">
               <label>Article title<input name="title" required maxlength="180" autocomplete="off"></label>
