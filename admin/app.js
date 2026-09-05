@@ -100,6 +100,7 @@
     const image = document.getElementById('featured-image-preview');
     const name = document.getElementById('featured-image-name');
     if (!url) { panel.hidden = true; image.removeAttribute('src'); return; }
+    image.onerror = () => { image.onerror = null; image.src = '/images/pages/network-abstract.jpg'; name.textContent = 'The selected image could not be loaded. A fallback preview is shown.'; };
     image.src = url;
     image.alt = altText || 'Current featured image';
     name.textContent = url;

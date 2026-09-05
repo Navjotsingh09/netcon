@@ -79,7 +79,7 @@ ${previewBanner}
       <article class="blog-main">
         <div class="blog-main__hero">
           <picture>
-            <img src="${escapeHtml(revision.featured_image_url)}" alt="${escapeHtml(revision.featured_image_alt)}" loading="eager">
+            <img src="${escapeHtml(revision.featured_image_url)}" alt="${escapeHtml(revision.featured_image_alt)}" loading="eager" data-image-fallback>
           </picture>
         </div>
         <p class="blog-main__meta"><span>${escapeHtml(date)}</span>${revision.category ? `<span>Category: ${escapeHtml(revision.category)}</span>` : ''}</p>
@@ -115,6 +115,7 @@ ${previewBanner}
 <script src="/js/search-index.js" defer></script>
 <script src="/js/blog-cms.js" defer></script>
 <script src="/js/search.js" defer></script>
+<script>document.querySelectorAll('[data-image-fallback]').forEach((image) => image.addEventListener('error', () => { if (!image.dataset.fallbackApplied) { image.dataset.fallbackApplied = 'true'; image.src = '/images/pages/network-abstract.jpg'; } }));</script>
 </body>
 </html>`);
   } catch (error) {

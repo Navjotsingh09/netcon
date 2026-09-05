@@ -238,6 +238,22 @@
       .replace(/'/g, "&#039;");
   }
 
+  function imageMimeType(url) {
+    if (/\.avif(?:[?#]|$)/i.test(url)) return "image/avif";
+    if (/\.webp(?:[?#]|$)/i.test(url)) return "image/webp";
+    if (/\.png(?:[?#]|$)/i.test(url)) return "image/png";
+    return "image/jpeg";
+  }
+
+  function handleImageError(image) {
+    image.addEventListener("error", function () {
+      if (image.dataset.fallbackApplied) return;
+      image.dataset.fallbackApplied = "true";
+      image.src = "/images/pages/network-abstract.jpg";
+      image.removeAttribute("srcset");
+    });
+  }
+
   function renderBlogIndex() {
     var list = document.getElementById("blog-list");
     var chipsWrap = document.getElementById("blog-filter-chips");
@@ -265,6 +281,7 @@
       featuredText.textContent = featuredPost.excerpt;
       featuredImage.src = featuredPost.image;
       featuredImage.alt = featuredPost.imageAlt || featuredPost.title;
+      handleImageError(featuredImage);
     }
 
     var activeCategory = "All";
@@ -382,7 +399,7 @@
       var visible = filtered.slice(startIndex, endIndex);
 
       list.innerHTML = visible.map(function (post) {
-        var mime = /\.png$/i.test(post.image) ? "image/png" : "image/jpeg";
+        var mime = imageMimeType(post.image);
         var newBadge = isNewPost(post)
           ? "<span class=\"blog-item__new\">New</span>"
           : "";
@@ -420,6 +437,7 @@
       list.querySelectorAll(".animate-fade-up, .animate-fade-in").forEach(function (el) {
         el.classList.add("is-visible");
       });
+      list.querySelectorAll("img").forEach(handleImageError);
 
       if (list) {
         var rect = list.getBoundingClientRect();
@@ -519,6 +537,7 @@
       } else {
         card.appendChild(link);
       }
+      handleImageError(link.querySelector("img"));
     });
   }
 

@@ -3,6 +3,7 @@ import { supabaseAdmin } from '../../lib/cms/database.js';
 import { errorResponse, json, options } from '../../lib/cms/http.js';
 
 const MAX_UPLOAD_BYTES = 3 * 1024 * 1024;
+const BUCKET_NAME = 'blog-media';
 const allowedMimeTypes = new Set(['image/avif', 'image/jpeg', 'image/png', 'image/webp']);
 
 function safeFilename(filename) {
@@ -11,6 +12,24 @@ function safeFilename(filename) {
     .replace(/[^a-z0-9._-]+/g, '-')
     .replace(/^-+|-+$/g, '');
   return base || 'blog-image';
+}
+
+async function ensurePublicMediaBucket(client) {
+  const { data: bucket, error: bucketError } = await client.storage.getBucket(BUCKET_NAME);
+  if (bucketError && !/not found|does not exist/i.test(bucketError.message || '')) throw bucketError;
+  if (!bucket) {
+    const { error: createError } = await client.storage.createBucket(BUCKET_NAME, {
+      public: true,
+      fileSizeLimit: MAX_UPLOAD_BYTES,
+      allowedMimeTypes: [...allowedMimeTypes]
+    });
+    if (createError && !/already exists/i.test(createError.message || '')) throw createError;
+    return;
+  }
+  if (!bucket.public) {
+    const { error: updateError } = await client.storage.updateBucket(BUCKET_NAME, { public: true });
+    if (updateError) throw updateError;
+  }
 }
 
 export default async function handler(request, response) {
@@ -34,10 +53,11 @@ export default async function handler(request, response) {
 
   try {
     const client = supabaseAdmin();
+    await ensurePublicMediaBucket(client);
     const key = `cms/blog/${Date.now()}-${safeFilename(filename)}`;
-    const { error: uploadError } = await client.storage.from('blog-media').upload(key, buffer, { contentType, upsert: false });
+    const { error: uploadError } = await client.storage.from(BUCKET_NAME).upload(key, buffer, { contentType, upsert: false });
     if (uploadError) throw uploadError;
-    const { data: publicUrl } = client.storage.from('blog-media').getPublicUrl(key);
+    const { data: publicUrl } = client.storage.from(BUCKET_NAME).getPublicUrl(key);
     const { data: media, error: mediaError } = await client.from('blog_media').insert({ blob_url: publicUrl.publicUrl, blob_key: key, mime_type: contentType, alt_text: String(altText).trim(), uploaded_by: access.user.id }).select('id, blob_url, blob_key, mime_type, alt_text').single();
     if (mediaError) throw mediaError;
     return json(request, response, { media: { id: media.id, blobUrl: media.blob_url, blobKey: media.blob_key, mimeType: media.mime_type, altText: media.alt_text } }, 201);
