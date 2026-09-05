@@ -86,6 +86,7 @@
     var isDesktop = desktopQuery.matches;
     var autoAdvanceId = null;
     var autoAdvanceDelay = 5000;
+    var isInViewport = false;
     var reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     function extractTranslateX(node) {
@@ -167,7 +168,7 @@
     }
 
     function startAutoAdvance() {
-      if (!isDesktop || reduceMotionQuery.matches || document.hidden || autoAdvanceId !== null) return;
+      if (!isDesktop || reduceMotionQuery.matches || document.hidden || !isInViewport || autoAdvanceId !== null) return;
       autoAdvanceId = window.setInterval(onNext, autoAdvanceDelay);
     }
 
@@ -282,6 +283,15 @@
       else startAutoAdvance();
     });
     reduceMotionQuery.addEventListener('change', restartAutoAdvance);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        isInViewport = entries[0].isIntersecting;
+        if (isInViewport) startAutoAdvance();
+        else stopAutoAdvance();
+      }, { threshold: 0.35 }).observe(trusted);
+    } else {
+      isInViewport = true;
+    }
     configure();
     startAutoAdvance();
   }());
