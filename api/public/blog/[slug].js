@@ -65,7 +65,7 @@ ${schemaMarkup}
 <script src="/js/schema.js" defer></script>
 <link rel="stylesheet" href="/css/animations.css">
 <link rel="stylesheet" href="/css/accessibility.css">
-<style>${isStaging ? '.cms-public-note{padding:10px 20px;background:#fff2cf;color:#584200;text-align:center;font-weight:600;font-family:"Google Sans Flex",sans-serif}' : ''}</style>
+<style>${isStaging ? '.cms-public-note{padding:10px 20px;background:#fff2cf;color:#584200;text-align:center;font-weight:600;font-family:"Google Sans Flex",sans-serif}' : ''}.blog-main h4,.blog-main h5,.blog-main h6{font-size:20px;font-weight:600;color:var(--dark);margin:26px 0 12px;line-height:1.3}.blog-main a.article-cta{display:inline-flex;align-items:center;justify-content:center;margin:8px 0;padding:12px 20px;border-radius:4px;background:var(--blue);color:#fff;font-weight:700;text-decoration:none}</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>

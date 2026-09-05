@@ -11,8 +11,23 @@
     saveStatus: document.getElementById('save-status'), publishLive: document.getElementById('publish-live-button')
   };
   let token = ''; let cmsUser = null; let posts = []; let currentPost = null;
+  const articleEditor = document.getElementById('article-editor');
+  const articleHtmlField = document.querySelector('[name="articleHtml"]');
+  const articleEditorImage = document.getElementById('article-editor-image');
+  let articleEditorSelection = null;
 
   function escapeHtml(value) { const node = document.createElement('div'); node.textContent = value || ''; return node.innerHTML; }
+  function syncArticleEditor() { articleHtmlField.value = articleEditor.innerHTML.trim(); }
+  function rememberArticleEditorSelection() {
+    const selection = window.getSelection();
+    if (selection.rangeCount && articleEditor.contains(selection.anchorNode)) articleEditorSelection = selection.getRangeAt(0).cloneRange();
+  }
+  function restoreArticleEditorSelection() {
+    articleEditor.focus();
+    if (!articleEditorSelection) return;
+    const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(articleEditorSelection);
+  }
+  function insertArticleHtml(html) { restoreArticleEditorSelection(); document.execCommand('insertHTML', false, html); syncArticleEditor(); rememberArticleEditorSelection(); }
   function loadSupabase() {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
@@ -23,8 +38,8 @@
     });
   }
   function safePreviewHtml(value) {
-    const allowedTags = new Set(['A', 'BLOCKQUOTE', 'BR', 'EM', 'H2', 'H3', 'H4', 'IMG', 'LI', 'OL', 'P', 'STRONG', 'UL']);
-    const allowedAttributes = { A: new Set(['href', 'target', 'rel']), IMG: new Set(['src', 'alt', 'width', 'height']) };
+    const allowedTags = new Set(['A', 'BLOCKQUOTE', 'BR', 'EM', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'IMG', 'LI', 'OL', 'P', 'STRONG', 'UL']);
+    const allowedAttributes = { A: new Set(['href', 'target', 'rel', 'class']), IMG: new Set(['src', 'alt', 'width', 'height']) };
     const documentFragment = new DOMParser().parseFromString(String(value || ''), 'text/html');
     documentFragment.body.querySelectorAll('*').forEach((node) => {
       if (!allowedTags.has(node.tagName)) { node.replaceWith(...node.childNodes); return; }
@@ -32,6 +47,7 @@
         if (!allowedAttributes[node.tagName]?.has(attribute.name.toLowerCase())) node.removeAttribute(attribute.name);
       });
       if (node.tagName === 'A' && !/^(https?:|mailto:)/i.test(node.getAttribute('href') || '')) node.removeAttribute('href');
+      if (node.tagName === 'A' && node.getAttribute('class') !== 'article-cta') node.removeAttribute('class');
       if (node.tagName === 'IMG' && !/^(https?:|\/)/i.test(node.getAttribute('src') || '')) node.remove();
     });
     return documentFragment.body.innerHTML;
@@ -115,11 +131,13 @@
   function isEditableDraft(post) {
     return ['draft', 'changes_requested'].includes(post?.status);
   }
-  function resetEditor() { currentPost = null; elements.form.reset(); clearValidationErrors(); renderFeaturedImage('', ''); elements.editor.hidden = false; updatePublishingControls(null); document.getElementById('editor-heading').textContent = 'New article'; elements.saveStatus.textContent = ''; }
+  function resetEditor() { currentPost = null; elements.form.reset(); articleEditor.innerHTML = ''; articleEditorSelection = null; clearValidationErrors(); renderFeaturedImage('', ''); elements.editor.hidden = false; updatePublishingControls(null); document.getElementById('editor-heading').textContent = 'New article'; elements.saveStatus.textContent = ''; }
   async function openPost(slug) {
     const data = await api(`/api/cms/posts/${encodeURIComponent(slug)}`); currentPost = data.post; elements.editor.hidden = false;
     document.getElementById('editor-heading').textContent = `Edit: ${data.post.title}`;
     ['title', 'excerpt', 'category', 'articleHtml', 'featuredImageAlt', 'featuredImageUrl', 'seoTitle', 'seoDescription', 'schemaMarkup'].forEach((name) => { elements.form.elements[name].value = data.post[name] || ''; });
+    articleEditor.innerHTML = data.post.articleHtml || '';
+    articleEditorSelection = null;
     elements.form.elements.publishedAt.value = data.post.publishedAt ? data.post.publishedAt.slice(0, 10) : '';
     elements.form.elements.isFeatured.checked = Boolean(data.post.isFeatured);
     elements.form.elements.featuredRank.value = data.post.featuredRank || '';
@@ -138,7 +156,16 @@
     const result = await api('/api/cms/media', { method: 'POST', body: JSON.stringify({ filename: file.name, contentType: file.type, data, altText: elements.form.elements.featuredImageAlt.value }) });
     return result.media.blobUrl;
   }
+  async function uploadArticleImage(file) {
+    if (!file) return;
+    if (file.size > 3 * 1024 * 1024) throw new Error('Article images must be 3 MB or smaller.');
+    const data = await new Promise((resolve, reject) => { const reader = new FileReader(); reader.onload = () => resolve(String(reader.result).split(',')[1]); reader.onerror = reject; reader.readAsDataURL(file); });
+    const altText = window.prompt('Describe this image for readers using a screen reader.', '') || '';
+    const result = await api('/api/cms/media', { method: 'POST', body: JSON.stringify({ filename: file.name, contentType: file.type, data, altText }) });
+    insertArticleHtml(`<img src="${escapeHtml(result.media.blobUrl)}" alt="${escapeHtml(altText)}">`);
+  }
   async function saveCurrentDraft() {
+    syncArticleEditor();
     const payload = Object.fromEntries(new FormData(elements.form));
     payload.isFeatured = elements.form.elements.isFeatured.checked;
     payload.featuredImageUrl = await uploadFeatureImage(elements.form.elements.featuredImage.files[0]);
@@ -156,10 +183,33 @@
     updatePublishingControls(currentPost);
   }
   elements.newPost.addEventListener('click', () => { resetEditor(); document.getElementById('cms-lifecycle-actions').hidden = true; renderPosts(); }); elements.search.addEventListener('input', renderPosts);
+  articleEditor.addEventListener('input', syncArticleEditor);
+  articleEditor.addEventListener('keyup', rememberArticleEditorSelection);
+  articleEditor.addEventListener('mouseup', rememberArticleEditorSelection);
+  document.querySelectorAll('[data-editor-command]').forEach((button) => {
+    button.addEventListener('mousedown', (event) => event.preventDefault());
+    button.addEventListener('click', () => { restoreArticleEditorSelection(); document.execCommand(button.dataset.editorCommand, false); syncArticleEditor(); rememberArticleEditorSelection(); });
+  });
+  document.getElementById('article-block-format').addEventListener('change', (event) => { restoreArticleEditorSelection(); document.execCommand('formatBlock', false, event.target.value); syncArticleEditor(); rememberArticleEditorSelection(); });
+  document.querySelector('[data-editor-action="link"]').addEventListener('click', () => {
+    const url = window.prompt('Enter the link URL.', 'https://');
+    if (!url) return;
+    restoreArticleEditorSelection(); document.execCommand('createLink', false, url); syncArticleEditor(); rememberArticleEditorSelection();
+  });
+  document.querySelector('[data-editor-action="image"]').addEventListener('click', () => articleEditorImage.click());
+  document.querySelector('[data-editor-action="cta"]').addEventListener('click', () => {
+    const label = window.prompt('CTA button label.', 'Contact us');
+    const url = window.prompt('CTA button URL.', 'https://');
+    if (!label || !url) return;
+    insertArticleHtml(`<a class="article-cta" href="${escapeHtml(url)}">${escapeHtml(label)}</a>`);
+  });
+  articleEditorImage.addEventListener('change', async () => { try { await uploadArticleImage(articleEditorImage.files[0]); } catch (error) { elements.saveStatus.textContent = error.message; } finally { articleEditorImage.value = ''; } });
+  articleEditor.addEventListener('dragover', (event) => event.preventDefault());
+  articleEditor.addEventListener('drop', async (event) => { event.preventDefault(); try { await uploadArticleImage([...event.dataTransfer.files].find((file) => file.type.startsWith('image/'))); } catch (error) { elements.saveStatus.textContent = error.message; } });
   elements.form.elements.featuredImage.addEventListener('change', () => { const file = elements.form.elements.featuredImage.files[0]; if (file) renderFeaturedImage(URL.createObjectURL(file), elements.form.elements.featuredImageAlt.value); });
   document.getElementById('remove-featured-image').addEventListener('click', () => { elements.form.elements.featuredImage.value = ''; elements.form.elements.featuredImageUrl.value = ''; renderFeaturedImage('', ''); elements.saveStatus.textContent = 'Choose a replacement image before saving.'; });
   elements.list.addEventListener('click', (event) => { const slug = event.target.dataset.slug; if (slug) openPost(slug).catch((error) => alert(error.message)); });
-  document.getElementById('preview-button').addEventListener('click', () => { const form = new FormData(elements.form); elements.previewContent.innerHTML = `<h1>${escapeHtml(form.get('title'))}</h1>${form.get('featuredImageUrl') ? `<img src="${escapeHtml(form.get('featuredImageUrl'))}" alt="${escapeHtml(form.get('featuredImageAlt'))}">` : ''}${safePreviewHtml(form.get('articleHtml'))}`; elements.preview.showModal(); });
+  document.getElementById('preview-button').addEventListener('click', () => { syncArticleEditor(); const form = new FormData(elements.form); elements.previewContent.innerHTML = `<h1>${escapeHtml(form.get('title'))}</h1>${form.get('featuredImageUrl') ? `<img src="${escapeHtml(form.get('featuredImageUrl'))}" alt="${escapeHtml(form.get('featuredImageAlt'))}">` : ''}${safePreviewHtml(form.get('articleHtml'))}`; elements.preview.showModal(); });
   document.getElementById('close-preview-button').addEventListener('click', () => elements.preview.close());
   elements.form.addEventListener('submit', async (event) => { event.preventDefault(); clearValidationErrors(); try { elements.saveStatus.textContent = 'Saving...'; await saveCurrentDraft(); elements.saveStatus.textContent = 'Draft saved. Review it with Preview, then publish live.'; await refreshPosts(); } catch (error) { elements.saveStatus.textContent = error.message; showValidationErrors(error); } });
   function showPublishResult(title, message, url) {
@@ -215,6 +265,7 @@
       setConnection('Sign in required', false); return;
     }
     token = sessionData.session.access_token; elements.auth.hidden = true; elements.workspace.hidden = false; elements.newPost.disabled = false; setConnection('CMS connected', true);
+    if (window.lucide) window.lucide.createIcons();
     try { await refreshPosts(); } catch (error) { if (error.message.includes('not been granted CMS access')) showBootstrap('No CMS role has been assigned to this account yet.'); else throw error; }
   } catch (error) { elements.setup.hidden = false; elements.auth.hidden = true; elements.setupMessage.textContent = error.message || 'The CMS could not be reached.'; setConnection('CMS connection failed', false); }
 }());

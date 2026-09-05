@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/admin/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
   <script defer src="/admin/app.js"></script>
 </head>
 <body>
@@ -72,7 +73,7 @@
             <div class="cms-form-grid">
               <label>Article title<input name="title" required maxlength="180" autocomplete="off"></label>
               <label>Public URL slug<input name="publicSlug" required maxlength="120" pattern="[a-z0-9]+(-[a-z0-9]+)*" placeholder="network-topic-guide" autocomplete="off"></label>
-              <label>Category<input name="category" required maxlength="80" placeholder="Infrastructure" autocomplete="off"></label>
+              <label>Category<select name="category" required><option value="" disabled selected>Select a category</option><option>Business Continuity</option><option>Cloud &amp; Connectivity</option><option>Cyber Security</option><option>Infrastructure</option><option>IT Strategy</option><option>Managed Services</option><option>Microsoft 365</option><option>Network Security</option><option>Networking</option><option>Wireless Networking</option></select></label>
               <label>Publication date<input name="publishedAt" type="date"></label>
               <label class="cms-checkbox"><input name="isFeatured" type="checkbox"> Feature on blog listing</label>
               <label>Featured position<input name="featuredRank" type="number" min="1" max="50" placeholder="Optional"></label>
@@ -83,7 +84,22 @@
               </div>
               <label class="cms-form-grid__wide">Image alternative text<input name="featuredImageAlt" maxlength="250" autocomplete="off"></label>
               <label class="cms-form-grid__wide">Excerpt<textarea name="excerpt" required maxlength="360" rows="3"></textarea></label>
-              <label class="cms-form-grid__wide">Article body<textarea name="articleHtml" required rows="16" placeholder="Use semantic HTML, for example: <h2>Heading</h2><p>Paragraph.</p>"></textarea></label>
+              <fieldset class="cms-rich-editor cms-form-grid__wide">
+                <legend>Article body</legend>
+                <div class="cms-rich-editor__toolbar" role="toolbar" aria-label="Article formatting">
+                  <select id="article-block-format" aria-label="Text format"><option value="p">Paragraph</option><option value="h1">Heading 1</option><option value="h2">Heading 2</option><option value="h3">Heading 3</option><option value="h4">Heading 4</option><option value="h5">Heading 5</option><option value="h6">Heading 6</option></select>
+                  <button type="button" data-editor-command="bold" aria-label="Bold" title="Bold"><i data-lucide="bold"></i></button>
+                  <button type="button" data-editor-command="italic" aria-label="Italic" title="Italic"><i data-lucide="italic"></i></button>
+                  <button type="button" data-editor-command="insertOrderedList" aria-label="Numbered list" title="Numbered list"><i data-lucide="list-ordered"></i></button>
+                  <button type="button" data-editor-command="insertUnorderedList" aria-label="Bullet list" title="Bullet list"><i data-lucide="list"></i></button>
+                  <button type="button" data-editor-action="link" aria-label="Insert link" title="Insert link"><i data-lucide="link"></i></button>
+                  <button type="button" data-editor-action="image" aria-label="Insert image" title="Insert image"><i data-lucide="image-plus"></i></button>
+                  <button type="button" data-editor-action="cta" aria-label="Insert CTA button" title="Insert CTA button"><i data-lucide="mouse-pointer-click"></i></button>
+                </div>
+                <div id="article-editor" class="cms-rich-editor__surface" contenteditable="true" role="textbox" aria-multiline="true" data-placeholder="Write your article, then select text to format it. Drop images here to upload them."></div>
+                <textarea name="articleHtml" required hidden></textarea>
+                <input id="article-editor-image" type="file" accept="image/avif,image/jpeg,image/png,image/webp" hidden>
+              </fieldset>
               <label class="cms-form-grid__wide">SEO title<input name="seoTitle" maxlength="180" autocomplete="off"></label>
               <label class="cms-form-grid__wide">SEO description<textarea name="seoDescription" maxlength="360" rows="3"></textarea></label>
               <label class="cms-form-grid__wide">Schema markup (JSON-LD)<textarea name="schemaMarkup" rows="10" spellcheck="false" placeholder='{"@context":"https://schema.org","@type":"Article"}'></textarea></label>
