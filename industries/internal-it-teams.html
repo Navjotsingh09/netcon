@@ -84,6 +84,21 @@
     .svcs-hero__cta { margin-top: 0; background: #fff !important; color: #353535 !important; border: 0; border-radius: 2px !important; font-family: 'Google Sans Flex', sans-serif; font-size: 20px; font-style: normal; font-weight: 600; letter-spacing: 0; text-transform: none; min-width: 170px; width: auto; min-height: 50px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; line-height: normal; transition: background .2s ease; }
     .svcs-hero__cta:hover { background: #f0f0f0 !important; transform: none; }
 
+
+    .iit-insight { max-width: var(--max-w); margin: 0 auto; padding: 72px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr); gap: 76px; align-items: end; }
+    .iit-insight__title { max-width: 580px; margin: 0 0 24px; color: var(--navy); font-size: 48px; font-weight: 600; line-height: 1.08; }
+    .iit-insight__intro { max-width: 520px; margin: 0; color: var(--sub); font-size: 19px; font-weight: 500; line-height: 1.4; }
+    .iit-insight__controls { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; margin-top: 86px; }
+    .iit-insight__progress { height: 10px; border-radius: 8px; background: var(--gray-mid); overflow: hidden; }
+    .iit-insight__progress span { display: block; width: 20%; height: 100%; border-radius: inherit; background: var(--sub); transition: width .25s ease; }
+    .iit-insight__buttons { display: flex; gap: 10px; }
+    .iit-insight__buttons button { display: grid; width: 54px; height: 48px; place-items: center; border: 0; border-radius: 6px; background: var(--gray-bg); color: var(--dark); cursor: pointer; font-size: 30px; line-height: 1; }
+    .iit-insight__buttons button:hover, .iit-insight__buttons button:focus-visible { background: var(--blue); color: #fff; }
+    .iit-insight__card { min-height: 360px; padding: 52px 46px; border-radius: 26px; background: #8ca1c1; color: #fff; box-shadow: 0 3px 8px rgb(0 0 0 / 18%); }
+    .iit-insight__card h3 { margin: 0 0 38px; font-size: 32px; font-weight: 600; line-height: 1.12; }
+    .iit-insight__card p { margin: 0; font-size: 22px; font-weight: 500; line-height: 1.35; }
+    .iit-insight__count { display: block; margin-top: 72px; font-size: 32px; font-weight: 600; }
+
     .sd-section { padding: 0 var(--px); margin: 100px auto; max-width: var(--section-w); }
     .sd-wrap { max-width: var(--max-w); margin: 0 auto; }
     .biz { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -104,10 +119,21 @@
       .svcs-hero__title { font-size: 46px; }
       .svcs-hero__content { padding: 80px 60px 120px var(--px); }
       .sd-section { margin: 56px auto; }
+      .iit-insight { grid-template-columns: 1fr; gap: 32px; }
+      .iit-insight__controls { margin-top: 36px; }
     }
     @media (max-width: 768px) {
       .svcs-hero__wrap { background-image:url(/images/pages/unique/banner-icons/industries-icon.svg); background-repeat:no-repeat; background-size:250px auto; background-position:right -24px top -24px; height: auto; min-height: 0; }
       .sd-section { margin: 56px auto; }
+      .iit-insight { padding: 52px 0; }
+      .iit-insight__title { font-size: 32px; }
+      .iit-insight__intro { font-size: 17px; }
+      .iit-insight__controls { gap: 16px; margin-top: 28px; }
+      .iit-insight__buttons button { width: 46px; height: 42px; font-size: 26px; }
+      .iit-insight__card { min-height: 280px; padding: 32px 26px; border-radius: 16px; }
+      .iit-insight__card h3 { margin-bottom: 24px; font-size: 25px; }
+      .iit-insight__card p { font-size: 18px; }
+      .iit-insight__count { margin-top: 42px; font-size: 26px; }
       .biz { grid-template-columns: 1fr; gap: 26px; }
       .biz__left h2 { font-size: 22px; line-height: 1.25; }
       .biz__left p { font-size: 15.5px; line-height: 1.6; }
@@ -148,6 +174,18 @@
     </div>
   </section>
 
+  <section class="iit-insight animate-fade-up" aria-labelledby="iit-insight-title">
+    <div>
+      <h2 class="iit-insight__title" id="iit-insight-title">Strengthening Internal IT with Expert Network Support</h2>
+      <p class="iit-insight__intro">A network specialist provides support to your existing personnel without increasing their workloads on a daily basis.</p>
+      <div class="iit-insight__controls">
+        <div class="iit-insight__progress" aria-hidden="true"><span id="iit-insight-progress"></span></div>
+        <div class="iit-insight__buttons"><button id="iit-insight-previous" type="button" aria-label="Previous insight">&#8592;</button><button id="iit-insight-next" type="button" aria-label="Next insight">&#8594;</button></div>
+      </div>
+    </div>
+    <article class="iit-insight__card" aria-live="polite"><h3 id="iit-insight-heading">The Expanding Responsibilities of Internal IT Teams</h3><p id="iit-insight-copy">IT departments today face challenges from multiple fronts, including cyber security, maintaining infrastructure, supporting users and long-term strategic planning.</p><span class="iit-insight__count" id="iit-insight-count">1/5</span></article>
+  </section>
+
   <section class="section animate-fade-up" aria-labelledby="support-h">
     <div class="split split--3-2">
       <div>
@@ -166,6 +204,28 @@
       </picture>
     </div>
   </section>
+
+  <script>
+  (function internalItInsights() {
+    'use strict';
+    var insights = [
+      { heading: 'The Expanding Responsibilities of Internal IT Teams', copy: 'IT departments today face challenges from multiple fronts, including cyber security, maintaining infrastructure, supporting users and long-term strategic planning.' },
+      { heading: 'Focused Network Expertise When It Is Needed', copy: 'Specialist network support helps internal teams resolve complex infrastructure issues without diverting attention from their wider operational priorities.' },
+      { heading: 'Performance and Capacity Planning', copy: 'Network assessments, capacity planning and performance monitoring give internal teams clearer visibility of the infrastructure that supports their organisation.' },
+      { heading: 'Security Support That Works Alongside Your Team', copy: 'Network specialists can support security work and help identify the parts of the environment that need closer technical attention.' },
+      { heading: 'A Collaborative Long-Term Partnership', copy: 'Support is shaped around existing processes, helping internal teams retain ownership while accessing specialist networking expertise as requirements evolve.' }
+    ];
+    var current = 0;
+    var heading = document.getElementById('iit-insight-heading');
+    var copy = document.getElementById('iit-insight-copy');
+    var count = document.getElementById('iit-insight-count');
+    var progress = document.getElementById('iit-insight-progress');
+    if (!heading || !copy || !count || !progress) return;
+    function show(index) { current = (index + insights.length) % insights.length; heading.textContent = insights[current].heading; copy.textContent = insights[current].copy; count.textContent = `${current + 1}/${insights.length}`; progress.style.width = `${((current + 1) / insights.length) * 100}%`; }
+    document.getElementById('iit-insight-previous').addEventListener('click', function () { show(current - 1); });
+    document.getElementById('iit-insight-next').addEventListener('click', function () { show(current + 1); });
+  }());
+  </script>
 
   <section class="industry-banner animate-fade-up" aria-labelledby="why-h">
     <div class="industry-banner__inner">
