@@ -75,7 +75,7 @@
 }
 
 .csd-copy > .csd-section-block:nth-last-child(-n + 2) .csd-section-title {
-  padding-left: 0;
+  padding-left: 24px;
 }
 
 .csd-copy > .csd-section-block:nth-last-child(-n + 2) li {
@@ -107,7 +107,7 @@
   }
 
   .csd-copy > .csd-section-block:nth-last-child(-n + 2) .csd-section-title {
-    padding-left: 0;
+    padding-left: 18px;
   }
 
   .csd-copy .csd-metrics {
