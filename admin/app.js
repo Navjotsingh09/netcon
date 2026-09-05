@@ -87,8 +87,7 @@
       const rowClass = `${currentPost?.publicSlug === post.publicSlug ? 'is-selected' : ''}${post.archivedAt ? ' is-archived' : ''}`.trim();
       const slug = encodeURIComponent(post.publicSlug);
       const actions = [`<a class="cms-article-action" href="/resources/blogs/${slug}" target="_blank" rel="noopener" aria-label="View ${escapeHtml(post.title || 'article')}" title="View published article"><i data-lucide="external-link"></i></a>`, `<button class="cms-article-action" data-action="edit" data-slug="${escapeHtml(post.publicSlug)}" type="button" aria-label="Edit ${escapeHtml(post.title || 'article')}" title="Edit article"><i data-lucide="pencil"></i></button>`];
-      if (cmsUser?.role === 'reviewer' && !post.archivedAt) actions.push(`<button class="cms-article-action cms-article-action--danger" data-action="archive" data-slug="${escapeHtml(post.publicSlug)}" type="button" aria-label="Archive ${escapeHtml(post.title || 'article')}" title="Archive article"><i data-lucide="archive"></i></button>`);
-      if (cmsUser?.role === 'reviewer' && isEditableDraft(post)) actions.push(`<button class="cms-article-action cms-article-action--danger" data-action="delete_draft" data-slug="${escapeHtml(post.publicSlug)}" type="button" aria-label="Delete draft for ${escapeHtml(post.title || 'article')}" title="Delete editable draft"><i data-lucide="trash-2"></i></button>`);
+      if (cmsUser?.role === 'reviewer') actions.push(`<button class="cms-article-action cms-article-action--danger" data-action="delete_post" data-slug="${escapeHtml(post.publicSlug)}" type="button" aria-label="Delete ${escapeHtml(post.title || 'article')}" title="Delete article"><i data-lucide="trash-2"></i></button>`);
       return `<article class="cms-article-card ${rowClass}"><div class="cms-article-card__body"><h3>${escapeHtml(post.title || 'Untitled article')}</h3><p>/resources/blogs/${escapeHtml(post.publicSlug)}</p><div class="cms-article-card__meta"><span class="cms-status" data-status="${escapeHtml(label)}">${escapeHtml(label)}</span><time datetime="${post.updatedAt || ''}">${post.updatedAt ? new Date(post.updatedAt).toLocaleDateString('en-GB') : 'Not saved'}</time></div></div><div class="cms-article-actions" aria-label="Article actions">${actions.join('')}</div></article>`;
     }).join('') || '<p class="cms-article-list__empty">No articles match this search.</p>';
     const countElementIds = { published: 'published-count', draft: 'draft-count', in_review: 'review-count', scheduled: 'scheduled-count' };
@@ -216,7 +215,7 @@
   articleEditor.addEventListener('drop', async (event) => { event.preventDefault(); try { await uploadArticleImage([...event.dataTransfer.files].find((file) => file.type.startsWith('image/'))); } catch (error) { elements.saveStatus.textContent = error.message; } });
   elements.form.elements.featuredImage.addEventListener('change', () => { const file = elements.form.elements.featuredImage.files[0]; if (file) renderFeaturedImage(URL.createObjectURL(file), elements.form.elements.featuredImageAlt.value); });
   document.getElementById('remove-featured-image').addEventListener('click', () => { elements.form.elements.featuredImage.value = ''; elements.form.elements.featuredImageUrl.value = ''; renderFeaturedImage('', ''); elements.saveStatus.textContent = 'Choose a replacement image before saving.'; });
-  elements.list.addEventListener('click', (event) => { const actionButton = event.target.closest('[data-action]'); if (!actionButton) return; const { action, slug } = actionButton.dataset; if (action === 'edit') openPost(slug).catch((error) => alert(error.message)); else if (action === 'archive') runLifecycleAction('archive', 'Archive this article? It will be removed from CMS editorial listings.', slug); else if (action === 'delete_draft') runLifecycleAction('delete_draft', 'Delete this editable draft? The current published version will remain unchanged.', slug); });
+  elements.list.addEventListener('click', (event) => { const actionButton = event.target.closest('[data-action]'); if (!actionButton) return; const { action, slug } = actionButton.dataset; if (action === 'edit') openPost(slug).catch((error) => alert(error.message)); else if (action === 'delete_post') runLifecycleAction('delete_post', 'Delete this article permanently? Its revisions cannot be restored.', slug); });
   document.getElementById('preview-button').addEventListener('click', () => { syncArticleEditor(); const form = new FormData(elements.form); elements.previewContent.innerHTML = `<h1>${escapeHtml(form.get('title'))}</h1>${form.get('featuredImageUrl') ? `<img src="${escapeHtml(form.get('featuredImageUrl'))}" alt="${escapeHtml(form.get('featuredImageAlt'))}">` : ''}${safePreviewHtml(form.get('articleHtml'))}`; elements.preview.showModal(); });
   document.getElementById('close-preview-button').addEventListener('click', () => elements.preview.close());
   elements.form.addEventListener('submit', async (event) => { event.preventDefault(); clearValidationErrors(); try { elements.saveStatus.textContent = 'Saving...'; await saveCurrentDraft(); elements.saveStatus.textContent = 'Draft saved. Review it with Preview, then publish live.'; await refreshPosts(); } catch (error) { elements.saveStatus.textContent = error.message; showValidationErrors(error); } });
@@ -249,13 +248,12 @@
     try {
       elements.saveStatus.textContent = 'Updating article...';
       await api(`/api/cms/posts/${encodeURIComponent(slug)}/lifecycle`, { method: 'POST', body: JSON.stringify({ action }) });
-      elements.saveStatus.textContent = action === 'archive' ? 'Article archived.' : 'Editable draft deleted.';
-      if (action === 'archive' && currentPost?.publicSlug === slug) closeEditor();
+      elements.saveStatus.textContent = 'Article deleted.';
+      if (currentPost?.publicSlug === slug) closeEditor();
       await refreshPosts();
     } catch (error) { elements.saveStatus.textContent = error.message; }
   }
-  document.getElementById('archive-post-button').addEventListener('click', () => runLifecycleAction('archive', 'Archive this article? It will be removed from CMS editorial listings.'));
-  document.getElementById('delete-post-button').addEventListener('click', () => runLifecycleAction('delete_draft', 'Delete this editable draft? The current published version will remain unchanged.'));
+  document.getElementById('delete-post-button').addEventListener('click', () => runLifecycleAction('delete_post', 'Delete this article permanently? Its revisions cannot be restored.'));
 
   try {
     const configResponse = await fetch('/api/cms/config');
