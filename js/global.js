@@ -68,7 +68,7 @@
   (function moveServiceBusinessImpact() {
     var main = document.getElementById('main');
     var hero = main && main.querySelector('.nc-hero-wrap');
-    var businessImpact = main && main.querySelector('section[aria-labelledby="biz-h"]');
+    var businessImpact = main && main.querySelector('section[aria-labelledby="biz-h"], section[aria-labelledby="biz-lead-h"]');
     if (!main || !hero || !businessImpact || hero.nextElementSibling === businessImpact) return;
     hero.insertAdjacentElement('afterend', businessImpact);
   }());
