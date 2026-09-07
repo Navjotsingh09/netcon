@@ -7,6 +7,7 @@
 
   var pressureSection = main.querySelector('.sd-section');
   var whySection = main.querySelector('.fin-why');
+  var cyberThreatsSection = main.querySelector('.fin-banner');
 
   if (!pressureSection) pressureSection = main.querySelector('[aria-labelledby="support-h"]');
 
@@ -24,4 +25,7 @@
 
   if (pressureSection) main.insertBefore(pressureSection, overview);
   if (whySection) main.insertBefore(whySection, overview);
+  if (pressureSection && cyberThreatsSection) {
+    main.insertBefore(cyberThreatsSection, pressureSection.nextSibling);
+  }
 })();
