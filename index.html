@@ -2327,8 +2327,6 @@ Edgbaston, B15 3BE</p>
             if (ok) { ok.style.display = 'block'; ok.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
           })
           .catch(function () {
-            if (err) err.style.display = 'block';
-          })
           .finally(function () {
             if (btn) { btn.disabled = false; btn.textContent = btn.dataset.originalText || 'Submit'; }
           });
@@ -4479,10 +4477,11 @@ Edgbaston, B15 3BE</p>
       if (!trusted) return;
 
       var track = trusted.querySelector('.nd-trusted__track');
+      var viewport = trusted.querySelector('.nd-trusted__viewport');
       var prevBtn = trusted.querySelector('.nd-trusted__nav--prev');
       var nextBtn = trusted.querySelector('.nd-trusted__nav--next');
       var dotsWrap = trusted.querySelector('.nd-trusted__dots');
-      if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
+      if (!track || !viewport || !prevBtn || !nextBtn || !dotsWrap) return;
 
       var desktopQuery = window.matchMedia('(min-width: 1025px)');
       var baseTranslate = -175;
@@ -4575,7 +4574,7 @@ Edgbaston, B15 3BE</p>
       }
 
       function startAutoAdvance() {
-        if (!isDesktop || reduceMotionQuery.matches || document.hidden || autoAdvanceId !== null) return;
+        if (reduceMotionQuery.matches || cardCount < 2 || autoAdvanceId !== null) return;
         autoAdvanceId = window.setInterval(onNext, autoAdvanceDelay);
       }
 
@@ -4585,7 +4584,14 @@ Edgbaston, B15 3BE</p>
       }
 
       function onNext() {
-        if (!isDesktop || isAnimating || cardCount < 2) return;
+        if (isAnimating || cardCount < 2) return;
+        if (!isDesktop) {
+          var nextIndex = (currentIndex + 1) % cardCount;
+          viewport.scrollTo({ left: nextIndex === 0 ? 0 : nextIndex * step, behavior: 'smooth' });
+          currentIndex = nextIndex;
+          updateDots();
+          return;
+        }
         isAnimating = true;
         var done = false;
 
@@ -4677,8 +4683,6 @@ Edgbaston, B15 3BE</p>
       });
 
       window.addEventListener('resize', configure);
-      trusted.addEventListener('mouseenter', stopAutoAdvance);
-      trusted.addEventListener('mouseleave', startAutoAdvance);
       trusted.addEventListener('focusin', stopAutoAdvance);
       trusted.addEventListener('focusout', function () {
         window.setTimeout(function () {

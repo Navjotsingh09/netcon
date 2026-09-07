@@ -278,8 +278,6 @@
     });
 
     window.addEventListener('resize', configure);
-    trusted.addEventListener('mouseenter', stopAutoAdvance);
-    trusted.addEventListener('mouseleave', startAutoAdvance);
     trusted.addEventListener('focusin', stopAutoAdvance);
     trusted.addEventListener('focusout', function () {
       window.setTimeout(function () {
