@@ -95,9 +95,9 @@
     .biz__num { font-size: 42px; font-weight: 600; }
 
     /* Fin banner — Unsplash background version */
-    .fin-banner { position: relative; overflow: hidden; }
+    .fin-banner { position: relative; overflow: hidden; margin: 0 0 28px; }
     .fin-banner .industry-banner__inner {
-      min-height: 520px;
+      min-height: 360px;
       border-radius: 10px;
       background: #0c1b3d;
       position: relative;
@@ -126,7 +126,7 @@
       position: relative;
       z-index: 2;
       max-width: 720px;
-      padding: 60px 52px;
+      padding: 34px 32px 64px;
     }
     .fin-banner .industry-banner__eyebrow {
       display: inline-block;
@@ -141,7 +141,7 @@
       margin-bottom: 20px;
     }
     .fin-banner .industry-banner__title {
-      font-size: 48px;
+      font-size: 32px;
       font-weight: 700;
       line-height: 1.07;
       color: #fff;
@@ -149,8 +149,8 @@
       transition: opacity .25s ease-out;
     }
     .fin-banner .industry-banner__text {
-      font-size: 18px;
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.45;
       color: rgba(255,255,255,0.88);
       max-width: 620px;
       transition: opacity .25s ease-out;
@@ -159,8 +159,8 @@
     .fin-banner.is-switching .industry-banner__text { opacity: 0; }
     .fin-banner__dots {
       position: absolute;
-      left: 52px;
-      bottom: 36px;
+      left: 32px;
+      bottom: 26px;
       z-index: 3;
       display: flex;
       gap: 10px;
@@ -236,9 +236,11 @@
       .svcs-hero__sub { font-size: 20px; }
       .svcs-hero__content { padding: 60px var(--px) 80px var(--px); }
       .fin-why, .fin-cta { padding-top: 52px; padding-bottom: 52px; }
-      .fin-banner .industry-banner__content { padding: 36px 28px 72px; }
+      .fin-banner { margin-bottom: 24px; }
+      .fin-banner .industry-banner__inner { min-height: 340px; }
+      .fin-banner .industry-banner__content { padding: 30px 24px 64px; }
       .fin-banner .industry-banner__title { font-size: 30px; }
-      .fin-banner__dots { left: 28px; bottom: 22px; }
+      .fin-banner__dots { left: 24px; bottom: 22px; }
       .fin-cta .industry-cta__title { font-size: 30px; }
       .fin-cta .industry-cta__chips { display: none; }
     }
@@ -397,37 +399,9 @@
     })();
     </script>
 
-    <!-- FIN BANNER — Unsplash background, 3 slides -->
-    <section class="industry-banner animate-fade-up fin-banner" aria-labelledby="fin-banner-h">
-      <div class="industry-banner__inner">
-
-        <!-- Unsplash background image -->
-        <div class="fin-banner__bg">
-          <img id="fin-banner-bg-img"
-            src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1600&q=80&auto=format&fit=crop"
-            alt="Financial network security"
-            loading="lazy">
-        </div>
-        <div class="fin-banner__overlay"></div>
-
-        <div class="industry-banner__content">
-          <span class="industry-banner__eyebrow">Cyber Threats</span>
-          <h2 class="industry-banner__title" id="fin-banner-h">Credential Stuffing and Account Takeover</h2>
-          <p class="industry-banner__text" id="fin-banner-text">Stolen or reused passwords are used to gain access to accounts and internal systems. Strong access controls, multi-factor authentication and continuous monitoring help detect and block unauthorised activity before sensitive data is exposed.</p>
-        </div>
-
-        <div class="fin-banner__dots" role="tablist" aria-label="Cyber threat slides">
-          <button type="button" class="fin-banner__dot is-active" role="tab" aria-selected="true"  aria-label="Slide 1"></button>
-          <button type="button" class="fin-banner__dot"           role="tab" aria-selected="false" aria-label="Slide 2"></button>
-          <button type="button" class="fin-banner__dot"           role="tab" aria-selected="false" aria-label="Slide 3"></button>
-        </div>
-
-      </div>
-    </section>
-
     <!-- FIN BANNER SCRIPT -->
     <script>
-    (function finBannerSlides() {
+    document.addEventListener('DOMContentLoaded', function () {
       'use strict';
       var slides = [
         {
@@ -478,7 +452,7 @@
         dot.addEventListener('click', function () { show(i); startAuto(); });
       });
       startAuto();
-    })();
+    });
     </script>
 
     <!-- BIZ SLIDER -->
@@ -487,6 +461,27 @@
         <div class="biz" id="biz">
           <div class="biz__left">
             <h2 id="biz-h">Primary Cyber Threats and Vulnerabilities for Financial Services</h2>
+            <section class="industry-banner animate-fade-up fin-banner" aria-labelledby="fin-banner-h">
+              <div class="industry-banner__inner">
+                <div class="fin-banner__bg">
+                  <img id="fin-banner-bg-img"
+                    src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1600&q=80&auto=format&fit=crop"
+                    alt="Financial network security"
+                    loading="lazy">
+                </div>
+                <div class="fin-banner__overlay"></div>
+                <div class="industry-banner__content">
+                  <span class="industry-banner__eyebrow">Cyber Threats</span>
+                  <h2 class="industry-banner__title" id="fin-banner-h">Credential Stuffing and Account Takeover</h2>
+                  <p class="industry-banner__text" id="fin-banner-text">Stolen or reused passwords are used to gain access to accounts and internal systems. Strong access controls, multi-factor authentication and continuous monitoring help detect and block unauthorised activity before sensitive data is exposed.</p>
+                </div>
+                <div class="fin-banner__dots" role="tablist" aria-label="Cyber threat slides">
+                  <button type="button" class="fin-banner__dot is-active" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+                  <button type="button" class="fin-banner__dot" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+                  <button type="button" class="fin-banner__dot" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+                </div>
+              </div>
+            </section>
             <p>Understanding the most common threats is an important part of protecting your network and maintaining business continuity.</p>
             <p>Fraudulent emails, messages and websites are used to trick employees or customers into revealing login details or other sensitive information, giving attackers access to financial systems.</p>
             <div class="biz__nav">

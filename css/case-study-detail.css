@@ -72,6 +72,7 @@
 .csd-copy .csd-section-block ul {
   margin: 0;
   padding-left: 24px;
+  list-style: disc;
 }
 
 .csd-copy > .csd-section-block:nth-last-child(-n + 2) .csd-section-title {
