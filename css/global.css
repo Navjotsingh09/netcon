@@ -1142,6 +1142,31 @@ body.industry-detail-page #main > #contact {
 }
 @media (max-width:768px) {
   :root { --px:32px; }
+
+  .hero__btn,
+  .ab-hero .ab-button,
+  .page-hero__cta-btn,
+  .svcs-hero__cta,
+  .sol-hero-landing__btn,
+  .mnhc-hero__btn,
+  .nhc-hero__btn,
+  .mcsr-hero__btn,
+  .csr-hero__btn,
+  .maif-hero__btn,
+  .aif-hero__btn,
+  .cs-hero-cta {
+    box-sizing:border-box;
+    width:auto;
+    max-width:100%;
+    min-width:0;
+    height:auto;
+    min-height:44px;
+    padding-inline:18px;
+    line-height:1.25;
+    text-align:center;
+    white-space:normal;
+    overflow-wrap:normal;
+  }
   .nav-hamburger {
     width:44px;
     height:44px;

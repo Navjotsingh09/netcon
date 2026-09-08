@@ -517,7 +517,4 @@
     });
   }
 
-  setFamilyCtas();
-  window.addEventListener('load', setFamilyCtas);
-
 })();
