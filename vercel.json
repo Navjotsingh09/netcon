@@ -374,11 +374,6 @@
       "permanent": false
     },
     {
-      "source": "/solutions/microsoft-365-and-network-readiness",
-      "destination": "/services/",
-      "permanent": true
-    },
-    {
       "source": "/solutions/ai-ready-infrastructure",
       "destination": "/solutions/ai-ready-infrastructure-review",
       "permanent": false
