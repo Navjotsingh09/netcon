@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://network-consultancy.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Services",
-      "item": "https://network-consultancy.com/services"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Network Consultancy",
-      "item": "https://network-consultancy.com/services/network-consultancy"
-    }
-  ]
-}
-  </script>
+<script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://network-consultancy.com/services/network-consultancy#service",
+  "name": "Network Consultancy",
+  "url": "https://network-consultancy.com/services/network-consultancy",
+  "description": "Professional network consultancy services helping UK businesses design, optimise, secure and manage reliable network infrastructure.",
+  "serviceType": "Network Consultancy",
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://network-consultancy.com/#organization",
+    "name": "Network Consultancy",
+    "url": "https://network-consultancy.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://network-consultancy.com/images/misc/logo.png"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Kingdom"
+  }
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://network-consultancy.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://network-consultancy.com/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Network Support",
+      "item": "https://network-consultancy.com/services/network-support"
+    }
+  ]
+ }
+ </script>
+</script>
     <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PVKBZV7');</script>
 
@@ -49,7 +73,6 @@
   <link rel="stylesheet" href="/css/global.css">
   <script src="/js/schema.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
-  <link rel="stylesheet" href="/css/content-cta.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
   /* ===== Service detail — shared section styles (template) ===== */
@@ -58,13 +81,12 @@
   .sd-section { padding:0 var(--px); margin:100px auto; max-width:var(--section-w); }
   .sd-section--tint { background:#f7f9fc; padding:80px var(--px); }
   .svc-cta-band { margin-top:100px; }
-  main .nd-faq { margin:100px auto; }
+  main .nd-faq { margin-top:100px; }
   .nd-contact.section-shell { margin-top:100px; }
   .sd-wrap { max-width:var(--max-w); margin:0 auto; }
   .sd-head { text-align:center; max-width:820px; margin:0 auto 48px; }
   .sd-head h2 { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:16px; }
   .sd-head p { font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; color:var(--sub); line-height:1.5; }
-  .sd-head .inline-link, .biz__left .inline-link { color:var(--blue); text-decoration:underline; text-underline-offset:3px; }
   /* Hero CTA */
   .page-hero__cta-btn { display:inline-flex; align-items:center; margin-top:34px; background:#fff; color:#353535; border:0; border-radius:2px; font-family:'Google Sans Flex',sans-serif; font-size:20px; font-style:normal; font-weight:600; letter-spacing:0; text-transform:none; min-width:170px; width:auto; min-height:50px; padding:0 12px; justify-content:center; white-space:nowrap; line-height:normal; transition:background .2s ease; }
   .page-hero__cta-btn:hover { background:#f0f0f0; transform:none; }
@@ -106,7 +128,7 @@
   .wws__media picture { display:block; width:100%; height:100%; }
   .wws__img { width:100%; height:100%; min-height:420px; object-fit:cover; display:block; }
   .wws__tiles { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-  .wws__item { display:flex; align-items:center; background:#fff; border:1px solid var(--blue); border-radius:6px; padding:22px 26px; font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; color:#353535; text-decoration:none; transition:background .2s ease, box-shadow .2s ease, transform .2s ease; }
+  .wws__item { display:flex; align-items:center; background:#fff; border:1px solid var(--blue); border-radius:6px; padding:22px 26px; font-family:'Google Sans Flex',sans-serif; font-size:20px; font-weight:500; color:#353535; transition:background .2s ease, box-shadow .2s ease, transform .2s ease; }
   .wws__item:hover { background:rgba(9,130,197,.05); box-shadow:0 10px 24px rgba(19,32,63,.10); transform:translateY(-3px); }
   @media(prefers-reduced-motion:reduce){ .wws__item, .wws__item:hover { transition:none; transform:none; } }
   @media(max-width:1200px){ .wws__layout{grid-template-columns:360px 1fr;gap:32px;} .wws__item{font-size:18px;padding:18px 20px;} }
@@ -176,7 +198,7 @@
     .sd-section { padding:0 var(--px); margin:56px auto; }
     .sd-section--tint { padding:34px var(--px); }
     .svc-cta-band { margin-top:56px; }
-    main .nd-faq { margin:56px auto; }
+    main .nd-faq { margin-top:56px; }
     .nd-contact.section-shell { margin-top:56px; }
     .sd-head { margin-bottom:22px; }
     .sd-head h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:10px; }
@@ -244,7 +266,7 @@
       <div class="nc-hero__content">
         <h1 class="nc-hero__title">Secure IT Infrastructure</h1>
         <p class="nc-hero__sub">Professionally design, optimise, and secure your corporate network with our network consultancy services.</p>
-        <a href="/contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Book Expert Consultation</a>
+        <a href="#contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Book Health Check</a>
       </div>
     </div>
   </section>
@@ -269,7 +291,7 @@
           <img id="ksa-img" src="/images/pages/unique/Network-Performance-Assessment.avif" alt="Network consultant">
           <div class="ksa__panel-card">
             <h3 id="ksa-title">Network Performance Assessment</h3>
-            <p id="ksa-desc">Engineers at Network Consultancy audit traffic flow and system health to eliminate connection lag. We optimise your infrastructure to maintain the operating speed of your critical business applications and support staff productivity.</p>
+            <p id="ksa-desc">Our team of architects has well-evaluated cloud strategies to safely migrate your digital assets. We transition your legacy systems with zero data loss to lower your monthly hosting fees.</p>
           </div>
         </div>
       </div>
@@ -281,30 +303,23 @@
     <div class="sd-wrap">
       <div class="sd-head" style="text-align:left;margin-left:0;">
         <h2 id="wws-h">Who We Serve</h2>
-        <p>We design <a class="inline-link" href="https://network-consultancy.com/services">our services</a> for organisations that are transforming and need completely stable, secure connectivity to protect daily operations.</p>
+        <p>We design our services for organisations that are transforming and need completely stable, secure connectivity to protect daily operations.</p>
       </div>
       <div class="wws__layout animate-fade-up">
         <div class="wws__media">
           <picture><source srcset="/images/pages/unique/services-network-consultancy-nc-wws-person.webp" type="image/webp"><img class="wws__img" src="/images/pages/unique/services-network-consultancy-nc-wws-person.jpg" alt="Network consultant" loading="lazy"></picture>
         </div>
         <div class="wws__tiles stagger-children">
-          <a class="wws__item animate-fade-up" href="/services/network-consultancy">Small and medium-sized businesses</a>
-          <a class="wws__item animate-fade-up" href="/industries/healthcare-and-clinics">Healthcare providers</a>
-          <a class="wws__item animate-fade-up" href="/industries/multi-site-businesses">Multi-site organisations</a>
-          <a class="wws__item animate-fade-up" href="/industries/educational-institutes">Educational institutions</a>
-          <a class="wws__item animate-fade-up" href="/industries/legal-firms">Professional service firms</a>
-          <a class="wws__item animate-fade-up" href="/industries/manufacturing">Manufacturing businesses</a>
-          <a class="wws__item animate-fade-up" href="/industries/">Retail organisations</a>
-          <a class="wws__item animate-fade-up" href="/services/remote-working-solutions">Remote and hybrid workforces</a>
+          <div class="wws__item animate-fade-up">Small and medium-sized businesses</div>
+          <div class="wws__item animate-fade-up">Healthcare providers</div>
+          <div class="wws__item animate-fade-up">Multi-site organisations</div>
+          <div class="wws__item animate-fade-up">Educational institutions</div>
+          <div class="wws__item animate-fade-up">Professional service firms</div>
+          <div class="wws__item animate-fade-up">Manufacturing businesses</div>
+          <div class="wws__item animate-fade-up">Retail organisations</div>
+          <div class="wws__item animate-fade-up">Remote and hybrid workforces</div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="content-cta" aria-label="Contact Network Consultancy">
-    <div class="content-cta__inner">
-      <div class="content-cta__copy"><h2 class="content-cta__title">Ready to strengthen your network?</h2><p class="content-cta__text">Talk to our consultants about the next step for your business infrastructure.</p></div>
-      <a class="content-cta__button" href="/contact" data-source-cta="service_network_consultancy_contact">Contact Us</a>
     </div>
   </section>
 
@@ -313,8 +328,8 @@
     <div class="sd-wrap">
       <div class="biz" id="biz">
         <div class="biz__left">
-          <h2 id="biz-h">Find Out the Business Impact of our Consultancy - Core Project Capabilities</h2>
-          <p>As your dedicated network and security consulting partners, we ensure the seamlessness of your business. Our engineers handle everything from deep network health audits to deploying <a class="inline-link" href="https://network-consultancy.com/services/remote-working-solutions">secure remote working setups</a> and enterprise-grade firewalls.</p>
+          <h2 id="biz-h">Find Out the Business Impact of our Consultancy &mdash; Core Project Capabilities</h2>
+          <p>As your dedicated network and security consulting partners, we ensure the seamlessness of your business. Our engineers handle everything from deep network health audits to deploying secure remote working setups and enterprise-grade firewalls.</p>
           <div class="biz__nav">
             <button class="biz__arrow" id="biz-prev" aria-label="Previous">&#8592;</button>
             <button class="biz__arrow" id="biz-next" aria-label="Next">&#8594;</button>
@@ -352,25 +367,28 @@
   <section class="sd-section" aria-labelledby="probs-h">
     <div class="sd-wrap">
       <div class="sd-head" style="text-align:left;margin-left:0;">
-        <h2 id="probs-h">Common Network Issues We Resolve with Network Consultancy</h2>
+        <h2 id="probs-h">Common Network Issues We Resolve with Network Design & Deployment</h2>
         <p>Network Consultancy offers solutions to the common issues that affect nearly every growing business. From dropped client calls to sudden office internet outages, we find the exact technical breakdown and fix it immediately for you.</p>
-        <p>We regularly help with:</p>
       </div>
       <div class="probs__masonry">
         <div class="probs__row">
-          <div class="prob" style="flex-grow:832"><img src="/images/unique/Dropped-video-calls.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Dropped video calls</div></div>
-          <div class="prob" style="flex-grow:588"><img src="/images/unique/Wi-Fi-dead-zones.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Wi-Fi dead zones</div></div>
+          <div class="prob" style="flex-grow:832"><img src="/images/unique/Dropped-video-calls.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">We regularly help with</div></div>
+          <div class="prob" style="flex-grow:588"><img src="/images/unique/Wi-Fi-dead-zones.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Slow network performance</div></div>
         </div>
         <div class="probs__row">
-          <div class="prob" style="flex-grow:349"><img src="/images/unique/Network-congestion-slowdowns.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Network congestion slowdowns</div></div>
-          <div class="prob" style="flex-grow:469"><img src="/images/pages/unique/generated/Insecure-visitor-access.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Insecure visitor access</div></div>
-          <div class="prob" style="flex-grow:596"><img src="/images/pages/Key-Elements-Resilient-Network.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Disconnected warehouse scanners</div></div>
+          <div class="prob" style="flex-grow:349"><img src="/images/pages/unique/Network-congestion-slowdowns.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Fluctuating connectivity issues</div></div>
+          <div class="prob" style="flex-grow:469"><img src="/images/unique/Insecure-visitor-access.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Wi-Fi coverage problems</div></div>
+          <div class="prob" style="flex-grow:596"><img src="/images/unique/Disconnected-warehouse-scanners.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Firewall and security concerns</div></div>
         </div>
         <div class="probs__row">
-          <div class="prob" style="flex-grow:580"><img src="/images/features/feature-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Network device failures</div></div>
-          <div class="prob" style="flex-grow:835"><img src="/images/unique/services-network-consultancy-scroll-banner-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Bandwidth bottlenecks</div></div>
-          <div class="prob" style="flex-grow:580"><img src="/images/unique/services-network-consultancy-service-3.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">User access and permission issues</div></div>
+          <div class="prob" style="flex-grow:580"><img src="/images/unique/Undetected-network-glitches.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">VPN connectivity issues</div></div>
+          <div class="prob" style="flex-grow:835"><img src="/images/unique/Inconsistent-multi-site-security.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Network device failures</div></div>
         </div>
+           <div class="probs__row">
+          <div class="prob"  style="flex-grow:832"><img src="/images/unique/services-network-design-deployment-scroll-banner-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Bandwidth bottlenecks</div></div>
+          <div class="prob" style="flex-grow:588"><img src="/images/unique/services-network-design-deployment-service-3.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">User access and permission issues</div></div>
+        </div>
+       
       </div>
     </div>
   </section>
@@ -380,7 +398,7 @@
   <div class="sd-wrap">
     <div class="nd-trusted">
       <div class="nd-trusted__head">
-        <h2 class="nd-trusted__title" id="tst-h">What our clients say</h2>
+        <h2 class="nd-trusted__title" id="tst-h">What our clients says</h2>
 
         <div class="nd-trusted__controls">
           <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
@@ -405,6 +423,7 @@
               <span class="nd-t-card__avatar" aria-hidden="true">
                 <img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy">
               </span>
+
               <div>
                 <p class="nd-t-card__name">Emily Brown</p>
                 <p class="nd-t-card__role">NorthBridge Finance Ltd., Manchester</p>
@@ -465,20 +484,20 @@
               </div>
             </div>
           </article>
-
+                    <!-- Slide 5 -->
           <article class="nd-t-card">
             <p class="nd-t-card__quote">
-              &ldquo;The team's network consulting services revolutionised our entire infrastructure. Our operations were streamlined, security was strengthened, and uptime was improved thanks to their network consulting expertise. We were able to modernise legacy systems without any disruptions thanks to their innovative network consulting approach.&rdquo;
+              The team's network consulting services revolutionised our entire infrastructure. Our operations were streamlined, security was strengthened, and uptime was improved thanks to their network consulting expertise. We were able to modernise legacy systems without any disruptions thanks to their innovative network consulting approach.
             </p>
 
             <div class="nd-t-card__person">
               <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-m1.jpg" alt="" loading="lazy">
+                <img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy">
               </span>
 
               <div>
                 <p class="nd-t-card__name">James Carter</p>
-                <p class="nd-t-card__role">IT Logistics UK, London</p>
+                <p class="nd-t-card__role">IT Logistics UK in London</p>
               </div>
             </div>
           </article>
@@ -504,19 +523,32 @@
       </div>
     </div>
     <div class="svc-cta-band__card">
-      <p class="svc-cta-band__text">Get expert network consultancy designed to keep your company safe, secure, connected, and running at peak performance. Our Cisco-certified engineers are ready to help.</p>
-      <a href="#contact" class="svc-cta-band__btn">Make a Network Consultancy Request</a>
+      <p class="svc-cta-band__text">Eliminate unexpected downtime before it costs you money. Our prompt response secures your connections and keeps your team online, free from disruptions.</p>
+      <a href="#contact" class="svc-cta-band__btn">Make a &nbsp; <b>Network Consultancy</b>  &nbsp; Request</a>
     </div>
   </section>
 
   <!-- ===== FAQ (CMS) ===== -->
-  <script>
-  window.PAGE_FAQ = [
-    { question:'How do I know if my business needs network consultancy?', answer:'If your staff face constant connection lag, frequent outages, or security threats, a network audit is necessary. A network consultancy would help you pinpoint the exact root causes of these failures, restoring system stability and protecting your daily operations.', open:true },
-    { question:'What is Zero Trust network architecture?', answer:'Zero Trust is a strict security model that assumes every user and device is a potential threat. It requires verification each time before granting personnel entry.', open:false },
-    { question:'How can network consultancy improve cybersecurity?', answer:'Network consultancy improves cybersecurity by identifying weaknesses and implementing protections like firewalls, encryption, and Zero Trust controls. It proactively monitors systems to prevent threats, ensuring your data and operations remain secure.', open:false }
-  ];
-  </script>
+<!-- ===== FAQ (CMS) ===== -->
+<script>
+window.PAGE_FAQ = [
+  {
+    question: 'How do I know if my business needs network consultancy?',
+    answer: 'If your staff face constant connection lag, frequent outages, or security threats, a network audit is necessary. A network consultancy would help you pinpoint the exact root causes of these failures, restoring system stability and protecting your daily operations.',
+    open: true
+  },
+  {
+    question: 'What is Zero Trust network architecture?',
+    answer: 'Zero Trust is a strict security model that assumes every user and device is a potential threat. It requires verification each time before granting personnel entry.',
+    open: false
+  },
+  {
+    question: 'How can network consultancy improve cybersecurity?',
+    answer: 'Network consultancy improves cybersecurity by identifying weaknesses and implementing protections like firewalls, encryption, and Zero Trust controls. It proactively monitors systems to prevent threats, ensuring your data and operations remain secure.',
+    open: false
+  }
+];
+</script>
   <div data-cms="faq"></div>
 
   <div id="site-contact"></div>
@@ -536,10 +568,16 @@
     var img = document.getElementById('ksa-img');
     var title = document.getElementById('ksa-title');
     var desc = document.getElementById('ksa-desc');
-    var data = [
-      { img:'/images/pages/unique/Network-Performance-Assessment.avif', title:'Network Performance Assessment', desc:'Engineers at Network Consultancy audit traffic flow and system health to eliminate connection lag. We optimise your infrastructure to maintain the operating speed of your critical business applications and support staff productivity.' },
-      {
-    img: '/images/pages/unique/Cloud-Migration-Consultancy.avif', title: 'Cloud Migration Consultancy',desc: 'Our cloud architects develop carefully assessed migration strategies that enable the secure transition of your digital assets. We modernise legacy systems with a focus on data integrity, minimising risk while helping reduce ongoing hosting and infrastructure costs.'
+var data = [
+  {
+    img: '/images/pages/unique/Network-Performance-Assessment.avif',
+    title: 'Network Performance Assessment',
+    desc: 'Engineers at Network Consultancy audit traffic flow and system health to eliminate connection lag. We optimise your infrastructure to maintain the operating speed of your critical business applications and support staff productivity.'
+  },
+  {
+    img: '/images/pages/unique/Cloud-Migration-Consultancy.avif',
+    title: 'Cloud Migration Consultancy',
+    desc: 'Our team of architects has well-evaluated cloud strategies to safely migrate your digital assets. We transition your legacy systems with zero data loss to lower your monthly hosting fees.'
   },
   {
     img: '/images/pages/unique/Enterprise-Network-Fortification.avif',
@@ -561,7 +599,7 @@
     title: 'Vulnerability Assessment',
     desc: 'Our team runs deep architectural vulnerability scans to proactively detect system errors. We shift your IT operations from reactive firefighting to continuous threat prevention.'
   }
-    ];
+];
     tabs.forEach(function (tab, i) {
       tab.addEventListener('click', function () {
         tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
@@ -579,21 +617,24 @@
   (function () {
     var biz = document.getElementById('biz');
     if (!biz) return;
-    var slides = [
-      { title:'Wireless Network Deployment', desc:'We design and roll out high-speed Cisco Meraki wireless networks for seamless office-wide connectivity.' },
-      {
-  title: 'Network Security Enhancements',
-  desc: "Our specialists implement advanced security measures that protect corporate information, reduce cyber risk, and strengthen your organisation's overall security posture."
-},
-{
-  title: 'Infrastructure Optimisation',
-  desc: 'We streamline and refine your existing infrastructure to improve data flow, enhance system performance, and eliminate recurring operational issues.'
-},
-{
-  title: 'Proactive Troubleshooting',
-  desc: 'We identify and resolve hidden system issues before they escalate, helping to maintain operational continuity and minimise unplanned downtime.'
-}
-    ];
+var slides = [
+  {
+    title: 'Wireless Network Deployment',
+    desc: 'We design and roll out high-speed Cisco Meraki wireless networks for seamless office-wide connectivity.'
+  },
+  {
+    title: 'Network Security Enhancements',
+    desc: 'Our team hardens your digital barriers to protect company records from data breaches.'
+  },
+  {
+    title: 'Infrastructure Optimisation',
+    desc: 'We clean up your existing system layout to speed up data flow and remove daily glitches.'
+  },
+  {
+    title: 'Proactive Troubleshooting',
+    desc: 'We find and fix hidden system errors before they cause operational downtime.'
+  }
+];
     var i = 0, total = slides.length;
     var title = document.getElementById('biz-title');
     var desc = document.getElementById('biz-desc');

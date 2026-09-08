@@ -2,32 +2,55 @@
   <html lang="en">
   <head>
     
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://network-consultancy.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Services",
-      "item": "https://network-consultancy.com/services"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Business Continuity and Network Resilience",
-      "item": "https://network-consultancy.com/services/business-continuity-and-network-resilience"
-    }
-  ]
-}
-    </script>
+<script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://network-consultancy.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://network-consultancy.com/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Business Continuity and Network Resilience",
+      "item": "https://network-consultancy.com/services/business-continuity-and-network-resilience"
+    }
+  ]
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://network-consultancy.com/services/business-continuity-and-network-resilience#service",
+  "name": "Business Continuity and Network Resilience",
+  "url": "https://network-consultancy.com/services/business-continuity-and-network-resilience",
+  "description": "Professional business continuity and network resilience services helping UK businesses maintain critical operations, minimise disruption and build reliable, resilient network infrastructure.",
+  "serviceType": "Business Continuity and Network Resilience",
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://network-consultancy.com/#organization",
+    "name": "Network Consultancy",
+    "url": "https://network-consultancy.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://network-consultancy.com/images/misc/logo.png"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Kingdom"
+  }
+ }
+ </script>
       <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PVKBZV7');</script>
 
@@ -44,7 +67,6 @@
     <link rel="stylesheet" href="/css/global.css">
   <script src="/js/schema.js" defer></script>
     <link rel="stylesheet" href="/css/animations.css">
-    <link rel="stylesheet" href="/css/content-cta.css">
     <link rel="stylesheet" href="/css/accessibility.css">
     <style>
     /* ===== Service detail — shared section styles (template) ===== */
@@ -52,7 +74,7 @@
     .sd-section { padding:0 var(--px); margin:100px auto; max-width:var(--section-w); }
     .sd-section--tint { background:#f7f9fc; padding:80px var(--px); }
     .svc-cta-band { margin-top:100px; }
-    main .nd-faq { margin:100px auto; }
+    main .nd-faq { margin-top:100px; }
     .nd-contact.section-shell { margin-top:100px; }
     .sd-wrap { max-width:var(--max-w); margin:0 auto; }
     .sd-head { text-align:center; max-width:820px; margin:0 auto 48px; }
@@ -109,7 +131,7 @@
     /* ===== Business Impact — text + blue card slider ===== */
     .biz-lead h2 { font-family:'Google Sans Flex',sans-serif; font-size:42px; font-weight:600; color:var(--navy); line-height:1.1; margin-bottom:44px; }
     .biz { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
-    .biz__left h3 { font-family:'Google Sans Flex',sans-serif; font-size:34px; font-weight:600; color:var(--navy); line-height:1.15; margin-bottom:18px; }
+    .biz__left h2 { font-family:'Google Sans Flex',sans-serif; font-size:34px; font-weight:600; color:var(--navy); line-height:1.15; margin-bottom:18px; }
     .biz__left p { font-family:'Google Sans Flex',sans-serif; font-size:18px; color:var(--sub); line-height:1.55; margin-bottom:40px; }
     .biz__nav { display:flex; align-items:center; gap:16px; }
     .biz__arrow { width:48px; height:48px; border-radius:6px; border:1px solid #d2d2d2; background:#f0f0f0; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:22px; color:#464646; transition:background .2s,color .2s,border-color .2s; }
@@ -172,7 +194,7 @@
       .sd-section { padding:0 var(--px); margin:56px auto; }
       .sd-section--tint { padding:34px var(--px); }
       .svc-cta-band { margin-top:56px; }
-      main .nd-faq { margin:56px auto; }
+      main .nd-faq { margin-top:56px; }
       .nd-contact.section-shell { margin-top:56px; }
       .sd-head { margin-bottom:22px; }
       .sd-head h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:10px; }
@@ -200,7 +222,7 @@
       .biz { gap:26px; }
       .biz-lead h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:10px; }
       .biz-lead p { font-size:15.5px; line-height:1.6; margin-bottom:24px; }
-      .biz__left h3 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; }
+      .biz__left h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; }
       .biz__left p { font-size:15.5px; line-height:1.6; margin-bottom:22px; }
       .biz__arrow { width:40px; height:40px; font-size:18px; }
       .biz__card { padding:26px 20px 30px; min-height:0; }
@@ -244,7 +266,7 @@
         <div class="nc-hero__content">
           <h1 class="nc-hero__title">Business Continuity Solutions</h1>
           <p class="nc-hero__sub">Network Consultancy ensures operational stability through automated backups and secondary networks, protecting your output even during major disruptions.</p>
-          <a href="/contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Improve Network Resilience</a>
+          <a href="#contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Book Health Check</a>
         </div>
       </div>
     </section>
@@ -284,11 +306,8 @@
         </div>
         <div class="biz" id="biz">
           <div class="biz__left">
-            <h3 id="biz-h">The Results for Your Business</h3>
-            <p>Network Consultancy handles your network resilience on three core principles.</p>
-            <p>(1) A plan that identifies and reduces operational risks.</p>
-            <p>(2) Network infrastructure that incorporates automated backups and secondary lines.</p>
-            <p>(3) Knowledgeable technical support that connects you directly to engineers for immediate technical response.</p>
+            <h2 id="biz-h">The Results for Your Business</h2>
+            <p>Network Consultancy handles your network resilience on three core principles. (1) A plan that identifies and reduces operational risks. (2) Network infrastructure that incorporates automated backups and secondary lines. (3) Knowledgeable technical support that connects you directly to engineers for immediate technical response.</p>
             <div class="biz__nav">
               <button class="biz__arrow" id="biz-prev" aria-label="Previous">&#8592;</button>
               <button class="biz__arrow" id="biz-next" aria-label="Next">&#8594;</button>
@@ -298,7 +317,7 @@
           <div class="biz__card">
             <div>
               <h3 id="biz-title">Constant operational stability</h3>
-              <p id="biz-desc">Teams stay active, and networks stay online even during a local power cut or internet blackout.</p>
+              <p id="biz-desc">Our wireless design accounts for building materials and structural elements, ensuring complete coverage and removing connectivity blind spots.</p>
             </div>
             <div class="biz__num" id="biz-count">1/4</div>
           </div>
@@ -336,16 +355,10 @@
             <p>If a local power cut or supplier outage hits that single point, the whole company goes offline. Our business continuity consultancy finds these weak points in your current setup. Through operational resilience consulting, we install automatic backup links and secondary power systems. If your primary line fails, the network switches to the backup line instantly. Results: your business stays online, and you avoid the cost of an outage.</p>
           </div>
           <div class="cissues__media">
-            <picture><source srcset="/images/pages/unique/services-business-continuity-servers.webp" type="image/webp"><img src="/images/pages/unique/services-business-continuity-servers.jpg" alt="Resilient server infrastructure" loading="lazy"></picture>
+            <picture><source srcset="/images/pages/unique/services-business-continuity-servers.avif" type="image/avif">
+              <img src="/images/pages/unique//services-business-continuity-servers.avif" alt="Resilient server infrastructure" loading="lazy"></picture>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="content-cta" aria-label="Contact Network Consultancy">
-      <div class="content-cta__inner">
-        <div class="content-cta__copy"><h2 class="content-cta__title">Protect your business continuity</h2><p class="content-cta__text">Talk to our consultants about resilient network planning for your organisation.</p></div>
-        <a class="content-cta__button" href="/contact" data-source-cta="service_business_continuity_resilience_contact">Contact Us</a>
       </div>
     </section>
 
@@ -386,23 +399,16 @@
             <picture><source srcset="/images/pages/unique/services-business-continuity-nc-wws-person.webp" type="image/webp"><img class="wws__img" src="/images/services/service-3.jpg" alt="Business team that relies on resilient network operations" loading="lazy"></picture>
           </div>
           <div class="wws__tiles stagger-children">
-            <a class="wws__item animate-fade-up" href="/services/network-consultancy">Small and medium-sized businesses</a>
-            <a class="wws__item animate-fade-up" href="/industries/healthcare-and-clinics">Healthcare providers</a>
-            <a class="wws__item animate-fade-up" href="/industries/multi-site-businesses">Multi-site organisations</a>
-            <a class="wws__item animate-fade-up" href="/industries/educational-institutes">Educational institutions</a>
-            <a class="wws__item animate-fade-up" href="/industries/legal-firms">Professional service firms</a>
-            <a class="wws__item animate-fade-up" href="/industries/manufacturing">Manufacturing businesses</a>
-            <a class="wws__item animate-fade-up" href="/industries/">Retail organisations</a>
-            <a class="wws__item animate-fade-up" href="/services/remote-working-solutions">Remote and hybrid workforces</a>
+            <div class="wws__item animate-fade-up">Small and medium-sized businesses</div>
+            <div class="wws__item animate-fade-up">Healthcare providers</div>
+            <div class="wws__item animate-fade-up">Multi-site organisations</div>
+            <div class="wws__item animate-fade-up">Educational institutions</div>
+            <div class="wws__item animate-fade-up">Professional service firms</div>
+            <div class="wws__item animate-fade-up">Manufacturing businesses</div>
+            <div class="wws__item animate-fade-up">Retail organisations</div>
+            <div class="wws__item animate-fade-up">Remote and hybrid workforces</div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="content-cta" aria-label="Contact Network Consultancy">
-      <div class="content-cta__inner">
-        <div class="content-cta__copy"><h2 class="content-cta__title">Ready to build a more resilient network?</h2><p class="content-cta__text">Contact our team to explore the right continuity approach for your business.</p></div>
-        <a class="content-cta__button" href="/contact" data-source-cta="service_business_continuity_who_we_serve_contact">Contact Us</a>
       </div>
     </section>
 
@@ -411,7 +417,7 @@
       <div class="sd-wrap">
         <div class="nd-trusted">
           <div class="nd-trusted__head">
-            <h2 class="nd-trusted__title" id="tst-h">What our clients say</h2>
+            <h2 class="nd-trusted__title" id="tst-h">What our clients says</h2>
             <div class="nd-trusted__controls">
               <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
                 <span aria-hidden="true">&#8249;</span>
@@ -489,13 +495,25 @@
     </section>
 
     <!-- ===== FAQ (CMS with page-specific items) ===== -->
-    <script>  
-    window.PAGE_FAQ = [
-      { question:'What makes network resilience crucial to business continuity?', answer:'If your network fails, your business stops. Resilience means having backup hardware, like a second internet line from a different provider. If your main link goes down, your traffic switches over automatically so your staff can keep working.', open:true },
-      { question:'What are the components of a network resilience and business continuity strategy?', answer:'A reliable strategy relies on four practical steps: (1) Finding single points of failure. (2) Backup lines that take over instantly if primary links drop. (3) Regular data copies stored safely away from the main office. (4) Simulating hardware failures to prove the backups actually work.', open:false },
-      { question:'In what ways may business continuity consulting enhance organisational preparedness?', answer:'It replaces panic with a clear plan. We build step-by-step recovery playbooks for your IT staff. When an outage hits, your engineers know exactly how to isolate the fault, protect your data, and restore services quickly.', open:false }
-    ];
-    </script>
+<script>
+window.PAGE_FAQ = [
+  {
+    question: 'What makes network resilience crucial to business continuity?',
+    answer: 'If your network fails, your business stops. Resilience means having backup hardware, like a second internet line from a different provider. If your main link goes down, your traffic switches over automatically so your staff can keep working.',
+    open: true
+  },
+  {
+    question: 'What are the components of a network resilience and business continuity strategy?',
+    answer: 'A reliable strategy relies on four practical steps: (1) Finding single points of failure. (2) Backup lines that take over instantly if primary links drop. (3) Regular data copies stored safely away from the main office. (4) Simulating hardware failures to prove the backups actually work.',
+    open: false
+  },
+  {
+    question: 'In what ways may business continuity consulting enhance organisational preparedness?',
+    answer: 'It replaces panic with a clear plan. We build step-by-step recovery playbooks for your IT staff. When an outage hits, your engineers know exactly how to isolate the fault, protect your data, and restore services quickly.',
+    open: false
+  }
+];
+</script>
     <div data-cms="faq"></div>
 
     <div id="site-contact"></div>
@@ -515,14 +533,38 @@
       var img = document.getElementById('ksa-img');
       var title = document.getElementById('ksa-title');
       var desc = document.getElementById('ksa-desc');
-      var data = [
-        { img:'/images/pages/unique/envato/business-continuity/Disaster-Recovery.avif', title:'Disaster Recovery Strategy & Testing', desc:'Our team builds and simulates step-by-step recovery playbooks for your business. We verify that your backup systems deploy instantly during unexpected operational blackouts.' },
-        { img:'/images/pages/unique/envato/business-continuity/Automated-Cloud-Backup-Replication.avif', title:'Automated Cloud Backup & Replication', desc:'Our backup and disaster recovery solutions safeguard your business data through secure off-site replication. Should local hardware experience an outage or failure, your information remains protected and quickly recoverable.' },
-        { img:'/images/pages/unique/envato/business-continuity/Automated-Secondary-Network-Failover.avif', title:'Automated Secondary Network Failover', desc:'We install resilient secondary internet connections that automatically take over in the event of a primary service outage. This ensures your team remains connected and business-critical systems continue operating without interruption.' },
-        { img:'/images/pages/unique/envato/business-continuity/Power-Redundancy-UPS.avif', title:'Power Redundancy & UPS Deployment', desc:'We equip your infrastructure with Uninterruptible Power Supply (UPS) systems to keep critical network equipment, including switches and routers, operational during power outages, ensuring business continuity and minimising downtime.' },
-        { img:'/images/pages/unique/envato/business-continuity/Backup-Remote.avif', title:'Endpoint Backup & Remote Protection', desc:'We safeguard data across all employee devices, giving remote workers the same level of protection as office-based staff. This ensures business-critical information remains secure, backed up, and recoverable in the event of ransomware or device failure.' },
-        { img:'/images/pages/unique/envato/business-continuity/Rapid-Hardware.avif', title:'Rapid Hardware Replacement Protocols', desc:'In the event of a hardware failure, we can quickly replace critical network devices to minimise disruption and keep your operations running smoothly. All deployed equipment is covered by vendor support and warranty services, ensuring reliable protection and access to manufacturer expertise when required.' }
-      ];
+var data = [
+  {
+    img: '/images/pages/unique/envato/business-continuity/Disaster-Recovery.avif',
+    title: 'Disaster Recovery Strategy & Testing',
+    desc: 'Our team builds and simulates step-by-step recovery playbooks for your business. We verify that your backup systems deploy instantly during unexpected operational blackouts.'
+  },
+  {
+    img: '/images/pages/unique/envato/business-continuity/Automated-Cloud-Backup-Replication.avif',
+    title: 'Automated Cloud Backup & Replication',
+    desc: 'Network Consultancy makes copies of your business data and stores them on secure off-site servers in real time. If local hardware fails, your files remain intact and accessible, preventing data loss.'
+  },
+  {
+    img: '/images/pages/unique/envato/business-continuity/Automated-Secondary-Network-Failover.avif',
+    title: 'Automated Secondary Network Failover',
+    desc: 'We install secondary line connections that instantly take over if your primary internet goes down. Your team stays online, and your systems keep running without a single dropped connection.'
+  },
+  {
+    img: '/images/pages/unique/envato/business-continuity/Power-Redundancy-UPS.avif',
+    title: 'Power Redundancy & UPS Deployment',
+    desc: 'Equip your infrastructure with Uninterruptible Power Supplies to keep critical switches and routers operational during local power cuts.'
+  },
+  {
+    img: '/images/pages/unique/envato/business-continuity/Backup-Remote.avif',
+    title: 'Endpoint Backup & Remote Protection',
+    desc: 'We secure data directly on employee laptops and devices, even outside the main office. This ensures your remote workforce stays fully backed up and resilient against ransomware attacks.'
+  },
+  {
+    img: '/images/pages/unique/envato/business-continuity/Rapid-Hardware.avif',
+    title: 'Rapid Hardware Replacement Protocols',
+    desc: 'Our engineers keep pre-configured spare routers and switches ready for immediate deployment. If a core device fails, we replace it fast to keep your operations moving.'
+  }
+];
       tabs.forEach(function (tab, i) {
         tab.addEventListener('click', function () {
           tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
@@ -540,12 +582,24 @@
     (function () {
       var biz = document.getElementById('biz');
       if (!biz) return;
-      var slides = [
-        { title:'Constant operational stability', desc:'Teams stay active, and networks stay online even during a local power cut or internet blackout.' },
-        { title:'Secured business data', desc:'Automatic off-site copies mean critical corporate records are never lost or corrupted by unexpected disruptions.' },
-        { title:'Consistent client service', desc:'Customers receive seamless support without delays, maintaining professional trust even when external issues arise.' },
-        { title:'Coordinated incident response', desc:'Clear, practical playbooks ensure staff handle sudden infrastructure issues quickly and without confusion.' }
-      ];
+var slides = [
+  {
+    title: 'Constant operational stability',
+    desc: 'Teams stay active, and networks stay online even during a local power cut or internet blackout.'
+  },
+  {
+    title: 'Secured business data',
+    desc: 'Automatic off-site copies mean critical corporate records are never lost or corrupted by unexpected disruptions.'
+  },
+  {
+    title: 'Consistent client service',
+    desc: 'Customers receive seamless support without delays, maintaining professional trust even when external issues arise.'
+  },
+  {
+    title: 'Coordinated incident response',
+    desc: 'Clear, practical playbooks ensure staff handle sudden infrastructure issues quickly and without confusion.'
+  }
+];
       var i = 0, total = slides.length;
       var title = document.getElementById('biz-title');
       var desc = document.getElementById('biz-desc');

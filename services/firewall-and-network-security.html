@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://network-consultancy.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Services",
-      "item": "https://network-consultancy.com/services"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Firewall and Network Security",
-      "item": "https://network-consultancy.com/services/firewall-and-network-security"
-    }
-  ]
-}
-  </script>
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://network-consultancy.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://network-consultancy.com/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Firewall and Network Security",
+      "item": "https://network-consultancy.com/services/firewall-and-network-security"
+    }
+  ]
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://network-consultancy.com/services/firewall-and-network-security#service",
+  "name": "Firewall & Network Security",
+  "url": "https://network-consultancy.com/services/firewall-and-network-security",
+  "description": "Professional firewall and network security services helping UK businesses protect their networks, systems and data from cyber threats while maintaining secure and reliable connectivity.",
+  "serviceType": "Firewall & Network Security",
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://network-consultancy.com/#organization",
+    "name": "Network Consultancy",
+    "url": "https://network-consultancy.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://network-consultancy.com/images/misc/logo.png"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Kingdom"
+  }
+ }
+
+</script>
     <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PVKBZV7');</script>
 
@@ -43,7 +67,6 @@
   <link rel="stylesheet" href="/css/global.css">
   <script src="/js/schema.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
-  <link rel="stylesheet" href="/css/content-cta.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
   /* ===== Service detail — shared section styles (template) ===== */
@@ -51,7 +74,7 @@
   .sd-section { padding:0 var(--px); margin:100px auto; max-width:var(--section-w); }
   .sd-section--tint { background:#f7f9fc; padding:80px var(--px); }
   .svc-cta-band { margin-top:100px; }
-  main .nd-faq { margin:100px auto; }
+  main .nd-faq { margin-top:100px; }
   .nd-contact.section-shell { margin-top:100px; }
   .sd-wrap { max-width:var(--max-w); margin:0 auto; }
   .sd-head { text-align:center; max-width:820px; margin:0 auto 48px; }
@@ -167,7 +190,7 @@
     .sd-section { padding:0 var(--px); margin:56px auto; }
     .sd-section--tint { padding:34px var(--px); }
     .svc-cta-band { margin-top:56px; }
-    main .nd-faq { margin:56px auto; }
+    main .nd-faq { margin-top:56px; }
     .nd-contact.section-shell { margin-top:56px; }
     .sd-head { margin-bottom:22px; }
     .sd-head h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:10px; }
@@ -242,7 +265,7 @@
       <div class="nc-hero__content">
         <h1 class="nc-hero__title">Managed Firewall &amp; Network Security</h1>
         <p class="nc-hero__sub">As your network infrastructure partner, Network Consultancy secures your data, finances, and customer trust.</p>
-        <a href="/contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Improve Network Security</a>
+        <a href="#contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Book Health Check</a>
       </div>
     </div>
   </section>
@@ -312,23 +335,16 @@
           <picture><source srcset="/images/pages/unique/services-firewall-network-security-nc-wws-person.webp" type="image/webp"><img class="wws__img" src="/images/pages/unique/services-firewall-network-security-nc-wws-person.jpg" alt="Network security engineer" loading="lazy"></picture>
         </div>
         <div class="wws__tiles stagger-children">
-          <a class="wws__item animate-fade-up" href="/services/network-consultancy">Small and medium-sized businesses</a>
-          <a class="wws__item animate-fade-up" href="/industries/healthcare-and-clinics">Healthcare providers</a>
-          <a class="wws__item animate-fade-up" href="/industries/multi-site-businesses">Multi-site organisations</a>
-          <a class="wws__item animate-fade-up" href="/industries/educational-institutes">Educational institutions</a>
-          <a class="wws__item animate-fade-up" href="/industries/legal-firms">Professional service firms</a>
-          <a class="wws__item animate-fade-up" href="/industries/manufacturing">Manufacturing businesses</a>
-          <a class="wws__item animate-fade-up" href="/industries/">Retail organisations</a>
-          <a class="wws__item animate-fade-up" href="/services/remote-working-solutions">Remote and hybrid workforces</a>
+          <div class="wws__item animate-fade-up">Small and medium-sized businesses</div>
+          <div class="wws__item animate-fade-up">Healthcare providers</div>
+          <div class="wws__item animate-fade-up">Multi-site organisations</div>
+          <div class="wws__item animate-fade-up">Educational institutions</div>
+          <div class="wws__item animate-fade-up">Professional service firms</div>
+          <div class="wws__item animate-fade-up">Manufacturing businesses</div>
+          <div class="wws__item animate-fade-up">Retail organisations</div>
+          <div class="wws__item animate-fade-up">Remote and hybrid workforces</div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="content-cta" aria-label="Contact Network Consultancy">
-    <div class="content-cta__inner">
-      <div class="content-cta__copy"><h2 class="content-cta__title">Ready to improve your network security?</h2><p class="content-cta__text">Discuss your security priorities with our network consultants.</p></div>
-      <a class="content-cta__button" href="/contact" data-source-cta="service_firewall_security_contact">Contact Us</a>
     </div>
   </section>
 
@@ -345,8 +361,8 @@
             <li><strong>Security Assessment</strong> &ndash; Reviewing your current firewall setup, access rules, and network exposure.</li>
             <li><strong>Risk &amp; Vulnerability Analysis</strong> &ndash; Looking at where the gaps are, what could be improved, and anything that might cause issues later on.</li>
             <li><strong>Design &amp; Implementation</strong> &ndash; Setting up the new firewall rules, network segments, and access controls.</li>
-            <li><strong>Monitoring</strong> &ndash; Watching network traffic around the clock to spot unusual activity.</li>
-            <li><strong>Ongoing Support</strong> &ndash; Handling updates and software patches as your business changes.</li>
+                <li><strong>Risk &amp; Monitoring</strong> &ndash; Watching network traffic around the clock to spot unusual activity.</li>
+            <li><strong>Ongoing Support</strong> &ndash; Handling updates and software patches as your business changes. </li>
           </ul>
         </div>
       </div>
@@ -368,7 +384,8 @@
           </ul>
         </div>
         <div class="cissues__media">
-          <picture><source srcset="/images/pages/unique/services-firewall-network-security-servers.webp" type="image/webp"><img src="/images/pages/unique/services-firewall-network-security-cyber-security.jpg" alt="Network security operations" loading="lazy"></picture>
+          <picture><source srcset="/images/pages/unique/Common-Firewall-Network-Security.avif" type="image/avif">
+            <img src="/images/pages/unique/Common-Firewall-Network-Security.avif" alt="Network security operations" loading="lazy"></picture>
         </div>
       </div>
     </div>
@@ -395,7 +412,7 @@
     <div class="sd-wrap">
       <div class="nd-trusted">
         <div class="nd-trusted__head">
-          <h2 class="nd-trusted__title" id="tst-h">What Clients Say</h2>
+          <h2 class="nd-trusted__title" id="tst-h">What our clients says</h2>
           <div class="nd-trusted__controls">
             <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
               <span aria-hidden="true">&#8249;</span>
@@ -413,27 +430,37 @@
                 <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-m1.jpg" alt="" loading="lazy"></span>
                 <div>
                   <p class="nd-t-card__name">James Thornton</p>
-                  <p class="nd-t-card__role">IT Manager - Financial Services, Manchester</p>
+                  <p class="nd-t-card__role">IT Manager, Financial Services, Manchester, England</p>
                 </div>
               </div>
             </article>
             <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;We didn&rsquo;t realise how many gaps we had until this was reviewed. Big improvement overall.&rdquo;</p>
+              <p class="nd-t-card__quote">&ldquo;Firewall and security improvements strengthened our network protection and improved access control. Threats are blocked before we ever see them.&rdquo;</p>
               <div class="nd-t-card__person">
                 <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-operations-director.jpg" alt="" loading="lazy"></span>
                 <div>
-                  <p class="nd-t-card__name">Operations Lead</p>
-                  <p class="nd-t-card__role">Birmingham</p>
+                  <p class="nd-t-card__name">IT Manager </p>
+                  <p class="nd-t-card__role">Financial Services, Manchester </p>
                 </div>
               </div>
             </article>
             <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;Managing multiple locations is much simpler now. Everything is more consistent.&rdquo;</p>
+              <p class="nd-t-card__quote">We didn’t realise how many gaps we had until this was reviewed. Big improvement overall</p>
+              <div class="nd-t-card__person">
+                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy"></span>
+                <div>
+                  <p class="nd-t-card__name">Operations Lead</p>
+                  <p class="nd-t-card__role"> Birmingham</p>
+                </div>
+              </div>
+            </article>
+                <article class="nd-t-card">
+              <p class="nd-t-card__quote">Managing multiple locations is much simpler now. Everything is more consistent</p>
               <div class="nd-t-card__person">
                 <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy"></span>
                 <div>
                   <p class="nd-t-card__name">Head of IT</p>
-                  <p class="nd-t-card__role">Multi-site Organisation, Leeds</p>
+                  <p class="nd-t-card__role"> Multi-site Organisation, Leeds</p>
                 </div>
               </div>
             </article>
@@ -450,7 +477,7 @@
   <script>
   window.PAGE_FAQ = [
     { question:'What is network segmentation?', answer:'Network segmentation is dividing your network into smaller sections so problems don\u2019t spread. It simply ensures that a threat is contained to a single area, making user control much easier.', open:true },
-    { question:'Do firewalls still matter?', answer:'Yes, very much. While AI-driven threats are taking over, firewalls are still your essential frontline defence. But they need to be configured properly. Otherwise, they don\'t really do much.', open:false },
+    { question:'Do firewalls still matter?', answer:'Yes, very much. While AI-driven threats are taking over, firewalls are still your essential frontline defence. But they need to be configured properly. Otherwise, they don’t really do much.', open:false },
     { question:'Can this work for remote teams?', answer:'Yes. In fact, it becomes even more important when people are accessing systems from different locations. It ensures your off-site staff can connect securely without exposing your main network.', open:false }
   ];
   </script>
@@ -473,12 +500,28 @@
     var img = document.getElementById('ksa-img');
     var title = document.getElementById('ksa-title');
     var desc = document.getElementById('ksa-desc');
-    var data = [
-      { img:'/images/pages/unique/Centralised-Cloud-Firewalls.avif', title:'Centralised Cloud Firewalls (FWaaS)', desc:'Deploying and managing virtual firewalls across all your physical branches. We ensure you get uniform protection that blocks malicious incoming traffic without the need for on-site security hardware at every office.' },
-      { img:'/images/unique/Encrypted-Remote-Access.avif', title:'Encrypted Remote Access', desc:'We give your remote staff secure, encrypted access to company systems, so people can work from anywhere without exposing your data.' },
-      { img:'/images/unique/Internal-Network-Segmentation.avif', title:'Internal Network Segmentation', desc:'We divide your network into secure zones, so a threat in one area is contained and never spreads across your whole business.' },
-      { img:'/images/unique/Live-Threat-traffic-Filtering.avif', title:'Live Threat & Traffic Filtering', desc:'We continuously filter your traffic in real time, blocking malicious activity before it can reach your systems or your data.' }
-    ];
+var data = [
+  {
+    img: '/images/pages/unique/Centralised-Cloud-Firewalls.avif',
+    title: 'Centralised Cloud Firewalls (FWaaS)',
+    desc: 'Deploying and managing virtual firewalls across all your physical branches. We ensure you get uniform protection that blocks malicious incoming traffic without the need for on-site security hardware at every office.'
+  },
+  {
+    img: '/images/unique/Encrypted-Remote-Access.avif',
+    title: 'Encrypted Remote Access',
+    desc: 'We deploy Zero Trust Network Access (ZTNA) with multi-factor authentication (MFA) to set up secure, authenticated tunnels for your hybrid workforce. Your remote staff can connect to corporate applications without exposing your central network to the public internet.'
+  },
+  {
+    img: '/images/unique/Internal-Network-Segmentation.avif',
+    title: 'Internal Network Segmentation',
+    desc: 'Dividing your network into isolated security zones using internal firewalls. If a single device or branch is compromised, the system blocks lateral movement to isolate the attack and protect your core financial data.'
+  },
+  {
+    img: '/images/unique/Live-Threat-traffic-Filtering.avif',
+    title: 'Live Threat & Traffic Filtering',
+    desc: 'Blocking malicious websites and unauthorised data transfers in real time. Network Consultancy ensures your security policies stay updated automatically against new threats without interrupting your daily digital operations.'
+  }
+];
     tabs.forEach(function (tab, i) {
       tab.addEventListener('click', function () {
         tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
@@ -496,12 +539,24 @@
   (function () {
     var biz = document.getElementById('biz');
     if (!biz) return;
-    var slides = [
-      { title:'Blocked cyber threats', desc:'Firewalls filter out malicious traffic and ransomware automatically, keeping your core data and company money secure.' },
-      { title:'Restricted system access', desc:'Smart user permissions stop unauthorised users from viewing sensitive files, keeping your customer data private.' },
-      { title:'Contained network risks', desc:'Isolated network segments prevent a security slip-up at one location from spreading to your other offices.' },
-      { title:'Safe remote connections', desc:'Encrypted links let your hybrid team work from anywhere without opening your central servers to internet attacks.' }
-    ];
+var slides = [
+  {
+    title: 'Blocked cyber threats',
+    desc: 'Firewalls filter out malicious traffic and ransomware automatically, keeping your core data and company money secure.'
+  },
+  {
+    title: 'Restricted system access',
+    desc: 'Smart user permissions stop unauthorised users from viewing sensitive files, keeping your customer data private.'
+  },
+  {
+    title: 'Contained network risks',
+    desc: 'Isolated network segments prevent a security slip-up at one location from spreading to your other offices.'
+  },
+  {
+    title: 'Safe remote connections',
+    desc: 'Encrypted links let your hybrid team work from anywhere without opening your central servers to internet attacks.'
+  }
+];
     var i = 0, total = slides.length;
     var title = document.getElementById('biz-title');
     var desc = document.getElementById('biz-desc');

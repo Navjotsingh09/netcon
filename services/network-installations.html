@@ -1,32 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://network-consultancy.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Services",
-      "item": "https://network-consultancy.com/services"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Network Installations",
-      "item": "https://network-consultancy.com/services/network-installations"
-    }
-  ]
-}
-  </script>
+<script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://network-consultancy.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://network-consultancy.com/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Network Installations",
+      "item": "https://network-consultancy.com/services/network-installations"
+    }
+  ]
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://network-consultancy.com/services/network-installations#service",
+  "name": "Network Installations",
+  "url": "https://network-consultancy.com/services/network-installations",
+  "description": "Professional network installation services helping UK businesses deploy reliable, secure and efficient network infrastructure tailored to their operational requirements.",
+  "serviceType": "Network Installations",
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://network-consultancy.com/#organization",
+    "name": "Network Consultancy",
+    "url": "https://network-consultancy.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://network-consultancy.com/images/misc/logo.png"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Kingdom"
+  }
+ }
+ </script>
     <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PVKBZV7');</script>
 
@@ -43,7 +66,6 @@
   <link rel="stylesheet" href="/css/global.css">
   <script src="/js/schema.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
-  <link rel="stylesheet" href="/css/content-cta.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
   /* ===== Service detail — shared section styles (template) ===== */
@@ -52,7 +74,7 @@
   .sd-section { padding:0 var(--px); margin:100px auto; max-width:var(--section-w); }
   .sd-section--tint { background:#f7f9fc; padding:80px var(--px); }
   .svc-cta-band { margin-top:100px; }
-  main .nd-faq { margin:100px auto; }
+  main .nd-faq { margin-top:100px; }
   .nd-contact.section-shell { margin-top:100px; }
   .sd-wrap { max-width:var(--max-w); margin:0 auto; }
   .sd-head { text-align:center; max-width:820px; margin:0 auto 48px; }
@@ -162,7 +184,7 @@
     .sd-section { padding:0 var(--px); margin:56px auto; }
     .sd-section--tint { padding:34px var(--px); }
     .svc-cta-band { margin-top:56px; }
-    main .nd-faq { margin:56px auto; }
+    main .nd-faq { margin-top:56px; }
     .nd-contact.section-shell { margin-top:56px; }
     .sd-head { margin-bottom:22px; }
     .sd-head h2 { font-size:22px; font-weight:700; color:var(--blue); line-height:1.25; margin-bottom:10px; }
@@ -227,7 +249,7 @@
       <div class="nc-hero__content">
         <h1 class="nc-hero__title">Business Network Installations</h1>
         <p class="nc-hero__sub">Establish a breach-protected, scalable network ecosystem with engineers having deep technical expertise in supporting fast-scaling companies.</p>
-        <a href="/contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Book Installation Review</a>
+        <a href="#contact" class="page-hero__cta-btn" data-source-cta="service_hero_health_check">Book Health Check</a>
       </div>
     </div>
   </section>
@@ -271,14 +293,14 @@
           <picture><source srcset="/images/pages/unique/services-network-installations-nc-wws-person.webp" type="image/webp"><img class="wws__img" src="/images/pages/unique/services-network-installations-nc-wws-person.jpg" alt="Network installation engineer" loading="lazy"></picture>
         </div>
         <div class="wws__tiles stagger-children">
-          <a class="wws__item animate-fade-up" href="/services/network-consultancy">Small and medium-sized businesses</a>
-          <a class="wws__item animate-fade-up" href="/industries/healthcare-and-clinics">Healthcare providers</a>
-          <a class="wws__item animate-fade-up" href="/industries/multi-site-businesses">Multi-site organisations</a>
-          <a class="wws__item animate-fade-up" href="/industries/educational-institutes">Educational institutions</a>
-          <a class="wws__item animate-fade-up" href="/industries/legal-firms">Professional service firms</a>
-          <a class="wws__item animate-fade-up" href="/industries/manufacturing">Manufacturing businesses</a>
-          <a class="wws__item animate-fade-up" href="/industries/">Retail organisations</a>
-          <a class="wws__item animate-fade-up" href="/services/remote-working-solutions">Remote and hybrid workforces</a>
+          <div class="wws__item animate-fade-up">Small and medium-sized businesses</div>
+          <div class="wws__item animate-fade-up">Healthcare providers</div>
+          <div class="wws__item animate-fade-up">Multi-site organisations</div>
+          <div class="wws__item animate-fade-up">Educational institutions</div>
+          <div class="wws__item animate-fade-up">Professional service firms</div>
+          <div class="wws__item animate-fade-up">Manufacturing businesses</div>
+          <div class="wws__item animate-fade-up">Retail organisations</div>
+          <div class="wws__item animate-fade-up">Remote and hybrid workforces</div>
         </div>
       </div>
     </div>
@@ -315,13 +337,6 @@
     </div>
   </section>
 
-  <section class="content-cta" aria-label="Contact Network Consultancy">
-    <div class="content-cta__inner">
-      <div class="content-cta__copy"><h2 class="content-cta__title">Planning a network installation?</h2><p class="content-cta__text">Our team can help you scope the work and coordinate a smooth installation.</p></div>
-      <a class="content-cta__button" href="/contact" data-source-cta="service_network_installations_contact">Contact Us</a>
-    </div>
-  </section>
-
   <!-- ===== NETWORK INSTALLATION PROCESS (tabs) ===== -->
   <section class="sd-section sd-section--tint" aria-labelledby="proc-h">
     <div class="sd-wrap">
@@ -349,37 +364,33 @@
     </div>
   </section>
 
-  <section class="content-cta" aria-label="Contact Network Consultancy">
-    <div class="content-cta__inner">
-      <div class="content-cta__copy"><h2 class="content-cta__title">Ready to start your installation?</h2><p class="content-cta__text">Tell us about your site, timing, and connectivity goals.</p></div>
-      <a class="content-cta__button" href="/contact" data-source-cta="service_network_installations_process_contact">Contact Us</a>
-    </div>
-  </section>
-
   <!-- ===== COMMON PROBLEMS SOLVED ===== -->
   <section class="sd-section" aria-labelledby="probs-h">
     <div class="sd-wrap">
       <div class="sd-head" style="text-align:left;margin-left:0;">
         <h2 id="probs-h">Common Network Issues We Resolve with Network Installation</h2>
         <p>Network Consultancy offers solutions to the common issues that affect nearly every growing business. From dropped client calls to sudden office internet outages, we find the exact technical breakdown and fix it immediately for you.</p>
-        <p>We regularly help with:</p>
       </div>
-      <div class="probs__masonry">
+   <div class="probs__masonry">
         <div class="probs__row">
-          <div class="prob" style="flex-grow:832"><img src="/images/unique/Dropped-video-calls.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Dropped video calls</div></div>
-          <div class="prob" style="flex-grow:588"><img src="/images/unique/Wi-Fi-dead-zones.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Wi-Fi dead zones</div></div>
+          <div class="prob" style="flex-grow:832"><img src="/images/unique/Dropped-video-calls.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">We regularly help with</div></div>
+          <div class="prob" style="flex-grow:588"><img src="/images/unique/Wi-Fi-dead-zones.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Slow network performance</div></div>
         </div>
         <div class="probs__row">
-          <div class="prob" style="flex-grow:349"><img src="/images/unique/Network-congestion-slowdowns.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Network congestion slowdowns</div></div>
-          <div class="prob" style="flex-grow:469"><img src="/images/pages/unique/generated/Insecure-visitor-access.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Insecure visitor access</div></div>
-          <div class="prob" style="flex-grow:596"><img src="/images/unique/services-network-installations-feature-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">VPN connectivity issues</div></div>
+          <div class="prob" style="flex-grow:349"><img src="/images/unique/Network-congestion-slowdowns.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Fluctuating connectivity issues</div></div>
+          <div class="prob" style="flex-grow:469"><img src="/images/pages/unique/generated/Insecure-visitor-access.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Wi-Fi coverage problems</div></div>
+          <div class="prob" style="flex-grow:596"><img src="/images/pages/Key-Elements-Resilient-Network" alt=""><div class="prob__overlay"></div><div class="prob__label">Firewall and security concerns</div></div>
         </div>
         <div class="probs__row">
-          <div class="prob" style="flex-grow:580"><img src="/images/unique/services-network-installations-service-1.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Network device failures</div></div>
-          <div class="prob" style="flex-grow:835"><img src="/images/unique/services-network-installations-scroll-banner-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Bandwidth bottlenecks</div></div>
-          <div class="prob" style="flex-grow:580"><img src="/images/unique/services-network-installations-service-3.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">User access and permission issues</div></div>
+          <div class="prob" style="flex-grow:580"><img src="/images/features/Undetected-network-glitches.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">VPN connectivity issues</div></div>
+          <div class="prob" style="flex-grow:835"><img src="/images/unique/Inconsistent-multi-site-security.avif" alt=""><div class="prob__overlay"></div><div class="prob__label">Network device failures</div></div>
+        </div>
+              <div class="probs__row">
+          <div class="prob"  style="flex-grow:832"><img src="/images/unique/services-network-design-deployment-scroll-banner-2.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">Bandwidth bottlenecks</div></div>
+          <div class="prob" style="flex-grow:588"><img src="/images/unique/services-network-design-deployment-service-3.jpg" alt=""><div class="prob__overlay"></div><div class="prob__label">User access and permission issues</div></div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -388,7 +399,7 @@
   <div class="sd-wrap">
     <div class="nd-trusted">
       <div class="nd-trusted__head">
-        <h2 class="nd-trusted__title" id="tst-h">What our clients say</h2>
+        <h2 class="nd-trusted__title" id="tst-h">What our clients says</h2>
         <div class="nd-trusted__controls">
           <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
             <span aria-hidden="true">&#8249;</span>
@@ -457,7 +468,7 @@
             </p>
             <div class="nd-t-card__person">
               <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-head-of-operations.jpg" alt="" loading="lazy">
+                <img src="/images/misc/avatars/testimonial-avatar-Finance.jpg" alt="" loading="lazy">
               </span>
               <div>
                 <p class="nd-t-card__name">Head of IT Operations</p>
@@ -538,20 +549,20 @@
 
   initKsa('ksa', 'ksa', [
     { img:'/images/pages/unique/Core-Infrastructure-Network.avif', title:'Core Infrastructure & Network Design', desc:'Design and install reliable business networks that support efficient communication and day-to-day operations. Network Consultancy builds low-latency routes to prevent system slowdowns.' },
-    { img:'/images/unique/Enterprise-Architecture-Cloud-Integration.avif', title:'Enterprise Architecture & Cloud Integration', desc:'We deliver scalable networking solutions, including data centre architecture and cloud connectivity integration, while designing resilient network pathways to support multi-cloud workloads.' },
-    { img:'/images/unique/High-Performance-Structured-Cabling-LAN.avif', title:'High-Performance Structured Cabling & LAN', desc:'We design and install dependable LAN infrastructure that supports business-critical operations, using certified cabling solutions to ensure consistent performance and long-term reliability.' },
+    { img:'/images/unique/Enterprise-Architecture-Cloud-Integration.avif', title:'Enterprise Architecture & Cloud Integration', desc:'Deliver scalable networking solutions, including data centre architecture and cloud connectivity integration. We configure resilient pathways for multi-cloud workloads.' },
+    { img:'/images/unique/High-Performance-Structured-Cabling-LAN.avif', title:'High-Performance Structured Cabling & LAN', desc:'Provide professional LAN installations to ensure stable, high-performance wired network infrastructure. Our team uses certified copper and fibre to guarantee hardware throughput.' },
     { img:'/images/unique/Secure-Enterprise-Wi-Fi-Mobility.avif', title:'Secure Enterprise Wi-Fi & Mobility', desc:'We implement secure and scalable wireless networks that keep employees connected, productive, and mobile, while ensuring dependable performance throughout the office.' },
-    { img:'/images/unique/Unified-Communications.avif', title:'Unified Communications & VoIP', desc:'Our VoIP and communications solutions help teams stay connected and productive, delivering reliable voice services and high-quality communications across the organisation.' },
-    { img:'/images/unique/Network-Edge.avif', title:'Network Edge Security & Compliance', desc:'Our network security services help safeguard critical systems, reduce risk, and support operational resilience through properly configured firewalls, access controls, and perimeter security measures.' }
+    { img:'/images/unique/Unified-Communications.avif', title:'Unified Communications & VoIP', desc:'Install VoIP and communication systems to enable seamless collaboration and efficient business communications. Network Consultancy provisions dedicated voice channels to eliminate choppy calls.' },
+    { img:'/images/unique/Network-Edge.avif', title:'Network Edge Security & Compliance', desc:'Implement firewalls, access controls, and network security measures to protect critical systems and maintain operational continuity. Our perimeter setups enforce strict access rules at the gateway.' }
   ]);
 
   initKsa('ksa2', 'ksa2', [
     { img:'/images/pages/unique/Requirement-Assessment.avif', title:'Requirement Assessment', desc:'Evaluation of your existing infrastructure, application traffic, and bandwidth redundancies. This data calculates your exact network demands.' },
-    { img:'/images/unique/Network-Design-Planning.avif', title:'Network Design & Planning', desc:'Development of a secure, scalable network blueprint that balances existing traffic requirements while reserving capacity for rapid business growth and evolving connectivity needs.' },
-    { img:'/images/unique/Infrastructure-Preparation.avif', title:'Infrastructure Preparation', desc:'Detailed planning of cabling pathways, IP address allocation, and off-site switch configuration. By preparing these components in advance, we ensure a fast, accurate, and seamless deployment.' },
-    { img:'/images/unique/Installation-Configuration.avif', title:'Installation & Configuration', desc:'Installation and configuration of core network infrastructure. Our technicians optimise all hardware settings to ensure maximum performance, stability, and reliability.' },
-    { img:'/images/unique/Testing-Optimisation.avif', title:'Testing & Optimisation', desc:'Comprehensive performance, security, and connectivity testing is carried out to validate the network. Rigorous stress testing confirms optimal efficiency, reliability, and operational readiness.' },
-    { img:'/images/unique/Ongoing-Support-Review.avif', title:'Ongoing Support & Review', desc:'We continuously monitor network health and conduct regular system assessments, providing proactive guidance to ensure your infrastructure supports long-term business growth and operational demands.' }
+    { img:'/images/unique/Network-Design-Planning.avif', title:'Network Design & Planning', desc:'Development of a secure, high-density network map. This blueprint balances immediate traffic loads while leaving space for rapid expansion.' },
+    { img:'/images/unique/Infrastructure-Preparation.avif', title:'Infrastructure Preparation', desc:'Mapping of cabling routes, allocation of IP schemas, and off-site switch testing. Pre-configuring these elements ensures a rapid, mistake-free deployment.' },
+    { img:'/images/unique/Installation-Configuration.avif', title:'Installation & Configuration', desc:'Installation of core networking equipment and system configuration. Technicians fine-tune the hardware for optimal performance and reliability.' },
+    { img:'/images/unique/Testing-Optimisation.avif', title:'Testing & Optimisation', desc:'Execution of thorough performance, security, and connectivity testing. Rigorous stress-testing ensures absolute operational efficiency.' },
+    { img:'/images/unique/Ongoing-Support-Review.avif', title:'Ongoing Support & Review', desc:'Continuous monitoring of network performance and regular system reviews. Proactive recommendations keep your infrastructure aligned with future business growth.' }
   ]);
 
   /* Business Impact — card slider */

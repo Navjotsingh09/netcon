@@ -1,26 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://network-consultancy.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Case Studies",
-      "item": "https://network-consultancy.com/case-studies"
-    }
-  ]
-}
-  </script>
+<script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://network-consultancy.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Case Studies",
+      "item": "https://network-consultancy.com/case-studies"
+    }
+  ]
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://network-consultancy.com/case-studies#casestudies",
+  "name": "Case Studies",
+  "url": "https://network-consultancy.com/case-studies",
+  "description": "Explore Network Consultancy case studies showcasing network upgrades, security modernisation, multi-site connectivity, ongoing network support and SASE transformation for UK businesses.",
+  "isPartOf": {
+    "@id": "https://network-consultancy.com/#website"
+  },
+  "about": {
+    "@id": "https://network-consultancy.com/#organization"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "@id": "https://network-consultancy.com/case-studies#case-study-list",
+    "name": "Network Consultancy Case Studies",
+    "numberOfItems": 5,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "CaseStudy",
+          "@id": "https://network-consultancy.com/case-studies/nta-core-network-upgrade#casestudy",
+          "name": "NTA - Core Network Upgrade",
+          "url": "https://network-consultancy.com/case-studies/nta-core-network-upgrade"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "CaseStudy",
+          "@id": "https://network-consultancy.com/case-studies/harry-dobbs-design#casestudy",
+          "name": "Harry Dobbs Design - Network and Security Modernisation",
+          "url": "https://network-consultancy.com/case-studies/harry-dobbs-design"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "CaseStudy",
+          "@id": "https://network-consultancy.com/case-studies/senate-computers#casestudy",
+          "name": "Senate Computers - Secure Multi-Site Connectivity",
+          "url": "https://network-consultancy.com/case-studies/senate-computers"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "CaseStudy",
+          "@id": "https://network-consultancy.com/case-studies/auriga-networks#casestudy",
+          "name": "Auriga Networks - Ongoing Support and Network Evolution",
+          "url": "https://network-consultancy.com/case-studies/auriga-networks"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "CaseStudy",
+          "@id": "https://network-consultancy.com/case-studies/antal-international#casestudy",
+          "name": "Antal International - Global SASE Transformation",
+          "url": "https://network-consultancy.com/case-studies/antal-international"
+        }
+      }
+    ]
+  }
+ }
+ </script>
     <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PVKBZV7');</script>
 
@@ -170,7 +242,7 @@
     .cs-center-panel p { margin: 0 0 30px; color: #585151; font-family: 'Google Sans Flex', sans-serif; font-size: 18px; line-height: 1.25; }
     .cs-center-panel .btn { background: #0982C5; color: #fff; border-radius: 20px; padding: 16px 50px; text-decoration: none; font-family: 'Google Sans Flex', sans-serif; font-size: 22px; font-weight: 500; display: inline-block; }
 
-    main .nd-faq { margin: 100px auto; }
+    main .nd-faq { margin-top: 100px; }
     .nd-contact.section-shell { margin-top: 100px; }
 
     @media (max-width: 1200px) {
@@ -210,7 +282,7 @@
           <p class="cs-hero-sub">See how businesses across the UK have secured their</p>
           <p class="cs-hero-sub">networks, adapted to modernisation, and secured their</p>
           <p class="cs-hero-sub">operations with our engineering support.</p>
-          <a class="cs-hero-cta" href="/contact">Discuss Similar Projects</a>
+          <a class="cs-hero-cta" href="/contact">Get a Free Consultation</a>
         </div>
       </div>
     </section>
@@ -227,8 +299,8 @@
         <div class="cs-feature-inner">
           <div class="cs-feature-image">
             <picture>
-              <source srcset="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1400&q=80" type="image/jpeg">
-              <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1400&q=80" alt="IT server racks in a data centre">
+              <source srcset="/images/pages/unique/NTA.avif" type="image/jpeg">
+              <img src="/images/pages/unique/NTA.avif" alt="IT server racks in a data centre">
             </picture>
           </div>
           <div class="cs-feature-copy">
@@ -285,7 +357,7 @@
 
       <section class="nd-faq section-shell animate-fade-up" aria-labelledby="faq-h">
         <div class="nd-faq__left">
-          <h3 class="section-title" id="faq-h">Frequently asked questions</h3>
+          <h2 class="section-title" id="faq-h">Frequently asked questions</h2>
           <p>Still have questions? Get connected to our support team.</p>
           <a href="/contact" class="nd-faq__cta">Contact us</a>
         </div>
@@ -293,9 +365,9 @@
           <button class="nd-faq__item is-open"><span>Do you work with multi-site or international organisations?</span><strong>−</strong></button>
           <div class="nd-faq__panel">Yes. Network Consultancy supports both multi-site and global environments, bringing all locations under a single security and performance framework.</div>
           <button class="nd-faq__item"><span>Can you support ongoing network management after a project?</span><strong>+</strong></button>
-          <div class="nd-faq__panel" hidden>Yes. Network Consultancy delivers continuous support even after a project is completed, helping identify security vulnerabilities and performance issues as the network evolves over time.</div>
+          <div class="nd-faq__panel" hidden>Yes. Network Consultancy provides ongoing support after a project ends, catching security gaps and performance issues as the network changes over time.</div>
           <button class="nd-faq__item"><span>Are your solutions tailored to specific industries?</span><strong>+</strong></button>
-          <div class="nd-faq__panel" hidden>Yes. Network Consultancy supports organisations across a wide range of sectors, including professional services, healthcare, and financial services, as well as businesses with established in-house IT teams.</div>
+          <div class="nd-faq__panel" hidden>Yes. Network Consultancy works across sectors, including professional services, healthcare, and financial services, as well as with organisations that have internal IT teams.</div>
         </div>
       </section>
 
