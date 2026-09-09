@@ -35,7 +35,7 @@
       });
     });
   }
-  fetch(`/api/public/page/${slug}`).then((response) => response.ok ? response.json() : null).then((data) => {
+  fetch(`/api/public/page?slug=${slug}`).then((response) => response.ok ? response.json() : null).then((data) => {
     if (data?.page?.content) applyPageContent(data.page.content);
   }).catch(() => {});
 }());

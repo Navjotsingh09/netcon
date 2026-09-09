@@ -225,7 +225,7 @@
   async function openPage(slug) {
     let data;
     try {
-      data = await api(`/api/cms/pages/${encodeURIComponent(slug)}`);
+      data = await api(`/api/cms/page?slug=${encodeURIComponent(slug)}`);
     } catch (error) {
       const fallback = pages.find((page) => page.slug === slug) || { slug, label: slug, path: '/' };
       currentPage = { ...fallback, slug, draft: null, published: null };
