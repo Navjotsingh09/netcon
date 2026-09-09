@@ -11,6 +11,28 @@
     saveStatus: document.getElementById('save-status'), publishLive: document.getElementById('publish-live-button'), articlesButton: document.getElementById('articles-button'), pagesButton: document.getElementById('pages-button'), pagesPanel: document.getElementById('pages-panel'), pagesList: document.getElementById('pages-list'), pageForm: document.getElementById('page-form'), pagePublish: document.getElementById('publish-page-button'), pageSaveStatus: document.getElementById('page-save-status')
   };
   let token = ''; let cmsUser = null; let posts = []; let currentPost = null; let pages = []; let currentPage = null;
+  function setupPageSectionAccordions() {
+    const form = elements.pageForm;
+    if (form.dataset.accordionsReady) return;
+    const index = document.getElementById('page-section-index');
+    const labels = { 'Structured data (JSON-LD)': 'SEO and schema', 'Page content': 'Page content', 'Hero slides': 'Hero slider', 'Services and capability cards': 'Core services and capability cards', 'Introduction content': 'Introduction', 'Contact CTA': 'Contact CTA', 'Frequently asked questions': 'FAQs', Testimonials: 'Testimonials' };
+    let anchor = index;
+    const sections = [...form.querySelectorAll(':scope > fieldset')].map((fieldset, position) => {
+      const details = document.createElement('details');
+      details.className = 'cms-section-accordion cms-form-grid__wide';
+      details.open = position < 2;
+      const summary = document.createElement('summary');
+      const title = labels[fieldset.querySelector('legend')?.textContent.trim()] || `Section ${position + 1}`;
+      summary.innerHTML = `<span class="cms-section-number">${position + 1}</span><span>${escapeHtml(title)}</span>`;
+      details.append(summary, fieldset);
+      form.insertBefore(details, anchor.nextSibling);
+      anchor = details;
+      return { details, title };
+    });
+    index.innerHTML = `<p class="cms-editor__state">Page sections</p><ol>${sections.map((section, position) => `<li><button type="button" data-section-target="${position}">${escapeHtml(section.title)}</button></li>`).join('')}</ol>`;
+    index.querySelectorAll('[data-section-target]').forEach((button) => button.addEventListener('click', () => { const section = sections[Number(button.dataset.sectionTarget)].details; section.open = true; section.scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
+    form.dataset.accordionsReady = 'true';
+  }
   const articleEditor = document.getElementById('article-editor');
   const articleHtmlField = document.querySelector('[name="articleHtml"]');
   const articleEditorImage = document.getElementById('article-editor-image');
@@ -157,6 +179,7 @@
       document.getElementById('page-form-heading').textContent = `Edit: ${fallback.label}`;
       setPageFormContent({});
       elements.pageForm.hidden = false;
+      setupPageSectionAccordions();
       elements.pagePublish.disabled = true;
       elements.pageSaveStatus.textContent = 'Editor ready. Apply the CMS database migration before saving page changes.';
       renderPages();
@@ -167,6 +190,7 @@
     document.getElementById('page-form-heading').textContent = `Edit: ${data.page.label}`;
     setPageFormContent(content);
     elements.pageForm.hidden = false;
+    setupPageSectionAccordions();
     elements.pagePublish.disabled = cmsUser?.role !== 'reviewer' || !data.page.draft;
     elements.pageSaveStatus.textContent = data.page.draft ? 'Draft loaded. Save changes or publish when ready.' : 'No draft exists yet. Save changes to create one.';
     renderPages();
