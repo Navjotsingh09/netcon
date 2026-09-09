@@ -143,13 +143,10 @@
     elements.pageForm.elements.ogTitle.value = content['seo.ogTitle'] || '';
     elements.pageForm.elements.ogDescription.value = content['seo.ogDescription'] || '';
     elements.pageForm.elements.schemaMarkup.value = typeof content['seo.schemaMarkup'] === 'string' ? content['seo.schemaMarkup'] : JSON.stringify(content['seo.schemaMarkup'] || {}, null, 2);
-    const pageContent = content.content || {};
-    elements.pageForm.elements.heroTitle.value = pageContent.heroTitle || '';
-    elements.pageForm.elements.introText.value = pageContent.introText || '';
-    elements.pageForm.elements.faqQuestion.value = pageContent.faqQuestion || '';
-    elements.pageForm.elements.faqAnswer.value = pageContent.faqAnswer || '';
-    elements.pageForm.elements.imageAlt.value = pageContent.imageAlt || '';
+    renderPageBlocks(content.content || {});
   }
+  const pageBlockDefinitions = { home: [{ key: 'heroTitle', label: 'Hero heading', type: 'h1' }, { key: 'heroDescription', label: 'Hero paragraph', type: 'p' }, { key: 'servicesHeading', label: 'Services section heading', type: 'h2' }, { key: 'servicesIntro', label: 'Services section paragraph', type: 'p' }, { key: 'faqQuestion', label: 'FAQ question', type: 'faq-question' }, { key: 'faqAnswer', label: 'FAQ answer', type: 'faq-answer' }, { key: 'imageAlt', label: 'Page image alt text', type: 'image-alt' }], about: [{ key: 'heroTitle', label: 'Hero heading', type: 'h1' }, { key: 'heroDescription', label: 'Hero paragraph', type: 'p' }, { key: 'storyHeading', label: 'Our story heading', type: 'h2' }, { key: 'storyIntro', label: 'Our story paragraph', type: 'p' }, { key: 'faqQuestion', label: 'FAQ question', type: 'faq-question' }, { key: 'faqAnswer', label: 'FAQ answer', type: 'faq-answer' }, { key: 'imageAlt', label: 'Page image alt text', type: 'image-alt' }], contact: [{ key: 'heroTitle', label: 'Hero heading', type: 'h1' }, { key: 'heroDescription', label: 'Hero paragraph', type: 'p' }, { key: 'formHeading', label: 'Contact form heading', type: 'h2' }, { key: 'formIntro', label: 'Contact form paragraph', type: 'p' }, { key: 'imageAlt', label: 'Page image alt text', type: 'image-alt' }] };
+  function renderPageBlocks(content = {}) { const pageBlocks = document.getElementById('page-blocks'); const definitions = pageBlockDefinitions[currentPage?.slug] || []; pageBlocks.innerHTML = definitions.map((block) => `<div class="cms-page-block"><label>${escapeHtml(block.label)} <small>${escapeHtml(block.type)}</small><div class="cms-page-block__toolbar" role="toolbar"><button type="button" data-block-command="bold" title="Bold"><strong>B</strong></button><button type="button" data-block-command="italic" title="Italic"><em>I</em></button><button type="button" data-block-command="${block.type === 'h1' || block.type === 'h2' ? 'formatBlock' : 'paragraph'}" data-block-format="${block.type === 'h1' || block.type === 'h2' ? block.type : 'p'}" title="Heading or paragraph">${block.type === 'h1' || block.type === 'h2' ? 'H' : 'P'}</button><button type="button" data-block-command="insertUnorderedList" title="Bullet list">&#8226;</button><button type="button" data-block-command="createLink" title="Link">Link</button></div><div class="cms-page-block__surface" contenteditable="true" data-block-key="${escapeHtml(block.key)}" data-placeholder="Enter ${escapeHtml(block.label.toLowerCase())}">${escapeHtml(content[block.key] || '')}</div></label></div>`).join(''); pageBlocks.querySelectorAll('[data-block-command]').forEach((button) => button.addEventListener('click', () => { const surface = button.closest('.cms-page-block').querySelector('.cms-page-block__surface'); surface.focus(); const command = button.dataset.blockCommand; const value = command === 'createLink' ? window.prompt('Enter link URL.', 'https://') : button.dataset.blockFormat; if (command === 'formatBlock') document.execCommand(command, false, value); else if (command === 'createLink' && value) document.execCommand(command, false, value); else document.execCommand(command, false); })); }
   async function openPage(slug) {
     let data;
     try {
@@ -175,7 +172,7 @@
     renderPages();
   }
   function pageFormContent() {
-    const content = { heroTitle: elements.pageForm.elements.heroTitle.value.trim(), introText: elements.pageForm.elements.introText.value.trim(), faqQuestion: elements.pageForm.elements.faqQuestion.value.trim(), faqAnswer: elements.pageForm.elements.faqAnswer.value.trim(), imageAlt: elements.pageForm.elements.imageAlt.value.trim() };
+    const content = Object.fromEntries([...document.querySelectorAll('#page-blocks [data-block-key]')].map((block) => [block.dataset.blockKey, block.innerText.trim()]));
     return { content, 'seo.title': elements.pageForm.elements.seoTitle.value.trim(), 'seo.description': elements.pageForm.elements.seoDescription.value.trim(), 'seo.ogTitle': elements.pageForm.elements.ogTitle.value.trim(), 'seo.ogDescription': elements.pageForm.elements.ogDescription.value.trim(), 'seo.schemaMarkup': elements.pageForm.elements.schemaMarkup.value.trim() };
   }
   async function savePageDraft() {

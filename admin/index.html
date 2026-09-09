@@ -132,11 +132,7 @@
               <label>Social sharing title<input name="ogTitle" maxlength="180" autocomplete="off"></label>
               <label>Social sharing description<textarea name="ogDescription" maxlength="360" rows="3"></textarea></label>
               <label class="cms-form-grid__wide">Structured data (JSON-LD)<textarea name="schemaMarkup" rows="10" spellcheck="false" placeholder='{"@context":"https://schema.org","@type":"WebPage"}'></textarea></label>
-              <label>Main heading<input name="heroTitle" maxlength="180" autocomplete="off" placeholder="Main page heading"></label>
-              <label>Introductory text<textarea name="introText" maxlength="1000" rows="4" placeholder="Introductory page text"></textarea></label>
-              <label>FAQ question<input name="faqQuestion" maxlength="300" autocomplete="off" placeholder="Frequently asked question"></label>
-              <label>FAQ answer<textarea name="faqAnswer" maxlength="1000" rows="4" placeholder="Answer to the FAQ"></textarea></label>
-              <label class="cms-form-grid__wide">Image alt text<input name="imageAlt" maxlength="250" autocomplete="off" placeholder="Describe the page image"></label>
+              <fieldset class="cms-rich-editor cms-form-grid__wide"><legend>Page content</legend><p class="cms-editor__state">Each block is labelled so you know exactly which heading or paragraph you are changing.</p><div class="cms-page-blocks" id="page-blocks"></div></fieldset>
               <div class="cms-actions cms-form-grid__wide"><span id="page-save-status" aria-live="polite"></span><button class="cms-button cms-button--secondary" type="submit">Save draft</button><button class="cms-button cms-button--dark" id="publish-page-button" type="button" disabled>Publish to live</button></div>
             </form>
           </div>
