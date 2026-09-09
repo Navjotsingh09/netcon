@@ -8,7 +8,7 @@
     newPost: document.getElementById('new-post-button'), editor: document.getElementById('editor-panel'),
     form: document.getElementById('article-form'), list: document.getElementById('post-list'), search: document.getElementById('post-search'),
     preview: document.getElementById('preview-dialog'), previewContent: document.getElementById('preview-content'),
-    saveStatus: document.getElementById('save-status'), publishLive: document.getElementById('publish-live-button'), articlesButton: document.getElementById('articles-button'), pagesButton: document.getElementById('pages-button'), pagesPanel: document.getElementById('pages-panel'), pagesList: document.getElementById('pages-list'), pageForm: document.getElementById('page-form'), pagePublish: document.getElementById('publish-page-button'), pagePreviewLink: document.getElementById('generate-preview-link-button'), pageSaveStatus: document.getElementById('page-save-status')
+    saveStatus: document.getElementById('save-status'), publishLive: document.getElementById('publish-live-button'), articlesButton: document.getElementById('articles-button'), pagesButton: document.getElementById('pages-button'), pagesPanel: document.getElementById('pages-panel'), pagesList: document.getElementById('pages-list'), pageForm: document.getElementById('page-form'), pagePublish: document.getElementById('publish-page-button'), pagePreviewDialog: document.getElementById('page-preview-link-dialog'), pagePreviewInput: document.getElementById('page-preview-link-input'), pagePreviewLink: document.getElementById('generate-preview-link-button'), pageSaveStatus: document.getElementById('page-save-status')
   };
   let token = ''; let cmsUser = null; let posts = []; let currentPost = null; let pages = []; let currentPage = null;
   function setupPageSectionAccordions() {
@@ -269,9 +269,10 @@
     try {
       setPageStatus('Creating preview link...');
       const data = await api('/api/cms/preview-link', { method: 'POST', body: JSON.stringify({ slug: currentPage.slug }) });
+      elements.pagePreviewInput.value = data.previewUrl;
       await navigator.clipboard.writeText(data.previewUrl).catch(() => {});
-      setPageStatus(`Preview link copied. It expires in ${data.expiresInDays} days.`);
-      window.prompt('Copy this preview link:', data.previewUrl);
+      setPageStatus(`Preview link created. It expires in ${data.expiresInDays} days.`);
+      elements.pagePreviewDialog.showModal();
     } catch (error) { setPageStatus(error.message); }
   }
   async function publishPage() {
@@ -367,6 +368,8 @@
   elements.pageForm?.addEventListener('submit', (event) => { event.preventDefault(); savePageDraft().catch((error) => { setPageStatus(error.message); }); });
   elements.pagePublish?.addEventListener('click', () => publishPage().catch((error) => { setPageStatus(error.message); }));
   elements.pagePreviewLink?.addEventListener('click', () => generatePreviewLink());
+  document.getElementById('close-page-preview-link')?.addEventListener('click', () => elements.pagePreviewDialog.close());
+  document.getElementById('copy-page-preview-link')?.addEventListener('click', async () => { await navigator.clipboard.writeText(elements.pagePreviewInput.value).catch(() => {}); setPageStatus('Preview link copied.'); });
   document.getElementById('close-editor-button').addEventListener('click', closeEditor);
   articleEditor.addEventListener('input', syncArticleEditor);
   articleEditor.addEventListener('keyup', rememberArticleEditorSelection);

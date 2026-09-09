@@ -56,3 +56,5 @@ dialog { border:0; padding:0; width:min(800px,calc(100% - 40px)); max-height:85v
 @media (max-width:700px) { .cms-section-index ol { grid-template-columns:1fr; gap:4px; }.cms-section-accordion summary { padding:13px 12px; font-size:18px; }.cms-section-accordion > fieldset { padding:12px; }.cms-pages__layout { min-width:0; }.cms-page-block__toolbar { flex-wrap:wrap; }.cms-page-block__surface,.cms-repeater-item input,.cms-repeater-item textarea { max-width:100%; min-width:0; overflow-wrap:anywhere; } }
 
 .cms-page-editor-head { display:flex; align-items:center; justify-content:space-between; gap:16px; }.cms-page-editor-head h3 { margin:0; color:var(--cms-navy); font:600 22px/1.1 'Roboto Condensed',sans-serif; }.cms-page-editor-head p { margin:0; color:#0f6b2c; font-weight:700; text-align:right; }
+
+#page-preview-link-dialog { width:min(620px,calc(100% - 40px)); } #page-preview-link-input { margin-top:8px; }
