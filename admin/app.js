@@ -259,7 +259,7 @@
   }
   async function savePageDraft() {
     if (!currentPage) return;
-    await api(`/api/cms/pages/${encodeURIComponent(currentPage.slug)}`, { method: 'POST', body: JSON.stringify({ content: pageFormContent() }) });
+    await api(`/api/cms/page?slug=${encodeURIComponent(currentPage.slug)}`, { method: 'POST', body: JSON.stringify({ content: pageFormContent() }) });
     setPageStatus('Page draft saved. Review it on staging before publishing.');
     await refreshPages();
     await openPage(currentPage.slug);
@@ -267,6 +267,9 @@
   async function generatePreviewLink() {
     if (!currentPage) return;
     try {
+      setPageStatus('Saving latest changes...');
+      // Save on-screen edits first so the preview reflects the current form content, not a stale revision.
+      await api(`/api/cms/page?slug=${encodeURIComponent(currentPage.slug)}`, { method: 'POST', body: JSON.stringify({ content: pageFormContent() }) });
       setPageStatus('Creating preview link...');
       const data = await api('/api/cms/preview-link', { method: 'POST', body: JSON.stringify({ slug: currentPage.slug }) });
       elements.pagePreviewInput.value = data.previewUrl;
@@ -277,7 +280,7 @@
   }
   async function publishPage() {
     if (!currentPage) return;
-    await api(`/api/cms/pages/${encodeURIComponent(currentPage.slug)}`, { method: 'POST', body: JSON.stringify({ action: 'publish' }) });
+    await api(`/api/cms/page?slug=${encodeURIComponent(currentPage.slug)}`, { method: 'POST', body: JSON.stringify({ action: 'publish' }) });
     setPageStatus('Page published to live.');
     await refreshPages();
     await openPage(currentPage.slug);
