@@ -3984,6 +3984,15 @@ Edgbaston, B15 3BE</p>
       var timer = null;
       var intervalMs = 6500;
 
+      // Lets CMS-published content replace the rotator's slide data after this IIFE has already started.
+      window.__ncManagedSlides = {
+        set: function (newSlides) {
+          if (!Array.isArray(newSlides) || !newSlides.length) return;
+          slides = newSlides;
+          render(activeIndex, false);
+        }
+      };
+
       function animateSwap() {
         if (!titleEl.animate || !copyEl.animate) return;
         titleEl.animate(
