@@ -193,6 +193,28 @@
   document.getElementById('add-faq-button').addEventListener('click', () => addRepeaterItem('faqs'));
   document.getElementById('add-testimonial-button').addEventListener('click', () => addRepeaterItem('testimonials'));
   document.getElementById('page-form').addEventListener('click', (event) => { const button = event.target.closest('[data-remove-repeater]'); if (!button) return; const content = repeaterContent(); content[button.dataset.removeRepeater].splice(Number(button.dataset.index), 1); renderRepeaters(content); });
+  async function loadStaticPageContent(slug) {
+    const response = await fetch(slug === 'home' ? '/' : `/${slug}`);
+    if (!response.ok) return {};
+    const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+    const text = (selector, root = doc) => root.querySelector(selector)?.textContent.replace(/\s+/g, ' ').trim() || '';
+    const slides = [...doc.querySelectorAll('.hero__slide')].map((slide) => ({ heading: text('.hero__title', slide), paragraph: text('.hero__sub', slide), buttonText: text('.hero__btn', slide), buttonUrl: slide.querySelector('.hero__btn')?.getAttribute('href') || '', imageUrl: slide.querySelector('video source, img')?.getAttribute('src') || '', imageAlt: slide.querySelector('img')?.alt || '' }));
+    const cards = [...doc.querySelectorAll('.svc-card')].map((card) => ({ heading: text('.svc-card__label', card), paragraph: text('.svc-card__desc', card), imageAlt: card.querySelector('img')?.alt || '' }));
+    const faqs = [...doc.querySelectorAll('.faq-q, .nd-faq__item span')].map((node, index) => ({ question: node.textContent.replace(/\s+/g, ' ').trim(), answer: doc.querySelectorAll('.faq-answer, .nd-faq__panel')[index]?.textContent.replace(/\s+/g, ' ').trim() || '', headingTag: 'h3' }));
+    const testimonials = [...doc.querySelectorAll('.nd-t-card, .ab-test-card')].map((card) => ({ quote: text('blockquote, .nd-t-card__quote, .ab-test-card__quote', card), name: text('.nd-t-card__name, .ab-test-card__name', card), role: text('.nd-t-card__role, .ab-test-card__role', card), imageAlt: card.querySelector('img')?.alt || '' })).filter((item) => item.quote || item.name);
+    const content = { heroSlides: slides, cards, faqs, testimonials };
+    if (slug === 'home') {
+      content.introduction = { heading: text('.main-services__title'), paragraph: text('.main-services__intro') };
+      content.contactCta = { heading: text('.nd-contact__title'), paragraph: text('.nd-contact__intro'), buttonText: text('.nd-contact__cta'), buttonUrl: doc.querySelector('.nd-contact__cta')?.getAttribute('href') || '' };
+    } else if (slug === 'about') {
+      content.introduction = { heading: text('.ab-intro__title'), paragraph: text('.ab-intro p') };
+      content.contactCta = { heading: text('.nd-contact__title'), paragraph: text('.nd-contact__intro'), buttonText: text('.nd-contact__cta'), buttonUrl: doc.querySelector('.nd-contact__cta')?.getAttribute('href') || '' };
+    } else {
+      content.introduction = { heading: text('.ctu-title'), paragraph: text('.ctu-intro') };
+      content.contactCta = { heading: text('.ctf-title'), paragraph: text('.ctf-copy'), buttonText: '', buttonUrl: '' };
+    }
+    return content;
+  }
   async function openPage(slug) {
     let data;
     try {
@@ -210,7 +232,8 @@
       return;
     }
     currentPage = { ...data.page, slug };
-    const content = data.page.draft?.content || data.page.published?.content || {};
+    let content = data.page.draft?.content || data.page.published?.content || {};
+    if (!data.page.draft && !data.page.published) content = { content: await loadStaticPageContent(slug) };
     document.getElementById('page-form-heading').textContent = `Edit: ${data.page.label}`;
     setPageFormContent(content);
     elements.pageForm.hidden = false;
