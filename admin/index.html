@@ -133,6 +133,8 @@
               <label>Social sharing description<textarea name="ogDescription" maxlength="360" rows="3"></textarea></label>
               <label class="cms-form-grid__wide">Structured data (JSON-LD)<textarea name="schemaMarkup" rows="10" spellcheck="false" placeholder='{"@context":"https://schema.org","@type":"WebPage"}'></textarea></label>
               <fieldset class="cms-rich-editor cms-form-grid__wide"><legend>Page content</legend><p class="cms-editor__state">Each block is labelled so you know exactly which heading or paragraph you are changing.</p><div class="cms-page-blocks" id="page-blocks"></div></fieldset>
+              <fieldset class="cms-repeaters cms-form-grid__wide"><legend>Frequently asked questions</legend><p class="cms-editor__state">Edit existing FAQs or add new questions and answers.</p><div id="faq-repeater" class="cms-repeater"></div><button class="cms-button cms-button--secondary cms-repeater-add" id="add-faq-button" type="button">Add FAQ</button></fieldset>
+              <fieldset class="cms-repeaters cms-form-grid__wide"><legend>Testimonials</legend><p class="cms-editor__state">Edit existing testimonials or add another testimonial.</p><div id="testimonial-repeater" class="cms-repeater"></div><button class="cms-button cms-button--secondary cms-repeater-add" id="add-testimonial-button" type="button">Add testimonial</button></fieldset>
               <div class="cms-actions cms-form-grid__wide"><span id="page-save-status" aria-live="polite"></span><button class="cms-button cms-button--secondary" type="submit">Save draft</button><button class="cms-button cms-button--dark" id="publish-page-button" type="button" disabled>Publish to live</button></div>
             </form>
           </div>
