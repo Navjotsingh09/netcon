@@ -95,9 +95,11 @@
   }
   async function api(path, options = {}) {
     const response = await fetch(path, { ...options, headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}`, ...(options.headers || {}) } });
-    const data = await response.json();
+    const raw = await response.text();
+    let data;
+    try { data = raw ? JSON.parse(raw) : {}; } catch { data = { error: raw || `CMS request failed (${response.status}).` }; }
     if (!response.ok) {
-      const error = new Error(data.error || 'CMS request failed.');
+      const error = new Error(data.error || `CMS request failed (${response.status}).`);
       error.fields = data.fields || {};
       throw error;
     }
