@@ -8,7 +8,7 @@
     newPost: document.getElementById('new-post-button'), editor: document.getElementById('editor-panel'),
     form: document.getElementById('article-form'), list: document.getElementById('post-list'), search: document.getElementById('post-search'),
     preview: document.getElementById('preview-dialog'), previewContent: document.getElementById('preview-content'),
-    saveStatus: document.getElementById('save-status'), publishLive: document.getElementById('publish-live-button'), pagesButton: document.getElementById('pages-button'), pagesPanel: document.getElementById('pages-panel'), pagesList: document.getElementById('pages-list'), pageForm: document.getElementById('page-form'), pagePublish: document.getElementById('publish-page-button'), pageSaveStatus: document.getElementById('page-save-status')
+    saveStatus: document.getElementById('save-status'), publishLive: document.getElementById('publish-live-button'), articlesButton: document.getElementById('articles-button'), pagesButton: document.getElementById('pages-button'), pagesPanel: document.getElementById('pages-panel'), pagesList: document.getElementById('pages-list'), pageForm: document.getElementById('page-form'), pagePublish: document.getElementById('publish-page-button'), pageSaveStatus: document.getElementById('page-save-status')
   };
   let token = ''; let cmsUser = null; let posts = []; let currentPost = null; let pages = []; let currentPage = null;
   const articleEditor = document.getElementById('article-editor');
@@ -115,17 +115,26 @@
   function showPages() {
     document.querySelector('.cms-workspace__body').hidden = true;
     elements.pagesPanel.hidden = false;
+    elements.articlesButton.classList.remove('cms-tab--active');
+    elements.pagesButton.classList.add('cms-tab--active');
   }
   function showArticles() {
     elements.pagesPanel.hidden = true;
     document.querySelector('.cms-workspace__body').hidden = false;
+    elements.pagesButton.classList.remove('cms-tab--active');
+    elements.articlesButton.classList.add('cms-tab--active');
   }
   function renderPages() {
     elements.pagesList.innerHTML = pages.map((page) => `<button class="cms-page-card${currentPage?.slug === page.slug ? ' is-selected' : ''}" type="button" data-page-slug="${escapeHtml(page.slug)}"><span><strong>${escapeHtml(page.label)}</strong><small>${escapeHtml(page.path)}</small></span><span class="cms-status" data-status="${escapeHtml(page.status)}">${escapeHtml(page.status)}</span></button>`).join('');
   }
   async function refreshPages() {
-    const data = await api('/api/cms/pages');
-    pages = data.pages;
+    try {
+      const data = await api('/api/cms/pages');
+      pages = data.pages;
+    } catch (error) {
+      pages = [{ slug: 'home', label: 'Home', path: '/', status: 'setup required' }, { slug: 'about', label: 'About Us', path: '/about', status: 'setup required' }, { slug: 'contact', label: 'Contact Us', path: '/contact', status: 'setup required' }];
+      elements.pageSaveStatus.textContent = 'Page storage is not connected yet. Apply the CMS database migration to edit these pages.';
+    }
     renderPages();
   }
   function setPageFormContent(content = {}) {
@@ -248,7 +257,8 @@
     updatePublishingControls(currentPost);
   }
   elements.newPost.addEventListener('click', () => { resetEditor(); document.getElementById('cms-lifecycle-actions').hidden = true; renderPosts(); }); elements.search.addEventListener('input', renderPosts);
-  elements.pagesButton.addEventListener('click', () => { showPages(); refreshPages().catch((error) => { elements.pageSaveStatus.textContent = error.message; }); });
+  elements.articlesButton.addEventListener('click', showArticles);
+  elements.pagesButton.addEventListener('click', () => { showPages(); refreshPages(); });
   document.getElementById('back-to-articles-button').addEventListener('click', showArticles);
   elements.pagesList.addEventListener('click', (event) => { const button = event.target.closest('[data-page-slug]'); if (button) openPage(button.dataset.pageSlug).catch((error) => { elements.pageSaveStatus.textContent = error.message; }); });
   elements.pageForm.addEventListener('submit', (event) => { event.preventDefault(); savePageDraft().catch((error) => { elements.pageSaveStatus.textContent = error.message; }); });
@@ -337,7 +347,7 @@
       document.getElementById('cms-sign-in-form').addEventListener('submit', async (event) => { event.preventDefault(); const form = new FormData(event.currentTarget); const result = await supabase.auth.signInWithPassword({ email: form.get('email'), password: form.get('password') }); if (result.error) { document.getElementById('cms-auth-error').textContent = result.error.message; return; } window.location.reload(); });
       setConnection('Sign in required', false); return;
     }
-    token = sessionData.session.access_token; elements.auth.hidden = true; elements.workspace.hidden = false; elements.newPost.disabled = false; elements.pagesButton.disabled = false; setConnection('CMS connected', true);
+    token = sessionData.session.access_token; elements.auth.hidden = true; elements.workspace.hidden = false; elements.newPost.disabled = false; elements.articlesButton.disabled = false; elements.pagesButton.disabled = false; setConnection('CMS connected', true);
     if (window.lucide) window.lucide.createIcons();
     try { await refreshPosts(); } catch (error) { if (error.message.includes('not been granted CMS access')) showBootstrap('No CMS role has been assigned to this account yet.'); else throw error; }
   } catch (error) { elements.setup.hidden = false; elements.auth.hidden = true; elements.setupMessage.textContent = error.message || 'The CMS could not be reached.'; setConnection('CMS connection failed', false); }
