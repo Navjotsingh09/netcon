@@ -134,6 +134,11 @@
     elements.session.innerHTML = `<span class="cms-connection">${escapeHtml(cmsUser.display_name)} · ${escapeHtml(cmsUser.role)}</span><button class="cms-button cms-button--secondary" id="sign-out" type="button">Sign out</button>`;
     document.getElementById('sign-out').addEventListener('click', async () => { await window.netconSupabase.auth.signOut(); window.location.reload(); });
   }
+  function setPageStatus(message) {
+    elements.pageSaveStatus.textContent = message;
+    const topStatus = document.getElementById('page-save-status-top');
+    if (topStatus) topStatus.textContent = message;
+  }
   function showPages() {
     document.querySelector('.cms-workspace__body').hidden = true;
     elements.pagesPanel.hidden = false;
@@ -155,7 +160,7 @@
       pages = data.pages;
     } catch (error) {
       pages = [{ slug: 'home', label: 'Home', path: '/', status: 'setup required' }, { slug: 'about', label: 'About Us', path: '/about', status: 'setup required' }, { slug: 'contact', label: 'Contact Us', path: '/contact', status: 'setup required' }];
-      elements.pageSaveStatus.textContent = 'Page storage is not connected yet. Apply the CMS database migration to edit these pages.';
+      setPageStatus('Page storage is not connected yet. Apply the CMS database migration to edit these pages.');
     }
     renderPages();
   }
@@ -227,7 +232,7 @@
       elements.pageForm.hidden = false;
       setupPageSectionAccordions();
       elements.pagePublish.disabled = true;
-      elements.pageSaveStatus.textContent = 'Editor ready. Apply the CMS database migration before saving page changes.';
+      setPageStatus('Editor ready. Apply the CMS database migration before saving page changes.');
       renderPages();
       return;
     }
@@ -239,7 +244,7 @@
     elements.pageForm.hidden = false;
     setupPageSectionAccordions();
     elements.pagePublish.disabled = cmsUser?.role !== 'reviewer' || !data.page.draft;
-    elements.pageSaveStatus.textContent = data.page.draft ? 'Draft loaded. Save changes or publish when ready.' : 'No draft exists yet. Save changes to create one.';
+    setPageStatus(data.page.draft ? 'Draft loaded. Save changes or publish when ready.' : 'No draft exists yet. Save changes to create one.');
     renderPages();
   }
   function pageFormContent() {
@@ -249,14 +254,14 @@
   async function savePageDraft() {
     if (!currentPage) return;
     await api(`/api/cms/pages/${encodeURIComponent(currentPage.slug)}`, { method: 'POST', body: JSON.stringify({ content: pageFormContent() }) });
-    elements.pageSaveStatus.textContent = 'Page draft saved. Review it on staging before publishing.';
+    setPageStatus('Page draft saved. Review it on staging before publishing.');
     await refreshPages();
     await openPage(currentPage.slug);
   }
   async function publishPage() {
     if (!currentPage) return;
     await api(`/api/cms/pages/${encodeURIComponent(currentPage.slug)}`, { method: 'POST', body: JSON.stringify({ action: 'publish' }) });
-    elements.pageSaveStatus.textContent = 'Page published to live.';
+    setPageStatus('Page published to live.');
     await refreshPages();
     await openPage(currentPage.slug);
   }
@@ -342,9 +347,9 @@
   elements.articlesButton.addEventListener('click', showArticles);
   elements.pagesButton.addEventListener('click', () => { showPages(); refreshPages(); });
   document.getElementById('back-to-articles-button').addEventListener('click', showArticles);
-  elements.pagesList.addEventListener('click', (event) => { const button = event.target.closest('[data-page-slug]'); if (button) openPage(button.dataset.pageSlug).catch((error) => { elements.pageSaveStatus.textContent = error.message; }); });
-  elements.pageForm.addEventListener('submit', (event) => { event.preventDefault(); savePageDraft().catch((error) => { elements.pageSaveStatus.textContent = error.message; }); });
-  elements.pagePublish.addEventListener('click', () => publishPage().catch((error) => { elements.pageSaveStatus.textContent = error.message; }));
+  elements.pagesList.addEventListener('click', (event) => { const button = event.target.closest('[data-page-slug]'); if (button) openPage(button.dataset.pageSlug).catch((error) => { setPageStatus(error.message); }); });
+  elements.pageForm.addEventListener('submit', (event) => { event.preventDefault(); savePageDraft().catch((error) => { setPageStatus(error.message); }); });
+  elements.pagePublish.addEventListener('click', () => publishPage().catch((error) => { setPageStatus(error.message); }));
   document.getElementById('close-editor-button').addEventListener('click', closeEditor);
   articleEditor.addEventListener('input', syncArticleEditor);
   articleEditor.addEventListener('keyup', rememberArticleEditorSelection);
