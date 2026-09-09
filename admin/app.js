@@ -15,7 +15,7 @@
     const form = elements.pageForm;
     if (form.dataset.accordionsReady) return;
     const index = document.getElementById('page-section-index');
-    const labels = { 'Structured data (JSON-LD)': 'SEO and schema', 'Page content': 'Page content', 'Hero slides': 'Hero slider', 'Services and capability cards': 'Core services and capability cards', 'Introduction content': 'Introduction', 'Contact CTA': 'Contact CTA', 'Frequently asked questions': 'FAQs', Testimonials: 'Testimonials' };
+    const labels = { 'SEO and schema': 'SEO and schema', 'Structured data (JSON-LD)': 'SEO and schema', 'Page content': 'Page content', 'Hero slides': 'Hero slider', 'Services and capability cards': 'Core services and capability cards', 'Introduction content': 'Introduction', 'Contact CTA': 'Contact CTA', 'Frequently asked questions': 'FAQs', Testimonials: 'Testimonials' };
     let anchor = index;
     const sections = [...form.querySelectorAll(':scope > fieldset')].map((fieldset, position) => {
       const details = document.createElement('details');
