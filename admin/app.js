@@ -8,7 +8,7 @@
     newPost: document.getElementById('new-post-button'), editor: document.getElementById('editor-panel'),
     form: document.getElementById('article-form'), list: document.getElementById('post-list'), search: document.getElementById('post-search'),
     preview: document.getElementById('preview-dialog'), previewContent: document.getElementById('preview-content'),
-    saveStatus: document.getElementById('save-status'), publishLive: document.getElementById('publish-live-button'), articlesButton: document.getElementById('articles-button'), pagesButton: document.getElementById('pages-button'), pagesPanel: document.getElementById('pages-panel'), pagesList: document.getElementById('pages-list'), pageForm: document.getElementById('page-form'), pagePublish: document.getElementById('publish-page-button'), pageSaveStatus: document.getElementById('page-save-status')
+    saveStatus: document.getElementById('save-status'), publishLive: document.getElementById('publish-live-button'), articlesButton: document.getElementById('articles-button'), pagesButton: document.getElementById('pages-button'), pagesPanel: document.getElementById('pages-panel'), pagesList: document.getElementById('pages-list'), pageForm: document.getElementById('page-form'), pagePublish: document.getElementById('publish-page-button'), pagePreviewLink: document.getElementById('generate-preview-link-button'), pageSaveStatus: document.getElementById('page-save-status')
   };
   let token = ''; let cmsUser = null; let posts = []; let currentPost = null; let pages = []; let currentPage = null;
   function setupPageSectionAccordions() {
@@ -234,6 +234,7 @@
       elements.pageForm.hidden = false;
       setupPageSectionAccordions();
       elements.pagePublish.disabled = true;
+      if (elements.pagePreviewLink) elements.pagePreviewLink.disabled = true;
       setPageStatus('Editor ready. Apply the CMS database migration before saving page changes.');
       renderPages();
       return;
@@ -248,6 +249,7 @@
     elements.pageForm.hidden = false;
     setupPageSectionAccordions();
     elements.pagePublish.disabled = cmsUser?.role !== 'reviewer' || !data.page.draft;
+    if (elements.pagePreviewLink) elements.pagePreviewLink.disabled = !data.page.draft;
     setPageStatus(data.page.draft ? 'Draft loaded. Save changes or publish when ready.' : 'No draft exists yet. Save changes to create one.');
     renderPages();
   }
@@ -261,6 +263,16 @@
     setPageStatus('Page draft saved. Review it on staging before publishing.');
     await refreshPages();
     await openPage(currentPage.slug);
+  }
+  async function generatePreviewLink() {
+    if (!currentPage) return;
+    try {
+      setPageStatus('Creating preview link...');
+      const data = await api('/api/cms/preview-link', { method: 'POST', body: JSON.stringify({ slug: currentPage.slug }) });
+      await navigator.clipboard.writeText(data.previewUrl).catch(() => {});
+      setPageStatus(`Preview link copied. It expires in ${data.expiresInDays} days.`);
+      window.prompt('Copy this preview link:', data.previewUrl);
+    } catch (error) { setPageStatus(error.message); }
   }
   async function publishPage() {
     if (!currentPage) return;
@@ -354,6 +366,7 @@
   elements.pagesList?.addEventListener('click', (event) => { const button = event.target.closest('[data-page-slug]'); if (button) openPage(button.dataset.pageSlug).catch((error) => { setPageStatus(error.message); }); });
   elements.pageForm?.addEventListener('submit', (event) => { event.preventDefault(); savePageDraft().catch((error) => { setPageStatus(error.message); }); });
   elements.pagePublish?.addEventListener('click', () => publishPage().catch((error) => { setPageStatus(error.message); }));
+  elements.pagePreviewLink?.addEventListener('click', () => generatePreviewLink());
   document.getElementById('close-editor-button').addEventListener('click', closeEditor);
   articleEditor.addEventListener('input', syncArticleEditor);
   articleEditor.addEventListener('keyup', rememberArticleEditorSelection);
