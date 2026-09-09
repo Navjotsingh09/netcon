@@ -32,7 +32,7 @@
           <h1 id="cms-title">Editorial dashboard</h1>
           <p>Draft, review, schedule and publish articles without changing the public site directly.</p>
         </div>
-        <button class="cms-button cms-button--primary" id="new-post-button" type="button" disabled>New article</button>
+        <div class="cms-welcome__actions"><button class="cms-button cms-button--secondary" id="pages-button" type="button" disabled>Pages</button><button class="cms-button cms-button--primary" id="new-post-button" type="button" disabled>New article</button></div>
       </section>
 
       <section class="cms-setup" id="cms-setup" aria-live="polite" hidden>
@@ -120,6 +120,22 @@
           </form>
         </section>
         </div>
+        <section class="cms-panel cms-pages" id="pages-panel" hidden aria-labelledby="pages-heading">
+          <div class="cms-panel__head"><div><p class="cms-eyebrow">Website content</p><h2 id="pages-heading">Pages</h2><p class="cms-editor__state">Update approved SEO and content values without changing the page design or functionality.</p></div><button class="cms-button cms-button--secondary" id="back-to-articles-button" type="button">Back to articles</button></div>
+          <div class="cms-pages__layout">
+            <div class="cms-pages__list" id="pages-list" aria-live="polite"></div>
+            <form id="page-form" class="cms-form-grid" hidden>
+              <h3 class="cms-form-grid__wide" id="page-form-heading">Page editor</h3>
+              <label>SEO title<input name="seoTitle" maxlength="180" autocomplete="off"></label>
+              <label>SEO description<textarea name="seoDescription" maxlength="360" rows="3"></textarea></label>
+              <label>Social sharing title<input name="ogTitle" maxlength="180" autocomplete="off"></label>
+              <label>Social sharing description<textarea name="ogDescription" maxlength="360" rows="3"></textarea></label>
+              <label class="cms-form-grid__wide">Structured data (JSON-LD)<textarea name="schemaMarkup" rows="10" spellcheck="false" placeholder='{"@context":"https://schema.org","@type":"WebPage"}'></textarea></label>
+              <label class="cms-form-grid__wide">Approved content values (JSON)<textarea name="contentJson" rows="12" spellcheck="false" placeholder='{"heroTitle":"...","faqs":[]}'></textarea></label>
+              <div class="cms-actions cms-form-grid__wide"><span id="page-save-status" aria-live="polite"></span><button class="cms-button cms-button--secondary" type="submit">Save draft</button><button class="cms-button cms-button--dark" id="publish-page-button" type="button" disabled>Publish to live</button></div>
+            </form>
+          </div>
+        </section>
       </section>
     </main>
   </div>

@@ -8,9 +8,9 @@
     newPost: document.getElementById('new-post-button'), editor: document.getElementById('editor-panel'),
     form: document.getElementById('article-form'), list: document.getElementById('post-list'), search: document.getElementById('post-search'),
     preview: document.getElementById('preview-dialog'), previewContent: document.getElementById('preview-content'),
-    saveStatus: document.getElementById('save-status'), publishLive: document.getElementById('publish-live-button')
+    saveStatus: document.getElementById('save-status'), publishLive: document.getElementById('publish-live-button'), pagesButton: document.getElementById('pages-button'), pagesPanel: document.getElementById('pages-panel'), pagesList: document.getElementById('pages-list'), pageForm: document.getElementById('page-form'), pagePublish: document.getElementById('publish-page-button'), pageSaveStatus: document.getElementById('page-save-status')
   };
-  let token = ''; let cmsUser = null; let posts = []; let currentPost = null;
+  let token = ''; let cmsUser = null; let posts = []; let currentPost = null; let pages = []; let currentPage = null;
   const articleEditor = document.getElementById('article-editor');
   const articleHtmlField = document.querySelector('[name="articleHtml"]');
   const articleEditorImage = document.getElementById('article-editor-image');
@@ -112,6 +112,63 @@
     elements.session.innerHTML = `<span class="cms-connection">${escapeHtml(cmsUser.display_name)} · ${escapeHtml(cmsUser.role)}</span><button class="cms-button cms-button--secondary" id="sign-out" type="button">Sign out</button>`;
     document.getElementById('sign-out').addEventListener('click', async () => { await window.netconSupabase.auth.signOut(); window.location.reload(); });
   }
+  function showPages() {
+    document.querySelector('.cms-workspace__body').hidden = true;
+    elements.pagesPanel.hidden = false;
+  }
+  function showArticles() {
+    elements.pagesPanel.hidden = true;
+    document.querySelector('.cms-workspace__body').hidden = false;
+  }
+  function renderPages() {
+    elements.pagesList.innerHTML = pages.map((page) => `<button class="cms-page-card${currentPage?.slug === page.slug ? ' is-selected' : ''}" type="button" data-page-slug="${escapeHtml(page.slug)}"><span><strong>${escapeHtml(page.label)}</strong><small>${escapeHtml(page.path)}</small></span><span class="cms-status" data-status="${escapeHtml(page.status)}">${escapeHtml(page.status)}</span></button>`).join('');
+  }
+  async function refreshPages() {
+    const data = await api('/api/cms/pages');
+    pages = data.pages;
+    renderPages();
+  }
+  function setPageFormContent(content = {}) {
+    elements.pageForm.elements.seoTitle.value = content['seo.title'] || '';
+    elements.pageForm.elements.seoDescription.value = content['seo.description'] || '';
+    elements.pageForm.elements.ogTitle.value = content['seo.ogTitle'] || '';
+    elements.pageForm.elements.ogDescription.value = content['seo.ogDescription'] || '';
+    elements.pageForm.elements.schemaMarkup.value = typeof content['seo.schemaMarkup'] === 'string' ? content['seo.schemaMarkup'] : JSON.stringify(content['seo.schemaMarkup'] || {}, null, 2);
+    const pageContent = { ...(content.content || {}) };
+    delete pageContent['seo.title']; delete pageContent['seo.description']; delete pageContent['seo.ogTitle']; delete pageContent['seo.ogDescription']; delete pageContent['seo.schemaMarkup'];
+    elements.pageForm.elements.contentJson.value = JSON.stringify(pageContent, null, 2);
+  }
+  async function openPage(slug) {
+    const data = await api(`/api/cms/pages/${encodeURIComponent(slug)}`);
+    currentPage = { ...data.page, slug };
+    const content = data.page.draft?.content || data.page.published?.content || {};
+    document.getElementById('page-form-heading').textContent = `Edit: ${data.page.label}`;
+    setPageFormContent(content);
+    elements.pageForm.hidden = false;
+    elements.pagePublish.disabled = cmsUser?.role !== 'reviewer' || !data.page.draft;
+    elements.pageSaveStatus.textContent = data.page.draft ? 'Draft loaded. Save changes or publish when ready.' : 'No draft exists yet. Save changes to create one.';
+    renderPages();
+  }
+  function pageFormContent() {
+    let content;
+    try { content = JSON.parse(elements.pageForm.elements.contentJson.value || '{}'); } catch { throw new Error('Approved content values must be valid JSON.'); }
+    if (!content || Array.isArray(content) || typeof content !== 'object') throw new Error('Approved content values must be a JSON object.');
+    return { content, 'seo.title': elements.pageForm.elements.seoTitle.value.trim(), 'seo.description': elements.pageForm.elements.seoDescription.value.trim(), 'seo.ogTitle': elements.pageForm.elements.ogTitle.value.trim(), 'seo.ogDescription': elements.pageForm.elements.ogDescription.value.trim(), 'seo.schemaMarkup': elements.pageForm.elements.schemaMarkup.value.trim() };
+  }
+  async function savePageDraft() {
+    if (!currentPage) return;
+    await api(`/api/cms/pages/${encodeURIComponent(currentPage.slug)}`, { method: 'POST', body: JSON.stringify({ content: pageFormContent() }) });
+    elements.pageSaveStatus.textContent = 'Page draft saved. Review it on staging before publishing.';
+    await refreshPages();
+    await openPage(currentPage.slug);
+  }
+  async function publishPage() {
+    if (!currentPage) return;
+    await api(`/api/cms/pages/${encodeURIComponent(currentPage.slug)}`, { method: 'POST', body: JSON.stringify({ action: 'publish' }) });
+    elements.pageSaveStatus.textContent = 'Page published to live.';
+    await refreshPages();
+    await openPage(currentPage.slug);
+  }
   function showBootstrap(message) {
     elements.workspace.hidden = true;
     elements.setup.hidden = false;
@@ -191,6 +248,11 @@
     updatePublishingControls(currentPost);
   }
   elements.newPost.addEventListener('click', () => { resetEditor(); document.getElementById('cms-lifecycle-actions').hidden = true; renderPosts(); }); elements.search.addEventListener('input', renderPosts);
+  elements.pagesButton.addEventListener('click', () => { showPages(); refreshPages().catch((error) => { elements.pageSaveStatus.textContent = error.message; }); });
+  document.getElementById('back-to-articles-button').addEventListener('click', showArticles);
+  elements.pagesList.addEventListener('click', (event) => { const button = event.target.closest('[data-page-slug]'); if (button) openPage(button.dataset.pageSlug).catch((error) => { elements.pageSaveStatus.textContent = error.message; }); });
+  elements.pageForm.addEventListener('submit', (event) => { event.preventDefault(); savePageDraft().catch((error) => { elements.pageSaveStatus.textContent = error.message; }); });
+  elements.pagePublish.addEventListener('click', () => publishPage().catch((error) => { elements.pageSaveStatus.textContent = error.message; }));
   document.getElementById('close-editor-button').addEventListener('click', closeEditor);
   articleEditor.addEventListener('input', syncArticleEditor);
   articleEditor.addEventListener('keyup', rememberArticleEditorSelection);
@@ -275,7 +337,7 @@
       document.getElementById('cms-sign-in-form').addEventListener('submit', async (event) => { event.preventDefault(); const form = new FormData(event.currentTarget); const result = await supabase.auth.signInWithPassword({ email: form.get('email'), password: form.get('password') }); if (result.error) { document.getElementById('cms-auth-error').textContent = result.error.message; return; } window.location.reload(); });
       setConnection('Sign in required', false); return;
     }
-    token = sessionData.session.access_token; elements.auth.hidden = true; elements.workspace.hidden = false; elements.newPost.disabled = false; setConnection('CMS connected', true);
+    token = sessionData.session.access_token; elements.auth.hidden = true; elements.workspace.hidden = false; elements.newPost.disabled = false; elements.pagesButton.disabled = false; setConnection('CMS connected', true);
     if (window.lucide) window.lucide.createIcons();
     try { await refreshPosts(); } catch (error) { if (error.message.includes('not been granted CMS access')) showBootstrap('No CMS role has been assigned to this account yet.'); else throw error; }
   } catch (error) { elements.setup.hidden = false; elements.auth.hidden = true; elements.setupMessage.textContent = error.message || 'The CMS could not be reached.'; setConnection('CMS connection failed', false); }
