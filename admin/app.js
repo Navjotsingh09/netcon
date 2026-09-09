@@ -252,7 +252,9 @@
     let content = data.page.draft?.content || data.page.published?.content || {};
     const importedContent = content.content || {};
     const hasImportedContent = Object.values(importedContent).some((value) => Array.isArray(value) ? value.length > 0 : value && typeof value === 'object' ? Object.values(value).some(Boolean) : Boolean(value));
-    if (!hasImportedContent) content = { ...content, content: await loadStaticPageContent(slug) };
+    // Fill in only the keys missing from a saved draft (e.g. new sections added after that draft existed) without discarding already-edited fields.
+    const staticFallback = await loadStaticPageContent(slug);
+    content = { ...content, content: hasImportedContent ? { ...staticFallback, ...importedContent } : staticFallback };
     document.getElementById('page-form-heading').textContent = `Edit: ${data.page.label}`;
     setPageFormContent(content);
     elements.pageForm.hidden = false;
