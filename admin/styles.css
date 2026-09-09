@@ -1,5 +1,6 @@
 :root { --cms-navy:#162470; --cms-blue:#0982c5; --cms-ink:#17213b; --cms-muted:#637087; --cms-line:#dce3ed; --cms-paper:#f5f7fa; --cms-white:#fff; --cms-warm:#f5b544; --cms-danger:#b42318; }
 * { box-sizing:border-box; }
+[hidden] { display:none !important; }
 body { margin:0; min-width:320px; color:var(--cms-ink); background:var(--cms-paper); font-family:Barlow,Helvetica,Arial,sans-serif; }
 button,input,textarea,select { font:inherit; }
 .skip-link { position:absolute; left:16px; top:-48px; background:var(--cms-navy); color:#fff; padding:10px 14px; z-index:5; }
