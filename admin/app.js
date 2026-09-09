@@ -237,6 +237,16 @@
     }
     return content;
   }
+  function setPreviewLinkDisplay(url) {
+    const wrapper = document.getElementById('page-preview-link-persistent');
+    const anchor = document.getElementById('page-preview-link-persistent-anchor');
+    if (!wrapper || !anchor) return;
+    if (!url) { wrapper.hidden = true; return; }
+    anchor.href = url;
+    anchor.textContent = url;
+    wrapper.hidden = false;
+  }
+  document.getElementById('copy-page-preview-link-persistent')?.addEventListener('click', async () => { const url = document.getElementById('page-preview-link-persistent-anchor')?.href; if (url) { await navigator.clipboard.writeText(url).catch(() => {}); setPageStatus('Preview link copied.'); } });
   async function openPage(slug) {
     let data;
     try {
@@ -250,6 +260,7 @@
       setupPageSectionAccordions();
       elements.pagePublish.disabled = true;
       if (elements.pagePreviewLink) elements.pagePreviewLink.disabled = true;
+      setPreviewLinkDisplay(null);
       setPageStatus('Editor ready. Apply the CMS database migration before saving page changes.');
       renderPages();
       return;
@@ -267,6 +278,7 @@
     setupPageSectionAccordions();
     elements.pagePublish.disabled = cmsUser?.role !== 'reviewer' || !data.page.draft;
     if (elements.pagePreviewLink) elements.pagePreviewLink.disabled = !data.page.draft;
+    setPreviewLinkDisplay(data.page.previewUrl);
     setPageStatus(data.page.draft ? 'Draft loaded. Save changes or publish when ready.' : 'No draft exists yet. Save changes to create one.');
     renderPages();
   }
@@ -291,6 +303,7 @@
       const data = await api('/api/cms/preview-link', { method: 'POST', body: JSON.stringify({ slug: currentPage.slug }) });
       elements.pagePreviewInput.value = data.previewUrl;
       await navigator.clipboard.writeText(data.previewUrl).catch(() => {});
+      setPreviewLinkDisplay(data.previewUrl);
       setPageStatus(`Preview link created. It expires in ${data.expiresInDays} days.`);
       elements.pagePreviewDialog.showModal();
     } catch (error) { setPageStatus(error.message); }

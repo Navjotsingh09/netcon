@@ -9,10 +9,13 @@ export default async function handler(request, response) {
   if (!token) return errorResponse(request, response, 'Preview token is required.', 401);
   const tokenHash = crypto.createHash('sha256').update(token).digest('hex');
   try {
-    const { data: preview, error } = await supabaseAdmin().from('cms_preview_tokens').select('page_slug, revision_id, expires_at, revoked_at').eq('token_hash', tokenHash).maybeSingle();
+    const { data: preview, error } = await supabaseAdmin().from('cms_preview_tokens').select('page_slug, expires_at, revoked_at').eq('token_hash', tokenHash).maybeSingle();
     if (error) throw error;
     if (!preview || preview.revoked_at || new Date(preview.expires_at) <= new Date()) return errorResponse(request, response, 'This preview link has expired or been revoked.', 410);
-    const { data: revision, error: revisionError } = await supabaseAdmin().from('cms_page_revisions').select('content, updated_at').eq('id', preview.revision_id).maybeSingle();
+    const { data: page, error: pageError } = await supabaseAdmin().from('cms_pages').select('id').eq('page_slug', preview.page_slug).maybeSingle();
+    if (pageError) throw pageError;
+    // Always resolve the latest editable revision so one link keeps reflecting new saves instead of a frozen snapshot.
+    const { data: revision, error: revisionError } = await supabaseAdmin().from('cms_page_revisions').select('content, updated_at').eq('page_id', page?.id || '').in('status', ['draft', 'changes_requested', 'in_review', 'approved']).order('revision_number', { ascending: false }).limit(1).maybeSingle();
     if (revisionError) throw revisionError;
     return json(request, response, { page: { slug: preview.page_slug, label: pageFromSlug(preview.page_slug).label, content: revision?.content || {}, updatedAt: revision?.updated_at } }, 200, { 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow, noarchive' });
   } catch (error) {

@@ -19,7 +19,10 @@ async function getPage(request, response, slug) {
   if (error) throw error;
   const draft = revisions.find((revision) => ['draft', 'changes_requested', 'in_review', 'approved'].includes(revision.status));
   const published = revisions.find((revision) => revision.id === page.published_revision_id);
-  return json(request, response, { page: { slug, label: pageFromSlug(slug).label, path: pageFromSlug(slug).path, status: draft?.status || (published ? 'published' : 'draft'), draft: draft || null, published: published || null } });
+  // Surface an already-issued, still-valid preview link so it survives closing the dialog without needing to be regenerated.
+  const { data: activePreview } = await client.from('cms_preview_tokens').select('token, expires_at').eq('page_slug', slug).is('revoked_at', null).gt('expires_at', new Date().toISOString()).order('created_at', { ascending: false }).limit(1).maybeSingle();
+  const previewUrl = activePreview?.token ? `${request.headers.origin || 'https://netcon-ivory.vercel.app'}/preview.html?slug=${encodeURIComponent(slug)}&token=${encodeURIComponent(activePreview.token)}` : null;
+  return json(request, response, { page: { slug, label: pageFromSlug(slug).label, path: pageFromSlug(slug).path, status: draft?.status || (published ? 'published' : 'draft'), draft: draft || null, published: published || null, previewUrl } });
 }
 
 async function saveDraft(request, response, slug, user) {

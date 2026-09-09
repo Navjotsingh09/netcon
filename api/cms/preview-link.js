@@ -18,11 +18,18 @@ export default async function handler(request, response) {
     const { data: revision, error: revisionError } = await client.from('cms_page_revisions').select('id').eq('page_id', page.id).in('status', ['draft', 'in_review', 'approved']).order('revision_number', { ascending: false }).limit(1).maybeSingle();
     if (revisionError) throw revisionError;
     if (!revision) return errorResponse(request, response, 'Save a draft before generating a preview link.', 422);
+    const origin = request.headers.origin || 'https://netcon-ivory.vercel.app';
+    // Reuse an existing valid link for this page so editors always get the same reusable URL back, and it always reflects the latest saved draft.
+    const { data: existing, error: existingError } = await client.from('cms_preview_tokens').select('token, expires_at').eq('page_slug', slug).is('revoked_at', null).gt('expires_at', new Date().toISOString()).order('created_at', { ascending: false }).limit(1).maybeSingle();
+    if (existingError) throw existingError;
+    if (existing?.token) {
+      return json(request, response, { previewUrl: `${origin}/preview.html?slug=${encodeURIComponent(slug)}&token=${encodeURIComponent(existing.token)}`, expiresInDays: Math.max(1, Math.ceil((new Date(existing.expires_at) - new Date()) / 86400000)) });
+    }
     const token = crypto.randomBytes(32).toString('base64url');
     const tokenHash = crypto.createHash('sha256').update(token).digest('hex');
-    const { error } = await client.from('cms_preview_tokens').insert({ page_slug: slug, revision_id: revision.id, token_hash: tokenHash, created_by: access.user.id });
+    const { error } = await client.from('cms_preview_tokens').insert({ page_slug: slug, revision_id: revision.id, token_hash: tokenHash, token, created_by: access.user.id });
     if (error) throw error;
-    return json(request, response, { previewUrl: `${request.headers.origin || 'https://netcon-ivory.vercel.app'}/preview.html?slug=${encodeURIComponent(slug)}&token=${encodeURIComponent(token)}`, expiresInDays: 30 });
+    return json(request, response, { previewUrl: `${origin}/preview.html?slug=${encodeURIComponent(slug)}&token=${encodeURIComponent(token)}`, expiresInDays: 30 });
   } catch (error) {
     console.error('CMS preview link request failed', error);
     return errorResponse(request, response, 'The preview link could not be created.');
