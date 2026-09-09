@@ -23,6 +23,11 @@
         if (script) script.textContent = JSON.stringify(schema);
       } catch { return; }
     }
+    const pageContent = seo.content || {};
+    if (pageContent.heroSlides) document.querySelectorAll('.hero__slide').forEach((slide, index) => { const item = pageContent.heroSlides[index]; if (!item) return; const title = slide.querySelector('.hero__title'); const description = slide.querySelector('.hero__sub'); const button = slide.querySelector('.hero__btn'); if (title && item.heading) title.textContent = item.heading; if (description && item.paragraph) description.textContent = item.paragraph; if (button) { if (item.buttonText) button.textContent = item.buttonText; if (item.buttonUrl) button.href = item.buttonUrl; } });
+    if (pageContent.cards) document.querySelectorAll('.svc-card').forEach((card, index) => { const item = pageContent.cards[index]; if (!item) return; const heading = card.querySelector('.svc-card__label'); const paragraph = card.querySelector('.svc-card__desc'); const image = card.querySelector('img'); if (heading && item.heading) heading.textContent = item.heading; if (paragraph && item.paragraph) paragraph.textContent = item.paragraph; if (image && item.imageAlt) image.alt = item.imageAlt; });
+    if (pageContent.introduction) { const heading = document.querySelector('.main-services__title, .ab-intro__title'); const paragraph = document.querySelector('.main-services__intro, .ab-intro p'); if (heading && pageContent.introduction.heading) heading.textContent = pageContent.introduction.heading; if (paragraph && pageContent.introduction.paragraph) paragraph.textContent = pageContent.introduction.paragraph; }
+    if (pageContent.contactCta) { const heading = document.querySelector('.nd-contact__title, .ctf-title'); const paragraph = document.querySelector('.nd-contact__intro, .ctf-copy'); if (heading && pageContent.contactCta.heading) heading.textContent = pageContent.contactCta.heading; if (paragraph && pageContent.contactCta.paragraph) paragraph.textContent = pageContent.contactCta.paragraph; }
     Object.entries(seo.content || {}).forEach(([key, value]) => {
       document.querySelectorAll(`[data-cms-key="${CSS.escape(key)}"]`).forEach((element) => {
         if (element.tagName === 'IMG') element.alt = String(value);
