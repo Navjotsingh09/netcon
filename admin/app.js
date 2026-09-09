@@ -143,12 +143,28 @@
     elements.pageForm.elements.ogTitle.value = content['seo.ogTitle'] || '';
     elements.pageForm.elements.ogDescription.value = content['seo.ogDescription'] || '';
     elements.pageForm.elements.schemaMarkup.value = typeof content['seo.schemaMarkup'] === 'string' ? content['seo.schemaMarkup'] : JSON.stringify(content['seo.schemaMarkup'] || {}, null, 2);
-    const pageContent = { ...(content.content || {}) };
-    delete pageContent['seo.title']; delete pageContent['seo.description']; delete pageContent['seo.ogTitle']; delete pageContent['seo.ogDescription']; delete pageContent['seo.schemaMarkup'];
-    elements.pageForm.elements.contentJson.value = JSON.stringify(pageContent, null, 2);
+    const pageContent = content.content || {};
+    elements.pageForm.elements.heroTitle.value = pageContent.heroTitle || '';
+    elements.pageForm.elements.introText.value = pageContent.introText || '';
+    elements.pageForm.elements.faqQuestion.value = pageContent.faqQuestion || '';
+    elements.pageForm.elements.faqAnswer.value = pageContent.faqAnswer || '';
+    elements.pageForm.elements.imageAlt.value = pageContent.imageAlt || '';
   }
   async function openPage(slug) {
-    const data = await api(`/api/cms/pages/${encodeURIComponent(slug)}`);
+    let data;
+    try {
+      data = await api(`/api/cms/pages/${encodeURIComponent(slug)}`);
+    } catch (error) {
+      const fallback = pages.find((page) => page.slug === slug) || { slug, label: slug, path: '/' };
+      currentPage = { ...fallback, slug, draft: null, published: null };
+      document.getElementById('page-form-heading').textContent = `Edit: ${fallback.label}`;
+      setPageFormContent({});
+      elements.pageForm.hidden = false;
+      elements.pagePublish.disabled = true;
+      elements.pageSaveStatus.textContent = 'Editor ready. Apply the CMS database migration before saving page changes.';
+      renderPages();
+      return;
+    }
     currentPage = { ...data.page, slug };
     const content = data.page.draft?.content || data.page.published?.content || {};
     document.getElementById('page-form-heading').textContent = `Edit: ${data.page.label}`;
@@ -159,9 +175,7 @@
     renderPages();
   }
   function pageFormContent() {
-    let content;
-    try { content = JSON.parse(elements.pageForm.elements.contentJson.value || '{}'); } catch { throw new Error('Approved content values must be valid JSON.'); }
-    if (!content || Array.isArray(content) || typeof content !== 'object') throw new Error('Approved content values must be a JSON object.');
+    const content = { heroTitle: elements.pageForm.elements.heroTitle.value.trim(), introText: elements.pageForm.elements.introText.value.trim(), faqQuestion: elements.pageForm.elements.faqQuestion.value.trim(), faqAnswer: elements.pageForm.elements.faqAnswer.value.trim(), imageAlt: elements.pageForm.elements.imageAlt.value.trim() };
     return { content, 'seo.title': elements.pageForm.elements.seoTitle.value.trim(), 'seo.description': elements.pageForm.elements.seoDescription.value.trim(), 'seo.ogTitle': elements.pageForm.elements.ogTitle.value.trim(), 'seo.ogDescription': elements.pageForm.elements.ogDescription.value.trim(), 'seo.schemaMarkup': elements.pageForm.elements.schemaMarkup.value.trim() };
   }
   async function savePageDraft() {

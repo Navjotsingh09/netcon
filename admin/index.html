@@ -132,7 +132,11 @@
               <label>Social sharing title<input name="ogTitle" maxlength="180" autocomplete="off"></label>
               <label>Social sharing description<textarea name="ogDescription" maxlength="360" rows="3"></textarea></label>
               <label class="cms-form-grid__wide">Structured data (JSON-LD)<textarea name="schemaMarkup" rows="10" spellcheck="false" placeholder='{"@context":"https://schema.org","@type":"WebPage"}'></textarea></label>
-              <label class="cms-form-grid__wide">Approved content values (JSON)<textarea name="contentJson" rows="12" spellcheck="false" placeholder='{"heroTitle":"...","faqs":[]}'></textarea></label>
+              <label>Main heading<input name="heroTitle" maxlength="180" autocomplete="off" placeholder="Main page heading"></label>
+              <label>Introductory text<textarea name="introText" maxlength="1000" rows="4" placeholder="Introductory page text"></textarea></label>
+              <label>FAQ question<input name="faqQuestion" maxlength="300" autocomplete="off" placeholder="Frequently asked question"></label>
+              <label>FAQ answer<textarea name="faqAnswer" maxlength="1000" rows="4" placeholder="Answer to the FAQ"></textarea></label>
+              <label class="cms-form-grid__wide">Image alt text<input name="imageAlt" maxlength="250" autocomplete="off" placeholder="Describe the page image"></label>
               <div class="cms-actions cms-form-grid__wide"><span id="page-save-status" aria-live="polite"></span><button class="cms-button cms-button--secondary" type="submit">Save draft</button><button class="cms-button cms-button--dark" id="publish-page-button" type="button" disabled>Publish to live</button></div>
             </form>
           </div>
