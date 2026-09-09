@@ -195,11 +195,11 @@
   function collectRepeater(name) { const fields = [...document.querySelectorAll(`[data-repeater="${name}"][data-field]`)]; if (name === 'introduction' || name === 'contactCta') return fields.reduce((item, field) => ({ ...item, [field.dataset.field]: field.value.trim() }), {}); return fields.reduce((items, field) => { const index = Number(field.dataset.index); items[index] = items[index] || {}; items[index][field.dataset.field] = field.value.trim(); return items; }, []); }
   function repeaterContent() { return { heroSlides: collectRepeater('heroSlides'), cards: collectRepeater('cards'), introduction: collectRepeater('introduction'), contactCta: collectRepeater('contactCta'), faqs: collectRepeater('faqs'), testimonials: collectRepeater('testimonials') }; }
   function addRepeaterItem(name) { const content = repeaterContent(); content[name].push(name === 'heroSlides' ? { heading: '', paragraph: '', buttonText: '', buttonUrl: '', imageUrl: '', imageAlt: '' } : name === 'faqs' ? { question: '', answer: '', headingTag: 'h3' } : name === 'testimonials' ? { quote: '', name: '', role: '', imageAlt: '' } : { heading: '', paragraph: '', imageAlt: '' }); renderRepeaters(content); }
-  document.getElementById('add-hero-slide-button').addEventListener('click', () => addRepeaterItem('heroSlides'));
-  document.getElementById('add-card-button').addEventListener('click', () => addRepeaterItem('cards'));
-  document.getElementById('add-faq-button').addEventListener('click', () => addRepeaterItem('faqs'));
-  document.getElementById('add-testimonial-button').addEventListener('click', () => addRepeaterItem('testimonials'));
-  document.getElementById('page-form').addEventListener('click', (event) => { const button = event.target.closest('[data-remove-repeater]'); if (!button) return; const content = repeaterContent(); content[button.dataset.removeRepeater].splice(Number(button.dataset.index), 1); renderRepeaters(content); });
+  document.getElementById('add-hero-slide-button')?.addEventListener('click', () => addRepeaterItem('heroSlides'));
+  document.getElementById('add-card-button')?.addEventListener('click', () => addRepeaterItem('cards'));
+  document.getElementById('add-faq-button')?.addEventListener('click', () => addRepeaterItem('faqs'));
+  document.getElementById('add-testimonial-button')?.addEventListener('click', () => addRepeaterItem('testimonials'));
+  document.getElementById('page-form')?.addEventListener('click', (event) => { const button = event.target.closest('[data-remove-repeater]'); if (!button) return; const content = repeaterContent(); content[button.dataset.removeRepeater].splice(Number(button.dataset.index), 1); renderRepeaters(content); });
   async function loadStaticPageContent(slug) {
     const response = await fetch(slug === 'home' ? '/' : `/${slug}`);
     if (!response.ok) return {};
@@ -348,12 +348,12 @@
     updatePublishingControls(currentPost);
   }
   elements.newPost.addEventListener('click', () => { resetEditor(); document.getElementById('cms-lifecycle-actions').hidden = true; renderPosts(); }); elements.search.addEventListener('input', renderPosts);
-  elements.articlesButton.addEventListener('click', showArticles);
-  elements.pagesButton.addEventListener('click', () => { showPages(); refreshPages(); });
-  document.getElementById('back-to-articles-button').addEventListener('click', showArticles);
-  elements.pagesList.addEventListener('click', (event) => { const button = event.target.closest('[data-page-slug]'); if (button) openPage(button.dataset.pageSlug).catch((error) => { setPageStatus(error.message); }); });
-  elements.pageForm.addEventListener('submit', (event) => { event.preventDefault(); savePageDraft().catch((error) => { setPageStatus(error.message); }); });
-  elements.pagePublish.addEventListener('click', () => publishPage().catch((error) => { setPageStatus(error.message); }));
+  elements.articlesButton?.addEventListener('click', showArticles);
+  elements.pagesButton?.addEventListener('click', () => { showPages(); refreshPages(); });
+  document.getElementById('back-to-articles-button')?.addEventListener('click', showArticles);
+  elements.pagesList?.addEventListener('click', (event) => { const button = event.target.closest('[data-page-slug]'); if (button) openPage(button.dataset.pageSlug).catch((error) => { setPageStatus(error.message); }); });
+  elements.pageForm?.addEventListener('submit', (event) => { event.preventDefault(); savePageDraft().catch((error) => { setPageStatus(error.message); }); });
+  elements.pagePublish?.addEventListener('click', () => publishPage().catch((error) => { setPageStatus(error.message); }));
   document.getElementById('close-editor-button').addEventListener('click', closeEditor);
   articleEditor.addEventListener('input', syncArticleEditor);
   articleEditor.addEventListener('keyup', rememberArticleEditorSelection);
@@ -438,7 +438,7 @@
       document.getElementById('cms-sign-in-form').addEventListener('submit', async (event) => { event.preventDefault(); const form = new FormData(event.currentTarget); const result = await supabase.auth.signInWithPassword({ email: form.get('email'), password: form.get('password') }); if (result.error) { document.getElementById('cms-auth-error').textContent = result.error.message; return; } window.location.reload(); });
       setConnection('Sign in required', false); return;
     }
-    token = sessionData.session.access_token; elements.auth.hidden = true; elements.workspace.hidden = false; elements.newPost.disabled = false; elements.articlesButton.disabled = false; elements.pagesButton.disabled = false; setConnection('CMS connected', true);
+    token = sessionData.session.access_token; elements.auth.hidden = true; elements.workspace.hidden = false; elements.newPost.disabled = false; if (elements.articlesButton) elements.articlesButton.disabled = false; if (elements.pagesButton) elements.pagesButton.disabled = false; setConnection('CMS connected', true);
     if (window.lucide) window.lucide.createIcons();
     try { await refreshPosts(); } catch (error) { if (error.message.includes('not been granted CMS access')) showBootstrap('No CMS role has been assigned to this account yet.'); else throw error; }
   } catch (error) { elements.setup.hidden = false; elements.auth.hidden = true; elements.setupMessage.textContent = error.message || 'The CMS could not be reached.'; setConnection('CMS connection failed', false); }
