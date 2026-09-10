@@ -65,6 +65,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <script src="/js/schema.js" defer></script>
+  <script src="/js/cms-page.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
@@ -361,92 +362,16 @@
   <!-- ===== TESTIMONIALS ===== -->
   <section class="sd-section" aria-labelledby="tst-h">
     <div class="sd-wrap">
-      <div class="nd-trusted">
-        <div class="nd-trusted__head">
-          <h2 class="nd-trusted__title" id="tst-h">What our clients says</h2>
-          <div class="nd-trusted__controls">
-            <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
-              <span aria-hidden="true">&#8249;</span>
-            </button>
-            <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial">
-              <span aria-hidden="true">&#8250;</span>
-            </button>
-          </div>
-        </div>
-        <div class="nd-trusted__viewport">
-          <div class="nd-trusted__track">
-            <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;Our manufacturing facility's communication and operational efficiency have significantly increased thanks to the Managed Wireless LAN solution. Now, coverage is uniform throughout office buildings, warehouses, and factory floors. The continued support has been outstanding, and the implementation went smoothly.&rdquo;</p>
-              <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-f1.jpg" alt="" loading="lazy"></span>
-                <div>
-                  <p class="nd-t-card__name">James Richardson</p>
-                  <p class="nd-t-card__role">Director of Operations, Manchester, England</p>
-                </div>
-              </div>
-            </article>
-            <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;It might be difficult to manage wireless connectivity in a crowded school setting, but this Managed Wireless LAN service has surpassed our expectations. Excellent performance and dependable access are beneficial to teachers, students, and administrative personnel. The support staff responds promptly when help is needed, and the network scales easily during periods of high usage. It is now a crucial component of our approach to digital learning.&rdquo;</p>
-              <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy"></span>
-                <div>
-                  <p class="nd-t-card__name">Emily Carter</p>
-                  <p class="nd-t-card__role">Leeds, England, Education Group's Head of Technology</p>
-                </div>
-              </div>
-            </article>
-            <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;For daily operations, our retail locations rely on reliable and secure wireless connectivity. The network's coverage, stability, and general customer experience have all significantly improved after implementing the Managed Wireless LAN service. All sites operate thanks to consistent centralised management and frequent optimisation. The team's proficiency and professionalism have established them as a reliable technological partner for our company.&rdquo;</p>
-              <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy"></span>
-                <div>
-                  <p class="nd-t-card__name">Davies, Michael</p>
-                  <p class="nd-t-card__role">Retail Services' Managing Director in Southampton, England</p>
-                </div>
-              </div>
-            </article>
-            <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;Our wireless network struggled with inconsistent coverage and security concerns until we invested in professional network consultancy. The managed wireless LAN solution transformed our workplace with stronger connectivity, reliable performance, and secure access across every department. Staff can now move freely without losing connection, while guests and internal users remain properly separated.&rdquo;</p>
-              <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-f1.jpg" alt="" loading="lazy"></span>
-                <div>
-                  <p class="nd-t-card__name">Daniel Hughes</p>
-                  <p class="nd-t-card__role">IT Manager, Northbridge Logistics, Manchester</p>
-                </div>
-              </div>
-            </article>
-                 <article class="nd-t-card">
-              <p class="nd-t-card__quote">Our organisation required dependable wireless connectivity across several clinical locations and departments. Our network's performance was completely changed by the Managed Wireless LAN service, which offered better security, faster access, and stronger coverage.</p>
-              <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-f1.jpg" alt="" loading="lazy"></span>
-                <div>
-                  <p class="nd-t-card__name">Sarah Thompson</p>
-                  <p class="nd-t-card__role">IT manager, Healthcare Solutions in Birmingham, England</p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-        <div class="nd-trusted__dots" aria-hidden="true">
-          <span class="nd-trusted__dot nd-trusted__dot--active"></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CTA BAND ===== -->
-  <section class="svc-cta-band" aria-label="Managed wireless LAN CTA">
-    <div class="svc-cta-band__tags" aria-hidden="true">
-      <div class="svc-cta-band__row">
-        <span>Network Consultancy</span><span>Network Support</span><span>Managed Network Support</span><span>Managed Wireless LAN</span><span>Network Installations</span>
-      </div>
-      <div class="svc-cta-band__row">
-        <span>Network Design &amp; Deployment</span><span>Firewall &amp; Network Security</span><span>Remote Access &amp; VPN</span><span>Business Continuity</span>
-      </div>
-    </div>
-    <div class="svc-cta-band__card">
-      <p class="svc-cta-band__text">Eliminate unexpected downtime before it costs you money. Our prompt response secures your connections and keeps your team online, free from disruptions.</p>
-      <a href="#contact" class="svc-cta-band__btn">Managed Wireless LAN Services</a>
+      <script>
+      window.PAGE_TESTIMONIALS = [
+        { quote: "Our manufacturing facility's communication and operational efficiency have significantly increased thanks to the Managed Wireless LAN solution. Now, coverage is uniform throughout office buildings, warehouses, and factory floors. The continued support has been outstanding, and the implementation went smoothly.", name: "James Richardson", role: "Director of Operations, Manchester, England", avatar: "/images/misc/avatars/testimonial-avatar-f1.jpg" },
+        { quote: "It might be difficult to manage wireless connectivity in a crowded school setting, but this Managed Wireless LAN service has surpassed our expectations. Excellent performance and dependable access are beneficial to teachers, students, and administrative personnel. The support staff responds promptly when help is needed, and the network scales easily during periods of high usage. It is now a crucial component of our approach to digital learning.", name: "Emily Carter", role: "Leeds, England, Education Group's Head of Technology", avatar: "/images/misc/avatars/testimonial-avatar-m3.jpg" },
+        { quote: "For daily operations, our retail locations rely on reliable and secure wireless connectivity. The network's coverage, stability, and general customer experience have all significantly improved after implementing the Managed Wireless LAN service. All sites operate thanks to consistent centralised management and frequent optimisation. The team's proficiency and professionalism have established them as a reliable technological partner for our company.", name: "Davies, Michael", role: "Retail Services' Managing Director in Southampton, England", avatar: "/images/misc/avatars/testimonial-avatar-f2.jpg" },
+        { quote: "Our wireless network struggled with inconsistent coverage and security concerns until we invested in professional network consultancy. The managed wireless LAN solution transformed our workplace with stronger connectivity, reliable performance, and secure access across every department. Staff can now move freely without losing connection, while guests and internal users remain properly separated.", name: "Daniel Hughes", role: "IT Manager, Northbridge Logistics, Manchester", avatar: "/images/misc/avatars/testimonial-avatar-f1.jpg" },
+        { quote: "Our organisation required dependable wireless connectivity across several clinical locations and departments. Our network's performance was completely changed by the Managed Wireless LAN service, which offered better security, faster access, and stronger coverage.", name: "Sarah Thompson", role: "IT manager, Healthcare Solutions in Birmingham, England", avatar: "/images/misc/avatars/testimonial-avatar-f1.jpg" }
+      ];
+      </script>
+      <div data-cms="testimonials" data-title="What our clients says"></div>
     </div>
   </section>
 
@@ -525,6 +450,14 @@
     }
     document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+    // Lets CMS hydration replace the slide data (edits/adds/removals) and reset to slide 1.
+    window.__ncSetBusinessImpactSlides = function (items) {
+      if (!Array.isArray(items) || !items.length) return;
+      slides = items.map(function (item) { return { title: item.title || '', desc: item.description || '' }; });
+      total = slides.length;
+      i = 0;
+      render();
+    };
   })();
 
   </script>

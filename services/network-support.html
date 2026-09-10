@@ -65,6 +65,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <script src="/js/schema.js" defer></script>
+  <script src="/js/cms-page.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
@@ -415,136 +416,17 @@
 
   <!-- ===== TESTIMONIALS ===== -->
   <section class="sd-section" aria-labelledby="tst-h">
-  <div class="sd-wrap">
-    <div class="nd-trusted">
-      <div class="nd-trusted__head">
-        <h2 class="nd-trusted__title" id="tst-h">What our clients says</h2>
-
-        <div class="nd-trusted__controls">
-          <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
-            <span aria-hidden="true">&#8249;</span>
-          </button>
-          <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial">
-            <span aria-hidden="true">&#8250;</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="nd-trusted__viewport">
-        <div class="nd-trusted__track">
-
-          <!-- Slide 1 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;Our network support company ensured seamless connectivity across healthcare systems. Rapid troubleshooting reduced downtime and improved the reliability of patient access.&rdquo;
-            </p>
-
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-m2.jpg" alt="" loading="lazy">
-              </span>
-
-              <div>
-                <p class="nd-t-card__name">Sophie Williams</p>
-                <p class="nd-t-card__role">Head of Operations, Birmingham</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Slide 2 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;Reliable network support services helped stabilise our production systems. Regular maintenance and optimisation significantly improved performance across multiple factory sites.&rdquo;
-            </p>
-
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy">
-              </span>
-
-              <div>
-                <p class="nd-t-card__name">Daniel Hughes</p>
-                <p class="nd-t-card__role">Network Administrator, Leeds Ltd</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Slide 3 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;Exceptional remote and on-site support kept our trading platforms secure. Network support services ensured the prompt resolution of connectivity issues.&rdquo;
-            </p>
-
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy">
-              </span>
-
-              <div>
-                <p class="nd-t-card__name">Emily Brown</p>
-                <p class="nd-t-card__role">IT Director, London</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Slide 4 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;Proactive monitoring and Wi-Fi optimisation improved overall network stability. A dependable network support company ensuring continuous business operations and security.&rdquo;
-            </p>
-
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-m2.jpg" alt="" loading="lazy">
-              </span>
-
-              <div>
-                <p class="nd-t-card__name">Oliver Smith</p>
-                <p class="nd-t-card__role">Systems Manager, Bristol</p>
-              </div>
-            </div>
-          </article>
-          <!----------slide 5------------>
-         <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-            The network support services delivered have significantly improved uptime. Proactive monitoring and fast fault resolution keep our logistics systems running smoothly without disruption.
-            </p>
-
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy">
-              </span>
-
-              <div>
-                <p class="nd-t-card__name">James Carter </p>
-                <p class="nd-t-card__role">IT Manager, Manchester – Logistics Ltd</p>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-
-      <div class="nd-trusted__dots" aria-hidden="true">
-        <span class="nd-trusted__dot nd-trusted__dot--active"></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- ===== CTA BAND ===== -->
-  <section class="svc-cta-band" aria-label="Network support CTA">
-    <div class="svc-cta-band__tags" aria-hidden="true">
-      <div class="svc-cta-band__row">
-        <span>Network Consultancy</span><span>Network Support</span><span>Managed Network Support</span><span>Managed Wireless LAN</span><span>Network Installations</span>
-      </div>
-      <div class="svc-cta-band__row">
-        <span>Network Design &amp; Deployment</span><span>Firewall &amp; Network Security</span><span>Remote Access &amp; VPN</span><span>Business Continuity</span>
-      </div>
-    </div>
-    <div class="svc-cta-band__card">
-      <p class="svc-cta-band__text">Eliminate unexpected downtime before it costs you money. Our prompt response secures your connections and keeps your team online, free from disruptions.</p>
-      <a href="#contact" class="svc-cta-band__btn">Make a Network Support Request</a>
+    <div class="sd-wrap">
+      <script>
+      window.PAGE_TESTIMONIALS = [
+        { quote: "Our network support company ensured seamless connectivity across healthcare systems. Rapid troubleshooting reduced downtime and improved the reliability of patient access.", name: "Sophie Williams", role: "Head of Operations, Birmingham", avatar: "/images/misc/avatars/testimonial-avatar-m2.jpg" },
+        { quote: "Reliable network support services helped stabilise our production systems. Regular maintenance and optimisation significantly improved performance across multiple factory sites.", name: "Daniel Hughes", role: "Network Administrator, Leeds Ltd", avatar: "/images/misc/avatars/testimonial-avatar-m3.jpg" },
+        { quote: "Exceptional remote and on-site support kept our trading platforms secure. Network support services ensured the prompt resolution of connectivity issues.", name: "Emily Brown", role: "IT Director, London", avatar: "/images/misc/avatars/testimonial-avatar-f2.jpg" },
+        { quote: "Proactive monitoring and Wi-Fi optimisation improved overall network stability. A dependable network support company ensuring continuous business operations and security.", name: "Oliver Smith", role: "Systems Manager, Bristol", avatar: "/images/misc/avatars/testimonial-avatar-m2.jpg" },
+        { quote: "The network support services delivered have significantly improved uptime. Proactive monitoring and fast fault resolution keep our logistics systems running smoothly without disruption.", name: "James Carter", role: "IT Manager, Manchester \u2013 Logistics Ltd", avatar: "/images/misc/avatars/testimonial-avatar-m3.jpg" }
+      ];
+      </script>
+      <div data-cms="testimonials" data-title="What our clients says"></div>
     </div>
   </section>
 
@@ -692,6 +574,14 @@
     }
     document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+    // Lets CMS hydration replace the slide data (edits/adds/removals) and reset to slide 1.
+    window.__ncSetBusinessImpactSlides = function (items) {
+      if (!Array.isArray(items) || !items.length) return;
+      slides = items.map(function (item) { return { title: item.title || '', desc: item.description || '' }; });
+      total = slides.length;
+      i = 0;
+      render();
+    };
   })();
 
   </script>

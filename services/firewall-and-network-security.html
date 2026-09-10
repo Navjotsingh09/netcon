@@ -66,6 +66,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <script src="/js/schema.js" defer></script>
+  <script src="/js/cms-page.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
@@ -410,66 +411,15 @@
   <!-- ===== TESTIMONIALS ===== -->
   <section class="sd-section" aria-labelledby="tst-h">
     <div class="sd-wrap">
-      <div class="nd-trusted">
-        <div class="nd-trusted__head">
-          <h2 class="nd-trusted__title" id="tst-h">What Clients Say</h2>
-          <div class="nd-trusted__controls">
-            <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
-              <span aria-hidden="true">&#8249;</span>
-            </button>
-            <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial">
-              <span aria-hidden="true">&#8250;</span>
-            </button>
-          </div>
-        </div>
-        <div class="nd-trusted__viewport">
-          <div class="nd-trusted__track">
-            <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;Firewall and security improvements strengthened our network protection and improved access control.&rdquo;</p>
-              <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-m1.jpg" alt="" loading="lazy"></span>
-                <div>
-                  <p class="nd-t-card__name">James Thornton</p>
-                  <p class="nd-t-card__role">IT Manager, Financial Services, Manchester, England</p>
-                </div>
-              </div>
-            </article>
-            <article class="nd-t-card">
-              <p class="nd-t-card__quote">&ldquo;Firewall and security improvements strengthened our network protection and improved access control. Threats are blocked before we ever see them.&rdquo;</p>
-              <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-operations-director.jpg" alt="" loading="lazy"></span>
-                <div>
-                  <p class="nd-t-card__name">IT Manager </p>
-                  <p class="nd-t-card__role">Financial Services, Manchester </p>
-                </div>
-              </div>
-            </article>
-            <article class="nd-t-card">
-              <p class="nd-t-card__quote">We didn’t realise how many gaps we had until this was reviewed. Big improvement overall</p>
-              <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy"></span>
-                <div>
-                  <p class="nd-t-card__name">Operations Lead</p>
-                  <p class="nd-t-card__role"> Birmingham</p>
-                </div>
-              </div>
-            </article>
-                <article class="nd-t-card">
-              <p class="nd-t-card__quote">Managing multiple locations is much simpler now. Everything is more consistent</p>
-              <div class="nd-t-card__person">
-                <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy"></span>
-                <div>
-                  <p class="nd-t-card__name">Head of IT</p>
-                  <p class="nd-t-card__role"> Multi-site Organisation, Leeds</p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-        <div class="nd-trusted__dots" aria-hidden="true">
-          <span class="nd-trusted__dot nd-trusted__dot--active"></span>
-        </div>
-      </div>
+      <script>
+      window.PAGE_TESTIMONIALS = [
+        { quote: "Firewall and security improvements strengthened our network protection and improved access control.", name: "James Thornton", role: "IT Manager, Financial Services, Manchester, England", avatar: "/images/misc/avatars/testimonial-avatar-m1.jpg" },
+        { quote: "Firewall and security improvements strengthened our network protection and improved access control. Threats are blocked before we ever see them.", name: "IT Manager", role: "Financial Services, Manchester", avatar: "/images/misc/avatars/testimonial-avatar-operations-director.jpg" },
+        { quote: "We didn\u2019t realise how many gaps we had until this was reviewed. Big improvement overall", name: "Operations Lead", role: "Birmingham", avatar: "/images/misc/avatars/testimonial-avatar-f2.jpg" },
+        { quote: "Managing multiple locations is much simpler now. Everything is more consistent", name: "Head of IT", role: "Multi-site Organisation, Leeds", avatar: "/images/misc/avatars/testimonial-avatar-f2.jpg" }
+      ];
+      </script>
+      <div data-cms="testimonials" data-title="What Clients Say"></div>
     </div>
   </section>
 
@@ -573,6 +523,14 @@ var slides = [
     }
     document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+    // Lets CMS hydration replace the slide data (edits/adds/removals) and reset to slide 1.
+    window.__ncSetBusinessImpactSlides = function (items) {
+      if (!Array.isArray(items) || !items.length) return;
+      slides = items.map(function (item) { return { title: item.title || '', desc: item.description || '' }; });
+      total = slides.length;
+      i = 0;
+      render();
+    };
   })();
 
   </script>

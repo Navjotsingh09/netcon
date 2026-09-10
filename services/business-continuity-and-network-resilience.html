@@ -66,6 +66,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/global.css">
   <script src="/js/schema.js" defer></script>
+  <script src="/js/cms-page.js" defer></script>
     <link rel="stylesheet" href="/css/animations.css">
     <link rel="stylesheet" href="/css/accessibility.css">
     <style>
@@ -413,86 +414,19 @@
     </section>
 
     <!-- ===== TESTIMONIALS ===== -->
-    <section class="sd-section" aria-labelledby="tst-h">
-      <div class="sd-wrap">
-        <div class="nd-trusted">
-          <div class="nd-trusted__head">
-            <h2 class="nd-trusted__title" id="tst-h">What our clients says</h2>
-            <div class="nd-trusted__controls">
-              <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
-                <span aria-hidden="true">&#8249;</span>
-              </button>
-              <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial">
-                <span aria-hidden="true">&#8250;</span>
-              </button>
-            </div>
-          </div>
-          <div class="nd-trusted__viewport">
-            <div class="nd-trusted__track">
-              <article class="nd-t-card">
-                <p class="nd-t-card__quote">&ldquo;Our organisation's resilience was significantly increased by working with their consultants. They improved recovery planning, found vulnerabilities, and implemented efficient continuity measures. Their methodical approach ensured our vital apps remained available when we needed them.&rdquo;</p>
-                <div class="nd-t-card__person">
-                  <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-m1.jpg" alt="" loading="lazy"></span>
-                  <div>
-                    <p class="nd-t-card__name">IT manager in Manchester, England</p>
-                    <p class="nd-t-card__role">Eastwood Healthcare Services</p>
-                  </div>
-                </div>
-              </article>
-              <article class="nd-t-card">
-                <p class="nd-t-card__quote">&ldquo;Their team delivered a comprehensive continuity solution that exceeded expectations. From risk assessments to disaster recovery planning, every stage was handled professionally.&rdquo;</p>
-                <div class="nd-t-card__person">
-                  <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy"></span>
-                  <div>
-                    <p class="nd-t-card__name">Managing Director</p>
-                    <p class="nd-t-card__role">Horizon Retail Group – Leeds, England</p>
-                  </div>
-                </div>
-              </article>
-              <article class="nd-t-card">
-                <p class="nd-t-card__quote">&ldquo;The Business Continuity & Network Resilience services provided outstanding value. Their consultants developed practical strategies that improved readiness, reduced potential downtime, and strengthened our overall infrastructure.&rdquo;</p>
-                <div class="nd-t-card__person">
-                  <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-head-of-operations.jpg" alt="" loading="lazy"></span>
-                  <div>
-                    <p class="nd-t-card__name">Head of Technology</p>
-                    <p class="nd-t-card__role">Financial Solutions – Bristol, England</p>
-                  </div>
-                </div>
-              </article>
-              <article class="nd-t-card">
-                <p class="nd-t-card__quote">&ldquo;Our experience with their Business Continuity & Network Resilience services has been exceptional. The team carefully assessed our infrastructure, identified critical risks, and implemented tailored continuity strategies that aligned with our operational needs.&rdquo;</p>
-                <div class="nd-t-card__person">
-                  <span class="nd-t-card__avatar" aria-hidden="true"><img src="/images/misc/avatars/testimonial-avatar-head-of-operations.jpg" alt="" loading="lazy"></span>
-                  <div>
-                    <p class="nd-t-card__name">Chief Information Officer</p>
-                    <p class="nd-t-card__role">Northbridge Logistics – Newcastle, England</p>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="nd-trusted__dots" aria-hidden="true">
-            <span class="nd-trusted__dot nd-trusted__dot--active"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CTA BAND ===== -->
-    <section class="svc-cta-band" aria-label="Business continuity CTA">
-      <div class="svc-cta-band__tags" aria-hidden="true">
-        <div class="svc-cta-band__row">
-          <span>Network Consultancy</span><span>Network Support</span><span>Managed Network Support</span><span>Managed Wireless LAN</span><span>Network Installations</span>
-        </div>
-        <div class="svc-cta-band__row">
-          <span>Network Design &amp; Deployment</span><span>Firewall &amp; Network Security</span><span>Remote Access &amp; VPN</span><span>Business Continuity</span>
-        </div>
-      </div>
-      <div class="svc-cta-band__card">
-        <p class="svc-cta-band__text">Eliminate unexpected downtime before it costs you money. Our prompt response secures your connections and keeps your team online, free from disruptions.</p>
-        <a href="#contact" class="svc-cta-band__btn">Make a Network Business Continuity Consultancy Request</a>
-      </div>
-    </section>
+  <section class="sd-section" aria-labelledby="tst-h">
+    <div class="sd-wrap">
+      <script>
+      window.PAGE_TESTIMONIALS = [
+        { quote: "Our organisation's resilience was significantly increased by working with their consultants. They improved recovery planning, found vulnerabilities, and implemented efficient continuity measures. Their methodical approach ensured our vital apps remained available when we needed them.", name: "IT manager in Manchester, England", role: "Eastwood Healthcare Services", avatar: "/images/misc/avatars/testimonial-avatar-m1.jpg" },
+        { quote: "Their team delivered a comprehensive continuity solution that exceeded expectations. From risk assessments to disaster recovery planning, every stage was handled professionally.", name: "Managing Director", role: "Horizon Retail Group \u2013 Leeds, England", avatar: "/images/misc/avatars/testimonial-avatar-m3.jpg" },
+        { quote: "The Business Continuity & Network Resilience services provided outstanding value. Their consultants developed practical strategies that improved readiness, reduced potential downtime, and strengthened our overall infrastructure.", name: "Head of Technology", role: "Financial Solutions \u2013 Bristol, England", avatar: "/images/misc/avatars/testimonial-avatar-head-of-operations.jpg" },
+        { quote: "Our experience with their Business Continuity & Network Resilience services has been exceptional. The team carefully assessed our infrastructure, identified critical risks, and implemented tailored continuity strategies that aligned with our operational needs.", name: "Chief Information Officer", role: "Northbridge Logistics \u2013 Newcastle, England", avatar: "/images/misc/avatars/testimonial-avatar-head-of-operations.jpg" }
+      ];
+      </script>
+      <div data-cms="testimonials" data-title="What our clients says"></div>
+    </div>
+  </section>
 
     <!-- ===== FAQ (CMS with page-specific items) ===== -->
 <script>
@@ -616,6 +550,14 @@ var slides = [
       }
       document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
       document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+      // Lets CMS hydration replace the slide data (edits/adds/removals) and reset to slide 1.
+      window.__ncSetBusinessImpactSlides = function (items) {
+        if (!Array.isArray(items) || !items.length) return;
+        slides = items.map(function (item) { return { title: item.title || '', desc: item.description || '' }; });
+        total = slides.length;
+        i = 0;
+        render();
+      };
     })();
 
     </script>

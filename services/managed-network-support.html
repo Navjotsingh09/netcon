@@ -65,6 +65,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <script src="/js/schema.js" defer></script>
+  <script src="/js/cms-page.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
@@ -435,126 +436,18 @@
   </section>
 
   <!-- ===== TESTIMONIALS ===== -->
-<section class="sd-section" aria-labelledby="tst-h">
-  <div class="sd-wrap">
-    <div class="nd-trusted">
-      <div class="nd-trusted__head">
-        <h2 class="nd-trusted__title" id="tst-h">What our clients says</h2>
-
-        <div class="nd-trusted__controls">
-          <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
-            <span aria-hidden="true">&#8249;</span>
-          </button>
-          <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial">
-            <span aria-hidden="true">&#8250;</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="nd-trusted__viewport">
-        <div class="nd-trusted__track">
-
-          <!-- Slide 1 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;Superior Network IT Maintenance and Support Services. The infrastructure for long-term success across all of our branches was reinforced by their proactive monitoring and maintenance assistance.&rdquo;
-            </p>
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-m1.jpg" alt="" loading="lazy">
-              </span>
-              <div>
-                <p class="nd-t-card__name">Sarah Mitchell</p>
-                <p class="nd-t-card__role">IT Operations, FinServe UK, Birmingham</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Slide 2 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;Reliable IT Support and Maintenance for Business Continuity was excellent. Using managed network solutions, resilience was enhanced through incident response and patching.&rdquo;
-            </p>
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-operations-director.jpg" alt="" loading="lazy">
-              </span>
-              <div>
-                <p class="nd-t-card__name">David Roberts</p>
-                <p class="nd-t-card__role">Infrastructure Lead, Healthcare, Leeds</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Slide 3 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;Enhancing Infrastructure for Long-Term Success with fully managed IT support and governance reports decreased downtime and increased efficiency.&rdquo;
-            </p>
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy">
-              </span>
-              <div>
-                <p class="nd-t-card__name">Emma Collins</p>
-                <p class="nd-t-card__role">Director, London</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Slide 4 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;Proactive monitoring and managed network solutions provided robust IT support and maintenance services, with quick incident response and superior vendor management, guaranteeing safe, scalable, and dependable managed network support across operations.&rdquo;
-            </p>
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy">
-              </span>
-              <div>
-                <p class="nd-t-card__name">Michael Brown</p>
-                <p class="nd-t-card__role">IT Services, London</p>
-              </div>
-            </div>
-          </article>
-          <!-- Slide 5 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-            Our operations were completely revolutionised by their <b>fully managed IT support</b>. Managed network solutions supported safe, uninterrupted operations and business continuity by guaranteeing uptime and security.
-            </p>
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy">
-              </span>
-              <div>
-                <p class="nd-t-card__name">James Thornton</p>
-                <p class="nd-t-card__role">IT Manager at Manchester Logistics Ltd.</p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="nd-trusted__dots" aria-hidden="true">
-        <span class="nd-trusted__dot nd-trusted__dot--active"></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- ===== CTA BAND ===== -->
-  <section class="svc-cta-band" aria-label="Managed network support CTA">
-    <div class="svc-cta-band__tags" aria-hidden="true">
-      <div class="svc-cta-band__row">
-        <span>Network Consultancy</span><span>Network Support</span><span>Managed Network Support</span><span>Managed Wireless LAN</span><span>Network Installations</span>
-      </div>
-      <div class="svc-cta-band__row">
-        <span>Network Design &amp; Deployment</span><span>Firewall &amp; Network Security</span><span>Remote Access &amp; VPN</span><span>Business Continuity</span>
-      </div>
-    </div>
-    <div class="svc-cta-band__card">
-      <p class="svc-cta-band__text">Eliminate unexpected downtime before it costs you money. Our prompt response secures your connections and keeps your team online, free from disruptions.</p>
-      <a href="#contact" class="svc-cta-band__btn">Make a Network Support Request</a>
+  <section class="sd-section" aria-labelledby="tst-h">
+    <div class="sd-wrap">
+      <script>
+      window.PAGE_TESTIMONIALS = [
+        { quote: "Superior Network IT Maintenance and Support Services. The infrastructure for long-term success across all of our branches was reinforced by their proactive monitoring and maintenance assistance.", name: "Sarah Mitchell", role: "IT Operations, FinServe UK, Birmingham", avatar: "/images/misc/avatars/testimonial-avatar-m1.jpg" },
+        { quote: "Reliable IT Support and Maintenance for Business Continuity was excellent. Using managed network solutions, resilience was enhanced through incident response and patching.", name: "David Roberts", role: "Infrastructure Lead, Healthcare, Leeds", avatar: "/images/misc/avatars/testimonial-avatar-operations-director.jpg" },
+        { quote: "Enhancing Infrastructure for Long-Term Success with fully managed IT support and governance reports decreased downtime and increased efficiency.", name: "Emma Collins", role: "Director, London", avatar: "/images/misc/avatars/testimonial-avatar-f2.jpg" },
+        { quote: "Proactive monitoring and managed network solutions provided robust IT support and maintenance services, with quick incident response and superior vendor management, guaranteeing safe, scalable, and dependable managed network support across operations.", name: "Michael Brown", role: "IT Services, London", avatar: "/images/misc/avatars/testimonial-avatar-m3.jpg" },
+        { quote: "Our operations were completely revolutionised by their <b>fully managed IT support</b>. Managed network solutions supported safe, uninterrupted operations and business continuity by guaranteeing uptime and security.", name: "James Thornton", role: "IT Manager at Manchester Logistics Ltd.", avatar: "/images/misc/avatars/testimonial-avatar-m3.jpg" }
+      ];
+      </script>
+      <div data-cms="testimonials" data-title="What our clients says"></div>
     </div>
   </section>
 
@@ -679,6 +572,14 @@ var slides = [
     }
     document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+    // Lets CMS hydration replace the slide data (edits/adds/removals) and reset to slide 1.
+    window.__ncSetBusinessImpactSlides = function (items) {
+      if (!Array.isArray(items) || !items.length) return;
+      slides = items.map(function (item) { return { title: item.title || '', desc: item.description || '' }; });
+      total = slides.length;
+      i = 0;
+      render();
+    };
   })();
 
   </script>

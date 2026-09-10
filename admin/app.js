@@ -195,6 +195,7 @@
     const bizIntro = pageContent.businessImpactIntro || { heading: '', paragraph: '' };
     const businessImpact = pageContent.businessImpact || [{ title: '', description: '' }];
     const whyChooseUs = pageContent.whyChooseUs || { heading: '', paragraph1: '', paragraph2: '', imageUrl: '', imageAlt: '' };
+    const whyChooseUsList = pageContent.whyChooseUsList || { heading: '', itemsText: '' };
     const commonIssues = pageContent.commonIssues || { heading: '', paragraph: '', itemsText: '' };
     document.getElementById('hero-slide-repeater').innerHTML = heroSlides.map((item, index) => `<article class="cms-repeater-item"><div class="cms-repeater-item__head"><strong>Hero slide ${index + 1}</strong><button type="button" class="cms-link-button cms-link-button--danger" data-remove-repeater="heroSlides" data-index="${index}">Remove</button></div><label>Heading<input data-repeater="heroSlides" data-index="${index}" data-field="heading" value="${escapeHtml(item.heading || '')}" maxlength="180"></label><label>Paragraph<textarea data-repeater="heroSlides" data-index="${index}" data-field="paragraph" rows="3" maxlength="600">${escapeHtml(item.paragraph || '')}</textarea></label><label>Button text<input data-repeater="heroSlides" data-index="${index}" data-field="buttonText" value="${escapeHtml(item.buttonText || '')}" maxlength="100"></label><label>Button URL<input data-repeater="heroSlides" data-index="${index}" data-field="buttonUrl" value="${escapeHtml(item.buttonUrl || '')}" maxlength="300"></label><label>Image URL<input data-repeater="heroSlides" data-index="${index}" data-field="imageUrl" value="${escapeHtml(item.imageUrl || '')}" maxlength="500"></label><label>Image alt text<input data-repeater="heroSlides" data-index="${index}" data-field="imageAlt" value="${escapeHtml(item.imageAlt || '')}" maxlength="250"></label></article>`).join('');
     document.getElementById('card-repeater').innerHTML = cards.map((item, index) => `<article class="cms-repeater-item"><div class="cms-repeater-item__head"><strong>Card ${index + 1}</strong><button type="button" class="cms-link-button cms-link-button--danger" data-remove-repeater="cards" data-index="${index}">Remove</button></div><label>Heading<input data-repeater="cards" data-index="${index}" data-field="heading" value="${escapeHtml(item.heading || '')}" maxlength="180"></label><label>Paragraph<textarea data-repeater="cards" data-index="${index}" data-field="paragraph" rows="3" maxlength="600">${escapeHtml(item.paragraph || '')}</textarea></label><label>Image alt text<input data-repeater="cards" data-index="${index}" data-field="imageAlt" value="${escapeHtml(item.imageAlt || '')}" maxlength="250"></label></article>`).join('');
@@ -210,11 +211,12 @@
     document.getElementById('who-we-serve-repeater').innerHTML = `<article class="cms-repeater-item"><label>Heading<input data-repeater="whoWeServe" data-index="0" data-field="heading" value="${escapeHtml(whoWeServe.heading || '')}" maxlength="180"></label><label>Paragraph<textarea data-repeater="whoWeServe" data-index="0" data-field="paragraph" rows="3" maxlength="600">${escapeHtml(whoWeServe.paragraph || '')}</textarea></label><label>Image URL<input data-repeater="whoWeServe" data-index="0" data-field="imageUrl" value="${escapeHtml(whoWeServe.imageUrl || '')}" maxlength="500"></label><label>Image alt text<input data-repeater="whoWeServe" data-index="0" data-field="imageAlt" value="${escapeHtml(whoWeServe.imageAlt || '')}" maxlength="250"></label><label>Audience tiles (one per line)<textarea data-repeater="whoWeServe" data-index="0" data-field="tilesText" rows="8" maxlength="1200">${escapeHtml(whoWeServe.tilesText || '')}</textarea></label></article>`;
     document.getElementById('business-impact-repeater').innerHTML = `<article class="cms-repeater-item"><label>Section heading<input data-repeater="businessImpactIntro" data-index="0" data-field="heading" value="${escapeHtml(bizIntro.heading || '')}" maxlength="220"></label><label>Section intro<textarea data-repeater="businessImpactIntro" data-index="0" data-field="paragraph" rows="3" maxlength="600">${escapeHtml(bizIntro.paragraph || '')}</textarea></label></article>` + businessImpact.map((item, index) => `<article class="cms-repeater-item"><div class="cms-repeater-item__head"><strong>Slide ${index + 1}</strong></div><label>Title<input data-repeater="businessImpact" data-index="${index}" data-field="title" value="${escapeHtml(item.title || '')}" maxlength="120"></label><label>Description<textarea data-repeater="businessImpact" data-index="${index}" data-field="description" rows="3" maxlength="500">${escapeHtml(item.description || '')}</textarea></label></article>`).join('');
     document.getElementById('why-choose-us-repeater').innerHTML = `<article class="cms-repeater-item"><label>Heading<input data-repeater="whyChooseUs" data-index="0" data-field="heading" value="${escapeHtml(whyChooseUs.heading || '')}" maxlength="180"></label><label>Paragraph 1<textarea data-repeater="whyChooseUs" data-index="0" data-field="paragraph1" rows="3" maxlength="600">${escapeHtml(whyChooseUs.paragraph1 || '')}</textarea></label><label>Paragraph 2<textarea data-repeater="whyChooseUs" data-index="0" data-field="paragraph2" rows="3" maxlength="600">${escapeHtml(whyChooseUs.paragraph2 || '')}</textarea></label><label>Image URL<input data-repeater="whyChooseUs" data-index="0" data-field="imageUrl" value="${escapeHtml(whyChooseUs.imageUrl || '')}" maxlength="500"></label><label>Image alt text<input data-repeater="whyChooseUs" data-index="0" data-field="imageAlt" value="${escapeHtml(whyChooseUs.imageAlt || '')}" maxlength="250"></label></article>`;
+    document.getElementById('why-choose-us-list-repeater').innerHTML = `<article class="cms-repeater-item"><label>Heading<input data-repeater="whyChooseUsList" data-index="0" data-field="heading" value="${escapeHtml(whyChooseUsList.heading || '')}" maxlength="180"></label><label>Bullets (one per line)<textarea data-repeater="whyChooseUsList" data-index="0" data-field="itemsText" rows="8" maxlength="1200">${escapeHtml(whyChooseUsList.itemsText || '')}</textarea></label></article>`;
     document.getElementById('common-issues-repeater').innerHTML = `<article class="cms-repeater-item"><label>Heading<input data-repeater="commonIssues" data-index="0" data-field="heading" value="${escapeHtml(commonIssues.heading || '')}" maxlength="220"></label><label>Intro<textarea data-repeater="commonIssues" data-index="0" data-field="paragraph" rows="3" maxlength="600">${escapeHtml(commonIssues.paragraph || '')}</textarea></label><label>Tile labels (one per line)<textarea data-repeater="commonIssues" data-index="0" data-field="itemsText" rows="10" maxlength="1200">${escapeHtml(commonIssues.itemsText || '')}</textarea></label></article>`;
   }
-  const SINGLETON_REPEATERS = new Set(['introduction', 'contactCta', 'highlight', 'keySolutionAreasIntro', 'whoWeServe', 'businessImpactIntro', 'whyChooseUs', 'commonIssues']);
+  const SINGLETON_REPEATERS = new Set(['introduction', 'contactCta', 'highlight', 'keySolutionAreasIntro', 'whoWeServe', 'businessImpactIntro', 'whyChooseUs', 'whyChooseUsList', 'commonIssues']);
   function collectRepeater(name) { const fields = [...document.querySelectorAll(`[data-repeater="${name}"][data-field]`)]; if (SINGLETON_REPEATERS.has(name)) return fields.reduce((item, field) => ({ ...item, [field.dataset.field]: field.value.trim() }), {}); return fields.reduce((items, field) => { const index = Number(field.dataset.index); items[index] = items[index] || {}; items[index][field.dataset.field] = field.value.trim(); return items; }, []); }
-  function repeaterContent() { return { heroSlides: collectRepeater('heroSlides'), cards: collectRepeater('cards'), introduction: collectRepeater('introduction'), contactCta: collectRepeater('contactCta'), faqs: collectRepeater('faqs'), testimonials: collectRepeater('testimonials'), highlight: collectRepeater('highlight'), expertCards: collectRepeater('expertCards'), managedSlides: collectRepeater('managedSlides'), servicesList: collectRepeater('servicesList'), keySolutionAreasIntro: collectRepeater('keySolutionAreasIntro'), keySolutionAreas: collectRepeater('keySolutionAreas'), whoWeServe: collectRepeater('whoWeServe'), businessImpactIntro: collectRepeater('businessImpactIntro'), businessImpact: collectRepeater('businessImpact'), whyChooseUs: collectRepeater('whyChooseUs'), commonIssues: collectRepeater('commonIssues') }; }
+  function repeaterContent() { return { heroSlides: collectRepeater('heroSlides'), cards: collectRepeater('cards'), introduction: collectRepeater('introduction'), contactCta: collectRepeater('contactCta'), faqs: collectRepeater('faqs'), testimonials: collectRepeater('testimonials'), highlight: collectRepeater('highlight'), expertCards: collectRepeater('expertCards'), managedSlides: collectRepeater('managedSlides'), servicesList: collectRepeater('servicesList'), keySolutionAreasIntro: collectRepeater('keySolutionAreasIntro'), keySolutionAreas: collectRepeater('keySolutionAreas'), whoWeServe: collectRepeater('whoWeServe'), businessImpactIntro: collectRepeater('businessImpactIntro'), businessImpact: collectRepeater('businessImpact'), whyChooseUs: collectRepeater('whyChooseUs'), whyChooseUsList: collectRepeater('whyChooseUsList'), commonIssues: collectRepeater('commonIssues') }; }
   function addRepeaterItem(name) { const content = repeaterContent(); content[name].push(name === 'heroSlides' ? { heading: '', paragraph: '', buttonText: '', buttonUrl: '', imageUrl: '', imageAlt: '' } : name === 'faqs' ? { question: '', answer: '', headingTag: 'h3' } : name === 'testimonials' ? { quote: '', name: '', role: '', imageAlt: '' } : name === 'managedSlides' ? { heading: '', intro: '', pointsText: '' } : name === 'expertCards' ? { heading: '', leadHeading: '', paragraph: '', imageAlt: '' } : { heading: '', paragraph: '', imageAlt: '' }); renderRepeaters(content); }
   document.getElementById('add-hero-slide-button')?.addEventListener('click', () => addRepeaterItem('heroSlides'));
   document.getElementById('add-card-button')?.addEventListener('click', () => addRepeaterItem('cards'));
@@ -229,6 +231,7 @@
     if (!match) return null;
     try { return new Function(`return ${match[1]};`)(); } catch { return null; }
   }
+  const SERVICE_DETAIL_SLUGS = new Set(['network-consultancy', 'business-continuity-and-network-resilience', 'firewall-and-network-security', 'managed-network-support', 'managed-wireless-lan', 'network-design-and-deployment', 'network-installations', 'network-support', 'remote-working-solutions']);
   async function loadStaticPageContent(slug) {
     const response = await fetch(slug === 'home' ? '/' : `/${slug}`);
     if (!response.ok) return {};
@@ -285,13 +288,16 @@
         }
         if (testimonialItems) content.testimonials = testimonialItems.map((item) => ({ quote: item.quote || '', name: item.name || '', role: item.role || '', imageAlt: '' }));
       } catch { /* leave testimonials unset if the source can't be parsed */ }
-    } else if (slug === 'network-consultancy') {
+    } else if (SERVICE_DETAIL_SLUGS.has(slug)) {
       const heroCta = doc.querySelector('.page-hero__cta-btn');
       content.heroSlides = [{ heading: text('.nc-hero__title'), paragraph: text('.nc-hero__sub'), buttonText: text('.page-hero__cta-btn'), buttonUrl: heroCta?.getAttribute('href') || '', imageUrl: '', imageAlt: '' }];
 
       content.keySolutionAreasIntro = { heading: text('#ksa-h'), paragraph: text('#ksa-h ~ p') };
-      const ksaData = extractArrayLiteral(doc, "getElementById('ksa')", /var data\s*=\s*(\[[\s\S]*?\]);/) || [];
-      content.keySolutionAreas = [...doc.querySelectorAll('.ksa__tab')].map((tab, index) => ({ title: tab.textContent.replace(/\s+/g, ' ').trim(), description: ksaData[index]?.desc || '', imageUrl: ksaData[index]?.img || '' }));
+      // network-installations defines its tabs via a shared initKsa('ksa', 'ksa', [...]) call instead of `var data = [...]`.
+      const ksaData = extractArrayLiteral(doc, "getElementById('ksa')", /var data\s*=\s*(\[[\s\S]*?\]);/)
+        || extractArrayLiteral(doc, "initKsa('ksa',", /initKsa\('ksa',\s*'ksa',\s*(\[[\s\S]*?\])\);/)
+        || [];
+      content.keySolutionAreas = [...doc.querySelectorAll('#ksa .ksa__tab')].map((tab, index) => ({ title: tab.textContent.replace(/\s+/g, ' ').trim(), description: ksaData[index]?.desc || '', imageUrl: ksaData[index]?.img || '' }));
 
       const wwsImage = doc.querySelector('.wws__media img');
       content.whoWeServe = { heading: text('#wws-h'), paragraph: text('#wws-h ~ p'), imageUrl: wwsImage?.getAttribute('src') || '', imageAlt: wwsImage?.alt || '', tilesText: [...doc.querySelectorAll('.wws__item')].map((node) => node.textContent.replace(/\s+/g, ' ').trim()).join('\n') };
@@ -300,11 +306,19 @@
       const bizData = extractArrayLiteral(doc, "getElementById('biz')", /var slides\s*=\s*(\[[\s\S]*?\]);/) || [];
       content.businessImpact = bizData.map((item) => ({ title: item.title || '', description: item.desc || '' }));
 
-      const whycParagraphs = [...doc.querySelectorAll('.whyc__content p')];
-      const whycImage = doc.querySelector('.whyc__media img');
-      content.whyChooseUs = { heading: text('#whyc-h'), paragraph1: whycParagraphs[0]?.textContent.replace(/\s+/g, ' ').trim() || '', paragraph2: whycParagraphs[1]?.textContent.replace(/\s+/g, ' ').trim() || '', imageUrl: whycImage?.getAttribute('src') || '', imageAlt: whycImage?.alt || '' };
+      // Why choose us appears as either two paragraphs (network-consultancy) or a bullet list (firewall, network-support) — never both. Other pages have neither.
+      if (doc.querySelector('.whyc__list')) {
+        content.whyChooseUsList = { heading: text('#whyc-h'), itemsText: [...doc.querySelectorAll('.whyc__list li')].map((node) => node.textContent.replace(/\s+/g, ' ').trim()).join('\n') };
+      } else if (doc.querySelector('.whyc__content p')) {
+        const whycParagraphs = [...doc.querySelectorAll('.whyc__content p')];
+        const whycImage = doc.querySelector('.whyc__media img');
+        content.whyChooseUs = { heading: text('#whyc-h'), paragraph1: whycParagraphs[0]?.textContent.replace(/\s+/g, ' ').trim() || '', paragraph2: whycParagraphs[1]?.textContent.replace(/\s+/g, ' ').trim() || '', imageUrl: whycImage?.getAttribute('src') || '', imageAlt: whycImage?.alt || '' };
+      }
 
-      content.commonIssues = { heading: text('#probs-h'), paragraph: text('#probs-h ~ p'), itemsText: [...doc.querySelectorAll('.prob__label')].map((node) => node.textContent.replace(/\s+/g, ' ').trim()).join('\n') };
+      // firewall replaces this section with a differently-structured "Common Firewall & Network Security Issues" block — not part of the shared schema yet.
+      if (doc.querySelector('#probs-h')) {
+        content.commonIssues = { heading: text('#probs-h'), paragraph: text('#probs-h ~ p'), itemsText: [...doc.querySelectorAll('.prob__label')].map((node) => node.textContent.replace(/\s+/g, ' ').trim()).join('\n') };
+      }
 
       const ctaBtn = doc.querySelector('.svc-cta-band__btn');
       content.contactCta = { heading: '', paragraph: text('.svc-cta-band__text'), buttonText: text('.svc-cta-band__btn'), buttonUrl: ctaBtn?.getAttribute('href') || '' };
@@ -338,13 +352,15 @@
       const fallback = pages.find((page) => page.slug === slug) || { slug, label: slug, path: '/' };
       currentPage = { ...fallback, slug, draft: null, published: null };
       document.getElementById('page-form-heading').textContent = `Edit: ${fallback.label}`;
-      setPageFormContent({});
+      // The page/migration API call failed (e.g. DB migration not applied yet), but the static page itself still exists — show its real content instead of a blank form.
+      const staticFallback = await loadStaticPageContent(slug);
+      setPageFormContent({ content: staticFallback });
       elements.pageForm.hidden = false;
       setupPageSectionAccordions();
       elements.pagePublish.disabled = true;
       if (elements.pagePreviewLink) elements.pagePreviewLink.disabled = true;
       setPreviewLinkDisplay(null);
-      setPageStatus('Editor ready. Apply the CMS database migration before saving page changes.');
+      setPageStatus('Showing the page\'s existing content. Apply the CMS database migration before saving changes.');
       renderPages();
       return;
     }

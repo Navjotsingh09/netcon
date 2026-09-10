@@ -65,6 +65,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <script src="/js/schema.js" defer></script>
+  <script src="/js/cms-page.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
@@ -395,111 +396,17 @@
   </section>
 
   <!-- ===== TESTIMONIALS ===== -->
-<section class="sd-section" aria-labelledby="tst-h">
-  <div class="sd-wrap">
-    <div class="nd-trusted">
-      <div class="nd-trusted__head">
-        <h2 class="nd-trusted__title" id="tst-h">What our clients says</h2>
-        <div class="nd-trusted__controls">
-          <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
-            <span aria-hidden="true">&#8249;</span>
-          </button>
-          <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial">
-            <span aria-hidden="true">&#8250;</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="nd-trusted__viewport">
-        <div class="nd-trusted__track">
-
-          <!-- Slide 1 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;Our network infrastructure was expertly installed and configured by their professionals. The switch process was smooth, and connectivity performance instantly increased.&rdquo;
-            </p>
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy">
-              </span>
-              <div>
-                <p class="nd-t-card__name">Manufacturing Group, Manchester, England</p>
-                <p class="nd-t-card__role">IT Director</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Slide 2 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;We required a scalable solution for several locations, and the outcomes surpassed our expectations. The installation was professional, well-planned, and finished on time.&rdquo;
-            </p>
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-operations-director.jpg" alt="" loading="lazy">
-              </span>
-              <div>
-                <p class="nd-t-card__name">Manager of Technology</p>
-                <p class="nd-t-card__role">Retail Solutions, Leeds, England</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Slide 3 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;The consultants showed outstanding expertise from strategy to deployment. Our new network offers superior long-term flexibility, robust performance, and dependable coverage.&rdquo;
-            </p>
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy">
-              </span>
-              <div>
-                <p class="nd-t-card__name">Infrastructure Head</p>
-                <p class="nd-t-card__role">Business Services, Southampton, England</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Slide 4 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;From the initial consultation to the final implementation, the team delivered a reliable and secure network solution tailored to our business needs. Their attention to detail, proactive communication, and technical expertise ensured a seamless rollout with no unexpected disruptions. We've already noticed improved performance and easier day-to-day management across our offices.&rdquo;
-            </p>
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-Finance.jpg" alt="" loading="lazy">
-              </span>
-              <div>
-                <p class="nd-t-card__name">Head of IT Operations</p>
-                <p class="nd-t-card__role">Financial Services Ltd., Bristol, England</p>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-
-      <div class="nd-trusted__dots" aria-hidden="true">
-        <span class="nd-trusted__dot nd-trusted__dot--active"></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- ===== CTA BAND ===== -->
-  <section class="svc-cta-band" aria-label="Network installations CTA">
-    <div class="svc-cta-band__tags" aria-hidden="true">
-      <div class="svc-cta-band__row">
-        <span>Network Consultancy</span><span>Network Support</span><span>Managed Network Support</span><span>Managed Wireless LAN</span><span>Network Installations</span>
-      </div>
-      <div class="svc-cta-band__row">
-        <span>Network Design &amp; Deployment</span><span>Firewall &amp; Network Security</span><span>Remote Access &amp; VPN</span><span>Business Continuity</span>
-      </div>
-    </div>
-    <div class="svc-cta-band__card">
-      <p class="svc-cta-band__text">Eliminate unexpected downtime before it costs you money. Our prompt response secures your connections and keeps your team online, free from disruptions.</p>
-      <a href="#contact" class="svc-cta-band__btn">Make a Network Installation Request</a>
+  <section class="sd-section" aria-labelledby="tst-h">
+    <div class="sd-wrap">
+      <script>
+      window.PAGE_TESTIMONIALS = [
+        { quote: "Our network infrastructure was expertly installed and configured by their professionals. The switch process was smooth, and connectivity performance instantly increased.", name: "Manufacturing Group, Manchester, England", role: "IT Director", avatar: "/images/misc/avatars/testimonial-avatar-m3.jpg" },
+        { quote: "We required a scalable solution for several locations, and the outcomes surpassed our expectations. The installation was professional, well-planned, and finished on time.", name: "Manager of Technology", role: "Retail Solutions, Leeds, England", avatar: "/images/misc/avatars/testimonial-avatar-operations-director.jpg" },
+        { quote: "The consultants showed outstanding expertise from strategy to deployment. Our new network offers superior long-term flexibility, robust performance, and dependable coverage.", name: "Infrastructure Head", role: "Business Services, Southampton, England", avatar: "/images/misc/avatars/testimonial-avatar-f2.jpg" },
+        { quote: "From the initial consultation to the final implementation, the team delivered a reliable and secure network solution tailored to our business needs. Their attention to detail, proactive communication, and technical expertise ensured a seamless rollout with no unexpected disruptions. We've already noticed improved performance and easier day-to-day management across our offices.", name: "Head of IT Operations", role: "Financial Services Ltd., Bristol, England", avatar: "/images/misc/avatars/testimonial-avatar-Finance.jpg" }
+      ];
+      </script>
+      <div data-cms="testimonials" data-title="What our clients says"></div>
     </div>
   </section>
 
@@ -592,6 +499,14 @@
     }
     document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+    // Lets CMS hydration replace the slide data (edits/adds/removals) and reset to slide 1.
+    window.__ncSetBusinessImpactSlides = function (items) {
+      if (!Array.isArray(items) || !items.length) return;
+      slides = items.map(function (item) { return { title: item.title || '', desc: item.description || '' }; });
+      total = slides.length;
+      i = 0;
+      render();
+    };
   })();
 
   </script>
