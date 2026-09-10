@@ -213,6 +213,24 @@
     document.getElementById('why-choose-us-repeater').innerHTML = `<article class="cms-repeater-item"><label>Heading<input data-repeater="whyChooseUs" data-index="0" data-field="heading" value="${escapeHtml(whyChooseUs.heading || '')}" maxlength="180"></label><label>Paragraph 1<textarea data-repeater="whyChooseUs" data-index="0" data-field="paragraph1" rows="3" maxlength="600">${escapeHtml(whyChooseUs.paragraph1 || '')}</textarea></label><label>Paragraph 2<textarea data-repeater="whyChooseUs" data-index="0" data-field="paragraph2" rows="3" maxlength="600">${escapeHtml(whyChooseUs.paragraph2 || '')}</textarea></label><label>Image URL<input data-repeater="whyChooseUs" data-index="0" data-field="imageUrl" value="${escapeHtml(whyChooseUs.imageUrl || '')}" maxlength="500"></label><label>Image alt text<input data-repeater="whyChooseUs" data-index="0" data-field="imageAlt" value="${escapeHtml(whyChooseUs.imageAlt || '')}" maxlength="250"></label></article>`;
     document.getElementById('why-choose-us-list-repeater').innerHTML = `<article class="cms-repeater-item"><label>Heading<input data-repeater="whyChooseUsList" data-index="0" data-field="heading" value="${escapeHtml(whyChooseUsList.heading || '')}" maxlength="180"></label><label>Bullets (one per line)<textarea data-repeater="whyChooseUsList" data-index="0" data-field="itemsText" rows="8" maxlength="1200">${escapeHtml(whyChooseUsList.itemsText || '')}</textarea></label></article>`;
     document.getElementById('common-issues-repeater').innerHTML = `<article class="cms-repeater-item"><label>Heading<input data-repeater="commonIssues" data-index="0" data-field="heading" value="${escapeHtml(commonIssues.heading || '')}" maxlength="220"></label><label>Intro<textarea data-repeater="commonIssues" data-index="0" data-field="paragraph" rows="3" maxlength="600">${escapeHtml(commonIssues.paragraph || '')}</textarea></label><label>Tile labels (one per line)<textarea data-repeater="commonIssues" data-index="0" data-field="itemsText" rows="10" maxlength="1200">${escapeHtml(commonIssues.itemsText || '')}</textarea></label></article>`;
+    updateSectionLegends(pageContent, heroSlides);
+  }
+  // Renames each fieldset's legend to the section's actual on-page heading, so the team edits by the name they see on the live site instead of a generic developer label.
+  function updateSectionLegends(pageContent, heroSlides) {
+    const setLegend = (repeaterId, heading) => {
+      const fieldset = document.getElementById(repeaterId)?.closest('fieldset');
+      const legend = fieldset?.querySelector('legend');
+      if (!legend) return;
+      legend.textContent = (heading || '').trim() || fieldset.dataset.legendBase || legend.textContent;
+    };
+    setLegend('hero-slide-repeater', heroSlides?.[0]?.heading);
+    setLegend('key-solution-areas-repeater', pageContent.keySolutionAreasIntro?.heading);
+    setLegend('who-we-serve-repeater', pageContent.whoWeServe?.heading);
+    setLegend('business-impact-repeater', pageContent.businessImpactIntro?.heading);
+    setLegend('why-choose-us-repeater', pageContent.whyChooseUs?.heading);
+    setLegend('why-choose-us-list-repeater', pageContent.whyChooseUsList?.heading);
+    setLegend('common-issues-repeater', pageContent.commonIssues?.heading);
+    setLegend('testimonial-repeater', pageContent.testimonialsHeading);
   }
   const SINGLETON_REPEATERS = new Set(['introduction', 'contactCta', 'highlight', 'keySolutionAreasIntro', 'whoWeServe', 'businessImpactIntro', 'whyChooseUs', 'whyChooseUsList', 'commonIssues']);
   function collectRepeater(name) { const fields = [...document.querySelectorAll(`[data-repeater="${name}"][data-field]`)]; if (SINGLETON_REPEATERS.has(name)) return fields.reduce((item, field) => ({ ...item, [field.dataset.field]: field.value.trim() }), {}); return fields.reduce((items, field) => { const index = Number(field.dataset.index); items[index] = items[index] || {}; items[index][field.dataset.field] = field.value.trim(); return items; }, []); }
@@ -290,6 +308,7 @@
         }
         if (testimonialItems) content.testimonials = testimonialItems.map((item) => ({ quote: item.quote || '', name: item.name || '', role: item.role || '', imageAlt: '' }));
       } catch { /* leave testimonials unset if the source can't be parsed */ }
+      content.testimonialsHeading = doc.querySelector('[data-cms="testimonials"]')?.getAttribute('data-title') || '';
     } else if (SERVICE_DETAIL_SLUGS.has(slug)) {
       const heroCta = doc.querySelector('.page-hero__cta-btn');
       content.heroSlides = [{ heading: text('.nc-hero__title'), paragraph: text('.nc-hero__sub'), buttonText: text('.page-hero__cta-btn'), buttonUrl: heroCta?.getAttribute('href') || '', imageUrl: '', imageAlt: '' }];
@@ -330,6 +349,7 @@
 
       const testimonialsRaw = extractArrayLiteral(doc, 'window.PAGE_TESTIMONIALS', /window\.PAGE_TESTIMONIALS\s*=\s*(\[[\s\S]*?\]);/);
       if (testimonialsRaw) content.testimonials = testimonialsRaw.map((item) => ({ quote: item.quote || '', name: item.name || '', role: item.role || '', imageAlt: '' }));
+      content.testimonialsHeading = doc.querySelector('[data-cms="testimonials"]')?.getAttribute('data-title') || '';
     } else {
       content.introduction = { heading: text('.ctu-title'), paragraph: text('.ctu-intro') };
       content.contactCta = { heading: text('.ctf-title'), paragraph: text('.ctf-copy'), buttonText: '', buttonUrl: '' };
