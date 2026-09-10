@@ -285,10 +285,14 @@
     currentPage = { ...data.page, slug };
     let content = data.page.draft?.content || data.page.published?.content || {};
     const importedContent = content.content || {};
-    const hasImportedContent = Object.values(importedContent).some((value) => Array.isArray(value) ? value.length > 0 : value && typeof value === 'object' ? Object.values(value).some(Boolean) : Boolean(value));
-    // Fill in only the keys missing from a saved draft (e.g. new sections added after that draft existed) without discarding already-edited fields.
+    const isPopulated = (value) => Array.isArray(value) ? value.some(isPopulated) : value && typeof value === 'object' ? Object.values(value).some(isPopulated) : Boolean(value);
+    // Backfill per key (not per page) so a draft with real edits in some sections but only blank placeholders in others (e.g. saved before a section had an importer) still gets those specific sections re-imported.
     const staticFallback = await loadStaticPageContent(slug);
-    content = { ...content, content: hasImportedContent ? { ...staticFallback, ...importedContent } : staticFallback };
+    const mergedContent = {};
+    new Set([...Object.keys(staticFallback), ...Object.keys(importedContent)]).forEach((key) => {
+      mergedContent[key] = isPopulated(importedContent[key]) ? importedContent[key] : (staticFallback[key] !== undefined ? staticFallback[key] : importedContent[key]);
+    });
+    content = { ...content, content: mergedContent };
     document.getElementById('page-form-heading').textContent = `Edit: ${data.page.label}`;
     setPageFormContent(content);
     elements.pageForm.hidden = false;
