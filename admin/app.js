@@ -386,7 +386,15 @@
       ['faq-repeater', doc.querySelector('[data-cms="faq"], .nd-faq')]
     ].filter(([, element]) => element);
     orderMarkers.sort((a, b) => (a[1].compareDocumentPosition(b[1]) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1);
-    content.sectionOrder = orderMarkers.map(([repeaterId]) => repeaterId);
+    const sectionOrder = orderMarkers.map(([repeaterId]) => repeaterId);
+    // js/global.js's moveServiceBusinessImpact() always relocates the Business Impact section to right after the hero at runtime, regardless of where it sits in the HTML source — mirror that here so the admin matches what visitors actually see.
+    const bizIndex = sectionOrder.indexOf('business-impact-repeater');
+    const heroIndex = sectionOrder.indexOf('hero-slide-repeater');
+    if (bizIndex !== -1 && heroIndex !== -1 && bizIndex !== heroIndex + 1) {
+      sectionOrder.splice(bizIndex, 1);
+      sectionOrder.splice(sectionOrder.indexOf('hero-slide-repeater') + 1, 0, 'business-impact-repeater');
+    }
+    content.sectionOrder = sectionOrder;
     return content;
   }
   function setPreviewLinkDisplay(url) {
