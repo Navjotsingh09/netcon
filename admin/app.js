@@ -14,37 +14,52 @@
   function setupPageSectionAccordions(sectionOrder) {
     const form = elements.pageForm;
     const index = document.getElementById('page-section-index');
+    const order = Array.isArray(sectionOrder) ? sectionOrder.filter(Boolean) : [];
+    const visibleIds = new Set(order);
+    const visibleSectionIds = new Set(order.length ? order : ['hero-slide-repeater', 'key-solution-areas-repeater', 'who-we-serve-repeater', 'business-impact-repeater', 'contact-cta-repeater', 'faq-repeater', 'testimonial-repeater']);
+    const isAlwaysVisible = (fieldset) => {
+      const legend = fieldset.querySelector('legend')?.textContent.trim();
+      return legend === 'SEO and schema';
+    };
+    const getSectionId = (fieldset) => fieldset.querySelector('[id]')?.id || fieldset.id || null;
     // Unwrap any accordion structure from a previously opened page so fieldsets are flat siblings again before reordering.
     form.querySelectorAll(':scope > details.cms-section-accordion').forEach((details) => {
       const fieldset = details.querySelector('fieldset');
       if (fieldset) form.insertBefore(fieldset, details);
       details.remove();
     });
+    [...form.querySelectorAll(':scope > fieldset')].forEach((fieldset) => {
+      const sectionId = getSectionId(fieldset);
+      const shouldShow = isAlwaysVisible(fieldset) || (sectionId ? visibleSectionIds.has(sectionId) : true);
+      fieldset.hidden = !shouldShow;
+    });
     // Reorder to match this page's real on-site section order (differs page to page), when known.
     if (Array.isArray(sectionOrder) && sectionOrder.length) {
-      sectionOrder.forEach((repeaterId) => {
+      order.forEach((repeaterId) => {
         const ids = repeaterId === 'why-choose-us-repeater' ? ['why-choose-us-repeater', 'why-choose-us-list-repeater'] : [repeaterId];
         ids.forEach((id) => { const fieldset = document.getElementById(id)?.closest('fieldset'); if (fieldset) form.appendChild(fieldset); });
       });
     }
     const labels = { 'SEO and schema': 'SEO and schema', 'Structured data (JSON-LD)': 'SEO and schema', 'Hero slides': 'Hero slider', 'Services and capability cards': 'Core services and capability cards', 'Highlight section': 'Highlight section', 'Trusted expert cards': 'Trusted expert cards', 'Managed network slider': 'Managed network slider', 'Services list': 'Services list', 'Introduction content': 'Introduction', 'Contact CTA': 'Contact CTA', 'Frequently asked questions': 'FAQs', Testimonials: 'Testimonials' };
     let anchor = index;
-    const sections = [...form.querySelectorAll(':scope > fieldset')].map((fieldset, position) => {
-      const details = document.createElement('details');
-      details.className = 'cms-section-accordion cms-form-grid__wide';
-      details.open = position < 2;
-      const summary = document.createElement('summary');
-      const legendText = fieldset.querySelector('legend')?.textContent.trim();
-      const fullTitle = labels[legendText] || legendText || `Section ${position + 1}`;
-      // Long on-page headings get shortened to their first three words in the compact index/accordion label; the fieldset's own legend still shows the full heading.
-      const words = fullTitle.split(/\s+/);
-      const title = words.length > 3 ? `${words.slice(0, 3).join(' ')}\u2026` : fullTitle;
-      summary.innerHTML = `<span class="cms-section-number">${position + 1}</span><span>${escapeHtml(title)}</span>`;
-      details.append(summary, fieldset);
-      form.insertBefore(details, anchor.nextSibling);
-      anchor = details;
-      return { details, title };
-    });
+    const sections = [...form.querySelectorAll(':scope > fieldset')]
+      .filter((fieldset) => !fieldset.hidden)
+      .map((fieldset, position) => {
+        const details = document.createElement('details');
+        details.className = 'cms-section-accordion cms-form-grid__wide';
+        details.open = position < 2;
+        const summary = document.createElement('summary');
+        const legendText = fieldset.querySelector('legend')?.textContent.trim();
+        const fullTitle = labels[legendText] || legendText || `Section ${position + 1}`;
+        // Long on-page headings get shortened to their first three words in the compact index/accordion label; the fieldset's own legend still shows the full heading.
+        const words = fullTitle.split(/\s+/);
+        const title = words.length > 3 ? `${words.slice(0, 3).join(' ')}\u2026` : fullTitle;
+        summary.innerHTML = `<span class="cms-section-number">${position + 1}</span><span>${escapeHtml(title)}</span>`;
+        details.append(summary, fieldset);
+        form.insertBefore(details, anchor.nextSibling);
+        anchor = details;
+        return { details, title };
+      });
     index.innerHTML = `<p class="cms-editor__state">Page sections</p><ol>${sections.map((section, position) => `<li><button type="button" data-section-target="${position}">${escapeHtml(section.title)}</button></li>`).join('')}</ol>`;
     index.querySelectorAll('[data-section-target]').forEach((button) => button.addEventListener('click', () => { const section = sections[Number(button.dataset.sectionTarget)].details; section.open = true; section.scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
   }
@@ -210,6 +225,9 @@
     const bizIntro = pageContent.businessImpactIntro || { heading: '', paragraph: '' };
     const bizLead = pageContent.businessImpactLead || { heading: '', paragraph: '' };
     const businessImpact = pageContent.businessImpact || [{ title: '', description: '' }];
+    const workProcessIntro = pageContent.workProcessIntro || { heading: '', paragraph: '' };
+    const workProcess = pageContent.workProcess || [];
+    const impactStat = pageContent.impactStat || { heading: '', paragraph: '' };
     const whyChooseUs = pageContent.whyChooseUs || { heading: '', paragraph1: '', paragraph2: '', imageUrl: '', imageAlt: '' };
     const whyChooseUsList = pageContent.whyChooseUsList || { heading: '', itemsText: '' };
     const commonIssues = pageContent.commonIssues || { heading: '', paragraph: '', itemsText: '' };
@@ -226,6 +244,8 @@
     document.getElementById('key-solution-areas-repeater').innerHTML = `<article class="cms-repeater-item"><label>Section heading<input data-repeater="keySolutionAreasIntro" data-index="0" data-field="heading" value="${escapeHtml(ksaIntro.heading || '')}" maxlength="180"></label><label>Section intro<textarea data-repeater="keySolutionAreasIntro" data-index="0" data-field="paragraph" rows="3" maxlength="600">${escapeHtml(ksaIntro.paragraph || '')}</textarea></label></article>` + keySolutionAreas.map((item, index) => `<article class="cms-repeater-item"><div class="cms-repeater-item__head"><strong>Tab ${index + 1}</strong></div><label>Title<input data-repeater="keySolutionAreas" data-index="${index}" data-field="title" value="${escapeHtml(item.title || '')}" maxlength="120"></label><label>Description<textarea data-repeater="keySolutionAreas" data-index="${index}" data-field="description" rows="3" maxlength="500">${escapeHtml(item.description || '')}</textarea></label><label>Image URL<input data-repeater="keySolutionAreas" data-index="${index}" data-field="imageUrl" value="${escapeHtml(item.imageUrl || '')}" maxlength="500"></label></article>`).join('');
     document.getElementById('who-we-serve-repeater').innerHTML = `<article class="cms-repeater-item"><label>Heading<input data-repeater="whoWeServe" data-index="0" data-field="heading" value="${escapeHtml(whoWeServe.heading || '')}" maxlength="180"></label><label>Paragraph<textarea data-repeater="whoWeServe" data-index="0" data-field="paragraph" rows="3" maxlength="600">${escapeHtml(whoWeServe.paragraph || '')}</textarea></label><label>Image URL<input data-repeater="whoWeServe" data-index="0" data-field="imageUrl" value="${escapeHtml(whoWeServe.imageUrl || '')}" maxlength="500"></label><label>Image alt text<input data-repeater="whoWeServe" data-index="0" data-field="imageAlt" value="${escapeHtml(whoWeServe.imageAlt || '')}" maxlength="250"></label><label>Audience tiles (one per line)<textarea data-repeater="whoWeServe" data-index="0" data-field="tilesText" rows="8" maxlength="1200">${escapeHtml(whoWeServe.tilesText || '')}</textarea></label></article>`;
     document.getElementById('business-impact-repeater').innerHTML = `<article class="cms-repeater-item"><label>Section lead heading (optional intro above the slider)<input data-repeater="businessImpactLead" data-index="0" data-field="heading" value="${escapeHtml(bizLead.heading || '')}" maxlength="220"></label><label>Section lead intro<textarea data-repeater="businessImpactLead" data-index="0" data-field="paragraph" rows="2" maxlength="600">${escapeHtml(bizLead.paragraph || '')}</textarea></label><label>Slider heading<input data-repeater="businessImpactIntro" data-index="0" data-field="heading" value="${escapeHtml(bizIntro.heading || '')}" maxlength="220"></label><label>Slider intro<textarea data-repeater="businessImpactIntro" data-index="0" data-field="paragraph" rows="3" maxlength="600">${escapeHtml(bizIntro.paragraph || '')}</textarea></label></article>` + businessImpact.map((item, index) => `<article class="cms-repeater-item"><div class="cms-repeater-item__head"><strong>Slide ${index + 1}</strong></div><label>Title<input data-repeater="businessImpact" data-index="${index}" data-field="title" value="${escapeHtml(item.title || '')}" maxlength="120"></label><label>Description<textarea data-repeater="businessImpact" data-index="${index}" data-field="description" rows="3" maxlength="500">${escapeHtml(item.description || '')}</textarea></label></article>`).join('');
+    document.getElementById('work-process-repeater').innerHTML = `<article class="cms-repeater-item"><label>Section heading<input data-repeater="workProcessIntro" data-index="0" data-field="heading" value="${escapeHtml(workProcessIntro.heading || '')}" maxlength="220"></label><label>Intro paragraph<textarea data-repeater="workProcessIntro" data-index="0" data-field="paragraph" rows="3" maxlength="600">${escapeHtml(workProcessIntro.paragraph || '')}</textarea></label></article>` + workProcess.map((item, index) => `<article class="cms-repeater-item"><div class="cms-repeater-item__head"><strong>Step ${index + 1}</strong></div><label>Title<input data-repeater="workProcess" data-index="${index}" data-field="title" value="${escapeHtml(item.title || '')}" maxlength="180"></label><label>Description<textarea data-repeater="workProcess" data-index="${index}" data-field="description" rows="3" maxlength="500">${escapeHtml(item.description || '')}</textarea></label><label>Image URL<input data-repeater="workProcess" data-index="${index}" data-field="imageUrl" value="${escapeHtml(item.imageUrl || '')}" maxlength="500"></label><label>Image alt text<input data-repeater="workProcess" data-index="${index}" data-field="imageAlt" value="${escapeHtml(item.imageAlt || '')}" maxlength="250"></label></article>`).join('');
+    document.getElementById('cost-stat-repeater').innerHTML = `<article class="cms-repeater-item"><label>Headline<input data-repeater="impactStat" data-index="0" data-field="heading" value="${escapeHtml(impactStat.heading || '')}" maxlength="220"></label><label>Body text<textarea data-repeater="impactStat" data-index="0" data-field="paragraph" rows="5" maxlength="1200">${escapeHtml(impactStat.paragraph || '')}</textarea></label></article>`;
     document.getElementById('why-choose-us-repeater').innerHTML = `<article class="cms-repeater-item"><label>Heading<input data-repeater="whyChooseUs" data-index="0" data-field="heading" value="${escapeHtml(whyChooseUs.heading || '')}" maxlength="180"></label><label>Paragraph 1<textarea data-repeater="whyChooseUs" data-index="0" data-field="paragraph1" rows="3" maxlength="600">${escapeHtml(whyChooseUs.paragraph1 || '')}</textarea></label><label>Paragraph 2<textarea data-repeater="whyChooseUs" data-index="0" data-field="paragraph2" rows="3" maxlength="600">${escapeHtml(whyChooseUs.paragraph2 || '')}</textarea></label><label>Image URL<input data-repeater="whyChooseUs" data-index="0" data-field="imageUrl" value="${escapeHtml(whyChooseUs.imageUrl || '')}" maxlength="500"></label><label>Image alt text<input data-repeater="whyChooseUs" data-index="0" data-field="imageAlt" value="${escapeHtml(whyChooseUs.imageAlt || '')}" maxlength="250"></label></article>`;
     document.getElementById('why-choose-us-list-repeater').innerHTML = `<article class="cms-repeater-item"><label>Heading<input data-repeater="whyChooseUsList" data-index="0" data-field="heading" value="${escapeHtml(whyChooseUsList.heading || '')}" maxlength="180"></label><label>Bullets (one per line)<textarea data-repeater="whyChooseUsList" data-index="0" data-field="itemsText" rows="8" maxlength="1200">${escapeHtml(whyChooseUsList.itemsText || '')}</textarea></label></article>`;
     document.getElementById('common-issues-repeater').innerHTML = `<article class="cms-repeater-item"><label>Heading<input data-repeater="commonIssues" data-index="0" data-field="heading" value="${escapeHtml(commonIssues.heading || '')}" maxlength="220"></label><label>Intro<textarea data-repeater="commonIssues" data-index="0" data-field="paragraph" rows="3" maxlength="600">${escapeHtml(commonIssues.paragraph || '')}</textarea></label><label>Tile labels (one per line)<textarea data-repeater="commonIssues" data-index="0" data-field="itemsText" rows="10" maxlength="1200">${escapeHtml(commonIssues.itemsText || '')}</textarea></label></article>`;
@@ -243,14 +263,16 @@
     setLegend('key-solution-areas-repeater', pageContent.keySolutionAreasIntro?.heading);
     setLegend('who-we-serve-repeater', pageContent.whoWeServe?.heading);
     setLegend('business-impact-repeater', pageContent.businessImpactLead?.heading || pageContent.businessImpactIntro?.heading);
+    setLegend('work-process-repeater', pageContent.workProcessIntro?.heading);
+    setLegend('cost-stat-repeater', pageContent.impactStat?.heading);
     setLegend('why-choose-us-repeater', pageContent.whyChooseUs?.heading);
     setLegend('why-choose-us-list-repeater', pageContent.whyChooseUsList?.heading);
     setLegend('common-issues-repeater', pageContent.commonIssues?.heading);
     setLegend('testimonial-repeater', pageContent.testimonialsHeading);
   }
-  const SINGLETON_REPEATERS = new Set(['introduction', 'contactCta', 'highlight', 'keySolutionAreasIntro', 'whoWeServe', 'businessImpactIntro', 'businessImpactLead', 'whyChooseUs', 'whyChooseUsList', 'commonIssues']);
+  const SINGLETON_REPEATERS = new Set(['introduction', 'contactCta', 'highlight', 'keySolutionAreasIntro', 'whoWeServe', 'businessImpactIntro', 'businessImpactLead', 'workProcessIntro', 'impactStat', 'whyChooseUs', 'whyChooseUsList', 'commonIssues']);
   function collectRepeater(name) { const fields = [...document.querySelectorAll(`[data-repeater="${name}"][data-field]`)]; if (SINGLETON_REPEATERS.has(name)) return fields.reduce((item, field) => ({ ...item, [field.dataset.field]: field.value.trim() }), {}); return fields.reduce((items, field) => { const index = Number(field.dataset.index); items[index] = items[index] || {}; items[index][field.dataset.field] = field.value.trim(); return items; }, []); }
-  function repeaterContent() { return { heroSlides: collectRepeater('heroSlides'), cards: collectRepeater('cards'), introduction: collectRepeater('introduction'), contactCta: collectRepeater('contactCta'), faqs: collectRepeater('faqs'), testimonials: collectRepeater('testimonials'), highlight: collectRepeater('highlight'), expertCards: collectRepeater('expertCards'), managedSlides: collectRepeater('managedSlides'), servicesList: collectRepeater('servicesList'), keySolutionAreasIntro: collectRepeater('keySolutionAreasIntro'), keySolutionAreas: collectRepeater('keySolutionAreas'), whoWeServe: collectRepeater('whoWeServe'), businessImpactIntro: collectRepeater('businessImpactIntro'), businessImpactLead: collectRepeater('businessImpactLead'), businessImpact: collectRepeater('businessImpact'), whyChooseUs: collectRepeater('whyChooseUs'), whyChooseUsList: collectRepeater('whyChooseUsList'), commonIssues: collectRepeater('commonIssues') }; }
+  function repeaterContent() { return { heroSlides: collectRepeater('heroSlides'), cards: collectRepeater('cards'), introduction: collectRepeater('introduction'), contactCta: collectRepeater('contactCta'), faqs: collectRepeater('faqs'), testimonials: collectRepeater('testimonials'), highlight: collectRepeater('highlight'), expertCards: collectRepeater('expertCards'), managedSlides: collectRepeater('managedSlides'), servicesList: collectRepeater('servicesList'), keySolutionAreasIntro: collectRepeater('keySolutionAreasIntro'), keySolutionAreas: collectRepeater('keySolutionAreas'), whoWeServe: collectRepeater('whoWeServe'), businessImpactIntro: collectRepeater('businessImpactIntro'), businessImpactLead: collectRepeater('businessImpactLead'), businessImpact: collectRepeater('businessImpact'), workProcessIntro: collectRepeater('workProcessIntro'), workProcess: collectRepeater('workProcess'), impactStat: collectRepeater('impactStat'), whyChooseUs: collectRepeater('whyChooseUs'), whyChooseUsList: collectRepeater('whyChooseUsList'), commonIssues: collectRepeater('commonIssues') }; }
   function addRepeaterItem(name) { const content = repeaterContent(); content[name].push(name === 'heroSlides' ? { heading: '', paragraph: '', buttonText: '', buttonUrl: '', imageUrl: '', imageAlt: '' } : name === 'faqs' ? { question: '', answer: '', headingTag: 'h3' } : name === 'testimonials' ? { quote: '', name: '', role: '', imageAlt: '' } : name === 'managedSlides' ? { heading: '', intro: '', pointsText: '' } : name === 'expertCards' ? { heading: '', leadHeading: '', paragraph: '', imageAlt: '' } : { heading: '', paragraph: '', imageAlt: '' }); renderRepeaters(content); }
   document.getElementById('add-hero-slide-button')?.addEventListener('click', () => addRepeaterItem('heroSlides'));
   document.getElementById('add-card-button')?.addEventListener('click', () => addRepeaterItem('cards'));
@@ -339,6 +361,23 @@
       const wwsImage = doc.querySelector('.wws__media img');
       content.whoWeServe = { heading: text('#wws-h'), paragraph: text('#wws-h ~ p'), imageUrl: wwsImage?.getAttribute('src') || '', imageAlt: wwsImage?.alt || '', tilesText: [...doc.querySelectorAll('.wws__item')].map((node) => node.textContent.replace(/\s+/g, ' ').trim()).join('\n') };
 
+      const workProcessSteps = [...doc.querySelectorAll('.prob')].map((step) => ({
+        title: step.querySelector('.prob__label-title')?.textContent.replace(/\s+/g, ' ').trim() || '',
+        description: step.querySelector('.prob__label-desc')?.textContent.replace(/\s+/g, ' ').trim() || '',
+        imageUrl: step.querySelector('img')?.getAttribute('src') || '',
+        imageAlt: step.querySelector('img')?.alt || ''
+      }));
+      if (workProcessSteps.length) {
+        content.workProcessIntro = { heading: text('#work-h'), paragraph: '' };
+        content.workProcess = workProcessSteps;
+      }
+
+      const impactStatHeading = text('#cost-h');
+      const impactStatText = [...doc.querySelectorAll('#cost-h ~ p')].map((node) => node.textContent.replace(/\s+/g, ' ').trim()).join('\n\n');
+      if (impactStatHeading || impactStatText) {
+        content.impactStat = { heading: impactStatHeading, paragraph: impactStatText };
+      }
+
       content.businessImpactIntro = { heading: text('#biz-h'), paragraph: text('#biz-h ~ p') };
       // Some pages have an extra intro heading before the slider itself (e.g. "Find Out the Benefits of..."), as a #biz-lead-h div or a plain h2.biz-lead with no id.
       const bizLeadHeadingEl = doc.querySelector('#biz-lead-h') || doc.querySelector('h2.biz-lead');
@@ -379,6 +418,8 @@
       ['key-solution-areas-repeater', doc.querySelector('#ksa')],
       ['who-we-serve-repeater', doc.querySelector('#wws-h')],
       ['business-impact-repeater', doc.querySelector('#biz-lead-h, h2.biz-lead, #biz-h')],
+      ['work-process-repeater', doc.querySelector('#work-h')],
+      ['cost-stat-repeater', doc.querySelector('#cost-h')],
       ['why-choose-us-repeater', doc.querySelector('#whyc-h')],
       ['common-issues-repeater', doc.querySelector('#probs-h')],
       ['contact-cta-repeater', doc.querySelector('.svc-cta-band')],
@@ -393,6 +434,21 @@
     if (bizIndex !== -1 && heroIndex !== -1 && bizIndex !== heroIndex + 1) {
       sectionOrder.splice(bizIndex, 1);
       sectionOrder.splice(sectionOrder.indexOf('hero-slide-repeater') + 1, 0, 'business-impact-repeater');
+    }
+    if (slug === 'business-continuity-and-network-resilience') {
+      content.sectionOrder = [
+        'hero-slide-repeater',
+        'business-impact-repeater',
+        'key-solution-areas-repeater',
+        'work-process-repeater',
+        'cost-stat-repeater',
+        'common-issues-repeater',
+        'who-we-serve-repeater',
+        'testimonial-repeater',
+        'contact-cta-repeater',
+        'faq-repeater'
+      ].filter((repeaterId) => sectionOrder.includes(repeaterId));
+      return content;
     }
     content.sectionOrder = sectionOrder;
     return content;
