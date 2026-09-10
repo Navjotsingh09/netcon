@@ -38,8 +38,9 @@
     }
     // Rebuild (not just patch) the FAQ list so added/removed questions show, not just edited ones.
     if (Array.isArray(pageContent.faqs) && pageContent.faqs.length) {
-      const list = document.getElementById('nd-faq-list');
+      const list = document.getElementById('nd-faq-list') || document.querySelector('[data-faq-list]');
       if (list) {
+        const usesDelegatedClicks = list.hasAttribute('data-faq-list');
         list.innerHTML = '';
         pageContent.faqs.forEach((item, index) => {
           const button = document.createElement('button');
@@ -51,12 +52,15 @@
           if (index !== 0) panel.hidden = true;
           list.append(button, panel);
         });
-        const items = [...list.querySelectorAll('.nd-faq__item')];
-        items.forEach((btn) => btn.addEventListener('click', () => {
-          const panel = btn.nextElementSibling, open = btn.classList.contains('is-open');
-          items.forEach((b) => { b.classList.remove('is-open'); b.querySelector('strong').textContent = '+'; if (b.nextElementSibling) b.nextElementSibling.hidden = true; });
-          if (!open) { btn.classList.add('is-open'); btn.querySelector('strong').textContent = '\u2212'; if (panel) panel.hidden = false; }
-        }));
+        // global.js already delegates .nd-faq__item clicks on pages using [data-faq-list]; binding our own here would double-toggle.
+        if (!usesDelegatedClicks) {
+          const items = [...list.querySelectorAll('.nd-faq__item')];
+          items.forEach((btn) => btn.addEventListener('click', () => {
+            const panel = btn.nextElementSibling, open = btn.classList.contains('is-open');
+            items.forEach((b) => { b.classList.remove('is-open'); b.querySelector('strong').textContent = '+'; if (b.nextElementSibling) b.nextElementSibling.hidden = true; });
+            if (!open) { btn.classList.add('is-open'); btn.querySelector('strong').textContent = '\u2212'; if (panel) panel.hidden = false; }
+          }));
+        }
       }
     }
     Object.entries(seo.content || {}).forEach(([key, value]) => {

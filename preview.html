@@ -33,8 +33,9 @@
         if (content.managedSlides && frame.contentWindow.__ncManagedSlides) { frame.contentWindow.__ncManagedSlides.set(content.managedSlides.map((item)=>({titleHtml:(item.heading||'').replace(/\n/g,'<br>'),titleWide:true,intro:item.intro||'',points:(item.pointsText||'').split('\n').map((line)=>line.trim()).filter(Boolean)}))) }
         // Rebuild (not just patch) the FAQ list so added/removed questions show, not just edited ones.
         if (Array.isArray(content.faqs) && content.faqs.length) {
-          const list = doc.getElementById('nd-faq-list');
+          const list = doc.getElementById('nd-faq-list') || doc.querySelector('[data-faq-list]');
           if (list) {
+            const usesDelegatedClicks = list.hasAttribute('data-faq-list');
             list.innerHTML = '';
             content.faqs.forEach((item, index) => {
               const button = doc.createElement('button');
@@ -46,12 +47,15 @@
               if (index !== 0) panel.hidden = true;
               list.append(button, panel);
             });
-            const items = [...list.querySelectorAll('.nd-faq__item')];
-            items.forEach((btn) => btn.addEventListener('click', () => {
-              const panel = btn.nextElementSibling, open = btn.classList.contains('is-open');
-              items.forEach((b) => { b.classList.remove('is-open'); b.querySelector('strong').textContent = '+'; if (b.nextElementSibling) b.nextElementSibling.hidden = true; });
-              if (!open) { btn.classList.add('is-open'); btn.querySelector('strong').textContent = '\u2212'; if (panel) panel.hidden = false; }
-            }));
+            // global.js already delegates .nd-faq__item clicks on pages using [data-faq-list]; binding our own here would double-toggle.
+            if (!usesDelegatedClicks) {
+              const items = [...list.querySelectorAll('.nd-faq__item')];
+              items.forEach((btn) => btn.addEventListener('click', () => {
+                const panel = btn.nextElementSibling, open = btn.classList.contains('is-open');
+                items.forEach((b) => { b.classList.remove('is-open'); b.querySelector('strong').textContent = '+'; if (b.nextElementSibling) b.nextElementSibling.hidden = true; });
+                if (!open) { btn.classList.add('is-open'); btn.querySelector('strong').textContent = '\u2212'; if (panel) panel.hidden = false; }
+              }));
+            }
           }
         }
         function textIn(root,selector,value,index=0){const nodes=root.querySelectorAll(selector);if(nodes[index]&&value)nodes[index].textContent=value}

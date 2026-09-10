@@ -239,6 +239,15 @@
       content.servicesList = [...doc.querySelectorAll('.svl-overview__list-item')].map((btn) => ({ title: btn.dataset.title || btn.textContent.trim(), copy: btn.dataset.copy || '', imageUrl: btn.dataset.img || '', imageAlt: btn.dataset.alt || '', href: btn.dataset.href || '' }));
       const ctaBtn = doc.querySelector('.svc-cta-band__btn');
       content.contactCta = { heading: '', paragraph: text('.svc-cta-band__text'), buttonText: text('.svc-cta-band__btn'), buttonUrl: ctaBtn?.getAttribute('href') || '' };
+      // window.PAGE_FAQ lives only in an inline script, not the static DOM, so pull it out of the script text.
+      const faqScript = [...doc.querySelectorAll('script:not([src])')].map((node) => node.textContent).find((text) => text.includes('window.PAGE_FAQ'));
+      const faqMatch = faqScript && faqScript.match(/window\.PAGE_FAQ\s*=\s*(\[[\s\S]*?\]);/);
+      if (faqMatch) {
+        try {
+          const faqItems = new Function(`return ${faqMatch[1]};`)();
+          content.faqs = faqItems.map((item) => ({ question: item.question || '', answer: item.answer || '', headingTag: 'h3' }));
+        } catch { /* leave faqs unset if the inline array can't be parsed */ }
+      }
     } else {
       content.introduction = { heading: text('.ctu-title'), paragraph: text('.ctu-intro') };
       content.contactCta = { heading: text('.ctf-title'), paragraph: text('.ctf-copy'), buttonText: '', buttonUrl: '' };
