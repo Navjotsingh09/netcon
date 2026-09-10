@@ -58,6 +58,19 @@
             }
           }
         }
+        // Patch existing testimonial cards in place (don't rebuild the container) so the carousel's own nav/dot state stays intact.
+        if (Array.isArray(content.testimonials) && content.testimonials.length) {
+          doc.querySelectorAll('.nd-t-card').forEach((card, index) => {
+            const item = content.testimonials[index];
+            if (!item) return;
+            const quote = card.querySelector('.nd-t-card__quote');
+            const name = card.querySelector('.nd-t-card__name');
+            const role = card.querySelector('.nd-t-card__role');
+            if (quote && item.quote) quote.textContent = '\u201c' + item.quote + '\u201d';
+            if (name && item.name) name.textContent = item.name;
+            if (role && item.role) role.textContent = item.role;
+          });
+        }
         function textIn(root,selector,value,index=0){const nodes=root.querySelectorAll(selector);if(nodes[index]&&value)nodes[index].textContent=value}
       });
     }catch(error){frame.remove();const message=document.createElement('div');message.className='preview-error';message.textContent=error.message;document.body.append(message)}

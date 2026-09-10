@@ -248,6 +248,23 @@
           content.faqs = faqItems.map((item) => ({ question: item.question || '', answer: item.answer || '', headingTag: 'h3' }));
         } catch { /* leave faqs unset if the inline array can't be parsed */ }
       }
+      // window.PAGE_TESTIMONIALS (page-specific override) or the shared default list in js/cms.js is used at runtime; neither is in the static DOM.
+      try {
+        const testimonialsScript = [...doc.querySelectorAll('script:not([src])')].map((node) => node.textContent).find((text) => text.includes('window.PAGE_TESTIMONIALS'));
+        const overrideMatch = testimonialsScript && testimonialsScript.match(/window\.PAGE_TESTIMONIALS\s*=\s*(\[[\s\S]*?\]);/);
+        let testimonialItems = null;
+        if (overrideMatch) {
+          testimonialItems = new Function(`return ${overrideMatch[1]};`)();
+        } else {
+          const cmsJsResponse = await fetch('/js/cms.js');
+          if (cmsJsResponse.ok) {
+            const cmsJsText = await cmsJsResponse.text();
+            const sharedMatch = cmsJsText.match(/var TESTIMONIALS\s*=\s*(\[[\s\S]*?\]);/);
+            if (sharedMatch) testimonialItems = new Function(`return ${sharedMatch[1]};`)();
+          }
+        }
+        if (testimonialItems) content.testimonials = testimonialItems.map((item) => ({ quote: item.quote || '', name: item.name || '', role: item.role || '', imageAlt: '' }));
+      } catch { /* leave testimonials unset if the source can't be parsed */ }
     } else {
       content.introduction = { heading: text('.ctu-title'), paragraph: text('.ctu-intro') };
       content.contactCta = { heading: text('.ctf-title'), paragraph: text('.ctf-copy'), buttonText: '', buttonUrl: '' };
