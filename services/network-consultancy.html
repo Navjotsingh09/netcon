@@ -72,6 +72,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/global.css">
   <script src="/js/schema.js" defer></script>
+  <script src="/js/cms-page.js" defer></script>
   <link rel="stylesheet" href="/css/animations.css">
   <link rel="stylesheet" href="/css/accessibility.css">
   <style>
@@ -394,123 +395,20 @@
   </section>
 
   <!-- ===== TESTIMONIALS ===== -->
- <section class="sd-section" aria-labelledby="tst-h">
-  <div class="sd-wrap">
-    <div class="nd-trusted">
-      <div class="nd-trusted__head">
-        <h2 class="nd-trusted__title" id="tst-h">What our clients says</h2>
-
-        <div class="nd-trusted__controls">
-          <button type="button" class="nd-trusted__nav nd-trusted__nav--prev" aria-label="Previous testimonial">
-            <span aria-hidden="true">&#8249;</span>
-          </button>
-          <button type="button" class="nd-trusted__nav nd-trusted__nav--next" aria-label="Next testimonial">
-            <span aria-hidden="true">&#8250;</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="nd-trusted__viewport">
-        <div class="nd-trusted__track">
-
-          <!-- Slide 1 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;We hired them for network examinations and cloud migration. Their network consulting services were excellent, particularly in identifying weaknesses and improving branch performance.&rdquo;
-            </p>
-
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy">
-              </span>
-
-              <div>
-                <p class="nd-t-card__name">Emily Brown</p>
-                <p class="nd-t-card__role">NorthBridge Finance Ltd., Manchester</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Slide 2 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;They provided outstanding network security consulting service. Our data protection framework was greatly enhanced by the network consultant team's implementation of Cisco Firewall and VPN solutions.&rdquo;
-            </p>
-
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-operations-director.jpg" alt="" loading="lazy">
-              </span>
-
-              <div>
-                <p class="nd-t-card__name">Daniel Hughes</p>
-                <p class="nd-t-card__role">Infrastructure Manager, Health Systems, Birmingham</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Slide 3 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;We were able to lower latency and increase bandwidth efficiency across all departments thanks to their innovative network consulting approach to network performance assessment and optimisation.&rdquo;
-            </p>
-
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-f2.jpg" alt="" loading="lazy">
-              </span>
-
-              <div>
-                <p class="nd-t-card__name">Sophie Williams</p>
-                <p class="nd-t-card__role">BrightWave Digital Solutions, Leeds</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Slide 4 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              &ldquo;Business continuity was guaranteed by their disaster recovery planning and vulnerability assessment. Our IT systems benefited from genuine improvements and long-term stability through their network consulting services.&rdquo;
-            </p>
-
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy">
-              </span>
-
-              <div>
-                <p class="nd-t-card__name">Michael Thompson</p>
-                <p class="nd-t-card__role">Operations Lead, IT Enterprises, Bristol</p>
-              </div>
-            </div>
-          </article>
-                    <!-- Slide 5 -->
-          <article class="nd-t-card">
-            <p class="nd-t-card__quote">
-              The team's network consulting services revolutionised our entire infrastructure. Our operations were streamlined, security was strengthened, and uptime was improved thanks to their network consulting expertise. We were able to modernise legacy systems without any disruptions thanks to their innovative network consulting approach.
-            </p>
-
-            <div class="nd-t-card__person">
-              <span class="nd-t-card__avatar" aria-hidden="true">
-                <img src="/images/misc/avatars/testimonial-avatar-m3.jpg" alt="" loading="lazy">
-              </span>
-
-              <div>
-                <p class="nd-t-card__name">James Carter</p>
-                <p class="nd-t-card__role">IT Logistics UK in London</p>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-
-      <div class="nd-trusted__dots" aria-hidden="true">
-        <span class="nd-trusted__dot nd-trusted__dot--active"></span>
-      </div>
+  <section class="sd-section" aria-labelledby="tst-h">
+    <div class="sd-wrap">
+      <script>
+      window.PAGE_TESTIMONIALS = [
+        { quote: 'We hired them for network examinations and cloud migration. Their network consulting services were excellent, particularly in identifying weaknesses and improving branch performance.', name: 'Emily Brown', role: 'NorthBridge Finance Ltd., Manchester', avatar: '/images/misc/avatars/testimonial-avatar-m3.jpg' },
+        { quote: 'They provided outstanding network security consulting service. Our data protection framework was greatly enhanced by the network consultant team\'s implementation of Cisco Firewall and VPN solutions.', name: 'Daniel Hughes', role: 'Infrastructure Manager, Health Systems, Birmingham', avatar: '/images/misc/avatars/testimonial-avatar-operations-director.jpg' },
+        { quote: 'We were able to lower latency and increase bandwidth efficiency across all departments thanks to their innovative network consulting approach to network performance assessment and optimisation.', name: 'Sophie Williams', role: 'BrightWave Digital Solutions, Leeds', avatar: '/images/misc/avatars/testimonial-avatar-f2.jpg' },
+        { quote: 'Business continuity was guaranteed by their disaster recovery planning and vulnerability assessment. Our IT systems benefited from genuine improvements and long-term stability through their network consulting services.', name: 'Michael Thompson', role: 'Operations Lead, IT Enterprises, Bristol', avatar: '/images/misc/avatars/testimonial-avatar-m3.jpg' },
+        { quote: 'The team\'s network consulting services revolutionised our entire infrastructure. Our operations were streamlined, security was strengthened, and uptime was improved thanks to their network consulting expertise. We were able to modernise legacy systems without any disruptions thanks to their innovative network consulting approach.', name: 'James Carter', role: 'IT Logistics UK in London', avatar: '/images/misc/avatars/testimonial-avatar-m3.jpg' }
+      ];
+      </script>
+      <div data-cms="testimonials" data-title="What our clients says"></div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- ===== CTA BAND ===== -->
   <section class="svc-cta-band" aria-label="Network consultancy CTA">
@@ -651,6 +549,14 @@ var slides = [
     }
     document.getElementById('biz-prev').addEventListener('click', function () { i = (i - 1 + total) % total; render(); });
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
+    // Lets CMS hydration replace the slide data (edits/adds/removals) and reset to slide 1.
+    window.__ncSetBusinessImpactSlides = function (items) {
+      if (!Array.isArray(items) || !items.length) return;
+      slides = items.map(function (item) { return { title: item.title || '', desc: item.description || '' }; });
+      total = slides.length;
+      i = 0;
+      render();
+    };
   })();
 
   </script>
