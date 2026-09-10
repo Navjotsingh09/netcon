@@ -394,9 +394,11 @@
         content.whyChooseUs = { heading: text('#whyc-h'), paragraph1: whycParagraphs[0]?.textContent.replace(/\s+/g, ' ').trim() || '', paragraph2: whycParagraphs[1]?.textContent.replace(/\s+/g, ' ').trim() || '', imageUrl: whycImage?.getAttribute('src') || '', imageAlt: whycImage?.alt || '' };
       }
 
-      // firewall replaces this section with a differently-structured "Common Firewall & Network Security Issues" block — not part of the shared schema yet.
+      // firewall replaces this section with a differently-structured "Common Firewall & Network Security Issues" block, reusing the same commonIssues fields against a text+list layout instead of masonry tiles.
       if (doc.querySelector('#probs-h')) {
         content.commonIssues = { heading: text('#probs-h'), paragraph: text('#probs-h ~ p'), itemsText: [...doc.querySelectorAll('.prob__label')].map((node) => node.textContent.replace(/\s+/g, ' ').trim()).join('\n') };
+      } else if (doc.querySelector('#cissues-h')) {
+        content.commonIssues = { heading: text('#cissues-h'), paragraph: text('.cissues__text p'), itemsText: [...doc.querySelectorAll('.cissues__list li')].map((node) => node.textContent.replace(/\s+/g, ' ').trim()).join('\n') };
       }
 
       const ctaBtn = doc.querySelector('.svc-cta-band__btn');
@@ -421,7 +423,7 @@
       ['work-process-repeater', doc.querySelector('#work-h')],
       ['cost-stat-repeater', doc.querySelector('#cost-h')],
       ['why-choose-us-repeater', doc.querySelector('#whyc-h')],
-      ['common-issues-repeater', doc.querySelector('#probs-h')],
+      ['common-issues-repeater', doc.querySelector('#probs-h, #cissues-h')],
       ['contact-cta-repeater', doc.querySelector('.svc-cta-band')],
       ['testimonial-repeater', doc.querySelector('[data-cms="testimonials"], .nd-trusted')],
       ['faq-repeater', doc.querySelector('[data-cms="faq"], .nd-faq')]
