@@ -272,6 +272,7 @@
     var featuredMeta = document.querySelector(".blog-featured__meta");
     var featuredText = document.querySelector(".blog-featured__text");
     var featuredImage = document.querySelector(".blog-featured__media img");
+    var featuredSource = document.querySelector(".blog-featured__media source");
     var featuredPost = BLOG_POSTS.filter(function (post) { return post.isFeatured; })
       .sort(function (a, b) { return (a.featuredRank || 999) - (b.featuredRank || 999); })[0];
     if (featuredPost && featuredCard && featuredTitle && featuredMeta && featuredText && featuredImage) {
@@ -281,6 +282,11 @@
       featuredText.textContent = featuredPost.excerpt;
       featuredImage.src = featuredPost.image;
       featuredImage.alt = featuredPost.imageAlt || featuredPost.title;
+      // The <source> is what browsers actually render when its type matches, so it must be kept in sync with the <img> or the old static picture keeps showing.
+      if (featuredSource) {
+        featuredSource.srcset = featuredPost.image;
+        featuredSource.type = imageMimeType(featuredPost.image);
+      }
       handleImageError(featuredImage);
     }
 
