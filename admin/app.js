@@ -35,7 +35,10 @@
       details.open = position < 2;
       const summary = document.createElement('summary');
       const legendText = fieldset.querySelector('legend')?.textContent.trim();
-      const title = labels[legendText] || legendText || `Section ${position + 1}`;
+      const fullTitle = labels[legendText] || legendText || `Section ${position + 1}`;
+      // Long on-page headings get shortened to their first three words in the compact index/accordion label; the fieldset's own legend still shows the full heading.
+      const words = fullTitle.split(/\s+/);
+      const title = words.length > 3 ? `${words.slice(0, 3).join(' ')}\u2026` : fullTitle;
       summary.innerHTML = `<span class="cms-section-number">${position + 1}</span><span>${escapeHtml(title)}</span>`;
       details.append(summary, fieldset);
       form.insertBefore(details, anchor.nextSibling);
