@@ -63,18 +63,9 @@
         }
       }
     }
-    // Patch existing testimonial cards in place (don't rebuild the container) so the carousel's own nav/dot state stays intact.
-    if (Array.isArray(pageContent.testimonials) && pageContent.testimonials.length) {
-      document.querySelectorAll('.nd-t-card').forEach((card, index) => {
-        const item = pageContent.testimonials[index];
-        if (!item) return;
-        const quote = card.querySelector('.nd-t-card__quote');
-        const name = card.querySelector('.nd-t-card__name');
-        const role = card.querySelector('.nd-t-card__role');
-        if (quote && item.quote) quote.textContent = '\u201c' + item.quote + '\u201d';
-        if (name && item.name) name.textContent = item.name;
-        if (role && item.role) role.textContent = item.role;
-      });
+    // Rebuild via the carousel's own renderer (window.__ncSetTestimonials from js/cms.js) so added/removed cards recalc slider metrics correctly.
+    if (Array.isArray(pageContent.testimonials) && pageContent.testimonials.length && window.__ncSetTestimonials) {
+      window.__ncSetTestimonials(pageContent.testimonials);
     }
     Object.entries(seo.content || {}).forEach(([key, value]) => {
       document.querySelectorAll(`[data-cms-key="${CSS.escape(key)}"]`).forEach((element) => {

@@ -80,8 +80,10 @@
     });
   }
 
-  function renderTestimonials(container) {
-    var testimonialsSource = (typeof window !== 'undefined' && Array.isArray(window.PAGE_TESTIMONIALS) && window.PAGE_TESTIMONIALS.length) ? window.PAGE_TESTIMONIALS : TESTIMONIALS;
+  function renderTestimonials(container, overrideItems) {
+    var testimonialsSource = Array.isArray(overrideItems) && overrideItems.length
+      ? overrideItems
+      : ((typeof window !== 'undefined' && Array.isArray(window.PAGE_TESTIMONIALS) && window.PAGE_TESTIMONIALS.length) ? window.PAGE_TESTIMONIALS : TESTIMONIALS);
 
     var cards = testimonialsSource.map(function (t) {
       return [
@@ -383,6 +385,22 @@
     document.querySelectorAll('[data-cms="testimonials"]').forEach(renderTestimonials);
     document.querySelectorAll('[data-cms="faq"]').forEach(renderFAQ);
   }
+
+  // Lets CMS hydration rebuild the carousel for any card count (adds/removals), reusing each item's real avatar by original index, falling back to a default photo for new entries.
+  window.__ncSetTestimonials = function (items) {
+    if (!Array.isArray(items) || !items.length) return;
+    var merged = items.map(function (item, index) {
+      return {
+        quote: item.quote || '',
+        name: item.name || '',
+        role: item.role || '',
+        avatar: item.avatar || (TESTIMONIALS[index] && TESTIMONIALS[index].avatar) || TESTIMONIALS[0].avatar
+      };
+    });
+    document.querySelectorAll('[data-cms="testimonials"]').forEach(function (container) {
+      renderTestimonials(container, merged);
+    });
+  };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
