@@ -11,10 +11,22 @@
     saveStatus: document.getElementById('save-status'), publishLive: document.getElementById('publish-live-button'), articlesButton: document.getElementById('articles-button'), pagesButton: document.getElementById('pages-button'), pagesPanel: document.getElementById('pages-panel'), pagesList: document.getElementById('pages-list'), pageForm: document.getElementById('page-form'), pagePublish: document.getElementById('publish-page-button'), pagePreviewDialog: document.getElementById('page-preview-link-dialog'), pagePreviewInput: document.getElementById('page-preview-link-input'), pagePreviewLink: document.getElementById('generate-preview-link-button'), pageSaveStatus: document.getElementById('page-save-status')
   };
   let token = ''; let cmsUser = null; let posts = []; let currentPost = null; let pages = []; let currentPage = null;
-  function setupPageSectionAccordions() {
+  function setupPageSectionAccordions(sectionOrder) {
     const form = elements.pageForm;
-    if (form.dataset.accordionsReady) return;
     const index = document.getElementById('page-section-index');
+    // Unwrap any accordion structure from a previously opened page so fieldsets are flat siblings again before reordering.
+    form.querySelectorAll(':scope > details.cms-section-accordion').forEach((details) => {
+      const fieldset = details.querySelector('fieldset');
+      if (fieldset) form.insertBefore(fieldset, details);
+      details.remove();
+    });
+    // Reorder to match this page's real on-site section order (differs page to page), when known.
+    if (Array.isArray(sectionOrder) && sectionOrder.length) {
+      sectionOrder.forEach((repeaterId) => {
+        const ids = repeaterId === 'why-choose-us-repeater' ? ['why-choose-us-repeater', 'why-choose-us-list-repeater'] : [repeaterId];
+        ids.forEach((id) => { const fieldset = document.getElementById(id)?.closest('fieldset'); if (fieldset) form.appendChild(fieldset); });
+      });
+    }
     const labels = { 'SEO and schema': 'SEO and schema', 'Structured data (JSON-LD)': 'SEO and schema', 'Hero slides': 'Hero slider', 'Services and capability cards': 'Core services and capability cards', 'Highlight section': 'Highlight section', 'Trusted expert cards': 'Trusted expert cards', 'Managed network slider': 'Managed network slider', 'Services list': 'Services list', 'Introduction content': 'Introduction', 'Contact CTA': 'Contact CTA', 'Frequently asked questions': 'FAQs', Testimonials: 'Testimonials' };
     let anchor = index;
     const sections = [...form.querySelectorAll(':scope > fieldset')].map((fieldset, position) => {
@@ -22,7 +34,8 @@
       details.className = 'cms-section-accordion cms-form-grid__wide';
       details.open = position < 2;
       const summary = document.createElement('summary');
-      const title = labels[fieldset.querySelector('legend')?.textContent.trim()] || `Section ${position + 1}`;
+      const legendText = fieldset.querySelector('legend')?.textContent.trim();
+      const title = labels[legendText] || legendText || `Section ${position + 1}`;
       summary.innerHTML = `<span class="cms-section-number">${position + 1}</span><span>${escapeHtml(title)}</span>`;
       details.append(summary, fieldset);
       form.insertBefore(details, anchor.nextSibling);
@@ -31,7 +44,6 @@
     });
     index.innerHTML = `<p class="cms-editor__state">Page sections</p><ol>${sections.map((section, position) => `<li><button type="button" data-section-target="${position}">${escapeHtml(section.title)}</button></li>`).join('')}</ol>`;
     index.querySelectorAll('[data-section-target]').forEach((button) => button.addEventListener('click', () => { const section = sections[Number(button.dataset.sectionTarget)].details; section.open = true; section.scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
-    form.dataset.accordionsReady = 'true';
   }
   const articleEditor = document.getElementById('article-editor');
   const articleHtmlField = document.querySelector('[name="articleHtml"]');
@@ -358,6 +370,20 @@
       content.introduction = { heading: text('.ctu-title'), paragraph: text('.ctu-intro') };
       content.contactCta = { heading: text('.ctf-title'), paragraph: text('.ctf-copy'), buttonText: '', buttonUrl: '' };
     }
+    // Detect each section's real on-page order so the admin form can be rearranged to match, since it differs page to page.
+    const orderMarkers = [
+      ['hero-slide-repeater', doc.querySelector('.nc-hero-wrap, .svcs-hero, .hero__slide')],
+      ['key-solution-areas-repeater', doc.querySelector('#ksa')],
+      ['who-we-serve-repeater', doc.querySelector('#wws-h')],
+      ['business-impact-repeater', doc.querySelector('#biz-lead-h, h2.biz-lead, #biz-h')],
+      ['why-choose-us-repeater', doc.querySelector('#whyc-h')],
+      ['common-issues-repeater', doc.querySelector('#probs-h')],
+      ['contact-cta-repeater', doc.querySelector('.svc-cta-band')],
+      ['testimonial-repeater', doc.querySelector('[data-cms="testimonials"], .nd-trusted')],
+      ['faq-repeater', doc.querySelector('[data-cms="faq"], .nd-faq')]
+    ].filter(([, element]) => element);
+    orderMarkers.sort((a, b) => (a[1].compareDocumentPosition(b[1]) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1);
+    content.sectionOrder = orderMarkers.map(([repeaterId]) => repeaterId);
     return content;
   }
   function setPreviewLinkDisplay(url) {
@@ -382,7 +408,7 @@
       const staticFallback = await loadStaticPageContent(slug);
       setPageFormContent({ content: staticFallback });
       elements.pageForm.hidden = false;
-      setupPageSectionAccordions();
+      setupPageSectionAccordions(staticFallback.sectionOrder);
       elements.pagePublish.disabled = true;
       if (elements.pagePreviewLink) elements.pagePreviewLink.disabled = true;
       setPreviewLinkDisplay(null);
@@ -404,7 +430,7 @@
     document.getElementById('page-form-heading').textContent = `Edit: ${data.page.label}`;
     setPageFormContent(content);
     elements.pageForm.hidden = false;
-    setupPageSectionAccordions();
+    setupPageSectionAccordions(mergedContent.sectionOrder);
     elements.pagePublish.disabled = cmsUser?.role !== 'reviewer' || !data.page.draft;
     if (elements.pagePreviewLink) elements.pagePreviewLink.disabled = !data.page.draft;
     setPreviewLinkDisplay(data.page.previewUrl);
