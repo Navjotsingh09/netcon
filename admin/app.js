@@ -233,7 +233,9 @@
   }
   const SERVICE_DETAIL_SLUGS = new Set(['network-consultancy', 'business-continuity-and-network-resilience', 'firewall-and-network-security', 'managed-network-support', 'managed-wireless-lan', 'network-design-and-deployment', 'network-installations', 'network-support', 'remote-working-solutions']);
   async function loadStaticPageContent(slug) {
-    const response = await fetch(slug === 'home' ? '/' : `/${slug}`);
+    // Detail-page slugs (e.g. "network-consultancy") live under /services/, not at the site root — use the page's real path, not the slug, as the URL.
+    const path = pages.find((page) => page.slug === slug)?.path || (slug === 'home' ? '/' : `/${slug}`);
+    const response = await fetch(path);
     if (!response.ok) return {};
     const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
     const text = (selector, root = doc) => root.querySelector(selector)?.textContent.replace(/\s+/g, ' ').trim() || '';
