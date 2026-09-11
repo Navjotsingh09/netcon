@@ -164,7 +164,8 @@
   async function refreshPosts() {
     const data = await api('/api/cms/posts'); cmsUser = data.user; posts = data.posts; renderPosts();
     elements.session.innerHTML = `<span class="cms-connection">${escapeHtml(cmsUser.display_name)} · ${escapeHtml(cmsUser.role)}</span><button class="cms-button cms-button--secondary" id="sign-out" type="button">Sign out</button>`;
-    document.getElementById('sign-out').addEventListener('click', async () => { await window.netconSupabase.auth.signOut(); window.location.reload(); });
+    // Always reload even if signOut() rejects (e.g. an already-expired session) so the button never silently does nothing.
+    document.getElementById('sign-out').addEventListener('click', async () => { try { await window.netconSupabase.auth.signOut(); } catch { /* ignore: local session is cleared below regardless */ } finally { window.location.reload(); } });
   }
   function setPageStatus(message) {
     elements.pageSaveStatus.textContent = message;
