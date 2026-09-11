@@ -544,6 +544,9 @@
     elements.workspace.hidden = true;
     elements.setup.hidden = false;
     elements.setupMessage.innerHTML = `${escapeHtml(message)} <button class="cms-button cms-button--primary" id="cms-bootstrap" type="button">Start CMS and import existing blogs</button>`;
+    // This account has no CMS role yet, so refreshPosts() never reaches the code that renders the sign-out button — render one here too, or the user is stuck with no way out.
+    elements.session.innerHTML = `<button class="cms-button cms-button--secondary" id="sign-out" type="button">Sign out</button>`;
+    document.getElementById('sign-out').addEventListener('click', async () => { try { await window.netconSupabase.auth.signOut(); } catch { /* ignore: local session is cleared below regardless */ } finally { window.location.reload(); } });
     document.getElementById('cms-bootstrap').addEventListener('click', async () => {
       const button = document.getElementById('cms-bootstrap');
       button.disabled = true;
