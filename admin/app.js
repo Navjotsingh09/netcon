@@ -756,6 +756,19 @@
   elements.pageForm?.addEventListener('submit', (event) => { event.preventDefault(); savePageDraft().catch((error) => { setPageStatus(error.message); }); });
   elements.pagePublish?.addEventListener('click', () => publishPage().catch((error) => { setPageStatus(error.message); }));
   elements.pagePreviewLink?.addEventListener('click', () => generatePreviewLink());
+  document.getElementById('check-redirects-status-button')?.addEventListener('click', async () => {
+    const message = document.getElementById('redirects-status-message');
+    message.textContent = 'Checking...';
+    try {
+      const status = await api('/api/cms/redirects-status');
+      const parts = [status.instructions];
+      if (status.malformed.length) parts.push(`${status.malformed.length} malformed line(s): ${status.malformed.map((item) => `"${item.line}" on ${item.pageSlug} (${item.reason})`).join('; ')}`);
+      if (status.duplicates.length) parts.push(`${status.duplicates.length} duplicate source(s): ${status.duplicates.map((item) => `${item.source} (kept on ${item.keptOn}, ignored on ${item.ignoredOn})`).join('; ')}`);
+      message.textContent = parts.join(' ');
+    } catch (error) {
+      message.textContent = error.message;
+    }
+  });
   document.getElementById('close-page-preview-link')?.addEventListener('click', () => elements.pagePreviewDialog.close());
   document.getElementById('copy-page-preview-link')?.addEventListener('click', async () => { await navigator.clipboard.writeText(elements.pagePreviewInput.value).catch(() => {}); setPageStatus('Preview link copied.'); });
   document.getElementById('close-editor-button').addEventListener('click', closeEditor);

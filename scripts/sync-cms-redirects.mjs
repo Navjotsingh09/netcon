@@ -10,6 +10,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createClient } from '@supabase/supabase-js';
+import { collectCmsRedirects } from '../lib/cms/redirects.js';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const vercelConfigPath = resolve(projectRoot, 'vercel.json');
@@ -22,59 +23,14 @@ function requiredEnv(name) {
   return value;
 }
 
-// Per-page free text like "/old-page -> /new-page", one rule per line. Blank lines and bad lines are skipped.
-function parseRedirectsField(text, pageSlug) {
-  const rules = [];
-  for (const rawLine of String(text || '').split('\n')) {
-    const line = rawLine.trim();
-    if (!line) continue;
-    const match = line.match(/^(\/\S*)\s*->\s*(\/\S*)$/);
-    if (!match) {
-      console.warn(`Skipping malformed redirect on page "${pageSlug}": "${line}" (expected "/old -> /new")`);
-      continue;
-    }
-    const [, source, destination] = match;
-    if (source === destination) {
-      console.warn(`Skipping no-op redirect on page "${pageSlug}": "${line}"`);
-      continue;
-    }
-    rules.push({ source, destination, permanent: false });
-  }
-  return rules;
-}
-
 async function fetchCmsRedirects() {
   const client = createClient(requiredEnv('SUPABASE_URL'), requiredEnv('SUPABASE_SERVICE_ROLE_KEY'), {
     auth: { autoRefreshToken: false, persistSession: false }
   });
-  const { data: pages, error: pagesError } = await client
-    .from('cms_pages')
-    .select('page_slug, published_revision_id')
-    .not('published_revision_id', 'is', null);
-  if (pagesError) throw pagesError;
-
-  const rules = [];
-  const seenSources = new Map();
-  for (const page of pages) {
-    const { data: revision, error: revisionError } = await client
-      .from('cms_page_revisions')
-      .select('content')
-      .eq('id', page.published_revision_id)
-      .eq('status', 'published')
-      .maybeSingle();
-    if (revisionError) throw revisionError;
-    const pageRules = parseRedirectsField(revision?.content?.redirects, page.page_slug);
-    for (const rule of pageRules) {
-      const owner = seenSources.get(rule.source);
-      if (owner && owner !== page.page_slug) {
-        console.warn(`Duplicate redirect source "${rule.source}" on "${page.page_slug}" (already defined on "${owner}") -- keeping the first one.`);
-        continue;
-      }
-      seenSources.set(rule.source, page.page_slug);
-      rules.push(rule);
-    }
-  }
-  return rules;
+  const { rules, malformed, duplicates } = await collectCmsRedirects(client);
+  malformed.forEach(({ pageSlug, line, reason }) => console.warn(`Skipping malformed redirect on page "${pageSlug}": "${line}" (${reason})`));
+  duplicates.forEach(({ source, keptOn, ignoredOn }) => console.warn(`Duplicate redirect source "${source}" on "${ignoredOn}" (already defined on "${keptOn}") -- keeping the first one.`));
+  return rules.map(({ source, destination, permanent }) => ({ source, destination, permanent }));
 }
 
 async function main() {
