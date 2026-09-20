@@ -15,8 +15,8 @@
     const form = elements.pageForm;
     const index = document.getElementById('page-section-index');
     const order = Array.isArray(sectionOrder) ? sectionOrder.filter(Boolean) : [];
-    const visibleIds = new Set(order);
-    const visibleSectionIds = new Set(order.length ? order : ['hero-slide-repeater', 'introduction-repeater', 'card-repeater', 'highlight-repeater', 'expert-card-repeater', 'managed-slide-repeater', 'services-list-repeater', 'key-solution-areas-repeater', 'who-we-serve-repeater', 'business-impact-repeater', 'contact-cta-repeater', 'faq-repeater', 'testimonial-repeater']);
+    // No fallback to a hardcoded default set here: an empty order means this page's live HTML genuinely has none of the tracked sections, so only "SEO and schema" (always visible below) should show.
+    const visibleSectionIds = new Set(order);
     const isAlwaysVisible = (fieldset) => {
       const legend = fieldset.querySelector('legend')?.textContent.trim();
       return legend === 'SEO and schema';
@@ -540,7 +540,12 @@
       ['faq-repeater', doc.querySelector('[data-cms="faq"], .nd-faq')],
       ['accountable-repeater', doc.querySelector('#acct-h')],
       ['remote-access-value-repeater', doc.querySelector('.rav')],
-      ['installation-process-repeater', doc.querySelector('#ksa2')]
+      ['installation-process-repeater', doc.querySelector('#ksa2')],
+      ['capabilities-repeater', doc.querySelector('.ab-cap-card')],
+      ['story-cards-repeater', doc.querySelector('.ab-story-card')],
+      ['pro-slides-repeater', doc.querySelector('.ab-pro')],
+      ['contact-reach-repeater', doc.querySelector('.ctu-title')],
+      ['contact-cards-repeater', doc.querySelector('.ctu-card')]
     ].filter(([, element]) => element);
     orderMarkers.sort((a, b) => (a[1].compareDocumentPosition(b[1]) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1);
     const sectionOrder = orderMarkers.map(([repeaterId]) => repeaterId);
