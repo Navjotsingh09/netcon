@@ -432,7 +432,7 @@
         tab.classList.add('active'); tab.setAttribute('aria-selected','true');
         var d = data[i];
         img.style.opacity = '0';
-        setTimeout(function () { img.src = d.img; img.style.opacity = '1'; }, 150);
+        setTimeout(function () { img.src = d.img; img.alt = d.alt || d.title || img.alt; img.style.opacity = '1'; }, 150);
         title.textContent = d.title; desc.textContent = d.desc;
       });
     });
@@ -440,11 +440,11 @@
     window.__ncSetKsaData = window.__ncSetKsaData || {};
     window.__ncSetKsaData[ksa.id] = function (items) {
       if (!Array.isArray(items) || !items.length) return;
-      data = items.map(function (item, i) { var existing = data[i] || {}; return { img: item.imageUrl || existing.img || '', title: item.title || existing.title || '', desc: item.description || existing.desc || '' }; });
+      data = items.map(function (item, i) { var existing = data[i] || {}; return { img: item.imageUrl || existing.img || '', title: item.title || existing.title || '', desc: item.description || existing.desc || '', alt: item.imageAlt || existing.alt || '' }; });
       var activeIndex = 0;
       tabs.forEach(function (t, j) { if (t.classList.contains('active')) activeIndex = j; });
       var d = data[activeIndex];
-      if (d) { img.src = d.img; title.textContent = d.title; desc.textContent = d.desc; }
+      if (d) { img.src = d.img; img.alt = d.alt || d.title || img.alt; title.textContent = d.title; desc.textContent = d.desc; }
     };
   })();
 
