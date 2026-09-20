@@ -5,7 +5,9 @@
   "scripts": {
     "cms:import:check": "node scripts/import-existing-blogs.mjs",
     "cms:import:write": "node scripts/import-existing-blogs.mjs --write",
-    "cms:import:supabase": "env -u SUPABASE_URL -u SUPABASE_PUBLISHABLE_KEY -u SUPABASE_SERVICE_ROLE_KEY node --env-file=.env.local scripts/import-existing-blogs.mjs --supabase-import"
+    "cms:import:supabase": "env -u SUPABASE_URL -u SUPABASE_PUBLISHABLE_KEY -u SUPABASE_SERVICE_ROLE_KEY node --env-file=.env.local scripts/import-existing-blogs.mjs --supabase-import",
+    "cms:redirects:check": "node --env-file=.env.local scripts/sync-cms-redirects.mjs",
+    "cms:redirects:write": "node --env-file=.env.local scripts/sync-cms-redirects.mjs --write"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.0",

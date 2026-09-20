@@ -40,3 +40,25 @@ npm run cms:import:check
 Run `db/migrations/001_blog_cms.sql` through the Supabase SQL Editor after the
 project is connected. Then use the generated baseline as the reviewed input to the
 transactional database importer.
+
+## URL redirects (CMS "URL redirects" field)
+
+Each page's "URL redirects" field in the CMS is stored in Supabase but is **not**
+read by anything on the live site by itself -- Vercel only honours the static
+`redirects` array in `vercel.json`, evaluated at deploy time. A redirect entered
+in the CMS has no effect until it is synced into `vercel.json` and deployed:
+
+```sh
+vercel env pull .env.local        # once, or whenever env vars rotate
+npm run cms:redirects:check       # dry run -- shows what would change
+npm run cms:redirects:write       # writes vercel.json + db/cms-redirects.generated.json
+```
+
+Then commit both changed files and go through the normal staging → live deploy
+flow. The script only ever touches redirect rules it previously generated itself
+(tracked in `db/cms-redirects.generated.json`) -- hand-written entries already in
+`vercel.json` are left untouched unless a CMS page defines a redirect with the
+same source path.
+
+Each line in the CMS field must be `/old-path -> /new-path`; malformed or no-op
+lines are skipped with a warning instead of failing the whole sync.
