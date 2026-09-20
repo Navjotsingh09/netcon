@@ -40,7 +40,7 @@
         const schema = typeof seo['seo.schemaMarkup'] === 'string' ? JSON.parse(seo['seo.schemaMarkup']) : seo['seo.schemaMarkup'];
         const script = document.querySelector('script[type="application/ld+json"]');
         if (script) script.textContent = JSON.stringify(schema);
-      } catch { return; }
+      } catch { /* invalid schema JSON -- skip it, but don't block the rest of the page's content hydration below */ }
     }
     if (pageContent.internalLinks) {
       const links = pageContent.internalLinks.split('\n').map((line) => line.trim()).filter(Boolean);
@@ -174,6 +174,11 @@
         if (image && item.imageAlt) image.alt = item.imageAlt;
       });
     }
+    if (Array.isArray(pageContent.capabilities) && pageContent.capabilities.length) { document.querySelectorAll('.ab-cap-card').forEach((card, index) => { const item = pageContent.capabilities[index]; if (!item) return; const heading = card.querySelector('.ab-cap-card__title'); const paragraph = card.querySelector('.ab-cap-card__body'); const image = card.querySelector('img'); if (heading && item.heading) heading.textContent = item.heading; if (paragraph && item.paragraph) paragraph.textContent = item.paragraph; if (image && item.imageAlt) image.alt = item.imageAlt; }); }
+    if (Array.isArray(pageContent.storyCards) && pageContent.storyCards.length) { document.querySelectorAll('.ab-story-card').forEach((card, index) => { const item = pageContent.storyCards[index]; if (!item) return; const heading = card.querySelector('.ab-story-card__title'); const image = card.querySelector('img'); if (heading && item.heading) heading.textContent = item.heading; if (item.paragraph) { const values = item.paragraph.split(/\n\s*\n/).map((line) => line.trim()).filter(Boolean); card.querySelectorAll('.ab-story-card__body').forEach((node, i) => { if (values[i]) node.textContent = values[i]; }); } if (image && item.imageAlt) image.alt = item.imageAlt; }); }
+    if (Array.isArray(pageContent.proSlides) && pageContent.proSlides.length && window.__ncSetAboutProSlides) window.__ncSetAboutProSlides(pageContent.proSlides);
+    if (pageContent.contactReach) { const heading = document.querySelector('.ctu-title'); const paragraph = document.querySelector('.ctu-body p'); if (heading && pageContent.contactReach.heading) heading.textContent = pageContent.contactReach.heading; if (paragraph && pageContent.contactReach.paragraph) paragraph.textContent = pageContent.contactReach.paragraph; }
+    if (Array.isArray(pageContent.contactCards) && pageContent.contactCards.length) { document.querySelectorAll('.ctu-card').forEach((card, index) => { const item = pageContent.contactCards[index]; if (!item) return; const category = card.querySelector('.ctu-cat'); const heading = card.querySelector('.ctu-card-title'); const desc = card.querySelector('.ctu-desc'); if (category && item.category) category.textContent = item.category; if (heading && item.title) heading.textContent = item.title; if (desc && item.description) desc.textContent = item.description; }); }
     Object.entries(seo.content || {}).forEach(([key, value]) => {
       document.querySelectorAll(`[data-cms-key="${CSS.escape(key)}"]`).forEach((element) => {
         if (element.tagName === 'IMG') element.alt = String(value);

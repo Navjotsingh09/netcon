@@ -2197,6 +2197,15 @@ Edgbaston, B15 3BE</p>
           proAutoAdvanceId = null;
         }
 
+        window.__ncSetAboutProSlides = function (items) {
+          proSlides = proSlides.map(function (existing, index) {
+            var item = items[index];
+            if (!item) return existing;
+            return { title: item.title || existing.title, bodyOne: item.bodyOne || existing.bodyOne, bodyTwo: item.bodyTwo || existing.bodyTwo, imageWebp: existing.imageWebp, imageJpg: existing.imageJpg, imageAlt: item.imageAlt || existing.imageAlt };
+          });
+          setProSlide(currentProSlide);
+        };
+
         function startProAutoAdvance() {
           if (reduceMotionQuery.matches || document.hidden || !proInViewport || proAutoAdvanceId !== null) return;
           proAutoAdvanceId = window.setInterval(function () {
