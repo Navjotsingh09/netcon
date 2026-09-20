@@ -511,16 +511,71 @@
         content.installationProcessIntro = { heading: text('#proc-h'), paragraph: text('#proc-h + p'), imageAlt: doc.getElementById('ksa2-img')?.getAttribute('alt') || '' };
         content.installationProcess = [...doc.querySelectorAll('#ksa2 .ksa__tab')].map((tab, index) => ({ title: tab.textContent.replace(/\s+/g, ' ').trim(), description: ksa2Data[index]?.desc || '', imageUrl: ksa2Data[index]?.img || '', imageAlt: ksa2Data[index]?.alt || '' }));
       }
+    } else if (doc.querySelector('.svcs-hero')) {
+      // Industries landing + all 9 industry detail pages share this "svcs-hero + svl-overview" template (also used by
+      // the Services landing page, handled by its own `slug === 'services'` branch above). Presence-checked (not slug
+      // list) so this also covers any future page built on the same template without a code change.
+      const heroCta = doc.querySelector('.svcs-hero__cta');
+      content.heroSlides = [{ heading: text('.svcs-hero__title'), paragraph: text('.svcs-hero__sub'), buttonText: text('.svcs-hero__cta'), buttonUrl: heroCta?.getAttribute('href') || '', imageUrl: '', imageAlt: '' }];
+      content.introduction = { heading: text('.svl-overview__title'), paragraph: text('.svl-overview__lead p') || text('.svl-overview__lead') };
+      content.servicesList = [...doc.querySelectorAll('.svl-overview__list-item')].map((btn) => ({ title: btn.dataset.title || btn.textContent.trim(), copy: btn.dataset.copy || '', imageUrl: btn.dataset.img || '', imageAlt: btn.dataset.alt || '', href: btn.dataset.href || '' }));
+
+      // Only the 9 industry detail pages (not the landing page) have the "biz slider" widget. Its heading/intro
+      // paragraph hydrate generically via businessImpactIntro (#biz-h), but the individual slide items live in a
+      // page-local script that doesn't expose a window setter here (unlike the service-detail pages), so the slide
+      // ARRAY itself is intentionally left unscraped -- a field that can't actually re-apply on publish would be
+      // misleading. Documented gap, not a bug.
+      if (doc.querySelector('#biz-h')) {
+        content.businessImpactIntro = { heading: text('#biz-h'), paragraph: text('#biz-h ~ p') };
+      }
+
+      // window.PAGE_TESTIMONIALS (page-specific override) drives the [data-cms="testimonials"] carousel on these pages.
+      const testimonialsRaw = extractArrayLiteral(doc, 'window.PAGE_TESTIMONIALS', /window\.PAGE_TESTIMONIALS\s*=\s*(\[[\s\S]*?\]);/);
+      if (testimonialsRaw) content.testimonials = testimonialsRaw.map((item) => ({ quote: item.quote || '', name: item.name || '', role: item.role || '', imageAlt: '' }));
+      content.testimonialsHeading = doc.querySelector('[data-cms="testimonials"]')?.getAttribute('data-title') || '';
+
+      const ctaBtn = doc.querySelector('.industry-cta__card a');
+      content.contactCta = { heading: text('.industry-cta__title'), paragraph: text('.industry-cta__text'), buttonText: ctaBtn?.textContent.replace(/\s+/g, ' ').trim() || '', buttonUrl: ctaBtn?.getAttribute('href') || '' };
+    } else if (doc.querySelector('.res-card, .card-grid .card')) {
+      // Resources landing/downloads/guides share a simple "page-hero + card grid" template.
+      content.heroSlides = [{ heading: text('.page-hero__title'), paragraph: text('.page-hero__sub'), buttonText: '', buttonUrl: '', imageUrl: '', imageAlt: '' }];
+      content.cards = [...doc.querySelectorAll('.res-card, .card-grid .card')].map((card) => ({ heading: text('.res-card__title, .card__title', card), paragraph: text('.res-card__desc, .card__body-text', card), imageAlt: card.querySelector('img')?.alt || '' }));
+    } else if (doc.querySelector('[class$="-hero__copy"], .sol-hero-landing')) {
+      // Solutions pages (cyber-security-review, ai-ready-infrastructure-review, network-health-check, and the
+      // solutions landing page) each use a page-specific class prefix (csr-/aif-/nhc-/sol-) for an otherwise
+      // identical hero + CTA-band template -- suffix selectors match all of them without per-page branching.
+      // NOTE: these 3 detail pages also render a hidden mobile-only duplicate of the hero/overview/why sections
+      // (.mcsr-hero etc.); this pass only edits the desktop version, so the mobile duplicate can go stale -- a
+      // known, documented limitation, not addressed in this pass.
+      const heroCopy = doc.querySelector('[class$="-hero__copy"], .sol-hero-landing');
+      const heroBtn = doc.querySelector('[class$="-hero__btn"]');
+      content.heroSlides = [{ heading: text('h1', heroCopy), paragraph: text('p', heroCopy), buttonText: heroBtn?.textContent.trim() || '', buttonUrl: heroBtn?.getAttribute('href') || '', imageUrl: '', imageAlt: '' }];
+      const ctaCard = doc.querySelector('[class$="-cta-band__card"]');
+      const ctaBtn = ctaCard?.querySelector('a');
+      content.contactCta = { heading: '', paragraph: text('p', ctaCard), buttonText: ctaBtn?.textContent.trim() || '', buttonUrl: ctaBtn?.getAttribute('href') || '' };
+    } else if (doc.querySelector('.csd-title')) {
+      // Case-study detail pages: hero heading/intro + the standard .nd-contact CTA block used site-wide.
+      // The 5 body sections (Overview/Challenge/Solution/Result/Services Delivered) are a bespoke per-page content
+      // model not covered by a rich editor in this pass -- documented gap, not fixed here.
+      content.heroSlides = [{ heading: text('.csd-title'), paragraph: text('.csd-intro'), buttonText: '', buttonUrl: '', imageUrl: '', imageAlt: '' }];
+      content.contactCta = { heading: text('.nd-contact__title'), paragraph: text('.nd-contact__intro'), buttonText: text('.nd-contact__cta'), buttonUrl: doc.querySelector('.nd-contact__cta')?.getAttribute('href') || '' };
+    } else if (doc.querySelector('.cs-hero-title')) {
+      // Case-studies landing page.
+      const heroCta = doc.querySelector('.cs-hero-cta');
+      content.heroSlides = [{ heading: text('.cs-hero-title'), paragraph: text('.cs-hero-sub'), buttonText: heroCta?.textContent.trim() || '', buttonUrl: heroCta?.getAttribute('href') || '', imageUrl: '', imageAlt: '' }];
+      const ctaParas = [...doc.querySelectorAll('.cs-center-panel p')];
+      const ctaBtn = doc.querySelector('.cs-center-panel a');
+      content.contactCta = { heading: ctaParas[0]?.textContent.replace(/\s+/g, ' ').trim() || '', paragraph: ctaParas[1]?.textContent.replace(/\s+/g, ' ').trim() || '', buttonText: ctaBtn?.textContent.trim() || '', buttonUrl: ctaBtn?.getAttribute('href') || '' };
     } else {
       content.introduction = { heading: text('.ctu-title'), paragraph: text('.ctu-intro') };
       content.contactCta = { heading: text('.ctf-title'), paragraph: text('.ctf-copy'), buttonText: '', buttonUrl: '' };
     }
     // Detect each section's real on-page order so the admin form can be rearranged to match, since it differs page to page.
     const orderMarkers = [
-      ['hero-slide-repeater', doc.querySelector('.nc-hero-wrap, .svcs-hero, .hero__slide')],
+      ['hero-slide-repeater', doc.querySelector('.nc-hero-wrap, .svcs-hero, .hero__slide, .page-hero__title, [class$="-hero__copy"], .sol-hero-landing, .csd-title, .cs-hero-title')],
       // Home-only sections (introduction/cards/highlight/expert cards/managed slider) and the Services landing tab list were fully scraped/collectable above but had NO marker here, so their fieldsets were unconditionally hidden in the admin regardless of page content.
-      ['introduction-repeater', doc.querySelector('.main-services__title, .ab-intro__title')],
-      ['card-repeater', doc.querySelector('.svc-card')],
+      ['introduction-repeater', doc.querySelector('.main-services__title, .ab-intro__title, .svl-overview__title')],
+      ['card-repeater', doc.querySelector('.svc-card, .res-card, .card-grid .card')],
       ['highlight-repeater', doc.querySelector('.nd-highlight__copy')],
       ['expert-card-repeater', doc.querySelector('.nd-figma-card')],
       ['managed-slide-repeater', doc.querySelector('.nd-figma-managed')],
@@ -535,7 +590,7 @@
       ['why-choose-us-repeater', doc.querySelector('.whyc__content p') && !doc.querySelector('.whyc__list') ? doc.querySelector('#whyc-h') : null],
       ['common-issues-repeater', doc.querySelector('#probs-h, #cissues-h')],
       // .nd-contact is the shared Home/About contact block; .svc-cta-band is the service-detail-page variant.
-      ['contact-cta-repeater', doc.querySelector('.svc-cta-band, .nd-contact')],
+      ['contact-cta-repeater', doc.querySelector('.svc-cta-band, .nd-contact, .industry-cta, [class$="-cta-band"], .cs-blue-cta')],
       ['testimonial-repeater', doc.querySelector('[data-cms="testimonials"], .nd-trusted')],
       ['faq-repeater', doc.querySelector('[data-cms="faq"], .nd-faq')],
       ['accountable-repeater', doc.querySelector('#acct-h')],
