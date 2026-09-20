@@ -3,29 +3,31 @@
 <head>
   <script type="application/ld+json">
  {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://network-consultancy.com/"
-    }
-  ]
- },
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://network-consultancy.com/"
+    }
+  ]
+ }
+</script>
+<script type="application/ld+json">
  {
-  "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  "@id": "https://network-consultancy.com/#profilepage",
-  "url": "https://network-consultancy.com/",
-  "name": "Network Consultancy",
-  "mainEntity": {
-    "@type": "Organization",
-    "@id": "https://network-consultancy.com/#organization",
-    "name": "Network Consultancy",
-    "url": "https://network-consultancy.com/"
-  }
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "https://network-consultancy.com/#profilepage",
+  "url": "https://network-consultancy.com/",
+  "name": "Network Consultancy",
+  "mainEntity": {
+    "@type": "Organization",
+    "@id": "https://network-consultancy.com/#organization",
+    "name": "Network Consultancy",
+    "url": "https://network-consultancy.com/"
+  }
  }
 </script>
     <meta name="google-site-verification" content="UMvzdXxOFVqZL5BV0Z31FdlaoXjKmD450rZ5TB-qWXI" />
@@ -4308,17 +4310,19 @@ Edgbaston, B15 3BE</p>
       });
     }());
 
-    // Highlight video autoplay
-    (function ensureHighlightVideoPlays() {
-      var video = document.querySelector('.nd-highlight__video');
-      if (!video) return;
-      video.muted = true;
-      video.defaultMuted = true;
-      video.setAttribute('muted', '');
-      var playAttempt = video.play();
-      if (playAttempt && typeof playAttempt.catch === 'function') {
-        playAttempt.catch(function() {});
-      }
+    // Autoplay videos: the `muted` HTML attribute alone doesn't reliably set the `.muted` DOM property,
+    // and some browsers require the property (not just the attribute) to permit autoplay.
+    (function ensureAutoplayVideosPlay() {
+      var videos = document.querySelectorAll('.hero__bg, .nd-highlight__video, .nd-figma-managed__video video');
+      videos.forEach(function(video) {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.setAttribute('muted', '');
+        var playAttempt = video.play();
+        if (playAttempt && typeof playAttempt.catch === 'function') {
+          playAttempt.catch(function() {});
+        }
+      });
     }());
 
     // ND Why accordion
