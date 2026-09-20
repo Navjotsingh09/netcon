@@ -2051,3 +2051,20 @@ main .nd-faq {
     border-color: #000;
      color: #fff;
 }
+
+/* CMS-managed internal links (SEO field) -- hidden by default, only shown when a page has links saved */
+.cms-internal-links {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 24px var(--px) 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--sub);
+}
+.cms-internal-links[hidden] { display: none; }
+.cms-internal-links__label { font-weight: 600; color: var(--dark); }
+.cms-internal-links a { color: var(--blue); text-decoration: underline; }
+.cms-internal-links a:hover { text-decoration: none; }

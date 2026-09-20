@@ -47,7 +47,10 @@
       if (links.length) {
         const list = document.querySelector('[data-cms="internal-links"]');
         if (list) {
-          list.innerHTML = links.map((url) => `<a href="${url}">${url}</a>`).join('');
+          const label = (url) => url.replace(/^\/+|\/+$/g, '').split('/').pop() || 'Home';
+          const readable = (url) => label(url).split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+          list.hidden = false;
+          list.innerHTML = '<span class="cms-internal-links__label">Related pages:</span>' + links.map((url) => `<a href="${url}">${readable(url)}</a>`).join('');
         }
       }
     }
