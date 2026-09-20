@@ -73,7 +73,7 @@
     if (pageContent.businessImpactLead) { const heading = setHeadingTag(document.getElementById('biz-lead-h') || document.querySelector('h2.biz-lead'), pageContent.businessImpactLead.headingTag); const paragraph = heading?.nextElementSibling; if (heading && pageContent.businessImpactLead.heading) heading.textContent = pageContent.businessImpactLead.heading; if (paragraph && paragraph.tagName === 'P' && pageContent.businessImpactLead.paragraph) paragraph.textContent = pageContent.businessImpactLead.paragraph; }
     if (Array.isArray(pageContent.businessImpact) && pageContent.businessImpact.length && window.__ncSetBusinessImpactSlides) { window.__ncSetBusinessImpactSlides(pageContent.businessImpact); }
     // "Our work process" (business-continuity page only) -- was never hydrated, so its per-step imageAlt fields were dead.
-    if (pageContent.workProcessIntro) { const heading = document.getElementById('work-h'); if (heading && pageContent.workProcessIntro.heading) heading.textContent = pageContent.workProcessIntro.heading; }
+    if (pageContent.workProcessIntro) { const heading = setHeadingTag(document.getElementById('work-h'), pageContent.workProcessIntro.headingTag); if (heading && pageContent.workProcessIntro.heading) heading.textContent = pageContent.workProcessIntro.heading; }
     if (Array.isArray(pageContent.workProcess) && pageContent.workProcess.length) {
       const steps = [...document.querySelectorAll('[aria-labelledby="work-h"] .prob')];
       pageContent.workProcess.forEach((item, index) => {
