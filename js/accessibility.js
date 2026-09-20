@@ -104,8 +104,12 @@
     body.classList.remove('a11y-align-left', 'a11y-align-center', 'a11y-align-right');
     if (eff.textAlign !== 'default') body.classList.add('a11y-align-' + eff.textAlign);
 
-    /* Mute sounds */
-    document.querySelectorAll('audio, video').forEach(function (m) { m.muted = !!eff.muteSounds; });
+    /* Mute sounds -- skip decorative autoplay media (no controls, no audio to hear); it must stay
+       muted for autoplay to work and isn't something this control is meant to affect. */
+    document.querySelectorAll('audio, video').forEach(function (m) {
+      if (m.hasAttribute('autoplay') && !m.hasAttribute('controls')) return;
+      m.muted = !!eff.muteSounds;
+    });
 
     save();
     syncUI();
