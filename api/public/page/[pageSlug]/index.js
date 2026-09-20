@@ -1,6 +1,6 @@
-import { supabaseAdmin } from '../../../lib/cms/database.js';
-import { errorResponse, json } from '../../../lib/cms/http.js';
-import { pageFromSlug } from '../../../lib/cms/page-content.js';
+import { supabaseAdmin } from '../../../../lib/cms/database.js';
+import { errorResponse, json } from '../../../../lib/cms/http.js';
+import { pageFromSlug } from '../../../../lib/cms/page-content.js';
 
 export default async function handler(request, response) {
   const slug = request.query?.pageSlug;
