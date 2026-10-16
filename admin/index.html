@@ -92,7 +92,7 @@
 
         <section class="cms-panel cms-editor" id="editor-panel" hidden aria-labelledby="editor-heading">
           <div class="cms-panel__head"><div><p class="cms-eyebrow">Article editor</p><h2 id="editor-heading">New article</h2><p class="cms-editor__state" id="editor-state">Complete the fields, then save the draft.</p></div><div class="cms-editor__controls"><span id="save-status" aria-live="polite"></span><button class="cms-icon-button" id="close-editor-button" type="button" aria-label="Back to articles" title="Back to articles"><i data-lucide="arrow-left"></i></button></div></div>
-          <form id="article-form">
+          <form id="article-form" novalidate>
             <nav class="cms-editor-tabs" role="tablist" aria-label="Article fields">
               <button id="article-tab-content" type="button" role="tab" aria-controls="article-tab-panel" tabindex="0" class="is-active" data-editor-tab="content" aria-selected="true">Content</button>
               <button id="article-tab-media" type="button" role="tab" aria-controls="article-tab-panel" tabindex="-1" data-editor-tab="media" aria-selected="false">Media</button>
@@ -112,7 +112,7 @@
               <label data-editor-group="settings">Publication date<input name="publishedAt" type="date"></label>
               <label class="cms-checkbox" data-editor-group="settings"><input name="isFeatured" type="checkbox"> Feature on blog listing</label>
               <label data-editor-group="settings">Featured position<input name="featuredRank" type="number" min="1" max="50" placeholder="Optional"></label>
-              <label data-editor-group="media">Featured image (required)<input name="featuredImage" type="file" accept="image/avif,image/jpeg,image/png,image/webp"></label>
+              <label data-editor-group="media">Featured image (required to publish)<input name="featuredImage" type="file" accept="image/avif,image/jpeg,image/png,image/webp"></label>
               <div class="cms-featured-image cms-form-grid__wide" id="featured-image-panel" data-editor-group="media" hidden>
                 <img id="featured-image-preview" alt="">
                 <div><strong>Current featured image</strong><p id="featured-image-name"></p><button class="cms-link-button" id="remove-featured-image" type="button">Remove and choose a new image</button></div>

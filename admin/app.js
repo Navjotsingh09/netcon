@@ -84,6 +84,44 @@
     });
     return documentFragment.body.innerHTML;
   }
+  const fieldLabels = {
+    title: 'Article title', publicSlug: 'Public URL slug', category: 'Category', publishedAt: 'Publication date',
+    featuredImage: 'Featured image', featuredImageUrl: 'Featured image', featuredImageAlt: 'Image alternative text',
+    excerpt: 'Excerpt', articleHtml: 'Article content', seoTitle: 'SEO title', seoDescription: 'SEO description', schemaMarkup: 'Schema markup'
+  };
+  const hiddenFieldTabs = { featuredImageUrl: 'media', articleHtml: 'content' };
+  let slugEditedManually = false;
+  function slugify(value) {
+    return String(value || '').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 120).replace(/-+$/, '');
+  }
+  function ensureCategoryOption(value) {
+    const select = elements.form.elements.category;
+    const normalized = String(value || '').trim();
+    if (normalized && ![...select.options].some((option) => option.value === normalized)) select.add(new Option(normalized, normalized));
+    return normalized;
+  }
+  function tabForField(field) {
+    if (!field) return null;
+    return hiddenFieldTabs[field.name] || field.closest('[data-editor-group]')?.dataset.editorGroup || null;
+  }
+  function focusField(field) {
+    const tab = tabForField(field);
+    if (tab) selectEditorTab(tab);
+    if (field.name === 'articleHtml') articleEditor.focus();
+    else if (field.name === 'featuredImageUrl') elements.form.elements.featuredImage.focus();
+    else field.focus();
+  }
+  function validateFormBeforeSave() {
+    syncArticleEditor();
+    const invalidFields = [...elements.form.elements].filter((field) => field.willValidate && !field.checkValidity());
+    if (!invalidFields.length) return true;
+    document.getElementById('validation-errors').textContent = invalidFields
+      .map((field) => `${fieldLabels[field.name] || field.name}: ${field.name === 'articleHtml' ? 'Article content is required.' : field.validationMessage}`).join(' ');
+    focusField(invalidFields[0]);
+    if (invalidFields[0].name !== 'articleHtml') invalidFields[0].reportValidity();
+    return false;
+  }
   function setConnection(text, isReady) { elements.connection.textContent = text; elements.connection.style.color = isReady ? '#bce6c8' : '#f5d593'; }
   function clearValidationErrors() {
     document.getElementById('validation-errors').textContent = '';
@@ -94,12 +132,12 @@
     const fields = error.fields || {};
     const messages = Object.entries(fields).map(([fieldName, message]) => {
       const field = elements.form.elements[fieldName];
-      if (field) field.setCustomValidity(message);
-      return `${fieldName}: ${message}`;
+      if (field && field.type !== 'hidden') field.setCustomValidity(message);
+      return `${fieldLabels[fieldName] || fieldName}: ${message}`;
     });
     document.getElementById('validation-errors').textContent = messages.length ? messages.join(' ') : error.message;
     const firstField = Object.keys(fields).map((fieldName) => elements.form.elements[fieldName]).find(Boolean);
-    if (firstField) firstField.focus();
+    if (firstField) focusField(firstField);
   }
   async function api(path, options = {}) {
     const response = await fetch(path, { ...options, headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}`, ...(options.headers || {}) } });
@@ -121,6 +159,7 @@
       return matchesQuery && matchesStatus && (!category || post.category === category);
     });
     const categories = [...new Set(posts.map((post) => post.category).filter(Boolean))].sort();
+    categories.forEach(ensureCategoryOption);
     elements.categoryFilter.innerHTML = '<option value="">All categories</option>' + categories.map((item) => `<option value="${escapeHtml(item)}">${escapeHtml(item)}</option>`).join('');
     elements.categoryFilter.value = category;
     elements.list.innerHTML = visible.length ? `<div class="cms-table-wrap"><table class="cms-post-table"><thead><tr><th scope="col">Article</th><th scope="col">Status</th><th scope="col">Category</th><th scope="col">Updated</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody>${visible.map((post) => {
@@ -219,12 +258,13 @@
   function resetEditor() {
     if (!canLeaveEditor()) return;
     markOnboardingUsed();
-    currentPost = null; elements.form.reset(); articleEditor.innerHTML = ''; articleEditorSelection = null; clearValidationErrors(); renderFeaturedImage('', ''); elements.editor.hidden = false; elements.workspace.classList.add('is-editing'); document.body.classList.add('cms-editor-open'); selectEditorTab('content'); updatePublishingControls(null); document.getElementById('editor-heading').textContent = 'New article'; elements.saveStatus.textContent = '';
+    currentPost = null; slugEditedManually = false; elements.form.reset(); articleEditor.innerHTML = ''; articleEditorSelection = null; clearValidationErrors(); renderFeaturedImage('', ''); elements.editor.hidden = false; elements.workspace.classList.add('is-editing'); document.body.classList.add('cms-editor-open'); selectEditorTab('content'); updatePublishingControls(null); document.getElementById('editor-heading').textContent = 'New article'; elements.saveStatus.textContent = '';
     const recovery = JSON.parse(localStorage.getItem(localDraftKey) || 'null');
     if (recovery && !recovery.publicSlug && window.confirm('A locally saved unsaved article was found. Restore it?')) {
       Object.entries(recovery.fields || {}).forEach(([name, value]) => { const field = elements.form.elements[name]; if (field && field.type !== 'file' && field.type !== 'checkbox') field.value = value || ''; });
       elements.form.elements.isFeatured.checked = Boolean(recovery.fields.isFeatured);
       articleEditor.innerHTML = recovery.fields.articleHtml || '';
+      slugEditedManually = Boolean(recovery.fields.publicSlug) && recovery.fields.publicSlug !== slugify(recovery.fields.title);
       setEditorDirty(true);
     }
     updateSeoPreview();
@@ -235,6 +275,7 @@
     const data = await api(`/api/cms/posts/${encodeURIComponent(slug)}`); currentPost = data.post; elements.editor.hidden = false;
     elements.workspace.classList.add('is-editing'); document.body.classList.add('cms-editor-open'); selectEditorTab('content');
     document.getElementById('editor-heading').textContent = `Edit: ${data.post.title}`;
+    data.post.category = ensureCategoryOption(data.post.category);
     ['title', 'excerpt', 'category', 'articleHtml', 'featuredImageAlt', 'featuredImageUrl', 'seoTitle', 'seoDescription', 'schemaMarkup'].forEach((name) => { elements.form.elements[name].value = data.post[name] || ''; });
     articleEditor.innerHTML = data.post.articleHtml || '';
     articleEditorSelection = null;
@@ -273,6 +314,11 @@
     payload.isFeatured = elements.form.elements.isFeatured.checked;
     const selectedFeatureImage = elements.form.elements.featuredImage.files[0];
     payload.featuredImageUrl = await uploadFeatureImage(selectedFeatureImage);
+    if (selectedFeatureImage) {
+      elements.form.elements.featuredImageUrl.value = payload.featuredImageUrl;
+      elements.form.elements.featuredImage.value = '';
+      renderFeaturedImage(payload.featuredImageUrl, elements.form.elements.featuredImageAlt.value);
+    }
     if (currentPost && !isEditableDraft(currentPost)) {
       const created = await api(`/api/cms/posts/${encodeURIComponent(currentPost.publicSlug)}`, { method: 'POST', body: '{}' });
       currentPost = { ...currentPost, revisionId: created.revision.id, status: 'draft' };
@@ -280,13 +326,11 @@
     if (currentPost) {
       await api(`/api/cms/posts/${encodeURIComponent(currentPost.publicSlug)}`, { method: 'PATCH', body: JSON.stringify({ ...payload, revisionId: currentPost.revisionId }) });
       currentPost.publicSlug = payload.publicSlug;
-      if (selectedFeatureImage) elements.form.elements.featuredImage.value = '';
       setEditorDirty(false);
       return;
     }
     const created = await api('/api/cms/posts', { method: 'POST', body: JSON.stringify(payload) });
     currentPost = { publicSlug: payload.publicSlug, revisionId: created.revision.id, status: 'draft' };
-    if (selectedFeatureImage) elements.form.elements.featuredImage.value = '';
     setEditorDirty(false);
     document.getElementById('cms-lifecycle-actions').hidden = cmsUser?.role !== 'reviewer';
     updatePublishingControls(currentPost);
@@ -336,6 +380,10 @@
     card.addEventListener('click', activate);
     card.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); activate(); } });
   });
+  elements.form.elements.publicSlug.addEventListener('input', () => { slugEditedManually = Boolean(elements.form.elements.publicSlug.value.trim()); });
+  elements.form.elements.title.addEventListener('input', () => {
+    if (!currentPost && !slugEditedManually) elements.form.elements.publicSlug.value = slugify(elements.form.elements.title.value);
+  });
   elements.form.addEventListener('input', (event) => { updateSeoPreview(); if (!event.target.matches('[type="file"]')) setEditorDirty(true); });
   elements.form.addEventListener('change', () => { updateSeoPreview(); setEditorDirty(true); });
   articleEditor.addEventListener('input', () => { syncArticleEditor(); setEditorDirty(true); });
@@ -364,7 +412,7 @@
   articleEditor.addEventListener('dragover', (event) => event.preventDefault());
   articleEditor.addEventListener('drop', async (event) => { event.preventDefault(); try { await uploadArticleImage([...event.dataTransfer.files].find((file) => file.type.startsWith('image/'))); } catch (error) { elements.saveStatus.textContent = error.message; } });
   elements.form.elements.featuredImage.addEventListener('change', () => { const file = elements.form.elements.featuredImage.files[0]; if (file) renderFeaturedImage(URL.createObjectURL(file), elements.form.elements.featuredImageAlt.value); setEditorDirty(true); });
-  document.getElementById('remove-featured-image').addEventListener('click', () => { elements.form.elements.featuredImage.value = ''; elements.form.elements.featuredImageUrl.value = ''; renderFeaturedImage('', ''); elements.saveStatus.textContent = 'Choose a replacement image before saving.'; setEditorDirty(true); });
+  document.getElementById('remove-featured-image').addEventListener('click', () => { elements.form.elements.featuredImage.value = ''; elements.form.elements.featuredImageUrl.value = ''; renderFeaturedImage('', ''); elements.saveStatus.textContent = 'Choose a replacement image before publishing.'; setEditorDirty(true); });
   function requestArticleDeletion(slug) { if (!slug) return; pendingDeletionSlug = slug; deleteArticleDialog.showModal(); }
   elements.list.addEventListener('click', (event) => {
     const actionButton = event.target.closest('[data-action]');
@@ -386,7 +434,7 @@
   }));
   elements.form.elements.featuredImageAlt.addEventListener('input', () => { const image = document.getElementById('featured-image-preview'); if (!elements.editor.hidden) image.alt = elements.form.elements.featuredImageAlt.value; });
   document.getElementById('close-preview-button').addEventListener('click', () => elements.preview.close());
-  elements.form.addEventListener('submit', async (event) => { event.preventDefault(); clearValidationErrors(); try { elements.saveStatus.textContent = 'Saving...'; await saveCurrentDraft(); elements.saveStatus.textContent = `Saved just now · Draft saved`; await refreshPosts(); } catch (error) { elements.saveStatus.textContent = error.message; showValidationErrors(error); } });
+  elements.form.addEventListener('submit', async (event) => { event.preventDefault(); clearValidationErrors(); if (!validateFormBeforeSave()) { elements.saveStatus.textContent = 'Fix the highlighted fields before saving.'; return; } try { elements.saveStatus.textContent = 'Saving...'; await saveCurrentDraft(); elements.saveStatus.textContent = `Saved just now · Draft saved`; await refreshPosts(); } catch (error) { elements.saveStatus.textContent = error.message; showValidationErrors(error); } });
   window.addEventListener('beforeunload', (event) => { if (editorDirty) { event.preventDefault(); event.returnValue = ''; } });
   window.setInterval(async () => {
     if (!editorDirty || autosaveRunning || elements.editor.hidden || !elements.form.checkValidity()) return;

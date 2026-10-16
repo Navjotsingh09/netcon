@@ -29,11 +29,14 @@ export default async function handler(request, response) {
     if (action === 'publish_live') {
       const { data: revision, error: revisionError } = await client
         .from('blog_revisions')
-        .select('featured_image_alt')
+        .select('featured_image_url, featured_image_alt')
         .eq('id', revisionId(request))
         .in('status', rule.from)
         .maybeSingle();
       if (revisionError) throw revisionError;
+      if (revision && !revision.featured_image_url?.trim()) {
+        return errorResponse(request, response, 'Add a featured image before publishing.', 422);
+      }
       if (revision && !revision.featured_image_alt?.trim()) {
         return errorResponse(request, response, 'Add alternative text for the featured image before publishing.', 422);
       }
