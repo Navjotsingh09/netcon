@@ -20,6 +20,7 @@
         <span class="cms-brand__mark">NC</span>
         <span>Network Consultancy <small>Editorial</small></span>
       </a>
+      <a class="cms-button cms-button--secondary" href="/admin/pages.html">Pages editor</a>
       <div class="cms-session" id="cms-session">
         <span class="cms-connection" id="cms-connection">Checking CMS connection</span>
       </div>
@@ -60,6 +61,10 @@
           <article><span id="review-count">0</span><small>In review</small></article>
           <article><span id="scheduled-count">0</span><small>Scheduled</small></article>
         </div>
+        <section class="cms-attention-panel" aria-labelledby="attention-heading">
+          <h2 id="attention-heading">Needs attention</h2>
+          <ul id="attention-list"></ul>
+        </section>
 
         <div class="cms-workspace__body">
         <section class="cms-panel cms-library" aria-labelledby="articles-heading">
@@ -67,27 +72,54 @@
             <div><p class="cms-eyebrow">Content library</p><h2 id="articles-heading">Articles</h2></div>
             <input id="post-search" type="search" placeholder="Search articles" autocomplete="off">
           </div>
+          <div class="cms-library__filters">
+            <label>Status
+              <select id="status-filter">
+                <option value="">All statuses</option>
+                <option value="published">Published</option>
+                <option value="draft">Draft</option>
+                <option value="in_review">In review</option>
+                <option value="scheduled">Scheduled</option>
+                <option value="archived">Archived</option>
+              </select>
+            </label>
+            <label>Category
+              <select id="category-filter"><option value="">All categories</option></select>
+            </label>
+          </div>
           <div class="cms-article-list" id="post-list" aria-live="polite"></div>
         </section>
 
         <section class="cms-panel cms-editor" id="editor-panel" hidden aria-labelledby="editor-heading">
-          <div class="cms-panel__head"><div><p class="cms-eyebrow">Article editor</p><h2 id="editor-heading">New article</h2><p class="cms-editor__state" id="editor-state">Complete the fields, then save the draft.</p></div><div class="cms-editor__controls"><span id="save-status" aria-live="polite"></span><button class="cms-icon-button" id="close-editor-button" type="button" aria-label="Close article editor" title="Close editor"><i data-lucide="x"></i></button></div></div>
+          <div class="cms-panel__head"><div><p class="cms-eyebrow">Article editor</p><h2 id="editor-heading">New article</h2><p class="cms-editor__state" id="editor-state">Complete the fields, then save the draft.</p></div><div class="cms-editor__controls"><span id="save-status" aria-live="polite"></span><button class="cms-icon-button" id="close-editor-button" type="button" aria-label="Back to articles" title="Back to articles"><i data-lucide="arrow-left"></i></button></div></div>
           <form id="article-form">
-            <div class="cms-form-grid">
-              <label>Article title<input name="title" required maxlength="180" autocomplete="off"></label>
-              <label>Public URL slug<input name="publicSlug" required maxlength="120" pattern="[a-z0-9]+(-[a-z0-9]+)*" placeholder="network-topic-guide" autocomplete="off"></label>
-              <label>Category<select name="category" required><option value="" disabled selected>Select a category</option><option>Business Continuity</option><option>Cloud &amp; Connectivity</option><option>Cyber Security</option><option>Infrastructure</option><option>IT Strategy</option><option>Managed Services</option><option>Microsoft 365</option><option>Network Security</option><option>Networking</option><option>Wireless Networking</option></select></label>
-              <label>Publication date<input name="publishedAt" type="date"></label>
-              <label class="cms-checkbox"><input name="isFeatured" type="checkbox"> Feature on blog listing</label>
-              <label>Featured position<input name="featuredRank" type="number" min="1" max="50" placeholder="Optional"></label>
-              <label>Featured image (required)<input name="featuredImage" type="file" accept="image/avif,image/jpeg,image/png,image/webp"></label>
-              <div class="cms-featured-image cms-form-grid__wide" id="featured-image-panel" hidden>
+            <nav class="cms-editor-tabs" role="tablist" aria-label="Article fields">
+              <button id="article-tab-content" type="button" role="tab" aria-controls="article-tab-panel" tabindex="0" class="is-active" data-editor-tab="content" aria-selected="true">Content</button>
+              <button id="article-tab-media" type="button" role="tab" aria-controls="article-tab-panel" tabindex="-1" data-editor-tab="media" aria-selected="false">Media</button>
+              <button id="article-tab-seo" type="button" role="tab" aria-controls="article-tab-panel" tabindex="-1" data-editor-tab="seo" aria-selected="false">SEO</button>
+              <button id="article-tab-settings" type="button" role="tab" aria-controls="article-tab-panel" tabindex="-1" data-editor-tab="settings" aria-selected="false">Settings</button>
+            </nav>
+            <div class="cms-actions cms-actions--sticky">
+              <button class="cms-button cms-button--secondary" id="preview-button" type="button">Preview</button>
+              <button class="cms-button cms-button--primary" type="submit">Save draft</button>
+              <button class="cms-button cms-button--dark" id="publish-live-button" type="button" disabled>Publish live</button>
+            </div>
+            <p id="validation-errors" class="cms-validation-errors" role="alert" aria-live="polite"></p>
+            <div class="cms-form-grid" id="article-tab-panel" role="tabpanel" aria-labelledby="article-tab-content">
+              <label data-editor-group="content">Article title<input name="title" required maxlength="180" autocomplete="off"></label>
+              <label data-editor-group="settings">Public URL slug<input name="publicSlug" required maxlength="120" pattern="[a-z0-9]+(-[a-z0-9]+)*" placeholder="network-topic-guide" autocomplete="off"></label>
+              <label data-editor-group="settings">Category<select name="category" required><option value="" disabled selected>Select a category</option><option>Business Continuity</option><option>Cloud &amp; Connectivity</option><option>Cyber Security</option><option>Infrastructure</option><option>IT Strategy</option><option>Managed Services</option><option>Microsoft 365</option><option>Network Security</option><option>Networking</option><option>Wireless Networking</option></select></label>
+              <label data-editor-group="settings">Publication date<input name="publishedAt" type="date"></label>
+              <label class="cms-checkbox" data-editor-group="settings"><input name="isFeatured" type="checkbox"> Feature on blog listing</label>
+              <label data-editor-group="settings">Featured position<input name="featuredRank" type="number" min="1" max="50" placeholder="Optional"></label>
+              <label data-editor-group="media">Featured image (required)<input name="featuredImage" type="file" accept="image/avif,image/jpeg,image/png,image/webp"></label>
+              <div class="cms-featured-image cms-form-grid__wide" id="featured-image-panel" data-editor-group="media" hidden>
                 <img id="featured-image-preview" alt="">
                 <div><strong>Current featured image</strong><p id="featured-image-name"></p><button class="cms-link-button" id="remove-featured-image" type="button">Remove and choose a new image</button></div>
               </div>
-              <label class="cms-form-grid__wide">Image alternative text<input name="featuredImageAlt" maxlength="250" autocomplete="off"></label>
-              <label class="cms-form-grid__wide">Excerpt<textarea name="excerpt" required maxlength="360" rows="3"></textarea></label>
-              <fieldset class="cms-rich-editor cms-form-grid__wide">
+              <label class="cms-form-grid__wide" data-editor-group="media">Image alternative text<input name="featuredImageAlt" maxlength="250" autocomplete="off"></label>
+              <label class="cms-form-grid__wide" data-editor-group="content">Excerpt<textarea name="excerpt" required maxlength="360" rows="3"></textarea></label>
+              <fieldset class="cms-rich-editor cms-form-grid__wide" data-editor-group="content">
                 <legend>Article body</legend>
                 <div class="cms-rich-editor__toolbar" role="toolbar" aria-label="Article formatting">
                   <select id="article-block-format" aria-label="Text format"><option value="p">Paragraph</option><option value="h1">Heading 1</option><option value="h2">Heading 2</option><option value="h3">Heading 3</option><option value="h4">Heading 4</option><option value="h5">Heading 5</option><option value="h6">Heading 6</option></select>
@@ -103,19 +135,19 @@
                 <textarea name="articleHtml" required hidden></textarea>
                 <input id="article-editor-image" type="file" accept="image/avif,image/jpeg,image/png,image/webp" hidden>
               </fieldset>
-              <label class="cms-form-grid__wide">SEO title<input name="seoTitle" maxlength="180" autocomplete="off"></label>
-              <label class="cms-form-grid__wide">SEO description<textarea name="seoDescription" maxlength="360" rows="3"></textarea></label>
-              <label class="cms-form-grid__wide">Schema markup (JSON-LD)<textarea name="schemaMarkup" rows="10" spellcheck="false" placeholder='{"@context":"https://schema.org","@type":"Article"}'></textarea></label>
+              <label class="cms-form-grid__wide" data-editor-group="seo">SEO title<input name="seoTitle" maxlength="180" autocomplete="off"><small class="cms-counter" id="seo-title-count">0 / 60 recommended</small></label>
+              <label class="cms-form-grid__wide" data-editor-group="seo">SEO description<textarea name="seoDescription" maxlength="360" rows="3"></textarea><small class="cms-counter" id="seo-description-count">0 / 155 recommended</small></label>
+              <section class="cms-search-preview cms-form-grid__wide" data-editor-group="seo" aria-label="Google search preview">
+                <small>Search result preview</small>
+                <strong id="search-preview-title">Article title</strong>
+                <span>network-consultancy.com/resources/blogs/<span id="search-preview-slug">article-slug</span></span>
+                <p id="search-preview-description">Your article description will appear here.</p>
+              </section>
+              <label class="cms-form-grid__wide" data-editor-group="seo">Schema markup (JSON-LD)<textarea name="schemaMarkup" rows="6" spellcheck="false" placeholder="Generated automatically if left blank."></textarea></label>
             </div>
             <input name="featuredImageUrl" type="hidden">
-            <div class="cms-actions">
-              <button class="cms-button cms-button--secondary" id="preview-button" type="button">Preview</button>
-              <button class="cms-button cms-button--primary" type="submit">Save draft</button>
-              <button class="cms-button cms-button--dark" id="publish-live-button" type="button" disabled>Publish live</button>
-            </div>
-            <p id="validation-errors" class="cms-validation-errors" role="alert" aria-live="polite"></p>
             <div class="cms-lifecycle-actions" id="cms-lifecycle-actions" hidden>
-              <button class="cms-link-button cms-link-button--danger" id="delete-post-button" type="button">Delete article</button>
+              <button class="cms-link-button" id="archive-post-button" type="button">Archive article</button>
             </div>
           </form>
         </section>
@@ -125,7 +157,7 @@
   </div>
 
   <dialog id="preview-dialog">
-    <div class="cms-dialog__head"><h2>Article preview</h2><button class="cms-icon-button" id="close-preview-button" type="button" aria-label="Close preview">x</button></div>
+    <div class="cms-dialog__head"><h2>Article preview</h2><div class="cms-preview-controls"><button type="button" data-preview-width="100%">Desktop</button><button type="button" data-preview-width="768px">Tablet</button><button type="button" data-preview-width="390px">Mobile</button><button class="cms-icon-button" id="close-preview-button" type="button" aria-label="Close preview">x</button></div></div>
     <article id="preview-content"></article>
   </dialog>
   <dialog id="publish-result-dialog" aria-labelledby="publish-result-title">

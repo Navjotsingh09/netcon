@@ -26,6 +26,18 @@ export default async function handler(request, response) {
   try {
     const notes = typeof request.body?.reviewerNotes === 'string' ? request.body.reviewerNotes.trim() : null;
     const client = supabaseAdmin();
+    if (action === 'publish_live') {
+      const { data: revision, error: revisionError } = await client
+        .from('blog_revisions')
+        .select('featured_image_alt')
+        .eq('id', revisionId(request))
+        .in('status', rule.from)
+        .maybeSingle();
+      if (revisionError) throw revisionError;
+      if (revision && !revision.featured_image_alt?.trim()) {
+        return errorResponse(request, response, 'Add alternative text for the featured image before publishing.', 422);
+      }
+    }
     let update = client.from('blog_revisions').update({ status: rule.to, reviewer_notes: notes, reviewed_by: rule.roles.includes('reviewer') ? access.user.id : null, updated_at: new Date().toISOString() }).eq('id', revisionId(request)).in('status', rule.from);
     if (['approve', 'request_changes'].includes(action)) update = update.neq('created_by', access.user.id);
     const { data: updated, error } = await update.select('id, post_id, status, created_by').maybeSingle();

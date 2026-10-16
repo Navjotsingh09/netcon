@@ -1,7 +1,8 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createClient } from '@supabase/supabase-js';
+import { cleanMalformedEmptyLinks } from '../lib/cms/content.js';
+import { createServerSupabaseClient } from '../lib/cms/supabase-client.js';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const blogDirectory = join(projectRoot, 'resources', 'blogs');
@@ -37,11 +38,11 @@ function extractArticleHtml(html) {
   }
   // The template (hero image, date/category meta, H1 title) is rendered
   // separately by the public page; only the body content is stored.
-  return match[1].trim()
+  return cleanMalformedEmptyLinks(match[1].trim()
     .replace(/^\s*<div class="blog-main__hero">[\s\S]*?<\/div>\s*/i, '')
     .replace(/^\s*<p class="blog-main__meta">[\s\S]*?<\/p>\s*/i, '')
     .replace(/^\s*<h1>[\s\S]*?<\/h1>\s*/i, '')
-    .trim();
+    .trim());
 }
 
 function dateToIso(dateLabel) {
@@ -107,20 +108,38 @@ async function importToSupabase(posts) {
   if (!supabaseUrl || !serviceRoleKey) {
     throw new Error('SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required for --supabase-import.');
   }
-  const client = createClient(supabaseUrl, serviceRoleKey, {
-    auth: { autoRefreshToken: false, persistSession: false }
-  });
+  const client = createServerSupabaseClient(supabaseUrl, serviceRoleKey);
   let inserted = 0;
   let skipped = 0;
+  let repaired = 0;
 
   for (const post of posts) {
     const { data: existing, error: lookupError } = await client
       .from('blog_posts')
-      .select('id')
+      .select('id, published_revision_id')
       .eq('public_slug', post.publicSlug)
       .maybeSingle();
     if (lookupError) throw lookupError;
     if (existing) {
+      if (existing.published_revision_id) {
+        const { data: publishedRevision, error: revisionLookupError } = await client
+          .from('blog_revisions')
+          .select('id, article_html')
+          .eq('id', existing.published_revision_id)
+          .maybeSingle();
+        if (revisionLookupError) throw revisionLookupError;
+        if (publishedRevision) {
+          const articleHtml = cleanMalformedEmptyLinks(publishedRevision.article_html || '');
+          if (articleHtml !== publishedRevision.article_html) {
+            const { error: repairError } = await client
+              .from('blog_revisions')
+              .update({ article_html: articleHtml })
+              .eq('id', publishedRevision.id);
+            if (repairError) throw repairError;
+            repaired += 1;
+          }
+        }
+      }
       skipped += 1;
       continue;
     }
@@ -162,7 +181,7 @@ async function importToSupabase(posts) {
     .from('blog_posts')
     .select('*', { count: 'exact', head: true });
   if (countError) throw countError;
-  console.log(`Supabase import complete: ${inserted} inserted, ${skipped} already present, ${count} total posts.`);
+  console.log(`Supabase import complete: ${inserted} inserted, ${skipped} already present, ${repaired} malformed links repaired, ${count} total posts.`);
 }
 
 const registry = await loadRegistry();

@@ -19,6 +19,9 @@ export default async function handler(request, response) {
     return json(request, response, { revision });
   } catch (error) {
     console.error('CMS publish request failed', error);
+    if (error.code === 'CMS_VALIDATION_ERROR') {
+      return errorResponse(request, response, error.message, 422);
+    }
     return errorResponse(request, response, 'The CMS could not publish that revision.');
   }
 }

@@ -2,6 +2,15 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {
+    "api/public/blogs.js": {
+      "regions": ["lhr1"]
+    },
+    "api/public/blog/[slug].js": {
+      "regions": ["lhr1"]
+    },
+    "api/public/pages/[slug].js": {
+      "regions": ["lhr1"]
+    },
     "api/cms/bootstrap.js": {
       "includeFiles": "reports/cms-blog-import-baseline.json"
     }

@@ -1,8 +1,8 @@
-import { createClient } from '@supabase/supabase-js';
 import { importBaselinePosts } from '../../lib/cms/bootstrap.js';
 import { supabaseAdmin } from '../../lib/cms/database.js';
 import { requiredEnv } from '../../lib/cms/env.js';
 import { errorResponse, json, options } from '../../lib/cms/http.js';
+import { createServerSupabaseClient } from '../../lib/cms/supabase-client.js';
 
 function tokenFromRequest(request) {
   const match = /^Bearer\s+(.+)$/i.exec(request.headers.authorization || '');
@@ -16,9 +16,7 @@ export default async function handler(request, response) {
   if (!token) return errorResponse(request, response, 'Authentication is required.', 401);
 
   try {
-    const authClient = createClient(requiredEnv('SUPABASE_URL'), requiredEnv('SUPABASE_PUBLISHABLE_KEY'), {
-      auth: { autoRefreshToken: false, persistSession: false }
-    });
+    const authClient = createServerSupabaseClient(requiredEnv('SUPABASE_URL'), requiredEnv('SUPABASE_PUBLISHABLE_KEY'));
     const { data: auth, error: authError } = await authClient.auth.getUser(token);
     if (authError || !auth.user?.email) return errorResponse(request, response, 'Your CMS session is invalid or has expired.', 401);
 

@@ -19,6 +19,16 @@ export default async function handler(request, response) {
   }
   try {
     const client = supabaseAdmin();
+    const { data: revision, error: revisionError } = await client
+      .from('blog_revisions')
+      .select('featured_image_alt')
+      .eq('id', revisionId(request))
+      .eq('status', 'approved')
+      .maybeSingle();
+    if (revisionError) throw revisionError;
+    if (revision && !revision.featured_image_alt?.trim()) {
+      return errorResponse(request, response, 'Add alternative text for the featured image before scheduling.', 422);
+    }
     const { data: scheduled, error } = await client.from('blog_revisions').update({ status: 'scheduled', scheduled_for: scheduledFor.toISOString(), reviewed_by: access.user.id, updated_at: new Date().toISOString() }).eq('id', revisionId(request)).eq('status', 'approved').neq('created_by', access.user.id).select('id, post_id, status, scheduled_for').maybeSingle();
     if (error) throw error;
     if (!scheduled) return errorResponse(request, response, 'That approved revision cannot be scheduled.', 409);

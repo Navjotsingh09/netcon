@@ -14,12 +14,21 @@ export default async function handler(request, response) {
   if (access.error) return errorResponse(request, response, access.error, access.status);
   const action = request.body?.action;
   const slug = slugFromRequest(request);
-  if (!['delete_post'].includes(action) || !slug) return errorResponse(request, response, 'Unsupported article action.', 422);
+  if (!['archive_post', 'unarchive_post', 'delete_post'].includes(action) || !slug) return errorResponse(request, response, 'Unsupported article action.', 422);
   try {
     const client = supabaseAdmin();
     const { data: post, error: postError } = await client.from('blog_posts').select('id, published_revision_id').eq('public_slug', slug).maybeSingle();
     if (postError) throw postError;
     if (!post) return errorResponse(request, response, 'Blog post not found.', 404);
+    if (action === 'archive_post' || action === 'unarchive_post') {
+      const archivedAt = action === 'archive_post' ? new Date().toISOString() : null;
+      const updates = action === 'archive_post' ? { archived_at: archivedAt, is_featured: false } : { archived_at: archivedAt };
+      const { error: archiveError } = await client.from('blog_posts').update(updates).eq('id', post.id);
+      if (archiveError) throw archiveError;
+      const { error: auditError } = await client.from('blog_audit_events').insert({ post_id: post.id, actor_id: access.user.id, action });
+      if (auditError) throw auditError;
+      return json(request, response, { action, publicSlug: slug });
+    }
     const { error: unlinkError } = await client.from('blog_posts').update({ published_revision_id: null }).eq('id', post.id);
     if (unlinkError) throw unlinkError;
     const { error: revisionError } = await client.from('blog_revisions').delete().eq('post_id', post.id);

@@ -16,13 +16,17 @@ export default async function handler(request, response) {
       .not('published_revision_id', 'is', null);
     if (postError) throw postError;
     const revisionIds = posts.map((post) => post.published_revision_id);
-    if (!revisionIds.length) return response.status(200).json({ posts: [] });
+    if (!revisionIds.length) {
+      response.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
+      return response.status(200).json({ posts: [] });
+    }
     const { data: revisions, error: revisionError } = await client
       .from('blog_revisions')
       .select('id, title, excerpt, category, featured_image_url, featured_image_alt, published_at')
       .in('id', revisionIds)
       .eq('status', 'published');
     if (revisionError) throw revisionError;
+    response.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
     const revisionsById = new Map(revisions.map((revision) => [revision.id, revision]));
     const publishedPosts = posts.map((post) => {
       const revision = revisionsById.get(post.published_revision_id);
@@ -40,7 +44,6 @@ export default async function handler(request, response) {
         featuredRank: post.featured_rank
       };
     }).filter(Boolean);
-    response.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
     return response.status(200).json({ posts: publishedPosts });
   } catch (error) {
     console.error('Public blog listing failed', error);

@@ -1,4 +1,5 @@
 import { supabaseAdmin } from '../../../lib/cms/database.js';
+import { cleanMalformedEmptyLinks } from '../../../lib/cms/content.js';
 
 function escapeHtml(value) {
   return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
@@ -17,7 +18,8 @@ export default async function handler(request, response) {
     const { data: post, error: postError } = await client.from('blog_posts').select('id, public_slug').eq('public_slug', slug).is('archived_at', null).maybeSingle();
     if (postError) throw postError;
     if (!post) return response.status(404).send('Blog post not found.');
-    const isStaging = (request.headers.host || '').startsWith('netcon-ivory.');
+    const isStaging = process.env.VERCEL_ENV !== 'production'
+      || (request.headers.host || '').startsWith('netcon-ivory.');
     const visibleStatuses = isStaging ? ['published', 'in_review', 'approved', 'scheduled'] : ['published'];
     const { data: revisions, error: revisionError } = await client.from('blog_revisions').select('*').eq('post_id', post.id).in('status', visibleStatuses).order('revision_number', { ascending: false }).limit(1);
     if (revisionError) throw revisionError;
@@ -25,7 +27,17 @@ export default async function handler(request, response) {
     if (!revision) return response.status(404).send('Blog post not found.');
     const canonical = `https://network-consultancy.com/resources/blogs/${post.public_slug}`;
     const date = revision.published_at ? new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date(revision.published_at)) : '';
-    const schemaMarkup = revision.schema_markup ? `<script type="application/ld+json">${JSON.stringify(revision.schema_markup).replace(/</g, '\\u003c')}</script>` : '';
+    const schema = revision.schema_markup || {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: revision.title,
+      description: revision.seo_description,
+      image: revision.featured_image_url,
+      datePublished: revision.published_at || undefined,
+      dateModified: revision.updated_at || undefined,
+      mainEntityOfPage: canonical
+    };
+    const schemaMarkup = `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>`;
     response.setHeader('Content-Type', 'text/html; charset=utf-8');
     response.setHeader('Cache-Control', isStaging ? 'no-store' : 'public, s-maxage=60, stale-while-revalidate=300');
     const previewBanner = isStaging && revision.status !== 'published'
@@ -84,7 +96,7 @@ ${previewBanner}
         </div>
         <p class="blog-main__meta"><span>${escapeHtml(date)}</span>${revision.category ? `<span>Category: ${escapeHtml(revision.category)}</span>` : ''}</p>
         <h1>${escapeHtml(revision.title)}</h1>
-        ${revision.article_html}
+        ${cleanMalformedEmptyLinks(revision.article_html)}
       </article>
       <aside class="blog-side" aria-label="Sidebar">
         <div class="blog-side__card">

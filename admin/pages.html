@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Pages editor | Network Consultancy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/styles.css">
+  <link rel="stylesheet" href="/admin/pages.css">
+  <script defer src="/admin/pages.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="cms-shell">
+    <header class="cms-header">
+      <a class="cms-brand" href="/" aria-label="Network Consultancy home">
+        <span class="cms-brand__mark">NC</span>
+        <span>Network Consultancy <small>Pages editor</small></span>
+      </a>
+      <nav class="pages-header-nav" aria-label="CMS navigation">
+        <a href="/admin">Blog editor</a>
+        <span id="pages-session-status" role="status">Checking CMS connection</span>
+        <button class="cms-button cms-button--secondary" id="pages-sign-out" type="button" hidden>Sign out</button>
+      </nav>
+    </header>
+
+    <main id="main-content" class="cms-main pages-main">
+      <section class="cms-welcome" aria-labelledby="pages-title">
+        <div>
+          <p class="cms-eyebrow">Pages publishing</p>
+          <h1 id="pages-title">Website pages</h1>
+          <p>Edit homepage content and reorder its existing sections. The design and layout stay protected.</p>
+        </div>
+      </section>
+
+      <section class="pages-notice" id="pages-notice" role="status" aria-live="polite" hidden></section>
+      <section class="pages-auth" id="pages-auth" hidden>
+        <h2>Sign in to the blog editor first</h2>
+        <p>The Pages editor uses the same secure account as the Blog editor.</p>
+        <a class="cms-button cms-button--primary" href="/admin">Open Blog editor to sign in</a>
+      </section>
+
+      <section class="pages-workspace" id="pages-workspace" hidden>
+        <section class="cms-panel pages-library" aria-labelledby="pages-library-title">
+          <div class="cms-panel__head">
+            <div>
+              <p class="cms-eyebrow">Content library</p>
+              <h2 id="pages-library-title">Pages</h2>
+            </div>
+          </div>
+          <div id="page-list" class="pages-list" aria-live="polite"></div>
+        </section>
+
+        <section class="cms-panel pages-editor" id="page-editor" hidden aria-labelledby="page-editor-title">
+          <div class="cms-panel__head pages-editor__head">
+            <div>
+              <p class="cms-eyebrow">Page editor</p>
+              <h2 id="page-editor-title">Home page</h2>
+              <p id="page-editor-state" class="pages-editor__state">Choose a page to begin.</p>
+            </div>
+            <div class="pages-editor__head-actions">
+              <button class="cms-button cms-button--secondary" id="page-preview" type="button" disabled>Preview draft</button>
+              <button class="cms-icon-button" id="page-editor-back" type="button" aria-label="Back to pages" title="Back to pages">←</button>
+            </div>
+          </div>
+
+          <div class="pages-order-panel">
+            <h3>Page sections</h3>
+            <p>Use the arrows to change section order. Your public layout changes only after a reviewer publishes.</p>
+            <ol id="page-section-order" class="pages-section-order"></ol>
+          </div>
+
+          <form id="page-form" novalidate>
+            <div id="page-fields" class="pages-fields"></div>
+            <div class="pages-review-notes" id="page-review-notes-panel" hidden>
+              <label for="page-review-notes">Reviewer notes</label>
+              <textarea id="page-review-notes" rows="3" maxlength="2000"></textarea>
+            </div>
+            <div class="cms-actions pages-actions">
+              <span id="page-save-status" role="status" aria-live="polite"></span>
+              <button class="cms-button cms-button--secondary" id="page-request-changes" type="button" hidden>Request changes</button>
+              <button class="cms-button cms-button--secondary" id="page-submit-review" type="button" hidden>Send for review</button>
+              <button class="cms-button cms-button--primary" type="submit">Save draft</button>
+              <button class="cms-button cms-button--dark" id="page-approve" type="button" hidden>Approve</button>
+              <button class="cms-button cms-button--dark" id="page-publish" type="button" hidden>Publish to staging</button>
+            </div>
+          </form>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="page-preview-dialog" class="pages-preview-dialog" aria-labelledby="page-preview-title">
+    <div class="cms-dialog__head">
+      <h2 id="page-preview-title">Draft preview</h2>
+      <button class="cms-icon-button" id="page-preview-close" type="button" aria-label="Close preview">×</button>
+    </div>
+    <iframe id="page-preview-frame" title="Preview of the homepage draft" sandbox></iframe>
+  </dialog>
+</body>
+</html>
