@@ -1,9 +1,16 @@
 # CMS Setup and Staging
 
 The CMS uses Supabase Authentication and Postgres. Blog editing is available at
-`/admin`; the current Pages-editor pilot is at `/admin/pages.html` and supports
-the homepage only. Pages without a published CMS revision continue to use their
-existing static HTML.
+`/admin`; the Pages editor is at `/admin/pages.html`. It supports the homepage
+and the public marketing pages registered in `lib/cms/pages.js` (About, Contact,
+Services, Solutions, Industries, Resources, and Case Studies). On those pages,
+the team can edit visible copy, links, and search metadata without changing
+their layout or media. Blog articles remain managed through the Blog editor;
+legal and utility pages are not part of the Pages editor.
+
+Page changes use the same draft, review, and publish workflow as the homepage.
+Pages without a published CMS revision continue to use their existing static
+HTML. The page templates load published revisions through `js/page-cms.js`.
 
 ## Environment safety
 
@@ -57,6 +64,13 @@ Confirm the migration ledger and target project before running or re-running
 database changes. Do not run the staging migration against Production.
 
 ## Existing blog content
+
+The Blog editor uses paragraph blocks for new text. On save, editor-generated
+`div` blocks and unwrapped inline article text are normalised to `<p>` elements;
+headings, lists, links, images, and existing paragraphs retain their structure.
+The same normalisation runs when serving CMS articles, so older posts with
+unwrapped text do not need to be republished or migrated to receive paragraph
+markup. The editor preview also wraps these paragraphs.
 
 Check that the static blog content can be imported before performing any
 database writes:

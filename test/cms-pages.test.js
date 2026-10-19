@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
-import { CMS_PAGE_DEFINITIONS, validatePageContent } from '../lib/cms/pages.js';
+import { CMS_PAGE_DEFINITIONS, getCmsPageDefinition, validatePageContent } from '../lib/cms/pages.js';
 
 const home = CMS_PAGE_DEFINITIONS.find((page) => page.slug === 'home');
 const homepageHtml = await readFile(new URL('../index.html', import.meta.url), 'utf8');
@@ -53,4 +53,42 @@ test('page content rejects unknown fields and incomplete section orders', () => 
   const result = validatePageContent(home, input);
   assert.match(result.errors.fields, /unsupported field/i);
   assert.match(result.errors.sectionOrder, /incomplete or invalid/i);
+});
+
+test('registered marketing pages have an editable page root and runtime', async () => {
+  const dynamicPages = CMS_PAGE_DEFINITIONS.filter((page) => page.dynamic);
+  assert.equal(dynamicPages.length, 36);
+  for (const page of dynamicPages) {
+    const html = await readFile(new URL(`..${page.path}`, import.meta.url), 'utf8');
+    assert.match(html, new RegExp(`<main\\b[^>]*data-cms-page="${page.slug}"[^>]*data-cms-dynamic`), page.path);
+    assert.ok(html.includes('<script src="/js/page-cms.js" defer></script>'), page.path);
+  }
+});
+
+test('dynamic page content accepts safe text and link fields', () => {
+  const definition = getCmsPageDefinition('about');
+  const result = validatePageContent(definition, {
+    fields: {
+      'meta:title': 'About Network Consultancy',
+      'meta:description': 'Network consultancy services.',
+      't:section[1]/p[1]#0': 'Updated page copy',
+      'u:section[1]/a[1]': '/contact.html'
+    },
+    sectionOrder: []
+  });
+  assert.deepEqual(result.errors, {});
+});
+
+test('dynamic page content rejects unsafe selectors, properties, and URLs', () => {
+  const definition = getCmsPageDefinition('about');
+  const result = validatePageContent(definition, {
+    fields: {
+      't:script[1]#0': 'Not allowed',
+      'u:section[1]/div[1]': 'https://example.com',
+      'u:section[1]/a[1]': 'javascript:alert(1)'
+    },
+    sectionOrder: []
+  });
+  assert.equal(result.errors['u:section[1]/a[1]'], 'Use an HTTPS, mailto, tel, site-relative, or anchor link.');
+  assert.match(result.errors.fields, /unsupported field/i);
 });

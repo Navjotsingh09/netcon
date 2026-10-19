@@ -13,6 +13,7 @@
   };
   let token = ''; let cmsUser = null; let posts = []; let currentPost = null; let editorDirty = false; let autosaveRunning = false; let isProductionDeployment = false;
   const articleEditor = document.getElementById('article-editor');
+  document.execCommand('defaultParagraphSeparator', false, 'p');
   const articleHtmlField = document.querySelector('[name="articleHtml"]');
   const articleEditorImage = document.getElementById('article-editor-image');
   const deleteArticleDialog = document.getElementById('delete-article-dialog');
@@ -70,7 +71,7 @@
     });
   }
   function safePreviewHtml(value) {
-    const allowedTags = new Set(['A', 'BLOCKQUOTE', 'BR', 'EM', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'IMG', 'LI', 'OL', 'P', 'STRONG', 'UL']);
+    const allowedTags = new Set(['A', 'BLOCKQUOTE', 'BR', 'DIV', 'EM', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'IMG', 'LI', 'OL', 'P', 'STRONG', 'UL']);
     const allowedAttributes = { A: new Set(['href', 'target', 'rel', 'class']), IMG: new Set(['src', 'alt', 'width', 'height']) };
     const documentFragment = new DOMParser().parseFromString(String(value || ''), 'text/html');
     documentFragment.body.querySelectorAll('*').forEach((node) => {
@@ -82,6 +83,28 @@
       if (node.tagName === 'A' && node.getAttribute('class') !== 'article-cta') node.removeAttribute('class');
       if (node.tagName === 'IMG' && !/^(https?:|\/)/i.test(node.getAttribute('src') || '')) node.remove();
     });
+    function wrapParagraphs(container) {
+      let paragraph = null;
+      [...container.childNodes].forEach((node) => {
+        if (node.nodeType === Node.ELEMENT_NODE && /^(BLOCKQUOTE|DIV|H[1-6]|IMG|LI|OL|P|UL)$/.test(node.tagName)) {
+          paragraph = null;
+          if (node.tagName === 'DIV') {
+            wrapParagraphs(node);
+            node.replaceWith(...node.childNodes);
+          } else if (['BLOCKQUOTE', 'LI', 'OL', 'UL'].includes(node.tagName)) {
+            node.querySelectorAll('div').forEach((block) => { wrapParagraphs(block); block.replaceWith(...block.childNodes); });
+          }
+        } else {
+          if (!paragraph && node.nodeType === Node.TEXT_NODE && !node.textContent.trim()) return;
+          if (!paragraph) {
+            paragraph = documentFragment.createElement('p');
+            container.insertBefore(paragraph, node);
+          }
+          paragraph.appendChild(node);
+        }
+      });
+    }
+    wrapParagraphs(documentFragment.body);
     return documentFragment.body.innerHTML;
   }
   const fieldLabels = {

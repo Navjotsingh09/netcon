@@ -56,6 +56,54 @@
     });
   }
 
+  const editableTextTags = new Set(['A', 'BLOCKQUOTE', 'BUTTON', 'EM', 'FIGCAPTION', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'LI', 'P', 'SMALL', 'SPAN', 'STRONG']);
+
+  function resolveElementPath(root, path) {
+    if (!path) return root;
+    let current = root;
+    for (const part of path.split('/')) {
+      const match = /^([a-z][a-z0-9-]*)\[([1-9]\d*)\]$/.exec(part);
+      if (!match) return null;
+      const [, tag, index] = match;
+      current = Array.from(current.children).filter(function (child) {
+        return child.tagName.toLowerCase() === tag;
+      })[Number(index) - 1];
+      if (!current) return null;
+    }
+    return current;
+  }
+
+  function applyDynamicFields(root, fields) {
+    Object.entries(fields).forEach(function ([key, value]) {
+      if (typeof value !== 'string') return;
+      if (key === 'meta:title') {
+        document.title = value;
+        return;
+      }
+      if (key === 'meta:description') {
+        const description = document.querySelector('meta[name="description"]');
+        if (description) description.setAttribute('content', value);
+        return;
+      }
+      const textMatch = /^t:(.*)#(\d+)$/.exec(key);
+      if (textMatch) {
+        const element = resolveElementPath(root, textMatch[1]);
+        if (!element || !editableTextTags.has(element.tagName)) return;
+        const textNodes = Array.from(element.childNodes).filter(function (child) {
+          return child.nodeType === Node.TEXT_NODE;
+        });
+        const textNode = textNodes[Number(textMatch[2])];
+        if (textNode) textNode.nodeValue = value;
+        return;
+      }
+      const urlMatch = /^u:(.+)$/.exec(key);
+      if (urlMatch) {
+        const anchor = resolveElementPath(root, urlMatch[1]);
+        if (anchor?.tagName === 'A' && isSafeUrl(value, 'href')) anchor.setAttribute('href', value);
+      }
+    });
+  }
+
   function reorderSections(root, order) {
     if (!Array.isArray(order)) return;
     const sections = new Map(
@@ -84,8 +132,11 @@
     const result = await response.json();
     const content = result.revision?.content;
     if (!content || typeof content !== 'object') throw new Error('The published page content is invalid.');
-    applyFields(document, content.fields || {});
-    reorderSections(root, content.sectionOrder);
+    if (root.hasAttribute('data-cms-dynamic')) applyDynamicFields(root, content.fields || {});
+    else {
+      applyFields(document, content.fields || {});
+      reorderSections(root, content.sectionOrder);
+    }
   }
 
   const root = document.querySelector('[data-cms-page]');

@@ -154,7 +154,7 @@
 
   <div id="site-navbar"></div>
   <script src="/js/navbar.js"></script>
-  <main id="main">
+  <main id="main" data-cms-page="industries-multi-site-businesses" data-cms-dynamic>
 
   <section class="svcs-hero" aria-label="Industries hero">
     <div class="svcs-hero__wrap">
@@ -440,5 +440,6 @@
     document.getElementById('biz-next').addEventListener('click', function () { i = (i + 1) % total; render(); });
   })();
   </script>
+  <script src="/js/page-cms.js" defer></script>
 </body>
 </html>

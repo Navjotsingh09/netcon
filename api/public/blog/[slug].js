@@ -1,5 +1,5 @@
 import { supabaseAdmin } from '../../../lib/cms/database.js';
-import { cleanMalformedEmptyLinks } from '../../../lib/cms/content.js';
+import { cleanMalformedEmptyLinks, sanitizeArticleHtml } from '../../../lib/cms/content.js';
 
 function escapeHtml(value) {
   return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
@@ -96,7 +96,7 @@ ${previewBanner}
         </div>
         <p class="blog-main__meta"><span>${escapeHtml(date)}</span>${revision.category ? `<span>Category: ${escapeHtml(revision.category)}</span>` : ''}</p>
         <h1>${escapeHtml(revision.title)}</h1>
-        ${cleanMalformedEmptyLinks(revision.article_html)}
+        ${sanitizeArticleHtml(cleanMalformedEmptyLinks(revision.article_html))}
       </article>
       <aside class="blog-side" aria-label="Sidebar">
         <div class="blog-side__card">

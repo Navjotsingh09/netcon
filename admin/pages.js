@@ -134,11 +134,100 @@
     return '';
   }
 
+  const editableTextTags = new Set(['A', 'BLOCKQUOTE', 'BUTTON', 'EM', 'FIGCAPTION', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'LI', 'P', 'SMALL', 'SPAN', 'STRONG']);
+
+  function elementPath(element, root) {
+    const parts = [];
+    let current = element;
+    while (current && current !== root) {
+      const siblings = [...current.parentElement.children].filter((sibling) => sibling.tagName === current.tagName);
+      parts.unshift(`${current.tagName.toLowerCase()}[${siblings.indexOf(current) + 1}]`);
+      current = current.parentElement;
+    }
+    return current === root ? parts.join('/') : null;
+  }
+
+  function sectionForElement(element, root) {
+    const section = element.closest('section');
+    if (!section || !root.contains(section)) return { id: 'page', label: 'Page content' };
+    const heading = section.querySelector('h1, h2, h3, h4, h5, h6');
+    const id = elementPath(section, root) || 'page';
+    return { id, label: heading?.textContent.trim().replace(/\s+/g, ' ').slice(0, 100) || 'Page section' };
+  }
+
+  function fieldLabel(element, value, kind) {
+    const tag = element.tagName.toLowerCase();
+    const excerpt = String(value || '').replace(/\s+/g, ' ').trim().slice(0, 70);
+    return `${kind} · ${tag}${excerpt ? ` · ${excerpt}` : ''}`;
+  }
+
+  function readDynamicTemplate(template, definition) {
+    const root = template.querySelector(`[data-cms-page="${definition.slug}"]`);
+    if (!root) throw new Error(`The ${definition.title} template is missing its CMS page root.`);
+    const fields = {
+      'meta:title': template.title,
+      'meta:description': template.querySelector('meta[name="description"]')?.getAttribute('content') || ''
+    };
+    const sections = new Map();
+    const fieldsSchema = [
+      { key: 'meta:title', label: 'Search title', section: 'search-metadata', type: 'text', property: 'title', maxLength: 180 },
+      { key: 'meta:description', label: 'Search description', section: 'search-metadata', type: 'textarea', property: 'content', maxLength: 360 }
+    ];
+    sections.set('search-metadata', { id: 'search-metadata', label: 'Search metadata' });
+
+    const walker = template.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      const element = node.parentElement;
+      if (!editableTextTags.has(element.tagName) || element.closest('form, nav, script, style, svg, template, noscript')) continue;
+      const value = node.nodeValue;
+      if (!value.trim()) continue;
+      const path = elementPath(element, root);
+      if (path === null) continue;
+      const textNodes = [...element.childNodes].filter((child) => child.nodeType === Node.TEXT_NODE);
+      const textIndex = textNodes.indexOf(node);
+      const key = `t:${path}#${textIndex}`;
+      const section = sectionForElement(element, root);
+      sections.set(section.id, section);
+      fields[key] = value;
+      fieldsSchema.push({
+        key,
+        label: fieldLabel(element, value, 'Text'),
+        section: section.id,
+        type: value.length > 90 || ['P', 'LI', 'BLOCKQUOTE'].includes(element.tagName) ? 'textarea' : 'text',
+        property: 'textContent',
+        maxLength: 5000
+      });
+    }
+
+    root.querySelectorAll('a[href]').forEach((element) => {
+      if (element.closest('form, nav, script, style, svg, template, noscript')) return;
+      const path = elementPath(element, root);
+      if (path === null) return;
+      const key = `u:${path}`;
+      const value = element.getAttribute('href') || '';
+      const section = sectionForElement(element, root);
+      sections.set(section.id, section);
+      fields[key] = value;
+      fieldsSchema.push({
+        key,
+        label: fieldLabel(element, element.textContent, 'Link URL'),
+        section: section.id,
+        type: 'url',
+        property: 'href',
+        maxLength: 500
+      });
+    });
+
+    return { fields, sectionOrder: [], fieldsSchema, sections: [...sections.values()] };
+  }
+
   async function readTemplateDefaults(definition) {
     const response = await fetch(definition.path, { cache: 'no-store' });
     if (!response.ok) throw new Error(`Could not load the current ${definition.title.toLowerCase()} template.`);
     const html = await response.text();
     const template = new DOMParser().parseFromString(html, 'text/html');
+    if (definition.dynamic) return readDynamicTemplate(template, definition);
     const values = {};
 
     definition.fields.forEach((field) => {
@@ -258,10 +347,21 @@
       const nextDefinition = data.definition;
       const nextRevision = data.revision;
       let content = nextRevision?.content;
-      if (!content) content = await readTemplateDefaults(nextDefinition);
-      activeDefinition = nextDefinition;
+      const templateDefaults = nextDefinition.dynamic ? await readTemplateDefaults(nextDefinition) : null;
+      if (!content) content = templateDefaults || await readTemplateDefaults(nextDefinition);
+      else if (templateDefaults) {
+        content = {
+          ...content,
+          fields: { ...templateDefaults.fields, ...(content.fields || {}) },
+          sectionOrder: []
+        };
+      }
+      activeDefinition = templateDefaults
+        ? { ...nextDefinition, fields: templateDefaults.fieldsSchema, sections: templateDefaults.sections }
+        : nextDefinition;
       activeRevision = nextRevision;
       sectionOrder = [...(content.sectionOrder || activeDefinition.sections.map((section) => section.id))];
+      elements.sectionOrder.closest('.pages-order-panel').hidden = Boolean(activeDefinition.dynamic);
       elements.editorTitle.textContent = activeDefinition.title;
       elements.editorState.textContent = statusText(activeRevision);
       buildFields(content);
@@ -336,6 +436,25 @@
 
   function applyDraftToDocument(template, definition, content) {
     const fields = content.fields || {};
+    if (definition.dynamic) {
+      const root = template.querySelector(`[data-cms-page="${definition.slug}"]`);
+      if (!root) throw new Error(`The ${definition.title} template is missing its CMS page root.`);
+      applyDynamicFields(template, root, fields);
+      template.querySelectorAll('script, input[type="hidden"]').forEach((node) => node.remove());
+      template.querySelectorAll('*').forEach((element) => {
+        Array.from(element.attributes).forEach((attribute) => {
+          if (/^on/i.test(attribute.name)) element.removeAttribute(attribute.name);
+        });
+      });
+      template.querySelectorAll('form').forEach((form) => {
+        form.removeAttribute('action');
+        form.querySelectorAll('input, textarea, button, select').forEach((control) => { control.disabled = true; });
+      });
+      const base = template.createElement('base');
+      base.href = `${window.location.origin}/`;
+      template.head.prepend(base);
+      return `<!doctype html>${template.documentElement.outerHTML}`;
+    }
     definition.fields.forEach((field) => {
       const attribute = field.property === 'href' || field.property === 'src' ? 'data-cms-url-field' : 'data-cms-field';
       template.querySelectorAll(`[${attribute}]`).forEach((element) => {
@@ -384,6 +503,47 @@
     base.href = `${window.location.origin}/`;
     template.head.prepend(base);
     return `<!doctype html>${template.documentElement.outerHTML}`;
+  }
+
+  function resolveElementPath(root, path) {
+    if (!path) return root;
+    let current = root;
+    for (const part of path.split('/')) {
+      const match = /^([a-z][a-z0-9-]*)\[(\d+)\]$/.exec(part);
+      if (!match) return null;
+      const [, tag, index] = match;
+      current = [...current.children].filter((child) => child.tagName.toLowerCase() === tag)[Number(index) - 1];
+      if (!current) return null;
+    }
+    return current;
+  }
+
+  function applyDynamicFields(template, root, fields) {
+    Object.entries(fields).forEach(([key, value]) => {
+      if (typeof value !== 'string') return;
+      if (key === 'meta:title') {
+        template.title = value;
+        return;
+      }
+      if (key === 'meta:description') {
+        const description = template.querySelector('meta[name="description"]');
+        if (description) description.setAttribute('content', value);
+        return;
+      }
+      const textMatch = /^t:(.*)#(\d+)$/.exec(key);
+      if (textMatch) {
+        const element = resolveElementPath(root, textMatch[1]);
+        const textNodes = element && [...element.childNodes].filter((child) => child.nodeType === Node.TEXT_NODE);
+        const textNode = textNodes?.[Number(textMatch[2])];
+        if (textNode && editableTextTags.has(element.tagName)) textNode.nodeValue = value;
+        return;
+      }
+      const urlMatch = /^u:(.+)$/.exec(key);
+      if (urlMatch) {
+        const anchor = resolveElementPath(root, urlMatch[1]);
+        if (anchor?.tagName === 'A' && safeCmsUrl(value, 'href') !== null) anchor.setAttribute('href', value);
+      }
+    });
   }
 
   function safeCmsUrl(value, property) {
