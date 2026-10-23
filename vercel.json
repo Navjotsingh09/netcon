@@ -4,6 +4,30 @@
   "functions": {
     "api/cms/bootstrap.js": {
       "includeFiles": "reports/cms-blog-import-baseline.json"
+    },
+    "api/public/site.js": {
+      "regions": [
+        "lhr1"
+      ],
+      "includeFiles": "{*.html,services/*.html,solutions/*.html,industries/*.html,resources/*.html,case-studies/*.html}"
+    },
+    "api/cms/pages/[slug].js": {
+      "regions": [
+        "lhr1"
+      ],
+      "includeFiles": "{*.html,services/*.html,solutions/*.html,industries/*.html,resources/*.html,case-studies/*.html}"
+    },
+    "api/cms/pages/[slug]/preview.js": {
+      "regions": [
+        "lhr1"
+      ],
+      "includeFiles": "{*.html,services/*.html,solutions/*.html,industries/*.html,resources/*.html,case-studies/*.html}"
+    },
+    "api/cms/pages/[slug]/workflow.js": {
+      "regions": [
+        "lhr1"
+      ],
+      "includeFiles": "{*.html,services/*.html,solutions/*.html,industries/*.html,resources/*.html,case-studies/*.html}"
     }
   },
   "rewrites": [
@@ -398,5 +422,100 @@
       "destination": "/",
       "permanent": false
     }
-  ]
+  ],
+  "proxy": {
+    "entrypoint": "middleware.js",
+    "matcher": [
+      "/",
+      "/index",
+      "/index.html",
+      "/about",
+      "/about.html",
+      "/contact",
+      "/contact.html",
+      "/privacy-policy",
+      "/privacy-policy.html",
+      "/terms-of-service",
+      "/terms-of-service.html",
+      "/cookie-policy",
+      "/cookie-policy.html",
+      "/accessibility",
+      "/accessibility.html",
+      "/complaint-form",
+      "/complaint-form.html",
+      "/contact-form",
+      "/contact-form.html",
+      "/services",
+      "/services/index.html",
+      "/services/index",
+      "/services/business-continuity-and-network-resilience",
+      "/services/business-continuity-and-network-resilience.html",
+      "/services/firewall-and-network-security",
+      "/services/firewall-and-network-security.html",
+      "/services/managed-network-support",
+      "/services/managed-network-support.html",
+      "/services/managed-wireless-lan",
+      "/services/managed-wireless-lan.html",
+      "/services/network-consultancy",
+      "/services/network-consultancy.html",
+      "/services/network-design-and-deployment",
+      "/services/network-design-and-deployment.html",
+      "/services/network-installations",
+      "/services/network-installations.html",
+      "/services/network-support",
+      "/services/network-support.html",
+      "/services/remote-working-solutions",
+      "/services/remote-working-solutions.html",
+      "/solutions",
+      "/solutions/index.html",
+      "/solutions/index",
+      "/solutions/ai-ready-infrastructure-review",
+      "/solutions/ai-ready-infrastructure-review.html",
+      "/solutions/cyber-security-review",
+      "/solutions/cyber-security-review.html",
+      "/solutions/network-health-check",
+      "/solutions/network-health-check.html",
+      "/industries",
+      "/industries/index.html",
+      "/industries/index",
+      "/industries/charity",
+      "/industries/charity.html",
+      "/industries/educational-institutes",
+      "/industries/educational-institutes.html",
+      "/industries/financial-services",
+      "/industries/financial-services.html",
+      "/industries/healthcare-and-clinics",
+      "/industries/healthcare-and-clinics.html",
+      "/industries/internal-it-teams",
+      "/industries/internal-it-teams.html",
+      "/industries/legal-firms",
+      "/industries/legal-firms.html",
+      "/industries/manufacturing",
+      "/industries/manufacturing.html",
+      "/industries/multi-site-businesses",
+      "/industries/multi-site-businesses.html",
+      "/industries/recruitment-agencies",
+      "/industries/recruitment-agencies.html",
+      "/resources",
+      "/resources/index.html",
+      "/resources/index",
+      "/resources/downloads",
+      "/resources/downloads.html",
+      "/resources/guides",
+      "/resources/guides.html",
+      "/case-studies",
+      "/case-studies/index.html",
+      "/case-studies/index",
+      "/case-studies/antal-international",
+      "/case-studies/antal-international.html",
+      "/case-studies/auriga-networks",
+      "/case-studies/auriga-networks.html",
+      "/case-studies/harry-dobbs-design",
+      "/case-studies/harry-dobbs-design.html",
+      "/case-studies/nta-core-network-upgrade",
+      "/case-studies/nta-core-network-upgrade.html",
+      "/case-studies/senate-computers",
+      "/case-studies/senate-computers.html"
+    ]
+  }
 }

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.0",
+    "htmlparser2": "^10.1.0",
     "sanitize-html": "^2.16.0"
   }
 }

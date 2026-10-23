@@ -12,5 +12,5 @@ export default function handler(request, response) {
       message: 'Supabase has not been connected to this deployment yet.'
     });
   }
-  return json(request, response, { configured: true, publishableKey, supabaseUrl });
+  return json(request, response, { configured: true, publishableKey, supabaseUrl, environment: process.env.VERCEL_ENV || 'development' });
 }
