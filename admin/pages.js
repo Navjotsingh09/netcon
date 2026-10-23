@@ -26,6 +26,8 @@
     approve: document.getElementById('page-approve'),
     publish: document.getElementById('page-publish')
   };
+  const maxImageUploadBytes = 3 * 1024 * 1024;
+  const allowedImageTypes = new Set(['image/avif', 'image/jpeg', 'image/png', 'image/webp']);
 
   let supabase;
   let token = '';
@@ -36,6 +38,7 @@
   let sectionOrder = [];
   let dirty = false;
   let busy = false;
+  let uploadsInProgress = 0;
   let isProductionDeployment = false;
 
   function setNotice(message, tone) {
@@ -53,7 +56,7 @@
       elements.requestChanges,
       elements.approve,
       elements.publish
-    ].forEach((button) => { button.disabled = value; });
+    ].forEach((button) => { button.disabled = value || uploadsInProgress > 0; });
   }
 
   function escapeHtml(value) {
@@ -124,6 +127,7 @@
 
   function buildFields(content) {
     elements.fields.replaceChildren();
+    let imageFieldIndex = 0;
     activeDefinition.sections.forEach((section) => {
       const fields = activeDefinition.fields.filter((field) => field.section === section.id);
       if (!fields.length) return;
@@ -165,9 +169,120 @@
         input.addEventListener('input', () => { counter.textContent = `${input.value.length} / ${field.maxLength} characters`; });
         label.append(counter);
         group.append(label);
+        if (field.key.startsWith('src:')) {
+          addImageUploadControl(field, group, imageFieldIndex);
+          imageFieldIndex += 1;
+        }
       });
       elements.fields.append(group);
     });
+  }
+
+  function addImageUploadControl(field, group, index) {
+    const container = document.createElement('div');
+    container.className = 'pages-image-upload';
+
+    const label = document.createElement('label');
+    label.htmlFor = `page-image-file-${index}`;
+    label.textContent = 'Choose a replacement image';
+
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.id = label.htmlFor;
+    fileInput.accept = '.avif,.jpg,.jpeg,.png,.webp,image/avif,image/jpeg,image/png,image/webp';
+    fileInput.setAttribute('aria-label', `Choose a replacement image for ${field.label}`);
+
+    const uploadButton = document.createElement('button');
+    uploadButton.className = 'cms-button cms-button--secondary';
+    uploadButton.type = 'button';
+    uploadButton.textContent = 'Upload image';
+    uploadButton.disabled = true;
+
+    const status = document.createElement('p');
+    status.className = 'pages-image-upload__status';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files?.[0];
+      uploadButton.disabled = !file;
+      status.dataset.tone = '';
+      status.textContent = file ? `${file.name} is ready to upload.` : '';
+    });
+
+    uploadButton.addEventListener('click', async () => {
+      const file = fileInput.files?.[0];
+      if (!file) return;
+      if (busy || uploadsInProgress) {
+        status.dataset.tone = 'error';
+        status.textContent = 'Finish the current CMS action before uploading another image.';
+        return;
+      }
+      if (!allowedImageTypes.has(file.type)) {
+        status.dataset.tone = 'error';
+        status.textContent = 'Choose a JPEG, PNG, WebP, or AVIF image.';
+        return;
+      }
+      if (!file.size || file.size > maxImageUploadBytes) {
+        status.dataset.tone = 'error';
+        status.textContent = 'Image uploads must be larger than 0 bytes and no larger than 3 MB.';
+        return;
+      }
+
+      uploadsInProgress += 1;
+      setBusy(busy);
+      uploadButton.disabled = true;
+      fileInput.disabled = true;
+      status.dataset.tone = '';
+      status.textContent = 'Uploading image…';
+      try {
+        const encodedData = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            if (typeof reader.result !== 'string') {
+              reject(new Error('The selected image could not be read.'));
+              return;
+            }
+            resolve(reader.result.split(',')[1] || '');
+          };
+          reader.onerror = () => reject(reader.error || new Error('The selected image could not be read.'));
+          reader.readAsDataURL(file);
+        });
+        const altKey = field.key.replace(/^src:/, 'alt:');
+        const altField = [...elements.fields.querySelectorAll('[data-field-key]')]
+          .find((input) => input.dataset.fieldKey === altKey);
+        const result = await api('/api/cms/media', {
+          method: 'POST',
+          body: JSON.stringify({
+            filename: file.name,
+            contentType: file.type,
+            data: encodedData,
+            altText: altField?.value || ''
+          })
+        });
+        const imageUrl = result.media?.blobUrl;
+        if (!imageUrl) throw new Error('The upload completed without returning an image URL.');
+        const urlField = [...elements.fields.querySelectorAll('[data-field-key]')]
+          .find((input) => input.dataset.fieldKey === field.key);
+        if (!urlField) throw new Error('The image was uploaded, but its page field is no longer available.');
+        urlField.value = imageUrl;
+        urlField.dispatchEvent(new Event('input', { bubbles: true }));
+        fileInput.value = '';
+        status.dataset.tone = 'success';
+        status.textContent = 'Image uploaded and added to this draft. Save the draft to keep the change.';
+      } catch (error) {
+        status.dataset.tone = 'error';
+        status.textContent = error.message || 'The image could not be uploaded.';
+      } finally {
+        uploadsInProgress -= 1;
+        setBusy(busy);
+        fileInput.disabled = false;
+        uploadButton.disabled = !fileInput.files?.length;
+      }
+    });
+
+    container.append(label, fileInput, uploadButton, status);
+    group.append(container);
   }
 
   function renderSectionOrder() {
@@ -211,7 +326,7 @@
   }
 
   function preventLeave(event) {
-    if (!dirty) return;
+    if (!dirty && !uploadsInProgress) return;
     event.preventDefault();
     event.returnValue = '';
   }
@@ -234,6 +349,10 @@
   }
 
   async function openPage(slug) {
+    if (uploadsInProgress) {
+      setNotice('Wait for the image upload to finish before opening another page.', 'warning');
+      return;
+    }
     if (dirty && activeDefinition?.slug !== slug && !window.confirm('Discard your unsaved changes and open another page?')) return;
     try {
       setNotice('', '');
@@ -405,6 +524,10 @@
     });
     document.getElementById('page-preview-close').addEventListener('click', () => elements.previewDialog.close());
     document.getElementById('page-editor-back').addEventListener('click', () => {
+      if (uploadsInProgress) {
+        setNotice('Wait for the image upload to finish before leaving this page.', 'warning');
+        return;
+      }
       if (dirty && !window.confirm('Discard your unsaved changes and return to the page list?')) return;
       dirty = false;
       window.removeEventListener('beforeunload', preventLeave);

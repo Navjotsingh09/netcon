@@ -223,6 +223,53 @@
   font-weight: 400;
 }
 
+.pages-image-upload__notice {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--cms-line);
+  border-radius: 8px;
+  color: var(--cms-muted);
+  font-size: 14px;
+}
+
+.pages-image-upload {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  margin: -4px 0 14px;
+}
+
+.pages-image-upload label {
+  font-weight: 600;
+}
+
+.pages-image-upload input[type="file"] {
+  max-width: 100%;
+  color: var(--cms-ink);
+  font: inherit;
+}
+
+.pages-image-upload input[type="file"]:focus-visible,
+.pages-image-upload button:focus-visible {
+  outline: 3px solid var(--cms-blue);
+  outline-offset: 2px;
+}
+
+.pages-image-upload__status {
+  min-height: 1.25em;
+  margin: 0;
+  color: var(--cms-muted);
+  font-size: 14px;
+}
+
+.pages-image-upload__status[data-tone="error"] {
+  color: var(--pages-danger-ink);
+}
+
+.pages-image-upload__status[data-tone="success"] {
+  color: var(--pages-success-ink);
+}
+
 .pages-field [aria-invalid="true"] {
   border-color: var(--pages-danger-ink);
 }

@@ -17,6 +17,14 @@ Shared JavaScript-injected sections and sections missing from a template cannot
 be edited here. Empty main content, such as the contact-form template, offers
 only SEO fields. Preview disables scripts and form submissions.
 
+Image fields include an upload control for JPEG, PNG, WebP and AVIF files up to
+3 MB. Uploads use the authenticated `/api/cms/media` endpoint and the existing
+public `blog-media` bucket; the returned image URL is placed in the page draft,
+and the separate alt-text field remains editable. Uploaded files are public
+immediately, even before a page draft is saved or published, so only upload
+images approved for public website use. Preview and Production share storage;
+do not upload throwaway test files.
+
 Apply `db/migrations/004_page_cms.sql` only after confirming the intended
 Supabase project and existing migration ledger. This creates page workflow
 tables and functions; it does not seed or publish pages. Do not rerun it if
