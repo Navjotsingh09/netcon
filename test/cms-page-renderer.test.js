@@ -62,6 +62,39 @@ test('preview uses the same transformed content and disables scripts and submiss
   assert.equal(select(html, (node) => node.name === 'base')[0].attribs.href, '/about.html');
 });
 
+test('preview block markers survive heading changes and never leak into public rendering', () => {
+  const content = describePageTemplate(fixture, definition);
+  content.fields['heading:section[1]/h2[1]'] = 'h1';
+  const preview = renderPageContent(fixture, definition, content, { preview: true });
+  const heading = select(preview, (node) => node.name === 'h1')[0];
+  assert.deepEqual(JSON.parse(heading.attribs['data-page-editor-fields']),
+    ['t:section[1]/h2[1]#0', 'heading:section[1]/h2[1]']);
+  const image = select(preview, (node) => node.name === 'img')[0];
+  assert.ok(JSON.parse(image.attribs['data-page-editor-fields']).includes('src:section[1]/picture[1]/img[1]'));
+  assert.ok(!renderPageContent(fixture, definition, content).includes('data-page-editor-fields'));
+});
+
+test('same-origin preview still removes embedded browsing contexts, refresh and event handlers', () => {
+  const unsafe = fixture.replace('<p>Before', '<iframe src="/admin"></iframe><object data="/admin"></object><embed src="/admin"><p onmouseover="alert(1)">Before')
+    .replace('<title>', '<meta http-equiv="refresh" content="0;url=/admin"><title>');
+  const preview = renderPageContent(unsafe, definition, describePageTemplate(unsafe, definition), { preview: true });
+  assert.equal(select(preview, (node) => ['iframe', 'object', 'embed'].includes(node.name)).length, 0);
+  assert.ok(!preview.includes('onmouseover'));
+  assert.equal(select(preview, (node) => node.name === 'meta' && node.attribs['http-equiv'] === 'refresh').length, 0);
+  assert.match(select(preview, (node) => node.name === 'meta' && node.attribs['http-equiv'] === 'Content-Security-Policy')[0].attribs.content, /script-src 'none'/);
+});
+
+test('glyph-only copy remains in the content contract but is marked decorative for editor presentation', () => {
+  const html = fixture.replace('<p>Before', '<button>‹</button><button>+</button><p>Before');
+  const content = describePageTemplate(html, definition);
+  const decorative = content.fieldsSchema.filter((field) => field.decorative);
+  assert.equal(decorative.length, 2);
+  assert.deepEqual(decorative.map((field) => content.fields[field.key]), ['‹', '+']);
+  assert.ok(content.fieldsSchema.filter((field) => field.key.startsWith('t:') && field.label.startsWith('Heading:')).every((field) => field.type === 'text'));
+  assert.deepEqual(select(renderPageContent(html, definition, content), (node) => node.name === 'button')
+    .slice(0, 2).map((node) => DomUtils.textContent(node)), ['‹', '+']);
+});
+
 test('all registered pages expose valid defaults and can be server-rendered', async () => {
   assert.equal(CMS_PAGE_DEFINITIONS.length, 42);
   for (const page of CMS_PAGE_DEFINITIONS) {

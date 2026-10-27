@@ -37,10 +37,15 @@
       </section>
 
       <section class="pages-notice" id="pages-notice" role="status" aria-live="polite" hidden></section>
+      <button class="cms-button cms-button--primary" id="pages-sign-in-again" type="button" hidden>Sign in again</button>
       <section class="pages-auth" id="pages-auth" hidden>
-        <h2>Sign in to the blog editor first</h2>
-        <p>The Pages editor uses the same secure account as the Blog editor.</p>
-        <a class="cms-button cms-button--primary" href="/admin">Open Blog editor to sign in</a>
+        <h2>Sign in to Network Consultancy CMS</h2>
+        <p>One account and session for Pages and Blog editing. Unsaved recovery copies stay in this browser tab.</p>
+        <form id="pages-sign-in">
+          <label class="pages-field">Email<input name="email" type="email" autocomplete="username" required></label>
+          <label class="pages-field">Password<input name="password" type="password" autocomplete="current-password" required></label>
+          <button class="cms-button cms-button--primary" type="submit">Sign in</button>
+        </form>
       </section>
 
       <section class="pages-workspace" id="pages-workspace" hidden>
@@ -51,7 +56,15 @@
               <h2 id="pages-library-title">Pages</h2>
             </div>
           </div>
-          <div id="page-list" class="pages-list" aria-live="polite"></div>
+          <label class="pages-field">Find a page<input id="page-search" type="search" autocomplete="off" placeholder="Search title or path"></label>
+          <label class="pages-field">Status<select id="page-status-filter">
+            <option value="">All statuses</option><option value="not_started">Not started</option>
+            <option value="draft">Draft</option><option value="changes_requested">Changes requested</option>
+            <option value="in_review">In review</option><option value="approved">Approved</option>
+            <option value="published">Published</option>
+          </select></label>
+          <p id="page-list-count"></p>
+          <div id="page-list" class="pages-list"></div>
         </section>
 
         <section class="cms-panel pages-editor" id="page-editor" hidden aria-labelledby="page-editor-title">
@@ -63,6 +76,8 @@
             </div>
             <div class="pages-editor__head-actions">
               <button class="cms-button cms-button--secondary" id="page-preview" type="button" disabled>Preview draft</button>
+              <button class="cms-button cms-button--secondary" id="page-history" type="button">History &amp; compare</button>
+              <a id="page-live-link" target="_blank" rel="noopener">View live page</a>
               <button class="cms-icon-button" id="page-editor-back" type="button" aria-label="Back to pages" title="Back to pages">←</button>
             </div>
           </div>
@@ -73,16 +88,23 @@
             <ol id="page-section-order" class="pages-section-order"></ol>
           </div>
 
+          <nav id="page-section-nav" class="pages-section-nav" aria-label="Editor sections"></nav>
+          <a class="pages-action-jump" href="#page-actions">Jump to save and publish actions</a>
+          <div class="pages-editing-layout">
           <form id="page-form" novalidate>
-            <p class="pages-image-upload__notice" role="note">Uploaded images are public immediately. Only upload images approved for website publication. JPEG, PNG, WebP and AVIF images up to 3 MB are supported.</p>
-            <div id="page-fields" class="pages-fields"></div>
+            <fieldset id="page-editable-fields" class="pages-editable-fields">
+              <legend class="pages-visually-hidden">Page content and settings</legend>
+              <div id="page-fields" class="pages-fields"></div>
+            </fieldset>
+            <datalist id="page-link-options"></datalist>
             <div class="pages-review-notes" id="page-review-notes-panel" hidden>
               <label for="page-review-notes">Reviewer notes</label>
               <textarea id="page-review-notes" rows="3" maxlength="2000"></textarea>
             </div>
-            <p id="page-workflow-help" role="status" aria-live="polite"></p>
-            <div class="cms-actions pages-actions">
-              <span id="page-save-status" role="status" aria-live="polite"></span>
+            <p id="page-workflow-help"></p>
+            <div class="cms-actions pages-actions" id="page-actions" tabindex="-1">
+              <span id="page-save-status"></span>
+              <button class="cms-button cms-button--primary" id="page-new-draft" type="button" hidden>Edit (new draft)</button>
               <button class="cms-button cms-button--secondary" id="page-request-changes" type="button" hidden>Request changes</button>
               <button class="cms-button cms-button--secondary" id="page-submit-review" type="button" hidden>Send for review</button>
               <button class="cms-button cms-button--primary" type="submit">Save draft</button>
@@ -90,17 +112,33 @@
               <button class="cms-button cms-button--dark" id="page-publish" type="button" hidden>Publish approved page</button>
             </div>
           </form>
+          <aside id="page-preview-panel" class="pages-preview-panel" aria-labelledby="page-preview-title" hidden>
+            <div class="cms-dialog__head">
+              <h3 id="page-preview-title">Draft preview</h3>
+              <button class="cms-button cms-button--secondary" id="page-preview-close" type="button">Close preview</button>
+            </div>
+            <p>Click a highlighted block to edit it. Use Tab and Enter to select blocks by keyboard. Scripts and forms are disabled; interactive site components may differ from live.</p>
+            <label class="pages-field">Preview width<select id="page-preview-width"><option value="100%">Fit panel</option><option value="375px">Phone (375px)</option><option value="768px">Tablet (768px)</option><option value="1168px">Desktop (1168px)</option></select></label>
+            <div class="pages-preview-scroll"><iframe id="page-preview-frame" title="Draft page preview" sandbox="allow-same-origin"></iframe></div>
+          </aside>
+          </div>
         </section>
       </section>
     </main>
   </div>
 
-  <dialog id="page-preview-dialog" class="pages-preview-dialog" aria-labelledby="page-preview-title">
+  <dialog id="page-history-dialog" class="pages-history-dialog" aria-labelledby="page-history-title">
     <div class="cms-dialog__head">
-      <h2 id="page-preview-title">Draft preview</h2>
-      <button class="cms-icon-button" id="page-preview-close" type="button" aria-label="Close preview">×</button>
+      <h2 id="page-history-title">Revision history</h2>
+      <button class="cms-button cms-button--secondary" id="page-history-close" type="button">Close history</button>
     </div>
-    <iframe id="page-preview-frame" title="Preview of the homepage draft" sandbox></iframe>
+    <p>Compare saved revisions or your current unsaved fields. History is read-only and never publishes or restores content.</p>
+    <div id="page-history-list"></div>
+    <button class="cms-button cms-button--secondary" id="page-history-more" type="button" hidden>Load older revisions</button>
+    <label class="pages-field">Compare from<select id="page-compare-from"></select></label>
+    <label class="pages-field">Compare to<select id="page-compare-to"><option value="">Current editor values</option></select></label>
+    <button class="cms-button cms-button--primary" id="page-compare" type="button">Compare revisions</button>
+    <div id="page-diff" class="pages-diff" tabindex="-1"></div>
   </dialog>
 </body>
 </html>

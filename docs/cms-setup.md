@@ -73,6 +73,75 @@ staging when they share that database, regardless of `VERCEL_ENV`; the editor
 must never claim this is staging-only based on a Preview deployment label.
 Public caches may take several minutes to refresh after publication.
 
+### Pages editor controls
+
+- Sign in directly at `/admin/pages` with the same account used for Blog. Session
+  refresh is checked before requests; expiry locks fields and exposes **Sign in
+  again**. Unsaved fields and section order are stored in this tab's
+  `sessionStorage`, scoped to the CMS user and page, without credentials.
+  Reopening offers restore/discard; a changed server revision or removed template
+  fields is reported. Browser storage can be unavailable, so keep the tab open
+  when the editor reports a recovery-storage error.
+- Search and status filters narrow the grouped page library. The library scrolls
+  independently on desktop; content groups collapse and have section jump links.
+  Decorative text glyphs are hidden from the form but preserved in saved content.
+  Counters appear only near a text field's limit, never under selects.
+- Published, approved and in-review revisions are read-only until **Edit (new
+  draft)**. This unlocks editing without writing to the database. **Save draft**
+  creates a new revision; it does not change the published pointer. In-app page
+  changes and closing the editor confirm discarding unsaved changes.
+- Each image has a thumbnail and nearby upload guidance. Uploads are public
+  immediately, independent of saving or publishing; the public image changes
+  only when its new URL is published. Thumbnails use the actual supplied image
+  URL, not a fabricated alternate-format fallback. Empty alt text prompts an
+  accurate description or explicit decorative choice. Portrait identities are
+  never guessed. Suggested copy corrections require an editor's click and follow
+  the normal save/review/publish process; templates are not silently rewritten.
+- Canonical URLs, search indexing, JSON-LD and redirects are in a collapsed
+  reviewer-only Advanced panel. The save API also rejects editor changes and
+  preserves protected values if omitted. JSON must parse before saving;
+  changed advanced settings require confirmation. Redirect status is disabled
+  when there is no redirect. Review/publication warns about noindex, redirects,
+  empty alt text and heading structure rather than silently blocking legacy
+  templates.
+- Link fields offer registered site pages. Changed internal destinations match
+  normalized registry paths or are checked with a bounded HEAD request, allowing
+  legitimate resources and blog routes outside the Pages registry. A failed
+  response requires confirmation; a network failure must be resolved before
+  saving. Existing unchanged links are not repeatedly probed.
+- **Preview draft** opens alongside the form on wide screens and below it on
+  smaller screens. Phone, tablet and desktop iframe widths are available.
+  Highlighted blocks support click or Tab/Enter to focus their field; editing
+  marks the preview out of date until refreshed. Scripts, form submission and
+  nested frames are disabled. The iframe allows same-origin DOM access only,
+  not scripts; this is needed for parent-controlled selection.
+- **History & compare** reads page-scoped, 20-item revision history without
+  overwriting unsaved fields. It identifies the current published pointer,
+  authors, reviewers and notes. Compare two saved revisions or a revision
+  against current editor values, including section-order changes. History is
+  authenticated and sent with `Cache-Control: no-store`; there is no one-click
+  restoration or automatic publishing.
+
+Run the focused automated regression suite with Node 24:
+
+```sh
+node --test test/cms-page-editor.test.js test/cms-page-editing.test.js \
+  test/cms-page-history.test.js test/cms-page-renderer.test.js \
+  test/cms-pages.test.js test/cms-reviewer-workflow.test.js \
+  test/cms-page-redirects.test.js test/cms-page-routing.test.js \
+  test/cms-public-page.test.js
+```
+
+For manual UI checks, `node scripts/cms-page-editor-fixture.mjs` prints a localhost
+URL. It serves an in-memory About page and test sign-in, never contacting Supabase
+or publishing real content. It initially uses a reviewer; set localStorage
+`test-role` to `editor` and reload to check editor controls. In its browser
+console, `window.__cmsTestAuth.expire()` simulates session expiry. Verify draft
+recovery, published-to-draft editing, section jumps, upload hints, preview
+selection and history comparison at 375, 768 and 1168 pixels. Stop the fixture
+when finished. If sandbox policy blocks localhost listeners, report browser
+checks as blocked rather than claiming visual verification.
+
 Apply `db/migrations/005_reviewer_self_approval.sql` to the verified CMS database
 before deploying the self-approval UI. This replaces only the page transition
 function, enforces active CMS roles, and preserves status checks and audit events.
