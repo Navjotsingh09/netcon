@@ -80,13 +80,14 @@
               <label for="page-review-notes">Reviewer notes</label>
               <textarea id="page-review-notes" rows="3" maxlength="2000"></textarea>
             </div>
+            <p id="page-workflow-help" role="status" aria-live="polite"></p>
             <div class="cms-actions pages-actions">
               <span id="page-save-status" role="status" aria-live="polite"></span>
               <button class="cms-button cms-button--secondary" id="page-request-changes" type="button" hidden>Request changes</button>
               <button class="cms-button cms-button--secondary" id="page-submit-review" type="button" hidden>Send for review</button>
               <button class="cms-button cms-button--primary" type="submit">Save draft</button>
               <button class="cms-button cms-button--dark" id="page-approve" type="button" hidden>Approve</button>
-              <button class="cms-button cms-button--dark" id="page-publish" type="button" hidden>Publish to staging</button>
+              <button class="cms-button cms-button--dark" id="page-publish" type="button" hidden>Publish approved page</button>
             </div>
           </form>
         </section>

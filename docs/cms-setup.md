@@ -60,6 +60,14 @@ until Preview uses a separate project. A preview deployment alone does not
 isolate CMS data. Do not promote this release without staging review and
 explicit owner approval.
 
+Pages use the "Publish approved page" action after approval by a different
+reviewer. The editor explains missing reviewer actions and confirms publication
+before sending the workflow request. Publishing changes the shared database's
+published revision pointer, not a Vercel deployment. It affects both live and
+staging when they share that database, regardless of `VERCEL_ENV`; the editor
+must never claim this is staging-only based on a Preview deployment label.
+Public caches may take several minutes to refresh after publication.
+
 Routing configuration is generated from the registry. After changing registered
 paths, run `node scripts/configure-cms-routes.mjs --write`. Existing blog rewrites,
 redirects and public assets must remain unchanged.

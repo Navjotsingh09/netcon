@@ -24,6 +24,7 @@
     submitReview: document.getElementById('page-submit-review'),
     requestChanges: document.getElementById('page-request-changes'),
     approve: document.getElementById('page-approve'),
+    workflowHelp: document.getElementById('page-workflow-help'),
     publish: document.getElementById('page-publish')
   };
   const maxImageUploadBytes = 3 * 1024 * 1024;
@@ -39,7 +40,6 @@
   let dirty = false;
   let busy = false;
   let uploadsInProgress = 0;
-  let isProductionDeployment = false;
 
   function setNotice(message, tone) {
     elements.notice.textContent = message;
@@ -103,6 +103,17 @@
     elements.publish.hidden = !(reviewer && status === 'approved');
     elements.saveButton.hidden = status === 'published' && !dirty;
     elements.reviewNotesPanel.hidden = !(reviewer && status === 'in_review' && !canReviewOwn);
+    elements.workflowHelp.textContent = status === 'in_review'
+      ? canReviewOwn
+        ? 'Waiting for a different reviewer. You cannot approve your own revision.'
+        : reviewer
+          ? 'Preview this saved revision, then approve it. Saving edits creates a new draft.'
+          : 'Waiting for a reviewer. A separate account with the reviewer role must open this page to approve it.'
+      : status === 'approved'
+        ? reviewer
+          ? 'This revision is approved. Publishing updates every website using this CMS database, including live when staging and live share it.'
+          : 'This revision is approved. A reviewer must publish it.'
+        : 'Save your draft and send it for review. A different reviewer must approve it before publication.';
     elements.previewButton.disabled = false;
   }
 
@@ -443,10 +454,10 @@
         body: JSON.stringify({ action: 'publish', revisionId: result.revision.id })
       });
       activeRevision = { ...activeRevision, status: publication.status };
-      elements.saveStatus.textContent = isProductionDeployment ? 'Page published live.' : 'Page published to staging only.';
+      elements.saveStatus.textContent = 'Page published to websites using this CMS database.';
     } else if (action === 'publish') {
       activeRevision = { ...activeRevision, status: result.status };
-      elements.saveStatus.textContent = 'Page published.';
+      elements.saveStatus.textContent = 'Page published to websites using this CMS database.';
     } else {
       activeRevision = { ...activeRevision, ...result.revision };
       elements.saveStatus.textContent = `Page ${result.revision.status.replaceAll('_', ' ')}.`;
@@ -516,6 +527,7 @@
       try { await runWorkflow('approve'); } catch (error) { setNotice(error.message, 'error'); } finally { setBusy(false); }
     });
     elements.publish.addEventListener('click', async () => {
+      if (!window.confirm(`Publish the approved revision of "${activeDefinition.title}"? This updates every website using this CMS database. If staging and live share the database, BOTH will change. Public caches may take several minutes to refresh.`)) return;
       setBusy(true);
       try { await runWorkflow('publish'); } catch (error) { setNotice(error.message, 'error'); } finally { setBusy(false); }
     });
@@ -547,8 +559,7 @@
     if (!configResponse.ok) throw new Error('This deployment does not provide the CMS configuration.');
     const config = await configResponse.json();
     if (!config.configured) throw new Error(config.message || 'The CMS is not configured on this deployment.');
-    isProductionDeployment = config.environment === 'production';
-    elements.publish.textContent = isProductionDeployment ? 'Publish live' : 'Publish to staging';
+    elements.publish.textContent = 'Publish approved page';
     await loadSupabase();
     supabase = window.supabase.createClient(config.supabaseUrl, config.publishableKey);
     const { data, error } = await supabase.auth.getSession();
