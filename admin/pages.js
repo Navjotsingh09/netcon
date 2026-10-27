@@ -96,24 +96,23 @@
   function showWorkflowActions() {
     const status = activeRevision?.status || 'not_started';
     const reviewer = user?.role === 'reviewer';
-    const canReviewOwn = activeRevision?.created_by === user?.id;
     elements.submitReview.hidden = !['draft', 'changes_requested'].includes(status);
-    elements.requestChanges.hidden = !(reviewer && status === 'in_review' && !canReviewOwn);
-    elements.approve.hidden = !(reviewer && status === 'in_review' && !canReviewOwn);
+    elements.requestChanges.hidden = !(reviewer && status === 'in_review');
+    elements.approve.hidden = !(reviewer && ['draft', 'changes_requested', 'in_review'].includes(status));
     elements.publish.hidden = !(reviewer && status === 'approved');
     elements.saveButton.hidden = status === 'published' && !dirty;
-    elements.reviewNotesPanel.hidden = !(reviewer && status === 'in_review' && !canReviewOwn);
+    elements.reviewNotesPanel.hidden = !(reviewer && ['draft', 'changes_requested', 'in_review'].includes(status));
     elements.workflowHelp.textContent = status === 'in_review'
-      ? canReviewOwn
-        ? 'Waiting for a different reviewer. You cannot approve your own revision.'
-        : reviewer
+      ? reviewer
           ? 'Preview this saved revision, then approve it. Saving edits creates a new draft.'
-          : 'Waiting for a reviewer. A separate account with the reviewer role must open this page to approve it.'
+          : 'Waiting for a reviewer. An account with the reviewer role must open this page to approve it.'
       : status === 'approved'
         ? reviewer
           ? 'This revision is approved. Publishing updates every website using this CMS database, including live when staging and live share it.'
           : 'This revision is approved. A reviewer must publish it.'
-        : 'Save your draft and send it for review. A different reviewer must approve it before publication.';
+        : reviewer
+          ? 'Save your draft, preview it, then approve and publish. Reviewers may approve their own revisions.'
+          : 'Save your draft and send it for review. A reviewer must approve it before publication.';
     elements.previewButton.disabled = false;
   }
 

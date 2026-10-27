@@ -19,7 +19,7 @@ export default async function handler(request, response) {
   }
   try {
     const client = supabaseAdmin();
-    const { data: scheduled, error } = await client.from('blog_revisions').update({ status: 'scheduled', scheduled_for: scheduledFor.toISOString(), reviewed_by: access.user.id, updated_at: new Date().toISOString() }).eq('id', revisionId(request)).eq('status', 'approved').neq('created_by', access.user.id).select('id, post_id, status, scheduled_for').maybeSingle();
+    const { data: scheduled, error } = await client.from('blog_revisions').update({ status: 'scheduled', scheduled_for: scheduledFor.toISOString(), reviewed_by: access.user.id, updated_at: new Date().toISOString() }).eq('id', revisionId(request)).eq('status', 'approved').select('id, post_id, status, scheduled_for').maybeSingle();
     if (error) throw error;
     if (!scheduled) return errorResponse(request, response, 'That approved revision cannot be scheduled.', 409);
     await client.from('blog_audit_events').insert({ post_id: scheduled.post_id, revision_id: scheduled.id, actor_id: access.user.id, action: 'scheduled', detail: { scheduledFor: scheduled.scheduled_for } });

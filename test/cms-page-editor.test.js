@@ -55,18 +55,24 @@ function editor({ role = 'reviewer', creator = 'other-user', status = 'in_review
   return { node, requests, confirmations };
 }
 
-test('only a different reviewer can approve an in-review page', () => {
+test('reviewers can approve their own saved pages but editors cannot', () => {
   const reviewer = editor();
   assert.equal(reviewer.node('page-approve').hidden, false);
   assert.match(reviewer.node('page-workflow-help').textContent, /Saving edits creates a new draft/);
 
   const author = editor({ creator: 'reviewer-user' });
-  assert.equal(author.node('page-approve').hidden, true);
-  assert.match(author.node('page-workflow-help').textContent, /cannot approve your own/);
+  assert.equal(author.node('page-approve').hidden, false);
 
   const writer = editor({ role: 'editor' });
   assert.equal(writer.node('page-approve').hidden, true);
-  assert.match(writer.node('page-workflow-help').textContent, /separate account with the reviewer role/);
+  assert.match(writer.node('page-workflow-help').textContent, /account with the reviewer role/);
+  for (const status of ['draft', 'changes_requested', 'in_review']) {
+    assert.equal(editor({ creator: 'reviewer-user', status }).node('page-approve').hidden, false);
+    assert.equal(editor({ role: 'editor', status }).node('page-approve').hidden, true);
+  }
+  for (const status of ['approved', 'published']) {
+    assert.equal(editor({ status }).node('page-approve').hidden, true);
+  }
 });
 
 test('only approved revisions expose the reviewer publish action', () => {

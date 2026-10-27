@@ -60,13 +60,24 @@ until Preview uses a separate project. A preview deployment alone does not
 isolate CMS data. Do not promote this release without staging review and
 explicit owner approval.
 
-Pages use the "Publish approved page" action after approval by a different
-reviewer. The editor explains missing reviewer actions and confirms publication
+Pages use the "Publish approved page" action after reviewer approval.
+Reviewers may approve their own saved revisions: Save draft, Preview draft,
+Approve, then Publish approved page. Sending for review is optional for reviewers;
+editors must submit their drafts for a reviewer to approve and publish.
+Blog approval and scheduling also permit reviewers' own revisions.
+Existing accounts and roles are retained; there is no new super-admin role.
+The editor explains missing reviewer actions and confirms publication
 before sending the workflow request. Publishing changes the shared database's
 published revision pointer, not a Vercel deployment. It affects both live and
 staging when they share that database, regardless of `VERCEL_ENV`; the editor
 must never claim this is staging-only based on a Preview deployment label.
 Public caches may take several minutes to refresh after publication.
+
+Apply `db/migrations/005_reviewer_self_approval.sql` to the verified CMS database
+before deploying the self-approval UI. This replaces only the page transition
+function, enforces active CMS roles, and preserves status checks and audit events.
+It does not change accounts, drafts, or published pointers. Do not rerun earlier
+migrations. The migration runner records this file in `cms_schema_migrations`.
 
 Routing configuration is generated from the registry. After changing registered
 paths, run `node scripts/configure-cms-routes.mjs --write`. Existing blog rewrites,
@@ -94,12 +105,13 @@ Retrieve local development values only with `vercel env pull .env.local`.
 The first reviewer must be seeded after their Supabase Auth user ID is known:
 
 ```sql
-INSERT INTO cms_users (clerk_user_id, email, display_name, role)
+INSERT INTO cms_users (supabase_user_id, email, display_name, role)
 VALUES ('auth-user-uuid', 'reviewer@network-consultancy.com', 'Reviewer', 'reviewer');
 ```
 
-Editors use the same statement with `role = 'editor'`. The API enforces that an
-editor cannot approve or publish their own revision.
+Editors use the same statement with `role = 'editor'`. Editors cannot approve,
+publish, or schedule revisions. Reviewers can perform those actions on their own
+revisions or another author's; `reviewed_by` and audit events record the actor.
 
 ## Initial import
 

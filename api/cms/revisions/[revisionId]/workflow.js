@@ -5,7 +5,7 @@ import { errorResponse, json, options } from '../../../../lib/cms/http.js';
 const transitionRules = {
   publish_live: { from: ['draft', 'changes_requested'], to: 'approved', roles: ['reviewer'], audit: 'published_to_live_requested' },
   request_changes: { from: ['in_review'], to: 'changes_requested', roles: ['reviewer'], audit: 'changes_requested' },
-  approve: { from: ['in_review'], to: 'approved', roles: ['reviewer'], audit: 'approved' }
+  approve: { from: ['draft', 'changes_requested', 'in_review'], to: 'approved', roles: ['reviewer'], audit: 'approved' }
 };
 
 function revisionId(request) {
@@ -26,8 +26,7 @@ export default async function handler(request, response) {
   try {
     const notes = typeof request.body?.reviewerNotes === 'string' ? request.body.reviewerNotes.trim() : null;
     const client = supabaseAdmin();
-    let update = client.from('blog_revisions').update({ status: rule.to, reviewer_notes: notes, reviewed_by: rule.roles.includes('reviewer') ? access.user.id : null, updated_at: new Date().toISOString() }).eq('id', revisionId(request)).in('status', rule.from);
-    if (['approve', 'request_changes'].includes(action)) update = update.neq('created_by', access.user.id);
+    const update = client.from('blog_revisions').update({ status: rule.to, reviewer_notes: notes, reviewed_by: rule.roles.includes('reviewer') ? access.user.id : null, updated_at: new Date().toISOString() }).eq('id', revisionId(request)).in('status', rule.from);
     const { data: updated, error } = await update.select('id, post_id, status, created_by').maybeSingle();
     if (error) throw error;
     if (!updated) {
