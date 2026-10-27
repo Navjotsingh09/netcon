@@ -75,6 +75,17 @@ Public caches may take several minutes to refresh after publication.
 
 ### Pages editor controls
 
+Pages and Blog share accessible, branded dialogs (`admin/dialogs.js` and
+`admin/dialogs.css`) with plain-language titles, named actions and consistent
+spacing. Confirmations distinguish publishing, discarding changes and signing
+out. Destructive confirmations initially focus the safe action. Escape cancels,
+focus returns to the previous control, and queued dialogs never overlap.
+Link, button and image-description prompts use labelled fields rather than
+browser prompts. Article deletion names the article and explains that every
+revision, including the public version, is removed. Errors remain visible with
+an explicit close action or an inline recovery instruction. Browser-controlled
+leave-page warnings cannot be restyled and remain native to protect unsaved work.
+
 - Sign in directly at `/admin/pages` with the same account used for Blog. Session
   refresh is checked before requests; expiry locks fields and exposes **Sign in
   again**. Unsaved fields and section order are stored in this tab's

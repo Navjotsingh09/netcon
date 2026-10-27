@@ -17,6 +17,7 @@
   const deleteArticleDialog = document.getElementById('delete-article-dialog');
   let articleEditorSelection = null;
   let pendingDeletionSlug = null;
+  let publishing = false;
 
   function escapeHtml(value) { const node = document.createElement('div'); node.textContent = value || ''; return node.innerHTML; }
   function syncArticleEditor() { articleHtmlField.value = articleEditor.innerHTML.trim(); }
@@ -35,7 +36,7 @@
       const script = document.createElement('script');
       script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
       script.onload = resolve;
-      script.onerror = () => reject(new Error('Clerk could not be loaded.'));
+      script.onerror = () => reject(new Error('The sign-in service could not be loaded. Check your connection and reload this page.'));
       document.head.appendChild(script);
     });
   }
@@ -65,7 +66,8 @@
     const messages = Object.entries(fields).map(([fieldName, message]) => {
       const field = elements.form.elements[fieldName];
       if (field) field.setCustomValidity(message);
-      return `${fieldName}: ${message}`;
+      const label = field?.labels?.[0]?.textContent?.trim().replace(/\s+/g, ' ');
+      return `${label || 'Article details'}: ${message}`;
     });
     document.getElementById('validation-errors').textContent = messages.length ? messages.join(' ') : error.message;
     const firstField = Object.keys(fields).map((fieldName) => elements.form.elements[fieldName]).find(Boolean);
@@ -168,7 +170,14 @@
     if (!file) return;
     if (file.size > 3 * 1024 * 1024) throw new Error('Article images must be 3 MB or smaller.');
     const data = await new Promise((resolve, reject) => { const reader = new FileReader(); reader.onload = () => resolve(String(reader.result).split(',')[1]); reader.onerror = reject; reader.readAsDataURL(file); });
-    const altText = window.prompt('Describe this image for readers using a screen reader.', '') || '';
+    const description = await window.CmsDialogs.prompt({
+      title: 'Add an image to your article',
+      message: 'Uploading makes the image file public immediately. It will appear in the article after you publish.',
+      fields: [{ name: 'alt', label: 'Image description', hint: 'Describe what the image shows for readers who cannot see it. Leave blank only if the image is decorative.' }],
+      confirmLabel: 'Upload and add image', cancelLabel: 'Cancel upload'
+    });
+    if (!description) return;
+    const altText = description.alt;
     const result = await api('/api/cms/media', { method: 'POST', body: JSON.stringify({ filename: file.name, contentType: file.type, data, altText }) });
     insertArticleHtml(`<img src="${escapeHtml(result.media.blobUrl)}" alt="${escapeHtml(altText)}">`);
   }
@@ -200,16 +209,28 @@
     button.addEventListener('click', () => { restoreArticleEditorSelection(); document.execCommand(button.dataset.editorCommand, false); syncArticleEditor(); rememberArticleEditorSelection(); });
   });
   document.getElementById('article-block-format').addEventListener('change', (event) => { restoreArticleEditorSelection(); document.execCommand('formatBlock', false, event.target.value); syncArticleEditor(); rememberArticleEditorSelection(); });
-  document.querySelector('[data-editor-action="link"]').addEventListener('click', () => {
-    const url = window.prompt('Enter the link URL.', 'https://');
-    if (!url) return;
+  document.querySelector('[data-editor-action="link"]').addEventListener('click', async () => {
+    rememberArticleEditorSelection();
+    const values = await window.CmsDialogs.prompt({ title: 'Add a link', message: 'Select the words you want to link, then enter the destination below.', fields: [{ name: 'url', label: 'Link address', value: 'https://', required: true, hint: 'Use a full website address, a site path such as /contact, or an email link starting with mailto:.' }], confirmLabel: 'Add link' });
+    if (!values) return;
+    const url = values.url.trim();
+    if (!/^(https?:\/\/[^/\s]+|mailto:[^\s]+|\/(?!\/)[^\s]*|#[^\s]+)$/i.test(url) && !/^https?:\/\/[^\s]+$/i.test(url)) {
+      await window.CmsDialogs.error('Enter a website address such as https://example.com, a site path such as /contact, or an email link starting with mailto:.', 'Check the link address');
+      return;
+    }
     restoreArticleEditorSelection(); document.execCommand('createLink', false, url); syncArticleEditor(); rememberArticleEditorSelection();
   });
   document.querySelector('[data-editor-action="image"]').addEventListener('click', () => articleEditorImage.click());
-  document.querySelector('[data-editor-action="cta"]').addEventListener('click', () => {
-    const label = window.prompt('CTA button label.', 'Contact us');
-    const url = window.prompt('CTA button URL.', 'https://');
-    if (!label || !url) return;
+  document.querySelector('[data-editor-action="cta"]').addEventListener('click', async () => {
+    rememberArticleEditorSelection();
+    const values = await window.CmsDialogs.prompt({ title: 'Add a call-to-action button', message: 'Choose clear button text that tells readers what will happen when they click.', fields: [{ name: 'label', label: 'Button text', value: 'Contact us', required: true, maxLength: 120 }, { name: 'url', label: 'Button destination', value: 'https://', required: true }], confirmLabel: 'Add button' });
+    if (!values) return;
+    const label = values.label.trim();
+    const url = values.url.trim();
+    if (!label || !/^(https?:\/\/[^\s]+|mailto:[^\s]+|\/(?!\/)[^\s]*|#[^\s]+)$/i.test(url)) {
+      await window.CmsDialogs.error('Enter button text and a valid website address, site path or email link.', 'Check the button details');
+      return;
+    }
     insertArticleHtml(`<a class="article-cta" href="${escapeHtml(url)}">${escapeHtml(label)}</a>`);
   });
   articleEditorImage.addEventListener('change', async () => { try { await uploadArticleImage(articleEditorImage.files[0]); } catch (error) { elements.saveStatus.textContent = error.message; } finally { articleEditorImage.value = ''; } });
@@ -217,8 +238,15 @@
   articleEditor.addEventListener('drop', async (event) => { event.preventDefault(); try { await uploadArticleImage([...event.dataTransfer.files].find((file) => file.type.startsWith('image/'))); } catch (error) { elements.saveStatus.textContent = error.message; } });
   elements.form.elements.featuredImage.addEventListener('change', () => { const file = elements.form.elements.featuredImage.files[0]; if (file) renderFeaturedImage(URL.createObjectURL(file), elements.form.elements.featuredImageAlt.value); });
   document.getElementById('remove-featured-image').addEventListener('click', () => { elements.form.elements.featuredImage.value = ''; elements.form.elements.featuredImageUrl.value = ''; renderFeaturedImage('', ''); elements.saveStatus.textContent = 'Choose a replacement image before saving.'; });
-  function requestArticleDeletion(slug) { if (!slug) return; pendingDeletionSlug = slug; deleteArticleDialog.showModal(); }
-  elements.list.addEventListener('click', (event) => { const actionButton = event.target.closest('[data-action]'); if (!actionButton) return; const { action, slug } = actionButton.dataset; if (action === 'edit') openPost(slug).catch((error) => alert(error.message)); else if (action === 'delete_post') requestArticleDeletion(slug); });
+  function requestArticleDeletion(slug) {
+    if (!slug) return;
+    pendingDeletionSlug = slug;
+    const post = posts.find((post) => post.publicSlug === slug);
+    document.getElementById('delete-article-message').textContent = `Delete "${post?.title || slug}" and every saved version?\n\nThis also removes the published article from the website. You cannot undo this.`;
+    deleteArticleDialog.showModal();
+    document.getElementById('cancel-delete-article').focus();
+  }
+  elements.list.addEventListener('click', (event) => { const actionButton = event.target.closest('[data-action]'); if (!actionButton) return; const { action, slug } = actionButton.dataset; if (action === 'edit') openPost(slug).catch((error) => window.CmsDialogs.error(error.message, 'Article could not be opened')); else if (action === 'delete_post') requestArticleDeletion(slug); });
   document.getElementById('preview-button').addEventListener('click', () => { syncArticleEditor(); const form = new FormData(elements.form); elements.previewContent.innerHTML = `<h1>${escapeHtml(form.get('title'))}</h1>${form.get('featuredImageUrl') ? `<img src="${escapeHtml(form.get('featuredImageUrl'))}" alt="${escapeHtml(form.get('featuredImageAlt'))}">` : ''}${safePreviewHtml(form.get('articleHtml'))}`; elements.preview.showModal(); });
   document.getElementById('close-preview-button').addEventListener('click', () => elements.preview.close());
   elements.form.addEventListener('submit', async (event) => { event.preventDefault(); clearValidationErrors(); try { elements.saveStatus.textContent = 'Saving...'; await saveCurrentDraft(); elements.saveStatus.textContent = 'Draft saved. Review it with Preview, then publish live.'; await refreshPosts(); } catch (error) { elements.saveStatus.textContent = error.message; showValidationErrors(error); } });
@@ -231,8 +259,11 @@
     document.getElementById('publish-result-dialog').showModal();
   }
   async function publishCurrentArticle() {
-    if (!currentPost) return;
+    if (!currentPost || publishing) return;
+    publishing = true;
+    elements.publishLive.disabled = true;
     try {
+      if (!await window.CmsDialogs.confirm({ title: 'Publish this article?', message: `Publishing "${elements.form.elements.title.value || 'this article'}" updates the live website. If staging uses the same content database, it will show the update too.\n\nPreview your saved article before publishing. Visitors may need a few minutes to see the changes.`, confirmLabel: 'Publish article', cancelLabel: 'Not yet' })) return;
       elements.saveStatus.textContent = 'Publishing live...';
       if (!isEditableDraft(currentPost) && currentPost.status !== 'approved') await saveCurrentDraft();
       if (currentPost.status !== 'approved') await api(`/api/cms/revisions/${currentPost.revisionId}/workflow`, { method: 'POST', body: JSON.stringify({ action: 'publish_live' }) });
@@ -240,9 +271,10 @@
       currentPost.status = 'published';
       await refreshPosts();
       updatePublishingControls(currentPost);
-      elements.saveStatus.textContent = 'CMS release is published.';
+      elements.saveStatus.textContent = 'Your article is published.';
       showPublishResult('Article published', 'Your article is now published on the live website.', `https://network-consultancy.com/resources/blogs/${currentPost.publicSlug}`);
-    } catch (error) { elements.saveStatus.textContent = error.message; showPublishResult('Publishing failed', error.message || 'The article was not published. Please try again.', null); }
+    } catch (error) { elements.saveStatus.textContent = error.message; showPublishResult('Article could not be published', error.message || 'The article was not published. Please try again.', null); }
+    finally { publishing = false; updatePublishingControls(currentPost); }
   }
   elements.publishLive.addEventListener('click', publishCurrentArticle);
   document.getElementById('close-publish-result').addEventListener('click', () => document.getElementById('publish-result-dialog').close());
@@ -254,7 +286,7 @@
       elements.saveStatus.textContent = 'Article deleted.';
       if (currentPost?.publicSlug === slug) closeEditor();
       await refreshPosts();
-    } catch (error) { elements.saveStatus.textContent = error.message; }
+    } catch (error) { elements.saveStatus.textContent = error.message; await window.CmsDialogs.error(`The article could not be deleted. ${error.message}`, 'Article not deleted'); }
   }
   document.getElementById('delete-post-button').addEventListener('click', () => requestArticleDeletion(currentPost?.publicSlug));
   ['close-delete-article', 'cancel-delete-article'].forEach((id) => document.getElementById(id).addEventListener('click', () => { pendingDeletionSlug = null; deleteArticleDialog.close(); }));

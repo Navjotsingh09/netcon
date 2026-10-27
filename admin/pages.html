@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/admin/styles.css">
   <link rel="stylesheet" href="/admin/pages.css">
+  <link rel="stylesheet" href="/admin/dialogs.css">
+  <script defer src="/admin/dialogs.js"></script>
   <script defer src="/admin/pages.js"></script>
 </head>
 <body>
@@ -127,7 +129,7 @@
     </main>
   </div>
 
-  <dialog id="page-history-dialog" class="pages-history-dialog" aria-labelledby="page-history-title">
+  <dialog id="page-history-dialog" class="pages-history-dialog cms-popup cms-popup--wide" aria-labelledby="page-history-title">
     <div class="cms-dialog__head">
       <h2 id="page-history-title">Revision history</h2>
       <button class="cms-button cms-button--secondary" id="page-history-close" type="button">Close history</button>

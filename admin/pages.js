@@ -575,7 +575,7 @@
       return;
     }
     if (busy || sessionInvalid) return;
-    if (dirty && !window.confirm('Discard your unsaved changes and open this page?')) return;
+    if (dirty && !await window.CmsDialogs.confirm({ title: 'Leave without saving?', message: 'Your latest changes have not been saved. Opening another page will discard them.', confirmLabel: 'Discard changes', cancelLabel: 'Keep editing', danger: true })) return;
     const previousKey = activeDefinition && user ? recoveryKey() : null;
     setBusy(true);
     try {
@@ -632,7 +632,7 @@
         const stored = sessionStorage.getItem(recoveryKey());
         if (stored) {
           const recovery = JSON.parse(stored);
-          if (window.confirm(`Restore unsaved edits from ${recovery.savedAt}?${recovery.revisionId !== (activeRevision?.id || null) ? ' The saved revision changed since this copy; compare carefully before saving.' : ''}`)) {
+          if (await window.CmsDialogs.confirm({ title: 'Restore your unsaved changes?', message: `This tab has a recovery copy from ${new Date(recovery.savedAt).toLocaleString()}.${recovery.revisionId !== (activeRevision?.id || null) ? ' A newer version has been saved since then. Compare your recovered changes before saving.' : ''}`, confirmLabel: 'Restore changes', cancelLabel: 'Use saved version' })) {
             const recovered = { ...content, fields: { ...content.fields } };
             const allowed = new Set(activeDefinition.fields.map((field) => field.key));
             const stale = Object.keys(recovery.content?.fields || {}).filter((key) => !allowed.has(key) && !key.startsWith('home.seo.'));
@@ -668,7 +668,7 @@
   async function saveDraft() {
     if (sessionInvalid) throw new Error('Sign in before saving. Your edits are preserved.');
     await checkChangedLinks();
-    confirmAdvancedChanges();
+    await confirmAdvancedChanges();
     const content = collectContent();
     const data = await api(`/api/cms/pages/${encodeURIComponent(activeDefinition.slug)}`, {
       method: 'POST',
@@ -706,8 +706,8 @@
     if (!activeRevision?.id) throw new Error('Save this page before continuing.');
     if (['approve', 'publish', 'submit_for_review'].includes(action)) {
       const warnings = contentWarnings();
-      if (warnings.length && !window.confirm(`Review these warnings before continuing:\n\n${warnings.join('\n')}\n\nContinue with this saved revision?`)) return;
-      confirmAdvancedChanges();
+      if (warnings.length && !await window.CmsDialogs.confirm({ title: 'Check this page before continuing', message: `${warnings.map((warning) => `• ${warning}`).join('\n\n')}\n\nThese checks apply to the saved version of this page.`, confirmLabel: 'Continue with saved page', cancelLabel: 'Go back and check' })) return;
+      await confirmAdvancedChanges();
     }
     const body = { action, revisionId: activeRevision.id, reviewerNotes: elements.reviewNotes.value };
     const result = await api(`/api/cms/pages/${encodeURIComponent(activeDefinition.slug)}/workflow`, {
@@ -810,14 +810,14 @@
     return warnings;
   }
 
-  function confirmAdvancedChanges() {
+  async function confirmAdvancedChanges() {
     const fields = collectContent().fields;
     if (fields['meta:schema']) {
       try { JSON.parse(fields['meta:schema']); }
       catch { showFieldErrors({ 'meta:schema': 'Enter valid JSON-LD.' }); throw new Error('Structured data must be valid JSON before continuing.'); }
     }
     const changes = [...advancedKeys].filter((key) => fields[key] !== savedContent?.fields?.[key]);
-    if (changes.length && !window.confirm(`Advanced settings changed:\n${changes.map((key) => activeDefinition.fields.find((field) => field.key === key)?.label || key).join('\n')}\n\nRedirects replace page content, noindex removes search visibility, and clearing JSON-LD removes structured data. Save these settings?`)) {
+    if (changes.length && !await window.CmsDialogs.confirm({ title: 'Save changes to search and redirect settings?', message: `You changed:\n${changes.map((key) => activeDefinition.fields.find((field) => field.key === key)?.label || key).join('\n')}\n\nA redirect sends visitors to another page. Turning off search indexing asks search engines to hide this page. Clearing structured data removes information used by search engines.\n\nThese changes will affect the website only after you publish.`, confirmLabel: 'Save these settings', cancelLabel: 'Keep editing' })) {
       throw new Error('Advanced setting changes were not confirmed. Your edits remain unsaved.');
     }
   }
@@ -835,7 +835,7 @@
       const response = await fetch(path, { method: 'HEAD', signal: AbortSignal.timeout(10000) });
       if (!response.ok) warnings.push(`Internal link ${path} returned HTTP ${response.status}.`);
     }
-    if (warnings.length && !window.confirm(`${warnings.join('\n')}\nContinue despite these links?`)) throw new Error('Check the internal links before saving.');
+    if (warnings.length && !await window.CmsDialogs.confirm({ title: 'Some links could not be opened', message: `${warnings.join('\n')}\n\nVisitors may not be able to open these links. You can go back to fix them or save the draft anyway.`, confirmLabel: 'Save draft anyway', cancelLabel: 'Check links' })) throw new Error('Draft not saved. Check the internal links, then try again.');
   }
 
   function attachPreviewSelection() {
@@ -1024,9 +1024,11 @@
       try { await runWorkflow('approve'); } catch (error) { setNotice(error.message, 'error'); } finally { setBusy(false); }
     });
     elements.publish.addEventListener('click', async () => {
-      if (!window.confirm(`Publish the approved revision of "${activeDefinition.title}"? This updates every website using this CMS database. If staging and live share the database, BOTH will change. Public caches may take several minutes to refresh.`)) return;
       setBusy(true);
-      try { await runWorkflow('publish'); } catch (error) { setNotice(error.message, 'error'); } finally { setBusy(false); }
+      try {
+        if (!await window.CmsDialogs.confirm({ title: 'Publish this page?', message: `You are about to publish the approved version of "${activeDefinition.title}".\n\nThis changes the live website and staging because they use the same content database. Visitors may need a few minutes to see the update.`, confirmLabel: 'Publish page', cancelLabel: 'Not yet' })) return;
+        await runWorkflow('publish');
+      } catch (error) { setNotice(error.message, 'error'); } finally { setBusy(false); }
     });
     elements.previewButton.addEventListener('click', async () => {
       try { await previewDraft(); } catch (error) { setNotice(error.message, 'error'); }
@@ -1036,13 +1038,13 @@
       elements.editor.classList.remove('pages-editor--preview');
       previewRequest++;
     });
-    document.getElementById('page-editor-back').addEventListener('click', () => {
+    document.getElementById('page-editor-back').addEventListener('click', async () => {
       if (busy) return;
       if (uploadsInProgress) {
         setNotice('Wait for the image upload to finish before leaving this page.', 'warning');
         return;
       }
-      if (dirty && !window.confirm('Discard your unsaved changes and return to the page list?')) return;
+      if (dirty && !await window.CmsDialogs.confirm({ title: 'Close without saving?', message: 'Your latest changes have not been saved. Closing this page will discard them.', confirmLabel: 'Discard changes', cancelLabel: 'Keep editing', danger: true })) return;
       clearRecovery();
       dirty = false;
       window.removeEventListener('beforeunload', preventLeave);
@@ -1052,7 +1054,8 @@
     });
     elements.signOut.addEventListener('click', async () => {
       if (busy) { setNotice('Wait for the current CMS action to finish before signing out.', 'warning'); return; }
-      if (uploadsInProgress || dirty && !window.confirm('Sign out? Unsaved edits will stay in this browser tab as a recovery copy.')) return;
+      if (uploadsInProgress) { setNotice('Wait for your image upload to finish before signing out.', 'warning'); return; }
+      if (dirty && !await window.CmsDialogs.confirm({ title: 'Sign out with unsaved changes?', message: 'Your changes are not saved to the website. A recovery copy will stay in this browser tab so you can continue after signing back in with the same account. Keep this tab open.', confirmLabel: 'Sign out', cancelLabel: 'Keep editing' })) return;
       preserveDraft();
       const { error } = await supabase.auth.signOut();
       if (error) { setNotice(error.message, 'error'); return; }

@@ -46,7 +46,7 @@ function editor({ role = 'reviewer', creator = 'other-user', status = 'in_review
     window: {
       addEventListener() {},
       removeEventListener() {},
-      confirm(message) { confirmations.push(message); return confirm; }
+      CmsDialogs: { async confirm(options) { confirmations.push(options.message); return confirm; } }
     },
     console,
     structuredClone,
@@ -131,7 +131,7 @@ test('cancelling the shared-database publication warning performs no request', a
   await app.node('page-publish').listeners.click();
   assert.equal(app.requests.length, 0);
   assert.match(app.confirmations[0], /Home page/);
-  assert.match(app.confirmations[0], /BOTH will change/);
+  assert.match(app.confirmations[0], /live website and staging/);
 });
 
 test('confirmed publication sends the saved revision and reports the actual database scope', async () => {
@@ -234,11 +234,11 @@ test('broken internal links require confirmation and cancelling prevents a save'
   assert.match(app.confirmations[0], /HTTP 404/);
 });
 
-test('advanced changes cannot proceed when their confirmation is declined', () => {
+test('advanced changes cannot proceed when their confirmation is declined', async () => {
   const app = editor({ status: 'draft', confirm: false });
   app.hooks.setFields({ 'meta:robots': 'noindex, nofollow' });
-  assert.throws(() => app.hooks.confirmAdvancedChanges(), /not confirmed/);
-  assert.match(app.confirmations[0], /noindex removes search visibility/);
+  await assert.rejects(app.hooks.confirmAdvancedChanges(), /not confirmed/);
+  assert.match(app.confirmations[0], /search engines to hide this page/);
   assert.equal(app.requests.length, 0);
 });
 
